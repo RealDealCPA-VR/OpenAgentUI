@@ -1,10 +1,10 @@
-import type { AssistantStream, AssistantStreamChunk } from "assistant-stream";
+import type { AssistantStream, AssistantStreamChunk } from "openagentui-stream";
 import type {
   RemoteThreadInitializeResponse,
   RemoteThreadListAdapter,
   RemoteThreadListResponse,
   RemoteThreadMetadata,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { AdkEventAccumulator } from "./AdkEventAccumulator";
 import { normalizeAdkPart } from "./normalizeAdkPart";
 import { parseAdkEventValue } from "./parseAdkEvent";
@@ -300,7 +300,7 @@ export function createAdkSessionAdapter(
     },
 
     generateTitle(): Promise<AssistantStream> {
-      // Title generation not supported without assistant-cloud
+      // Title generation not supported without openagentui-cloud
       return Promise.resolve(
         new ReadableStream<AssistantStreamChunk>({
           start(controller) {

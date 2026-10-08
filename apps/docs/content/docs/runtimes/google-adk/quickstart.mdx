@@ -15,7 +15,7 @@ For React Native and Ink, host this route in a separate backend project and
 point the client runtime at its absolute URL.
 
 ```ts title="app/api/chat/route.ts"
-import { createAdkApiRoute } from "@assistant-ui/react-google-adk/server";
+import { createAdkApiRoute } from "@openagentui/react-google-adk/server";
 import { InMemoryRunner, LlmAgent } from "@google/adk";
 
 const agent = new LlmAgent({
@@ -36,7 +36,7 @@ export const POST = createAdkApiRoute({
 });
 ```
 
-`createAdkStream` sends the initialized assistant-ui thread ID as
+`createAdkStream` sends the initialized openagentui thread ID as
 `clientSessionId`. When the runner exposes `appName` and `sessionService`, the
 route creates the corresponding ADK session before the first run. The static
 user above is suitable only for local, single-user development. Before
@@ -56,12 +56,12 @@ Use `createAdkStream` to connect to your API route. It parses the SSE stream for
 ```tsx title="components/MyAssistant.tsx"
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { AssistantRuntimeProvider } from "@openagentui/react";
 import {
   useAdkRuntime,
   createAdkStream,
-} from "@assistant-ui/react-google-adk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/react-google-adk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export function MyAssistant() {
   const runtime = useAdkRuntime({
@@ -79,12 +79,12 @@ export function MyAssistant() {
 <Tab value="React Native">
 
 ```tsx title="components/MyAssistant.tsx"
-import { AssistantRuntimeProvider } from "@assistant-ui/react-native";
+import { AssistantRuntimeProvider } from "@openagentui/react-native";
 import {
   useAdkRuntime,
   createAdkStream,
-} from "@assistant-ui/react-google-adk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/react-google-adk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const API_URL = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000";
 
@@ -104,11 +104,11 @@ export function MyAssistant() {
 <Tab value="React Ink">
 
 ```tsx title="components/MyAssistant.tsx"
-import { AssistantRuntimeProvider } from "@assistant-ui/react-ink";
+import { AssistantRuntimeProvider } from "@openagentui/react-ink";
 import {
   useAdkRuntime,
   createAdkStream,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 import { Thread } from "./thread.js";
 
 export function MyAssistant() {

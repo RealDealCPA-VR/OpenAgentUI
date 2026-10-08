@@ -8,8 +8,8 @@ const mocks = vi.hoisted(() => ({
   smooth: vi.fn((part: { text: string }) => part),
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@assistant-ui/react")>();
+vi.mock("@openagentui/react", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@openagentui/react")>();
   return {
     ...original,
     useMessagePartText: () => mocks.messagePartText,

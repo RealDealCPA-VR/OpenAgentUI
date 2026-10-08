@@ -2,12 +2,12 @@
 
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import type { ThreadMessageLike } from "@assistant-ui/core";
+import type { ThreadMessageLike } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
-import { useAuiState } from "@assistant-ui/store";
+} from "@openagentui/core/react";
+import { useAuiState } from "@openagentui/store";
 import { ThreadPrimitiveMessages } from "../thread/ThreadMessages";
 import { ThreadPrimitiveRoot } from "../thread/ThreadRoot";
 import { MessagePrimitiveIf } from "./MessageIf";

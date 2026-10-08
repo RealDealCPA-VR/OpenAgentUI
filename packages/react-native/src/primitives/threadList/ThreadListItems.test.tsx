@@ -47,17 +47,17 @@ vi.mock("react-native", async (importOriginal) => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAuiState: <T,>(selector: (s: typeof h.state) => T) => selector(h.state),
   };
 });
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => {
+vi.mock("@openagentui/core/react", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@assistant-ui/core/react")>();
+    await importOriginal<typeof import("@openagentui/core/react")>();
   return {
     ...actual,
     ThreadListItemByIndexProvider: ({

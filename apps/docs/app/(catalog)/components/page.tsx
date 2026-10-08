@@ -11,7 +11,7 @@ import { PageFrame } from "@/components/shared/page-frame";
 import { StartSetupDialog } from "@/components/shared/start-setup-dialog";
 import { typeDeck, typeSection } from "@/components/shared/type";
 import { formatMinutes, getCatalogItem, type CatalogItem } from "@/lib/catalog";
-import { assistantUi } from "@/lib/catalog/products/assistant-ui";
+import { assistantUi } from "@/lib/catalog/products/openagentui";
 import { ELEMENT_PRODUCTS } from "@/lib/catalog/products/elements";
 import { cloud } from "@/lib/catalog/products/cloud";
 import { agentTools } from "@/lib/catalog/products/agent-tools";
@@ -22,7 +22,7 @@ import { createOgMetadata } from "@/lib/og";
 import { cn } from "@/lib/utils";
 
 const title = "Components";
-const description = "Everything you can add to an assistant-ui project.";
+const description = "Everything you can add to an openagentui project.";
 
 export const metadata: Metadata = {
   title,

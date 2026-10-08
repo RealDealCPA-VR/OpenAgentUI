@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { useTapHost } from "@assistant-ui/tap";
+import { useTapHost } from "@openagentui/tap";
 import { DynamicChatTransport } from "./DynamicChatTransport";
 import { useChatThread } from "./useChatThread";
 // @vitest-environment jsdom
@@ -15,10 +15,10 @@ import {
 import {
   AssistantRuntimeProvider,
   RuntimeAdapterProvider,
-} from "@assistant-ui/core/react";
-import { AuiConfig, AuiProvider, useAuiState } from "@assistant-ui/store";
-import { useAssistantClientDestroySignal } from "@assistant-ui/store/internal";
-import type { AssistantRuntime } from "@assistant-ui/core";
+} from "@openagentui/core/react";
+import { AuiConfig, AuiProvider, useAuiState } from "@openagentui/store";
+import { useAssistantClientDestroySignal } from "@openagentui/store/internal";
+import type { AssistantRuntime } from "@openagentui/core";
 import { AISDKChat } from "./AISDKChat";
 import type { ChatTransport, UIMessage } from "ai";
 import {

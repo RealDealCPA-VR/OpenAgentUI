@@ -6,4 +6,4 @@ export {
   ThreadPrimitiveMessageByIndex,
   ThreadPrimitiveUnstable_MessageById,
   ThreadPrimitiveRow,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";

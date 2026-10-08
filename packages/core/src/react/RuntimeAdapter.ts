@@ -1,5 +1,5 @@
-import { useResource, resource } from "@assistant-ui/tap";
-import type { AssistantClient, ScopesConfig } from "@assistant-ui/store";
+import { useResource, resource } from "@openagentui/tap";
+import type { AssistantClient, ScopesConfig } from "@openagentui/store";
 import type { AssistantRuntime } from "..";
 import {
   baseRuntimeAdapterTransformScopes,
@@ -9,7 +9,7 @@ import {
   attachTransformScopes,
   useAssistantClientRef,
   useAssistantScopeEffect,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { DataRenderers } from "./client/DataRenderers";
 import { Tools } from "./client/Tools";
 

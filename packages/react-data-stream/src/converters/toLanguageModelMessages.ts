@@ -6,7 +6,7 @@ import type {
   LanguageModelV2ToolCallPart,
   LanguageModelV2ToolResultPart,
 } from "@ai-sdk/provider";
-import type { ThreadMessage } from "@assistant-ui/core";
+import type { ThreadMessage } from "@openagentui/core";
 import {
   toGenericMessages,
   type GenericFilePart,
@@ -14,7 +14,7 @@ import {
   type GenericTextPart,
   type GenericToolCallPart,
   type GenericToolResultPart,
-} from "assistant-stream";
+} from "openagentui-stream";
 
 function convertUserContent(
   content: GenericMessage & { role: "user" },
@@ -92,7 +92,7 @@ function convertGenericToLanguageModel(
 }
 
 /**
- * @deprecated Use `toGenericMessages` from `assistant-stream` for framework-agnostic conversion.
+ * @deprecated Use `toGenericMessages` from `openagentui-stream` for framework-agnostic conversion.
  * This function is kept for AI SDK compatibility.
  */
 export function toLanguageModelMessages(

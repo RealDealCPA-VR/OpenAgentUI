@@ -102,20 +102,14 @@ describe("skillsPluginDir", () => {
   it("keys the cache by the pinned skills commit under XDG_CACHE_HOME", () => {
     vi.stubEnv("XDG_CACHE_HOME", "/cache");
     expect(skillsPluginDir()).toBe(
-      path.join("/cache", "assistant-ui", "skills", SKILLS_COMMIT),
+      path.join("/cache", "openagentui", "skills", SKILLS_COMMIT),
     );
   });
 
   it("falls back to ~/.cache without XDG_CACHE_HOME", () => {
     vi.stubEnv("XDG_CACHE_HOME", "");
     expect(skillsPluginDir()).toBe(
-      path.join(
-        os.homedir(),
-        ".cache",
-        "assistant-ui",
-        "skills",
-        SKILLS_COMMIT,
-      ),
+      path.join(os.homedir(), ".cache", "openagentui", "skills", SKILLS_COMMIT),
     );
   });
 });
@@ -135,7 +129,7 @@ describe("ensureSkillsPlugin", () => {
 
   it("pins the plugin directory of the skills repository at the commit", () => {
     expect(SKILLS_PLUGIN_SOURCE).toBe(
-      `gh:${SKILLS_PACKAGE}/assistant-ui#${SKILLS_COMMIT}`,
+      `gh:${SKILLS_PACKAGE}/openagentui#${SKILLS_COMMIT}`,
     );
   });
 
@@ -181,7 +175,7 @@ describe("ensureSkillsPlugin", () => {
     mocks.downloadTemplate.mockRejectedValue(new Error("403 rate limited"));
 
     await expect(ensureSkillsPlugin()).rejects.toThrow(
-      /Could not fetch the assistant-ui skills/,
+      /Could not fetch the openagentui skills/,
     );
     expect(fs.existsSync(skillsPluginDir())).toBe(false);
     expect(fs.readdirSync(path.dirname(skillsPluginDir()))).toEqual([]);
@@ -228,7 +222,7 @@ describe("ensureSkillsPlugin", () => {
       );
 
       const outcome = expect(ensureSkillsPlugin()).rejects.toThrow(
-        /Could not fetch the assistant-ui skills/,
+        /Could not fetch the openagentui skills/,
       );
       await vi.waitFor(() => expect(downloadStarted).toBe(true), {
         timeout: 1_000,
@@ -259,7 +253,7 @@ describe("ensureSkillsPlugin", () => {
       });
 
       const outcome = expect(ensureSkillsPlugin()).rejects.toThrow(
-        /Could not fetch the assistant-ui skills/,
+        /Could not fetch the openagentui skills/,
       );
       await vi.waitFor(() => expect(downloadStarted).toBe(true), {
         timeout: 1_000,

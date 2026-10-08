@@ -18,15 +18,15 @@ A backend place search returns `{ places, routes }`, then the tool renderer pass
 
 ### Render the backend result
 
-```tsx title="components/assistant-ui/elements/find-places-tool-ui.tsx"
+```tsx title="components/openagentui/elements/find-places-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import {
   GeoMap,
   type GeoMapPlace,
   type GeoMapRoute,
-} from "@/components/assistant-ui/elements/geo-map";
+} from "@/components/openagentui/elements/geo-map";
 
 type FindPlacesResult = {
   places: GeoMapPlace[];
@@ -71,7 +71,7 @@ Standalone, pass places and route points from any data source. Without `selected
 ### Show a result
 
 ```tsx title="app/nearby.tsx"
-import { GeoMap } from "@/components/assistant-ui/elements/geo-map";
+import { GeoMap } from "@/components/openagentui/elements/geo-map";
 
 export function Nearby({ places, routes }) {
   return <GeoMap places={places} routes={routes} />;

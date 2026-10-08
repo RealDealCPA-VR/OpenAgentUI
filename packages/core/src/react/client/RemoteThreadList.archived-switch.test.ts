@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { flushTapSync, resource, withKey } from "@assistant-ui/tap";
-import { AuiConfig, createAssistantClient } from "@assistant-ui/store/client";
+import { flushTapSync, resource, withKey } from "@openagentui/tap";
+import { AuiConfig, createAssistantClient } from "@openagentui/store/client";
 import type { RemoteThreadListAdapter } from "../../runtimes/remote-thread-list/types";
 import { RemoteThreadList } from "./RemoteThreadList";
 

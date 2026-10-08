@@ -1,5 +1,5 @@
-import { createTapRoot, resource, useResource } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+import { createTapRoot, resource, useResource } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import { UnauthorizedError } from "@modelcontextprotocol/client";
 import { useEffect, useState } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -1749,7 +1749,7 @@ describe("McpServerResource elicitation", () => {
 
       expect(mocks.Client).toHaveBeenCalledWith(
         {
-          name: "assistant-ui-mcp",
+          name: "openagentui-mcp",
           version: "0.0.0",
         },
         {
@@ -1803,7 +1803,7 @@ describe("McpServerResource tools listChanged", () => {
 
       expect(mocks.Client).toHaveBeenCalledWith(
         {
-          name: "assistant-ui-mcp",
+          name: "openagentui-mcp",
           version: "0.0.0",
         },
         {
@@ -2011,7 +2011,7 @@ describe("McpServerResource tools listChanged", () => {
 
       expect(mocks.Client).toHaveBeenCalledWith(
         {
-          name: "assistant-ui-mcp",
+          name: "openagentui-mcp",
           version: "0.0.0",
         },
         {

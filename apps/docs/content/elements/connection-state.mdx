@@ -9,18 +9,18 @@ A connection state banner tells the reader when the transport under a run has hi
 
 <RuntimeMode>
 
-assistant-ui doesn't expose a single connection field on thread state, because a dropped socket is something an adapter observes, not a concept the runtime itself models. What it exposes instead is a resumable run: catch the failure where your adapter reports it, show the banner, then call `resumeRun` to pick the same run back up.
+openagentui doesn't expose a single connection field on thread state, because a dropped socket is something an adapter observes, not a concept the runtime itself models. What it exposes instead is a resumable run: catch the failure where your adapter reports it, show the banner, then call `resumeRun` to pick the same run back up.
 
 <Steps>
   <Step>
 
 ### Track the phase around the run
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAui, useAuiState } from "@assistant-ui/react";
+import { useAui, useAuiState } from "@openagentui/react";
 import { ConnectionState, type ConnectionPhase } from "./connection-state";
 
 function ConnectionBanner({ resumeFromId }: { resumeFromId: string | null }) {
@@ -51,7 +51,7 @@ Where `phase` first flips to `"dropped"` is adapter-specific: wherever your tran
 
 ### Resume instead of restarting
 
-`resumeRun` takes the same config shape as `startRun`, a `parentId` (and optional `sourceId` and `runConfig`), not a raw connection handle. Whether that continues the same generation or starts a fresh one is up to the adapter: assistant-ui's resumable transports retain the run server side and replay it rather than asking the model again:
+`resumeRun` takes the same config shape as `startRun`, a `parentId` (and optional `sourceId` and `runConfig`), not a raw connection handle. Whether that continues the same generation or starts a fresh one is up to the adapter: openagentui's resumable transports retain the run server side and replay it rather than asking the model again:
 
 ```tsx
 aui.thread.resumeRun({ parentId: resumeFromId, sourceId: null });
@@ -75,7 +75,7 @@ Standalone, `ConnectionState` is a pure display: you own the phase and it render
 "use client";
 
 import { useState } from "react";
-import { ConnectionState, type ConnectionPhase } from "@/components/assistant-ui/elements/connection-state";
+import { ConnectionState, type ConnectionPhase } from "@/components/openagentui/elements/connection-state";
 
 export function Banner() {
   const [phase, setPhase] = useState<ConnectionPhase>("online");

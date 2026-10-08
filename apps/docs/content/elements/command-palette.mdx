@@ -9,7 +9,7 @@ A searchable, keyboard-driven list of app actions grouped by where each one acts
 
 <RuntimeMode>
 
-With a runtime, there is no registry of "everything the app can do" to read: assistant-ui exposes actions on the scopes you already work with (a thread, a message, the thread list), not a flat catalog of commands. Build the list yourself, grouped however your app is organized, and give each entry an id you can route in `onRun`.
+With a runtime, there is no registry of "everything the app can do" to read: openagentui exposes actions on the scopes you already work with (a thread, a message, the thread list), not a flat catalog of commands. Build the list yourself, grouped however your app is organized, and give each entry an id you can route in `onRun`.
 
 <Steps>
   <Step>
@@ -18,15 +18,15 @@ With a runtime, there is no registry of "everything the app can do" to read: ass
 
 `onRun` receives the id of the chosen command; look it up and call whatever it should do. Actions on the current thread, the thread list, and the active thread's list item are all runtime methods.
 
-```tsx title="components/assistant-ui/elements/app-command-palette.tsx"
+```tsx title="components/openagentui/elements/app-command-palette.tsx"
 "use client";
 
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import { useState } from "react";
 import {
   CommandPalette,
   type PaletteCommand,
-} from "@/components/assistant-ui/elements/command-palette";
+} from "@/components/openagentui/elements/command-palette";
 
 const commands: PaletteCommand[] = [
   { id: "new-thread", label: "New thread", group: "Thread list", keys: ["⌘", "N"] },
@@ -76,7 +76,7 @@ Standalone, `CommandPalette` filters and groups commands and handles the keyboar
 "use client";
 
 import { useState } from "react";
-import { CommandPalette } from "@/components/assistant-ui/elements/command-palette";
+import { CommandPalette } from "@/components/openagentui/elements/command-palette";
 
 const commands = [
   { id: "new-doc", label: "New document", group: "File", keys: ["⌘", "N"] },

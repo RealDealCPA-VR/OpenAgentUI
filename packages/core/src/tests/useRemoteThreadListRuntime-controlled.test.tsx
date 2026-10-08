@@ -585,7 +585,7 @@ describe("useRemoteThreadListRuntime controlled threadId", () => {
 
       await waitFor(() => {
         expect(errorSpy).toHaveBeenCalledWith(
-          "[assistant-ui] onThreadIdChange callback threw an error",
+          "[openagentui] onThreadIdChange callback threw an error",
           callbackError,
         );
       });

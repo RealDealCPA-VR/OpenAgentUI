@@ -4,7 +4,7 @@ import { useState } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, renderHook, waitFor } from "@testing-library/react";
 import { HttpAgent } from "@ag-ui/client";
-import type { ThreadHistoryAdapter, ThreadMessage } from "@assistant-ui/core";
+import type { ThreadHistoryAdapter, ThreadMessage } from "@openagentui/core";
 import { AgUiThreadRuntimeCore } from "./runtime/AgUiThreadRuntimeCore";
 import type {
   UseAgUiRuntimeOptions,

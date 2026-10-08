@@ -16,22 +16,22 @@ const ts = createRequire(
 )("typescript");
 
 export const DISTRIBUTIONS = [
-  "@assistant-ui/react",
-  "@assistant-ui/react-native",
-  "@assistant-ui/react-ink",
+  "@openagentui/react",
+  "@openagentui/react-native",
+  "@openagentui/react-ink",
 ];
 
 export const SHARED_PACKAGES = [
-  "@assistant-ui/core",
-  "@assistant-ui/store",
-  "@assistant-ui/tap",
+  "@openagentui/core",
+  "@openagentui/store",
+  "@openagentui/tap",
 ];
 
 export const EXCEPTIONS = [
   {
     names: ["WebSpeechDictationAdapter", "WebSpeechSynthesisAdapter"],
-    from: "@assistant-ui/core",
-    missingFrom: ["@assistant-ui/react-native", "@assistant-ui/react-ink"],
+    from: "@openagentui/core",
+    missingFrom: ["@openagentui/react-native", "@openagentui/react-ink"],
     reason:
       "the Web Speech API (window.speechSynthesis, SpeechRecognition) only exists in a browser",
   },
@@ -45,8 +45,8 @@ export const EXCEPTIONS = [
       "SerializedModelContext",
       "SerializedTool",
     ],
-    from: "@assistant-ui/core",
-    missingFrom: ["@assistant-ui/react-native", "@assistant-ui/react-ink"],
+    from: "@openagentui/core",
+    missingFrom: ["@openagentui/react-native", "@openagentui/react-ink"],
     reason: "the iframe bridge speaks window.postMessage between documents",
   },
   {
@@ -59,15 +59,15 @@ export const EXCEPTIONS = [
       "providerTool",
       "stubTool",
     ],
-    from: "@assistant-ui/core/react",
-    missingFrom: ["@assistant-ui/react-ink"],
+    from: "@openagentui/core/react",
+    missingFrom: ["@openagentui/react-ink"],
     reason:
       "Ink runs single-process with no compiler, so its toolkit resolves these markers at runtime and has no counterpart for externalTool",
   },
   {
     names: ["AssistantRuntimeProvider"],
-    from: "@assistant-ui/core/react",
-    missingFrom: ["@assistant-ui/react"],
+    from: "@openagentui/core/react",
+    missingFrom: ["@openagentui/react"],
     reason:
       "the web distribution ships its legacy runtime provider under this name until the tap-only migration completes",
   },
@@ -79,10 +79,10 @@ export const EXCEPTIONS = [
       "ThreadListItemState",
       "ThreadState",
     ],
-    from: "@assistant-ui/core/store",
-    missingFrom: ["@assistant-ui/react"],
+    from: "@openagentui/core/store",
+    missingFrom: ["@openagentui/react"],
     reason:
-      "the web barrel binds these names to the deprecated runtime API state aliases until @assistant-ui/react 0.16, so it cannot carry the store scope types under them yet (#7839)",
+      "the web barrel binds these names to the deprecated runtime API state aliases until @openagentui/react 0.16, so it cannot carry the store scope types under them yet (#7839)",
   },
   {
     names: [
@@ -92,8 +92,8 @@ export const EXCEPTIONS = [
       "ThreadListItemState",
       "ThreadState",
     ],
-    from: "@assistant-ui/core",
-    missingFrom: ["@assistant-ui/react-native", "@assistant-ui/react-ink"],
+    from: "@openagentui/core",
+    missingFrom: ["@openagentui/react-native", "@openagentui/react-ink"],
     reason:
       "these names are the deprecated aliases of the runtime API state types, which every barrel carries as ThreadRuntimeState and its siblings; the native and terminal barrels bind the names to the store scope types (#7839)",
   },
@@ -415,7 +415,7 @@ function main() {
       console.error("");
     }
     console.error(
-      "A symbol that @assistant-ui/core, @assistant-ui/store or @assistant-ui/tap declares or re-exports reaches",
+      "A symbol that @openagentui/core, @openagentui/store or @openagentui/tap declares or re-exports reaches",
     );
     console.error(
       "consumers only through the distribution they installed, and an app never installs two",

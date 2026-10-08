@@ -1,7 +1,7 @@
 "use client";
 
-import { AuiConfig, useAui, AuiProvider } from "@assistant-ui/store";
-import { SpanResource } from "@assistant-ui/react-o11y";
+import { AuiConfig, useAui, AuiProvider } from "@openagentui/store";
+import { SpanResource } from "@openagentui/react-o11y";
 import { mockSpans } from "./mock-spans";
 import { WaterfallTimeline } from "./waterfall-timeline";
 import { ClientOnly } from "./client-only";

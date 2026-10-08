@@ -9,14 +9,14 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import type { AssistantRuntime, ToolCallMessagePart } from "@assistant-ui/core";
+import type { AssistantRuntime, ToolCallMessagePart } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
   useAssistantTool,
   type ToolCallMessagePartProps,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import type { HttpAgent } from "@ag-ui/client";
 import { z } from "zod";
 import { useAgUiRuntime } from "./useAgUiRuntime";

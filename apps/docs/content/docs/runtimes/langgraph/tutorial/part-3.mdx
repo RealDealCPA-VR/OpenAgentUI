@@ -17,7 +17,7 @@ import approval from "./images/stockbroker-langgraph.png";
 
 Our LangGraph backend interrupts the `purchase_stock` tool execution in order to ensure the user confirms the purchase. The user confirms the purchase by submitting a tool message with the `approve` field set to `true`.
 
-```ts title="assistant-ui-stockbroker/backend/src/index.ts" {6,18-19,32-35}
+```ts title="openagentui-stockbroker/backend/src/index.ts" {6,18-19,32-35}
 const purchaseApproval = async (state: typeof GraphAnnotation.State) => {
   const { messages } = state;
   const lastMessage = messages[messages.length - 1];
@@ -87,7 +87,7 @@ Then we define a tool UI renderer:
 "use client";
 
 import { TransactionConfirmationPending } from "./transaction-confirmation-pending";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 
 export const PurchaseStockToolUI: ToolCallMessagePartComponent<
   PurchaseStockArgs,
@@ -210,10 +210,10 @@ export function TransactionConfirmationPending(props: TransactionConfirmation) {
 ```tsx title="@/app/assistant.tsx" {8,15-18}
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, defineToolkit, Tools } from "@assistant-ui/react";
-import { useStreamRuntime } from "@assistant-ui/react-langchain";
+import { AssistantRuntimeProvider, AuiConfig, defineToolkit, Tools } from "@openagentui/react";
+import { useStreamRuntime } from "@openagentui/react-langchain";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { PriceSnapshotToolUI } from "@/components/tools/price-snapshot/PriceSnapshotTool";
 import { PurchaseStockToolUI } from "@/components/tools/purchase-stock/PurchaseStockTool";
 
@@ -332,7 +332,7 @@ We will import the new `<TransactionConfirmationFinal />` component and use it i
 
 import { TransactionConfirmationPending } from "./transaction-confirmation-pending";
 import { TransactionConfirmationFinal } from "./transaction-confirmation-final";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 
 type PurchaseStockArgs = {
   ticker: string;

@@ -9,7 +9,7 @@ const fixture = () => {
   onTestFinished(() => rmSync(directory, { recursive: true, force: true }));
   const write = (
     name: string,
-    source = 'import { useAssistantApi } from "@assistant-ui/react";',
+    source = 'import { useAssistantApi } from "@openagentui/react";',
   ) => {
     const file = join(directory, name);
     mkdirSync(dirname(file), { recursive: true });

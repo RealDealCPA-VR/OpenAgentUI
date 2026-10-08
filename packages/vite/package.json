@@ -1,16 +1,16 @@
 {
-  "name": "@assistant-ui/vite",
+  "name": "@openagentui/vite",
   "version": "0.0.20",
-  "description": "Vite plugin for assistant-ui: the \"use generative\" directive compiler that colocates a tool's schema, server-only execute, and client-only render in one file. Works with Vite apps and TanStack Start.",
+  "description": "Vite plugin for openagentui: the \"use generative\" directive compiler that colocates a tool's schema, server-only execute, and client-only render in one file. Works with Vite apps and TanStack Start.",
   "keywords": [
-    "assistant-ui",
+    "openagentui",
     "vite",
     "tanstack-start",
     "generative",
     "use generative",
     "plugin"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -35,13 +35,13 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/x-generative-compiler": "workspace:^"
+    "@openagentui/x-generative-compiler": "workspace:^"
   },
   "peerDependencies": {
     "vite": ">=6"
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@types/node": "^26.6.3",
     "vite": "^8.3.1",
     "vitest": "^5.0.3"
@@ -50,13 +50,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/vite"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

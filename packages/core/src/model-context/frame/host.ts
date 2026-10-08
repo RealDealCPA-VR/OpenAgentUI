@@ -1,6 +1,6 @@
 import type { ModelContextProvider, ModelContext } from "../types";
 import type { Unsubscribe } from "../../types/unsubscribe";
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import { notifySubscribers as notifyStateSubscribers } from "../../subscribable/subscribable";
 import { generateId } from "../../utils/id";
 import {
@@ -15,7 +15,7 @@ const getDefaultTargetOrigin = () => window.location.origin;
 
 const logCancellationFailure = (error: unknown) => {
   console.error(
-    "[assistant-ui] AssistantFrameHost tool cancellation could not be sent.",
+    "[openagentui] AssistantFrameHost tool cancellation could not be sent.",
     error,
   );
 };

@@ -22,8 +22,8 @@ describe("package-installer utilities", () => {
       vi.mocked(fileScanner.scanForImport).mockReturnValue(false);
 
       await installPackageIfNeeded({
-        packageName: "@assistant-ui/react",
-        importPatterns: ["@assistant-ui/react"],
+        packageName: "@openagentui/react",
+        importPatterns: ["@openagentui/react"],
         promptMessage: "Install?",
         skipMessage: "Already installed",
         notFoundMessage: "Not found",
@@ -38,8 +38,8 @@ describe("package-installer utilities", () => {
       vi.mocked(packageManager.isPackageInstalled).mockReturnValue(true);
 
       await installPackageIfNeeded({
-        packageName: "@assistant-ui/react",
-        importPatterns: ["@assistant-ui/react"],
+        packageName: "@openagentui/react",
+        importPatterns: ["@openagentui/react"],
         promptMessage: "Install?",
         skipMessage: "Already installed",
         notFoundMessage: "Not found",
@@ -56,18 +56,18 @@ describe("package-installer utilities", () => {
       vi.mocked(packageManager.installPackage).mockResolvedValue(true);
 
       await installPackageIfNeeded({
-        packageName: "@assistant-ui/react",
-        importPatterns: ["@assistant-ui/react"],
-        promptMessage: "Install @assistant-ui/react? (Y/n) ",
+        packageName: "@openagentui/react",
+        importPatterns: ["@openagentui/react"],
+        promptMessage: "Install @openagentui/react? (Y/n) ",
         skipMessage: "Already installed",
         notFoundMessage: "Not found",
       });
 
       expect(packageManager.askQuestion).toHaveBeenCalledWith(
-        "Install @assistant-ui/react? (Y/n) ",
+        "Install @openagentui/react? (Y/n) ",
       );
       expect(packageManager.installPackage).toHaveBeenCalledWith(
-        "@assistant-ui/react",
+        "@openagentui/react",
       );
     });
 
@@ -77,8 +77,8 @@ describe("package-installer utilities", () => {
       vi.mocked(packageManager.askQuestion).mockResolvedValue("n");
 
       await installPackageIfNeeded({
-        packageName: "@assistant-ui/react",
-        importPatterns: ["@assistant-ui/react"],
+        packageName: "@openagentui/react",
+        importPatterns: ["@openagentui/react"],
         promptMessage: "Install?",
         skipMessage: "Already installed",
         notFoundMessage: "Not found",
@@ -95,15 +95,15 @@ describe("package-installer utilities", () => {
       vi.mocked(packageManager.installPackage).mockResolvedValue(true);
 
       await installPackageIfNeeded({
-        packageName: "@assistant-ui/react",
-        importPatterns: ["@assistant-ui/react"],
+        packageName: "@openagentui/react",
+        importPatterns: ["@openagentui/react"],
         promptMessage: "Install?",
         skipMessage: "Already installed",
         notFoundMessage: "Not found",
       });
 
       expect(packageManager.installPackage).toHaveBeenCalledWith(
-        "@assistant-ui/react",
+        "@openagentui/react",
       );
     });
   });

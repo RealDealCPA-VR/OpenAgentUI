@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   MapAnswer,
   type MapPin,
-} from "@/components/assistant-ui/elements/map-answer";
+} from "@/components/openagentui/elements/map-answer";
 
 const PINS: readonly MapPin[] = [
   { id: "a", label: "Ferry Building", detail: "start", x: 22, y: 68 },

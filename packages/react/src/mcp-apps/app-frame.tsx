@@ -18,10 +18,10 @@ import type {
   McpAppFrameProps,
   McpAppHostContext,
 } from "./types";
-import { isRecord } from "@assistant-ui/core/internal";
+import { isRecord } from "@openagentui/core/internal";
 import { applyMcpAppCsp } from "./csp";
 
-const DEFAULT_PRODUCT = "assistant-ui-mcp-app";
+const DEFAULT_PRODUCT = "openagentui-mcp-app";
 const INIT_TIMEOUT_MS = 5000;
 const DEFAULT_MAX_HEIGHT = 800;
 

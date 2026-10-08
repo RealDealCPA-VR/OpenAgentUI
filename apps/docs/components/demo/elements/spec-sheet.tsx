@@ -3,7 +3,7 @@
 import {
   SpecSheet,
   type SpecRow,
-} from "@/components/assistant-ui/elements/spec-sheet";
+} from "@/components/openagentui/elements/spec-sheet";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const ROWS: readonly SpecRow[] = [

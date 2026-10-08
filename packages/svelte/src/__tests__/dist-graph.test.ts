@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 const DIST_DIR = resolve(__dirname, "../../dist");
 const DIST_ENTRY = resolve(DIST_DIR, "index.js");
 
-describe("@assistant-ui/svelte dist graph", () => {
+describe("@openagentui/svelte dist graph", () => {
   it.skipIf(!existsSync(DIST_ENTRY))(
     "contains no react, react-shim, or compiler-runtime references",
     () => {

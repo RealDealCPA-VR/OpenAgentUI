@@ -17,7 +17,7 @@ Thread is the complete chat surface: message list, composer, auto-scroll, and th
 ### Use it in your app
 
 ```tsx title="app/page.tsx"
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function Chat() {
   return (
@@ -39,7 +39,7 @@ Needs an `AssistantRuntimeProvider` ancestor; `Thread` itself takes no runtime p
 import {
   Thread,
   type ThreadComponents,
-} from "@/components/assistant-ui/elements/thread.aui";
+} from "@/components/openagentui/elements/thread.aui";
 
 const THREAD_COMPONENTS: ThreadComponents = {
   ToolFallback: MyToolFallback,
@@ -129,8 +129,8 @@ style={{
 ### Suggestions on the welcome screen
 
 ```tsx
-import { AssistantRuntimeProvider, AuiConfig, Suggestions } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Suggestions } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 function App({ children }: { children: React.ReactNode }) {
   const runtime = useChatRuntime();

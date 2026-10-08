@@ -62,11 +62,14 @@ describe("workspace package resolution", () => {
       ts.resolveModuleName(specifier, PROBE_FILE, options, ts.sys)
         .resolvedModule?.resolvedFileName;
 
-    expect(resolve("safe-content-frame")).toBe(
-      path.join(PACKAGES_DIR, "safe-content-frame/src/index.ts"),
+    expect(resolve("@openagentui/safe-content-frame")).toBe(
+      path.join(PACKAGES_DIR, "@openagentui/safe-content-frame/src/index.ts"),
     );
-    expect(resolve("safe-content-frame/shadow_dom")).toBe(
-      path.join(PACKAGES_DIR, "safe-content-frame/src/shadow_dom.ts"),
+    expect(resolve("@openagentui/safe-content-frame/shadow_dom")).toBe(
+      path.join(
+        PACKAGES_DIR,
+        "@openagentui/safe-content-frame/src/shadow_dom.ts",
+      ),
     );
   });
 

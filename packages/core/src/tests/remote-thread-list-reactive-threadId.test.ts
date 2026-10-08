@@ -104,7 +104,7 @@ describe("onThreadIdChange", () => {
       expect(core.mainThreadId).toBe("existing-1");
       expect(cb).toHaveBeenCalledExactlyOnceWith("existing-1");
       expect(errorSpy).toHaveBeenCalledWith(
-        "[assistant-ui] onThreadIdChange callback threw an error",
+        "[openagentui] onThreadIdChange callback threw an error",
         callbackError,
       );
 
@@ -129,7 +129,7 @@ describe("onThreadIdChange", () => {
       await expect(core.switchToThread("existing-1")).resolves.toBeUndefined();
       await vi.waitFor(() => {
         expect(errorSpy).toHaveBeenCalledWith(
-          "[assistant-ui] onThreadIdChange callback threw an error",
+          "[openagentui] onThreadIdChange callback threw an error",
           callbackError,
         );
       });

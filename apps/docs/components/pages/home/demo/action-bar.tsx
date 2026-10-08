@@ -5,7 +5,7 @@ import {
   ActionBarPrimitive,
   AuiIf,
   BranchPickerPrimitive,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   CheckIcon,
   ChevronLeftIcon,
@@ -18,7 +18,7 @@ import {
   Volume2Icon,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
-import { MessageTiming } from "@/components/assistant-ui/elements/message-timing.aui";
+import { MessageTiming } from "@/components/openagentui/elements/message-timing.aui";
 import { FeedbackActions } from "@/components/pages/docs/assistant/assistant-action-bar";
 import { actionButtonClass, menuContentClass, menuItemClass } from "./styles";
 import { cn } from "@/lib/utils";

@@ -1,1 +1,1 @@
-export { AssistantRuntimeProvider } from "@assistant-ui/core/react";
+export { AssistantRuntimeProvider } from "@openagentui/core/react";

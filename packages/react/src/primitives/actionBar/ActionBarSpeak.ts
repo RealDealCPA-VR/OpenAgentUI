@@ -5,7 +5,7 @@ import {
   type ActionButtonProps,
   createActionButton,
 } from "../../utils/createActionButton";
-import { useActionBarSpeak as useActionBarSpeakBehavior } from "@assistant-ui/core/react";
+import { useActionBarSpeak as useActionBarSpeakBehavior } from "@openagentui/core/react";
 
 const useActionBarSpeak = () => {
   const { disabled, speak } = useActionBarSpeakBehavior();

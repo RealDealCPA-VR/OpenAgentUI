@@ -10,7 +10,7 @@ export default function Page() {
         </h1>
         <p className="mt-4 leading-7 text-[var(--muted-foreground)]">
           This prepared Next.js project has no chat interface yet. The next
-          stage connects assistant-ui and sends the first message.
+          stage connects openagentui and sends the first message.
         </p>
       </section>
     </main>

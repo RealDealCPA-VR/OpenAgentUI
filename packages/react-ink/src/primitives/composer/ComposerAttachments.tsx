@@ -1,7 +1,7 @@
 import {
   ComposerPrimitiveAttachments,
   ComposerPrimitiveAttachmentByIndex,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 export type ComposerAttachmentsProps = ComposerPrimitiveAttachments.Props;
 

@@ -7,7 +7,7 @@ import {
   createElement,
   useMemo,
 } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import type {
   GenerativeUINode,
   GenerativeUISpec,

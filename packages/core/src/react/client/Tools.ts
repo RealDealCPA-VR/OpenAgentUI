@@ -4,15 +4,15 @@ import {
   resource,
   withKey,
   type ResourceElement,
-} from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+} from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import {
   attachTransformScopes,
   useAssistantClientRef,
   useAssistantScopeEffect,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import type { McpAppResourceOutput, ToolsState } from "../types/scopes/tools";
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import {
   isStandaloneToolDisplay,
   makeToolCallTextComponent,

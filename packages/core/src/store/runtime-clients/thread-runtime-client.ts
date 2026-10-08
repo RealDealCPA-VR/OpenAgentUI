@@ -5,14 +5,14 @@ import type {
   ThreadRuntime,
 } from "../../runtime/api/thread-runtime";
 import { useMemo, useEffect, useCallback, type RefObject } from "react";
-import { useResource, resource, withKey } from "@assistant-ui/tap";
+import { useResource, resource, withKey } from "@openagentui/tap";
 import { liveRef } from "./liveRef";
-import type { ClientOutput } from "@assistant-ui/store";
+import type { ClientOutput } from "@openagentui/store";
 import {
   useAssistantEmit,
   useClientLookup,
   useClientResource,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { ComposerClient } from "./composer-runtime-client";
 import { ThreadMessageClient } from "../clients/thread-message-client";
 import { submissionThreadMessage } from "../clients/submission-message";

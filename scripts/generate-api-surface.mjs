@@ -288,7 +288,7 @@ function applyTwoSpaceIndent(content) {
 const KNOWN_DECLARATION_FIXUPS = [
   {
     pattern:
-      /declare module "@assistant-ui\/store" {\n\s*interface ScopeRegistry {([\s\S]*?)\n\s*}\n}/g,
+      /declare module "@openagentui\/store" {\n\s*interface ScopeRegistry {([\s\S]*?)\n\s*}\n}/g,
     replacement: "interface ScopeRegistry {$1\n}",
   },
   {
@@ -301,8 +301,8 @@ const KNOWN_DECLARATION_FIXUPS = [
     replacement: "}[Extract<keyof ClientEventMap, string>]",
   },
   {
-    pattern: /__ASSISTANT_UI_DEVTOOLS_HOOK__\?: DevToolsHook;/g,
-    replacement: "__ASSISTANT_UI_DEVTOOLS_HOOK__?: any;",
+    pattern: /__OPENAGENTUI_DEVTOOLS_HOOK__\?: DevToolsHook;/g,
+    replacement: "__OPENAGENTUI_DEVTOOLS_HOOK__?: any;",
   },
   {
     pattern:
@@ -809,11 +809,11 @@ async function buildCliSurface() {
 
   const createSurface = formatCommand(create);
   return {
-    "assistant-ui": formatCommand(program),
-    "create-assistant-ui": {
-      name: "create-assistant-ui",
-      description: "create assistant-ui apps with one command",
-      forwardsTo: "assistant-ui create",
+    openagentui: formatCommand(program),
+    "create-openagentui": {
+      name: "create-openagentui",
+      description: "create openagentui apps with one command",
+      forwardsTo: "openagentui create",
       arguments: createSurface.arguments,
       options: createSurface.options,
     },
@@ -896,7 +896,7 @@ async function main() {
   try {
     const needsCliSurface = packages.some(
       ({ pkg }) =>
-        pkg.name === "assistant-ui" || pkg.name === "create-assistant-ui",
+        pkg.name === "openagentui" || pkg.name === "create-openagentui",
     );
     const cliSurface = needsCliSurface ? await buildCliSurface() : {};
 

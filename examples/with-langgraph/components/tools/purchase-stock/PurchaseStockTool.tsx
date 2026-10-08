@@ -2,7 +2,7 @@
 
 import { TransactionConfirmationPending } from "./transaction-confirmation-pending";
 import { TransactionConfirmationFinal } from "./transaction-confirmation-final";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 
 type PurchaseStockArgs = {
   ticker: string;

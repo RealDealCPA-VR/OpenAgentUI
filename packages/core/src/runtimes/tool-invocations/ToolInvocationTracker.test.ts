@@ -1,4 +1,4 @@
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import { describe, expect, it, vi } from "vitest";
 import {
   ToolInvocationTracker,
@@ -11,7 +11,7 @@ import type {
 import type {
   ReadonlyJSONObject,
   ReadonlyJSONValue,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 
 async function waitFor(
   predicate: () => unknown,
@@ -2253,8 +2253,8 @@ describe("ToolInvocationTracker", () => {
     // result replacement) and verifying streamCall fires exactly once.
     //
     // The pathological mid-stream regression case (A.2) is covered by
-    // the assistant-stream ordering regression test in
-    // packages/assistant-stream/src/core/modules/tool-call.test.ts.
+    // the openagentui-stream ordering regression test in
+    // packages/openagentui-stream/src/core/modules/tool-call.test.ts.
     const streamCall = vi.fn();
     const execute = vi.fn(async () => ({ forecast: "ok" }));
     const getTools = () => ({

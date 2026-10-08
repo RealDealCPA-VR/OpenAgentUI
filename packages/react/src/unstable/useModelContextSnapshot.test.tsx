@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { act, renderHook } from "@testing-library/react";
-import type { AssistantClient } from "@assistant-ui/store";
+import type { AssistantClient } from "@openagentui/store";
 import { describe, expect, it, vi } from "vitest";
 import {
   shallowEqualRecords,

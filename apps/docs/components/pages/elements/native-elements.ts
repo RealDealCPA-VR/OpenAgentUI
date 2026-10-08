@@ -1,5 +1,5 @@
 export const NATIVE_SHOWCASE_URL =
-  "https://assistant-ui-expo.vercel.app/showcase";
+  "https://openagentui-expo.vercel.app/showcase";
 
 const NATIVE_REGISTRY_NAMES: Record<string, string> = {
   "typing-indicator": "elements-typing-indicator",

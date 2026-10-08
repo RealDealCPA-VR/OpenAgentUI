@@ -9,7 +9,7 @@ A voice conversation is a live call laid over the thread: an orb that tracks who
 
 <RuntimeMode>
 
-assistant-ui models a realtime voice call as `s.thread.voice`, populated once you call `connectVoice()` against a runtime configured with a realtime voice adapter. [`/elements/orb`](/elements/orb) covers wiring that adapter and its own states in full; this page covers the surrounding call screen.
+openagentui models a realtime voice call as `s.thread.voice`, populated once you call `connectVoice()` against a runtime configured with a realtime voice adapter. [`/elements/orb`](/elements/orb) covers wiring that adapter and its own states in full; this page covers the surrounding call screen.
 
 <Steps>
   <Step>
@@ -19,8 +19,8 @@ assistant-ui models a realtime voice call as `s.thread.voice`, populated once yo
 ```tsx title="app/voice-call.tsx"
 "use client";
 
-import { AuiIf } from "@assistant-ui/react";
-import { VoiceConversation } from "@/components/assistant-ui/elements/voice-conversation.aui";
+import { AuiIf } from "@openagentui/react";
+import { VoiceConversation } from "@/components/openagentui/elements/voice-conversation.aui";
 
 function LiveCallScreen() {
   return (
@@ -46,7 +46,7 @@ import {
   useVoiceControls,
   useVoiceState,
   useVoiceVolume,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { VoiceConversation, type VoiceMode } from "./voice-conversation";
 import { useVoiceTranscript } from "./voice-conversation.aui";
 
@@ -96,7 +96,7 @@ Standalone, every part of the call is a prop: which mode it's in, how loud the i
 "use client";
 
 import { useState } from "react";
-import { VoiceConversation, type VoiceMode, type VoiceTurn } from "@/components/assistant-ui/elements/voice-conversation";
+import { VoiceConversation, type VoiceMode, type VoiceTurn } from "@/components/openagentui/elements/voice-conversation";
 
 export function Call() {
   const [mode, setMode] = useState<VoiceMode>("connecting");

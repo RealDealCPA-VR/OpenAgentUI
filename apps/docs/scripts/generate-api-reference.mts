@@ -10,7 +10,7 @@ const strict = process.argv.includes("--strict");
 // Generates the committed api-reference MDX pages. Run on demand (CI), never on
 // dev/build. The gitignored type-doc inputs these pages import are generated
 // separately by generate-type-docs.mts.
-console.log("Discovering assistant-ui API exports...");
+console.log("Discovering openagentui API exports...");
 const exports = discoverExports();
 const { typeDocs, integrationsByPackage } = buildTypeDocs(exports);
 

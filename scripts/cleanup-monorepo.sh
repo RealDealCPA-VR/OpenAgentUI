@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Clean script for assistant-ui monorepo
+# Clean script for openagentui monorepo
 # Removes all build artifacts and dependencies while preserving .env files
 
 set -e
@@ -22,7 +22,7 @@ if [[ "$1" != "--force" && "$1" != "-f" ]]; then
     echo ""
 fi
 
-echo "Cleaning assistant-ui monorepo..."
+echo "Cleaning openagentui monorepo..."
 echo "Root: $ROOT_DIR"
 echo ""
 

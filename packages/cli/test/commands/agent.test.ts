@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   loggerError: vi.fn(),
 }));
 
-vi.mock("@assistant-ui/agent-launcher", () => ({
+vi.mock("@openagentui/agent-launcher", () => ({
   launch: mocks.launch,
 }));
 
@@ -34,7 +34,7 @@ describe("agent command", () => {
     expect(mocks.ensureSkillsPlugin).toHaveBeenCalledTimes(1);
     expect(mocks.launch).toHaveBeenCalledWith({
       pluginDir: "/cache/skills/abc",
-      skillName: "assistant-ui",
+      skillName: "openagentui",
       prompt: "add a chat",
       dry: false,
     });
@@ -50,7 +50,7 @@ describe("agent command", () => {
     expect(mocks.ensureSkillsPlugin).not.toHaveBeenCalled();
     expect(mocks.launch).toHaveBeenCalledWith({
       pluginDir: "/cache/skills/abc",
-      skillName: "assistant-ui",
+      skillName: "openagentui",
       prompt: "hello",
       dry: true,
     });

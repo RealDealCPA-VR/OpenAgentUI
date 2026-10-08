@@ -1,12 +1,12 @@
 {
-  "name": "@assistant-ui/monorepo",
+  "name": "@openagentui/monorepo",
   "private": true,
   "engines": {
     "node": ">=24.11"
   },
   "scripts": {
     "cleanup": "bash scripts/cleanup-monorepo.sh",
-    "docs:dev": "turbo run dev --filter=@assistant-ui/docs",
+    "docs:dev": "turbo run dev --filter=@openagentui/docs",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile --lockfile-only",
     "ci:publish": "turbo build --filter=\"./packages/*\" && changeset publish",
     "build": "turbo build --concurrency=4",
@@ -41,9 +41,9 @@
     "sync-templates": "bash scripts/sync-templates.sh",
     "test": "turbo test && pnpm test:react-compiler && pnpm typecheck",
     "test:coverage": "turbo test:coverage --concurrency=1",
-    "test:react-compiler": "turbo test:react-compiler --filter=@assistant-ui/ai-sdk --filter=@assistant-ui/core --filter=@assistant-ui/store",
+    "test:react-compiler": "turbo test:react-compiler --filter=@openagentui/ai-sdk --filter=@openagentui/core --filter=@openagentui/store",
     "typecheck": "bash scripts/typecheck.sh",
-    "prepare": "husky && pnpm --filter @assistant-ui/react-devtools run build:css",
+    "prepare": "husky && pnpm --filter @openagentui/react-devtools run build:css",
     "deps:check": "npx taze major -f -r",
     "deps:update": "bash scripts/update-deps.sh",
     "build:bundles": "node scripts/run-example-bundles.mjs",
@@ -51,7 +51,7 @@
     "test:bundles": "pnpm build:bundles && pnpm package:bundles && node --test scripts/example-bundles.test.mjs examples/bundle-shared/transport.test.mjs"
   },
   "devDependencies": {
-    "@assistant-ui/x-changelog": "workspace:*",
+    "@openagentui/x-changelog": "workspace:*",
     "@changesets/cli": "^3.0.3",
     "@vitest/coverage-v8": "^5.0.3",
     "husky": "^9.1.7",
@@ -65,12 +65,6 @@
     "vitest": "^5.0.3"
   },
   "packageManager": "pnpm@12.4.2",
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,cjs,mjs,cts,mts,json,jsonc}": [
-      "oxlint --fix --no-error-on-unmatched-pattern",
-      "oxfmt --no-error-on-unmatched-pattern"
-    ]
-  },
   "browserslist": [
     "chrome 111",
     "edge 111",

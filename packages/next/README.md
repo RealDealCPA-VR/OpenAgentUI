@@ -1,6 +1,6 @@
-# @assistant-ui/next
+# @openagentui/next
 
-Next.js integration for assistant-ui: the `withAui()` config wrapper and the
+Next.js integration for openagentui: the `withAui()` config wrapper and the
 compiler for the `"use generative"` directive. Colocate a tool's **schema**,
 **server-only `execute`**, and **client-only `render`** in one file; the compiler
 emits a different module per build target so each side only loads what it needs.
@@ -33,7 +33,7 @@ by opting in with `"use client"`, so secrets can't leak by omission.
 ```tsx
 "use generative";
 import { z } from "zod";
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { db } from "@/db"; // server-only
 import { Chart } from "@/ui/chart"; // client-only
 
@@ -66,7 +66,7 @@ filename convention**; modules without the directive pass through untouched.
 
 ```ts
 // next.config.ts
-import { withAui } from "@assistant-ui/next";
+import { withAui } from "@openagentui/next";
 
 export default withAui({
   /* your Next config */
@@ -88,7 +88,7 @@ import toolkit from "@/lib/chat.generative";
 ```
 
 With the AI SDK, convert the server build to a `ToolSet` (see
-`AISDKToolkit` in `@assistant-ui/ai-sdk`).
+`AISDKToolkit` in `@openagentui/ai-sdk`).
 
 > **Validated on Next 16.2.6 (Turbopack).** Turbopack honors the loader-emitted
 > `"use client"`, but compiles one output per resource path — so the server build

@@ -108,23 +108,23 @@ describe("resolveLatestReleaseRef", () => {
       "fetch",
       vi.fn().mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ tag_name: "@assistant-ui/react@0.12.15" }),
+        json: async () => ({ tag_name: "@openagentui/react@0.12.15" }),
       }),
     );
-    expect(await resolveLatestReleaseRef()).toBe("@assistant-ui/react@0.12.15");
+    expect(await resolveLatestReleaseRef()).toBe("@openagentui/react@0.12.15");
   });
 
   it("authenticates the latest release request when a GitHub token is configured", async () => {
     process.env.GITHUB_TOKEN = "ghs_test-token";
     const fetchMock = vi.fn().mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ tag_name: "@assistant-ui/react@0.12.15" }),
+      json: async () => ({ tag_name: "@openagentui/react@0.12.15" }),
     });
     vi.stubGlobal("fetch", fetchMock);
 
-    expect(await resolveLatestReleaseRef()).toBe("@assistant-ui/react@0.12.15");
+    expect(await resolveLatestReleaseRef()).toBe("@openagentui/react@0.12.15");
     expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.github.com/repos/assistant-ui/assistant-ui/releases/latest",
+      "https://api.github.com/repos/openagentui/openagentui/releases/latest",
       { headers: { Authorization: "Bearer ghs_test-token" } },
     );
   });
@@ -144,9 +144,9 @@ describe("downloadProject", () => {
     await downloadProject("templates/default", destDir, "v1.0.0");
 
     expect(downloadTemplate).toHaveBeenCalledWith(
-      "gh:assistant-ui/assistant-ui/templates/default#v1.0.0",
+      "gh:openagentui/openagentui/templates/default#v1.0.0",
       expect.objectContaining({
-        dir: expect.stringContaining(".assistant-ui-download-"),
+        dir: expect.stringContaining(".openagentui-download-"),
         force: true,
         silent: true,
       }),
@@ -159,9 +159,9 @@ describe("downloadProject", () => {
     await downloadProject("examples/with-tanstack", destDir);
 
     expect(downloadTemplate).toHaveBeenCalledWith(
-      "gh:assistant-ui/assistant-ui/examples/with-tanstack",
+      "gh:openagentui/openagentui/examples/with-tanstack",
       expect.objectContaining({
-        dir: expect.stringContaining(".assistant-ui-download-"),
+        dir: expect.stringContaining(".openagentui-download-"),
         force: true,
         silent: true,
       }),
@@ -178,7 +178,7 @@ describe("downloadProject", () => {
     );
 
     expect(downloadTemplate).toHaveBeenCalledWith(
-      "gh:assistant-ui/assistant-ui/templates/default#v1.0.0",
+      "gh:openagentui/openagentui/templates/default#v1.0.0",
       expect.objectContaining({ auth: "ghs_test-token" }),
     );
   });
@@ -291,7 +291,7 @@ describe("downloadProject", () => {
 
   it("restores DEBUG when staging setup fails", async () => {
     const previousDebug = process.env.DEBUG;
-    process.env.DEBUG = "assistant-ui:*";
+    process.env.DEBUG = "openagentui:*";
     const mkdtemp = vi
       .spyOn(fs.promises, "mkdtemp")
       .mockRejectedValueOnce(new Error("staging failed"));
@@ -300,7 +300,7 @@ describe("downloadProject", () => {
       await expect(
         downloadProject("templates/default", path.join(testDir, "dest")),
       ).rejects.toThrow("staging failed");
-      expect(process.env.DEBUG).toBe("assistant-ui:*");
+      expect(process.env.DEBUG).toBe("openagentui:*");
     } finally {
       mkdtemp.mockRestore();
       if (previousDebug === undefined) delete process.env.DEBUG;
@@ -323,7 +323,7 @@ describe("downloadProject", () => {
 
     expect(mkdtemp).toHaveBeenCalledTimes(2);
     expect(mkdtemp.mock.calls[1]?.[0]).toBe(
-      path.join(os.tmpdir(), ".assistant-ui-download-"),
+      path.join(os.tmpdir(), ".openagentui-download-"),
     );
     expect(fs.existsSync(destDir)).toBe(true);
   });
@@ -359,16 +359,16 @@ describe("scaffoldProject", () => {
     });
 
     expect(downloadTemplate).toHaveBeenCalledWith(
-      "gh:assistant-ui/assistant-ui/templates/default#v1.0.0",
+      "gh:openagentui/openagentui/templates/default#v1.0.0",
       expect.objectContaining({
-        dir: expect.stringContaining(".assistant-ui-download-"),
+        dir: expect.stringContaining(".openagentui-download-"),
         force: true,
         silent: true,
       }),
     );
   });
 
-  it("copies from a local assistant-ui repo root", async () => {
+  it("copies from a local openagentui repo root", async () => {
     const repoRoot = path.join(testDir, "repo");
     const destDir = path.join(testDir, "dest");
     const templateDir = path.join(repoRoot, "templates", "default");
@@ -420,12 +420,12 @@ describe("transformProject — hasLocalComponents: true", () => {
     writeJSON("package.json", {
       name: "old-name",
       dependencies: {
-        "@assistant-ui/react": "workspace:*",
-        "@assistant-ui/ui": "workspace:*",
+        "@openagentui/react": "workspace:*",
+        "@openagentui/ui": "workspace:*",
         next: "^15.0.0",
       },
       devDependencies: {
-        "@assistant-ui/x-buildutils": "workspace:*",
+        "@openagentui/x-buildutils": "workspace:*",
         typescript: "^5.0.0",
       },
     });
@@ -436,10 +436,10 @@ describe("transformProject — hasLocalComponents: true", () => {
     });
 
     const pkg = readJSON("package.json");
-    expect(pkg.dependencies["@assistant-ui/react"]).toBe("latest");
+    expect(pkg.dependencies["@openagentui/react"]).toBe("latest");
     expect(pkg.dependencies.next).toBe("^15.0.0");
-    expect(pkg.dependencies["@assistant-ui/ui"]).toBeUndefined();
-    expect(pkg.devDependencies["@assistant-ui/x-buildutils"]).toBeUndefined();
+    expect(pkg.dependencies["@openagentui/ui"]).toBeUndefined();
+    expect(pkg.devDependencies["@openagentui/x-buildutils"]).toBeUndefined();
     expect(pkg.devDependencies.typescript).toBe("^5.0.0");
     expect(pkg.name).toBe(path.basename(testDir));
   });
@@ -447,14 +447,14 @@ describe("transformProject — hasLocalComponents: true", () => {
   it("sanitizes tsconfig and css files", async () => {
     writeJSON("package.json", { name: "test", dependencies: {} });
     writeJSON("tsconfig.json", {
-      extends: "@assistant-ui/x-buildutils/ts/base",
+      extends: "@openagentui/x-buildutils/ts/base",
       compilerOptions: {
         paths: {
           "@/*": ["./*"],
-          "@/components/assistant-ui/*": [
-            "../../packages/ui/src/components/react/assistant-ui/*",
+          "@/components/openagentui/*": [
+            "../../packages/ui/src/components/react/openagentui/*",
           ],
-          "@assistant-ui/*": ["../../packages/*/src"],
+          "@openagentui/*": ["../../packages/*/src"],
         },
       },
     });
@@ -472,8 +472,8 @@ describe("transformProject — hasLocalComponents: true", () => {
     expect(tsconfig.extends).toBeUndefined();
     expect(tsconfig.compilerOptions.target).toBe("ESNext");
     const paths = tsconfig.compilerOptions.paths;
-    expect(paths["@/components/assistant-ui/*"]).toBeUndefined();
-    expect(paths["@assistant-ui/*"]).toBeUndefined();
+    expect(paths["@/components/openagentui/*"]).toBeUndefined();
+    expect(paths["@openagentui/*"]).toBeUndefined();
     expect(paths["@/*"]).toEqual(["./*"]);
     expect(readFile("app/globals.css")).not.toContain("packages/ui/src");
   });
@@ -552,7 +552,7 @@ describe("transformProject — hasLocalComponents: false", () => {
       writeJSON("tsconfig.json", {
         compilerOptions: {
           paths: {
-            "@/components/assistant-ui/*": ["./components/assistant-ui/*"],
+            "@/components/openagentui/*": ["./components/openagentui/*"],
             "@/components/icons/*": ["./components/icons/*"],
             "@/components/ui/*": ["./components/ui/*"],
             "@/components/ui/radix/*": [
@@ -560,7 +560,7 @@ describe("transformProject — hasLocalComponents: false", () => {
             ],
             "@/hooks/*": ["./hooks/*"],
             "@/lib/utils": ["./lib/utils"],
-            "@assistant-ui/ui/*": ["../../packages/ui/src/*"],
+            "@openagentui/ui/*": ["../../packages/ui/src/*"],
             "@/*": ["./*"],
           },
         },
@@ -570,13 +570,13 @@ describe("transformProject — hasLocalComponents: false", () => {
 
       const tsconfig = readJSON("tsconfig.json");
       const paths = tsconfig.compilerOptions.paths;
-      expect(paths["@/components/assistant-ui/*"]).toBeUndefined();
+      expect(paths["@/components/openagentui/*"]).toBeUndefined();
       expect(paths["@/components/icons/*"]).toBeUndefined();
       expect(paths["@/components/ui/*"]).toBeUndefined();
       expect(paths["@/components/ui/radix/*"]).toBeUndefined();
       expect(paths["@/hooks/*"]).toBeUndefined();
       expect(paths["@/lib/utils"]).toBeUndefined();
-      expect(paths["@assistant-ui/ui/*"]).toBeUndefined();
+      expect(paths["@openagentui/ui/*"]).toBeUndefined();
       expect(paths["@/*"]).toEqual(["./*"]);
     });
 
@@ -585,11 +585,11 @@ describe("transformProject — hasLocalComponents: false", () => {
         compilerOptions: {
           paths: {
             "@/*": ["./*"],
-            "@assistant-ui/*": ["../../packages/*/src"],
-            "@assistant-ui/core/*": ["../../packages/core/src/*"],
+            "@openagentui/*": ["../../packages/*/src"],
+            "@openagentui/core/*": ["../../packages/core/src/*"],
             "@shared/*": ["../shared/*"],
-            "assistant-stream": ["../../packages/assistant-stream/src"],
-            "assistant-stream/*": ["../../packages/assistant-stream/src/*"],
+            "openagentui-stream": ["../../packages/openagentui-stream/src"],
+            "openagentui-stream/*": ["../../packages/openagentui-stream/src/*"],
           },
         },
       });
@@ -597,17 +597,17 @@ describe("transformProject — hasLocalComponents: false", () => {
       await run();
 
       const paths = readJSON("tsconfig.json").compilerOptions.paths;
-      expect(paths["@assistant-ui/*"]).toBeUndefined();
-      expect(paths["@assistant-ui/core/*"]).toBeUndefined();
+      expect(paths["@openagentui/*"]).toBeUndefined();
+      expect(paths["@openagentui/core/*"]).toBeUndefined();
       expect(paths["@shared/*"]).toBeUndefined();
-      expect(paths["assistant-stream"]).toBeUndefined();
-      expect(paths["assistant-stream/*"]).toBeUndefined();
+      expect(paths["openagentui-stream"]).toBeUndefined();
+      expect(paths["openagentui-stream/*"]).toBeUndefined();
       expect(paths["@/*"]).toEqual(["./*"]);
     });
 
     it("inlines x-buildutils/ts/next config with Next.js settings", async () => {
       writeJSON("tsconfig.json", {
-        extends: "@assistant-ui/x-buildutils/ts/next",
+        extends: "@openagentui/x-buildutils/ts/next",
         compilerOptions: {
           baseUrl: ".",
         },
@@ -628,12 +628,12 @@ describe("transformProject — hasLocalComponents: false", () => {
       writeJSON("tsconfig.json", {
         compilerOptions: {
           paths: {
-            "@/components/assistant-ui/*": ["./components/assistant-ui/*"],
+            "@/components/openagentui/*": ["./components/openagentui/*"],
             "@/components/icons/*": ["./components/icons/*"],
             "@/components/ui/*": ["./components/ui/*"],
             "@/hooks/*": ["./hooks/*"],
             "@/lib/utils": ["./lib/utils"],
-            "@assistant-ui/ui/*": ["../../packages/ui/src/*"],
+            "@openagentui/ui/*": ["../../packages/ui/src/*"],
           },
         },
       });
@@ -646,7 +646,7 @@ describe("transformProject — hasLocalComponents: false", () => {
 
     it("inlines x-buildutils/ts/base config without Next.js settings", async () => {
       writeJSON("tsconfig.json", {
-        extends: "@assistant-ui/x-buildutils/ts/base",
+        extends: "@openagentui/x-buildutils/ts/base",
         compilerOptions: {
           baseUrl: ".",
         },
@@ -695,10 +695,10 @@ describe("transformProject — hasLocalComponents: false", () => {
 
   // Component scanning tests
   describe("component scanning", () => {
-    it("installs shadcn and assistant-ui components in a single shadcn add call", async () => {
+    it("installs shadcn and openagentui components in a single shadcn add call", async () => {
       writeFile(
         "app/page.tsx",
-        'import { Thread } from "@/components/assistant-ui/elements/thread.aui.tsx";\nimport { MarkdownText } from "@/components/assistant-ui/elements/markdown-text.tsx";\nimport { StreamingText } from "@/components/assistant-ui/elements/streaming-text.tsx";\nimport { Button } from "@/components/ui/button.tsx";\nexport default function Page() { return <Thread />; }\n',
+        'import { Thread } from "@/components/openagentui/elements/thread.aui.tsx";\nimport { MarkdownText } from "@/components/openagentui/elements/markdown-text.tsx";\nimport { StreamingText } from "@/components/openagentui/elements/streaming-text.tsx";\nimport { Button } from "@/components/ui/button.tsx";\nexport default function Page() { return <Thread />; }\n',
       );
 
       await transformProject(testDir, {
@@ -717,14 +717,14 @@ describe("transformProject — hasLocalComponents: false", () => {
 
       const args = addCalls[0]![1] as string[];
       expect(args).toContain("button");
-      expect(args).toContain("@assistant-ui/utils");
+      expect(args).toContain("@openagentui/utils");
       expect(args).not.toContain("utils");
-      expect(args).toContain("@assistant-ui/thread");
-      expect(args).toContain("@assistant-ui/markdown-text");
-      expect(args).toContain("@assistant-ui/elements-streaming-text");
-      expect(args).not.toContain("@assistant-ui/elements-markdown-text");
+      expect(args).toContain("@openagentui/thread");
+      expect(args).toContain("@openagentui/markdown-text");
+      expect(args).toContain("@openagentui/elements-streaming-text");
+      expect(args).not.toContain("@openagentui/elements-markdown-text");
       expect(args).not.toContain("button.tsx");
-      expect(args).not.toContain("@assistant-ui/thread.tsx");
+      expect(args).not.toContain("@openagentui/thread.tsx");
     });
 
     it("uses native registry URLs for a React Native scaffold", async () => {
@@ -734,7 +734,7 @@ describe("transformProject — hasLocalComponents: false", () => {
       });
       writeFile(
         "app/page.tsx",
-        'import { Thread } from "@/components/assistant-ui/elements/thread.aui.tsx";\nimport { Icon } from "@/components/ui/icon";\n',
+        'import { Thread } from "@/components/openagentui/elements/thread.aui.tsx";\nimport { Icon } from "@/components/ui/icon";\n',
       );
 
       await transformProject(testDir, {
@@ -751,12 +751,10 @@ describe("transformProject — hasLocalComponents: false", () => {
       );
       const args = addCall![1] as string[];
 
-      expect(args).toContain("https://r.assistant-ui.com/utils.json");
-      expect(args).not.toContain(
-        "https://r.assistant-ui.com/native/utils.json",
-      );
-      expect(args).toContain("https://r.assistant-ui.com/native/thread.json");
-      expect(args).toContain("https://r.assistant-ui.com/native/icon.json");
+      expect(args).toContain("https://r.openagentui.dev/utils.json");
+      expect(args).not.toContain("https://r.openagentui.dev/native/utils.json");
+      expect(args).toContain("https://r.openagentui.dev/native/thread.json");
+      expect(args).toContain("https://r.openagentui.dev/native/icon.json");
     });
 
     it("returns the deferred registry command for a React Native scaffold when skipInstall is true", async () => {
@@ -766,7 +764,7 @@ describe("transformProject — hasLocalComponents: false", () => {
       });
       writeFile(
         "app/page.tsx",
-        'import { Thread } from "@/components/assistant-ui/elements/thread.aui.tsx";\nimport { Icon } from "@/components/ui/icon";\n',
+        'import { Thread } from "@/components/openagentui/elements/thread.aui.tsx";\nimport { Icon } from "@/components/ui/icon";\n',
       );
 
       const result = await transformProject(testDir, {
@@ -776,13 +774,13 @@ describe("transformProject — hasLocalComponents: false", () => {
 
       expect(result.registryInstallCommand).toContain("shadcn@latest add");
       expect(result.registryInstallCommand).toContain(
-        "https://r.assistant-ui.com/utils.json",
+        "https://r.openagentui.dev/utils.json",
       );
       expect(result.registryInstallCommand).toContain(
-        "https://r.assistant-ui.com/native/thread.json",
+        "https://r.openagentui.dev/native/thread.json",
       );
       expect(result.registryInstallCommand).toContain(
-        "https://r.assistant-ui.com/native/icon.json",
+        "https://r.openagentui.dev/native/icon.json",
       );
       const shadcnCalls = mocks.spawn.mock.calls.filter(
         ([cmd, args]) => cmd === TEST_DLX_CMD && args.includes("shadcn@latest"),
@@ -793,7 +791,7 @@ describe("transformProject — hasLocalComponents: false", () => {
     it("skips shadcn when skipInstall is true even without local components", async () => {
       writeFile(
         "app/page.tsx",
-        'import { Thread } from "@/components/assistant-ui/elements/thread.aui.tsx";\nimport { Button } from "@/components/ui/button.tsx";\nexport default function Page() { return <Thread />; }\n',
+        'import { Thread } from "@/components/openagentui/elements/thread.aui.tsx";\nimport { Button } from "@/components/ui/button.tsx";\nexport default function Page() { return <Thread />; }\n',
       );
 
       await run();

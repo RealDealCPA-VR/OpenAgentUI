@@ -1,5 +1,5 @@
-import { SSEEventDecoder, type SSEEvent } from "assistant-stream/utils";
-import { isRecord } from "@assistant-ui/core/internal";
+import { SSEEventDecoder, type SSEEvent } from "openagentui-stream/utils";
+import { isRecord } from "@openagentui/core/internal";
 import type {
   A2AAgentCard,
   A2AErrorInfo,

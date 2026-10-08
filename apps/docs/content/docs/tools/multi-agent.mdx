@@ -1,10 +1,10 @@
 ---
 title: Multi-Agent Chat UI
-description: Render sub-agent conversations and handoffs inside tool calls. Build supervisor and multi-agent patterns in a React chat UI with assistant-ui.
+description: Render sub-agent conversations and handoffs inside tool calls. Build supervisor and multi-agent patterns in a React chat UI with openagentui.
 platforms: ["react"]
 ---
 
-In a multi-agent (orchestrator) architecture, a main agent invokes sub-agents via tool calls. Each sub-agent may produce its own conversation (user/assistant messages, tool calls, etc.). assistant-ui supports rendering these nested conversations using the `MessagePartPrimitive.Messages` primitive.
+In a multi-agent (orchestrator) architecture, a main agent invokes sub-agents via tool calls. Each sub-agent may produce its own conversation (user/assistant messages, tool calls, etc.). openagentui supports rendering these nested conversations using the `MessagePartPrimitive.Messages` primitive.
 
 ## Overview
 
@@ -33,7 +33,7 @@ import {
   defineToolkit,
   Tools,
   MessagePartPrimitive,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const toolkit = defineToolkit({
   invoke_researcher: {
@@ -84,14 +84,14 @@ tools: {
 </Tab>
 <Tab value="LangGraph">
 
-`@assistant-ui/react-langgraph` does not nest subgraph output. Messages a subgraph emits stream into the parent thread, and the namespaced events attribute them: `onSubgraphValues` and `onSubgraphUpdates` receive the subgraph's namespace and state, and `onMessageChunk` carries `metadata.namespace` for chunks that originate in a subgraph. Those events exist only when the run streams subgraphs, so `unstable_createLangGraphStream` forwards `streamSubgraphs` to `client.runs.stream` and this example enables it together with `"updates"` in `streamMode`. Set `unstable_allowCancellation: true` to wire up the stop button. A nested conversation per sub-agent on LangGraph needs `@assistant-ui/react-langchain`, which attaches each `task` subagent's transcript to its tool call.
+`@openagentui/react-langgraph` does not nest subgraph output. Messages a subgraph emits stream into the parent thread, and the namespaced events attribute them: `onSubgraphValues` and `onSubgraphUpdates` receive the subgraph's namespace and state, and `onMessageChunk` carries `metadata.namespace` for chunks that originate in a subgraph. Those events exist only when the run streams subgraphs, so `unstable_createLangGraphStream` forwards `streamSubgraphs` to `client.runs.stream` and this example enables it together with `"updates"` in `streamMode`. Set `unstable_allowCancellation: true` to wire up the stop button. A nested conversation per sub-agent on LangGraph needs `@openagentui/react-langchain`, which attaches each `task` subagent's transcript to its tool call.
 
 ```ts title="runtime.ts"
 import { useMemo } from "react";
 import {
   unstable_createLangGraphStream,
   useLangGraphRuntime,
-} from "@assistant-ui/react-langgraph";
+} from "@openagentui/react-langgraph";
 
 const stream = useMemo(
   () =>
@@ -134,14 +134,14 @@ See [LangGraph Streaming](/docs/runtimes/langgraph/streaming) for the full event
 </Tab>
 <Tab value="LangChain">
 
-With `@assistant-ui/react-langchain` there is nothing to populate. `useStream` discovers every `task` subagent on the run, and the runtime reads that subagent's own message projection and attaches it to the spawning call's `ToolCallMessagePart.messages`, keyed by the `task` tool call id. The transcript streams while the subagent runs, nests recursively up to sixteen levels deep when subagents spawn subagents, and is present again on a thread loaded from history, because the SDK seeds subagent discovery from checkpoint messages.
+With `@openagentui/react-langchain` there is nothing to populate. `useStream` discovers every `task` subagent on the run, and the runtime reads that subagent's own message projection and attaches it to the spawning call's `ToolCallMessagePart.messages`, keyed by the `task` tool call id. The transcript streams while the subagent runs, nests recursively up to sixteen levels deep when subagents spawn subagents, and is present again on a thread loaded from history, because the SDK seeds subagent discovery from checkpoint messages.
 
 See [subagent and subgraph views](/docs/runtimes/langchain#subagent-and-subgraph-views) for the discovery hooks and custom views.
 
 </Tab>
 <Tab value="AG-UI">
 
-With `@assistant-ui/react-ag-ui` there is no `messages` field to populate: the runtime builds the nesting from the protocol's own subagent lifecycle. A backend running the agents-as-tools pattern emits `SUBAGENT_STARTED` naming the spawning call as `parentToolCallId`, tags every event that subagent produces with its `subagentRunId`, and closes the run with `SUBAGENT_FINISHED` or `SUBAGENT_ERROR`. The runtime groups each run into one nested assistant message and attaches it to that call's `ToolCallMessagePart.messages`, so the tool UI above renders it unchanged.
+With `@openagentui/react-ag-ui` there is no `messages` field to populate: the runtime builds the nesting from the protocol's own subagent lifecycle. A backend running the agents-as-tools pattern emits `SUBAGENT_STARTED` naming the spawning call as `parentToolCallId`, tags every event that subagent produces with its `subagentRunId`, and closes the run with `SUBAGENT_FINISHED` or `SUBAGENT_ERROR`. The runtime groups each run into one nested assistant message and attaches it to that call's `ToolCallMessagePart.messages`, so the tool UI above renders it unchanged.
 
 The subagent's `name`, `description`, `result`, `interruptIds`, and `errorCode` ride on the nested message's `metadata.custom.agui`. A run whose `parentToolCallId` names no reachable call has nowhere to nest and renders in the parent thread instead.
 
@@ -235,7 +235,7 @@ The array keeps its identity while no task changes, so a component that subscrib
 
 ```tsx
 import { useMemo } from "react";
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 function TasksChip() {
   const tasks = useAuiState((s) => s.thread.tasks);
@@ -268,7 +268,7 @@ import {
   ReadonlyThreadProvider,
   ThreadPrimitive,
   type ThreadMessage,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 function SubConversation({
   messages,

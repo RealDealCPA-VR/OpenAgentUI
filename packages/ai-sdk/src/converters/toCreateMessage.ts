@@ -1,10 +1,10 @@
-import type { AppendMessage } from "@assistant-ui/core";
+import type { AppendMessage } from "@openagentui/core";
 import {
   resolveFileMediaType,
   resolveFilePartSource,
   resolveImageMediaType,
   toMediaWireUrl,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import type {
   CreateUIMessage,
   UIDataTypes,

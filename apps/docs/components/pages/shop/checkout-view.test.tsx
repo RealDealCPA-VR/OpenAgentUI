@@ -67,7 +67,7 @@ Element.prototype.scrollIntoView = vi.fn();
 
 const session: CheckoutSession = {
   id: "test",
-  products: ["assistant-ui"],
+  products: ["openagentui"],
   startedAt: 1,
   fromCart: true,
 };

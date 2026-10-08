@@ -3,7 +3,7 @@
 import {
   BackgroundInbox,
   type BackgroundRun,
-} from "@/components/assistant-ui/elements/background-inbox";
+} from "@/components/openagentui/elements/background-inbox";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const RUNS: readonly BackgroundRun[] = [

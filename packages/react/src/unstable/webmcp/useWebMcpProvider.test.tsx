@@ -3,7 +3,7 @@
 import { StrictMode, type ReactNode, useLayoutEffect } from "react";
 import { act, cleanup } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import type {
   WebMcpHost,
   WebMcpModelContext,

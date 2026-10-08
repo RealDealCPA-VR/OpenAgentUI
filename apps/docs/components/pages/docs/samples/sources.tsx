@@ -6,7 +6,7 @@ import {
   SourceIcon,
   SourceTitle,
   Sources,
-} from "@/components/assistant-ui/elements/sources.aui";
+} from "@/components/openagentui/elements/sources.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 const sources = [

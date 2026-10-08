@@ -1,13 +1,13 @@
 import type { ReactElement } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, render } from "ink-testing-library";
-import type { ComposerState, MessageState } from "@assistant-ui/core/store";
+import type { ComposerState, MessageState } from "@openagentui/core/store";
 import type { UseAuiStateSelector } from "./helpers";
 
 const mockUseAuiState = vi.fn();
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAuiState: (selector: UseAuiStateSelector) => mockUseAuiState(selector),
@@ -552,7 +552,7 @@ describe("useNotification", () => {
     await flush();
 
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui/react-ink] task-complete notification callback threw an error",
+      "[openagentui/react-ink] task-complete notification callback threw an error",
       callbackError,
     );
     consoleError.mockRestore();

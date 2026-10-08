@@ -5,7 +5,7 @@ import {
   AuiConfig,
   AuiProvider,
   type AssistantClient,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { ThreadListItemRuntimeState } from "../../runtime/api/bindings";
 import { ThreadRuntimeImpl } from "../../runtime/api/thread-runtime";

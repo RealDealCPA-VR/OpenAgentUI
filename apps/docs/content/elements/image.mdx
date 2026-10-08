@@ -16,9 +16,9 @@ Image renders one image message part: a preview that click-zooms into a fullscre
 
 Register `Image` as the `Image` renderer on `MessagePrimitive.Parts`.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { Image } from "@/components/assistant-ui/elements/image";
-import { MessagePrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { Image } from "@/components/openagentui/elements/image";
+import { MessagePrimitive } from "@openagentui/react";
 
 function AssistantMessage() {
   return (
@@ -29,7 +29,7 @@ function AssistantMessage() {
 }
 ```
 
-The `Thread` element already renders both assistant and user image parts through `Image`, so installing `@assistant-ui/thread` gives you this without any of the above.
+The `Thread` element already renders both assistant and user image parts through `Image`, so installing `@openagentui/thread` gives you this without any of the above.
 
   </Step>
 </Steps>
@@ -46,7 +46,7 @@ Standalone, `Image` is a plain function of one part object: no context, no runti
 ### Render an image directly
 
 ```tsx title="app/answer.tsx"
-import { Image } from "@/components/assistant-ui/elements/image";
+import { Image } from "@/components/openagentui/elements/image";
 
 export function Picture() {
   return (
@@ -97,7 +97,7 @@ The three top-level states are exclusive and resolve from `status`: `running` sh
 Compose the image parts when a tool returns its own image and source metadata. `ratio` gives the preview a stable frame while it loads, and `fit="cover"` crops the image to fill that frame. Use `fit="contain"` when every pixel matters.
 
 ```tsx
-import { Image } from "@/components/assistant-ui/elements/image";
+import { Image } from "@/components/openagentui/elements/image";
 
 type ImageToolResult = {
   imageUrl: string;
@@ -127,7 +127,7 @@ function ToolImage({ imageUrl, source }: ImageToolResult) {
 `ImageActions` renders a download button and a copy-to-clipboard button; passing `onRegenerate` adds a third button that shows a spinner while it runs. Download picks a file extension from the image's MIME type (defaulting to `.png`) and uses `part.filename` when set; copy requires a browser with the Clipboard API and silently no-ops if it is unavailable or the write fails.
 
 ```tsx
-import { Image } from "@/components/assistant-ui/elements/image";
+import { Image } from "@/components/openagentui/elements/image";
 
 function ImageWithActions(part: React.ComponentProps<typeof Image>) {
   return (

@@ -4,13 +4,13 @@ AI Instruction: Write this docs page based on the instructions.
 
 ## Goal of document
 
-Comprehensive conceptual documentation for users to get familiar with the context API of assistant-ui.
+Comprehensive conceptual documentation for users to get familiar with the context API of openagentui.
 
-Meta: The context API will be the first article in the docs that is written with the aim of being excellent, as we are reprioritizing the quality of our docs as one of the main differentiators of assistant-ui.
+Meta: The context API will be the first article in the docs that is written with the aim of being excellent, as we are reprioritizing the quality of our docs as one of the main differentiators of openagentui.
 
-Meta: assistant-ui is a component library for AI chat. We give users shadcn style components and handle the frontend state management as well as provide integrations into agent frameworks like langgraph, AI SDK and mastra.
+Meta: openagentui is a component library for AI chat. We give users shadcn style components and handle the frontend state management as well as provide integrations into agent frameworks like langgraph, AI SDK and mastra.
 
-Meta: This article sits in the concepts directory of our docs. The goal of concepts is to teach assistant-ui from the ground up, like an ordered structured course that users go through to learn assistant-ui. As previously mentioned, while there are a few other concept docs, they are super rough, low quality and will probably be thrown away and re-written. This article about the context API will not be the very first things users learn. They will first learn about the primitive components (which under the hood use the context API). Thye will then learn about the runtime API (which powers the context API). As a last step they will learn about the context API which lets users create their own components.
+Meta: This article sits in the concepts directory of our docs. The goal of concepts is to teach openagentui from the ground up, like an ordered structured course that users go through to learn openagentui. As previously mentioned, while there are a few other concept docs, they are super rough, low quality and will probably be thrown away and re-written. This article about the context API will not be the very first things users learn. They will first learn about the primitive components (which under the hood use the context API). Thye will then learn about the runtime API (which powers the context API). As a last step they will learn about the context API which lets users create their own components.
 
 ## Info and content
 
@@ -23,9 +23,9 @@ The Context API lets you:
 
 The context API is backed by the "runtime" that you pass to < AssistantRuntimeProvider > component.
 
-This runtime acts as a single unified store (with getState, subscribe) helper functions that stores the entire assistant-ui state. It receives action invocations and lets you subscribe to events as well.
+This runtime acts as a single unified store (with getState, subscribe) helper functions that stores the entire openagentui state. It receives action invocations and lets you subscribe to events as well.
 
-All assistant-ui components use the context API under the hood. This API is available to everyone, so you can re-build every primitive yourself as well.
+All openagentui components use the context API under the hood. This API is available to everyone, so you can re-build every primitive yourself as well.
 
 \*There is the exception of the context-provider primitives (like ThreadPrimitive.Messages), which currently is not exposed but soon will be.
 
@@ -190,10 +190,10 @@ Ask the question anything you need feedback from, and give the human author a pl
 2. **Interactive Examples**: Include live CodeSandbox examples for each major concept // not yet
 3. **Visual Learning**: Add diagrams for scope hierarchy and state flow
 4. **Quick Reference**: Include a cheat sheet at the end with common patterns
-5. **Type Safety**: Show TypeScript examples prominently as assistant-ui is TypeScript-first
+5. **Type Safety**: Show TypeScript examples prominently as openagentui is TypeScript-first
 6. **Error Handling**: Include a troubleshooting section for common errors (accessing unavailable scopes, selector pitfalls) // not yet
 7. **Performance Tips**: Brief section on optimizing selectors and avoiding unnecessary re-renders
-// 8. **Real-world Patterns**: Show actual component examples from assistant-ui's own primitives
+// 8. **Real-world Patterns**: Show actual component examples from openagentui's own primitives
 
 ### Proposed Document Structure:
 

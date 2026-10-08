@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import {
   detectTrigger,
   type TriggerMatch,

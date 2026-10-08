@@ -3,7 +3,7 @@ title: Introduction
 description: Build streaming AI chat interfaces with Vue, Nuxt, and the AI SDK.
 ---
 
-`@assistant-ui/vue` brings assistant-ui to Vue 3.5 and Nuxt. It runs the same runtime as `@assistant-ui/react` and exposes it through a provider, composables, and unstyled primitives. Styled chat components install from the assistant-ui registry with shadcn-vue, and the AI SDK runtime streams from a Nitro route or any server that returns an AI SDK UI message stream.
+`@openagentui/vue` brings openagentui to Vue 3.5 and Nuxt. It runs the same runtime as `@openagentui/react` and exposes it through a provider, composables, and unstyled primitives. Styled chat components install from the openagentui registry with shadcn-vue, and the AI SDK runtime streams from a Nitro route or any server that returns an AI SDK UI message stream.
 
 ## Start here
 
@@ -20,7 +20,7 @@ description: Build streaming AI chat interfaces with Vue, Nuxt, and the AI SDK.
 |---|---|
 | Provider and composables | `AuiProvider`, `AuiIf`, `useAui`, `useAuiState`, `useAuiEvent`, and `useScrollLock`. See [State and actions](/docs/vue/state). |
 | Primitives | Thread, message, composer, action bar, branch picker, thread list, attachment, suggestion, error, and chain-of-thought parts. See [Primitives](/docs/vue/primitives). |
-| Runtimes | `AISDKChat` and `AISDKThreads` from `@assistant-ui/ai-sdk`, threads persisted in [assistant-cloud](/docs/vue/cloud), and your own store through `RuntimeAdapter`. See [Runtimes](/docs/vue/runtimes). |
+| Runtimes | `AISDKChat` and `AISDKThreads` from `@openagentui/ai-sdk`, threads persisted in [openagentui-cloud](/docs/vue/cloud), and your own store through `RuntimeAdapter`. See [Runtimes](/docs/vue/runtimes). |
 | Tools | Frontend and backend tools, Vue tool UIs, answers to tool calls that wait for the user, and data part renderers. See [Tools](/docs/vue/tools) and [Tool UI](/docs/vue/tool-ui). |
 | Styled components | The registry items `thread` and `thread-list`. See [Styled components](/docs/vue/components). |
 
@@ -32,4 +32,4 @@ Render the provider only in the browser: in Nuxt, inside a `.client.vue` compone
 
 ## Not in the Vue package
 
-Voice, dictation, and speech controls, mentions and slash commands, quoting, the assistant modal and selection toolbar, and DevTools are React only. The `assistant-ui` CLI does not scaffold Vue projects. A tool renderer written as a React component, for example in a toolkit shared with a React app, does not render in Vue; register a Vue component for it instead.
+Voice, dictation, and speech controls, mentions and slash commands, quoting, the assistant modal and selection toolbar, and DevTools are React only. The `openagentui` CLI does not scaffold Vue projects. A tool renderer written as a React component, for example in a toolkit shared with a React app, does not render in Vue; register a Vue component for it instead.

@@ -9,7 +9,7 @@ A labeled bar and legend showing what is occupying the model's context window, w
 
 <RuntimeMode>
 
-With a runtime, assistant-ui does not label context usage by category the way this element does. What a `ChatModelAdapter` can report is two real numbers per turn: input tokens and output tokens, carried on each assistant message's generation steps.
+With a runtime, openagentui does not label context usage by category the way this element does. What a `ChatModelAdapter` can report is two real numbers per turn: input tokens and output tokens, carried on each assistant message's generation steps.
 
 <Steps>
   <Step>
@@ -18,15 +18,15 @@ With a runtime, assistant-ui does not label context usage by category the way th
 
 A finer split, separating tool schema tokens from the rest of the prompt, or metering files apart from the running conversation, is not something the thread state tracks: providers report input as one combined figure. Stick to the two segments the runtime can tell you about, and add flat, application-known segments (a fixed system-prompt cost, for instance) alongside them only when you already track that cost yourself.
 
-```tsx title="components/assistant-ui/elements/thread-context-breakdown.tsx"
+```tsx title="components/openagentui/elements/thread-context-breakdown.tsx"
 "use client";
 
 import { useMemo } from "react";
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import {
   ContextBreakdown,
   type ContextSegment,
-} from "@/components/assistant-ui/elements/context-breakdown";
+} from "@/components/openagentui/elements/context-breakdown";
 
 function useTurnUsage() {
   const messages = useAuiState((s) => s.thread.messages);
@@ -74,7 +74,7 @@ Standalone, `ContextBreakdown` renders whatever segments you pass; it only sums 
 ```tsx title="app/context-panel.tsx"
 "use client";
 
-import { ContextBreakdown } from "@/components/assistant-ui/elements/context-breakdown";
+import { ContextBreakdown } from "@/components/openagentui/elements/context-breakdown";
 
 const segments = [
   { label: "System prompt", tokens: 1_400, tint: "bg-foreground/20" },

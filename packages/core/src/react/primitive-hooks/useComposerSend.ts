@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiState } from "@openagentui/store";
 import { composerSendDisabled } from "../../store/primitive-predicates";
 import type { ComposerSendOptions } from "../../store/scopes/composer";
 

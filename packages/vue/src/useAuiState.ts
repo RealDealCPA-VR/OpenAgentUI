@@ -2,7 +2,7 @@ import { computed, onScopeDispose, shallowRef, type ComputedRef } from "vue";
 import {
   getProxiedAssistantState,
   type AssistantState,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { useAuiContext } from "./context";
 
 /**

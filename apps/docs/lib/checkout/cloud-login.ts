@@ -8,7 +8,7 @@ const ACCOUNTS_ORIGINS = new Set([
 ]);
 
 export const isCloudLoginInput = (input: Checkout.Input) =>
-  input.kind === "text" && input.preset === "assistant-ui-cli-login";
+  input.kind === "text" && input.preset === "openagentui-cli-login";
 
 export const cloudLoginDetails = (input: Checkout.Input) => {
   if (!isCloudLoginInput(input) || !input.help?.href) return undefined;

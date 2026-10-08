@@ -1,8 +1,8 @@
-import type { ThreadMessageLike, AppendMessage } from "@assistant-ui/react";
+import type { ThreadMessageLike, AppendMessage } from "@openagentui/react";
 import {
   AssistantRuntimeProvider,
   useExternalStoreRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { createParser, type EventSourceMessage } from "eventsource-parser";
 import { useState, useCallback } from "react";
 

@@ -21,10 +21,10 @@ const WORKSPACE_PROTOCOL = "workspace:";
 const REQUIRED_PROTOCOL = "workspace:^";
 
 const HOST_SUPPLIED_PEERS = new Set([
-  "@assistant-ui/react",
-  "@assistant-ui/react-ink",
-  "@assistant-ui/react-markdown",
-  "assistant-cloud",
+  "@openagentui/react",
+  "@openagentui/react-ink",
+  "@openagentui/react-markdown",
+  "openagentui-cloud",
 ]);
 
 function readWorkspaceManifests(root) {
@@ -175,10 +175,10 @@ function main() {
       "the same package, so a consumer that installs both ends up with two physical copies. That",
     );
     console.error(
-      "breaks the singleton contract for @assistant-ui/core, @assistant-ui/store, and",
+      "breaks the singleton contract for @openagentui/core, @openagentui/store, and",
     );
     console.error(
-      "@assistant-ui/tap: React contexts resolve to the wrong provider, tools never reach the",
+      "@openagentui/tap: React contexts resolve to the wrong provider, tools never reach the",
     );
     console.error("runtime, and `instanceof` checks fail.");
     console.error(

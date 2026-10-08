@@ -14,21 +14,21 @@ import {
   PlusIcon,
   SparklesIcon,
 } from "lucide-react";
-import type { SyntaxHighlighterProps } from "@assistant-ui/react-markdown";
+import type { SyntaxHighlighterProps } from "@openagentui/react-markdown";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { VoiceOrb } from "@/components/assistant-ui/elements/voice.aui";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
-import { AssistantSidebar } from "@/components/assistant-ui/elements/assistant-sidebar.aui";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
-import { SyntaxHighlighter as PrismSyntaxHighlighter } from "@/components/assistant-ui/elements/syntax-highlighter";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { VoiceOrb } from "@/components/openagentui/elements/voice.aui";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
+import { AssistantSidebar } from "@/components/openagentui/elements/assistant-sidebar.aui";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
+import { SyntaxHighlighter as PrismSyntaxHighlighter } from "@/components/openagentui/elements/syntax-highlighter";
 import {
   OpenAILogo,
   ClaudeLogo,
   GeminiLogo,
-} from "@/components/assistant-ui/elements/logos";
-import { HeatGraph } from "@/components/assistant-ui/elements/heat-graph";
+} from "@/components/openagentui/elements/logos";
+import { HeatGraph } from "@/components/openagentui/elements/heat-graph";
 import { SampleRuntimeProvider } from "@/components/pages/docs/samples/sample-runtime-provider";
 import { AssistantModalSample } from "@/components/pages/docs/samples/assistant-modal";
 import { AttachmentSample } from "@/components/pages/docs/samples/attachment";

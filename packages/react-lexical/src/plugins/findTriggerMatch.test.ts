@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import type { TextNode } from "lexical";
 import { findTriggerMatch } from "./DirectivePlugin";
-import type { Unstable_TriggerMatcher } from "@assistant-ui/react";
+import type { Unstable_TriggerMatcher } from "@openagentui/react";
 
 const matchFromLastTrigger: Unstable_TriggerMatcher = (
   text,

@@ -23,7 +23,7 @@ import type {
   ExportedMessageRepository,
   MessageRepository,
 } from "../../runtime/utils/message-repository";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import type { ToolExecutionStatus } from "../tool-invocations/ToolInvocationTracker";
 import type { ExternalThreadQueueAdapter } from "../../runtime/queue/external-thread-queue-adapter";
 

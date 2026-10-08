@@ -1,1 +1,1 @@
-export * from "@assistant-ui/ai-sdk";
+export * from "@openagentui/ai-sdk";

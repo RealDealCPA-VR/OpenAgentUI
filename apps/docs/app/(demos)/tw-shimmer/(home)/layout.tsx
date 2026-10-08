@@ -3,7 +3,7 @@ import { SubProjectLayout } from "@/components/shared/sub-project-layout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "tw-shimmer by assistant-ui",
+  title: "@openagentui/tw-shimmer by openagentui",
   description:
     "Zero-dependency Tailwind v4 shimmer for text and skeleton loaders. Pure CSS.",
 };
@@ -15,8 +15,8 @@ export default function TwShimmerHomeLayout({
 }): React.ReactElement {
   return (
     <SubProjectLayout
-      name="tw-shimmer"
-      githubPath="https://github.com/assistant-ui/assistant-ui/tree/main/packages/tw-shimmer"
+      name="@openagentui/tw-shimmer"
+      githubPath="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/tw-shimmer"
     >
       {children}
     </SubProjectLayout>

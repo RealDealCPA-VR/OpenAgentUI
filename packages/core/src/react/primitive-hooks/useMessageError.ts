@@ -1,4 +1,4 @@
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { messageErrorText } from "../../store/primitive-predicates";
 
 export const useMessageError = () => {

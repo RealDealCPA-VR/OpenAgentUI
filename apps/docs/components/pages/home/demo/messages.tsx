@@ -9,25 +9,25 @@ import {
   type ImageMessagePartComponent,
   MessagePrimitive,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { PencilIcon } from "lucide-react";
 import type { ReactNode } from "react";
-import { UserMessageAttachments } from "@/components/assistant-ui/elements/attachment.aui";
-import { DirectiveText } from "@/components/assistant-ui/elements/directive-text.aui";
-import { File } from "@/components/assistant-ui/elements/file";
-import { Image } from "@/components/assistant-ui/elements/image";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
-import { QuoteBlock } from "@/components/assistant-ui/elements/quote.aui";
+import { UserMessageAttachments } from "@/components/openagentui/elements/attachment.aui";
+import { DirectiveText } from "@/components/openagentui/elements/directive-text.aui";
+import { File } from "@/components/openagentui/elements/file";
+import { Image } from "@/components/openagentui/elements/image";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
+import { QuoteBlock } from "@/components/openagentui/elements/quote.aui";
 import {
   Reasoning,
   ReasoningContent,
   ReasoningRoot,
   ReasoningText,
-} from "@/components/assistant-ui/elements/reasoning.aui";
+} from "@/components/openagentui/elements/reasoning.aui";
 import {
   ToolGroupContent,
   ToolGroupRoot,
-} from "@/components/assistant-ui/elements/tool-group.aui";
+} from "@/components/openagentui/elements/tool-group.aui";
 import { TraceLine } from "@/components/shared/trace-line";
 import {
   describePublicAssistantError,

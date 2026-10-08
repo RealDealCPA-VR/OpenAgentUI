@@ -5,7 +5,7 @@ import {
   type Checkout,
 } from "../../../lib/checkout/protocol";
 
-const session = { id: "test", products: ["assistant-ui"], startedAt: 1 };
+const session = { id: "test", products: ["openagentui"], startedAt: 1 };
 const read = { ...session, introSeen: true };
 const input = (id: string, stepId?: string): Checkout.Input => ({
   id,
@@ -202,9 +202,9 @@ describe("pageTrail", () => {
         {
           ...input("p1"),
           kind: "product",
-          product: "assistant-ui",
+          product: "openagentui",
           status: "answered",
-          answer: "assistant-ui",
+          answer: "openagentui",
           answeredAt: 2,
         },
       ],

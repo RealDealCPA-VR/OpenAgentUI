@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "assistant-ui OpenCode Example",
-  description: "An OpenCode runtime example built with assistant-ui",
+  title: "openagentui OpenCode Example",
+  description: "An OpenCode runtime example built with openagentui",
 };
 
 export default function RootLayout({

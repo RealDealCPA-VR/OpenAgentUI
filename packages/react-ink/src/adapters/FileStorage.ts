@@ -9,12 +9,12 @@ import {
   writeFile,
 } from "node:fs/promises";
 import { basename, dirname, join, resolve } from "node:path";
-import type { RemoteThreadListAdapter } from "@assistant-ui/core";
+import type { RemoteThreadListAdapter } from "@openagentui/core";
 import {
   createLocalStorageAdapter,
   type AsyncStorageLike,
   type TitleGenerationAdapter,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 export type CreateFileStorageAdapterOptions = {
   dir: string;

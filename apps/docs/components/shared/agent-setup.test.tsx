@@ -37,7 +37,7 @@ describe("agent setup banner", () => {
   });
 
   it("offers only the direct setup for a setup-only product", () => {
-    render(<AgentSetup product="assistant-ui" />);
+    render(<AgentSetup product="openagentui" />);
     expect(screen.queryByRole("button", { name: /cart/ })).toBeNull();
     expect(screen.getByRole("button", { name: "Begin setup" })).toBeTruthy();
   });
@@ -52,7 +52,7 @@ describe("agent setup banner", () => {
   });
 
   it("queues a product for the next setup while a setup without it runs", () => {
-    const session = startCheckout(["assistant-ui"]);
+    const session = startCheckout(["openagentui"]);
     render(<AgentSetup product="elements/thread-list" prominent />);
     fireEvent.click(
       screen.getByRole("button", { name: "Add Thread list to next setup" }),
@@ -76,8 +76,8 @@ describe("agent setup banner", () => {
   });
 
   it("returns to the running setup from a product that starts one", () => {
-    startCheckout(["assistant-ui"]);
-    render(<AgentSetup product="assistant-ui" />);
+    startCheckout(["openagentui"]);
+    render(<AgentSetup product="openagentui" />);
     expect(screen.getByRole("button", { name: "Continue setup" })).toBeTruthy();
   });
 

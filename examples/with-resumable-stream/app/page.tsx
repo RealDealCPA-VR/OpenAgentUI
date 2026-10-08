@@ -1,13 +1,13 @@
 "use client";
 
 import { useMemo } from "react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { AssistantRuntimeProvider } from "@openagentui/react";
 import {
   AssistantChatTransport,
   createResumableSessionStorage,
   useChatRuntime,
-} from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const storage = createResumableSessionStorage();
 

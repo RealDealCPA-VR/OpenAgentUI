@@ -87,13 +87,13 @@ describe("anonymous session client", () => {
     const { anonymousSessionFetch } =
       await import("./anonymous-session-client");
 
-    await anonymousSessionFetch("https://www.assistant-ui.com/api/chat", {
+    await anonymousSessionFetch("https://openagentui.dev/api/chat", {
       method: "POST",
     });
 
     const requestInit = fetchMock.mock.calls[1]?.[1];
     expect(
-      new Headers(requestInit?.headers).get("x-assistant-ui-anonymous-session"),
+      new Headers(requestInit?.headers).get("x-openagentui-anonymous-session"),
     ).toBe("signed-session");
   });
 
@@ -114,7 +114,7 @@ describe("anonymous session client", () => {
     vi.stubGlobal("fetch", fetchMock);
     const { anonymousSessionFetch } =
       await import("./anonymous-session-client");
-    const request = new Request("https://www.assistant-ui.com/api/chat", {
+    const request = new Request("https://openagentui.dev/api/chat", {
       method: "POST",
       body: "request body",
     });
@@ -144,7 +144,7 @@ describe("anonymous session client", () => {
       await import("./anonymous-session-client");
 
     const response = await anonymousSessionFetch(
-      "https://www.assistant-ui.com/api/chat",
+      "https://openagentui.dev/api/chat",
       { method: "POST", body: "init body" },
     );
 

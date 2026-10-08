@@ -31,7 +31,7 @@ export const configuredToolInstructions = (entries: readonly CartEntry[]) => {
   const tools = entries.filter(isAgentToolCartEntry);
   if (tools.length === 0) return "";
   return [
-    "Configure each of these agent tools as a separate tool in the assistant-ui toolkit, creating it if needed:",
+    "Configure each of these agent tools as a separate tool in the openagentui toolkit, creating it if needed:",
     ...tools.map((tool, index) => {
       const prefix = `${index + 1}. `;
       const purpose = tool.purpose

@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: Get assistant-ui running in a terminal app with your first chat interface.
+description: Get openagentui running in a terminal app with your first chat interface.
 ---
 
 ## Quick Start
@@ -11,7 +11,7 @@ description: Get assistant-ui running in a terminal app with your first chat int
 ### Create a new project
 
 ```sh
-npx assistant-ui@latest create --ink my-chat-app
+npx openagentui@latest create --ink my-chat-app
 cd my-chat-app
 ```
 
@@ -38,14 +38,14 @@ pnpm dev
 
 ## Manual Setup
 
-If you prefer to add assistant-ui to an existing Node.js project, follow these steps.
+If you prefer to add openagentui to an existing Node.js project, follow these steps.
 
 <Steps>
   <Step>
 
 ### Install dependencies
 
-<InstallCommand npm={["@assistant-ui/react-ink", "@assistant-ui/react-ink-markdown", "ink", "react"]} />
+<InstallCommand npm={["@openagentui/react-ink", "@openagentui/react-ink-markdown", "ink", "react"]} />
 
   </Step>
   <Step>
@@ -55,7 +55,7 @@ If you prefer to add assistant-ui to an existing Node.js project, follow these s
 Define how your app communicates with your AI backend. This example uses a simple streaming adapter:
 
 ```ts title="adapters/my-chat-adapter.ts"
-import type { ChatModelAdapter } from "@assistant-ui/react-ink";
+import type { ChatModelAdapter } from "@openagentui/react-ink";
 
 export const myChatAdapter: ChatModelAdapter = {
   async *run({ messages, abortSignal }) {
@@ -85,7 +85,7 @@ export const myChatAdapter: ChatModelAdapter = {
 ```
 
 <Callout type="info">
-  This is the same `ChatModelAdapter` interface used in `@assistant-ui/react` and `@assistant-ui/react-native`. If you already have an adapter, you can reuse it as-is.
+  This is the same `ChatModelAdapter` interface used in `@openagentui/react` and `@openagentui/react-native`. If you already have an adapter, you can reuse it as-is.
 </Callout>
 
   </Step>
@@ -98,7 +98,7 @@ import { Box, Text } from "ink";
 import {
   AssistantRuntimeProvider,
   useLocalRuntime,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import { myChatAdapter } from "./adapters/my-chat-adapter.js";
 
 export function App() {
@@ -130,8 +130,8 @@ import {
   ComposerPrimitive,
   LoadingPrimitive,
   useAuiState,
-} from "@assistant-ui/react-ink";
-import { MarkdownText } from "@assistant-ui/react-ink-markdown";
+} from "@openagentui/react-ink";
+import { MarkdownText } from "@openagentui/react-ink-markdown";
 
 const Message = () => {
   const message = useAuiState((s) => s.message);
@@ -214,7 +214,7 @@ render(<App />);
 <Cards>
   <Card
     title="Migration from Web"
-    description="Already using assistant-ui? Migrate your web app to the terminal."
+    description="Already using openagentui? Migrate your web app to the terminal."
     href="/docs/ink/migration"
   />
   <Card
@@ -230,6 +230,6 @@ render(<App />);
   <Card
     title="Example App"
     description="Full terminal chat example with markdown rendering and streaming."
-    href="https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-react-ink"
+    href="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-react-ink"
   />
 </Cards>

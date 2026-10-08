@@ -44,7 +44,7 @@ describe("fetchSandboxResource", () => {
       cache: "force-cache",
       headers: {
         Accept: "application/json",
-        "X-Template-Id": "base-assistant-ui",
+        "X-Template-Id": "base-openagentui",
       },
       body: "{}",
     });
@@ -55,7 +55,7 @@ describe("fetchSandboxResource", () => {
     expect(init?.body).toBe("{}");
     expect(init?.cache).toBe("no-store");
     expect(headers.get("accept")).toBe("application/json");
-    expect(headers.get("x-template-id")).toBe("base-assistant-ui");
+    expect(headers.get("x-template-id")).toBe("base-openagentui");
     expect(headers.get("user-agent")).toBe("curl/8.7.1");
   });
 

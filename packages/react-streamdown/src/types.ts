@@ -1,9 +1,9 @@
-import type { SmoothOptions } from "@assistant-ui/react";
+import type { SmoothOptions } from "@openagentui/react";
 import type {
   CodeHeaderProps,
   ComponentsByLanguage,
   SyntaxHighlighterProps,
-} from "@assistant-ui/react-markdown/code-fence";
+} from "@openagentui/react-markdown/code-fence";
 import type { ComponentPropsWithoutRef, ComponentType, ReactNode } from "react";
 import type { Options as RemarkRehypeOptions } from "remark-rehype";
 import type {

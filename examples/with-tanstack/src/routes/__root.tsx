@@ -13,7 +13,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "assistant-ui + TanStack Start",
+        title: "openagentui + TanStack Start",
       },
     ],
     links: [

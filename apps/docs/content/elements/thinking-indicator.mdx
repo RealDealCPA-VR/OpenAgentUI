@@ -16,10 +16,10 @@ The runtime does not hand you a phrase like "Reading the docs"; it hands you the
 
 ### Name what is happening from the message parts
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 function useThinkingLabel() {
   return useAuiState((s) => {
@@ -42,7 +42,7 @@ Once the assistant has streamed visible text and no tool call is pending, this r
 
 ```tsx
 import { useEffect, useState } from "react";
-import { ThinkingIndicator } from "@/components/assistant-ui/elements/thinking-indicator";
+import { ThinkingIndicator } from "@/components/openagentui/elements/thinking-indicator";
 
 function useElapsedLabel(active: boolean) {
   const [label, setLabel] = useState<string | undefined>(undefined);
@@ -88,7 +88,7 @@ Standalone, `label` is a plain string and `elapsed` is a plain string; the compo
 "use client";
 
 import { useState } from "react";
-import { ThinkingIndicator } from "@/components/assistant-ui/elements/thinking-indicator";
+import { ThinkingIndicator } from "@/components/openagentui/elements/thinking-indicator";
 
 export function Status() {
   const [label, setLabel] = useState("Thinking");

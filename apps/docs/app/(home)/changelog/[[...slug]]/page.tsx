@@ -12,7 +12,7 @@ import { PackageFilter } from "../package-filter";
 import { ChangelogList } from "../changelog-list";
 
 const title = "Changelog";
-const description = "Release notes for all assistant-ui packages.";
+const description = "Release notes for all openagentui packages.";
 const PER_PAGE = 8;
 
 export const metadata: Metadata = {
@@ -104,8 +104,7 @@ export default async function ChangelogPage({
         <header className="max-w-2xl">
           <h1 className={typePage}>Release history.</h1>
           <p className={cn(typeDeck, "mt-4 max-w-[52ch]")}>
-            Every package release from the assistant-ui monorepo, grouped by
-            day.
+            Every package release from the openagentui monorepo, grouped by day.
           </p>
         </header>
         {allPackages.length > 0 && (
@@ -156,7 +155,7 @@ export default async function ChangelogPage({
 
       <footer className="mt-16">
         <a
-          href="https://github.com/assistant-ui/assistant-ui/releases"
+          href="https://github.com/RealDealCPA-VR/OpenAgentUI/releases"
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground group inline-flex items-center gap-1.5 text-sm transition-colors"

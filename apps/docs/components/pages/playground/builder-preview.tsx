@@ -1,6 +1,6 @@
 "use client";
 
-import "@assistant-ui/react-markdown/styles/dot.css";
+import "@openagentui/react-markdown/styles/dot.css";
 
 import {
   ArrowDownIcon,
@@ -30,36 +30,36 @@ import {
   ThreadPrimitive,
   useAuiState,
   useMessagePartText,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 import { type FC, createContext, useContext, useMemo, memo } from "react";
 import { useHydrated } from "@/hooks/use-hydrated";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import {
   ComposerAttachments,
   UserMessageAttachments,
-} from "@/components/assistant-ui/elements/attachment.aui";
+} from "@/components/openagentui/elements/attachment.aui";
 import {
   ReasoningRoot,
   ReasoningTrigger,
   ReasoningContent,
   ReasoningText,
-} from "@/components/assistant-ui/elements/reasoning.aui";
+} from "@/components/openagentui/elements/reasoning.aui";
 import {
   Source,
   SourceIcon,
   SourceTitle,
-} from "@/components/assistant-ui/elements/sources.aui";
+} from "@/components/openagentui/elements/sources.aui";
 import {
   type CodeHeaderProps,
   MarkdownTextPrimitive,
   unstable_memoizeMarkdownComponents as memoizeMarkdownComponents,
   useIsMarkdownCodeBlock,
   type SyntaxHighlighterProps,
-} from "@assistant-ui/react-markdown";
+} from "@openagentui/react-markdown";
 import remarkGfm from "remark-gfm";
 import ShikiHighlighter from "react-shiki";
 

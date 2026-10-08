@@ -1,5 +1,5 @@
 {
-  "name": "@assistant-ui/agent-launcher",
+  "name": "@openagentui/agent-launcher",
   "version": "0.1.17",
   "description": "Spawn the Claude Code CLI with a chosen plugin directory, skill, and prompt",
   "keywords": [
@@ -7,9 +7,9 @@
     "claude-code",
     "agent",
     "launcher",
-    "assistant-ui"
+    "openagentui"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -36,7 +36,7 @@
     "cross-spawn": "^7.0.6"
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@types/cross-spawn": "^6.0.6",
     "@types/node": "^26.6.3",
     "vitest": "^5.0.3"
@@ -45,13 +45,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/agent-launcher"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: Form-Filling AI Copilot
-description: Open-source AI copilot that fills forms for users. Sidebar UI, field-aware tool calls, and a working React example built with assistant-ui.
+description: Open-source AI copilot that fills forms for users. Sidebar UI, field-aware tool calls, and a working React example built with openagentui.
 ---
 
 ## Overview
@@ -23,7 +23,7 @@ This example shows an AI assistant sidebar that fills out a form for the user. T
 
 ## Integration
 
-The example uses `useAssistantForm` from `@assistant-ui/react-hook-form` to connect the AI with form state. This hook replaces the standard `useForm` and automatically registers `set_form_field` and `submit_form` tools with the assistant.
+The example uses `useAssistantForm` from `@openagentui/react-hook-form` to connect the AI with form state. This hook replaces the standard `useForm` and automatically registers `set_form_field` and `submit_form` tools with the assistant.
 
 ### Runtime Provider
 
@@ -31,8 +31,8 @@ The example uses `useAssistantForm` from `@assistant-ui/react-hook-form` to conn
 // app/MyRuntimeProvider.tsx
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 export function MyRuntimeProvider({
   children,
@@ -52,7 +52,7 @@ export function MyRuntimeProvider({
 ```ts
 // app/api/chat/route.ts
 import { openai } from "@ai-sdk/openai";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -80,21 +80,21 @@ export async function POST(req: Request) {
 "use client";
 
 import { SignupForm } from "@/components/SignupForm";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { Form } from "@/components/ui/form";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { useAssistantForm } from "@assistant-ui/react-hook-form";
+import { useAssistantForm } from "@openagentui/react-hook-form";
 import {
   useAssistantInstructions,
   useAui,
   AuiConfig,
   AuiProvider,
   Suggestions,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const SetFormFieldTool = () => {
   return (
@@ -199,4 +199,4 @@ export default function Home() {
 
 ## Source
 
-<SourceLink href="https://github.com/assistant-ui/assistant-ui/blob/main/examples/with-react-hook-form/app/page.tsx" />
+<SourceLink href="https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/examples/with-react-hook-form/app/page.tsx" />

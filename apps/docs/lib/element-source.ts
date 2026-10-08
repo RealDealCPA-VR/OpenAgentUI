@@ -12,7 +12,7 @@ const SOURCE_ROOTS = [
     "src",
     "components",
     "react",
-    "assistant-ui",
+    "openagentui",
     "elements",
   ],
   ["components", "demo", "elements"],

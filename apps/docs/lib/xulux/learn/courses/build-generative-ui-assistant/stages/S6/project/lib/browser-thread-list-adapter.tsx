@@ -1,6 +1,6 @@
 "use client";
 
-import { createAssistantStream } from "assistant-stream";
+import { createAssistantStream } from "openagentui-stream";
 import {
   type GenericThreadHistoryAdapter,
   type MessageFormatAdapter,
@@ -9,7 +9,7 @@ import {
   type RemoteThreadListAdapter,
   type ThreadHistoryAdapter,
   useAui,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { useMemo, type PropsWithChildren } from "react";
 
 type StoredThread = {

@@ -1,5 +1,5 @@
 {
   "title": "Model Context",
-  "description": "Model instructions, contextual state, provider registries, and renderers for giving assistant-ui runtimes app-aware context.",
+  "description": "Model instructions, contextual state, provider registries, and renderers for giving openagentui runtimes app-aware context.",
   "pages": ["index", "context", "registry"]
 }

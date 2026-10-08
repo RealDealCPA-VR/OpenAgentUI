@@ -18,7 +18,7 @@ const template: XuluxTemplate = {
   sandboxBaseUrl: "https://0d9e27d14127c0eeadfc34b424cc7ed0.preview.bl.run",
   tech: {
     framework: "Next.js",
-    runtime: "assistant-ui + AI SDK",
+    runtime: "openagentui + AI SDK",
     frontendPattern: "Docs assistant",
   },
   env: [],

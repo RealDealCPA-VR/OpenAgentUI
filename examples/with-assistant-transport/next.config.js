@@ -1,8 +1,8 @@
-import { withAui } from "@assistant-ui/next";
+import { withAui } from "@openagentui/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    optimizePackageImports: ["@assistant-ui/react"],
+    optimizePackageImports: ["@openagentui/react"],
   },
   async rewrites() {
     return [

@@ -44,7 +44,7 @@ describe("createAddComponentsPlan", () => {
         "--yes",
         "shadcn@latest",
         "add",
-        "https://r.assistant-ui.com/base/thread.json",
+        "https://r.openagentui.dev/base/thread.json",
         "--yes",
       ],
     });
@@ -56,7 +56,7 @@ describe("createAddComponentsPlan", () => {
         components: ["thread", "markdown-text"],
         packageManager: "pnpm",
         overwrite: true,
-        path: "components/assistant-ui",
+        path: "components/openagentui",
       }),
     ).toEqual({
       command: "pnpm",
@@ -64,11 +64,11 @@ describe("createAddComponentsPlan", () => {
         "dlx",
         "shadcn@latest",
         "add",
-        "https://r.assistant-ui.com/base/thread.json",
-        "https://r.assistant-ui.com/base/markdown-text.json",
+        "https://r.openagentui.dev/base/thread.json",
+        "https://r.openagentui.dev/base/markdown-text.json",
         "--overwrite",
         "--path",
-        "components/assistant-ui",
+        "components/openagentui",
       ],
     });
   });
@@ -84,7 +84,7 @@ describe("createAddComponentsPlan", () => {
       args: [
         "shadcn@latest",
         "add",
-        "https://r.assistant-ui.com/base/thread.json",
+        "https://r.openagentui.dev/base/thread.json",
       ],
     });
   });
@@ -103,8 +103,8 @@ describe("createAddComponentsPlan", () => {
         "dlx",
         "shadcn@latest",
         "add",
-        "https://r.assistant-ui.com/native/thread.json",
-        "https://r.assistant-ui.com/native/markdown-text.json",
+        "https://r.openagentui.dev/native/thread.json",
+        "https://r.openagentui.dev/native/markdown-text.json",
       ],
     });
   });
@@ -203,10 +203,10 @@ describe("add directory selection", () => {
 
       const record = JSON.parse(fs.readFileSync(recordPath, "utf8"));
       expect(record.argv).toContain(
-        "https://r.assistant-ui.com/native/thread.json",
+        "https://r.openagentui.dev/native/thread.json",
       );
       expect(record.argv).not.toContain(
-        "https://r.assistant-ui.com/thread.json",
+        "https://r.openagentui.dev/thread.json",
       );
     } finally {
       fs.writeFileSync(packageJsonPath, original);

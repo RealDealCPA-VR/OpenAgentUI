@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, type PropType } from "vue";
-import type { ToolUIProps } from "@assistant-ui/vue";
+import type { ToolUIProps } from "@openagentui/vue";
 
 const props = defineProps({
   tool: { type: Object as PropType<ToolUIProps>, required: true },

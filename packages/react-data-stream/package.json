@@ -1,16 +1,16 @@
 {
-  "name": "@assistant-ui/react-data-stream",
+  "name": "@openagentui/react-data-stream",
   "version": "0.12.35",
-  "description": "Data stream adapter for assistant-ui",
+  "description": "Data stream adapter for openagentui",
   "keywords": [
     "data-stream",
     "streaming",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -38,9 +38,9 @@
   },
   "dependencies": {
     "@ai-sdk/provider": "^4.0.20",
-    "@assistant-ui/core": "^0.3.24",
-    "assistant-cloud": "*",
-    "assistant-stream": "^0.3.48"
+    "@openagentui/core": "^0.3.24",
+    "openagentui-cloud": "*",
+    "openagentui-stream": "^0.3.48"
   },
   "peerDependencies": {
     "@types/react": "*",
@@ -52,8 +52,8 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@testing-library/react": "^16.3.3",
     "@types/json-schema": "^7.0.15",
     "@types/react": "^19.3.0",
@@ -66,13 +66,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-data-stream"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

@@ -1,11 +1,11 @@
 "use client";
 
-import type { AssistantCloud } from "assistant-cloud";
-import type { AssistantRuntime } from "@assistant-ui/core";
+import type { AssistantCloud } from "openagentui-cloud";
+import type { AssistantRuntime } from "@openagentui/core";
 import {
   splitLocalRuntimeOptions,
   useLocalRuntime,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import type { UseDataStreamRuntimeOptions } from "./useDataStreamRuntime";
 import { DataStreamRuntimeAdapter } from "./DataStreamRuntimeAdapter";
 

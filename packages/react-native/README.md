@@ -1,16 +1,16 @@
-# `@assistant-ui/react-native`
+# `@openagentui/react-native`
 
-[![npm version](https://img.shields.io/npm/v/@assistant-ui/react-native)](https://www.npmjs.com/package/@assistant-ui/react-native)
-[![npm downloads](https://img.shields.io/npm/dm/@assistant-ui/react-native)](https://www.npmjs.com/package/@assistant-ui/react-native)
-[![GitHub stars](https://img.shields.io/github/stars/assistant-ui/assistant-ui)](https://github.com/assistant-ui/assistant-ui)
-![License](https://img.shields.io/npm/l/@assistant-ui/react-native)
+[![npm version](https://img.shields.io/npm/v/@openagentui/react-native)](https://www.npmjs.com/package/@openagentui/react-native)
+[![npm downloads](https://img.shields.io/npm/dm/@openagentui/react-native)](https://www.npmjs.com/package/@openagentui/react-native)
+[![GitHub stars](https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI)](https://github.com/RealDealCPA-VR/OpenAgentUI)
+![License](https://img.shields.io/npm/l/@openagentui/react-native)
 
-React Native bindings for assistant-ui. Native primitives for `Thread`, `Composer`, `Message`, and `ThreadList` that share the same runtime and adapters as `@assistant-ui/react`.
+React Native bindings for openagentui. Native primitives for `Thread`, `Composer`, `Message`, and `ThreadList` that share the same runtime and adapters as `@openagentui/react`.
 
 ## Installation
 
 ```bash
-npm install @assistant-ui/react-native
+npm install @openagentui/react-native
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ import {
   AssistantRuntimeProvider,
   useLocalRuntime,
   type ChatModelAdapter,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 
 const adapter: ChatModelAdapter = {
   async *run({ messages }) {
@@ -40,9 +40,9 @@ export function App() {
 
 ## Documentation
 
-Full primitives, hooks, and adapter reference at [assistant-ui.com/docs/react-native](https://www.assistant-ui.com/docs/react-native).
+Full primitives, hooks, and adapter reference at [openagentui.dev/docs/react-native](https://openagentui.dev/docs/react-native).
 
 ## For other platforms
 
-- Web: [`@assistant-ui/react`](https://www.npmjs.com/package/@assistant-ui/react)
-- Terminal (Ink): [`@assistant-ui/react-ink`](https://www.npmjs.com/package/@assistant-ui/react-ink)
+- Web: [`@openagentui/react`](https://www.npmjs.com/package/@openagentui/react)
+- Terminal (Ink): [`@openagentui/react-ink`](https://www.npmjs.com/package/@openagentui/react-ink)

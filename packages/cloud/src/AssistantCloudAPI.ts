@@ -121,7 +121,7 @@ export class AssistantCloudAPI {
     };
     this.sdkHeader = () =>
       [
-        `assistant-cloud/${ASSISTANT_CLOUD_VERSION}`,
+        `openagentui-cloud/${ASSISTANT_CLOUD_VERSION}`,
         ...Array.from(
           sdks.values(),
           ({ name, version }) => `${name}/${version}`,

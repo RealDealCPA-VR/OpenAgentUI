@@ -58,40 +58,40 @@ describe("doctor — package discovery", () => {
         name: "fixture",
         version: "1.0.0",
         dependencies: {
-          "@assistant-ui/react": "0.14.5",
-          "@assistant-ui/react-ai-sdk": "1.3.26",
+          "@openagentui/react": "0.14.5",
+          "@openagentui/react-ai-sdk": "1.3.26",
         },
       }),
     );
 
     // Top-level installs
     writePackage(root, {
-      name: "@assistant-ui/react",
+      name: "@openagentui/react",
       version: "0.14.5",
-      installPath: "node_modules/@assistant-ui/react",
+      installPath: "node_modules/@openagentui/react",
     });
     writePackage(root, {
-      name: "@assistant-ui/core",
+      name: "@openagentui/core",
       version: "0.2.5",
-      installPath: "node_modules/@assistant-ui/core",
+      installPath: "node_modules/@openagentui/core",
     });
     writePackage(root, {
-      name: "@assistant-ui/react-ai-sdk",
+      name: "@openagentui/react-ai-sdk",
       version: "1.3.26",
-      installPath: "node_modules/@assistant-ui/react-ai-sdk",
+      installPath: "node_modules/@openagentui/react-ai-sdk",
     });
     writePackage(root, {
-      name: "assistant-stream",
+      name: "openagentui-stream",
       version: "0.3.14",
-      installPath: "node_modules/assistant-stream",
+      installPath: "node_modules/openagentui-stream",
     });
 
-    // Transitive copy of @assistant-ui/core nested inside react-ai-sdk
+    // Transitive copy of @openagentui/core nested inside react-ai-sdk
     writePackage(root, {
-      name: "@assistant-ui/core",
+      name: "@openagentui/core",
       version: "0.2.2",
       installPath:
-        "node_modules/@assistant-ui/react-ai-sdk/node_modules/@assistant-ui/core",
+        "node_modules/@openagentui/react-ai-sdk/node_modules/@openagentui/core",
     });
 
     // Unrelated package that should be ignored
@@ -105,9 +105,9 @@ describe("doctor — package discovery", () => {
     // behavior is to skip recursion into untracked subtrees so doctor
     // stays fast on large repos.
     writePackage(root, {
-      name: "@assistant-ui/core",
+      name: "@openagentui/core",
       version: "0.0.0-buried",
-      installPath: "node_modules/lodash/node_modules/@assistant-ui/core",
+      installPath: "node_modules/lodash/node_modules/@openagentui/core",
     });
 
     // Dot-prefixed directories must be skipped
@@ -118,18 +118,18 @@ describe("doctor — package discovery", () => {
     fs.rmSync(root, { recursive: true, force: true });
   });
 
-  it("collects every assistant-ui package, including nested transitives", () => {
+  it("collects every openagentui package, including nested transitives", () => {
     const found = discoverInstalledPackages(root);
     const summary = found
       .map((p) => `${p.name}@${p.version}`)
       .sort()
       .join(",");
 
-    expect(summary).toContain("@assistant-ui/core@0.2.2");
-    expect(summary).toContain("@assistant-ui/core@0.2.5");
-    expect(summary).toContain("@assistant-ui/react@0.14.5");
-    expect(summary).toContain("@assistant-ui/react-ai-sdk@1.3.26");
-    expect(summary).toContain("assistant-stream@0.3.14");
+    expect(summary).toContain("@openagentui/core@0.2.2");
+    expect(summary).toContain("@openagentui/core@0.2.5");
+    expect(summary).toContain("@openagentui/react@0.14.5");
+    expect(summary).toContain("@openagentui/react-ai-sdk@1.3.26");
+    expect(summary).toContain("openagentui-stream@0.3.14");
     expect(summary).not.toContain("lodash");
   });
 
@@ -138,10 +138,10 @@ describe("doctor — package discovery", () => {
     expect(found.find((p) => p.version === "0.0.0-buried")).toBeUndefined();
   });
 
-  it("flags @assistant-ui/core as duplicated across versions", () => {
+  it("flags @openagentui/core as duplicated across versions", () => {
     const dups = findDuplicates(discoverInstalledPackages(root));
     expect(dups).toHaveLength(1);
-    expect(dups[0]!.name).toBe("@assistant-ui/core");
+    expect(dups[0]!.name).toBe("@openagentui/core");
     const versions = dups[0]!.installations.map((i) => i.version).sort();
     expect(versions).toEqual(["0.2.2", "0.2.5"]);
   });
@@ -175,29 +175,29 @@ describe("doctor — workspace package discovery", () => {
         path.join(app, "package.json"),
         JSON.stringify({
           name: "app",
-          dependencies: { "@assistant-ui/react": "0.14.5" },
+          dependencies: { "@openagentui/react": "0.14.5" },
         }),
       );
       writePackage(root, {
-        name: "@assistant-ui/react",
+        name: "@openagentui/react",
         version: "0.14.5",
-        installPath: "node_modules/@assistant-ui/react",
+        installPath: "node_modules/@openagentui/react",
       });
       writePackage(fixture, {
-        name: "@assistant-ui/core",
+        name: "@openagentui/core",
         version: "0.2.0",
-        installPath: "node_modules/@assistant-ui/core",
+        installPath: "node_modules/@openagentui/core",
       });
 
       const realRoot = fs.realpathSync(root);
       const expected = [
         {
-          name: "@assistant-ui/react",
+          name: "@openagentui/react",
           version: "0.14.5",
           installPath: path.join(
             realRoot,
             "node_modules",
-            "@assistant-ui",
+            "@openagentui",
             "react",
           ),
         },
@@ -221,38 +221,38 @@ describe("doctor — pnpm store discovery", () => {
       JSON.stringify({
         name: "fixture",
         version: "1.0.0",
-        dependencies: { "@assistant-ui/react": "0.14.5" },
+        dependencies: { "@openagentui/react": "0.14.5" },
       }),
     );
 
     // Direct dependency hoisted into the top-level node_modules.
     writePackage(root, {
-      name: "@assistant-ui/react",
+      name: "@openagentui/react",
       version: "0.14.5",
-      installPath: "node_modules/@assistant-ui/react",
+      installPath: "node_modules/@openagentui/react",
     });
 
-    // Two peer-closure-split copies of @assistant-ui/core, each in its own
+    // Two peer-closure-split copies of @openagentui/core, each in its own
     // .pnpm virtual-store entry — the exact duplication class from #4101.
     writePackage(root, {
-      name: "@assistant-ui/core",
+      name: "@openagentui/core",
       version: "0.2.5",
       installPath:
-        "node_modules/.pnpm/@assistant-ui+core@0.2.5_react@18.3.1/node_modules/@assistant-ui/core",
+        "node_modules/.pnpm/@openagentui+core@0.2.5_react@18.3.1/node_modules/@openagentui/core",
     });
     writePackage(root, {
-      name: "@assistant-ui/core",
+      name: "@openagentui/core",
       version: "0.2.2",
       installPath:
-        "node_modules/.pnpm/@assistant-ui+core@0.2.2_react@19.0.0/node_modules/@assistant-ui/core",
+        "node_modules/.pnpm/@openagentui+core@0.2.2_react@19.0.0/node_modules/@openagentui/core",
     });
 
     // Unscoped tracked package living in the store.
     writePackage(root, {
-      name: "assistant-stream",
+      name: "openagentui-stream",
       version: "0.3.14",
       installPath:
-        "node_modules/.pnpm/assistant-stream@0.3.14/node_modules/assistant-stream",
+        "node_modules/.pnpm/openagentui-stream@0.3.14/node_modules/openagentui-stream",
     });
 
     // Unrelated package in the store must be ignored.
@@ -267,24 +267,24 @@ describe("doctor — pnpm store discovery", () => {
     fs.rmSync(root, { recursive: true, force: true });
   });
 
-  it("collects assistant-ui copies from the .pnpm virtual store", () => {
+  it("collects openagentui copies from the .pnpm virtual store", () => {
     const found = discoverInstalledPackages(root);
     const summary = found
       .map((p) => `${p.name}@${p.version}`)
       .sort()
       .join(",");
 
-    expect(summary).toContain("@assistant-ui/core@0.2.2");
-    expect(summary).toContain("@assistant-ui/core@0.2.5");
-    expect(summary).toContain("@assistant-ui/react@0.14.5");
-    expect(summary).toContain("assistant-stream@0.3.14");
+    expect(summary).toContain("@openagentui/core@0.2.2");
+    expect(summary).toContain("@openagentui/core@0.2.5");
+    expect(summary).toContain("@openagentui/react@0.14.5");
+    expect(summary).toContain("openagentui-stream@0.3.14");
     expect(summary).not.toContain("lodash");
   });
 
-  it("flags the peer-split @assistant-ui/core copies as duplicated", () => {
+  it("flags the peer-split @openagentui/core copies as duplicated", () => {
     const dups = findDuplicates(discoverInstalledPackages(root));
     expect(dups).toHaveLength(1);
-    expect(dups[0]!.name).toBe("@assistant-ui/core");
+    expect(dups[0]!.name).toBe("@openagentui/core");
     const versions = dups[0]!.installations.map((i) => i.version).sort();
     expect(versions).toEqual(["0.2.2", "0.2.5"]);
   });
@@ -299,13 +299,13 @@ describe("doctor — no pnpm store", () => {
         JSON.stringify({ name: "fixture", version: "1.0.0" }),
       );
       writePackage(root, {
-        name: "@assistant-ui/react",
+        name: "@openagentui/react",
         version: "0.14.5",
-        installPath: "node_modules/@assistant-ui/react",
+        installPath: "node_modules/@openagentui/react",
       });
       const found = discoverInstalledPackages(root);
       expect(found.map((p) => `${p.name}@${p.version}`)).toEqual([
-        "@assistant-ui/react@0.14.5",
+        "@openagentui/react@0.14.5",
       ]);
     } finally {
       fs.rmSync(root, { recursive: true, force: true });
@@ -316,14 +316,14 @@ describe("doctor — no pnpm store", () => {
 describe("findOutdated", () => {
   it("flags packages whose installed version is older than the latest", () => {
     const installed: DiscoveredPackage[] = [
-      { name: "@assistant-ui/react", version: "0.14.5", installPath: "" },
-      { name: "@assistant-ui/core", version: "0.2.5", installPath: "" },
-      { name: "assistant-stream", version: "0.3.14", installPath: "" },
+      { name: "@openagentui/react", version: "0.14.5", installPath: "" },
+      { name: "@openagentui/core", version: "0.2.5", installPath: "" },
+      { name: "openagentui-stream", version: "0.3.14", installPath: "" },
     ];
     const latest = new Map<string, string | null>([
-      ["@assistant-ui/react", "0.15.0"],
-      ["@assistant-ui/core", "0.2.5"],
-      ["assistant-stream", "0.3.16"],
+      ["@openagentui/react", "0.15.0"],
+      ["@openagentui/core", "0.2.5"],
+      ["openagentui-stream", "0.3.16"],
     ]);
 
     const outdated = findOutdated(installed, latest);
@@ -331,18 +331,18 @@ describe("findOutdated", () => {
       .map((o) => `${o.name}:${o.current}->${o.latest}`)
       .join(",");
 
-    expect(summary).toContain("@assistant-ui/react:0.14.5->0.15.0");
-    expect(summary).toContain("assistant-stream:0.3.14->0.3.16");
-    expect(summary).not.toContain("@assistant-ui/core");
+    expect(summary).toContain("@openagentui/react:0.14.5->0.15.0");
+    expect(summary).toContain("openagentui-stream:0.3.14->0.3.16");
+    expect(summary).not.toContain("@openagentui/core");
   });
 
   it("uses the newest installed version when multiple are found", () => {
     const installed: DiscoveredPackage[] = [
-      { name: "@assistant-ui/core", version: "0.2.2", installPath: "a" },
-      { name: "@assistant-ui/core", version: "0.2.5", installPath: "b" },
+      { name: "@openagentui/core", version: "0.2.2", installPath: "a" },
+      { name: "@openagentui/core", version: "0.2.5", installPath: "b" },
     ];
     const latest = new Map<string, string | null>([
-      ["@assistant-ui/core", "0.2.5"],
+      ["@openagentui/core", "0.2.5"],
     ]);
     expect(findOutdated(installed, latest)).toEqual([]);
   });
@@ -350,18 +350,18 @@ describe("findOutdated", () => {
   it("flags an older numeric prerelease", () => {
     const installed: DiscoveredPackage[] = [
       {
-        name: "@assistant-ui/react",
+        name: "@openagentui/react",
         version: "1.0.0-beta.2",
         installPath: "",
       },
     ];
     const latest = new Map<string, string | null>([
-      ["@assistant-ui/react", "1.0.0-beta.10"],
+      ["@openagentui/react", "1.0.0-beta.10"],
     ]);
 
     expect(findOutdated(installed, latest)).toEqual([
       {
-        name: "@assistant-ui/react",
+        name: "@openagentui/react",
         current: "1.0.0-beta.2",
         latest: "1.0.0-beta.10",
       },
@@ -370,10 +370,10 @@ describe("findOutdated", () => {
 
   it("skips packages with no latest version (e.g. network failed)", () => {
     const installed: DiscoveredPackage[] = [
-      { name: "@assistant-ui/react", version: "0.14.5", installPath: "" },
+      { name: "@openagentui/react", version: "0.14.5", installPath: "" },
     ];
     const latest = new Map<string, string | null>([
-      ["@assistant-ui/react", null],
+      ["@openagentui/react", null],
     ]);
     expect(findOutdated(installed, latest)).toEqual([]);
   });
@@ -382,13 +382,13 @@ describe("findOutdated", () => {
 describe("uniquePackageNames", () => {
   it("returns sorted unique names", () => {
     const installed: DiscoveredPackage[] = [
-      { name: "@assistant-ui/react", version: "0.14.5", installPath: "" },
-      { name: "@assistant-ui/core", version: "0.2.2", installPath: "" },
-      { name: "@assistant-ui/core", version: "0.2.5", installPath: "" },
+      { name: "@openagentui/react", version: "0.14.5", installPath: "" },
+      { name: "@openagentui/core", version: "0.2.2", installPath: "" },
+      { name: "@openagentui/core", version: "0.2.5", installPath: "" },
     ];
     expect(uniquePackageNames(installed)).toEqual([
-      "@assistant-ui/core",
-      "@assistant-ui/react",
+      "@openagentui/core",
+      "@openagentui/react",
     ]);
   });
 });

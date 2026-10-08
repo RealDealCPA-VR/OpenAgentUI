@@ -2,13 +2,13 @@ import { Children, cloneElement, isValidElement, type ReactNode } from "react";
 import type { Platform, Surface } from "@/lib/constants";
 import { isSurface } from "@/lib/docs-platform";
 
-// Negative lookahead avoids matching siblings like `@assistant-ui/react-langgraph`.
-const PACKAGE_PATTERN = /@assistant-ui\/react(?![-\w])/g;
+// Negative lookahead avoids matching siblings like `@openagentui/react-langgraph`.
+const PACKAGE_PATTERN = /@openagentui\/react(?![-\w])/g;
 
 const PLATFORM_PACKAGE: Record<Surface, string> = {
-  react: "@assistant-ui/react",
-  rn: "@assistant-ui/react-native",
-  ink: "@assistant-ui/react-ink",
+  react: "@openagentui/react",
+  rn: "@openagentui/react-native",
+  ink: "@openagentui/react-ink",
 };
 
 export function rewritePlatformPackages(

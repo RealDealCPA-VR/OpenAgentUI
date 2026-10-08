@@ -1,3 +1,3 @@
 "use client";
 
-export { useCloudThreadListAdapter } from "@assistant-ui/core/react";
+export { useCloudThreadListAdapter } from "@openagentui/core/react";

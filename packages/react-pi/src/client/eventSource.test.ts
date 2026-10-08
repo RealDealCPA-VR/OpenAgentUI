@@ -156,7 +156,7 @@ const knownEventBodies = {
     type: "tool_execution_start",
     toolCallId: "tool-1",
     toolName: "search",
-    args: { query: "assistant-ui" },
+    args: { query: "openagentui" },
   },
   tool_execution_update: {
     type: "tool_execution_update",

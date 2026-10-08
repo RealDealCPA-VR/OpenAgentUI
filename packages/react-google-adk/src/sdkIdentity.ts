@@ -1,7 +1,7 @@
-import type { SdkIdentity } from "assistant-cloud";
+import type { SdkIdentity } from "openagentui-cloud";
 
 export const ADK_SDK: SdkIdentity = {
-  name: "@assistant-ui/react-google-adk",
+  name: "@openagentui/react-google-adk",
   version:
     typeof __AUI_PACKAGE_VERSION__ === "string"
       ? __AUI_PACKAGE_VERSION__

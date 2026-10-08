@@ -8,7 +8,7 @@ import {
 import type {
   Unstable_TriggerItem,
   Unstable_DirectiveFormatter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 function createTestEditor() {
   return createEditor({

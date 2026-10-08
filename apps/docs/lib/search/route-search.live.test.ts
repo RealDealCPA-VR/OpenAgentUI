@@ -6,7 +6,7 @@ const enabled = process.env.RUN_JEV_SEARCH_EVAL === "1";
 
 describe.skipIf(!enabled)("live docs route decisions", () => {
   it("routes natural-language searches across the published documentation", async () => {
-    const response = await fetch("https://www.assistant-ui.com/api/search");
+    const response = await fetch("https://openagentui.dev/api/search");
     expect(response.ok).toBe(true);
     const pages = (await response.json()) as RoutePage[];
     const apiKey = process.env.JEV_KEY;

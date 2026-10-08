@@ -21,8 +21,8 @@ The iframe acts as a provider of model context using `AssistantFrameProvider`:
 
 ```tsx
 // iframe.tsx
-import { AssistantFrameProvider } from "@assistant-ui/react";
-import { ModelContextRegistry } from "@assistant-ui/react";
+import { AssistantFrameProvider } from "@openagentui/react";
+import { ModelContextRegistry } from "@openagentui/react";
 import { z } from "zod";
 
 // Create a registry to manage your model context
@@ -68,7 +68,7 @@ import {
   useAssistantFrameHost,
   useAui,
   type AssistantFrameHost,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { useCallback, useRef } from "react";
 
 function ParentComponent() {
@@ -89,7 +89,7 @@ function ParentComponent() {
 
   return (
     <div>
-      <Thread /> {/* Your assistant-ui */}
+      <Thread /> {/* Your openagentui */}
       <iframe
         ref={iframeRef}
         src="https://trusted-iframe-domain.com/embed"

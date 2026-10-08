@@ -66,7 +66,7 @@ afterEach(() => {
 
 describe("public assistant rate limits", () => {
   const request = () =>
-    new Request("https://www.assistant-ui.com/api/chat", {
+    new Request("https://openagentui.dev/api/chat", {
       headers: {
         "x-vercel-forwarded-for": "203.0.113.10",
         "x-forwarded-for": "198.51.100.99",
@@ -164,10 +164,9 @@ describe("public assistant rate limits", () => {
   });
 
   it("falls back to the first forwarded IP outside Vercel", async () => {
-    const forwardedRequest = new Request(
-      "https://www.assistant-ui.com/api/chat",
-      { headers: { "x-forwarded-for": "198.51.100.4, 10.0.0.1" } },
-    );
+    const forwardedRequest = new Request("https://openagentui.dev/api/chat", {
+      headers: { "x-forwarded-for": "198.51.100.4, 10.0.0.1" },
+    });
 
     await checkPublicAssistantRateLimit(forwardedRequest, "session_1234567890");
 
@@ -179,10 +178,9 @@ describe("public assistant rate limits", () => {
 
   it("ignores an untrusted forwarded IP in production", async () => {
     vi.stubEnv("NODE_ENV", "production");
-    const forwardedRequest = new Request(
-      "https://www.assistant-ui.com/api/chat",
-      { headers: { "x-forwarded-for": "198.51.100.4" } },
-    );
+    const forwardedRequest = new Request("https://openagentui.dev/api/chat", {
+      headers: { "x-forwarded-for": "198.51.100.4" },
+    });
 
     const response = await checkPublicAssistantRateLimit(
       forwardedRequest,
@@ -196,10 +194,9 @@ describe("public assistant rate limits", () => {
   it("accepts a forwarded IP from an explicitly trusted proxy", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("AUI_TRUST_X_FORWARDED_FOR", "1");
-    const forwardedRequest = new Request(
-      "https://www.assistant-ui.com/api/chat",
-      { headers: { "x-forwarded-for": "198.51.100.4" } },
-    );
+    const forwardedRequest = new Request("https://openagentui.dev/api/chat", {
+      headers: { "x-forwarded-for": "198.51.100.4" },
+    });
 
     await checkPublicAssistantRateLimit(forwardedRequest, "session_1234567890");
 
@@ -208,7 +205,7 @@ describe("public assistant rate limits", () => {
 
   it("fails closed and logs when no client IP is available", async () => {
     const response = await checkPublicAssistantRateLimit(
-      new Request("https://www.assistant-ui.com/api/chat"),
+      new Request("https://openagentui.dev/api/chat"),
       "session_1234567890",
     );
 
@@ -263,7 +260,7 @@ describe("public assistant rate limits", () => {
 
 describe("MCP template tool rate limits", () => {
   const request = () =>
-    new Request("https://www.assistant-ui.com/api/mcp", {
+    new Request("https://openagentui.dev/api/mcp", {
       method: "POST",
       headers: { "x-vercel-forwarded-for": "203.0.113.10" },
     });
@@ -338,7 +335,7 @@ describe("MCP template tool rate limits", () => {
 
   it("fails closed when no client IP is available", async () => {
     const response = await checkMcpTemplateToolRateLimit(
-      new Request("https://www.assistant-ui.com/api/mcp", { method: "POST" }),
+      new Request("https://openagentui.dev/api/mcp", { method: "POST" }),
     );
 
     expect(response?.status).toBe(503);
@@ -362,7 +359,7 @@ describe("MCP template tool rate limits", () => {
 
 describe("MCP docs tool rate limits", () => {
   const request = () =>
-    new Request("https://www.assistant-ui.com/api/mcp", {
+    new Request("https://openagentui.dev/api/mcp", {
       method: "POST",
       headers: { "x-vercel-forwarded-for": "203.0.113.10" },
     });
@@ -437,7 +434,7 @@ describe("MCP docs tool rate limits", () => {
 
   it("fails closed when no client IP is available", async () => {
     const response = await checkMcpDocsToolRateLimit(
-      new Request("https://www.assistant-ui.com/api/mcp", { method: "POST" }),
+      new Request("https://openagentui.dev/api/mcp", { method: "POST" }),
     );
 
     expect(response?.status).toBe(503);
@@ -462,7 +459,7 @@ describe("MCP docs tool rate limits", () => {
 describe("Xulux download proxy rate limits", () => {
   const request = () =>
     new Request(
-      "https://www.assistant-ui.com/api/xulux/download-proxy?templateId=demo",
+      "https://openagentui.dev/api/xulux/download-proxy?templateId=demo",
       { headers: { "x-vercel-forwarded-for": "203.0.113.10" } },
     );
 
@@ -539,7 +536,7 @@ describe("Xulux download proxy rate limits", () => {
   it("fails closed when no client IP is available", async () => {
     const response = await checkXuluxDownloadProxyRateLimit(
       new Request(
-        "https://www.assistant-ui.com/api/xulux/download-proxy?templateId=demo",
+        "https://openagentui.dev/api/xulux/download-proxy?templateId=demo",
       ),
     );
 
@@ -565,7 +562,7 @@ describe("Xulux download proxy rate limits", () => {
 describe("docs search limits", () => {
   const request = () =>
     new Request(
-      "https://www.assistant-ui.com/api/search/suggest?query=save+history",
+      "https://openagentui.dev/api/search/suggest?query=save+history",
       { headers: { "x-vercel-forwarded-for": "203.0.113.10" } },
     );
 
@@ -597,7 +594,7 @@ describe("docs search limits", () => {
     expect(
       (
         await checkDocsSearchRateLimit(
-          new Request("https://www.assistant-ui.com/api/search/suggest"),
+          new Request("https://openagentui.dev/api/search/suggest"),
         )
       )?.status,
     ).toBe(503);

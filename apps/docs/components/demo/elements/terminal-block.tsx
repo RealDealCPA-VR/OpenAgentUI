@@ -1,6 +1,6 @@
 "use client";
 
-import { TerminalBlock } from "@/components/assistant-ui/elements/terminal-block";
+import { TerminalBlock } from "@/components/openagentui/elements/terminal-block";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const LINES = [
@@ -40,7 +40,7 @@ export function TerminalBlockInkDemo() {
 export function TerminalBlockFailedDemo() {
   return (
     <TerminalBlock
-      cwd="~/assistant-ui"
+      cwd="~/openagentui"
       command="pnpm build"
       lines={[
         "\u001b[1mBuilding package\u001b[0m",

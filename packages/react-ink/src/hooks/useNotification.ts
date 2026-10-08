@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { useAuiState } from "@assistant-ui/store";
-import type { MessageStatus } from "@assistant-ui/core";
+import { useAuiState } from "@openagentui/store";
+import type { MessageStatus } from "@openagentui/core";
 import {
   ringBell,
   sendOSCNotification,
@@ -71,7 +71,7 @@ const invokeCustomHandler = <T extends NotificationEvent["type"]>(
 ) => {
   const reportError = (error: unknown) => {
     console.error(
-      `[assistant-ui/react-ink] ${event.type} notification callback threw an error`,
+      `[openagentui/react-ink] ${event.type} notification callback threw an error`,
       error,
     );
   };

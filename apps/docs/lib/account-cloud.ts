@@ -1,6 +1,6 @@
 import "server-only";
 
-import { AssistantCloud } from "@assistant-ui/react";
+import { AssistantCloud } from "@openagentui/react";
 
 export function accountCloud(userId: string): AssistantCloud | null {
   const apiKey = process.env.ASSISTANT_API_KEY;

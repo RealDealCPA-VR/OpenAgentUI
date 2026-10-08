@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {
   QuestionFlow,
   type QuestionFlowStep,
-} from "@/components/assistant-ui/elements/question-flow";
+} from "@/components/openagentui/elements/question-flow";
 
 const STEPS: readonly QuestionFlowStep[] = [
   {

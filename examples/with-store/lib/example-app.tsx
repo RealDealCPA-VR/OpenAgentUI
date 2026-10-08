@@ -7,7 +7,7 @@ import {
   AuiConfig,
   useAuiState,
   useAuiEvent,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import { FooList, FooListResource } from "./store/foo-store";
 
 /**

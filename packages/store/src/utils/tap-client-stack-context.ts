@@ -1,12 +1,12 @@
 import { useMemo, use, createContext } from "react";
 
-import { useContextProvider } from "@assistant-ui/tap";
+import { useContextProvider } from "@openagentui/tap";
 import type { ClientMethods } from "../types/client";
 
 /**
  * Symbol used to get the client index from a ClientProxy.
  */
-export const SYMBOL_CLIENT_INDEX = Symbol("assistant-ui.store.clientIndex");
+export const SYMBOL_CLIENT_INDEX = Symbol("openagentui.store.clientIndex");
 
 /**
  * Get the index of a client (its position in the client stack when created).

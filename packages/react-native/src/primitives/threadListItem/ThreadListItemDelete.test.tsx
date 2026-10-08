@@ -7,7 +7,7 @@ const h = vi.hoisted(() => ({
   deleteThread: vi.fn<() => void>(),
 }));
 
-vi.mock("@assistant-ui/core/react", () => ({
+vi.mock("@openagentui/core/react", () => ({
   useThreadListItemDelete: () => ({ delete: h.deleteThread }),
 }));
 

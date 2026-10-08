@@ -1,4 +1,4 @@
-import { withAui } from "@assistant-ui/next";
+import { withAui } from "@openagentui/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {};
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Suggestion } from "@assistant-ui/core/store";
-  import { suggestionTrigger } from "@assistant-ui/svelte";
+  import type { Suggestion } from "@openagentui/core/store";
+  import { suggestionTrigger } from "@openagentui/svelte";
 
   let { suggestion, index }: { suggestion: Suggestion; index: number } =
     $props();

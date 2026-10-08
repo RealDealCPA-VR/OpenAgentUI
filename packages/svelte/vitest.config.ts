@@ -12,9 +12,9 @@ export default defineConfig({
     alias: [
       {
         find: /^react\/compiler-runtime$/,
-        replacement: "@assistant-ui/tap/standalone-shim/compiler-runtime",
+        replacement: "@openagentui/tap/standalone-shim/compiler-runtime",
       },
-      { find: /^react$/, replacement: "@assistant-ui/tap/standalone-shim" },
+      { find: /^react$/, replacement: "@openagentui/tap/standalone-shim" },
     ],
   },
   test: {

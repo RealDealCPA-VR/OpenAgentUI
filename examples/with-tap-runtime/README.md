@@ -1,6 +1,6 @@
 # Tap-Native Runtime Example
 
-This example demonstrates the first tap-native runtime implementation for assistant-ui using `@assistant-ui/tap` and `@assistant-ui/store`.
+This example demonstrates the first tap-native runtime implementation for openagentui using `@openagentui/tap` and `@openagentui/store`.
 
 ## Features
 
@@ -84,7 +84,7 @@ const config = AuiConfig({
                │
                ▼
 ┌─────────────────────────────────────┐
-│      Assistant UI Components        │
+│      OpenAgentUI Components        │
 │    <Thread.Messages />              │
 └─────────────────────────────────────┘
 ```
@@ -114,10 +114,10 @@ InMemoryThreadList({
 
 ### Client Registry
 
-Type-safe client definitions via module augmentation (defined in `@assistant-ui/react`):
+Type-safe client definitions via module augmentation (defined in `@openagentui/react`):
 
 ```typescript
-declare module "@assistant-ui/store" {
+declare module "@openagentui/store" {
   interface ScopeRegistry {
     threads: ThreadsClientSchema;
     thread: ThreadClientSchema;
@@ -140,7 +140,7 @@ You can extend this example to:
 
 ## Learn More
 
-- [Tap Documentation](https://github.com/assistant-ui/assistant-ui/tree/main/packages/tap)
-- [Store Documentation](https://github.com/assistant-ui/assistant-ui/tree/main/packages/store)
-- [Client Implementation](https://github.com/assistant-ui/assistant-ui/tree/main/packages/core/src/react/client)
-- [Assistant UI Docs](https://assistant-ui.com)
+- [Tap Documentation](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/tap)
+- [Store Documentation](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/store)
+- [Client Implementation](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/core/src/react/client)
+- [OpenAgentUI Docs](https://openagentui.dev)

@@ -32,13 +32,13 @@ import {
   type RunReportStepInit,
   type RunTelemetryUsageInit,
   truncateRunTelemetryText,
-} from "assistant-cloud";
+} from "openagentui-cloud";
 import {
   extractAISDKRunTelemetry,
   type AISDKMessageLike,
-} from "assistant-cloud/ai-sdk";
+} from "openagentui-cloud/ai-sdk";
 import { auiV0DecodeSafely, auiV0Encode } from "./auiV0";
-import { type AssistantClient, getClientId, useAui } from "@assistant-ui/store";
+import { type AssistantClient, getClientId, useAui } from "@openagentui/store";
 import {
   type KeyedThreadListItem as CloudThreadListItem,
   tryGetKeyedThreadListItem,
@@ -70,7 +70,7 @@ const globalPersistence = new WeakMap<
   ScopedPersistence
 >();
 
-export const DEFAULT_CLOUD_SCOPE = Symbol("assistant-ui:cloud-default-scope");
+export const DEFAULT_CLOUD_SCOPE = Symbol("openagentui:cloud-default-scope");
 
 // Kept per persistence so they share the id mapping's lifetime: ids whose stored aui/v0 entry is settled, and ids whose run a write has reported.
 const runLedgers = new WeakMap<
@@ -298,7 +298,7 @@ class AssistantCloudThreadHistoryAdapter implements ThreadHistoryAdapter {
         const threadListItem = tryGetKeyedThreadListItem(this.aui);
         if (!threadListItem || !threadListItem.getState().remoteId) {
           console.warn(
-            `[assistant-ui] Skipping feedback for message ${message.id}: the thread has no remote id.`,
+            `[openagentui] Skipping feedback for message ${message.id}: the thread has no remote id.`,
           );
           return;
         }
@@ -313,7 +313,7 @@ class AssistantCloudThreadHistoryAdapter implements ThreadHistoryAdapter {
         this.assertCurrentScope(context);
         if (!cloudMessageId) {
           console.warn(
-            `[assistant-ui] Skipping feedback for message ${message.id}: no cloud message id is mapped.`,
+            `[openagentui] Skipping feedback for message ${message.id}: no cloud message id is mapped.`,
           );
           return;
         }
@@ -324,10 +324,7 @@ class AssistantCloudThreadHistoryAdapter implements ThreadHistoryAdapter {
           { type, ...(comment ? { comment } : undefined) },
         );
       })().catch((error: unknown) => {
-        console.error(
-          "[assistant-ui] Cloud feedback submission failed:",
-          error,
-        );
+        console.error("[openagentui] Cloud feedback submission failed:", error);
       });
     },
   };
@@ -635,14 +632,14 @@ class AssistantCloudThreadHistoryAdapter implements ThreadHistoryAdapter {
           ) {
             copied.closed = true;
             console.warn(
-              `[assistant-ui] The cloud refused copies to thread ${remoteId}; the dashboard shows the conversation as far as it was copied.`,
+              `[openagentui] The cloud refused copies to thread ${remoteId}; the dashboard shows the conversation as far as it was copied.`,
               error,
             );
             return;
           }
           copied.refused.add(message.id);
           console.warn(
-            `[assistant-ui] The cloud refused the copy of message ${message.id}; the dashboard shows the conversation without it.`,
+            `[openagentui] The cloud refused the copy of message ${message.id}; the dashboard shows the conversation without it.`,
             error,
           );
           continue;

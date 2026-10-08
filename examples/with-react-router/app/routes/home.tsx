@@ -1,15 +1,15 @@
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   useAui,
   AuiProvider,
   AuiConfig,
   Suggestions,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 export function meta() {
   return [
-    { title: "assistant-ui with React Router" },
-    { name: "description", content: "assistant-ui example with React Router" },
+    { title: "openagentui with React Router" },
+    { name: "description", content: "openagentui example with React Router" },
   ];
 }
 

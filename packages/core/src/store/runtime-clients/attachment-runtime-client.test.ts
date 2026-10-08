@@ -1,4 +1,4 @@
-import { createTapRoot, useResource } from "@assistant-ui/tap";
+import { createTapRoot, useResource } from "@openagentui/tap";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { AttachmentRuntime } from "../../runtime/api/attachment-runtime";
 import { AttachmentRuntimeClient } from "./attachment-runtime-client";
@@ -33,7 +33,7 @@ describe("AttachmentRuntimeClient", () => {
     await expect(root.getValue().remove()).rejects.toBe(error);
 
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] attachment remove failed:",
+      "[openagentui] attachment remove failed:",
       error,
     );
     root.unmount();

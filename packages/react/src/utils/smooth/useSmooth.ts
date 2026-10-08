@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiState } from "@openagentui/store";
 import type {
   MessagePartStatus,
   ReasoningMessagePart,
   TextMessagePart,
   MessagePartState,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { useCallbackRef } from "radix-ui/internal";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useSmoothStatusStore } from "./SmoothContext";

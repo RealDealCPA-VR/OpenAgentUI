@@ -50,7 +50,7 @@ test("detects app build inputs", () => {
 test("ignores changes outside app builds", () => {
   for (const file of [
     "apps/docs/package.json",
-    "api-surface/assistant-ui__react.ts",
+    "api-surface/openagentui__react.ts",
     ".changeset/example.md",
     "README.md",
     "scripts/check-changesets.mjs",

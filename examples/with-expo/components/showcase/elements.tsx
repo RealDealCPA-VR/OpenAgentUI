@@ -11,39 +11,39 @@ import { Pressable, Text, View } from "react-native";
 import {
   AgentStatus,
   type AgentState,
-} from "@/components/assistant-ui/elements/agent-status";
+} from "@/components/openagentui/elements/agent-status";
 import {
   ApprovalCard,
   type ApprovalState,
-} from "@/components/assistant-ui/elements/approval-card";
+} from "@/components/openagentui/elements/approval-card";
 import {
   ConversationMap,
   type ConversationMapEntry,
-} from "@/components/assistant-ui/elements/conversation-map";
-import { ErrorState } from "@/components/assistant-ui/elements/error-state";
-import { File } from "@/components/assistant-ui/elements/file";
-import { Image } from "@/components/assistant-ui/elements/image";
-import { IconButton } from "@/components/assistant-ui/elements/icon-button";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
-import { MessageQueue } from "@/components/assistant-ui/elements/message-queue";
+} from "@/components/openagentui/elements/conversation-map";
+import { ErrorState } from "@/components/openagentui/elements/error-state";
+import { File } from "@/components/openagentui/elements/file";
+import { Image } from "@/components/openagentui/elements/image";
+import { IconButton } from "@/components/openagentui/elements/icon-button";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
+import { MessageQueue } from "@/components/openagentui/elements/message-queue";
 import {
   ReasoningContent,
   ReasoningRoot,
   ReasoningText,
   ReasoningTrigger,
-} from "@/components/assistant-ui/elements/reasoning";
-import { StoppedRun } from "@/components/assistant-ui/elements/stopped-run";
-import { TaskCard } from "@/components/assistant-ui/elements/task-card";
+} from "@/components/openagentui/elements/reasoning";
+import { StoppedRun } from "@/components/openagentui/elements/stopped-run";
+import { TaskCard } from "@/components/openagentui/elements/task-card";
 import {
   ToolTimeline,
   type TimelineStat,
   type TimelineStep,
-} from "@/components/assistant-ui/elements/tool-timeline";
-import { TypingIndicator } from "@/components/assistant-ui/elements/typing-indicator";
+} from "@/components/openagentui/elements/tool-timeline";
+import { TypingIndicator } from "@/components/openagentui/elements/typing-indicator";
 import {
   VoiceConversation,
   type VoiceTurn,
-} from "@/components/assistant-ui/elements/voice-conversation";
+} from "@/components/openagentui/elements/voice-conversation";
 import { Icon } from "@/components/ui/icon";
 
 import { usePhases } from "./use-phases";
@@ -364,7 +364,7 @@ function FileDemo() {
         status={{ type: "complete" }}
         filename="react-native-docs.html"
         mimeType="text/html"
-        data="https://www.assistant-ui.com/docs/react-native"
+        data="https://openagentui.dev/docs/react-native"
       />
     </View>
   );
@@ -377,7 +377,7 @@ function ImageDemo() {
         type="image"
         status={{ type: "complete" }}
         filename="expo.png"
-        image="https://www.assistant-ui.com/screenshot/examples/expo.png"
+        image="https://openagentui.dev/screenshot/examples/expo.png"
       />
     </View>
   );

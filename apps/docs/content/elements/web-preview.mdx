@@ -9,20 +9,20 @@ Web preview is chrome around a preview: a reload button, a URL bar, and an open-
 
 <RuntimeMode>
 
-`WebPreview` never sandboxes its `children` itself, so pairing it with a tool that returns model-written markup means isolating that markup yourself. [`safe-content-frame`](/safe-content-frame) is built for this: it mounts an iframe on a separate, per-render origin so model-generated script cannot reach your page's cookies, storage, or DOM.
+`WebPreview` never sandboxes its `children` itself, so pairing it with a tool that returns model-written markup means isolating that markup yourself. [`@openagentui/safe-content-frame`](/safe-content-frame) is built for this: it mounts an iframe on a separate, per-render origin so model-generated script cannot reach your page's cookies, storage, or DOM.
 
 <Steps>
   <Step>
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/render-preview-tool-ui.tsx"
+```tsx title="components/openagentui/elements/render-preview-tool-ui.tsx"
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { SafeContentFrame, type RenderedFrame } from "safe-content-frame";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { WebPreview } from "@/components/assistant-ui/elements/web-preview";
+import { SafeContentFrame, type RenderedFrame } from "@openagentui/safe-content-frame";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { WebPreview } from "@/components/openagentui/elements/web-preview";
 
 const frame = new SafeContentFrame("my-app");
 
@@ -70,9 +70,9 @@ export const RenderPreviewToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { RenderPreviewToolUI } from "@/components/assistant-ui/elements/render-preview-tool-ui";
+import { RenderPreviewToolUI } from "@/components/openagentui/elements/render-preview-tool-ui";
 
 export const toolkit = defineToolkit({
   render_preview: {
@@ -86,8 +86,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -101,7 +101,7 @@ export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
 }
 ```
 
-Install `safe-content-frame` separately; it is framework-agnostic and has no React dependency of its own. See [Tool UI](/docs/tools/tool-ui) for backend-defined tools and approval gates.
+Install `@openagentui/safe-content-frame` separately; it is framework-agnostic and has no React dependency of its own. See [Tool UI](/docs/tools/tool-ui) for backend-defined tools and approval gates.
 
   </Step>
 </Steps>
@@ -121,7 +121,7 @@ Standalone, `WebPreview` is chrome only: build or reuse your own sandboxed frame
 "use client";
 
 import { useState } from "react";
-import { WebPreview } from "@/components/assistant-ui/elements/web-preview";
+import { WebPreview } from "@/components/openagentui/elements/web-preview";
 
 export function Preview({ url }: { url: string }) {
   const [loading, setLoading] = useState(true);

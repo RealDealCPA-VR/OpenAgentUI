@@ -83,7 +83,7 @@ const context = (
   state,
   session: {
     id: "test",
-    products: ["assistant-ui"],
+    products: ["openagentui"],
     startedAt: 1,
     fromCart,
     ...session,
@@ -177,7 +177,7 @@ describe("SetupWizard", () => {
   it("starts with the introduction, with Back disabled and Next continuing", () => {
     render(<SetupWizard checkout={context(initialCheckoutState(), false)} />);
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe(
-      "Welcome to the setup wizard for assistant-ui",
+      "Welcome to the setup wizard for openagentui",
     );
     expect(footer().getByRole("button", { name: "Back" })).toHaveProperty(
       "disabled",
@@ -197,7 +197,7 @@ describe("SetupWizard", () => {
     render(
       <SetupWizard
         checkout={context(initialCheckoutState(), false, false, {
-          products: ["assistant-ui", "cloud", "agent-tools"],
+          products: ["openagentui", "cloud", "agent-tools"],
         })}
       />,
     );
@@ -206,7 +206,7 @@ describe("SetupWizard", () => {
     );
     expect(
       screen.getByText(
-        "Setting up assistant-ui, Assistant Cloud, and Agent Tool.",
+        "Setting up openagentui, Assistant Cloud, and Agent Tool.",
       ).className,
     ).toContain("text-muted-foreground");
   });
@@ -223,7 +223,7 @@ describe("SetupWizard", () => {
       render(
         <SetupWizard
           checkout={context(initialCheckoutState(), false, false, {
-            products: ["assistant-ui", "cloud"],
+            products: ["openagentui", "cloud"],
           })}
         />,
       );
@@ -231,13 +231,13 @@ describe("SetupWizard", () => {
     };
     try {
       expect(intro(1)).toBe(
-        "Welcome to the setup wizard for assistant-ui and Assistant Cloud",
+        "Welcome to the setup wizard for openagentui and Assistant Cloud",
       );
       expect(screen.queryByText(/^Setting up/)).toBeNull();
       cleanup();
       expect(intro(2)).toBe("Welcome to the setup wizard");
       expect(
-        screen.getByText("Setting up assistant-ui and Assistant Cloud.")
+        screen.getByText("Setting up openagentui and Assistant Cloud.")
           .className,
       ).toContain("text-muted-foreground");
     } finally {
@@ -272,13 +272,13 @@ describe("SetupWizard", () => {
       render(
         <SetupWizard
           checkout={context(initialCheckoutState(), false, false, {
-            products: ["assistant-ui", "cloud"],
+            products: ["openagentui", "cloud"],
           })}
         />,
       );
       const heading = screen.getByRole("heading", { level: 1 });
       expect(heading.textContent).toBe(
-        "Welcome to the setup wizard for assistant-ui and Assistant Cloud",
+        "Welcome to the setup wizard for openagentui and Assistant Cloud",
       );
       const resized = observed.get(heading);
       expect(resized).toBeDefined();
@@ -288,7 +288,7 @@ describe("SetupWizard", () => {
         "Welcome to the setup wizard",
       );
       expect(
-        screen.getByText("Setting up assistant-ui and Assistant Cloud.")
+        screen.getByText("Setting up openagentui and Assistant Cloud.")
           .className,
       ).toContain("text-muted-foreground");
     } finally {
@@ -501,7 +501,7 @@ describe("SetupWizard", () => {
           log: [
             line("l1", "s1", "Created app/api/chat/route.ts"),
             line("l2", "s1", "Completed: Add the route"),
-            line("l3", "s2", "Installing @assistant-ui/react"),
+            line("l3", "s2", "Installing @openagentui/react"),
             line("l4", "s2", "Writing app/assistant.tsx"),
             ...later,
           ],
@@ -537,7 +537,7 @@ describe("SetupWizard", () => {
       within(live)
         .getAllByRole("listitem")
         .map((item) => item.textContent),
-    ).toEqual(["Installing @assistant-ui/react", "Writing app/assistant.tsx"]);
+    ).toEqual(["Installing @openagentui/react", "Writing app/assistant.tsx"]);
     expect(within(third!).queryByRole("button")).toBeNull();
     expect(centered()).toEqual(["Wire the runtime"]);
 
@@ -622,7 +622,7 @@ describe("SetupWizard", () => {
           role: "agent",
           phase: "installing",
           at: 1,
-          text: "Installing @assistant-ui/react",
+          text: "Installing @openagentui/react",
           stepId: "s2",
         })}
       />,
@@ -635,7 +635,7 @@ describe("SetupWizard", () => {
       within(log)
         .getAllByRole("listitem")
         .map((item) => item.textContent),
-    ).toEqual(["Installing @assistant-ui/react"]);
+    ).toEqual(["Installing @openagentui/react"]);
     expect(
       within(row)
         .getByRole("button", {
@@ -1344,7 +1344,7 @@ describe("SetupWizard", () => {
     fireEvent.click(footer().getByRole("button", { name: "Back" }));
     expect(heading()).toBe("Claude Code is connected");
     fireEvent.click(footer().getByRole("button", { name: "Back" }));
-    expect(heading()).toBe("Welcome to the setup wizard for assistant-ui");
+    expect(heading()).toBe("Welcome to the setup wizard for openagentui");
     expect(screen.queryByRole("button", { name: "Continue" })).toBeNull();
     fireEvent.click(footer().getByRole("button", { name: "Next" }));
     fireEvent.click(footer().getByRole("button", { name: "Next" }));

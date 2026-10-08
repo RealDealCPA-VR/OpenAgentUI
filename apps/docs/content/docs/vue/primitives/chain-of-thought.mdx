@@ -10,7 +10,7 @@ The app provides the `chainOfThought` scope for a message. Vue provides `ChainOf
 ```vue title="app/components/ChainOfThought.vue"
 <script setup lang="ts">
 import { computed } from "vue";
-import { ChainOfThoughtClient } from "@assistant-ui/core/store";
+import { ChainOfThoughtClient } from "@openagentui/core/store";
 import {
   AuiConfig,
   AuiIf,
@@ -19,7 +19,7 @@ import {
   ChainOfThoughtPrimitiveParts,
   useAui,
   useAuiState,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 
 const aui = useAui();
 const messageParts = useAuiState((s) => s.message.parts);

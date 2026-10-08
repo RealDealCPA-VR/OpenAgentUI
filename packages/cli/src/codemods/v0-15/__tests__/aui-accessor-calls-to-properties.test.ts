@@ -90,7 +90,7 @@ client.thread();`);
   });
 
   it("recognizes an aliased assistant hook without matching a foreign hook", () => {
-    const input = `import { useAui as useClient } from "@assistant-ui/react";
+    const input = `import { useAui as useClient } from "@openagentui/react";
 import { useAui } from "./other";
 const client = useClient();
 const other = useAui();

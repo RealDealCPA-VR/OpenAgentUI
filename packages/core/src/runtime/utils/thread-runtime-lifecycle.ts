@@ -44,7 +44,7 @@ const endMediaSession = (end: () => void, what: string) => {
     end();
   } catch (error) {
     console.error(
-      `[assistant-ui] ${what} cleanup threw while discarding a thread runtime`,
+      `[openagentui] ${what} cleanup threw while discarding a thread runtime`,
       error,
     );
   }

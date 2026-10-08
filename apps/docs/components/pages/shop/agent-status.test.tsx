@@ -23,7 +23,7 @@ const context = (
   agentPresent = false,
 ): CheckoutContextValue => ({
   state,
-  session: { id: "test", products: ["assistant-ui"], startedAt: 1 },
+  session: { id: "test", products: ["openagentui"], startedAt: 1 },
   url: "http://localhost/test",
   agentPresent,
   degraded: false,
@@ -71,11 +71,11 @@ describe("agent connection", () => {
 
 describe("installation prompt", () => {
   it.each([
-    [["assistant-ui"], "assistant-ui"],
-    [["assistant-ui", "Assistant Cloud"], "assistant-ui and Assistant Cloud"],
+    [["openagentui"], "openagentui"],
+    [["openagentui", "Assistant Cloud"], "openagentui and Assistant Cloud"],
     [
-      ["assistant-ui", "Assistant Cloud", "DevTools"],
-      "assistant-ui, Assistant Cloud, and DevTools",
+      ["openagentui", "Assistant Cloud", "DevTools"],
+      "openagentui, Assistant Cloud, and DevTools",
     ],
   ])("names %j naturally", (products, list) => {
     expect(
@@ -87,7 +87,7 @@ describe("installation prompt", () => {
 
   it("uses the selected products before the server snapshot arrives", () => {
     render(<AgentStatus checkout={context(initialCheckoutState())} inline />);
-    expect(screen.getByText(/^Install assistant-ui\./)).toBeDefined();
+    expect(screen.getByText(/^Install openagentui\./)).toBeDefined();
     expect(screen.getByRole("button", { name: "Copy prompt" })).toBeDefined();
     expect(screen.queryByText(/leading !/)).toBeNull();
   });

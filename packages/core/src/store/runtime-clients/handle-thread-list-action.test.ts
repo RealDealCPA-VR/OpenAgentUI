@@ -18,7 +18,7 @@ describe("handleThreadListAction", () => {
     expect(result).toBe(task);
     await expect(result).rejects.toBe(error);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] thread list delete failed:",
+      "[openagentui] thread list delete failed:",
       error,
     );
   });
@@ -62,7 +62,7 @@ describe("handleThreadListAction", () => {
 
     expect(rejections).toEqual([]);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] thread list delete failed:",
+      "[openagentui] thread list delete failed:",
       error,
     );
   });

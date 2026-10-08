@@ -13,8 +13,8 @@ import {
   ComposerPrimitiveSend,
   MessagePrimitiveParts,
   useAuiState,
-} from "@assistant-ui/vue";
-import type {} from "@assistant-ui/core/store";
+} from "@openagentui/vue";
+import type {} from "@openagentui/core/store";
 import {
   CheckIcon,
   ChevronLeftIcon,

@@ -1,13 +1,13 @@
 import type {
   AssistantRuntime,
   ThreadListItemRuntime,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   DefaultChatTransport,
   type HttpChatTransportInitOptions,
   type UIMessage,
 } from "ai";
-import { toToolsJSONSchema } from "assistant-stream";
+import { toToolsJSONSchema } from "openagentui-stream";
 import {
   RESUMABLE_STREAM_ID_HEADER,
   type AssistantChatResumableOptions,
@@ -21,8 +21,8 @@ export type InitializableThreadListItem = Pick<
 const FINISH_MARKER = '"type":"finish"';
 const FINISH_BUFFER_LIMIT = 4096;
 const FINISH_BUFFER_TAIL = 1024;
-const RESUMABLE_THREAD_ID_HEADER = "x-assistant-ui-resumable-thread-id";
-const RESUMABLE_RECONNECT_ID_HEADER = "x-assistant-ui-resumable-reconnect-id";
+const RESUMABLE_THREAD_ID_HEADER = "x-openagentui-resumable-thread-id";
+const RESUMABLE_RECONNECT_ID_HEADER = "x-openagentui-resumable-reconnect-id";
 
 // 101/204/205/304 are null-body statuses per the fetch spec: `new Response(body, { status })`
 // throws for them, and WebKit returns a non-null empty body, so the body check alone does not guard it.

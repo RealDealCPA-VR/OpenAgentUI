@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   getPartialJsonObjectFieldState,
   type ReadonlyJSONObject,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import {
   AISDKMessageConverter,
   type AISDKMessageConverterMetadata,
@@ -11,9 +11,9 @@ import {
 const { stableStringifySpy } = vi.hoisted(() => ({
   stableStringifySpy: vi.fn(),
 }));
-vi.mock("@assistant-ui/core/internal", async (importOriginal) => {
+vi.mock("@openagentui/core/internal", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@assistant-ui/core/internal")>();
+    await importOriginal<typeof import("@openagentui/core/internal")>();
   stableStringifySpy.mockImplementation(actual.stableStringifyToolArgs);
   return { ...actual, stableStringifyToolArgs: stableStringifySpy };
 });

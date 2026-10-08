@@ -1,17 +1,17 @@
 {
-  "name": "@assistant-ui/react-google-adk",
+  "name": "@openagentui/react-google-adk",
   "version": "0.0.35",
-  "description": "Google ADK adapter for assistant-ui",
+  "description": "Google ADK adapter for openagentui",
   "keywords": [
     "google-adk",
     "adk",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat",
     "agents"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -43,10 +43,10 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
-    "assistant-cloud": "*",
-    "assistant-stream": "^0.3.48"
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
+    "openagentui-cloud": "*",
+    "openagentui-stream": "^0.3.48"
   },
   "peerDependencies": {
     "@google/adk": ">=0.5.0",
@@ -62,8 +62,8 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",
@@ -75,13 +75,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-google-adk"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

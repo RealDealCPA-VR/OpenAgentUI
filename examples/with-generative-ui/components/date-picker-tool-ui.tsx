@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import { CalendarIcon, CheckCircle2Icon } from "lucide-react";
 
 type DatePickerArgs = {

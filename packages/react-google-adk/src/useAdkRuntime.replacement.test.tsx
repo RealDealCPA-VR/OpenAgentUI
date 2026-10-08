@@ -3,11 +3,11 @@
 import { act, render, waitFor } from "@testing-library/react";
 import { type FC } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
 import type {
   AssistantRuntime,
   RemoteThreadListAdapter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { useAdkRuntime } from "./useAdkRuntime";
 import type { AdkEvent } from "./types";
 import { settleOutsideAct } from "./tests/settleOutsideAct";

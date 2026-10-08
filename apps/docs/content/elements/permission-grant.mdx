@@ -19,7 +19,7 @@ A runtime whose backend declares tool approval gates (an AG-UI or ACP agent, for
 ```tsx title="app/shell-toolkit.tsx"
 "use client";
 
-import type { ToolApprovalResponse, ToolCallMessagePartProps } from "@assistant-ui/react";
+import type { ToolApprovalResponse, ToolCallMessagePartProps } from "@openagentui/react";
 
 function ShellApprovalGate({ args, approval, respondToApproval }: ToolCallMessagePartProps<{ command: string }, string>) {
   if (!approval || approval.approved !== undefined || approval.resolution !== undefined) {
@@ -90,7 +90,7 @@ Standalone, the element is fully controlled: you own the decision and what it gr
 "use client";
 
 import { useState } from "react";
-import { PermissionGrant, type GrantScope } from "@/components/assistant-ui/elements/permission-grant";
+import { PermissionGrant, type GrantScope } from "@/components/openagentui/elements/permission-grant";
 
 export function ShellApproval() {
   const [scope, setScope] = useState<GrantScope | "pending">("pending");

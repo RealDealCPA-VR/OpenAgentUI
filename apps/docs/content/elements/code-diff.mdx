@@ -14,11 +14,11 @@ A code diff shows one file's changed lines: a filename and its net additions and
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/edit-file-tool-ui.tsx"
+```tsx title="components/openagentui/elements/edit-file-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { CodeDiff, type DiffLine } from "@/components/assistant-ui/elements/code-diff";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { CodeDiff, type DiffLine } from "@/components/openagentui/elements/code-diff";
 
 type EditFileArgs = { path: string };
 type EditFileResult = { additions: number; deletions: number; lines: DiffLine[] };
@@ -46,8 +46,8 @@ export const EditFileToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
-import { EditFileToolUI } from "@/components/assistant-ui/elements/edit-file-tool-ui";
+import { defineToolkit } from "@openagentui/react";
+import { EditFileToolUI } from "@/components/openagentui/elements/edit-file-tool-ui";
 
 export const toolkit = defineToolkit({
   edit_file: {
@@ -58,8 +58,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -90,7 +90,7 @@ The diff renders once the call completes; while it runs, `result` is `undefined`
 ```tsx title="app/patch.tsx"
 "use client";
 
-import { CodeDiff, type DiffLine } from "@/components/assistant-ui/elements/code-diff";
+import { CodeDiff, type DiffLine } from "@/components/openagentui/elements/code-diff";
 
 const LINES: DiffLine[] = [
   { kind: "context", text: "export function Composer() {" },

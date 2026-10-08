@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from "react";
-import type { ThreadMessageLike, AppendMessage } from "@assistant-ui/react";
+import type { ThreadMessageLike, AppendMessage } from "@openagentui/react";
 
 const INITIAL_MESSAGES: ThreadMessageLike[] = [];
 
@@ -7,11 +7,11 @@ const CANNED_RESPONSE = `Great question! Here's what I think:
 
 This is a **mock response** from the external store runtime. In a real extension, you'd connect this to an AI backend like:
 
-- [assistant-ui Cloud](https://www.assistant-ui.com)
+- [openagentui Cloud](https://openagentui.dev)
 - OpenAI via AI SDK
 - Any custom API
 
-The UI you're seeing is built with \`@assistant-ui/react\` -- the same components work in Next.js, Vite, React Native, and now browser extensions.`;
+The UI you're seeing is built with \`@openagentui/react\` -- the same components work in Next.js, Vite, React Native, and now browser extensions.`;
 
 export function useMockStore() {
   const [messages, setMessages] =

@@ -246,8 +246,8 @@ import {
   useAui,
   type RemoteThreadListAdapter,
   type ThreadHistoryAdapter,
-} from "@assistant-ui/react";
-import { createAssistantStream } from "assistant-stream";
+} from "@openagentui/react";
+import { createAssistantStream } from "openagentui-stream";
 import { useMemo } from "react";
 
 function useThreadListAdapters() {
@@ -367,8 +367,8 @@ import {
   useAui,
   type RemoteThreadListAdapter,
   type ThreadHistoryAdapter,
-} from "@assistant-ui/react-native";
-import { createAssistantStream } from "assistant-stream";
+} from "@openagentui/react-native";
+import { createAssistantStream } from "openagentui-stream";
 import { useMemo } from "react";
 
 function useThreadListAdapters() {
@@ -492,8 +492,8 @@ import {
   useAui,
   type RemoteThreadListAdapter,
   type ThreadHistoryAdapter,
-} from "@assistant-ui/react-ink";
-import { createAssistantStream } from "assistant-stream";
+} from "@openagentui/react-ink";
+import { createAssistantStream } from "openagentui-stream";
 import { useMemo } from "react";
 
 function useThreadListAdapters() {
@@ -655,8 +655,8 @@ Wrap the app in a `useRemoteThreadListRuntime` that delegates per-thread runtime
 import {
   AssistantRuntimeProvider,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { threadListAdapter } from "./thread-adapter";
 
 export function MyProvider({ children }: { children: React.ReactNode }) {
@@ -679,11 +679,11 @@ export function MyProvider({ children }: { children: React.ReactNode }) {
 import {
   AssistantRuntimeProvider,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import {
   AssistantChatTransport,
   useChatRuntime,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { threadListAdapter } from "./thread-adapter";
 
 export function MyProvider({ children }: { children: React.ReactNode }) {
@@ -709,11 +709,11 @@ export function MyProvider({ children }: { children: React.ReactNode }) {
 import {
   AssistantRuntimeProvider,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import {
   AssistantChatTransport,
   useChatRuntime,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { threadListAdapter } from "./thread-adapter";
 
 export function MyProvider({ children }: { children: React.ReactNode }) {

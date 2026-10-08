@@ -1,6 +1,6 @@
 {
   "title": "Tools",
-  "description": "Tool definitions, React renderers, status helpers, and toolkits for exposing callable app capabilities to assistant-ui chat models.",
+  "description": "Tool definitions, React renderers, status helpers, and toolkits for exposing callable app capabilities to openagentui chat models.",
   "pages": [
     "index",
     "toolkits",

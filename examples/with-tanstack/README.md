@@ -1,13 +1,13 @@
 # TanStack Start Integration
 
-This example demonstrates how to use assistant-ui with TanStack Start (TanStack Router + Vite).
+This example demonstrates how to use openagentui with TanStack Start (TanStack Router + Vite).
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-tanstack
+npx openagentui@latest create my-app --example with-tanstack
 cd my-app
 ```
 
@@ -35,5 +35,5 @@ npm run dev
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
+- [openagentui Documentation](https://openagentui.dev/docs)
 - [TanStack Start Documentation](https://tanstack.com/start)

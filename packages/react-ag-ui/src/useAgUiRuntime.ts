@@ -13,20 +13,20 @@ import {
   useExternalStoreRuntime,
   useExternalStoreSharedOptions,
   useRuntimeAdapters,
-} from "@assistant-ui/core/react";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
-import { createMessageQueue } from "@assistant-ui/core";
+} from "@openagentui/core/react";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
+import { createMessageQueue } from "@openagentui/core";
 import type {
   MessageQueueController,
   ToolExecutionStatus,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type {
   AssistantRuntime,
   AppendMessage,
   ExternalStoreAdapter,
   ThreadMessage,
-} from "@assistant-ui/core";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+} from "@openagentui/core";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import { makeLogger } from "./runtime/logger";
 import type {
   AgUiInterrupt,
@@ -35,7 +35,7 @@ import type {
 } from "./runtime/types";
 import { AgUiThreadRuntimeCore } from "./runtime/AgUiThreadRuntimeCore";
 import { agUiExtras } from "./agUiExtras";
-import type { QueueItemState } from "@assistant-ui/core/store";
+import type { QueueItemState } from "@openagentui/core/store";
 
 const EMPTY_INTERRUPTS: readonly AgUiInterrupt[] = [];
 const EMPTY_QUEUE_ITEMS: readonly QueueItemState[] = Object.freeze([]);

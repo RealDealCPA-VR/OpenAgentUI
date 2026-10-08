@@ -1,4 +1,4 @@
-import { invokeUserCallback } from "@assistant-ui/core/internal";
+import { invokeUserCallback } from "@openagentui/core/internal";
 
 export const invokeMcpCallback = <TArgs extends unknown[]>(
   name: string,

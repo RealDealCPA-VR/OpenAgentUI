@@ -12,7 +12,7 @@ describe("update command", () => {
 
   beforeEach(() => {
     tempDir = fs.realpathSync(
-      fs.mkdtempSync(path.join(os.tmpdir(), "assistant-ui-update-")),
+      fs.mkdtempSync(path.join(os.tmpdir(), "openagentui-update-")),
     );
 
     exitSpy = vi.spyOn(process, "exit").mockImplementation(() => {
@@ -47,7 +47,7 @@ describe("update command", () => {
     expect(stderr).toContain("Could not parse package.json.");
     expect(stderr).toContain(`Package path: ${packageJsonPath}`);
     expect(stderr).toContain(
-      "Fix the JSON syntax in that file, then run: assistant-ui update",
+      "Fix the JSON syntax in that file, then run: openagentui update",
     );
     expect(stderr).toContain("No changes were written.");
     expect(stderr).not.toContain("SyntaxError");

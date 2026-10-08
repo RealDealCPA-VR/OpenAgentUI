@@ -18,12 +18,12 @@ Attachment renders one file as a small tile: a thumbnail, a hover tooltip with i
 
 Wrap the input in `ComposerPrimitive.AttachmentDropzone` so dropped files are accepted, list staged attachments with `ComposerPrimitive.Attachments`, and add `ComposerAddAttachment` for the file picker button.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { ComposerPrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { ComposerPrimitive } from "@openagentui/react";
 import {
   ComposerAddAttachment,
   ComposerAttachments,
-} from "@/components/assistant-ui/elements/attachment.aui";
+} from "@/components/openagentui/elements/attachment.aui";
 
 function Composer() {
   return (
@@ -45,9 +45,9 @@ function Composer() {
 
 `UserMessageAttachments` lists the files a user message carries, using `MessagePrimitive.Attachments`. It only ever renders inside a user message, since assistant messages don't carry attachments.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { MessagePrimitive } from "@assistant-ui/react";
-import { UserMessageAttachments } from "@/components/assistant-ui/elements/attachment.aui";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { MessagePrimitive } from "@openagentui/react";
+import { UserMessageAttachments } from "@/components/openagentui/elements/attachment.aui";
 
 function UserMessage() {
   return (
@@ -170,22 +170,22 @@ function CustomThumb() {
 The Static variant in the rail is a second design for a message's files: `MessageAttachments` renders an image as a filled thumbnail button and a document or file as an icon row, instead of the composer-style tile above. It is a single props-driven component with no runtime dependency:
 
 ```sh
-npx shadcn@latest add "@assistant-ui/elements-message-attachment"
+npx shadcn@latest add "@openagentui/elements-message-attachment"
 ```
 
 <RuntimeMode>
 
 Wire it by mapping a user message's attachments into items; like `UserMessageAttachments` above, this only makes sense inside a user message. `s.message.attachments` is the store's own array and every entry is already complete (an upload still in progress lives in the composer's own attachments instead), so selecting it directly is cheap; deriving items still needs `useMemo`, since mapping to a fresh array on every call would re-render the list on every store update.
 
-```tsx title="components/assistant-ui/elements/message-attachment.tsx"
+```tsx title="components/openagentui/elements/message-attachment.tsx"
 "use client";
 
 import { useMemo } from "react";
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import {
   MessageAttachments,
   type MessageAttachmentItem,
-} from "@/components/assistant-ui/elements/message-attachment";
+} from "@/components/openagentui/elements/message-attachment";
 
 function UserReceivedFiles() {
   const attachments = useAuiState((s) => s.message.attachments);
@@ -221,7 +221,7 @@ Standalone you hold the item list yourself, sizes and all, and decide what openi
 import {
   MessageAttachments,
   type MessageAttachmentItem,
-} from "@/components/assistant-ui/elements/message-attachment";
+} from "@/components/openagentui/elements/message-attachment";
 
 const attachments: MessageAttachmentItem[] = [
   { id: "1", name: "diagram.png", size: "1.2 MB", kind: "image", swatch: "url(/diagram-thumb.png)" },

@@ -1,6 +1,6 @@
 ---
 title: Slash Commands
-description: Trigger predefined actions in your AI chat by typing / — slash command palette with popover, search, and action handlers in React via assistant-ui.
+description: Trigger predefined actions in your AI chat by typing / — slash command palette with popover, search, and action handlers in React via openagentui.
 platforms: ["react"]
 ---
 
@@ -30,7 +30,7 @@ import {
   ComposerPrimitive,
   unstable_useSlashCommandAdapter,
   type Unstable_SlashCommand,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const SLASH_COMMANDS: readonly Unstable_SlashCommand[] = [
   {
@@ -131,7 +131,7 @@ For side effects on top of `execute` (logging, analytics, intercept), wrap the h
 For **categorized navigation** (drill-down into groups), return categories from `categories()` and items from `categoryItems()`. The popover shows categories first, then items within the selected category:
 
 ```ts
-import type { TriggerAdapter } from "@assistant-ui/react";
+import type { TriggerAdapter } from "@openagentui/react";
 
 const adapter: TriggerAdapter = {
   categories() {

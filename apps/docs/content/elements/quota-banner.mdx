@@ -3,7 +3,7 @@ title: "Quota banner"
 description: "How much is left, when it comes back, and the way to get more."
 ---
 
-QuotaBanner shows what's left of a usage allowance: a headline count, a fill bar, and an upgrade button that turns amber once you're close to the limit. assistant-ui's runtime has no concept of plan limits or rate budgets, that's account and billing state the host app owns, so this element has just the one, standalone form: you hold the used and limit numbers and re-render as they change.
+QuotaBanner shows what's left of a usage allowance: a headline count, a fill bar, and an upgrade button that turns amber once you're close to the limit. openagentui's runtime has no concept of plan limits or rate budgets, that's account and billing state the host app owns, so this element has just the one, standalone form: you hold the used and limit numbers and re-render as they change.
 
 ## Getting started
 
@@ -18,7 +18,7 @@ You decide what "used" and "limit" mean, in whatever unit your plan counts, mess
 "use client";
 
 import { useState } from "react";
-import { QuotaBanner } from "@/components/assistant-ui/elements/quota-banner";
+import { QuotaBanner } from "@/components/openagentui/elements/quota-banner";
 
 export function Quota() {
   const [used, setUsed] = useState(32);

@@ -18,7 +18,7 @@ const pickConditional = (value: ExportsValue): string | undefined => {
 /**
  * Resolves a bare specifier for one of the measured packages against the ref
  * worktree's own exports map, so subpath imports (react shims,
- * assistant-stream/utils) stay inside the ref instead of silently falling
+ * openagentui-stream/utils) stay inside the ref instead of silently falling
  * back to the current tree.
  */
 export const resolveRefSpecifier = (

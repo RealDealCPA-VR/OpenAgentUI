@@ -136,10 +136,10 @@ describe("buildCompareDoc", () => {
         row("bench/c.bench.ts > g > ctl", 1, 3, false),
         row("bench/m.bench.ts > g > moved", 10, 3, true),
       ],
-      meta({ changed: ["@assistant-ui/core"], runs: 4 }),
+      meta({ changed: ["@openagentui/core"], runs: 4 }),
     );
     expect(doc.schema).toBe("aui-perf/compare@1");
-    expect(doc.changed).toEqual(["@assistant-ui/core"]);
+    expect(doc.changed).toEqual(["@openagentui/core"]);
     expect(doc.runs).toBe(4);
     expect(doc.summary).toMatchObject({
       measured: 1,
@@ -190,10 +190,10 @@ describe("renderCompareMarkdown", () => {
         row("bench/m.bench.ts > g > a", 1, 3, true),
         row("bench/m.bench.ts > g > b", -2, 3, true),
       ],
-      { changed: ["@assistant-ui/core"] },
+      { changed: ["@openagentui/core"] },
     );
     expect(md).toContain(
-      "- **No measured bench moved.** 2 benches exercise a changed dist (`@assistant-ui/core`), all within noise",
+      "- **No measured bench moved.** 2 benches exercise a changed dist (`@openagentui/core`), all within noise",
     );
     expect(md).not.toContain("| verdict |");
     expect(md).toContain(
@@ -207,11 +207,11 @@ describe("renderCompareMarkdown", () => {
       row("bench/m.bench.ts > g > y", 2, 10, true),
       row("bench/m.bench.ts > g > z", 2.5, 3, true),
     ];
-    const md = markdown(rows, { changed: ["@assistant-ui/core"] });
+    const md = markdown(rows, { changed: ["@openagentui/core"] });
     expect(md.indexOf("m › g › z")).toBeLessThan(md.indexOf("m › g › x"));
     expect(md.indexOf("m › g › x")).toBeLessThan(md.indexOf("m › g › y"));
     const capped = renderCompareMarkdown(
-      buildCompareDoc(rows, meta({ changed: ["@assistant-ui/core"] })),
+      buildCompareDoc(rows, meta({ changed: ["@openagentui/core"] })),
       { sameLimit: 1 },
     );
     expect(capped).toContain(
@@ -229,10 +229,10 @@ describe("renderCompareMarkdown", () => {
         row("bench/c.bench.ts > g > ctl-loud", 6, 3, false),
         row("bench/c.bench.ts > g > ctl-quiet", -1, 3, false),
       ],
-      { changed: ["@assistant-ui/core"], footer: ["base `a`", "head `b`"] },
+      { changed: ["@openagentui/core"], footer: ["base `a`", "head `b`"] },
     );
     expect(md).toContain(
-      "- **1 slower · 0 faster** among 2 benches that exercise a changed dist (`@assistant-ui/core`) · 1 within noise",
+      "- **1 slower · 0 faster** among 2 benches that exercise a changed dist (`@openagentui/core`) · 1 within noise",
     );
     expect(md).toContain(
       "- **Controls:** 2 benches on unchanged dists · 1 crossed their analytic floor, the worst by 2.0× (c › g › ctl-loud)",
@@ -285,10 +285,10 @@ describe("renderCompareMarkdown", () => {
         row("bench/c.bench.ts > g > x", 2, 3, false),
         row("bench/c.bench.ts > g > y", -1, 3, false),
       ],
-      { changed: ["@assistant-ui/tap"] },
+      { changed: ["@openagentui/tap"] },
     );
     expect(md).toContain(
-      "- **No bench exercises the changed dists** (`@assistant-ui/tap`), so all 2 rows ran as controls · none crossed their analytic floor.",
+      "- **No bench exercises the changed dists** (`@openagentui/tap`), so all 2 rows ran as controls · none crossed their analytic floor.",
     );
     expect(md).not.toContain("byte-identical");
   });
@@ -304,14 +304,14 @@ describe("renderCompareMarkdown", () => {
     expect(identical).not.toContain("<details>");
     expect(identical.trimEnd().endsWith("base `a` · head `b`")).toBe(true);
 
-    expect(markdown([], { changed: ["@assistant-ui/react"] })).toContain(
-      "- **No bench exercises the changed dists** (`@assistant-ui/react`), so no bench ran. A bench under `bench/` that imports them would measure this class of change.",
+    expect(markdown([], { changed: ["@openagentui/react"] })).toContain(
+      "- **No bench exercises the changed dists** (`@openagentui/react`), so no bench ran. A bench under `bench/` that imports them would measure this class of change.",
     );
   });
 
   it("names the missing controls when every bench is measured", () => {
     const md = markdown([row("bench/m.bench.ts > g > x", 1, 3, true)], {
-      changed: ["@assistant-ui/tap"],
+      changed: ["@openagentui/tap"],
     });
     expect(md).toContain(
       "- **Controls:** none, every bench exercises a changed dist, so verdicts rest on the analytic floors alone",
@@ -401,7 +401,7 @@ describe("assembleReport", () => {
       JSON.stringify(
         buildCompareDoc(
           [row("bench/m.bench.ts > g > x", 1, 3, true)],
-          meta({ changed: ["@assistant-ui/tap"] }),
+          meta({ changed: ["@openagentui/tap"] }),
         ),
       ),
     );
@@ -445,7 +445,7 @@ describe("assembleReport", () => {
     writeFileSync(
       bench,
       JSON.stringify(
-        buildCompareDoc(rows, meta({ changed: ["@assistant-ui/tap"] })),
+        buildCompareDoc(rows, meta({ changed: ["@openagentui/tap"] })),
       ),
     );
     const md = assembleReport({ out, bench });
@@ -482,7 +482,7 @@ describe("assembleReport", () => {
     writeFileSync(
       bench,
       JSON.stringify(
-        buildCompareDoc(rows, meta({ changed: ["@assistant-ui/tap"] })),
+        buildCompareDoc(rows, meta({ changed: ["@openagentui/tap"] })),
       ),
     );
     const md = assembleReport({ out, bench });

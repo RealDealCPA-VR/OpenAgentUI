@@ -3,7 +3,7 @@ title: "Heat graph"
 description: "An activity heat map with month labels, weekday labels, legend, and tooltip."
 ---
 
-HeatGraph draws a GitHub-style activity calendar: a cell per day, colored by count, with month and weekday labels, a legend, and a hover tooltip. The assistant-ui runtime does not track daily activity counts, so this element has only a standalone form: you pass the counted days in.
+HeatGraph draws a GitHub-style activity calendar: a cell per day, colored by count, with month and weekday labels, a legend, and a hover tooltip. The openagentui runtime does not track daily activity counts, so this element has only a standalone form: you pass the counted days in.
 
 ## Getting started
 
@@ -13,7 +13,7 @@ HeatGraph draws a GitHub-style activity calendar: a cell per day, colored by cou
 ### Pass counted days in
 
 ```tsx title="app/activity.tsx"
-import { HeatGraph } from "@/components/assistant-ui/elements/heat-graph";
+import { HeatGraph } from "@/components/openagentui/elements/heat-graph";
 
 const data = [
   { date: "2026-01-01", count: 3 },
@@ -58,7 +58,7 @@ export function Activity() {
 
 ### Editing the composition directly
 
-Since there's no prop for it, changing the color scale, the week start, or the hardcoded gray and white Tailwind classes means editing `heat-graph.tsx` itself rather than passing a class name. The file is a thin composition over the `heat-graph` package's own primitives: `Root`, `MonthLabels`, `DayLabels`, `Grid` with `Cell`, `Legend` with `LegendLevel`, and `Tooltip`. Swap `colorScale` or `weekStart` on `Root`, or drop a sub-part (the legend, say) to change what renders.
+Since there's no prop for it, changing the color scale, the week start, or the hardcoded gray and white Tailwind classes means editing `heat-graph.tsx` itself rather than passing a class name. The file is a thin composition over the `@openagentui/heat-graph` package's own primitives: `Root`, `MonthLabels`, `DayLabels`, `Grid` with `Cell`, `Legend` with `LegendLevel`, and `Tooltip`. Swap `colorScale` or `weekStart` on `Root`, or drop a sub-part (the legend, say) to change what renders.
 
 ```tsx
 <HeatGraphPrimitive.Root data={data} weekStart="sunday" classify={HeatGraphPrimitive.autoLevels(2)} colorScale={["#eee", "#0a5"]}>
@@ -68,7 +68,7 @@ Since there's no prop for it, changing the color scale, the week start, or the h
 
 ### A second composition, elsewhere in the catalog
 
-`activity-graph` builds its own calendar independently on the same `heat-graph` package primitives, with the shared `paper` and `mono` surface tokens, a `className` prop, and a dark-mode-aware tint scale, rather than wrapping this file's `HeatGraph`. If you need a restylable calendar, start from [Activity graph](/elements/activity-graph) or the raw `heat-graph` primitives directly, rather than forking this fixed one.
+`activity-graph` builds its own calendar independently on the same `@openagentui/heat-graph` package primitives, with the shared `paper` and `mono` surface tokens, a `className` prop, and a dark-mode-aware tint scale, rather than wrapping this file's `HeatGraph`. If you need a restylable calendar, start from [Activity graph](/elements/activity-graph) or the raw `@openagentui/heat-graph` primitives directly, rather than forking this fixed one.
 
 ## API reference
 
@@ -78,4 +78,4 @@ Since there's no prop for it, changing the color scale, the week start, or the h
 |------|------|---------|-------------|
 | `data` | `DataPoint[]` | required | One entry per counted day. Days missing from the array render as the lowest color level. |
 
-`DataPoint` is `{ date: string | Date; count: number }`, from the `heat-graph` package this element wraps.
+`DataPoint` is `{ date: string | Date; count: number }`, from the `@openagentui/heat-graph` package this element wraps.

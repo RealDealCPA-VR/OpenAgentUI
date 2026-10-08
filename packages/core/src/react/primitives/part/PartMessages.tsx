@@ -1,5 +1,5 @@
 import { type FC, type ReactNode, memo } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import type { ThreadMessage } from "../../../types/message";
 import { ReadonlyThreadProvider } from "../../providers/ReadonlyThreadProvider";
 import {

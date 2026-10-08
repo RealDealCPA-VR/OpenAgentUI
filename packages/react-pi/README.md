@@ -1,8 +1,8 @@
-# @assistant-ui/react-pi
+# @openagentui/react-pi
 
-Pi coding-agent runtime adapter for [assistant-ui](https://www.assistant-ui.com/).
+Pi coding-agent runtime adapter for [openagentui](https://openagentui.dev/).
 
-This package lets assistant-ui render and drive [Pi](https://www.npmjs.com/package/@earendil-works/pi-coding-agent)-backed
+This package lets openagentui render and drive [Pi](https://www.npmjs.com/package/@earendil-works/pi-coding-agent)-backed
 threads: streaming assistant/reasoning output, tool calls with live streaming
 results, mid-run steering and follow-up, per-thread model/thinking controls,
 the blocking extension UI (Pi's entire human-in-the-loop/approval surface), and
@@ -12,11 +12,11 @@ a multi-thread thread list.
 
 The package has two entry points:
 
-- `@assistant-ui/react-pi` — **browser-safe**. The runtime hook, the pure event
+- `@openagentui/react-pi` — **browser-safe**. The runtime hook, the pure event
   reducer, the message projection, and the HTTP `PiClient`. This entry **never**
   imports `@earendil-works/pi-*`; it speaks an RPC-isomorphic, JSON-safe
   contract (`PiClient`) over an arbitrary transport.
-- `@assistant-ui/react-pi/node` — **node-only**. `createPiNodeClient`, which
+- `@openagentui/react-pi/node` — **node-only**. `createPiNodeClient`, which
   drives Pi's `AgentSession` SDK in-process behind a process-singleton
   `PiThreadSupervisor`. Only this entry pulls in Pi's Node packages.
 
@@ -28,7 +28,7 @@ write any other transport that satisfies `PiClient`.
 ## Install
 
 ```bash
-npm install @assistant-ui/react-pi @assistant-ui/react
+npm install @openagentui/react-pi @openagentui/react
 # the node entry drives the Pi SDK on the server:
 npm install @earendil-works/pi-coding-agent
 ```
@@ -57,7 +57,7 @@ a module-level server file, never per request.
 
 ```ts
 // lib/pi-server.ts  (server-only — imported only from route handlers)
-import { createPiNodeClient } from "@assistant-ui/react-pi/node";
+import { createPiNodeClient } from "@openagentui/react-pi/node";
 
 export const piClient = createPiNodeClient({
   workspacePath: process.env.PI_WORKSPACE_PATH ?? process.cwd(),
@@ -97,8 +97,8 @@ complete Next.js App Router implementation.
 
 ```tsx
 "use client";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { createPiHttpClient, usePiRuntime } from "@assistant-ui/react-pi";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { createPiHttpClient, usePiRuntime } from "@openagentui/react-pi";
 import { useMemo } from "react";
 
 export function PiRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -109,11 +109,11 @@ export function PiRuntimeProvider({ children }: { children: React.ReactNode }) {
 ```
 
 `usePiRuntime` requires `options.client` — there is no implicit transport. Drop
-the provider above any assistant-ui thread UI (`Thread`, `ThreadList`, …).
+the provider above any openagentui thread UI (`Thread`, `ThreadList`, …).
 
 ## Assistant Cloud
 
-Pass `cloud` to back the thread list with [Assistant Cloud](https://www.assistant-ui.com/docs/cloud) instead of the Pi server's thread list. `cloud` is the only switch: unlike the runtimes whose list lives in the browser, `NEXT_PUBLIC_ASSISTANT_BASE_URL` alone keeps the Pi server's list, so setting it never moves an existing app's threads.
+Pass `cloud` to back the thread list with [Assistant Cloud](https://openagentui.dev/docs/cloud) instead of the Pi server's thread list. `cloud` is the only switch: unlike the runtimes whose list lives in the browser, `NEXT_PUBLIC_ASSISTANT_BASE_URL` alone keeps the Pi server's list, so setting it never moves an existing app's threads.
 
 ```tsx
 const runtime = usePiRuntime({ client, cloud });
@@ -146,7 +146,7 @@ to seed new sessions. Use Pi's own `ModelRegistry` / `SettingsManager` /
 Per-thread, surfaced through `usePiRuntimeExtras()`:
 
 ```tsx
-import { usePiRuntimeExtras } from "@assistant-ui/react-pi";
+import { usePiRuntimeExtras } from "@openagentui/react-pi";
 
 const { readiness, contextUsage, setModel, setThinkingLevel } = usePiRuntimeExtras();
 // readiness: "ready" | "missing-model" | "missing-credentials" | "unavailable-model"
@@ -167,7 +167,7 @@ when it is not `"ready"`.
 ## Composer run semantics
 
 Pi's defining interaction is mid-run steering, and a plain `prompt()` while
-streaming **throws**. The runtime exposes Pi's native queue to assistant-ui
+streaming **throws**. The runtime exposes Pi's native queue to openagentui
 (`capabilities.queue`), so the standard composer keeps accepting input during a
 run and derives the right behavior:
 
@@ -200,7 +200,7 @@ blocking dialogs to the UI, split by causality:
 - **Free-standing** (extension commands, any request raised while multiple tools are in flight, and any request the tool call's approval cannot answer, such as a `select` without choices or a kind this client does not know) → a side channel:
 
 ```tsx
-import { usePiHostUiRequests } from "@assistant-ui/react-pi";
+import { usePiHostUiRequests } from "@openagentui/react-pi";
 
 const { requests, respond } = usePiHostUiRequests();
 // confirm:                 respond({ requestId, confirmed: boolean })

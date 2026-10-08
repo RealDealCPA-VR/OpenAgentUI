@@ -59,13 +59,13 @@ function getAssistantUiAddCommand(pm: PackageManager, items: string[]): string {
   switch (pm) {
     case "npm":
     case "yarn":
-      return `npx assistant-ui@latest add ${itemList}`;
+      return `npx openagentui@latest add ${itemList}`;
     case "pnpm":
-      return `pnpm dlx assistant-ui@latest add ${itemList}`;
+      return `pnpm dlx openagentui@latest add ${itemList}`;
     case "bun":
-      return `bunx --bun assistant-ui@latest add ${itemList}`;
+      return `bunx --bun openagentui@latest add ${itemList}`;
     case "xpm":
-      return `xpx assistant-ui@latest add ${itemList}`;
+      return `xpx openagentui@latest add ${itemList}`;
   }
 }
 

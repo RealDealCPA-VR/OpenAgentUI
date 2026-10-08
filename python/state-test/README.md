@@ -1,6 +1,6 @@
 # State Management Test
 
-This is a test project for the `assistant-stream` state management functionality. It demonstrates various state operations and updates over time.
+This is a test project for the `openagentui-stream` state management functionality. It demonstrates various state operations and updates over time.
 
 ## Features
 

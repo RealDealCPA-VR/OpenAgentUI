@@ -57,7 +57,7 @@ function tocTitle(node: unknown): string {
   return "";
 }
 
-const GENERATIVE_USAGE = `import { renderGenerativeUI } from "@assistant-ui/react-generative-ui";
+const GENERATIVE_USAGE = `import { renderGenerativeUI } from "@openagentui/react-generative-ui";
 
 <div data-aui-theme="elements">
   {renderGenerativeUI(spec, library, { status: "done" })}
@@ -174,12 +174,12 @@ export default async function ElementPage({
   const showToc = toc.length >= 3;
 
   const manualInstall = element.generative ? (
-    <PackageManagerTabs packages={["@assistant-ui/react-generative-ui"]} />
+    <PackageManagerTabs packages={["@openagentui/react-generative-ui"]} />
   ) : hasModes ? (
     <>
       <ElementModeToggle className="mb-6" />
       <RuntimeMode>
-        <ShadcnInstallTabs urls={[`"@assistant-ui/${registryName}"`]} />
+        <ShadcnInstallTabs urls={[`"@openagentui/${registryName}"`]} />
         <RuntimeSetup />
       </RuntimeMode>
       <StandaloneMode>
@@ -204,7 +204,7 @@ export default async function ElementPage({
         ) : (
           <>
             <ShadcnInstallTabs
-              urls={[`"@assistant-ui/${standaloneRegistryName}"`]}
+              urls={[`"@openagentui/${standaloneRegistryName}"`]}
             />
             <p className="text-muted-foreground mt-4 text-sm">
               Props-driven: no runtime or provider required.
@@ -214,7 +214,7 @@ export default async function ElementPage({
       </StandaloneMode>
     </>
   ) : (
-    <ShadcnInstallTabs urls={[`"@assistant-ui/${registryName}"`]} />
+    <ShadcnInstallTabs urls={[`"@openagentui/${registryName}"`]} />
   );
 
   return (

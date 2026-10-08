@@ -1,4 +1,4 @@
-import type { AssistantRuntime } from "@assistant-ui/core";
+import type { AssistantRuntime } from "@openagentui/core";
 import type { UIMessage } from "@ai-sdk/react";
 import type { ChatTransport } from "ai";
 import {

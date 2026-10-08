@@ -1,7 +1,7 @@
 import type {
   McpAppMetadata,
   ToolCallMessagePartMcpMetadata,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type { SandboxHostConfig } from "../sandbox-host/SandboxHost";
 
 export type { McpAppMetadata, ToolCallMessagePartMcpMetadata };

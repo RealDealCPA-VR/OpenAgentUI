@@ -7,7 +7,7 @@ import {
   forwardRef,
   useCallback,
 } from "react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiState } from "@openagentui/store";
 import { composeEventHandlers } from "radix-ui/internal";
 
 // ---- Root ----

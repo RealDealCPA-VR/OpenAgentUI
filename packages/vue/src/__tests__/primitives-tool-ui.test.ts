@@ -5,19 +5,19 @@ afterEach(() => {
   clearPartWarningsForTesting();
 });
 import { createApp, defineComponent, h, nextTick, type Component } from "vue";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig } from "@assistant-ui/store/client";
-import { RuntimeAdapter } from "@assistant-ui/core/store";
-import { resource } from "@assistant-ui/tap";
-import { Tools, type Toolkit } from "@assistant-ui/core/react";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig } from "@openagentui/store/client";
+import { RuntimeAdapter } from "@openagentui/core/store";
+import { resource } from "@openagentui/tap";
+import { Tools, type Toolkit } from "@openagentui/core/react";
 import type {
   ExternalStoreAdapter,
   ThreadMessageLike,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   AssistantRuntimeImpl,
   ExternalStoreRuntimeCore,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { AuiProvider } from "../AuiProvider";
 import { useAui } from "../useAui";
 import { ThreadPrimitiveMessages } from "../primitives/ThreadPrimitiveMessages";

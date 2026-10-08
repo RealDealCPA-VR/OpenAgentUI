@@ -4,17 +4,17 @@ import { createMarkdownResponse } from "@/lib/markdown-response";
 
 const markdown = `# Build a shared AI chat with harness-sdk
 
-harness-sdk is an alpha runtime for an AI conversation shared across browser clients. assistant-ui renders the chat UI, Assistant Cloud hosts the shared thread, and the application's AI SDK server route supplies the model and tools.
+harness-sdk is an alpha runtime for an AI conversation shared across browser clients. openagentui renders the chat UI, Assistant Cloud hosts the shared thread, and the application's AI SDK server route supplies the model and tools.
 
 ## Verified CLI preview
 
-The installable preview is ${BASE_URL}/downloads/assistant-ui-cloud-harness-b9d8b56ad.tgz. Its CLI executable and bundled starter install have been checked. The assistant-ui-cli public OAuth client is registered. Real device sign-in and production provisioning have passed; hosted shared-chat verification has passed using a deterministic AI SDK model with real production credentials and transport. Report authorization failures accurately instead of inventing a successful Cloud setup.
+The installable preview is ${BASE_URL}/downloads/openagentui-cloud-harness-b9d8b56ad.tgz. Its CLI executable and bundled starter install have been checked. The openagentui-cli public OAuth client is registered. Real device sign-in and production provisioning have passed; hosted shared-chat verification has passed using a deterministic AI SDK model with real production credentials and transport. Report authorization failures accurately instead of inventing a successful Cloud setup.
 
 After choosing a new application directory, the npm setup command is:
 
 \`\`\`sh
-npx --package=${BASE_URL}/downloads/assistant-ui-cloud-harness-b9d8b56ad.tgz \\
-  assistant-ui cloud setup shared-chat \\
+npx --package=${BASE_URL}/downloads/openagentui-cloud-harness-b9d8b56ad.tgz \\
+  openagentui cloud setup shared-chat \\
   --use-npm --access-code MULTIPLAYER-2026
 cd shared-chat
 npm run dev
@@ -28,11 +28,11 @@ The event code grants one harness to the redeemed project. It does not change th
 
 The CLI creates a new app and refuses to overwrite an existing one. Ask which directory the user wants before scaffolding. For an existing project, use an agreed temporary scaffold as a source and integrate the runtime, credential endpoint and AI route into that chosen project. Preserve its framework, package manager, chat components, authentication, environment entries and routes.
 
-The preview bundles official-source harness-sdk 0.3.1, @assistant-ui/react-harness-sdk 0.0.2 and Statewire 0.19.3 archives at source revision 3d3a180f0400b84267f62969d42f8b102bed4479. templates/cloud-harness/vendor/provenance.json records the hashes and required-peer normalizations. Keep one shared core/store/tap runtime and retain the vendor archives. These packages are supplied with the preview rather than an assumed npm release.
+The preview bundles official-source harness-sdk 0.3.1, @openagentui/react-harness-sdk 0.0.2 and Statewire 0.19.3 archives at source revision 3d3a180f0400b84267f62969d42f8b102bed4479. templates/cloud-harness/vendor/provenance.json records the hashes and required-peer normalizations. Keep one shared core/store/tap runtime and retain the vendor archives. These packages are supplied with the preview rather than an assumed npm release.
 
 ## Runtime and credentials
 
-Use HarnessCloudThreadList from @assistant-ui/react-harness-sdk with AuiConfig/AuiProvider from @assistant-ui/react. Configure url as the canonical /api/chat route, origin as NEXT_PUBLIC_ASSISTANT_HARNESS_URL, workspaceId as NEXT_PUBLIC_ASSISTANT_WORKSPACE_ID, a server-minted credential callback, and a stable shared thread ID. The starter shares the thread ID in its URL hash.
+Use HarnessCloudThreadList from @openagentui/react-harness-sdk with AuiConfig/AuiProvider from @openagentui/react. Configure url as the canonical /api/chat route, origin as NEXT_PUBLIC_ASSISTANT_HARNESS_URL, workspaceId as NEXT_PUBLIC_ASSISTANT_WORKSPACE_ID, a server-minted credential callback, and a stable shared thread ID. The starter shares the thread ID in its URL hash.
 
 ASSISTANT_API_KEY remains server-only. /api/credential constructs AssistantCloud with that API key, NEXT_PUBLIC_ASSISTANT_BASE_URL, the configured workspace and authenticated user identity, then calls cloud.auth.tokens.create and returns a no-store token response. The starter's userId "hackathon" is a public-demo identity, not private user authentication. Provider keys also remain on the server.
 

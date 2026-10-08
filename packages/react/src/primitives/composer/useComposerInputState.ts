@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { useTriggerPopoverActiveAriaOptional } from "./trigger/TriggerPopoverRootContext";
 
 export type TriggerPopoverAriaProps = {

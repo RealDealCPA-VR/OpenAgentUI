@@ -21,7 +21,7 @@ export default function ReactO11yLayout({
   return (
     <SubProjectLayout
       name="react-o11y"
-      githubPath="https://github.com/assistant-ui/assistant-ui/tree/main/packages/react-o11y"
+      githubPath="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/react-o11y"
     >
       {children}
     </SubProjectLayout>

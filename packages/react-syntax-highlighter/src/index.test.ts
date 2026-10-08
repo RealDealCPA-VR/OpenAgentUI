@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import * as index from "./index";
 import * as light from "./react-syntax-highlighter-light";
 
-describe("@assistant-ui/react-syntax-highlighter", () => {
+describe("@openagentui/react-syntax-highlighter", () => {
   it("exports only the light makers", () => {
     expect(Object.keys(index).sort()).toEqual([
       "makeLightAsyncSyntaxHighlighter",

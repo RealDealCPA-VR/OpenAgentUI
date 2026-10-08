@@ -1,4 +1,4 @@
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { invokeUserCallback } from "../../../utils/invoke-user-callback";
 import { useLatestRef } from "./useLatestRef";
@@ -16,8 +16,7 @@ type LifecycleCallbackName = "onCancel" | "onError" | "onFinish";
 const invokeCallback = (
   name: LifecycleCallbackName,
   callback: (() => unknown) | undefined,
-) =>
-  invokeUserCallback("assistant-ui", `Assistant transport ${name}`, callback);
+) => invokeUserCallback("openagentui", `Assistant transport ${name}`, callback);
 
 export function useRunManager(config: {
   onRun: (signal: AbortSignal) => Promise<void>;

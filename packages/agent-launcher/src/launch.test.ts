@@ -31,13 +31,13 @@ describe("launch", () => {
 
     launch({
       pluginDir: "/tmp/plugin",
-      skillName: "assistant-ui",
+      skillName: "openagentui",
       prompt: "add a thread",
       dry: true,
     });
 
     expect(log).toHaveBeenCalledWith(
-      'claude "/assistant-ui add a thread" --plugin-dir /tmp/plugin',
+      'claude "/openagentui add a thread" --plugin-dir /tmp/plugin',
     );
   });
 
@@ -46,13 +46,13 @@ describe("launch", () => {
 
     launch({
       pluginDir: "/tmp/plugin",
-      skillName: "assistant-ui",
+      skillName: "openagentui",
       prompt: "",
       dry: true,
     });
 
     expect(log).toHaveBeenCalledWith(
-      "claude /assistant-ui --plugin-dir /tmp/plugin",
+      "claude /openagentui --plugin-dir /tmp/plugin",
     );
   });
 

@@ -25,7 +25,7 @@ assert.ok(buildJob, "Build Changed Packages job");
 test("detects package build and checker inputs", () => {
   for (const file of [
     "packages/react/src/index.ts",
-    "api-surface/assistant-ui__react.ts",
+    "api-surface/openagentui__react.ts",
     "scripts/check-built-declarations.mjs",
     "package.json",
     "pnpm-lock.yaml",
@@ -177,10 +177,10 @@ test("the build install follows the affected package graph", () => {
   );
   for (const filter of [
     ".",
-    "@assistant-ui/api-surface",
-    "@assistant-ui/react-devtools...",
-    "@assistant-ui/x-buildutils...",
-    "@assistant-ui/x-performance",
+    "@openagentui/api-surface",
+    "@openagentui/react-devtools...",
+    "@openagentui/x-buildutils...",
+    "@openagentui/x-performance",
     "!./apps/*",
     "!./examples/*",
     "!./templates/*",
@@ -214,14 +214,14 @@ test("test and typecheck installs exclude API snapshots without weakening the bu
       /      - name: Install dependencies\n[\s\S]*?(?=\n      - name:)/,
     )?.[0];
     assert.ok(install, job);
-    assert.match(install, /--filter="!@assistant-ui\/api-surface"/);
+    assert.match(install, /--filter="!@openagentui\/api-surface"/);
     assert.match(install, /--filter="\.\.\.\[\$BASE\]\.\.\."/);
-    assert.match(install, /--filter="@assistant-ui\/react-devtools\.\.\."/);
+    assert.match(install, /--filter="@openagentui\/react-devtools\.\.\."/);
     assert.match(install, /else\n\s+pnpm install --frozen-lockfile\n\s+fi/);
   }
   assert.doesNotMatch(
     step("Install dependencies"),
-    /!@assistant-ui\/api-surface/,
+    /!@openagentui\/api-surface/,
   );
   assert.match(step("Check API surface"), /api-surface:check/);
 });

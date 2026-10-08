@@ -2,8 +2,8 @@ import { renderHook, waitFor } from "@testing-library/react";
 import type {
   AssistantRuntime,
   RemoteThreadListAdapter,
-} from "@assistant-ui/core";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
+} from "@openagentui/core";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
 import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
 import type { LangChainMessage, UIMessage } from "./types";

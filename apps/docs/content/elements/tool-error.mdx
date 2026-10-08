@@ -20,8 +20,8 @@ A failed call is one whose status settled on `"incomplete"`. Branch on it inside
 "use client";
 
 import { useState } from "react";
-import { useAui, type ToolCallMessagePartProps } from "@assistant-ui/react";
-import { ToolError } from "@/components/assistant-ui/elements/tool-error";
+import { useAui, type ToolCallMessagePartProps } from "@openagentui/react";
+import { ToolError } from "@/components/openagentui/elements/tool-error";
 
 export function SearchTool({ toolName, args, status, result }: ToolCallMessagePartProps<{ query: string }, string>) {
   const [attempt, setAttempt] = useState(1);
@@ -56,7 +56,7 @@ export function SearchTool({ toolName, args, status, result }: ToolCallMessagePa
 ### Regenerate the turn to retry
 
 ```tsx title="app/providers.tsx"
-import { AuiConfig, AuiProvider, Tools, defineToolkit, useAui } from "@assistant-ui/react";
+import { AuiConfig, AuiProvider, Tools, defineToolkit, useAui } from "@openagentui/react";
 import { z } from "zod";
 import { SearchTool } from "./search-toolkit";
 
@@ -81,7 +81,7 @@ function Providers({ children }: { children: React.ReactNode }) {
 }
 ```
 
-assistant-ui doesn't retry a single tool call in place; `aui.message.reload()` reissues the whole turn, which calls `search_web` again with a fresh attempt.
+openagentui doesn't retry a single tool call in place; `aui.message.reload()` reissues the whole turn, which calls `search_web` again with a fresh attempt.
 
   </Step>
 </Steps>
@@ -101,7 +101,7 @@ Standalone, there's no turn to restart: `onRetry` can call whatever produced the
 "use client";
 
 import { useState } from "react";
-import { ToolError } from "@/components/assistant-ui/elements/tool-error";
+import { ToolError } from "@/components/openagentui/elements/tool-error";
 
 export function SearchFailure({ query }: { query: string }) {
   const [attempt, setAttempt] = useState(1);

@@ -4,7 +4,7 @@ import {
   type PressableProps,
   type PressableStateCallbackType,
 } from "react-native";
-import { useActionBarEdit } from "@assistant-ui/core/react";
+import { useActionBarEdit } from "@openagentui/core/react";
 
 export type ActionBarEditProps = Omit<
   PressableProps,

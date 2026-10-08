@@ -3,7 +3,7 @@
 import {
   ImageGallery,
   type GalleryImage,
-} from "@/components/assistant-ui/elements/image-gallery";
+} from "@/components/openagentui/elements/image-gallery";
 
 const IMAGES: readonly GalleryImage[] = [
   {
@@ -34,7 +34,7 @@ const IMAGES: readonly GalleryImage[] = [
     caption: "AI assistant for researching public company financials.",
     source: {
       label: "LangGraph Stockbroker",
-      url: "https://assistant-ui-stockbroker.vercel.app/",
+      url: "https://openagentui-stockbroker.vercel.app/",
     },
   },
   {

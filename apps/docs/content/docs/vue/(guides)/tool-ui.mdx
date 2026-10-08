@@ -12,7 +12,7 @@ This component is lifted from the Nuxt example:
 ```vue title="app/components/WeatherToolUI.vue"
 <script setup lang="ts">
 import { computed, type PropType } from "vue";
-import type { ToolUIProps } from "@assistant-ui/vue";
+import type { ToolUIProps } from "@openagentui/vue";
 
 const props = defineProps({
   tool: { type: Object as PropType<ToolUIProps>, required: true },
@@ -82,9 +82,9 @@ Put a renderer in `Tools({ toolkit })` when the tool definition and UI belong to
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
-import { Tools, type ToolCallMessagePartComponent } from "@assistant-ui/core/react";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
+import { Tools, type ToolCallMessagePartComponent } from "@openagentui/core/react";
 import WeatherToolUI from "./WeatherToolUI.vue";
 
 const toolkit = {
@@ -110,8 +110,8 @@ To register from a Vue component's lifecycle, use `aui.tools.setToolUI`. This co
 ```vue title="app/components/RegisterToolUIs.vue"
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue";
-import { useAui } from "@assistant-ui/vue";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/core/react";
+import { useAui } from "@openagentui/vue";
+import type { ToolCallMessagePartComponent } from "@openagentui/core/react";
 import WeatherToolUI from "./WeatherToolUI.vue";
 
 const aui = useAui();
@@ -172,7 +172,7 @@ This component handles a plain allow or deny request:
 ```vue title="app/components/ApprovalToolUI.vue"
 <script setup lang="ts">
 import { computed, ref, type PropType } from "vue";
-import { useAuiState, type ToolUIProps } from "@assistant-ui/vue";
+import { useAuiState, type ToolUIProps } from "@openagentui/vue";
 
 const props = defineProps({
   tool: { type: Object as PropType<ToolUIProps>, required: true },
@@ -221,8 +221,8 @@ Data renderers receive one declared `data` prop of type `DataUIProps<T>`. Its `p
 ```vue title="app/components/RegisterDataUIs.vue"
 <script setup lang="ts">
 import { defineComponent, h, onMounted, onUnmounted } from "vue";
-import { useAui, type DataUIProps } from "@assistant-ui/vue";
-import type { DataMessagePartComponent } from "@assistant-ui/core/react";
+import { useAui, type DataUIProps } from "@openagentui/vue";
+import type { DataMessagePartComponent } from "@openagentui/core/react";
 
 const aui = useAui();
 
@@ -259,11 +259,11 @@ onUnmounted(() => {
 
 ## MCP App resources
 
-`Tools({ mcpApp })` takes a resource that returns `{ render }`. Create it with `resource` from `@assistant-ui/tap`, which you add to your own dependencies to import it. When a tool call carries a `ui://` URI in `tool.part.mcp.app.resourceUri` and no named UI matches, `MessagePrimitiveParts` renders `render` with the same single `tool` prop. A named UI takes precedence; without either renderer, the `#tool-call` slot handles the call.
+`Tools({ mcpApp })` takes a resource that returns `{ render }`. Create it with `resource` from `@openagentui/tap`, which you add to your own dependencies to import it. When a tool call carries a `ui://` URI in `tool.part.mcp.app.resourceUri` and no named UI matches, `MessagePrimitiveParts` renders `render` with the same single `tool` prop. A named UI takes precedence; without either renderer, the `#tool-call` slot handles the call.
 
 ```ts
-import { resource } from "@assistant-ui/tap";
-import { Tools, type ToolCallMessagePartComponent } from "@assistant-ui/core/react";
+import { resource } from "@openagentui/tap";
+import { Tools, type ToolCallMessagePartComponent } from "@openagentui/core/react";
 import McpAppView from "./McpAppView.vue";
 
 const McpApp = resource(() => ({

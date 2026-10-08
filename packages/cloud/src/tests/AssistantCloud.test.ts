@@ -97,21 +97,21 @@ describe("AssistantCloud telemetry config", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     const cloud = createCloud();
-    cloud.registerSdk({ name: "@assistant-ui/core", version: "0.3.18" });
+    cloud.registerSdk({ name: "@openagentui/core", version: "0.3.18" });
 
     await cloud.threads.list();
 
     const [, init] = fetchMock.mock.calls[0]!;
     expect(init.headers).toMatchObject({
       "Aui-Sdk": expect.stringMatching(
-        /^assistant-cloud\/.* @assistant-ui\/core\/0\.3\.18$/,
+        /^openagentui-cloud\/.* @openagentui\/core\/0\.3\.18$/,
       ),
     });
     await expect(
       cloud.runs.__internal_getAssistantOptions("assistant-id").headers(),
     ).resolves.toMatchObject({
       "Aui-Sdk": expect.stringMatching(
-        /^assistant-cloud\/.* @assistant-ui\/core\/0\.3\.18$/,
+        /^openagentui-cloud\/.* @openagentui\/core\/0\.3\.18$/,
       ),
     });
   });

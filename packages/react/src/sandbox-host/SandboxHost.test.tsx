@@ -5,8 +5,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const { renderHtmlMock } = vi.hoisted(() => ({ renderHtmlMock: vi.fn() }));
 
-vi.mock("safe-content-frame", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("safe-content-frame")>()),
+vi.mock("@openagentui/safe-content-frame", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/safe-content-frame")>()),
   SafeContentFrame: class {
     renderHtml = renderHtmlMock;
   },
@@ -474,7 +474,7 @@ describe("SandboxHost", () => {
       await flush();
 
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] SandboxHost onError callback threw an error",
+        "[openagentui] SandboxHost onError callback threw an error",
         callbackError,
       );
     } finally {

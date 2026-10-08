@@ -11,8 +11,8 @@
     "preview:build": "node ../../scripts/build-example-bundle.mjs"
   },
   "dependencies": {
-    "@assistant-ui/ai-sdk": "workspace:*",
-    "@assistant-ui/react": "workspace:*",
+    "@openagentui/ai-sdk": "workspace:*",
+    "@openagentui/react": "workspace:*",
     "@lexical/react": "^0.51.0",
     "@lexical/rich-text": "^0.51.0",
     "@lexical/selection": "^0.51.0",

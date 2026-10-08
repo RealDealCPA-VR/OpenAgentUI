@@ -1,12 +1,12 @@
-# @assistant-ui/eve
+# @openagentui/eve
 
-Eve runtime adapter for assistant-ui.
+Eve runtime adapter for openagentui.
 
 ```tsx
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useEveAgentRuntime } from "@assistant-ui/eve";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useEveAgentRuntime } from "@openagentui/eve";
 
 export function RuntimeProvider({ children }: { children: React.ReactNode }) {
   const runtime = useEveAgentRuntime();

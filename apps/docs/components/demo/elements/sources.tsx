@@ -4,15 +4,15 @@ import { useState } from "react";
 import {
   Sources,
   type Source,
-} from "@/components/assistant-ui/elements/sources";
+} from "@/components/openagentui/elements/sources";
 
 const SOURCES: Source[] = [
   {
     title: "Draft restore",
-    url: "https://www.assistant-ui.com/elements/draft-restore",
+    url: "https://openagentui.dev/elements/draft-restore",
     snippet:
       "Come back to a thread and the sentence you never sent is still waiting.",
-    author: "assistant-ui",
+    author: "openagentui",
   },
   {
     title: "You Might Not Need an Effect",
@@ -22,7 +22,7 @@ const SOURCES: Source[] = [
   {
     title:
       "core: InMemoryThreadList carries one thread's composer into the next",
-    url: "https://github.com/assistant-ui/assistant-ui/issues/8046",
+    url: "https://github.com/RealDealCPA-VR/OpenAgentUI/issues/8046",
     publishedAt: "2026-09-23",
   },
 ];

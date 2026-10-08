@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { resolveToolApprovalResponse } from "@assistant-ui/core/internal";
-import type { ToolApprovalResponse } from "@assistant-ui/react";
+import { resolveToolApprovalResponse } from "@openagentui/core/internal";
+import type { ToolApprovalResponse } from "@openagentui/react";
 import {
   approvalForRequest,
   responseForApproval,

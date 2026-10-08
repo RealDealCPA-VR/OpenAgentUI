@@ -1,4 +1,4 @@
-/// <reference types="@assistant-ui/core/react" preserve="true" />
+/// <reference types="@openagentui/core/react" preserve="true" />
 
 // Re-export core types
 export type {
@@ -72,28 +72,25 @@ export type {
   CreateSuggestionAdapterOptions,
   // Other
   Unsubscribe,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 // Re-export core remote thread list types
 export type {
   RemoteThreadListAdapter,
   RemoteThreadListOptions,
   RemoteThreadListProviderComponent,
-} from "@assistant-ui/core";
-export { InMemoryThreadListAdapter } from "@assistant-ui/core";
-export {
-  createVoiceSession,
-  toolApprovalAcceptsText,
-} from "@assistant-ui/core";
-export { fromThreadMessageLike, generateId } from "@assistant-ui/core";
-export { createSuggestionAdapter } from "@assistant-ui/core";
+} from "@openagentui/core";
+export { InMemoryThreadListAdapter } from "@openagentui/core";
+export { createVoiceSession, toolApprovalAcceptsText } from "@openagentui/core";
+export { fromThreadMessageLike, generateId } from "@openagentui/core";
+export { createSuggestionAdapter } from "@openagentui/core";
 
 // Attachment adapter implementations
 export {
   SimpleImageAttachmentAdapter,
   SimpleTextAttachmentAdapter,
   CompositeAttachmentAdapter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 // Re-export store scope state types
 export type {
@@ -105,7 +102,7 @@ export type {
   ThreadListItemState,
   QueueItemState,
   TaskState,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 
 // Store hooks and components
 export {
@@ -122,7 +119,7 @@ export {
   type AssistantEventName,
   type AssistantEventPayload,
   type AssistantEventCallback,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 
 // Context providers and hooks
 export { AssistantRuntimeProvider } from "./context/AssistantContext";
@@ -130,7 +127,7 @@ export {
   RuntimeAdapterProvider,
   useRuntimeAdapters,
   type RuntimeAdapters,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 // Runtime
 export {
@@ -155,7 +152,7 @@ export {
   type ExternalThreadBranchAdapter,
   type MessageQueueDriver,
   type MessageQueueController,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 export {
   useExternalStoreRuntime,
   useExternalStoreSharedOptions,
@@ -165,7 +162,7 @@ export {
   createMessageConverter as unstable_createMessageConverter,
   type ExternalMessageConversionCache as Unstable_ExternalMessageConversionCache,
   type JoinStrategy,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 // Primitives
 export * as ThreadPrimitive from "./primitives/thread";
@@ -182,13 +179,13 @@ export * as ChainOfThoughtPrimitive from "./primitives/chainOfThought";
 export * as SuggestionPrimitive from "./primitives/suggestion";
 export * as ErrorPrimitive from "./primitives/error";
 
-export { groupPartByType, type GroupByContext } from "@assistant-ui/core/react";
+export { groupPartByType, type GroupByContext } from "@openagentui/core/react";
 export {
   createThreadRowsSelector,
   type ThreadRow,
   type ThreadRowsOptions,
-} from "@assistant-ui/core/react";
-export { unstable_useThreadMessageIds } from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
+export { unstable_useThreadMessageIds } from "@openagentui/core/react";
 
 // Re-export shared providers from core/react
 export {
@@ -203,7 +200,7 @@ export {
   ChainOfThoughtPartByIndexProvider,
   SuggestionByIndexProvider,
   ReadonlyThreadProvider,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 // Model context, tools & clients (inlined from model-context)
 export {
@@ -269,16 +266,16 @@ export {
   type Unstable_InteractablesConfig,
   useToolArgsStatus,
   type ToolArgsStatus,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 export type {
   ModelContext,
   ModelContextProvider,
   LanguageModelConfig,
   LanguageModelV1CallSettings,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
-export { mergeModelContexts } from "@assistant-ui/core";
+export { mergeModelContexts } from "@openagentui/core";
 
 export {
   unstable_getInteractableSnapshots,
@@ -286,27 +283,27 @@ export {
   unstable_getInteractableVersions,
   type Unstable_InteractableSnapshotEntry,
   type Unstable_InteractableVersion,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
-export type { ExportedMessageRepositoryItem } from "@assistant-ui/core";
-export { ExportedMessageRepository } from "@assistant-ui/core";
+export type { ExportedMessageRepositoryItem } from "@openagentui/core";
+export { ExportedMessageRepository } from "@openagentui/core";
 
-export type { Tool } from "assistant-stream";
+export type { Tool } from "openagentui-stream";
 
-export { tool } from "@assistant-ui/core";
+export { tool } from "@openagentui/core";
 
-export { Suggestions, type SuggestionConfig } from "@assistant-ui/core/store";
+export { Suggestions, type SuggestionConfig } from "@openagentui/core/store";
 
-export { ModelContextRegistry } from "@assistant-ui/core";
+export { ModelContextRegistry } from "@openagentui/core";
 export type {
   ModelContextRegistryToolHandle,
   ModelContextRegistryInstructionHandle,
   ModelContextRegistryProviderHandle,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 // Client (inlined from client)
-export { ModelContext as ModelContextClient } from "@assistant-ui/core/store";
-export { ChainOfThoughtClient } from "@assistant-ui/core/store";
+export { ModelContext as ModelContextClient } from "@openagentui/core/store";
+export { ChainOfThoughtClient } from "@openagentui/core/store";
 
 // Component types (inlined from types)
 export type {
@@ -330,13 +327,13 @@ export type {
   DataMessagePartProps,
   ToolCallMessagePartComponent,
   ToolCallMessagePartProps,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 export {
   useVoiceState,
   useVoiceVolume,
   useVoiceControls,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 // Shared surface carried by every distribution (scripts/check-distribution-barrels.mjs)
 export type {
@@ -351,7 +348,7 @@ export type {
   QuoteMessagePartComponent,
   QuoteMessagePartProps,
   TitleGenerationAdapter,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 export {
   CloudFileAttachmentAdapter,
   createSimpleTitleAdapter,
@@ -359,7 +356,7 @@ export {
   GenerativeUIRenderError,
   useCloudThreadListAdapter,
   useCloudThreadListRuntime,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 export type {
   ComposerSendOptions,
   ExternalThreadMessage,
@@ -368,13 +365,13 @@ export type {
   QueueItemMethods,
   RemoteThreadListProps,
   TaskMethods,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 export {
   ExternalThread,
   InMemoryThreadList,
   RemoteThreadList,
   SingleThreadList,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 export type {
   AddToolResultOptions,
   AttachmentStatus,
@@ -422,8 +419,8 @@ export type {
   Unstable_DirectiveSegment,
   Unstable_TriggerItem,
   VoiceSessionState,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 export {
   defaultDirectiveFormatter,
   unstable_defaultDirectiveFormatter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";

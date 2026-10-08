@@ -1,9 +1,9 @@
 ---
 title: User-managed MCP servers
-description: Let end users add and authenticate MCP servers from the browser with @assistant-ui/react-mcp.
+description: Let end users add and authenticate MCP servers from the browser with @openagentui/react-mcp.
 ---
 
-[`@assistant-ui/react-mcp`](https://npmjs.com/package/@assistant-ui/react-mcp) is the user-facing layer for MCP. Where the [server-side MCP guide](/docs/tools/mcp) wires a single fixed set of MCP servers into your API route, this package lets *end users* see a list of connectors, sign in via OAuth, paste a custom server URL, and have the resulting tool catalog flow into the chat automatically.
+[`@openagentui/react-mcp`](https://npmjs.com/package/@openagentui/react-mcp) is the user-facing layer for MCP. Where the [server-side MCP guide](/docs/tools/mcp) wires a single fixed set of MCP servers into your API route, this package lets *end users* see a list of connectors, sign in via OAuth, paste a custom server URL, and have the resulting tool catalog flow into the chat automatically.
 
 Two ways a server reaches the user:
 
@@ -37,7 +37,7 @@ The [2026-07-28 spec revision](https://modelcontextprotocol.io/specification/202
 
 ### Install
 
-<InstallCommand npm={["@assistant-ui/react-mcp"]} />
+<InstallCommand npm={["@openagentui/react-mcp"]} />
 
 </Step>
 <Step>
@@ -49,8 +49,8 @@ Declare your connectors and provide the `mcp` scope via `AuiProvider`:
 ```tsx title="app/providers.tsx"
 "use client";
 
-import { AuiConfig, AuiProvider, useAui } from "@assistant-ui/react";
-import { McpManagerResource, defineConnector } from "@assistant-ui/react-mcp";
+import { AuiConfig, AuiProvider, useAui } from "@openagentui/react";
+import { McpManagerResource, defineConnector } from "@openagentui/react-mcp";
 
 const connectors = [
   defineConnector({
@@ -100,12 +100,12 @@ Defaults and useful options:
 
 You have two options:
 
-**Drop-in shadcn dialog** (recommended for most apps). Install the `mcp-config` component via the assistant-ui registry, then render `<McpConfigDialog />` anywhere inside the provider. It includes a styled trigger, server cards, status badges, error banners, and the add form:
+**Drop-in shadcn dialog** (recommended for most apps). Install the `mcp-config` component via the openagentui registry, then render `<McpConfigDialog />` anywhere inside the provider. It includes a styled trigger, server cards, status badges, error banners, and the add form:
 
 <InstallCommand shadcn={["mcp-config"]} />
 
 ```tsx title="app/page.tsx"
-import { McpConfigDialog } from "@/components/assistant-ui/elements/mcp-config.aui";
+import { McpConfigDialog } from "@/components/openagentui/elements/mcp-config.aui";
 
 export default function Page() {
   return (
@@ -133,7 +133,7 @@ Pass children to override the trigger:
 import {
   McpManagerPrimitive,
   McpServerPrimitive,
-} from "@assistant-ui/react-mcp";
+} from "@openagentui/react-mcp";
 
 const ServerCard = () => (
   <McpServerPrimitive.Root>
@@ -204,7 +204,7 @@ Add a route at `/mcp/callback` (or whatever you set `oauthRedirectUri` to):
 ```tsx title="app/mcp/callback/page.tsx"
 "use client";
 
-import { McpOAuthCallback } from "@assistant-ui/react-mcp";
+import { McpOAuthCallback } from "@openagentui/react-mcp";
 import { useRouter } from "next/navigation";
 import { Providers } from "../../providers";
 
@@ -225,12 +225,12 @@ The callback reads `?state=...` plus either `code` or an OAuth `error` from the 
 
 ### Use the tools in chat
 
-`McpManagerResource` registers connected tools as **frontend tools** with the `modelContext` scope. Any chat runtime mounted in the same store (e.g. `@assistant-ui/ai-sdk`'s `useChatRuntime`) sees them and exposes them to the model without a separate hook or adapter call.
+`McpManagerResource` registers connected tools as **frontend tools** with the `modelContext` scope. Any chat runtime mounted in the same store (e.g. `@openagentui/ai-sdk`'s `useChatRuntime`) sees them and exposes them to the model without a separate hook or adapter call.
 
 ```tsx
 "use client";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 export function Chat() {
   const runtime = useChatRuntime({
@@ -264,7 +264,7 @@ Answering a request requires composing `McpElicitationPrimitive`, because the se
 Render `McpElicitationPrimitive.Items` inside a server-scoped subtree, then compose fields and response actions from the unstyled primitives:
 
 ```tsx
-import { McpElicitationPrimitive } from "@assistant-ui/react-mcp";
+import { McpElicitationPrimitive } from "@openagentui/react-mcp";
 
 <McpElicitationPrimitive.Items>
   {() => (
@@ -316,7 +316,7 @@ If `loadCustomServers` fails, the manager keeps later edits in memory but does n
 Authentication records include the MCP server URL and are used only for that exact endpoint. Custom storage implementations must round-trip the `serverUrl` field passed to `saveAuthState`. Bearer records are written by the host application, so any implementation that persists `token` must write the server's configured `url` as `serverUrl` in the same record; both sides are normalized before they are compared, so any spelling of the same URL matches. A stored credential that does not match is never sent: the server does not connect and `lastError` reports that its saved authentication belongs to a different URL. OAuth records written before this binding existed carry no `serverUrl`, so they surface that message once and the user connects again.
 
 ```tsx
-import { McpManagerResource, McpCustomStorage } from "@assistant-ui/react-mcp";
+import { McpManagerResource, McpCustomStorage } from "@openagentui/react-mcp";
 
 AuiConfig({
   mcp: McpManagerResource({
@@ -365,7 +365,7 @@ The OAuth provider implements the MCP SDK's `OAuthClientProvider`. The SDK handl
 Read render-time state with `useAuiState`:
 
 ```ts
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 const isHydrated = useAuiState((s) => s.mcp.isHydrated);
 const connectionState = useAuiState((s) => s.mcpServer.connectionState);

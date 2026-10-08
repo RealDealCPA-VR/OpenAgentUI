@@ -24,7 +24,7 @@ it("passes the selected bundle and its source into agent setup", () => {
     screen.getByRole("button", { name: "Set up with your agent" }),
   );
   expect(setup).toHaveBeenCalledWith(
-    ["assistant-ui"],
+    ["openagentui"],
     expect.stringContaining("/example-bundles/website-assistant/source.tar.gz"),
   );
   expect(setup.mock.calls[0]?.[1]).toContain(example.title);

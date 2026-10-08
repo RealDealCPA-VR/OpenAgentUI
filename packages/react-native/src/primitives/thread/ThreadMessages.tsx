@@ -7,10 +7,10 @@ import {
   useCallback,
 } from "react";
 import { FlatList, type FlatListProps } from "react-native";
-import type { ThreadMessage } from "@assistant-ui/core";
-import type { MessageState } from "@assistant-ui/core/store";
-import { RenderChildrenWithAccessor, useAuiState } from "@assistant-ui/store";
-import { MessageByIndexProvider } from "@assistant-ui/core/react";
+import type { ThreadMessage } from "@openagentui/core";
+import type { MessageState } from "@openagentui/core/store";
+import { RenderChildrenWithAccessor, useAuiState } from "@openagentui/store";
+import { MessageByIndexProvider } from "@openagentui/core/react";
 import {
   type FlatListHistory,
   getFlatListPagingProps,

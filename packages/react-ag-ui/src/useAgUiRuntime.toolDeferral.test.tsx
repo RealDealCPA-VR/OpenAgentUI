@@ -2,11 +2,11 @@
 
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { act, cleanup, render, renderHook } from "@testing-library/react";
-import type { AssistantRuntime, ToolCallMessagePart } from "@assistant-ui/core";
+import type { AssistantRuntime, ToolCallMessagePart } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   useAssistantTool,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import type { HttpAgent } from "@ag-ui/client";
 import { z } from "zod";
 import { useAgUiRuntime } from "./useAgUiRuntime";

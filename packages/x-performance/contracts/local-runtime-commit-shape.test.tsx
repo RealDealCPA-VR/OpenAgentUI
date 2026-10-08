@@ -2,13 +2,13 @@ import { describe, expect, it } from "vitest";
 import { createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
-import type { AssistantRuntime, ChatModelAdapter } from "@assistant-ui/core";
+import type { AssistantRuntime, ChatModelAdapter } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
   useLocalRuntime,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { createRenderCounter } from "../src/render-counter";
 
 (

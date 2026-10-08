@@ -29,7 +29,7 @@ const reactAiSdkExports: string[] = [
 ];
 
 const migrateToEdgePackage = createTransformer(({ j, root, markAsChanged }) => {
-  const sourcesToMigrate: string[] = ["@assistant-ui/react"];
+  const sourcesToMigrate: string[] = ["@openagentui/react"];
   const movedAiSdkSpecifiers: any[] = [];
   let lastMigratedImportPath: any = null;
 
@@ -65,7 +65,7 @@ const migrateToEdgePackage = createTransformer(({ j, root, markAsChanged }) => {
   // Add imports for react-ai-sdk (all edge-related imports now go here)
   if (movedAiSdkSpecifiers.length > 0) {
     const existingAiSdkImport = root.find(j.ImportDeclaration, {
-      source: { value: "@assistant-ui/react-ai-sdk" },
+      source: { value: "@openagentui/react-ai-sdk" },
     });
     if (existingAiSdkImport.size() > 0) {
       existingAiSdkImport.forEach((path: any) => {
@@ -82,7 +82,7 @@ const migrateToEdgePackage = createTransformer(({ j, root, markAsChanged }) => {
     } else {
       const newImport = j.importDeclaration(
         movedAiSdkSpecifiers,
-        j.literal("@assistant-ui/react-ai-sdk"),
+        j.literal("@openagentui/react-ai-sdk"),
       );
       if (lastMigratedImportPath) {
         j(lastMigratedImportPath).insertAfter(newImport);
@@ -102,14 +102,14 @@ const migrateToEdgePackage = createTransformer(({ j, root, markAsChanged }) => {
   root.find(j.ImportDeclaration).forEach((path: any) => {
     const sourceValue: string = path.value.source.value;
     if (
-      sourceValue.startsWith("@assistant-ui/react/") &&
+      sourceValue.startsWith("@openagentui/react/") &&
       (sourceValue.includes("edge/") ||
         sourceValue.includes("dangerous-in-browser/"))
     ) {
       path.value.source = j.literal(
         sourceValue.replace(
-          "@assistant-ui/react/",
-          "@assistant-ui/react-ai-sdk/",
+          "@openagentui/react/",
+          "@openagentui/react-ai-sdk/",
         ),
       );
       markAsChanged();
@@ -120,8 +120,8 @@ const migrateToEdgePackage = createTransformer(({ j, root, markAsChanged }) => {
   root.find(j.ImportDeclaration).forEach((path: any) => {
     const sourceValue: string = path.value.source.value;
     if (
-      sourceValue === "@assistant-ui/react-edge" ||
-      sourceValue === "@assistant-ui/react"
+      sourceValue === "@openagentui/react-edge" ||
+      sourceValue === "@openagentui/react"
     ) {
       let hasLanguageModelConverters = false;
       const remainingSpecifiers: any[] = [];
@@ -147,7 +147,7 @@ const migrateToEdgePackage = createTransformer(({ j, root, markAsChanged }) => {
         }
 
         const existingAiSdkImport = root.find(j.ImportDeclaration, {
-          source: { value: "@assistant-ui/react-ai-sdk" },
+          source: { value: "@openagentui/react-ai-sdk" },
         });
 
         if (existingAiSdkImport.size() > 0) {
@@ -165,7 +165,7 @@ const migrateToEdgePackage = createTransformer(({ j, root, markAsChanged }) => {
         } else {
           const newImport = j.importDeclaration(
             aiSdkSpecifiers,
-            j.literal("@assistant-ui/react-ai-sdk"),
+            j.literal("@openagentui/react-ai-sdk"),
           );
           j(path).insertAfter(newImport);
         }

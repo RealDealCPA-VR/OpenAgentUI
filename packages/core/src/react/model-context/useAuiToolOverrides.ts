@@ -1,6 +1,6 @@
 import { useEffect, useInsertionEffect, useRef } from "react";
-import { useAui } from "@assistant-ui/store";
-import type { Tool } from "assistant-stream";
+import { useAui } from "@openagentui/store";
+import type { Tool } from "openagentui-stream";
 
 type AuiToolOverride<
   TArgs extends Record<string, unknown> = Record<string, unknown>,

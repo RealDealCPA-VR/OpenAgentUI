@@ -2370,7 +2370,7 @@ describe("ExternalStoreThreadRuntimeCore voice transcripts", () => {
       expect(core.voice).toBeUndefined();
       await Promise.resolve();
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Voice message commit failed",
+        "[openagentui] Voice message commit failed",
         commitError,
       );
     });
@@ -2446,7 +2446,7 @@ describe("ExternalStoreThreadRuntimeCore voice transcripts", () => {
       ).toEqual(["Hel", "Stop", "Sure thing"]);
       await Promise.resolve();
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Voice message commit failed",
+        "[openagentui] Voice message commit failed",
         commitError,
       );
     });
@@ -2489,7 +2489,7 @@ describe("ExternalStoreThreadRuntimeCore voice transcripts", () => {
       expect(listener).toHaveBeenCalled();
       await Promise.resolve();
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Voice message commit failed",
+        "[openagentui] Voice message commit failed",
         commitError,
       );
     });

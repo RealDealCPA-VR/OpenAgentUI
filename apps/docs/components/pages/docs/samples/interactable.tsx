@@ -8,8 +8,8 @@ import {
   ComposerPrimitive,
   MessagePrimitive,
   AuiIf,
-} from "@assistant-ui/react";
-import { MarkdownTextPrimitive } from "@assistant-ui/react-markdown";
+} from "@openagentui/react";
+import { MarkdownTextPrimitive } from "@openagentui/react-markdown";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 import { InteractableRuntimeProvider } from "@/runtimes/interactable";
 import remarkGfm from "remark-gfm";

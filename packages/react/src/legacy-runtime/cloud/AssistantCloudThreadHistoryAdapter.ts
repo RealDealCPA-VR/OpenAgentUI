@@ -1,3 +1,3 @@
 "use client";
 
-export { useAssistantCloudThreadHistoryAdapter } from "@assistant-ui/core/react";
+export { useAssistantCloudThreadHistoryAdapter } from "@openagentui/core/react";

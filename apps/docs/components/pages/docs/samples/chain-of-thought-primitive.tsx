@@ -7,7 +7,7 @@ import {
   MessagePartPrimitive,
   ThreadPrimitive,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   BrainIcon,
   CheckCircle2Icon,

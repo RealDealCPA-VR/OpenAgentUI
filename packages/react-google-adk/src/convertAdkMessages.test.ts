@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { convertExternalMessages } from "@assistant-ui/core/react";
+import { convertExternalMessages } from "@openagentui/core/react";
 import { convertAdkMessage } from "./convertAdkMessages";
 import type { AdkMessage } from "./types";
 

@@ -12,7 +12,7 @@ import {
   ModelSelectorItem,
   ModelSelectorEffort,
   type ModelOption,
-} from "@/components/assistant-ui/elements/model-selector";
+} from "@/components/openagentui/elements/model-selector";
 import {
   DEFAULT_MODEL_ID,
   getContextWindow,

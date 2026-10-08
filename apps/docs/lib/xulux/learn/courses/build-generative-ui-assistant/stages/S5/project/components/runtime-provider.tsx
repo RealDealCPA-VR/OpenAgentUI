@@ -4,8 +4,8 @@ import {
   AssistantRuntimeProvider,
   unstable_Interactables,
   AuiConfig,
-} from "@assistant-ui/react";
-import { AssistantChatTransport, useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { AssistantChatTransport, useChatRuntime } from "@openagentui/ai-sdk";
 
 export function RuntimeProvider({
   api = "/api/chat",

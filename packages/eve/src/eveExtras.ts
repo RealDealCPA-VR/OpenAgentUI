@@ -1,4 +1,4 @@
-import { createRuntimeExtras } from "@assistant-ui/core/react";
+import { createRuntimeExtras } from "@openagentui/core/react";
 import type { EveMessageData, UseEveAgentHelpers } from "eve/react";
 
 export type EveRuntimeExtras = Pick<

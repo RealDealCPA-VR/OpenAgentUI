@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { useAuiState } from "@assistant-ui/react";
-import { useThreadListGroups } from "@/components/assistant-ui/elements/thread-list.aui";
+import { useAuiState } from "@openagentui/react";
+import { useThreadListGroups } from "@/components/openagentui/elements/thread-list.aui";
 
 export function useDemoThreadListGroups(search = "") {
   const { threadIds, filteredIndices, groups } = useThreadListGroups(search);

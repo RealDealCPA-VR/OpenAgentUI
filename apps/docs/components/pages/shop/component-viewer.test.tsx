@@ -65,6 +65,6 @@ describe("ComponentViewer", () => {
     ).toBeTruthy();
     fireEvent.change(phase, { target: { value: "writing" } });
     expect(await screen.findByText("Writing the next step…")).toBeTruthy();
-    expect(screen.getByText("Install @assistant-ui/react")).toBeTruthy();
+    expect(screen.getByText("Install @openagentui/react")).toBeTruthy();
   });
 });

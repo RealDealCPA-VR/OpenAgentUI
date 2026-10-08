@@ -10,9 +10,9 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import type { AssistantRuntime } from "@assistant-ui/core";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
-import { useAuiState } from "@assistant-ui/store";
+import type { AssistantRuntime } from "@openagentui/core";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
+import { useAuiState } from "@openagentui/store";
 import type { HttpAgent } from "@ag-ui/client";
 import { useAgUiRuntime } from "./useAgUiRuntime";
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useResource } from "@assistant-ui/tap";
+import { useResource } from "@openagentui/tap";
 import { describe, expect, it, vi } from "vitest";
-import { flushTapSync, resource, withKey } from "@assistant-ui/tap";
-import { AuiConfig, createAssistantClient } from "@assistant-ui/store/client";
-import { useAssistantEmit } from "@assistant-ui/store/client";
+import { flushTapSync, resource, withKey } from "@openagentui/tap";
+import { AuiConfig, createAssistantClient } from "@openagentui/store/client";
+import { useAssistantEmit } from "@openagentui/store/client";
 import type { ThreadHistoryAdapter } from "../../adapters/thread-history";
 import type { RemoteThreadListAdapter } from "../../runtimes/remote-thread-list/types";
 import { useRuntimeAdapters } from "../runtimes/RuntimeAdapterProvider";

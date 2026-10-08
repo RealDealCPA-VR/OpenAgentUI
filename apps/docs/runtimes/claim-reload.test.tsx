@@ -22,7 +22,7 @@ vi.mock("./chat-runtime", () => ({
   useDocsCloud,
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => ({
+vi.mock("@openagentui/react", async (importOriginal) => ({
   ...(await importOriginal<object>()),
   AssistantRuntimeProvider: ({ children }: { children?: unknown }) => children,
   useAui: () => ({}),
@@ -34,7 +34,7 @@ vi.mock("@assistant-ui/react", async (importOriginal) => ({
   SimpleImageAttachmentAdapter: class SimpleImageAttachmentAdapter {},
 }));
 
-vi.mock("@assistant-ui/react-devtools", () => ({ DevToolsModal: () => null }));
+vi.mock("@openagentui/react-devtools", () => ({ DevToolsModal: () => null }));
 vi.mock("@/lib/docs-toolkit", () => ({ default: {} }));
 vi.mock("./assistant-analytics", () => ({
   AssistantAnalyticsTracker: () => null,

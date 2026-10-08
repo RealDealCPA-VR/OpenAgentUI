@@ -39,7 +39,7 @@ import { GET } from "./route";
 const session = { id: "session_1234567890", expiresAt: Date.now() + 60_000 };
 const request = () =>
   new Request(
-    "https://www.assistant-ui.com/api/xulux/download-proxy?templateId=demo",
+    "https://openagentui.dev/api/xulux/download-proxy?templateId=demo",
   );
 
 afterEach(() => {

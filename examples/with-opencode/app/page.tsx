@@ -5,22 +5,22 @@ import {
   AuiConfig,
   Tools,
   useAui,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/radix/sidebar";
 import { Separator } from "@/components/ui/radix/separator";
-import { ThreadListSidebar } from "@/components/assistant-ui/elements/threadlist-sidebar.aui.radix";
+import { ThreadListSidebar } from "@/components/openagentui/elements/threadlist-sidebar.aui.radix";
 import {
   useOpenCodeRuntime,
   useOpenCodeSession,
-} from "@assistant-ui/react-opencode";
+} from "@openagentui/react-opencode";
 import {
   Thread,
   type ThreadComponents,
-} from "@/components/assistant-ui/elements/thread.aui";
+} from "@/components/openagentui/elements/thread.aui";
 import { OpenCodeDataPart } from "@/components/opencode-data-part";
 import { FallbackTool } from "@/components/tools/opencode-tools";
 import { ReasoningGroup } from "@/components/tools/reasoning-ghost";

@@ -1,6 +1,6 @@
 "use client";
 
-import { StoppedRun } from "@/components/assistant-ui/elements/stopped-run";
+import { StoppedRun } from "@/components/openagentui/elements/stopped-run";
 import { useWordStream } from "@/components/demo/hooks/use-demo";
 
 const TEXT =

@@ -1,6 +1,6 @@
 ---
 title: Message Branching
-description: Edit messages or regenerate AI responses, then switch between alternative replies. Branching navigation built into assistant-ui's React chat UI.
+description: Edit messages or regenerate AI responses, then switch between alternative replies. Branching navigation built into openagentui's React chat UI.
 platforms: ["react"]
 ---
 
@@ -11,7 +11,7 @@ Branching lets users navigate between alternative versions of a message. A new b
 - A user message is edited
 - An assistant message is reloaded (reload creates a new branch on the same message)
 
-assistant-ui tracks branches by observing changes to the `messages` array.
+openagentui tracks branches by observing changes to the `messages` array.
 
 ## Shortest Working Pattern
 
@@ -20,7 +20,7 @@ assistant-ui tracks branches by observing changes to the `messages` array.
 Place a branch picker inside your message component:
 
 ```tsx
-import { BranchPickerPrimitive } from "@assistant-ui/react";
+import { BranchPickerPrimitive } from "@openagentui/react";
 
 const BranchPicker = () => (
   <BranchPickerPrimitive.Root hideWhenSingleBranch>
@@ -38,7 +38,7 @@ const BranchPicker = () => (
 `ActionBarPrimitive.Reload` creates a new branch on an assistant message and re-runs from there:
 
 ```tsx
-import { ActionBarPrimitive, MessagePrimitive } from "@assistant-ui/react";
+import { ActionBarPrimitive, MessagePrimitive } from "@openagentui/react";
 
 const AssistantMessage = () => (
   <MessagePrimitive.Root>
@@ -57,7 +57,7 @@ const AssistantMessage = () => (
 For headless or keyboard-shortcut flows, navigate directly to a branch by id via `aui.message.switchToBranch`:
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 const SwitchToBranch = ({ branchId }: { branchId: string }) => {
   const aui = useAui();

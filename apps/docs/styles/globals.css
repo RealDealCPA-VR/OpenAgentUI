@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @import "tw-animate-css";
-@import "tw-shimmer";
+@import "@openagentui/tw-shimmer";
 @import "./docs.css";
 @import "./animate.css";
 @import "./codehike.css";

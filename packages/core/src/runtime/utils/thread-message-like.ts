@@ -1,4 +1,4 @@
-import { parsePartialJsonObject } from "assistant-stream/utils";
+import { parsePartialJsonObject } from "openagentui-stream/utils";
 import { generateId } from "../../utils/id";
 import { parseDataUrl } from "../../utils/data-url";
 import type {
@@ -28,7 +28,7 @@ import type {
 import type {
   ReadonlyJSONObject,
   ReadonlyJSONValue,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import { readToolInteractionLog } from "./tool-interactions";
 
 type DataPrefixedPart = {

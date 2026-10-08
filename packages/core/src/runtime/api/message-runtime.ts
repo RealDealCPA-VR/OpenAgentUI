@@ -63,7 +63,7 @@ export type MessageRuntimeState = ThreadMessage & {
 };
 
 /**
- * @deprecated Use `MessageRuntimeState`. From `@assistant-ui/react` 0.16, `MessageState` names the message state read through `useAuiState`.
+ * @deprecated Use `MessageRuntimeState`. From `@openagentui/react` 0.16, `MessageState` names the message state read through `useAuiState`.
  */
 export type MessageState = MessageRuntimeState;
 

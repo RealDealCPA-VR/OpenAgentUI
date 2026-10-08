@@ -5,7 +5,7 @@ import {
   type OpenCodePermissionRequest,
   type OpenCodePermissionResponse,
   useOpenCodeRuntimeExtras,
-} from "@assistant-ui/react-opencode";
+} from "@openagentui/react-opencode";
 import {
   CheckCircle2Icon,
   LoaderIcon,

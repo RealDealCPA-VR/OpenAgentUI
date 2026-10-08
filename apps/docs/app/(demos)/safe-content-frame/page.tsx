@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { SafeContentFrame, type RenderedFrame } from "safe-content-frame";
+import {
+  SafeContentFrame,
+  type RenderedFrame,
+} from "@openagentui/safe-content-frame";
 import { CopyCommandButton } from "@/components/shared/copy-command-button";
 import { Highlight } from "@/components/shared/highlight";
 import { CodeBlock } from "@/components/ui/code-block";
@@ -49,7 +52,7 @@ const SURFACE = [
   "salt",
 ] as const;
 
-const SNIPPET = `import { SafeContentFrame } from "safe-content-frame";
+const SNIPPET = `import { SafeContentFrame } from "@openagentui/safe-content-frame";
 
 const frame = new SafeContentFrame("my-app");
 
@@ -124,7 +127,7 @@ export default function SafeContentFramePage() {
     setStatus("rendering");
 
     try {
-      const scf = new SafeContentFrame("assistant-ui-docs", {
+      const scf = new SafeContentFrame("openagentui-docs", {
         sandbox: ["allow-scripts"],
       });
       const frame = await scf.renderHtml(source, container);
@@ -173,11 +176,11 @@ export default function SafeContentFramePage() {
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
           <CopyCommandButton
-            command="npm install safe-content-frame"
+            command="npm install @openagentui/safe-content-frame"
             analyticsContext={{ page: ANALYTICS_PAGE, section: "hero" }}
           />
           <a
-            href="https://github.com/assistant-ui/assistant-ui/tree/main/packages/safe-content-frame"
+            href="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/safe-content-frame"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground text-sm transition-colors"
@@ -320,7 +323,7 @@ export default function SafeContentFramePage() {
           .
         </p>
         <a
-          href="https://github.com/assistant-ui/assistant-ui/tree/main/packages/safe-content-frame"
+          href="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/safe-content-frame"
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground group inline-flex items-center gap-1.5 text-sm transition-colors"

@@ -7,8 +7,8 @@ import {
   Tools,
   AuiConfig,
   type Toolkit,
-} from "@assistant-ui/react";
-import { DevToolsModal } from "@assistant-ui/react-devtools";
+} from "@openagentui/react";
+import { DevToolsModal } from "@openagentui/react-devtools";
 import { TerminalIcon } from "lucide-react";
 import { z } from "zod";
 import {

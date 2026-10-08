@@ -1,12 +1,12 @@
 "use client";
 
 import { Chat, useChat, type UIMessage } from "@ai-sdk/react";
-import type { MessageRepository } from "@assistant-ui/core/internal";
+import type { MessageRepository } from "@openagentui/core/internal";
 import {
   pickExternalStoreSharedOptions,
   type AssistantRuntime,
   type ExternalStoreSharedOptions,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   useAISDKRuntime,
   type AISDKRuntimeAdapter,
@@ -89,7 +89,7 @@ type ChatThreadTransportBinding = {
 const getNoPendingStreamId = () => null;
 
 /**
- * Splits the combined options into the assistant-ui side and the `ChatInit`
+ * Splits the combined options into the openagentui side and the `ChatInit`
  * remainder the AI SDK consumes, so external `Chat` construction forwards the
  * same fields `useChat` would.
  */
@@ -403,12 +403,12 @@ export const useChatThread = <UI_MESSAGE extends UIMessage = UIMessage>(
         }
       })
       .catch((err: unknown) => {
-        console.warn("[assistant-ui] resumable: resume failed", err);
+        console.warn("[openagentui] resumable: resume failed", err);
         try {
           onResumeErrorRef.current?.(err);
         } catch (callbackError) {
           console.error(
-            "[assistant-ui] resumable: onResumeError callback failed",
+            "[openagentui] resumable: onResumeError callback failed",
             callbackError,
           );
         } finally {

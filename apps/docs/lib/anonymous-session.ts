@@ -1,12 +1,12 @@
 import { createHmac, randomUUID, timingSafeEqual } from "node:crypto";
 
 export const ANONYMOUS_SESSION_COOKIE = "aui_anon_session";
-export const ANONYMOUS_SESSION_HEADER = "x-assistant-ui-anonymous-session";
+export const ANONYMOUS_SESSION_HEADER = "x-openagentui-anonymous-session";
 export const ANONYMOUS_SESSION_TTL_SECONDS = 24 * 60 * 60;
 
 export const PUBLIC_ASSISTANT_CROSS_ORIGINS: ReadonlySet<string> = new Set([
-  "https://assistant-ui-expo.vercel.app",
-  "https://assistant-ui-ink.vercel.app",
+  "https://openagentui-expo.vercel.app",
+  "https://openagentui-ink.vercel.app",
   "http://localhost:8081",
 ]);
 
@@ -39,7 +39,7 @@ export function getAnonymousSessionSecret(): string | null {
   if (secret) return secret;
   return process.env.NODE_ENV === "production"
     ? null
-    : "assistant-ui-local-anonymous-session";
+    : "openagentui-local-anonymous-session";
 }
 
 export function createAnonymousSessionToken({

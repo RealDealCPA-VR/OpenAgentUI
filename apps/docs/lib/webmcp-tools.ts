@@ -381,7 +381,7 @@ function webMcpTools(fetchImpl: FetchLike): WebMcpToolDescriptor[] {
     {
       name: "getDoc",
       description:
-        "Read one assistant-ui docs page as markdown. Accepts a path such as /docs/installation or docs/store/state.",
+        "Read one openagentui docs page as markdown. Accepts a path such as /docs/installation or docs/store/state.",
       inputSchema: {
         type: "object",
         properties: {
@@ -409,7 +409,7 @@ function webMcpTools(fetchImpl: FetchLike): WebMcpToolDescriptor[] {
     {
       name: "getExample",
       description:
-        "Read one assistant-ui example page as markdown. Accepts an example slug such as ai-sdk or a path such as /examples/ai-sdk.",
+        "Read one openagentui example page as markdown. Accepts an example slug such as ai-sdk or a path such as /examples/ai-sdk.",
       inputSchema: {
         type: "object",
         properties: {
@@ -437,7 +437,7 @@ function webMcpTools(fetchImpl: FetchLike): WebMcpToolDescriptor[] {
     {
       name: "listSkills",
       description:
-        "List the assistant-ui agent skills: task-shaped guides (setup, tools, runtime, streaming, ...) for building with assistant-ui. Returns every skill's name and description; read one with getSkill.",
+        "List the openagentui agent skills: task-shaped guides (setup, tools, runtime, streaming, ...) for building with openagentui. Returns every skill's name and description; read one with getSkill.",
       inputSchema: {
         type: "object",
         properties: {},
@@ -450,7 +450,7 @@ function webMcpTools(fetchImpl: FetchLike): WebMcpToolDescriptor[] {
     {
       name: "getSkill",
       description:
-        "Read one assistant-ui agent skill by name, such as tools or setup. Returns its name, description, and full markdown content.",
+        "Read one openagentui agent skill by name, such as tools or setup. Returns its name, description, and full markdown content.",
       inputSchema: {
         type: "object",
         properties: {

@@ -1,4 +1,4 @@
-import { generateId } from "@assistant-ui/core";
+import { generateId } from "@openagentui/core";
 import type {
   LangGraphTupleMetadata,
   RemoveUIMessage,

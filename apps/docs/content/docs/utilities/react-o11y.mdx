@@ -12,10 +12,10 @@ import {
 } from "@/components/pages/docs/samples/o11y/capability-samples";
 
 <Callout type="warn">
-`@assistant-ui/react-o11y` is experimental. The API may change without notice.
+`@openagentui/react-o11y` is experimental. The API may change without notice.
 </Callout>
 
-`@assistant-ui/react-o11y` provides headless, Radix-style primitives for rendering observability spans as collapsible, indented hierarchical UIs. Use it to build trace inspectors, waterfall debug panels, or LLM call timelines on top of your own span data source.
+`@openagentui/react-o11y` provides headless, Radix-style primitives for rendering observability spans as collapsible, indented hierarchical UIs. Use it to build trace inspectors, waterfall debug panels, or LLM call timelines on top of your own span data source.
 
 - **Headless**: ships no styles, so you bring your own CSS or Tailwind.
 - **Composable**: Radix-style primitive parts that you arrange yourself.
@@ -28,7 +28,7 @@ import {
 
 ## Installation
 
-<InstallCommand npm={["@assistant-ui/react-o11y"]} />
+<InstallCommand npm={["@openagentui/react-o11y"]} />
 
 ## Quick start
 
@@ -41,8 +41,8 @@ import {
   SpanPrimitive,
   SpanResource,
   type SpanData,
-} from "@assistant-ui/react-o11y";
-import { AuiConfig, AuiProvider } from "@assistant-ui/store";
+} from "@openagentui/react-o11y";
+import { AuiConfig, AuiProvider } from "@openagentui/store";
 
 function SpanRow() {
   return (
@@ -103,8 +103,8 @@ import {
   SpanPrimitive,
   SpanResource,
   SpanByIndexProvider,
-} from "@assistant-ui/react-o11y";
-import { AuiConfig, AuiProvider } from "@assistant-ui/store";
+} from "@openagentui/react-o11y";
+import { AuiConfig, AuiProvider } from "@openagentui/store";
 
 // Top-level: mount SpanResource via AuiProvider
 const config = AuiConfig({ span: SpanResource({ spans }) });
@@ -351,13 +351,13 @@ Every primitive that renders an element forwards its ref and accepts standard DO
 
 <Cards>
   <Card
-    title="heat-graph"
+    title="@openagentui/heat-graph"
     description="Activity heatmap primitives in the same Radix-style headless pattern."
     href="/docs/utilities/heat-graph"
   />
   <Card
     title="Primitives overview"
-    description="The broader assistant-ui primitive system."
+    description="The broader openagentui primitive system."
     href="/docs/primitives"
   />
 </Cards>

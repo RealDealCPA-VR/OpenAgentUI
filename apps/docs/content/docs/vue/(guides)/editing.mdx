@@ -19,7 +19,7 @@ import {
   ComposerPrimitiveSend,
   MessagePrimitiveParts,
   useAuiState,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 
 const role = useAuiState((s) => s.message.role);
 const editing = useAuiState((s) => s.composer.isEditing);
@@ -67,7 +67,7 @@ Inside a message row, `aui.composer` points to that message's edit composer. Thi
 
 ```vue title="app/components/ReplaceMessage.vue"
 <script setup lang="ts">
-import { useAui, useAuiState } from "@assistant-ui/vue";
+import { useAui, useAuiState } from "@openagentui/vue";
 
 const aui = useAui();
 const canEdit = useAuiState(

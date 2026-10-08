@@ -1203,7 +1203,7 @@ export const ELEMENT_SECTIONS: ElementSection[] = [
   },
   {
     label: "AUI connected",
-    description: "Elements that read directly from assistant-ui runtime state.",
+    description: "Elements that read directly from openagentui runtime state.",
     elements: [
       {
         slug: "thread",

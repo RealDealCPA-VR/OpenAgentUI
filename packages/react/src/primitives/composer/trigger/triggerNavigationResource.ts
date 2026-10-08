@@ -1,10 +1,10 @@
 import { useEffectEvent, useMemo, useState } from "react";
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import type {
   Unstable_TriggerAdapter,
   Unstable_TriggerCategory,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { matchesTriggerItemQuery } from "./matchesTriggerItemQuery";
 
 export type TriggerNavigationResourceOutput = {

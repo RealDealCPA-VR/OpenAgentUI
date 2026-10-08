@@ -12,7 +12,7 @@ import {
   ComposerPrimitiveCancel,
   ComposerPrimitiveInput,
   ComposerPrimitiveSend,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 </script>
 
 <template>
@@ -63,7 +63,7 @@ import {
   ComposerPrimitiveInput,
   ComposerPrimitiveSend,
   useAuiState,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 
 const editing = useAuiState((s) => s.composer.isEditing);
 </script>
@@ -104,7 +104,7 @@ A listener you attach runs before the primitive's own handler. Call `preventDefa
 
 ```vue title="app/components/GatedComposer.vue"
 <script setup lang="ts">
-import { ComposerPrimitiveInput, ComposerPrimitiveSend } from "@assistant-ui/vue";
+import { ComposerPrimitiveInput, ComposerPrimitiveSend } from "@openagentui/vue";
 
 const props = defineProps<{ blocked: boolean }>();
 
@@ -125,7 +125,7 @@ Set `:submit-on-enter="false"` so Enter always inserts a newline, then send from
 
 ```vue title="app/components/CtrlEnterInput.vue"
 <script setup lang="ts">
-import { ComposerPrimitiveInput, useAui, useAuiState } from "@assistant-ui/vue";
+import { ComposerPrimitiveInput, useAui, useAuiState } from "@openagentui/vue";
 
 const aui = useAui();
 const canSend = useAuiState((s) => s.composer.canSend && !s.thread.isRunning);
@@ -153,7 +153,7 @@ The input is bound to `s.composer.text`, so do not put `v-model` on it. Read the
 
 ```vue title="app/components/ComposerCounter.vue"
 <script setup lang="ts">
-import { useAui, useAuiState } from "@assistant-ui/vue";
+import { useAui, useAuiState } from "@openagentui/vue";
 
 const aui = useAui();
 const length = useAuiState((s) => s.composer.text.length);

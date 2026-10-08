@@ -7,7 +7,7 @@ import {
 import {
   useActionBarCopy,
   type UseActionBarCopyOptions,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 export type ActionBarCopyProps = Omit<PressableProps, "onPress" | "children"> &
   UseActionBarCopyOptions & {

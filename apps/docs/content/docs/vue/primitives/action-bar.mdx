@@ -14,7 +14,7 @@ import {
   MessagePrimitiveParts,
   MessagePrimitiveRoot,
   useAuiState,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 
 const role = useAuiState((s) => s.message.role);
 const copied = useAuiState((s) => s.message.isCopied);
@@ -73,7 +73,7 @@ Vue has no feedback primitive. When the runtime supports feedback, call `aui.mes
 
 ```vue title="app/components/MessageFeedback.vue"
 <script setup lang="ts">
-import { useAui, useAuiState } from "@assistant-ui/vue";
+import { useAui, useAuiState } from "@openagentui/vue";
 
 const aui = useAui();
 const supported = useAuiState(

@@ -1,6 +1,6 @@
 ## CONTRIBUTING
 
-A big welcome and thank you for considering contributing to assistant-ui! It’s people like you that make it a reality for users in our community.
+A big welcome and thank you for considering contributing to openagentui! It’s people like you that make it a reality for users in our community.
 
 You can contribute by opening an issue, or by making a pull request. [Opening a pull request](#opening-a-pull-request) says when to open an issue first.
 
@@ -78,7 +78,7 @@ Maintainers add the `preview` label to a ready pull request to publish installab
 
 Every pull request that changes packages must include a changeset, otherwise your changes won't be published to npm. CI enforces this: the Changeset Semver Check fails a pull request that edits a published package's shipped files without a changeset naming that package. Tests and top-level Markdown files do not count, comment-only source edits do, and a `package.json` edit counts when it changes what consumers install. Bumping `version`, editing `devDependencies` or a `scripts` entry nobody installing your package runs, and moving the range (not the name) of a dependency on another workspace package are all handled by the release itself, so they need nothing from you; every other field needs a changeset naming that package, `exports`, `files`, `bin`, `sideEffects`, `engines`, `publishConfig`, `peerDependenciesMeta`, an install hook and a third-party range among them.
 
-Note, this does not apply to packages like `@assistant-ui/docs` or `@assistant-ui/shadcn-registry` which are not published to npm, they are deployed on Vercel.
+Note, this does not apply to packages like `@openagentui/docs` or `@openagentui/shadcn-registry` which are not published to npm, they are deployed on Vercel.
 
 Python packages under `python/` take no changeset. Leave their `pyproject.toml` version alone too: a maintainer bumps it in a release pull request right before publishing to PyPI, and the Changeset Semver Check fails a pull request that changes it alongside other package edits.
 
@@ -94,7 +94,7 @@ This will detect which packages changed and prompt you to select type (major, mi
 
 **Almost always `patch`** — even for new features and new exports. Here's why:
 
-Most assistant-ui packages are at `0.x` versions (e.g. `0.12.15`). In semver, the caret range `^` behaves differently for `0.x` than for `1.x+`:
+Most openagentui packages are at `0.x` versions (e.g. `0.12.15`). In semver, the caret range `^` behaves differently for `0.x` than for `1.x+`:
 
 | Range | Allows | Example |
 |-------|--------|---------|

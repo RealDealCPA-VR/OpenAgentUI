@@ -4,8 +4,8 @@ import type {
   SourceMessagePart,
   MessagePartState,
   MessagePartStatus,
-} from "@assistant-ui/core";
-import { useAuiState } from "@assistant-ui/store";
+} from "@openagentui/core";
+import { useAuiState } from "@openagentui/store";
 
 const COMPLETE_STATUS: MessagePartStatus = Object.freeze({ type: "complete" });
 
@@ -31,7 +31,7 @@ const EMPTY_SOURCE_PART: MessagePartState & SourceMessagePart = Object.freeze({
  * });
  * ```
  *
- * See the {@link https://assistant-ui.com/docs/migrations/v0-12 migration guide}.
+ * See the {@link https://openagentui.dev/docs/migrations/v0-12 migration guide}.
  */
 export const useMessagePartSource = () => {
   // Sentinel instead of throw: see useMessagePartText for the invariant.

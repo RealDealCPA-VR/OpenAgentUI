@@ -11,10 +11,10 @@
     "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=html --coverage.reporter=json-summary"
   },
   "dependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/react-langchain": "workspace:*",
-    "@assistant-ui/react-markdown": "workspace:*",
-    "@assistant-ui/ui": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/react-langchain": "workspace:*",
+    "@openagentui/react-markdown": "workspace:*",
+    "@openagentui/ui": "workspace:*",
     "@langchain/langgraph-sdk": "^1.12.0",
     "@langchain/react": "^1.2.0",
     "class-variance-authority": "^0.7.1",
@@ -25,8 +25,8 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "@assistant-ui/next": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/next": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",

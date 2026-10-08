@@ -2,19 +2,19 @@
 
 import { act } from "react";
 import { afterAll, afterEach, expect, it, vi } from "vitest";
-import type { RemoteThreadListAdapter } from "@assistant-ui/core";
-import { getThreadMessageText } from "@assistant-ui/core/internal";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
-import { useAui } from "@assistant-ui/store";
+import type { RemoteThreadListAdapter } from "@openagentui/core";
+import { getThreadMessageText } from "@openagentui/core/internal";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
+import { useAui } from "@openagentui/store";
 import { useLangGraphRuntime } from "./useLangGraphRuntime";
 import type { LangChainMessage } from "./types";
 
 const { controllerCreated } = vi.hoisted(() => ({
   controllerCreated: vi.fn(),
 }));
-vi.mock("@assistant-ui/core/internal", async (importOriginal) => {
+vi.mock("@openagentui/core/internal", async (importOriginal) => {
   const original =
-    await importOriginal<typeof import("@assistant-ui/core/internal")>();
+    await importOriginal<typeof import("@openagentui/core/internal")>();
   return {
     ...original,
     createAbortableThreadLoad: () => {

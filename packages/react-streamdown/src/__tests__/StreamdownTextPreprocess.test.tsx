@@ -10,8 +10,8 @@ const mocks = vi.hoisted(() => ({
   smooth: vi.fn((part: { text: string }, _smooth?: unknown) => part),
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/react")>();
+vi.mock("@openagentui/react", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/react")>();
   return {
     ...actual,
     useMessagePartText: () => mocks.messagePartText,
@@ -21,7 +21,7 @@ vi.mock("@assistant-ui/react", async (importOriginal) => {
 });
 
 import { StreamdownTextPrimitive } from "../primitives/StreamdownText";
-import { normalizeMathDelimiters } from "@assistant-ui/react-markdown/preprocess";
+import { normalizeMathDelimiters } from "@openagentui/react-markdown/preprocess";
 
 Element.prototype.scrollTo ??= function scrollTo() {};
 

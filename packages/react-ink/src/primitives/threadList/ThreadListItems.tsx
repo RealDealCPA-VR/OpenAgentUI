@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { Box } from "ink";
-import { useAuiState } from "@assistant-ui/store";
-import { ThreadListItemByIndexProvider } from "@assistant-ui/core/react";
+import { useAuiState } from "@openagentui/store";
+import { ThreadListItemByIndexProvider } from "@openagentui/core/react";
 
 export type ThreadListItemsProps = {
   renderItem: (props: { threadId: string; index: number }) => ReactElement;

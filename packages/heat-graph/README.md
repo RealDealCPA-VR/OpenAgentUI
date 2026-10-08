@@ -1,22 +1,22 @@
-# `heat-graph`
+# `@openagentui/heat-graph`
 
 [![npm version](https://img.shields.io/npm/v/heat-graph)](https://www.npmjs.com/package/heat-graph)
 [![npm downloads](https://img.shields.io/npm/dm/heat-graph)](https://www.npmjs.com/package/heat-graph)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/heat-graph)](https://bundlephobia.com/package/heat-graph)
-[![GitHub stars](https://img.shields.io/github/stars/assistant-ui/assistant-ui)](https://github.com/assistant-ui/assistant-ui)
+[![GitHub stars](https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI)](https://github.com/RealDealCPA-VR/OpenAgentUI)
 
 Headless, Radix-style React components for rendering GitHub-style activity heatmaps. Ships only the layout, date math, and tooltip wiring; you bring colors, sizing, and labels so the heatmap matches your design system.
 
 ## Installation
 
 ```bash
-npm install heat-graph
+npm install @openagentui/heat-graph
 ```
 
 ## Usage
 
 ```tsx
-import * as HeatGraph from "heat-graph";
+import * as HeatGraph from "@openagentui/heat-graph";
 
 const COLORS = ["#ebedf0", "#c6d7f9", "#8fb0f3", "#5888e8", "#2563eb"];
 
@@ -48,4 +48,4 @@ Compose `MonthLabels`, `DayLabels`, `Legend` / `LegendLevel`, and `Tooltip` (Rad
 
 ## Documentation
 
-Live demo and full reference at [assistant-ui.com/heat-graph](https://www.assistant-ui.com/heat-graph).
+Live demo and full reference at [openagentui.dev/heat-graph](https://openagentui.dev/heat-graph).

@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
-import { resource } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+import { resource } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import type { DataRenderersState } from "../types/scopes/dataRenderers";
 import type { DataMessagePartComponent } from "../types/MessagePartComponentTypes";
 import { nullProtoRecord } from "../../utils/record";

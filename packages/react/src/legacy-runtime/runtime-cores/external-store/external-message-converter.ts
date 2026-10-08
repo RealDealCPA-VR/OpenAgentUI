@@ -4,4 +4,4 @@ export {
   convertExternalMessages,
   createExternalMessageConversionCache,
   type ExternalMessageConversionCache,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";

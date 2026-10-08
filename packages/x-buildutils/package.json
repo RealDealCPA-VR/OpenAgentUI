@@ -1,15 +1,15 @@
 {
-  "name": "@assistant-ui/x-buildutils",
+  "name": "@openagentui/x-buildutils",
   "private": false,
   "version": "0.0.30",
-  "description": "Internal build utilities for assistant-ui packages",
+  "description": "Internal build utilities for openagentui packages",
   "keywords": [
     "build",
     "typescript",
     "internal",
-    "assistant-ui"
+    "openagentui"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "files": [
@@ -37,14 +37,14 @@
     "@types/babel__core": "^7.20.5",
     "@types/node": "^26.6.3"
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/x-buildutils"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   },
   "scripts": {
     "test": "node --test \"src/**/*.test.ts\"",

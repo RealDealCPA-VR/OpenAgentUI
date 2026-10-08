@@ -29,7 +29,7 @@ const stubBrowser = ({
   const target = new EventTarget();
 
   const win = {
-    location: new URL(pathname, "https://www.assistant-ui.com"),
+    location: new URL(pathname, "https://openagentui.dev"),
     localStorage: {
       getItem: (key: string) => store.get(key) ?? null,
       setItem: (key: string, value: string) => void store.set(key, value),

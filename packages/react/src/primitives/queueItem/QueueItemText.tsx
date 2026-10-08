@@ -6,7 +6,7 @@ import {
   type ComponentPropsWithoutRef,
   forwardRef,
 } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export namespace QueueItemPrimitiveText {
   export type Element = ComponentRef<typeof Primitive.span>;

@@ -5,10 +5,10 @@ import {
   AuiIf,
   ThreadPrimitive,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { ArrowDownIcon } from "lucide-react";
 import type { ReactNode } from "react";
-import { SelectionToolbar } from "@/components/assistant-ui/elements/quote.aui";
+import { SelectionToolbar } from "@/components/openagentui/elements/quote.aui";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { Composer, EditComposer } from "./composer";

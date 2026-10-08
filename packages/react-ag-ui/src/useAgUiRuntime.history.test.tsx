@@ -5,7 +5,7 @@ import { act, cleanup, renderHook, waitFor } from "@testing-library/react";
 import type {
   ThreadAssistantMessage,
   ThreadHistoryAdapter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type { HttpAgent } from "@ag-ui/client";
 import { useAgUiRuntime } from "./useAgUiRuntime";
 

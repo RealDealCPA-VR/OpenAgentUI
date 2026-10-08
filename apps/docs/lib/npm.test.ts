@@ -18,7 +18,7 @@ const respond = (body: unknown, ok = true, status = 200) =>
 
 const range = (revalidate?: number) =>
   getDownloadsRange(
-    "@assistant-ui/react",
+    "@openagentui/react",
     "2026-08-01",
     "2026-08-31",
     revalidate,
@@ -43,7 +43,7 @@ describe("npm", () => {
       { day: "2026-08-01", downloads: 7 },
     ]);
     expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.npmjs.org/downloads/range/2026-08-01:2026-08-31/@assistant-ui/react",
+      "https://api.npmjs.org/downloads/range/2026-08-01:2026-08-31/@openagentui/react",
       { next: { revalidate: NPM_REVALIDATE.WARM } },
     );
   });
@@ -84,7 +84,7 @@ describe("npm", () => {
   it("reads the week npm names alongside its count", async () => {
     respond({ downloads: 926_410, start: "2026-09-02", end: "2026-09-08" });
 
-    await expect(getLastWeek("@assistant-ui/react")).resolves.toEqual({
+    await expect(getLastWeek("@openagentui/react")).resolves.toEqual({
       downloads: 926_410,
       start: "2026-09-02",
       end: "2026-09-08",
@@ -94,7 +94,7 @@ describe("npm", () => {
   it("keeps the count when npm names no window", async () => {
     respond({ downloads: 926_410 });
 
-    await expect(getWeeklyDownloads("@assistant-ui/react")).resolves.toBe(
+    await expect(getWeeklyDownloads("@openagentui/react")).resolves.toBe(
       926_410,
     );
   });
@@ -102,7 +102,7 @@ describe("npm", () => {
   it("drops a window npm cannot have meant", async () => {
     respond({ downloads: 926_410, start: "2026-09-02", end: "not-a-day" });
 
-    await expect(getLastWeek("@assistant-ui/react")).resolves.toEqual({
+    await expect(getLastWeek("@openagentui/react")).resolves.toEqual({
       downloads: 926_410,
       start: "2026-09-02",
       end: null,
@@ -112,9 +112,9 @@ describe("npm", () => {
   it("names the error when the request never lands", async () => {
     fetchMock.mockRejectedValue(new Error("socket hang up"));
 
-    await expect(getWeeklyDownloads("@assistant-ui/react")).resolves.toBeNull();
+    await expect(getWeeklyDownloads("@openagentui/react")).resolves.toBeNull();
     expect(console.error).toHaveBeenCalledWith(
-      expect.stringContaining("/downloads/point/last-week/@assistant-ui/react"),
+      expect.stringContaining("/downloads/point/last-week/@openagentui/react"),
       expect.any(Error),
     );
   });

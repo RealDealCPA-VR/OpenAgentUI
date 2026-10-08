@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "assistant-ui Interactables Example",
+  title: "openagentui Interactables Example",
   description:
-    "Example using assistant-ui interactable components with a task board",
+    "Example using openagentui interactable components with a task board",
 };
 
 export default function RootLayout({

@@ -14,7 +14,7 @@ import {
 
 test("shared generator and build inputs require every API surface", () => {
   for (const file of [
-    "api-surface/assistant-ui__react.ts",
+    "api-surface/openagentui__react.ts",
     "packages/x-buildutils/src/index.ts",
     "scripts/generate-api-surface.mjs",
     "scripts/autofix-install.mjs",
@@ -47,25 +47,25 @@ test("package changes use the affected package graph", () => {
 
 test("a known snapshot selects its owner alongside the affected source graph", () => {
   const files = [
-    "api-surface/assistant-ui__react-google-adk.ts",
+    "api-surface/openagentui__react-google-adk.ts",
     "packages/react-google-adk/src/AdkClient.ts",
   ];
-  const packages = ["@assistant-ui/react", "@assistant-ui/react-google-adk"];
+  const packages = ["@openagentui/react", "@openagentui/react-google-adk"];
   assert.equal(requiresFullApiSurface(files, packages), false);
   assert.deepEqual(
     filtersForApiSurfaceChanges(files, "origin/main", packages),
-    ["...[origin/main]", "@assistant-ui/react-google-adk"],
+    ["...[origin/main]", "@openagentui/react-google-adk"],
   );
 });
 
 test("snapshot-only edits and deletions still select their current owners", () => {
   assert.deepEqual(
     filtersForApiSurfaceChanges(
-      ["api-surface/assistant-ui__react.ts"],
+      ["api-surface/openagentui__react.ts"],
       "origin/main",
-      ["@assistant-ui/react"],
+      ["@openagentui/react"],
     ),
-    ["...[origin/main]", "@assistant-ui/react"],
+    ["...[origin/main]", "@openagentui/react"],
   );
 });
 
@@ -73,14 +73,14 @@ test("multiple snapshots select scoped and unscoped owners deterministically", (
   assert.deepEqual(
     filtersForApiSurfaceChanges(
       [
-        "api-surface/assistant-ui.ts",
-        "api-surface/assistant-ui__react.ts",
-        "api-surface/assistant-ui.ts",
+        "api-surface/openagentui.ts",
+        "api-surface/openagentui__react.ts",
+        "api-surface/openagentui.ts",
       ],
       "origin/main",
-      ["assistant-ui", "@assistant-ui/react", "create-assistant-ui"],
+      ["openagentui", "@openagentui/react", "create-openagentui"],
     ),
-    ["...[origin/main]", "@assistant-ui/react", "assistant-ui"],
+    ["...[origin/main]", "@openagentui/react", "openagentui"],
   );
 });
 
@@ -89,16 +89,14 @@ test("unknown snapshots and shared inputs retain the full fallback", () => {
     "api-surface/removed-package.ts",
     "api-surface/package.json",
     "api-surface/tsconfig.json",
-    "api-surface/nested/assistant-ui__react.ts",
+    "api-surface/nested/openagentui__react.ts",
     "pnpm-lock.yaml",
     "packages/x-buildutils/src/index.ts",
   ]) {
-    const files = ["api-surface/assistant-ui__react.ts", extraFile];
-    assert.equal(requiresFullApiSurface(files, ["@assistant-ui/react"]), true);
+    const files = ["api-surface/openagentui__react.ts", extraFile];
+    assert.equal(requiresFullApiSurface(files, ["@openagentui/react"]), true);
     assert.deepEqual(
-      filtersForApiSurfaceChanges(files, "origin/main", [
-        "@assistant-ui/react",
-      ]),
+      filtersForApiSurfaceChanges(files, "origin/main", ["@openagentui/react"]),
       [],
       extraFile,
     );
@@ -108,9 +106,9 @@ test("unknown snapshots and shared inputs retain the full fallback", () => {
 test("snapshots for renamed, removed, or now-private packages require a full run", () => {
   assert.deepEqual(
     filtersForApiSurfaceChanges(
-      ["api-surface/assistant-ui__old-name.ts"],
+      ["api-surface/openagentui__old-name.ts"],
       "origin/main",
-      ["@assistant-ui/new-name"],
+      ["@openagentui/new-name"],
     ),
     [],
   );
@@ -132,7 +130,7 @@ test("a full run builds and generates every publishable package", () => {
 
 test("an affected run applies the source and snapshot filters to build and generation", () => {
   assert.deepEqual(
-    apiSurfaceCommands(["...[origin/main]", "@assistant-ui/react"]),
+    apiSurfaceCommands(["...[origin/main]", "@openagentui/react"]),
     [
       [
         "pnpm",
@@ -143,7 +141,7 @@ test("an affected run applies the source and snapshot filters to build and gener
           "--filter",
           "...[origin/main]",
           "--filter",
-          "@assistant-ui/react",
+          "@openagentui/react",
           "--filter=!./apps/*",
           "--filter=!./examples/*",
           "--filter=!./templates/*",
@@ -156,7 +154,7 @@ test("an affected run applies the source and snapshot filters to build and gener
           "--filter",
           "...[origin/main]",
           "--filter",
-          "@assistant-ui/react",
+          "@openagentui/react",
         ],
       ],
     ],
@@ -197,8 +195,8 @@ test("the CLI derives snapshot owners from current publishable manifests", () =>
       { mode: 0o755 },
     );
     for (const [dir, pkg] of Object.entries({
-      public: { name: "@assistant-ui/public" },
-      private: { name: "@assistant-ui/private", private: true },
+      public: { name: "@openagentui/public" },
+      private: { name: "@openagentui/private", private: true },
     })) {
       mkdirSync(path.join(repo, "packages", dir), { recursive: true });
       writeFileSync(
@@ -207,7 +205,7 @@ test("the CLI derives snapshot owners from current publishable manifests", () =>
       );
     }
     mkdirSync(path.join(repo, "api-surface"));
-    const snapshot = path.join(repo, "api-surface/assistant-ui__public.ts");
+    const snapshot = path.join(repo, "api-surface/openagentui__public.ts");
     writeFileSync(snapshot, "export {};\n");
     run("git", ["init", "-q"]);
     run("git", ["add", "."]);
@@ -245,23 +243,23 @@ test("the CLI derives snapshot owners from current publishable manifests", () =>
         "--filter",
         "...[HEAD]",
         "--filter",
-        "@assistant-ui/public",
+        "@openagentui/public",
       ],
-      ["--filter", "@assistant-ui/api-surface", "check"],
+      ["--filter", "@openagentui/api-surface", "check"],
     ];
 
     writeFileSync(snapshot, "export const changed: true;\n");
     assert.deepEqual(checkPlan(), expectedCheck);
     assert.deepEqual(
       JSON.parse(invoke("update-api-surface.mjs", ["--print-filters"])),
-      ["...[HEAD]", "@assistant-ui/public"],
+      ["...[HEAD]", "@openagentui/public"],
     );
     assert.deepEqual(plan(["--build-only"]), [
-      apiSurfaceCommands(["...[HEAD]", "@assistant-ui/public"])[0][1],
+      apiSurfaceCommands(["...[HEAD]", "@openagentui/public"])[0][1],
     ]);
     assert.deepEqual(
       plan(),
-      apiSurfaceCommands(["...[HEAD]", "@assistant-ui/public"]).map(
+      apiSurfaceCommands(["...[HEAD]", "@openagentui/public"]).map(
         ([, args]) => args,
       ),
     );
@@ -299,25 +297,25 @@ test("the CLI derives snapshot owners from current publishable manifests", () =>
       "--filter",
       "...[HEAD~2]",
       "--filter",
-      "@assistant-ui/public",
+      "@openagentui/public",
     ]);
     rmSync(snapshot);
     assert.deepEqual(checkPlan(), expectedCheck);
     assert.deepEqual(
       plan(),
-      apiSurfaceCommands(["...[HEAD]", "@assistant-ui/public"]).map(
+      apiSurfaceCommands(["...[HEAD]", "@openagentui/public"]).map(
         ([, args]) => args,
       ),
     );
 
     writeFileSync(
-      path.join(repo, "api-surface/assistant-ui__private.ts"),
+      path.join(repo, "api-surface/openagentui__private.ts"),
       "export {};\n",
     );
     run("git", ["add", "api-surface"]);
     assert.deepEqual(checkPlan(), [
       ["scripts/generate-api-surface.mjs", "--check"],
-      ["--filter", "@assistant-ui/api-surface", "check"],
+      ["--filter", "@openagentui/api-surface", "check"],
     ]);
     assert.deepEqual(
       plan(),

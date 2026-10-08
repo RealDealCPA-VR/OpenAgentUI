@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useState } from "react";
-import { createTapRoot, flushTapSync, useResource } from "@assistant-ui/tap";
-import { parsePartialJsonObject } from "assistant-stream/utils";
+import { createTapRoot, flushTapSync, useResource } from "@openagentui/tap";
+import { parsePartialJsonObject } from "openagentui-stream/utils";
 import { z } from "zod";
 import type {
   Unstable_InteractablePersistedState,
@@ -26,9 +26,9 @@ const replaceClient = (client: unknown) => {
   for (const listener of clientListeners) listener();
 };
 
-vi.mock("@assistant-ui/store/client", async (importOriginal) => {
+vi.mock("@openagentui/store/client", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@assistant-ui/store/client")>();
+    await importOriginal<typeof import("@openagentui/store/client")>();
   const { useEffect } = await import("react");
   // Mirrors the real hook's guarantees: the effect only runs while the scope
   // is available, and a client replacement migrates the registration.

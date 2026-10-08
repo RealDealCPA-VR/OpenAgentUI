@@ -4,7 +4,7 @@ import { OTLPHttpProtoTraceExporter, registerOTel } from "@vercel/otel";
 import {
   createAssistantCloudSpanProcessor,
   createAssistantCloudTraceExporter,
-} from "assistant-cloud/telemetry";
+} from "openagentui-cloud/telemetry";
 
 // Mirrors the prefixes PostHogTraceExporter filters on, so both legs carry the
 // same spans. Without it Axiom would also receive every request and fetch span
@@ -69,7 +69,7 @@ export function register() {
   const assistantCloud = assistantCloudExporterConfig(process.env);
 
   registerOTel({
-    serviceName: "assistant-ui-docs",
+    serviceName: "openagentui-docs",
     traceExporter: new PostHogTraceExporter({
       projectToken: process.env.NEXT_PUBLIC_POSTHOG_API_KEY ?? "",
     }),

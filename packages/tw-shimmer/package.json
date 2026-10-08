@@ -1,5 +1,5 @@
 {
-  "name": "tw-shimmer",
+  "name": "@openagentui/tw-shimmer",
   "version": "0.4.13",
   "description": "Tailwind CSS v4 plugin for shimmer effects",
   "keywords": [
@@ -11,7 +11,7 @@
     "animation",
     "css"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -35,14 +35,14 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/tw-shimmer",
+  "homepage": "https://openagentui.dev/tw-shimmer",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/tw-shimmer"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   },
   "scripts": {}
 }

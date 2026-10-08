@@ -6,7 +6,7 @@ import {
   createActionButton,
 } from "../../utils/createActionButton";
 import { useCallback } from "react";
-import { useAuiState, useAui } from "@assistant-ui/store";
+import { useAuiState, useAui } from "@openagentui/store";
 
 const useChainOfThoughtAccordionTrigger = () => {
   const aui = useAui();

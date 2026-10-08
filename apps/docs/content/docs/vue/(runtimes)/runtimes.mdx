@@ -1,6 +1,6 @@
 ---
 title: Runtimes
-description: "Choose how the Vue primitives get their messages: the AI SDK, assistant-cloud, or your own store."
+description: "Choose how the Vue primitives get their messages: the AI SDK, openagentui-cloud, or your own store."
 ---
 
 A runtime fills the `threads` key of `AuiConfig`. The `AuiProvider` makes its messages and actions available to Vue primitives. Choose the runtime by where conversations and messages need to live.
@@ -9,7 +9,7 @@ A runtime fills the `threads` key of `AuiConfig`. The `AuiProvider` makes its me
 |---|---|---|---|
 | `AISDKChat` | One thread | One client-side AI SDK chat | [AI SDK](/docs/vue/ai-sdk#aisdkchat) |
 | `AISDKThreads` | A thread list in memory | One client-side AI SDK chat per thread | [AI SDK](/docs/vue/ai-sdk#aisdkthreads) |
-| `AISDKThreads` with `cloud` | A thread list backed by assistant-cloud | One AI SDK chat per thread, with cloud-backed history | [Cloud](/docs/vue/cloud) |
+| `AISDKThreads` with `cloud` | A thread list backed by openagentui-cloud | One AI SDK chat per thread, with cloud-backed history | [Cloud](/docs/vue/cloud) |
 | `RuntimeAdapter` | Supplied by your runtime | Your external store | [External store](/docs/vue/external-store) |
 
 ## AISDKChat
@@ -18,8 +18,8 @@ A runtime fills the `threads` key of `AuiConfig`. The `AuiProvider` makes its me
 
 ```vue title="app/components/ChatAssistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
 
 const config = AuiConfig({
   threads: AISDKChat(),
@@ -41,8 +41,8 @@ See [AISDKChat](/docs/vue/ai-sdk#aisdkchat) for transport options and the server
 
 ```vue title="app/components/ThreadsAssistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKThreads } from "@assistant-ui/ai-sdk";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKThreads } from "@openagentui/ai-sdk";
 
 const config = AuiConfig({
   threads: AISDKThreads(),
@@ -58,7 +58,7 @@ const config = AuiConfig({
 
 See [AISDKThreads](/docs/vue/ai-sdk#aisdkthreads) for the runtime setup and [Thread list](/docs/vue/thread-list) for the controls that switch between conversations.
 
-## assistant-cloud
+## openagentui-cloud
 
 Pass an `AssistantCloud` instance as the `cloud` option to `AISDKThreads` for a remote thread list and cloud-backed message history. The [Cloud guide](/docs/vue/cloud) covers setup and persistence.
 

@@ -3,7 +3,7 @@ title: Assistant client
 description: AuiConfig, Derived, createAssistantClient, and the constructors that fill each config key.
 ---
 
-`@assistant-ui/vue` re-exports the client APIs from `@assistant-ui/store/client`. The signatures below use type names from that entry; the types `@assistant-ui/vue` itself exports are listed under [Exported types](#exported-types). `AuiProvider` builds an `AssistantClient` from an `AuiConfig` and provides it to its descendants. See [State and actions](/docs/vue/state) for reading that client in a component.
+`@openagentui/vue` re-exports the client APIs from `@openagentui/store/client`. The signatures below use type names from that entry; the types `@openagentui/vue` itself exports are listed under [Exported types](#exported-types). `AuiProvider` builds an `AssistantClient` from an `AuiConfig` and provides it to its descendants. See [State and actions](/docs/vue/state) for reading that client in a component.
 
 ## Configure client scopes
 
@@ -23,14 +23,14 @@ namespace AuiConfig {
 
 | Key | Constructor | Import path | Role |
 |---|---|---|---|
-| `threads` | `AISDKChat()` | `@assistant-ui/ai-sdk` | One AI SDK chat. |
-| `threads` | `AISDKThreads()` | `@assistant-ui/ai-sdk` | An AI SDK chat for each thread. |
-| `threads` | `RuntimeAdapter(runtime)` | `@assistant-ui/core/store` | Adapt an `AssistantRuntime` to client scopes. |
-| `tools` | `Tools({ toolkit })` | `@assistant-ui/core/react` | Register toolkit definitions and tool UI entries. |
-| `dataRenderers` | `DataRenderers()` | `@assistant-ui/core/react` | Register renderers for named data parts. |
-| `suggestions` | `Suggestions(items)` | `@assistant-ui/core/store` | Supply static prompt suggestions. |
-| `modelContext` | `ModelContext()` | `@assistant-ui/core/store` | Collect model context from providers. |
-| `chainOfThought` | `ChainOfThoughtClient({ parts, getMessagePart })` | `@assistant-ui/core/store` | Manage a reasoning and tool part group. |
+| `threads` | `AISDKChat()` | `@openagentui/ai-sdk` | One AI SDK chat. |
+| `threads` | `AISDKThreads()` | `@openagentui/ai-sdk` | An AI SDK chat for each thread. |
+| `threads` | `RuntimeAdapter(runtime)` | `@openagentui/core/store` | Adapt an `AssistantRuntime` to client scopes. |
+| `tools` | `Tools({ toolkit })` | `@openagentui/core/react` | Register toolkit definitions and tool UI entries. |
+| `dataRenderers` | `DataRenderers()` | `@openagentui/core/react` | Register renderers for named data parts. |
+| `suggestions` | `Suggestions(items)` | `@openagentui/core/store` | Supply static prompt suggestions. |
+| `modelContext` | `ModelContext()` | `@openagentui/core/store` | Collect model context from providers. |
+| `chainOfThought` | `ChainOfThoughtClient({ parts, getMessagePart })` | `@openagentui/core/store` | Manage a reasoning and tool part group. |
 
 When `threads` uses `AISDKChat`, `AISDKThreads`, or `RuntimeAdapter`, its scope transform fills these absent keys:
 
@@ -53,10 +53,10 @@ Tool and data UI entries rendered by Vue must be Vue components. See [Tool UI](/
 ```vue title="app/components/AssistantClient.client.vue"
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
-import { Suggestions } from "@assistant-ui/core/store";
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import Thread from "~/components/assistant-ui/thread.vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
+import { Suggestions } from "@openagentui/core/store";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import Thread from "~/components/openagentui/thread.vue";
 
 const props = defineProps<{ prompt: string }>();
 const showSuggestions = ref(true);
@@ -132,8 +132,8 @@ Scopes mount when the first subscriber attaches. When the last subscriber leaves
 This standalone file reads a configured scope in a test and releases the handle afterward:
 
 ```ts title="app/lib/read-suggestions.ts"
-import { Suggestions } from "@assistant-ui/core/store";
-import { AuiConfig, createAssistantClient } from "@assistant-ui/vue";
+import { Suggestions } from "@openagentui/core/store";
+import { AuiConfig, createAssistantClient } from "@openagentui/vue";
 
 export function readSuggestions() {
   const handle = createAssistantClient(
@@ -180,7 +180,7 @@ An unavailable accessor remains truthy and has `source: null`, so use `optional`
 
 ## Exported types
 
-All of these types are re-exported from `@assistant-ui/vue`:
+All of these types are re-exported from `@openagentui/vue`:
 
 | Type | Meaning |
 |---|---|

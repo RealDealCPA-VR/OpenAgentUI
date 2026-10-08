@@ -4,13 +4,13 @@ import type {
   AssistantRuntime,
   AttachmentAdapter,
   RemoteThreadListAdapter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   useAssistantTool,
-} from "@assistant-ui/core/react";
-import { getThreadMessageText } from "@assistant-ui/core/internal";
-import { useAui, useAuiState } from "@assistant-ui/store";
+} from "@openagentui/core/react";
+import { getThreadMessageText } from "@openagentui/core/internal";
+import { useAui, useAuiState } from "@openagentui/store";
 import { useLangGraphRuntime } from "./useLangGraphRuntime";
 import { useLangGraphSend, useLangGraphSendCommand } from "./hooks";
 import { mockStreamCallbackFactory } from "./testUtils";

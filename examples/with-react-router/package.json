@@ -9,8 +9,8 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/react-markdown": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/react-markdown": "workspace:*",
     "@react-router/node": "^8.4.0",
     "@react-router/serve": "^8.4.0",
     "class-variance-authority": "^0.7.1",

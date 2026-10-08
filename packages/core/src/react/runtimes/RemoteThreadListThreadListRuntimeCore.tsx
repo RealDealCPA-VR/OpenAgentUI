@@ -60,7 +60,7 @@ import {
   useEffect,
   useId,
 } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type { ModelContextProvider } from "../../model-context/types";
 import { RuntimeAdapterProvider } from "./RuntimeAdapterProvider";
 import { useStableRuntimeAdapters } from "./useRuntimeAdapters";
@@ -183,7 +183,7 @@ export class RemoteThreadListThreadListRuntimeCore
         })
         .catch((error: unknown) => {
           if (generation !== this._loadGeneration) return;
-          console.error("[assistant-ui] thread list load failed:", error);
+          console.error("[openagentui] thread list load failed:", error);
           this._loadThreadsPromise = undefined;
           if (!this._replaceListOnNextLoad) {
             this._state.update({
@@ -242,7 +242,7 @@ export class RemoteThreadListThreadListRuntimeCore
       })
       .catch((error: unknown) => {
         if (generation !== this._loadGeneration) return;
-        console.error("[assistant-ui] thread list loadMore failed:", error);
+        console.error("[openagentui] thread list loadMore failed:", error);
       })
       .then(() => {
         if (this._loadMorePromise === dedup) {
@@ -472,7 +472,7 @@ export class RemoteThreadListThreadListRuntimeCore
         this._hookManager.stopThreadRuntime(item.id);
       } catch (error) {
         console.error(
-          "[assistant-ui] Thread runtime cleanup threw while stopping a thread",
+          "[openagentui] Thread runtime cleanup threw while stopping a thread",
           error,
         );
       }
@@ -587,7 +587,7 @@ export class RemoteThreadListThreadListRuntimeCore
     this._lastNotifiedThreadId = threadId;
     if (emit) {
       invokeUserCallback(
-        "assistant-ui",
+        "openagentui",
         "onThreadIdChange",
         this._options.onThreadIdChange,
         threadId,
@@ -941,7 +941,7 @@ export class RemoteThreadListThreadListRuntimeCore
           if (!active) return;
           this._disarmAutomaticTitle(threadId);
           if (isSilentRuntimeAction(error)) return;
-          console.error("[assistant-ui] Thread title generation failed", error);
+          console.error("[openagentui] Thread title generation failed", error);
         },
       );
     };

@@ -1,4 +1,4 @@
-import { AssistantMessageStream } from "assistant-stream";
+import { AssistantMessageStream } from "openagentui-stream";
 
 export const isTitleSourceMessage = (message: {
   status?: { type: string } | undefined;

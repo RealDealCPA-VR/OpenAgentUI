@@ -130,7 +130,7 @@ describe("FinishProposal", () => {
       {
         ...proposed(),
         products: [
-          { slug: "assistant-ui", name: "assistant-ui" },
+          { slug: "openagentui", name: "openagentui" },
           { slug: "cloud", name: "Assistant Cloud" },
           { slug: "custom", name: "Custom product" },
         ],
@@ -143,9 +143,9 @@ describe("FinishProposal", () => {
         name: "See what was added in this session.",
       }),
     );
-    expect(screen.getByText("assistant-ui")).toBeDefined();
+    expect(screen.getByText("openagentui")).toBeDefined();
     expect(screen.getByText("Assistant Cloud")).toBeDefined();
-    expect(screen.getByText("assistant-cloud")).toBeDefined();
+    expect(screen.getByText("openagentui-cloud")).toBeDefined();
     expect(screen.getByText("Custom product")).toBeDefined();
   });
 

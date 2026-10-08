@@ -1,8 +1,8 @@
 "use client";
 
 import { Suspense, useMemo, useState } from "react";
-import * as HeatGraph from "heat-graph";
-import { SyntaxHighlighter } from "@/components/assistant-ui/elements/shiki-highlighter.aui";
+import * as HeatGraph from "@openagentui/heat-graph";
+import { SyntaxHighlighter } from "@/components/openagentui/elements/shiki-highlighter.aui";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";

@@ -7,12 +7,12 @@ The Vue registry has two styled items: `thread` and `thread-list`. Install them 
 
 ## Install
 
-Add the assistant-ui registry to `components.json`:
+Add the openagentui registry to `components.json`:
 
 ```json title="components.json"
 {
   "registries": {
-    "@assistant-ui": "https://r.assistant-ui.com/vue/{name}.json"
+    "@openagentui": "https://r.openagentui.dev/vue/{name}.json"
   }
 }
 ```
@@ -20,10 +20,10 @@ Add the assistant-ui registry to `components.json`:
 Then install both items:
 
 ```sh
-npx shadcn-vue@latest add @assistant-ui/thread @assistant-ui/thread-list
+npx shadcn-vue@latest add @openagentui/thread @openagentui/thread-list
 ```
 
-The `thread` item declares `@assistant-ui/core`, `@assistant-ui/vue`, `@lucide/vue`, `markdown-it`, and `reka-ui` as dependencies, plus `@types/markdown-it` as a development dependency. The `thread-list` item declares `@assistant-ui/vue`, `reka-ui`, and `@lucide/vue`. The installed files land in `app/components/assistant-ui`.
+The `thread` item declares `@openagentui/core`, `@openagentui/vue`, `@lucide/vue`, `markdown-it`, and `reka-ui` as dependencies, plus `@types/markdown-it` as a development dependency. The `thread-list` item declares `@openagentui/vue`, `reka-ui`, and `@lucide/vue`. The installed files land in `app/components/openagentui`.
 
 ## What each file renders
 
@@ -42,7 +42,7 @@ The `thread` item copies the first five files. The `thread-list` item copies `th
 
 The kit uses shadcn color utilities such as `bg-background`, `text-foreground`, `bg-primary`, `text-primary-foreground`, `bg-muted`, `text-muted-foreground`, `border-border`, `bg-popover`, `text-popover-foreground`, `bg-accent`, `text-accent-foreground`, `text-destructive`, `bg-input`, and `ring-ring`. The markdown renderer also reads `--color-muted`, `--color-border`, and `--color-muted-foreground` directly.
 
-Define the values in your app stylesheet, such as `app/assets/css/main.css`. The Nuxt template maps shadcn variables like `--background` and `--primary` to Tailwind v4 colors inside `@theme inline`, defines light values in `:root`, and includes `@source "../../components/assistant-ui";` so Tailwind scans the copied files. Its `nuxt.config.ts` loads that stylesheet.
+Define the values in your app stylesheet, such as `app/assets/css/main.css`. The Nuxt template maps shadcn variables like `--background` and `--primary` to Tailwind v4 colors inside `@theme inline`, defines light values in `:root`, and includes `@source "../../components/openagentui";` so Tailwind scans the copied files. Its `nuxt.config.ts` loads that stylesheet.
 
 The list has `dark:` styles for its input. Dark colors apply only when your CSS defines a `.dark` theme and a matching dark variant. The `with-nuxt` example defines both; the Nuxt template supplies light tokens only.
 
@@ -54,7 +54,7 @@ In `message.vue`, the assistant row names renderers for text, reasoning, and too
 
 ```vue title="app/components/OtherPart.vue"
 <script setup lang="ts">
-import { useAuiState } from "@assistant-ui/vue";
+import { useAuiState } from "@openagentui/vue";
 
 const part = useAuiState((s) => s.part);
 

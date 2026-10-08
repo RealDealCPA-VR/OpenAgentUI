@@ -36,7 +36,7 @@ vi.mock("ai", async (importOriginal) => ({
 import { POST } from "./route";
 
 const request = (prompt: unknown) =>
-  new Request("https://www.assistant-ui.com/api/suggestions", {
+  new Request("https://openagentui.dev/api/suggestions", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ prompt }),
@@ -74,7 +74,7 @@ describe("POST /api/suggestions", () => {
     mocks.checkRateLimit.mockResolvedValue(null);
 
     const response = await POST(
-      new Request("https://www.assistant-ui.com/api/suggestions", {
+      new Request("https://openagentui.dev/api/suggestions", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: "{ not json",

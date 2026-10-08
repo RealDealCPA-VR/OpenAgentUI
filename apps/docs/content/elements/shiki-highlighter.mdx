@@ -16,7 +16,7 @@ The kit wraps the base highlighter and reads whether the current message part is
 
 ### Add it to MarkdownText's components
 
-```tsx title="components/assistant-ui/elements/markdown-text.tsx"
+```tsx title="components/openagentui/elements/markdown-text.tsx"
 import { SyntaxHighlighter } from "./shiki-highlighter.aui";
 
 const defaultComponents = memoizeMarkdownComponents({
@@ -43,7 +43,7 @@ Standalone, you own the streaming flag yourself.
 ### Render code with a controlled streaming flag
 
 ```tsx
-import { SyntaxHighlighter } from "@/components/assistant-ui/elements/shiki-highlighter";
+import { SyntaxHighlighter } from "@/components/openagentui/elements/shiki-highlighter";
 
 <SyntaxHighlighter language="tsx" code={code} streaming={isStreaming} />;
 ```

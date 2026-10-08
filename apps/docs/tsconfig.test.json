@@ -5,7 +5,7 @@
     "typeRoots": [
       "${configDir}/node_modules",
       "${configDir}/node_modules/@types",
-      "${configDir}/node_modules/@assistant-ui/x-buildutils/types"
+      "${configDir}/node_modules/@openagentui/x-buildutils/types"
     ],
     "allowImportingTsExtensions": true
   },

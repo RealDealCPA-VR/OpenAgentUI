@@ -43,7 +43,7 @@ const createStorage = (
 };
 
 const createHistory = (storage: AsyncStorageLike, getAui: () => never) =>
-  createLocalStorageHistoryAdapter(storage, getAui, "@assistant-ui:");
+  createLocalStorageHistoryAdapter(storage, getAui, "@openagentui:");
 
 describe("parseStoredThreadMetadata", () => {
   it("returns an empty list for invalid JSON", () => {
@@ -623,7 +623,7 @@ describe("parseStoredMessageRepository", () => {
 
 describe("createLocalStorageAdapter", () => {
   it("persists history for a newly initialized thread", async () => {
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const messagesKey = "@openagentui:messages:thread-1";
     const storage = createStorage();
     const adapter = createLocalStorageAdapter({ storage });
     const history = createHistory(
@@ -651,9 +651,9 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("updates an earlier message without moving the history head", async () => {
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const messagesKey = "@openagentui:messages:thread-1";
     const storage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "regular" },
       ]),
       [messagesKey]: JSON.stringify({
@@ -702,8 +702,8 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("persists concurrent appends that share initialization", async () => {
-    const threadsKey = "@assistant-ui:threads";
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const threadsKey = "@openagentui:threads";
+    const messagesKey = "@openagentui:messages:thread-1";
     const baseStorage = createStorage();
     let releaseInitialization!: () => void;
     let markInitializationStarted!: () => void;
@@ -759,8 +759,8 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("does not restore history after deletion finishes during initialization", async () => {
-    const threadsKey = "@assistant-ui:threads";
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const threadsKey = "@openagentui:threads";
+    const messagesKey = "@openagentui:messages:thread-1";
     const baseStorage = createStorage({
       [messagesKey]: JSON.stringify({
         messages: [{ message: storedMessage("old-message"), parentId: null }],
@@ -816,9 +816,9 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("does not write history from a deleted thread runtime", async () => {
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const messagesKey = "@openagentui:messages:thread-1";
     const storage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "regular" },
       ]),
     });
@@ -847,9 +847,9 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("does not write history for a record the thread list parser rejects", async () => {
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const messagesKey = "@openagentui:messages:thread-1";
     const storage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "deleted" },
       ]),
     });
@@ -876,8 +876,8 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("persists appends from an open thread when the thread list is unreadable", async () => {
-    const messagesKey = "@assistant-ui:messages:thread-1";
-    const storage = createStorage({ "@assistant-ui:threads": "{not-json" });
+    const messagesKey = "@openagentui:messages:thread-1";
+    const storage = createStorage({ "@openagentui:threads": "{not-json" });
     const history = createHistory(
       storage,
       () =>
@@ -903,7 +903,7 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("persists appends from an open thread when the thread list is missing", async () => {
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const messagesKey = "@openagentui:messages:thread-1";
     const storage = createStorage();
     const history = createHistory(
       storage,
@@ -930,9 +930,9 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("allows history writes after the same thread id is initialized again", async () => {
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const messagesKey = "@openagentui:messages:thread-1";
     const storage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "regular" },
       ]),
     });
@@ -970,8 +970,8 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("keeps history active when metadata deletion fails", async () => {
-    const threadsKey = "@assistant-ui:threads";
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const threadsKey = "@openagentui:threads";
+    const messagesKey = "@openagentui:messages:thread-1";
     const baseStorage = createStorage({
       [threadsKey]: JSON.stringify([
         { remoteId: "thread-1", status: "regular" },
@@ -1025,8 +1025,8 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("keeps an in-flight append when metadata deletion fails", async () => {
-    const threadsKey = "@assistant-ui:threads";
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const threadsKey = "@openagentui:threads";
+    const messagesKey = "@openagentui:messages:thread-1";
     const baseStorage = createStorage({
       [threadsKey]: JSON.stringify([
         { remoteId: "thread-1", status: "regular" },
@@ -1091,8 +1091,8 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("completes deletion and retries failed cleanup before reinitializing", async () => {
-    const threadsKey = "@assistant-ui:threads";
-    const messagesKey = "@assistant-ui:messages:thread-1";
+    const threadsKey = "@openagentui:threads";
+    const messagesKey = "@openagentui:messages:thread-1";
     const baseStorage = createStorage({
       [threadsKey]: JSON.stringify([
         { remoteId: "thread-1", status: "regular" },
@@ -1150,14 +1150,14 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("lists no threads when the stored thread list is invalid JSON", async () => {
-    const storage = createStorage({ "@assistant-ui:threads": "{not-json" });
+    const storage = createStorage({ "@openagentui:threads": "{not-json" });
     const adapter = createLocalStorageAdapter({ storage });
 
     await expect(adapter.list()).resolves.toEqual({ threads: [] });
   });
 
   it("overwrites malformed thread storage when initializing a thread", async () => {
-    const storage = createStorage({ "@assistant-ui:threads": "{not-json" });
+    const storage = createStorage({ "@openagentui:threads": "{not-json" });
     const adapter = createLocalStorageAdapter({ storage });
 
     await expect(adapter.initialize("thread-1")).resolves.toEqual({
@@ -1165,13 +1165,13 @@ describe("createLocalStorageAdapter", () => {
       externalId: undefined,
     });
 
-    expect(JSON.parse(storage.get("@assistant-ui:threads") ?? "")).toEqual([
+    expect(JSON.parse(storage.get("@openagentui:threads") ?? "")).toEqual([
       { remoteId: "thread-1", status: "regular" },
     ]);
   });
 
   it("preserves concurrent metadata mutations across adapters", async () => {
-    const threadsKey = "@assistant-ui:threads";
+    const threadsKey = "@openagentui:threads";
     const values = new Map<string, string>();
     let metadataReads = 0;
     let metadataWrites = 0;
@@ -1221,7 +1221,7 @@ describe("createLocalStorageAdapter", () => {
   });
 
   it("continues processing mutations after a storage failure", async () => {
-    const threadsKey = "@assistant-ui:threads";
+    const threadsKey = "@openagentui:threads";
     const values = new Map<string, string>();
     let shouldFail = true;
     const storage: AsyncStorageLike = {
@@ -1254,7 +1254,7 @@ describe("createLocalStorageAdapter", () => {
 
   it("includes the thread id when a stored thread cannot be fetched", async () => {
     const storage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "regular" },
       ]),
     });
@@ -1310,11 +1310,10 @@ const createThreadClient = (
 };
 
 describe("createLocalStorageHistoryAdapter withFormat", () => {
-  const formattedKey =
-    '@assistant-ui:formatted-messages:["thread-1","test/v1"]';
+  const formattedKey = '@openagentui:formatted-messages:["thread-1","test/v1"]';
 
   it("keeps formatted history separate from a legacy thread with the colliding id", async () => {
-    const legacyKey = "@assistant-ui:messages:a:ai-sdk/v6";
+    const legacyKey = "@openagentui:messages:a:ai-sdk/v6";
     const storage = createStorage({
       [legacyKey]: JSON.stringify({
         messages: [{ message: storedMessage("legacy"), parentId: null }],
@@ -1391,7 +1390,7 @@ describe("createLocalStorageHistoryAdapter withFormat", () => {
 
   it("reads existing unformatted history", async () => {
     const storage = createStorage({
-      "@assistant-ui:messages:thread-1": JSON.stringify({
+      "@openagentui:messages:thread-1": JSON.stringify({
         messages: [{ message: storedMessage("legacy"), parentId: null }],
       }),
     });
@@ -1535,7 +1534,7 @@ describe("createLocalStorageHistoryAdapter withFormat", () => {
       ),
     ).toEqual(["edited"]);
     expect(
-      storage.get('@assistant-ui:formatted-messages:["thread-2","test/v1"]'),
+      storage.get('@openagentui:formatted-messages:["thread-2","test/v1"]'),
     ).toBeUndefined();
   });
 
@@ -1603,13 +1602,13 @@ describe("createLocalStorageHistoryAdapter withFormat", () => {
     await adapter.delete("thread-1");
 
     expect(storage.get(formattedKey)).toBeUndefined();
-    expect(storage.get("@assistant-ui:messages:thread-1")).toBeUndefined();
+    expect(storage.get("@openagentui:messages:thread-1")).toBeUndefined();
     await expect(adapter.list()).resolves.toEqual({ threads: [] });
   });
 
   it("clears stale formatted history before reading a reused thread id", async () => {
     const baseStorage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "regular", formats: ["test/v1"] },
       ]),
       [formattedKey]: JSON.stringify({
@@ -1650,7 +1649,7 @@ describe("createLocalStorageHistoryAdapter withFormat", () => {
 
   it("retries formatted history cleanup after a committed delete", async () => {
     const baseStorage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "regular", formats: ["test/v1"] },
       ]),
       [formattedKey]: JSON.stringify({ messages: [] }),
@@ -1680,7 +1679,7 @@ describe("createLocalStorageHistoryAdapter withFormat", () => {
 
   it("waits for sibling removals before reusing a deleted thread", async () => {
     const baseStorage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "regular", formats: ["test/v1"] },
       ]),
       [formattedKey]: JSON.stringify({ messages: [] }),
@@ -1698,7 +1697,7 @@ describe("createLocalStorageHistoryAdapter withFormat", () => {
     const storage = {
       ...baseStorage,
       removeItem: async (key: string) => {
-        if (key === "@assistant-ui:messages:thread-1" && failMessagesCleanup) {
+        if (key === "@openagentui:messages:thread-1" && failMessagesCleanup) {
           failMessagesCleanup = false;
           throw new Error("Storage unavailable");
         }
@@ -1744,7 +1743,7 @@ describe("createLocalStorageHistoryAdapter withFormat", () => {
 
   it("preserves a concurrent formatted write during stale history cleanup", async () => {
     const baseStorage = createStorage({
-      "@assistant-ui:threads": JSON.stringify([
+      "@openagentui:threads": JSON.stringify([
         { remoteId: "thread-1", status: "regular", formats: ["test/v1"] },
       ]),
       [formattedKey]: JSON.stringify({ messages: [] }),

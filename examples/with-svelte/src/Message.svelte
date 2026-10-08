@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { MessageState } from "@assistant-ui/core/store";
+  import type { MessageState } from "@openagentui/core/store";
   import {
     actionBarCopy,
     actionBarEdit,
@@ -11,7 +11,7 @@
     composerSend,
     useAuiState,
     type MessageItem,
-  } from "@assistant-ui/svelte";
+  } from "@openagentui/svelte";
   import {
     CheckIcon,
     ChevronLeftIcon,

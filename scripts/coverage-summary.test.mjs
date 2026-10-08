@@ -49,15 +49,15 @@ function createRepo(workspaces) {
 
 test("collects only workspaces that wrote a coverage summary, sorted by name", () => {
   const root = createRepo({
-    "packages/react": { name: "@assistant-ui/react", total: totals(3, 4) },
-    "packages/core": { name: "@assistant-ui/core", total: totals(1, 2) },
-    "packages/untested": { name: "@assistant-ui/untested" },
+    "packages/react": { name: "@openagentui/react", total: totals(3, 4) },
+    "packages/core": { name: "@openagentui/core", total: totals(1, 2) },
+    "packages/untested": { name: "@openagentui/untested" },
     "examples/with-x": { name: "with-x", total: totals(1, 1) },
   });
   try {
     assert.deepEqual(
       collectCoverageSummaries(root).map(({ name }) => name),
-      ["@assistant-ui/core", "@assistant-ui/react", "with-x"],
+      ["@openagentui/core", "@openagentui/react", "with-x"],
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -66,7 +66,7 @@ test("collects only workspaces that wrote a coverage summary, sorted by name", (
 
 test("skips leftover coverage from a workspace that no longer has a package.json", () => {
   const root = createRepo({
-    "packages/core": { name: "@assistant-ui/core", total: totals(1, 2) },
+    "packages/core": { name: "@openagentui/core", total: totals(1, 2) },
   });
   try {
     mkdirSync(path.join(root, "packages/removed/coverage"), {
@@ -78,7 +78,7 @@ test("skips leftover coverage from a workspace that no longer has a package.json
     );
     assert.deepEqual(
       collectCoverageSummaries(root).map(({ name }) => name),
-      ["@assistant-ui/core"],
+      ["@openagentui/core"],
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -142,12 +142,12 @@ const runScript = (root, args) =>
 
 test("prints the table, or writes it where --report points, however pnpm passes the flag", () => {
   const root = createRepo({
-    "packages/core": { name: "@assistant-ui/core", total: totals(1, 2) },
+    "packages/core": { name: "@openagentui/core", total: totals(1, 2) },
   });
   try {
     const printed = runScript(root, []);
     assert.equal(printed.status, 0);
-    assert.match(printed.stdout, /`@assistant-ui\/core` \| 50\.0%/);
+    assert.match(printed.stdout, /`@openagentui\/core` \| 50\.0%/);
 
     const a = path.join(root, "a.md");
     const b = path.join(root, "b.md");

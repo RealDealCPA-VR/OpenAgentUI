@@ -4,7 +4,7 @@ import {
   type PressableProps,
   type PressableStateCallbackType,
 } from "react-native";
-import { useActionBarSpeak } from "@assistant-ui/core/react";
+import { useActionBarSpeak } from "@openagentui/core/react";
 
 export type ActionBarSpeakProps = Omit<
   PressableProps,

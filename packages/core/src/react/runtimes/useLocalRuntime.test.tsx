@@ -3,8 +3,8 @@
 import { act, render, waitFor } from "@testing-library/react";
 import { Activity, type FC, StrictMode, useEffect, version } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import type { AssistantCloud } from "openagentui-cloud";
+import { useAui, useAuiState } from "@openagentui/store";
 import type { ChatModelAdapter } from "../../runtime/utils/chat-model-adapter";
 import { AssistantRuntimeProvider } from "../AssistantRuntimeProvider";
 import { useLocalRuntime } from "./useLocalRuntime";
@@ -496,7 +496,7 @@ describe("useLocalRuntime", () => {
 
     await waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] local thread history load failed:",
+        "[openagentui] local thread history load failed:",
         error,
       );
     });

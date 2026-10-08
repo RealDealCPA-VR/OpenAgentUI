@@ -9,23 +9,23 @@ ConfidenceMarker underlines each claim in an answer by how sure it is: grounded,
 
 <RuntimeMode>
 
-assistant-ui's message content has no built-in per-claim confidence concept: text and citations are separate content parts, and neither carries a confidence grade. The closest real building block is a tool call. Ask the model to return its answer as graded claims, and read the result back off the `tool-call` part.
+openagentui's message content has no built-in per-claim confidence concept: text and citations are separate content parts, and neither carries a confidence grade. The closest real building block is a tool call. Ask the model to return its answer as graded claims, and read the result back off the `tool-call` part.
 
 <Steps>
   <Step>
 
 ### Read the tool result off the message
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
 import { useState } from "react";
-import { useAuiState } from "@assistant-ui/react";
-import type { ToolCallMessagePart } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
+import type { ToolCallMessagePart } from "@openagentui/react";
 import {
   ConfidenceMarker,
   type ConfidenceClaim,
-} from "@/components/assistant-ui/elements/confidence-marker";
+} from "@/components/openagentui/elements/confidence-marker";
 
 type CiteClaims = ToolCallMessagePart<unknown, { claims: ConfidenceClaim[] }>;
 
@@ -76,7 +76,7 @@ import { useState } from "react";
 import {
   ConfidenceMarker,
   type ConfidenceClaim,
-} from "@/components/assistant-ui/elements/confidence-marker";
+} from "@/components/openagentui/elements/confidence-marker";
 
 const CLAIMS: ConfidenceClaim[] = [
   { id: "1", text: "The composer owns its draft from 0.14 onward.", confidence: "grounded", basis: "migration-0.14.md" },
@@ -159,7 +159,7 @@ Both lanes take `className` on the root. The basis pill reads the shared `floati
 
 | Selector / field | Type | Description |
 |--------------------|------|-------------|
-| `s.message.content` | `readonly ThreadAssistantMessagePart[]` | Search this for a `tool-call` part whose `result` you shape as a claims list; assistant-ui has no built-in confidence field. |
+| `s.message.content` | `readonly ThreadAssistantMessagePart[]` | Search this for a `tool-call` part whose `result` you shape as a claims list; openagentui has no built-in confidence field. |
 | `ToolCallMessagePart.result` | `TResult \| undefined` | The tool's return value once it has run, typed by the generic you give `ToolCallMessagePart<TArgs, TResult>`. |
 | `SourceMessagePart` | `{ type: "source"; sourceType: "url" \| "document"; id: string; url?: string; title?: string; filename?: string }` | A real citation part, useful when "grounded" is the only tier you need. |
 

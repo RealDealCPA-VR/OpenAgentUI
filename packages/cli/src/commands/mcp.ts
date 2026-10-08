@@ -22,7 +22,7 @@ type MCPTarget =
   | "claude-code"
   | "claude-desktop";
 
-const HOSTED_MCP_URL = "https://www.assistant-ui.com/mcp";
+const HOSTED_MCP_URL = "https://openagentui.dev/mcp";
 
 const MCP_CONFIGS: Record<
   Exclude<MCPTarget, "claude-code">,
@@ -40,14 +40,14 @@ const MCP_CONFIGS: Record<
     getPath: () => path.join(process.cwd(), ".cursor", "mcp.json"),
     config: {
       mcpServers: {
-        "assistant-ui": {
+        openagentui: {
           url: HOSTED_MCP_URL,
         },
       },
     },
     replaceServerKey: "mcpServers",
     postInstall:
-      "Open Cursor Settings → MCP → find 'assistant-ui' and click enable.",
+      "Open Cursor Settings → MCP → find 'openagentui' and click enable.",
   },
   windsurf: {
     name: "Windsurf",
@@ -55,7 +55,7 @@ const MCP_CONFIGS: Record<
       path.join(os.homedir(), ".codeium", "windsurf", "mcp_config.json"),
     config: {
       mcpServers: {
-        "assistant-ui": {
+        openagentui: {
           serverUrl: HOSTED_MCP_URL,
         },
       },
@@ -68,7 +68,7 @@ const MCP_CONFIGS: Record<
     getPath: () => path.join(process.cwd(), ".vscode", "mcp.json"),
     config: {
       servers: {
-        "assistant-ui": {
+        openagentui: {
           type: "http",
           url: HOSTED_MCP_URL,
         },
@@ -90,10 +90,10 @@ const MCP_CONFIGS: Record<
     },
     config: {
       context_servers: {
-        "assistant-ui": {
+        openagentui: {
           command: {
             path: "npx",
-            args: ["-y", "@assistant-ui/mcp-docs-server"],
+            args: ["-y", "@openagentui/mcp-docs-server"],
           },
         },
       },
@@ -120,9 +120,9 @@ const MCP_CONFIGS: Record<
     },
     config: {
       mcpServers: {
-        "assistant-ui": {
+        openagentui: {
           command: "npx",
-          args: ["-y", "@assistant-ui/mcp-docs-server"],
+          args: ["-y", "@openagentui/mcp-docs-server"],
         },
       },
     },
@@ -149,7 +149,7 @@ function deepMerge(target: any, source: any): any {
 class McpConfigParseError extends Error {
   constructor(targetName: string, configPath: string, flag: string) {
     super(
-      `Invalid ${targetName} MCP config JSON at ${configPath}. Fix the JSON syntax, then run: assistant-ui mcp ${flag}`,
+      `Invalid ${targetName} MCP config JSON at ${configPath}. Fix the JSON syntax, then run: openagentui mcp ${flag}`,
     );
     this.name = "McpConfigParseError";
   }
@@ -278,7 +278,7 @@ function updateJsoncConfig(
   });
   if (!root) {
     const initialized = JSON.stringify(
-      { [serverKey]: { "assistant-ui": server } },
+      { [serverKey]: { openagentui: server } },
       null,
       2,
     ).replaceAll("\n", eol);
@@ -293,7 +293,7 @@ function updateJsoncConfig(
       content,
       root,
       serverKey,
-      { "assistant-ui": server },
+      { openagentui: server },
       eol,
     );
   }
@@ -303,15 +303,15 @@ function updateJsoncConfig(
       content,
       servers,
       root,
-      { "assistant-ui": server },
+      { openagentui: server },
       eol,
     );
   }
 
-  const existing = lastPropertyValue(servers, "assistant-ui");
+  const existing = lastPropertyValue(servers, "openagentui");
   return existing
     ? replaceNodeValue(content, existing, servers, server, eol)
-    : appendObjectProperty(content, servers, "assistant-ui", server, eol);
+    : appendObjectProperty(content, servers, "openagentui", server, eol);
 }
 
 async function installForTarget(target: MCPTarget): Promise<void> {
@@ -320,7 +320,7 @@ async function installForTarget(target: MCPTarget): Promise<void> {
     logger.break();
 
     try {
-      await runSpawn("claude", ["mcp", "remove", "assistant-ui"]).catch(
+      await runSpawn("claude", ["mcp", "remove", "openagentui"]).catch(
         (error: unknown) => {
           if (error instanceof SpawnSignalError) throw error;
         },
@@ -330,7 +330,7 @@ async function installForTarget(target: MCPTarget): Promise<void> {
         "add",
         "--transport",
         "http",
-        "assistant-ui",
+        "openagentui",
         HOSTED_MCP_URL,
       ]);
     } catch (error) {
@@ -349,10 +349,10 @@ async function installForTarget(target: MCPTarget): Promise<void> {
     logger.break();
     logger.success("MCP server installed for Claude Code!");
     logger.info(
-      `Connects to the hosted assistant-ui MCP server at ${HOSTED_MCP_URL}.`,
+      `Connects to the hosted openagentui MCP server at ${HOSTED_MCP_URL}.`,
     );
     logger.info(
-      "The server starts automatically. Try asking about assistant-ui!",
+      "The server starts automatically. Try asking about openagentui!",
     );
     return;
   }
@@ -403,7 +403,7 @@ async function installForTarget(target: MCPTarget): Promise<void> {
       logger.error(`Could not parse ${targetConfig.name} MCP config.`);
       logger.info(`Config path: ${configPath}`);
       logger.info(
-        `Fix the JSON syntax in that file, then run: assistant-ui mcp ${flag}`,
+        `Fix the JSON syntax in that file, then run: openagentui mcp ${flag}`,
       );
       logger.info("No changes were written.");
       throw new McpConfigParseError(targetConfig.name, configPath, flag);
@@ -416,7 +416,7 @@ async function installForTarget(target: MCPTarget): Promise<void> {
     const key = targetConfig.replaceServerKey;
     newConfig[key] = {
       ...newConfig[key],
-      "assistant-ui": (targetConfig.config as any)[key]["assistant-ui"],
+      openagentui: (targetConfig.config as any)[key]["openagentui"],
     };
   }
 
@@ -424,7 +424,7 @@ async function installForTarget(target: MCPTarget): Promise<void> {
     ? updateJsoncConfig(
         content,
         targetConfig.jsoncServerKey,
-        newConfig[targetConfig.jsoncServerKey]["assistant-ui"],
+        newConfig[targetConfig.jsoncServerKey]["openagentui"],
       )
     : `${JSON.stringify(newConfig, null, 2)}\n`;
   fs.writeFileSync(configPath, updatedContent);
@@ -436,7 +436,7 @@ async function installForTarget(target: MCPTarget): Promise<void> {
   if (targetConfig.replaceServerKey) {
     logger.break();
     logger.info(
-      `Connects to the hosted assistant-ui MCP server at ${HOSTED_MCP_URL}.`,
+      `Connects to the hosted openagentui MCP server at ${HOSTED_MCP_URL}.`,
     );
   }
 
@@ -448,7 +448,7 @@ async function installForTarget(target: MCPTarget): Promise<void> {
 
 export const mcp = new Command()
   .name("mcp")
-  .description("connect your IDE to the assistant-ui MCP server")
+  .description("connect your IDE to the openagentui MCP server")
   .option("--cursor", "install for Cursor")
   .option("--windsurf", "install for Windsurf")
   .option("--vscode", "install for VSCode")
@@ -467,7 +467,7 @@ export const mcp = new Command()
 
     // If no target specified, prompt user
     if (targets.length === 0) {
-      p.intro("assistant-ui MCP Server Installation");
+      p.intro("openagentui MCP Server Installation");
 
       const selected = await p.select({
         message: "Select your IDE or tool:",

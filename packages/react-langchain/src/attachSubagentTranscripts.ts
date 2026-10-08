@@ -3,7 +3,7 @@ import {
   getExternalStoreMessages,
   type ThreadMessage,
   type ToolCallTiming,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 export type SubagentTranscript = {
   readonly messages: readonly ThreadMessage[];

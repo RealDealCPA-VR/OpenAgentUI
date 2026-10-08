@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from "vitest";
 import { flushSync, mount, unmount } from "svelte";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig } from "@assistant-ui/store/client";
-import type { RealtimeVoiceAdapter } from "@assistant-ui/core";
-import { RuntimeAdapter, Suggestions } from "@assistant-ui/core/store";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig } from "@openagentui/store/client";
+import type { RealtimeVoiceAdapter } from "@openagentui/core";
+import { RuntimeAdapter, Suggestions } from "@openagentui/core/store";
 import {
   AssistantRuntimeImpl,
   ExternalStoreRuntimeCore,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { provideAui } from "../provideAui";
 import { suggestionTrigger } from "../primitives/suggestions";
 import Host from "./fixtures/Host.svelte";

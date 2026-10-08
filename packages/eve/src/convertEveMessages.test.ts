@@ -13,7 +13,7 @@ import {
   getEveMessageContent,
   toEveInputResponse,
 } from "./convertEveMessages";
-import type { AppendMessage } from "@assistant-ui/core";
+import type { AppendMessage } from "@openagentui/core";
 
 const withApprovalPart = (eve?: {
   kind: "tool-call";
@@ -2332,7 +2332,7 @@ const withInputRequest = (
 });
 
 describe("toEveInputResponse", () => {
-  it("maps assistant-ui approval responses to eve input responses", () => {
+  it("maps openagentui approval responses to eve input responses", () => {
     expect(
       toEveInputResponse(
         {

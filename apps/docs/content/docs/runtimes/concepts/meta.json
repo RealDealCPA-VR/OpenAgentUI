@@ -1,5 +1,5 @@
 {
   "title": "Concepts",
-  "description": "Shared runtime concepts for architecture, adapters, thread management, and stability across assistant-ui runtime integrations.",
+  "description": "Shared runtime concepts for architecture, adapters, thread management, and stability across openagentui runtime integrations.",
   "pages": ["architecture", "adapters", "threads", "stability"]
 }

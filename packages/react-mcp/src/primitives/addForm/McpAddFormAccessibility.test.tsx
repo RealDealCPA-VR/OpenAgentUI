@@ -12,7 +12,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createRef } from "react";
 
 const mocks = vi.hoisted(() => ({ addCustomServer: vi.fn() }));
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
+vi.mock("@openagentui/store", async (importOriginal) => ({
   ...(await importOriginal()),
   useAui: () => ({ mcp: { addCustomServer: mocks.addCustomServer } }),
 }));

@@ -11,8 +11,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   mergeModelContexts,
   type ModelContextProvider,
-} from "@assistant-ui/core";
-import type { Tool } from "assistant-stream";
+} from "@openagentui/core";
+import type { Tool } from "openagentui-stream";
 
 const { registerMock, auiMock } = vi.hoisted(() => {
   const register = vi.fn((_provider: unknown) => () => {});
@@ -24,7 +24,7 @@ const { registerMock, auiMock } = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
+vi.mock("@openagentui/store", async (importOriginal) => ({
   ...(await importOriginal()),
   useAui: () => auiMock,
 }));

@@ -16,7 +16,7 @@ import type { AssistantRuntime } from "../../runtime/api/assistant-runtime";
 import { RemoteThreadListThreadListRuntimeCore } from "./RemoteThreadListThreadListRuntimeCore";
 import { WritableSubscribable } from "../../subscribable/subscribable";
 import { useSubscribable } from "../../store/runtime-clients/useSubscribable";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { useIsServerRender } from "../utils/useIsServerRender";
 
 class RemoteThreadListRuntimeCore

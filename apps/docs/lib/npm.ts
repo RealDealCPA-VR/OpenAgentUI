@@ -80,7 +80,7 @@ export function getDownloadsRange(
 }
 
 // The flagship package; its last-week downloads stand in for the headline figure.
-export const FLAGSHIP_PACKAGE = "@assistant-ui/react";
+export const FLAGSHIP_PACKAGE = "@openagentui/react";
 
 // A window date flows into date arithmetic in traction.ts, so one that cannot be
 // parsed is dropped here rather than passed on.

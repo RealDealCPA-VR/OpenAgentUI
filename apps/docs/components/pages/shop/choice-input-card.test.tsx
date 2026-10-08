@@ -14,7 +14,7 @@ const checkoutWith = (
 ) =>
   ({
     state: undefined,
-    session: { id: "test", products: ["assistant-ui"], startedAt: 1 },
+    session: { id: "test", products: ["openagentui"], startedAt: 1 },
     url: "https://checkout.test/session",
     agentPresent: true,
     degraded: false,

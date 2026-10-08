@@ -1,4 +1,4 @@
-import { useBranchPickerPrevious } from "@assistant-ui/core/react";
+import { useBranchPickerPrevious } from "@openagentui/core/react";
 import { Pressable, type PressableProps } from "../internal/Pressable";
 
 export type BranchPickerPreviousProps = Omit<

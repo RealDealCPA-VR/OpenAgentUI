@@ -1,7 +1,7 @@
 import { type ReactElement, useCallback } from "react";
 import { FlatList, type FlatListProps } from "react-native";
-import { useAuiState } from "@assistant-ui/store";
-import { ThreadListItemByIndexProvider } from "@assistant-ui/core/react";
+import { useAuiState } from "@openagentui/store";
+import { ThreadListItemByIndexProvider } from "@openagentui/core/react";
 
 export type ThreadListItemsProps = Omit<
   FlatListProps<string>,

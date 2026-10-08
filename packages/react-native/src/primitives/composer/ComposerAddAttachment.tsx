@@ -1,5 +1,5 @@
 import { Pressable, type PressableProps } from "react-native";
-import { useComposerAddAttachment } from "@assistant-ui/core/react";
+import { useComposerAddAttachment } from "@openagentui/core/react";
 
 export type ComposerAddAttachmentProps = Omit<PressableProps, "children"> & {
   children: PressableProps["children"];

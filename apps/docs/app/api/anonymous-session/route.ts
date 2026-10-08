@@ -16,7 +16,7 @@ function corsHeaders(request: Request): Record<string, string> {
   return {
     "Access-Control-Allow-Origin": origin,
     "Access-Control-Allow-Methods": "GET, OPTIONS",
-    "Access-Control-Allow-Headers": "X-Assistant-UI-Anonymous-Session",
+    "Access-Control-Allow-Headers": "X-OpenAgentUI-Anonymous-Session",
     Vary: "Origin",
   };
 }

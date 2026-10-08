@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createApp, defineComponent, h, nextTick, type Component } from "vue";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig } from "@assistant-ui/store/client";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig } from "@openagentui/store/client";
 import { AuiProvider } from "../AuiProvider";
 import { AuiIf } from "../AuiIf";
 import { useAui } from "../useAui";

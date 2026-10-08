@@ -16,10 +16,10 @@ An assistant message that failed mid-run carries its error on `s.message.status`
 
 ### Render the failed message
 
-```tsx title="components/assistant-ui/elements/error-state.tsx"
+```tsx title="components/openagentui/elements/error-state.tsx"
 "use client";
 
-import { ErrorPrimitive, MessagePrimitive } from "@assistant-ui/react";
+import { ErrorPrimitive, MessagePrimitive } from "@openagentui/react";
 import { CircleAlertIcon } from "lucide-react";
 
 export function MessageError() {
@@ -44,7 +44,7 @@ export function MessageError() {
 `ActionBarPrimitive.Reload` calls `aui.message.reload()`, which re-runs from this message's parent and is disabled while the thread is already running:
 
 ```tsx
-import { ActionBarPrimitive } from "@assistant-ui/react";
+import { ActionBarPrimitive } from "@openagentui/react";
 import { RefreshCwIcon } from "lucide-react";
 
 <ActionBarPrimitive.Reload className="ms-auto flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium text-red-600 hover:bg-red-500/10 dark:text-red-400">
@@ -71,7 +71,7 @@ Standalone, `ErrorState` switches its whole layout on `retrying`: a two-line ale
 "use client";
 
 import { useState } from "react";
-import { ErrorState } from "@/components/assistant-ui/elements/error-state";
+import { ErrorState } from "@/components/openagentui/elements/error-state";
 
 export function ReplyError() {
   const [retrying, setRetrying] = useState(false);
@@ -149,12 +149,12 @@ const retrying = useAuiState((s) => s.thread.isRunning);
 `useMessageError()` returns the value `ErrorPrimitive.Message` renders: the run's `status.error` when it is a string, its `message` when the error is an object with a string `message`, the raw error value otherwise, or `"An error occurred"` when the status carries no error. `ErrorPrimitive.Message` passes that value through `String()`. Call the hook directly if you need the error outside `MessagePrimitive.Error`.
 
 ```tsx
-import { useMessageError } from "@assistant-ui/core/react";
+import { useMessageError } from "@openagentui/core/react";
 
 const error = useMessageError();
 ```
 
-The hook is exported from `@assistant-ui/core/react` and not from `@assistant-ui/react`, so add `@assistant-ui/core` to the app's dependencies.
+The hook is exported from `@openagentui/core/react` and not from `@openagentui/react`, so add `@openagentui/core` to the app's dependencies.
 
 </RuntimeMode>
 
@@ -190,7 +190,7 @@ Both lanes take `className` on the root; the failure banner's red tint and the r
 | Selector | Type | Description |
 |----------|------|-------------|
 | `s.message.status?.type` | `"running" \| "complete" \| "incomplete" \| "requires-action"` | `"incomplete"` with `reason: "error"` is what a failed run looks like. |
-| `useMessageError()` | `() => string \| number \| boolean \| ReadonlyJSONObject \| ReadonlyJSONArray \| undefined` | The error value, or `undefined` when the message didn't fail. Exported from `@assistant-ui/core/react`. |
+| `useMessageError()` | `() => string \| number \| boolean \| ReadonlyJSONObject \| ReadonlyJSONArray \| undefined` | The error value, or `undefined` when the message didn't fail. Exported from `@openagentui/core/react`. |
 | `aui.message.reload(config?)` | `(config?: { runConfig?: RunConfig }) => void` | Retries by regenerating this message. |
 
 </RuntimeMode>

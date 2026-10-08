@@ -1,5 +1,5 @@
 import { openai } from "@ai-sdk/openai";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import {
   streamText,
   convertToModelMessages,
@@ -7,7 +7,7 @@ import {
   type JSONSchema7,
   UI_MESSAGE_STREAM_HEADERS,
 } from "ai";
-import { RESUMABLE_STREAM_ID_HEADER } from "assistant-stream/resumable";
+import { RESUMABLE_STREAM_ID_HEADER } from "openagentui-stream/resumable";
 import { resumableContext } from "@/lib/resumable-context";
 
 export const maxDuration = 60;

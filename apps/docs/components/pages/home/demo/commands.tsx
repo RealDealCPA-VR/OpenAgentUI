@@ -1,6 +1,6 @@
 "use client";
 
-import { useAssistantInstructions } from "@assistant-ui/react";
+import { useAssistantInstructions } from "@openagentui/react";
 import { QuoteIcon, SparklesIcon, TableIcon, WorkflowIcon } from "lucide-react";
 
 // A directive is a formatting instruction the model reads in the sent message,

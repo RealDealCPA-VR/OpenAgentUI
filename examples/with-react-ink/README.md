@@ -1,6 +1,6 @@
 # Terminal chat example
 
-Run `pnpm dev` for a local, scripted conversation. The thread sidebar uses the existing assistant-ui runtime and keeps each conversation and its composer draft in memory for the current session.
+Run `pnpm dev` for a local, scripted conversation. The thread sidebar uses the existing openagentui runtime and keeps each conversation and its composer draft in memory for the current session.
 
 The same sidebar is used by [the browser terminal demo](../with-react-ink-web). Wide terminals show it beside the conversation; narrow terminals switch between the thread list and composer.
 

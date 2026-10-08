@@ -1,8 +1,8 @@
-# assistant-ui + Expo
+# openagentui + Expo
 
-A native chat app built with [assistant-ui](https://www.assistant-ui.com) and [Expo](https://expo.dev). It runs on iOS, Android, and the web from a single codebase, and is styled to match the assistant-ui web kit: a clean, neutral, ChatGPT-grade look with subtle hairline borders.
+A native chat app built with [openagentui](https://openagentui.dev) and [Expo](https://expo.dev). It runs on iOS, Android, and the web from a single codebase, and is styled to match the openagentui web kit: a clean, neutral, ChatGPT-grade look with subtle hairline borders.
 
-The chat is powered by `@assistant-ui/react-native` with the AI SDK runtime (`@assistant-ui/ai-sdk`). The UI comes from the assistant-ui React Native kit (`packages/ui/src/components/react-native`), styled with Tailwind classes through [Uniwind](https://uniwind.dev) and the same design tokens as the web kit, so the thread, composer, attachments, and thread list read the same on every platform. The example adds:
+The chat is powered by `@openagentui/react-native` with the AI SDK runtime (`@openagentui/ai-sdk`). The UI comes from the openagentui React Native kit (`packages/ui/src/components/react-native`), styled with Tailwind classes through [Uniwind](https://uniwind.dev) and the same design tokens as the web kit, so the thread, composer, attachments, and thread list read the same on every platform. The example adds:
 
 - **Image picker** (`expo-image-picker`) for attachments and **clipboard** (`expo-clipboard`) for the copy action.
 - A native **drawer** (`expo-router/drawer`) for the thread list, with a swipe gesture to switch conversations.
@@ -37,10 +37,10 @@ The chat is powered by `@assistant-ui/react-native` with the AI SDK runtime (`@a
 - `app/_layout.tsx` wires the runtime, the toolkit, the suggestions, and the drawer navigation.
 - `app/index.tsx` renders the `Thread`.
 - `components/tools.tsx` holds the weather toolkit and its tool UIs.
-- `global.css` holds the Tailwind and Uniwind setup plus the color tokens; `metro.config.js` wires Uniwind around the assistant-ui Metro transformer.
-- `@/components/assistant-ui/*` and `@/components/ui/*` resolve to the kit sources in `packages/ui/src/components/react-native` through `tsconfig.json` paths. A project scaffolded with `npx assistant-ui create --native` gets the same files installed under `components/` from the registry instead.
+- `global.css` holds the Tailwind and Uniwind setup plus the color tokens; `metro.config.js` wires Uniwind around the openagentui Metro transformer.
+- `@/components/openagentui/*` and `@/components/ui/*` resolve to the kit sources in `packages/ui/src/components/react-native` through `tsconfig.json` paths. A project scaffolded with `npx openagentui create --native` gets the same files installed under `components/` from the registry instead.
 
 ## Learn more
 
-- [assistant-ui documentation](https://www.assistant-ui.com/docs)
+- [openagentui documentation](https://openagentui.dev/docs)
 - [Expo documentation](https://docs.expo.dev)

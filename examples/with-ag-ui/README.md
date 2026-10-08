@@ -1,13 +1,13 @@
 # AG-UI Protocol Integration
 
-This example demonstrates how to integrate assistant-ui with the AG-UI protocol for connecting to AG-UI compatible agents.
+This example demonstrates how to integrate openagentui with the AG-UI protocol for connecting to AG-UI compatible agents.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-ag-ui
+npx openagentui@latest create my-app --example with-ag-ui
 cd my-app
 ```
 
@@ -42,7 +42,7 @@ pnpm dev
 
 ## Features
 
-- AG-UI protocol integration via `@assistant-ui/react-ag-ui`
+- AG-UI protocol integration via `@openagentui/react-ag-ui`
 - Multi-thread support with "New Thread" button
 - Custom browser alert tool demonstration
 - Client-side tool execution
@@ -62,5 +62,5 @@ The included `server/agent.py` provides:
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
+- [openagentui Documentation](https://openagentui.dev/docs)
 - [AG-UI Protocol](https://docs.ag-ui.com)

@@ -174,7 +174,7 @@ const TriggerPopoverRootInner: FC<
       if (triggersRef.current.has(char)) {
         if (process.env.NODE_ENV !== "production") {
           console.warn(
-            `[assistant-ui] Duplicate TriggerPopover for char "${char}". Ignoring the second registration.`,
+            `[openagentui] Duplicate TriggerPopover for char "${char}". Ignoring the second registration.`,
           );
         }
         return () => {};
@@ -186,7 +186,7 @@ const TriggerPopoverRootInner: FC<
             existing.char.startsWith(char)
           ) {
             console.warn(
-              `[assistant-ui] Trigger prefix collision between "${existing.char}" and "${char}". One char is a prefix of the other; only one will match reliably.`,
+              `[openagentui] Trigger prefix collision between "${existing.char}" and "${char}". One char is a prefix of the other; only one will match reliably.`,
             );
           }
         }

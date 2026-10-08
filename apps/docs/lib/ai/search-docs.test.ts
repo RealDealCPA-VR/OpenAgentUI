@@ -34,7 +34,7 @@ describe("createSearchDocsTool", () => {
     const written: unknown[] = [];
     const tool = createSearchDocsTool({
       writer: { write: (part: unknown) => written.push(part) } as never,
-      origin: "https://www.assistant-ui.com",
+      origin: "https://openagentui.dev",
     });
 
     const output = (await tool.execute!(
@@ -47,8 +47,8 @@ describe("createSearchDocsTool", () => {
     )) as { results: { url: string; title: string; excerpt?: string }[] };
 
     expect(output.results.map((page) => page.url)).toEqual([
-      "https://www.assistant-ui.com/docs/ui/thread-list",
-      "https://www.assistant-ui.com/docs/runtimes/custom",
+      "https://openagentui.dev/docs/ui/thread-list",
+      "https://openagentui.dev/docs/runtimes/custom",
     ]);
     expect(output.results[0]?.excerpt).toBe(
       "Render the thread list beside your thread.",

@@ -1,5 +1,5 @@
 import type { MessageStatus } from "../../types/message";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import type { ThreadMessageLike } from "./thread-message-like";
 import { hasPendingToolAction } from "../../utils/normalizePartStatus";
 

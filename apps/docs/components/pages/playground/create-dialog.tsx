@@ -98,8 +98,8 @@ export function CreateDialog({
                     >
                       Code view
                     </button>{" "}
-                    over components/assistant-ui/elements/thread.aui.tsx, and
-                    its CSS variables into your global CSS.
+                    over components/openagentui/elements/thread.aui.tsx, and its
+                    CSS variables into your global CSS.
                   </p>
                 </div>
               </div>
@@ -221,7 +221,7 @@ function generateCliCommands(config: BuilderConfig): CliCommands {
     componentsToAdd.push("sources");
   }
 
-  const addCommand = `npx assistant-ui@latest add ${componentsToAdd.join(" ")}`;
+  const addCommand = `npx openagentui@latest add ${componentsToAdd.join(" ")}`;
 
   const enabledFeatures: string[] = [];
   if (components.markdown) enabledFeatures.push("Markdown");
@@ -249,7 +249,7 @@ function generateCliCommands(config: BuilderConfig): CliCommands {
     primary: {
       label: "One-command setup",
       description: "Install with your current configuration",
-      command: `npx assistant-ui@latest create my-app --preset "${presetUrl}"`,
+      command: `npx openagentui@latest create my-app --preset "${presetUrl}"`,
     },
     alternative: {
       label: "Using shadcn",
@@ -258,7 +258,7 @@ function generateCliCommands(config: BuilderConfig): CliCommands {
     manual: [
       {
         label: "Initialize",
-        command: "npx assistant-ui@latest init",
+        command: "npx openagentui@latest init",
       },
       {
         label: "Add components",

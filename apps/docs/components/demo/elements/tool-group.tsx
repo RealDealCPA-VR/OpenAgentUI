@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   ToolGroup,
   type GroupedTool,
-} from "@/components/assistant-ui/elements/tool-group";
+} from "@/components/openagentui/elements/tool-group";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const TOOLS: readonly GroupedTool[] = [

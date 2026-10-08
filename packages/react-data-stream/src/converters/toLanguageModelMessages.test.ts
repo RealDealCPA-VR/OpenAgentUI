@@ -1,4 +1,4 @@
-import type { ThreadMessage } from "@assistant-ui/core";
+import type { ThreadMessage } from "@openagentui/core";
 import { describe, expect, it } from "vitest";
 import { toLanguageModelMessages } from "./toLanguageModelMessages";
 
@@ -79,8 +79,8 @@ describe("toLanguageModelMessages", () => {
             type: "tool-call",
             toolCallId: "call-1",
             toolName: "lookup",
-            args: { query: "assistant-ui" },
-            argsText: '{"query":"assistant-ui"}',
+            args: { query: "openagentui" },
+            argsText: '{"query":"openagentui"}',
             result: { found: true },
           },
           { type: "text", text: "after" },

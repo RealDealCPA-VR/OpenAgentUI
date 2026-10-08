@@ -57,7 +57,7 @@ describe("anonymous session tokens", () => {
       secret,
       id: "session_1234567890",
     });
-    const request = new Request("https://www.assistant-ui.com/api/chat", {
+    const request = new Request("https://openagentui.dev/api/chat", {
       headers: {
         ...browserHeaders,
         cookie: `${ANONYMOUS_SESSION_COOKIE}=${token}`,
@@ -70,7 +70,7 @@ describe("anonymous session tokens", () => {
 
 describe("public assistant browser boundary", () => {
   it("accepts the real same-origin GET shape without origin or referer", () => {
-    const request = new Request("https://www.assistant-ui.com/api/chat", {
+    const request = new Request("https://openagentui.dev/api/chat", {
       headers: browserHeaders,
     });
 
@@ -78,9 +78,9 @@ describe("public assistant browser boundary", () => {
   });
 
   it("accepts explicitly supported browser demos", () => {
-    const request = new Request("https://www.assistant-ui.com/api/chat", {
+    const request = new Request("https://openagentui.dev/api/chat", {
       headers: {
-        origin: "https://assistant-ui-expo.vercel.app",
+        origin: "https://openagentui-expo.vercel.app",
         "sec-fetch-mode": "cors",
         "sec-fetch-site": "cross-site",
       },
@@ -92,12 +92,12 @@ describe("public assistant browser boundary", () => {
   it("rejects raw curl-style requests and untrusted origins", () => {
     expect(
       isPublicAssistantBrowserRequest(
-        new Request("https://www.assistant-ui.com/api/chat"),
+        new Request("https://openagentui.dev/api/chat"),
       ),
     ).toBe(false);
     expect(
       isPublicAssistantBrowserRequest(
-        new Request("https://www.assistant-ui.com/api/chat", {
+        new Request("https://openagentui.dev/api/chat", {
           headers: {
             origin: "https://attacker.example",
             "sec-fetch-mode": "cors",
@@ -110,7 +110,7 @@ describe("public assistant browser boundary", () => {
 
   it("rejects direct requests before checking a session token", () => {
     const result = requirePublicAssistantSession(
-      new Request("https://www.assistant-ui.com/api/chat"),
+      new Request("https://openagentui.dev/api/chat"),
     );
 
     expect(result).toBeInstanceOf(Response);

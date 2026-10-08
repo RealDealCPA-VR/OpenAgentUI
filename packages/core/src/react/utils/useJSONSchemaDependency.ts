@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { toJSONSchema } from "assistant-stream";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import { toJSONSchema } from "openagentui-stream";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import { isJSONValue } from "../../utils/json/is-json";
 import type { Unstable_InteractableStateSchema } from "../types/scopes/interactables";
 import { useJSONEqualValue } from "./useJSONEqual";

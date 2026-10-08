@@ -7,7 +7,7 @@ import {
   AssistantRuntimeProvider,
   useLocalRuntime,
   type AssistantRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   PlaygroundChatProvider,
   PlaygroundChatThread,
@@ -18,8 +18,8 @@ const runtimes = vi.hoisted(() => ({
   preview: [] as AssistantRuntime[],
 }));
 
-vi.mock("@assistant-ui/ai-sdk", async (importOriginal) => {
-  const mod = await importOriginal<typeof import("@assistant-ui/ai-sdk")>();
+vi.mock("@openagentui/ai-sdk", async (importOriginal) => {
+  const mod = await importOriginal<typeof import("@openagentui/ai-sdk")>();
   return {
     ...mod,
     useChatRuntime: (...args: Parameters<typeof mod.useChatRuntime>) => {

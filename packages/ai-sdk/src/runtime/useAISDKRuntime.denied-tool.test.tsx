@@ -1,16 +1,16 @@
 // @vitest-environment jsdom
 
 import { renderHook } from "@testing-library/react";
-import type { ExternalStoreAdapter } from "@assistant-ui/core";
+import type { ExternalStoreAdapter } from "@openagentui/core";
 import { describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   adapter: undefined as ExternalStoreAdapter | undefined,
 }));
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => {
+vi.mock("@openagentui/core/react", async (importOriginal) => {
   const original =
-    await importOriginal<typeof import("@assistant-ui/core/react")>();
+    await importOriginal<typeof import("@openagentui/core/react")>();
   return {
     ...original,
     useExternalStoreRuntime: vi.fn((adapter: ExternalStoreAdapter) => {

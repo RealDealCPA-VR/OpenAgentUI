@@ -5,7 +5,7 @@ import {
   ThreadPrimitive,
   useAui,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   type ComponentType,
   Fragment,
@@ -17,13 +17,13 @@ import {
 import { AssistantMessage, UserMessage } from "./messages";
 import { AssistantComposer, useSharedDocsModelSelection } from "./composer";
 import { useAssistantPanel } from "@/components/pages/docs/assistant/context";
-import { ContextDisplay } from "@assistant-ui/ui/components/react/assistant-ui/elements/context-display.aui";
+import { ContextDisplay } from "@openagentui/ui/components/react/openagentui/elements/context-display.aui";
 import { analytics } from "@/lib/analytics";
 import { useCurrentPage } from "@/components/pages/docs/contexts/current-page";
 import {
   getThreadMessageTokenUsage,
   type ThreadTokenUsage,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { getContextWindow } from "@/lib/model";
 import { typeSection } from "@/components/shared/type";
 import { XIcon } from "lucide-react";
@@ -141,7 +141,7 @@ function PanelHeader(): React.ReactNode {
   return (
     <div className="border-foreground/10 flex h-11 shrink-0 items-center justify-between border-b px-3.5">
       <span className="text-muted-foreground font-mono text-[11px] font-medium">
-        assistant-ui · Ask AI
+        openagentui · Ask AI
       </span>
       <div className="flex items-center gap-1">
         {contextTokens > 0 ? (
@@ -193,7 +193,7 @@ function PanelHeader(): React.ReactNode {
 const GREETING_WORDS = ["Ask", "the", "library."];
 
 const SUGGESTIONS = [
-  "What is assistant-ui?",
+  "What is openagentui?",
   "How do I get started?",
   "How do I customize the styling?",
   "How do I connect my own backend?",

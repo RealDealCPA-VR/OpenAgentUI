@@ -21,7 +21,7 @@ Register the dispatch tool with a `render` that returns nothing. Its schema and 
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 
 export const toolkit = defineToolkit({
   dispatch_subagent: { type: "backend", render: () => null },
@@ -36,9 +36,9 @@ export const toolkit = defineToolkit({
 
 Read every part of the current message, keep the `dispatch_subagent` calls, and fold them into the props `SubagentList` expects. `summarize_findings` becomes the trailing summary card when it is present at all.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { MessagePrimitive, useAuiState } from "@assistant-ui/react";
-import { SubagentList } from "@/components/assistant-ui/elements/subagent-list";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { MessagePrimitive, useAuiState } from "@openagentui/react";
+import { SubagentList } from "@/components/openagentui/elements/subagent-list";
 
 function SubagentProgress() {
   const parts = useAuiState((s) => s.message.parts);
@@ -96,7 +96,7 @@ import { useState } from "react";
 import {
   SubagentList,
   type SubagentItem,
-} from "@/components/assistant-ui/elements/subagent-list";
+} from "@/components/openagentui/elements/subagent-list";
 
 const AGENTS: readonly SubagentItem[] = [
   { name: "Explore the runtime", model: "haiku" },

@@ -1,5 +1,5 @@
 {
-  "name": "@assistant-ui/react",
+  "name": "@openagentui/react",
   "version": "0.15.25",
   "description": "Open-source TypeScript/React library for building production-grade AI chat experiences",
   "keywords": [
@@ -36,7 +36,7 @@
     "cli",
     "vercel"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -66,14 +66,14 @@
     "test:types:peer-react18": "aui-react18-types"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
-    "@assistant-ui/tap": "^0.9.21",
-    "assistant-cloud": "^0.2.5",
-    "assistant-stream": "^0.3.48",
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
+    "@openagentui/tap": "^0.9.21",
+    "openagentui-cloud": "^0.2.5",
+    "openagentui-stream": "^0.3.48",
     "radix-ui": "^1.6.7",
     "react-textarea-autosize": "^8.5.9",
-    "safe-content-frame": "^0.0.33",
+    "@openagentui/safe-content-frame": "^0.0.33",
     "zod": "^4.6.5",
     "zustand": "^5.0.15"
   },
@@ -92,9 +92,9 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/vite": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/vite": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@testing-library/react": "^16.3.3",
     "@types/json-schema": "^7.0.15",
     "@types/node": "^26.6.3",
@@ -109,13 +109,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

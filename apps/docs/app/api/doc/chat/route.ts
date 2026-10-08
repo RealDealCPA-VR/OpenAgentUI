@@ -1,6 +1,6 @@
 import { getLLMText } from "@/lib/get-llm-text";
 import { getDistinctId } from "@/lib/posthog-server";
-import { injectQuoteContext } from "@assistant-ui/ai-sdk";
+import { injectQuoteContext } from "@openagentui/ai-sdk";
 import { checkPublicAssistantRateLimit } from "@/lib/rate-limit";
 import { requirePublicAssistantSession } from "@/lib/anonymous-session";
 import {
@@ -10,7 +10,7 @@ import {
 import { source, examples as examplesSource } from "@/lib/source";
 import { resolveChatModel } from "@/lib/ai/provider";
 import { posthogTelemetry } from "@/lib/ai/telemetry";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { createRepoSandbox } from "@/lib/repo-sandbox";
 import {
   convertToModelMessages,
@@ -178,7 +178,7 @@ function createRepoTools() {
   return {
     bash: tool({
       description:
-        "Execute bash commands in the /repo sandbox containing the assistant-ui monorepo.",
+        "Execute bash commands in the /repo sandbox containing the openagentui monorepo.",
       inputSchema: zodSchema(
         z.object({
           command: z
@@ -208,14 +208,14 @@ function createRepoTools() {
   };
 }
 
-const SYSTEM_PROMPT = `You are the assistant-ui docs assistant.
+const SYSTEM_PROMPT = `You are the openagentui docs assistant.
 
-<about_assistant_ui>
-assistant-ui is a React library for building AI chat interfaces. It provides:
+<about_openagentui>
+openagentui is a React library for building AI chat interfaces. It provides:
 - Composable UI primitives (Thread, Composer, Message, etc.)
 - Runtime adapters for AI backends (Vercel AI SDK, LangGraph, custom stores)
 - Pre-built components with full customization support
-</about_assistant_ui>
+</about_openagentui>
 
 <personality>
 - Friendly, concise, developer-focused
@@ -226,12 +226,12 @@ assistant-ui is a React library for building AI chat interfaces. It provides:
 
 <greetings>
 When users send a casual greeting (hey, hi, hello):
-1. Welcome them to assistant-ui with emoji 👋
-2. Briefly explain what assistant-ui helps them do (build AI chat interfaces in React)
+1. Welcome them to openagentui with emoji 👋
+2. Briefly explain what openagentui helps them do (build AI chat interfaces in React)
 3. Ask what they're working on or offer 2-3 common starting points
 
 Example tone:
-"Hey! 👋 Welcome to assistant-ui!
+"Hey! 👋 Welcome to openagentui!
 
 I'm here to help you build AI chat interfaces with React. Whether you're just getting started, connecting to an AI backend, or customizing components — I've got you covered.
 
@@ -258,7 +258,7 @@ You have two documentation tools:
 </tools>
 
 <source_code_tools>
-You also have tools for exploring the actual assistant-ui source code:
+You also have tools for exploring the actual openagentui source code:
 
 3. **bash** - Execute bash commands in a sandbox containing the full monorepo
    - The sandbox is at /repo with the complete source tree
@@ -292,7 +292,7 @@ Use inline code (\`backticks\`) for:
 - Components: \`Thread\`, \`Composer\`, \`Message\`
 - Hooks: \`useChat\`, \`useThreadRuntime\`
 - Props, parameters, types
-- Packages: \`@assistant-ui/react\`
+- Packages: \`@openagentui/react\`
 - File paths
 </formatting>
 `;
@@ -378,7 +378,7 @@ export async function POST(req: Request): Promise<Response> {
                   type: "folder",
                   name: "examples",
                   description:
-                    "Examples of app types users can build with assistant-ui, showing instructions, recommended patterns, and UI structure.",
+                    "Examples of app types users can build with openagentui, showing instructions, recommended patterns, and UI structure.",
                 },
               ];
             }

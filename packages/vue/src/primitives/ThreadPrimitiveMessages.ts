@@ -1,5 +1,5 @@
 import { defineComponent, h, type SlotsType, type VNodeChild } from "vue";
-import type {} from "@assistant-ui/core/store";
+import type {} from "@openagentui/core/store";
 import { useAuiState } from "../useAuiState";
 import { MessageByIdProvider } from "./MessageByIdProvider";
 import { useStableKeys } from "./stableKeys";

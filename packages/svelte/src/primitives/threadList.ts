@@ -1,12 +1,12 @@
 import type {
   ThreadListItemMethods,
   ThreadsState,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 import {
   createLastValidCache,
   createStaleReporter,
   Derived,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { getAuiContext, type AuiContext, type ScopeTarget } from "../context";
 import { useAuiState } from "../useAuiState";
 import { createObservedItem, scheduleExpiry } from "./observedItem";

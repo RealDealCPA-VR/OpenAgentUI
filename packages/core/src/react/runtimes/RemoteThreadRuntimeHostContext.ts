@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useContextProvider } from "@assistant-ui/tap";
+import { useContextProvider } from "@openagentui/tap";
 
 const RemoteThreadRuntimeHostContext = createContext(false);
 

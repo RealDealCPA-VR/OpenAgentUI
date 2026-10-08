@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   getPartialJsonObjectMeta,
   parsePartialJsonObject,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import { appendLangChainChunk } from "./appendLangChainChunk";
 import { convertLangChainMessages } from "./convertLangChainMessages";
 import { normalizeLangGraphTupleMessage } from "./normalizeLangGraphTupleMessage";

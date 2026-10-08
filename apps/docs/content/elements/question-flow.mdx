@@ -19,9 +19,9 @@ A question flow is a human tool: the model supplies its steps as arguments, the 
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit, useAuiState } from "@assistant-ui/react";
+import { defineToolkit, useAuiState } from "@openagentui/react";
 import { z } from "zod";
-import { QuestionFlow } from "@/components/assistant-ui/elements/question-flow";
+import { QuestionFlow } from "@/components/openagentui/elements/question-flow";
 
 export const toolkit = defineToolkit({
   ask_project_questions: {
@@ -76,8 +76,8 @@ export const toolkit = defineToolkit({
 ```tsx title="app/MyRuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 const config = AuiConfig({ tools: Tools({ toolkit }) });
@@ -115,7 +115,7 @@ import { useState } from "react";
 import {
   QuestionFlow,
   type QuestionFlowStep,
-} from "@/components/assistant-ui/elements/question-flow";
+} from "@/components/openagentui/elements/question-flow";
 
 const STEPS: QuestionFlowStep[] = [
   {

@@ -25,7 +25,7 @@
       }
     ],
     "guide": "/docs/runtimes/ai-sdk/v7",
-    "upstreamSource": "https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-ai-sdk-v7",
+    "upstreamSource": "https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-ai-sdk-v7",
     "try": [
       "Send a message and watch the reply stream.",
       "Copy or regenerate a reply. Stop a response while it is running."
@@ -63,7 +63,7 @@
       }
     ],
     "guide": "/docs/tools/interactables",
-    "upstreamSource": "https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-interactables",
+    "upstreamSource": "https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-interactables",
     "try": [
       "Edit the document directly.",
       "Ask the assistant to add a section, then undo the edit."
@@ -102,14 +102,14 @@
       }
     ],
     "guide": "/examples/modal",
-    "upstreamSource": "https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/docs/samples/assistant-modal.tsx",
+    "upstreamSource": "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/docs/samples/assistant-modal.tsx",
     "try": [
       "Open the assistant launcher beside the article.",
       "Ask a suggested question about the article."
     ],
     "requirements": "React and page content to ground replies. A model backend is needed for open-ended questions.",
     "sourceFiles": [
-      "ui/components/react/assistant-ui/elements/assistant-modal.aui.tsx"
+      "ui/components/react/openagentui/elements/assistant-modal.aui.tsx"
     ]
   },
   {
@@ -143,7 +143,7 @@
       }
     ],
     "guide": "/docs/tools/generative-ui",
-    "upstreamSource": "https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-generative-ui",
+    "upstreamSource": "https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-generative-ui",
     "try": [
       "Choose a suggested question to filter the data.",
       "Compare the calculated answer with the chart and table."
@@ -177,7 +177,7 @@
       }
     ],
     "guide": "/docs/tools/interactables",
-    "upstreamSource": "https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-interactables",
+    "upstreamSource": "https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-interactables",
     "try": [
       "Ask the agent to filter or complete a task.",
       "Watch the cursor target and activate the real controls."

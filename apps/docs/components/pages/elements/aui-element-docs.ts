@@ -20,24 +20,24 @@ const usageOnly = (usage: string): ElementDoc => ({ usage, props: [] });
 
 export const AUI_ELEMENT_DOCS: Record<string, ElementDoc> = {
   "assistant-modal": usageOnly(
-    `import { AssistantModal } from "@/components/assistant-ui/elements/assistant-modal.aui";
+    `import { AssistantModal } from "@/components/openagentui/elements/assistant-modal.aui";
 
 <AssistantModal />`,
   ),
   "assistant-sidebar": usageOnly(
-    `import { AssistantSidebar } from "@/components/assistant-ui/elements/assistant-sidebar.aui";
+    `import { AssistantSidebar } from "@/components/openagentui/elements/assistant-sidebar.aui";
 
 <AssistantSidebar>
   <main>{children}</main>
 </AssistantSidebar>`,
   ),
   "thread-list-sidebar": usageOnly(
-    `import { ThreadListSidebar } from "@/components/assistant-ui/elements/threadlist-sidebar.aui";
+    `import { ThreadListSidebar } from "@/components/openagentui/elements/threadlist-sidebar.aui";
 
 <ThreadListSidebar />`,
   ),
   reasoning: usageOnly(
-    `import { ReasoningRoot, ReasoningTrigger, ReasoningContent, ReasoningText } from "@/components/assistant-ui/elements/reasoning.aui";
+    `import { ReasoningRoot, ReasoningTrigger, ReasoningContent, ReasoningText } from "@/components/openagentui/elements/reasoning.aui";
 
 <ReasoningRoot>
   <ReasoningTrigger />
@@ -47,24 +47,24 @@ export const AUI_ELEMENT_DOCS: Record<string, ElementDoc> = {
 </ReasoningRoot>`,
   ),
   "message-timing": usageOnly(
-    `import { MessageTiming } from "@/components/assistant-ui/elements/message-timing.aui";
+    `import { MessageTiming } from "@/components/openagentui/elements/message-timing.aui";
 
 <MessageTiming side="right" />`,
   ),
   "mcp-config": usageOnly(
-    `import { McpConfigDialog } from "@/components/assistant-ui/elements/mcp-config.aui";
+    `import { McpConfigDialog } from "@/components/openagentui/elements/mcp-config.aui";
 
 <McpConfigDialog />`,
   ),
   attachment: usageOnly(
-    `import { ComposerAddAttachment, ComposerAttachments, UserMessageAttachments } from "@/components/assistant-ui/elements/attachment.aui";
+    `import { ComposerAddAttachment, ComposerAttachments, UserMessageAttachments } from "@/components/openagentui/elements/attachment.aui";
 
 <ComposerAttachments />
 <ComposerAddAttachment />
 <UserMessageAttachments />`,
   ),
   "tool-fallback": usageOnly(
-    `import { ToolFallbackRoot, ToolFallbackTrigger, ToolFallbackContent, ToolFallbackArgs, ToolFallbackResult } from "@/components/assistant-ui/elements/tool-fallback.aui";
+    `import { ToolFallbackRoot, ToolFallbackTrigger, ToolFallbackContent, ToolFallbackArgs, ToolFallbackResult } from "@/components/openagentui/elements/tool-fallback.aui";
 
 <ToolFallbackRoot>
   <ToolFallbackTrigger toolName="search_web" status={{ type: "complete" }} />
@@ -75,7 +75,7 @@ export const AUI_ELEMENT_DOCS: Record<string, ElementDoc> = {
 </ToolFallbackRoot>`,
   ),
   "tool-group": usageOnly(
-    `import { ToolGroupRoot, ToolGroupTrigger, ToolGroupContent } from "@/components/assistant-ui/elements/tool-group.aui";
+    `import { ToolGroupRoot, ToolGroupTrigger, ToolGroupContent } from "@/components/openagentui/elements/tool-group.aui";
 
 <ToolGroupRoot>
   <ToolGroupTrigger count={3} />
@@ -83,62 +83,62 @@ export const AUI_ELEMENT_DOCS: Record<string, ElementDoc> = {
 </ToolGroupRoot>`,
   ),
   sources: usageOnly(
-    `import { Source, SourceIcon, SourceTitle } from "@/components/assistant-ui/elements/sources.aui";
+    `import { Source, SourceIcon, SourceTitle } from "@/components/openagentui/elements/sources.aui";
 
-<Source href="https://assistant-ui.com">
-  <SourceIcon url="https://assistant-ui.com" />
-  <SourceTitle>assistant-ui</SourceTitle>
+<Source href="https://openagentui.dev">
+  <SourceIcon url="https://openagentui.dev" />
+  <SourceTitle>openagentui</SourceTitle>
 </Source>`,
   ),
   image: usageOnly(
-    `import { Image } from "@/components/assistant-ui/elements/image";
+    `import { Image } from "@/components/openagentui/elements/image";
 
 <Image type="image" image={url} status={{ type: "complete" }} />`,
   ),
   file: usageOnly(
-    `import { File } from "@/components/assistant-ui/elements/file";
+    `import { File } from "@/components/openagentui/elements/file";
 
 <File type="file" filename="report.pdf" mimeType="application/pdf" data={data} />`,
   ),
   "directive-text": usageOnly(
-    `import { defaultDirectiveFormatter } from "@assistant-ui/react";
-import { createDirectiveText } from "@/components/assistant-ui/elements/directive-text.aui";
+    `import { defaultDirectiveFormatter } from "@openagentui/react";
+import { createDirectiveText } from "@/components/openagentui/elements/directive-text.aui";
 
 const DirectiveText = createDirectiveText(defaultDirectiveFormatter);`,
   ),
   "shiki-highlighter": usageOnly(
-    `import { SyntaxHighlighter } from "@/components/assistant-ui/elements/shiki-highlighter.aui";
+    `import { SyntaxHighlighter } from "@/components/openagentui/elements/shiki-highlighter.aui";
 
 <SyntaxHighlighter language="tsx" code={code} />`,
   ),
   "generative-ui": usageOnly(
-    `import { renderGenerativeUI } from "@assistant-ui/react-generative-ui";
-import { styledGenerativeUILibrary } from "@/components/assistant-ui/elements/generative-ui";
+    `import { renderGenerativeUI } from "@openagentui/react-generative-ui";
+import { styledGenerativeUILibrary } from "@/components/openagentui/elements/generative-ui";
 
 {renderGenerativeUI(spec, styledGenerativeUILibrary, { status: "done" })}`,
   ),
   "tooltip-icon-button": usageOnly(
     `import { CopyIcon } from "lucide-react";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 
 <TooltipIconButton tooltip="Copy">
   <CopyIcon />
 </TooltipIconButton>`,
   ),
   logos: usageOnly(
-    `import { OpenAILogo, ClaudeLogo, GeminiLogo } from "@/components/assistant-ui/elements/logos";
+    `import { OpenAILogo, ClaudeLogo, GeminiLogo } from "@/components/openagentui/elements/logos";
 
 <OpenAILogo />
 <ClaudeLogo />
 <GeminiLogo />`,
   ),
   "heat-graph": usageOnly(
-    `import { HeatGraph } from "@/components/assistant-ui/elements/heat-graph";
+    `import { HeatGraph } from "@/components/openagentui/elements/heat-graph";
 
 <HeatGraph data={activity} />`,
   ),
   "conversation-map": {
-    usage: `import { ConversationMapAui } from "@/components/assistant-ui/elements/conversation-map.aui";
+    usage: `import { ConversationMapAui } from "@/components/openagentui/elements/conversation-map.aui";
 
 // A direct child of the viewport, so the rail lands in the gutter
 // beside the centered message column. Hide it where there is no gutter.

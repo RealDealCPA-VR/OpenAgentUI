@@ -46,7 +46,7 @@ for (const { project, config } of configs) {
   if (problems.length > 0) {
     failed = true;
     console.error(
-      `${project}: ${problems.join(", and ")}. List @assistant-ui/x-react18/tsconfig.json last in "extends", and don't override skipLibCheck or the react and react-dom paths.\n`,
+      `${project}: ${problems.join(", and ")}. List @openagentui/x-react18/tsconfig.json last in "extends", and don't override skipLibCheck or the react and react-dom paths.\n`,
     );
     continue;
   }

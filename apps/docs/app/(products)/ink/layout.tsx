@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SubProjectLayout } from "@/components/shared/sub-project-layout";
 import { createOgMetadata } from "@/lib/og";
 
-const title = "assistant-ui for the Terminal";
+const title = "openagentui for the Terminal";
 const description =
   "Terminal Thread, Composer, and Message primitives for Ink. Same runtime as the web SDK. ANSI markdown.";
 
@@ -21,7 +21,7 @@ export default function InkLayout({
   return (
     <SubProjectLayout
       name="ink"
-      githubPath="https://github.com/assistant-ui/assistant-ui/tree/main/packages/react-ink"
+      githubPath="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/react-ink"
     >
       {children}
     </SubProjectLayout>

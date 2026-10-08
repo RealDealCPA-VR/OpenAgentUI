@@ -8,7 +8,7 @@ export const handleRuntimeAction = (
 
   void task.catch((error: unknown) => {
     if (isSilentRuntimeAction(error)) return;
-    console.error(`[assistant-ui] ${label} failed:`, error);
+    console.error(`[openagentui] ${label} failed:`, error);
   });
   return task;
 };

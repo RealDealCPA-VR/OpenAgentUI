@@ -4,7 +4,7 @@ import {
   UserMessageSchema,
   type Message as AgUiWireMessage,
 } from "@ag-ui/client";
-import type { AppendMessage } from "@assistant-ui/core";
+import type { AppendMessage } from "@openagentui/core";
 import {
   fromAgUiMessages,
   toAgUiMessages,

@@ -16,13 +16,13 @@ A composer shaped for a phone: a row of quick actions that collapses out of the 
 
 ### Compose the bar from composer primitives
 
-```tsx title="components/assistant-ui/elements/mobile-composer-bar.tsx"
+```tsx title="components/openagentui/elements/mobile-composer-bar.tsx"
 "use client";
 
 import { ArrowUpIcon, MicIcon, PlusIcon, SquareIcon } from "lucide-react";
-import { ComposerPrimitive, ThreadPrimitive, useAuiState } from "@assistant-ui/react";
+import { ComposerPrimitive, ThreadPrimitive, useAuiState } from "@openagentui/react";
 import { cn } from "@/lib/utils";
-import { field, ghostButton, inkButton, mono } from "@/components/assistant-ui/elements/surfaces";
+import { field, ghostButton, inkButton, mono } from "@/components/openagentui/elements/surfaces";
 
 const ACTIONS = ["Summarize", "Translate", "Explain"];
 
@@ -105,7 +105,7 @@ Standalone, every field is a prop and the component owns exactly two pieces of l
 "use client";
 
 import { useState } from "react";
-import { MobileComposer } from "@/components/assistant-ui/elements/mobile-composer";
+import { MobileComposer } from "@/components/openagentui/elements/mobile-composer";
 
 export function MobileBar() {
   const [value, setValue] = useState("");

@@ -19,13 +19,13 @@ describe("WeeklyDownloadsStat", () => {
   it("shows a measured zero without offering an unavailable mode", () => {
     const markup = renderToStaticMarkup(
       <WeeklyDownloadsStat
-        flagship={{ value: 0, caption: "@assistant-ui/react" }}
+        flagship={{ value: 0, caption: "@openagentui/react" }}
         total={null}
       />,
     );
 
     expect(markup).toContain("<span>0</span>");
-    expect(markup).toContain("@assistant-ui/react");
+    expect(markup).toContain("@openagentui/react");
     expect(markup).not.toContain("—");
     expect(markup).not.toContain("<button");
   });
@@ -41,12 +41,12 @@ describe("WeeklyDownloadsStat", () => {
   it("offers the mode toggle when both reads are available", () => {
     const markup = renderToStaticMarkup(
       <WeeklyDownloadsStat
-        flagship={{ value: 12, caption: "@assistant-ui/react" }}
+        flagship={{ value: 12, caption: "@openagentui/react" }}
         total={{ value: 34, caption: "across all packages" }}
       />,
     );
 
     expect(markup).toContain("<button");
-    expect(markup).toContain("@assistant-ui/react");
+    expect(markup).toContain("@openagentui/react");
   });
 });

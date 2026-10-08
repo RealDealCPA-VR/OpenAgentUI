@@ -9,7 +9,7 @@ import {
 import {
   branchPickerNextDisabled,
   branchPickerPreviousDisabled,
-} from "@assistant-ui/core/store/internal";
+} from "@openagentui/core/store/internal";
 import { isAttrDisabled } from "./attrDisabled";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";

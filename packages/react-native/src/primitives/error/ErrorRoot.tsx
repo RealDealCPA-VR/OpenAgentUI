@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { View, type ViewProps } from "react-native";
-import { useMessageError } from "@assistant-ui/core/react";
+import { useMessageError } from "@openagentui/core/react";
 
 export type ErrorRootProps = ViewProps & {
   children: ReactNode;

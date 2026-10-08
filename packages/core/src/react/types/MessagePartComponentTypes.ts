@@ -16,7 +16,7 @@ import type {
   QuoteInfo,
 } from "../..";
 import type { MessagePartState } from "../..";
-import type { ToolResponse } from "assistant-stream";
+import type { ToolResponse } from "openagentui-stream";
 
 export type EmptyMessagePartProps = {
   status: MessagePartStatus;

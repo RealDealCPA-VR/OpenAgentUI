@@ -1,4 +1,4 @@
-import { createRenderCounter } from "@assistant-ui/x-performance";
+import { createRenderCounter } from "@openagentui/x-performance";
 import { describe, expect, it, vi } from "vitest";
 import { textBufferReducer } from "./useTextBuffer";
 

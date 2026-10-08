@@ -18,7 +18,7 @@ const migrateAssistantApiToAui = createTransformer(
   ({ j, root, markAsChanged }) => {
     root.find(j.ImportDeclaration).forEach((path: any) => {
       const source = path.value.source.value;
-      if (typeof source !== "string" || !source.startsWith("@assistant-ui/"))
+      if (typeof source !== "string" || !source.startsWith("@openagentui/"))
         return;
       path.value.specifiers?.forEach((specifier: any, index: number) => {
         if (
@@ -114,7 +114,7 @@ const migrateAssistantApiToAui = createTransformer(
     const hookBindings = new Set<any>();
     root.find(j.ImportDeclaration).forEach((path) => {
       if (
-        !String(path.value.source.value).startsWith("@assistant-ui/") ||
+        !String(path.value.source.value).startsWith("@openagentui/") ||
         path.value.importKind === "type"
       )
         return;

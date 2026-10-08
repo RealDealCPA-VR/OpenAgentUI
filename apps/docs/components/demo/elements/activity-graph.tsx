@@ -1,7 +1,7 @@
 "use client";
 
-import type { DataPoint } from "heat-graph";
-import { ActivityGraph } from "@/components/assistant-ui/elements/activity-graph";
+import type { DataPoint } from "@openagentui/heat-graph";
+import { ActivityGraph } from "@/components/openagentui/elements/activity-graph";
 
 const START = new Date(2026, 1, 2);
 const DAYS = 182;

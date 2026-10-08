@@ -1,6 +1,6 @@
 # with-webmcp
 
-Exposes an app's frontend tools to a WebMCP-capable browser with `unstable_useWebMcpProvider`, while the same tools stay callable from the assistant-ui chat thread.
+Exposes an app's frontend tools to a WebMCP-capable browser with `unstable_useWebMcpProvider`, while the same tools stay callable from the openagentui chat thread.
 
 The page holds a small task list and a `"use generative"` toolkit with three frontend tools:
 
@@ -27,9 +27,9 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-The chat works in any browser. The status line under the task list shows "WebMCP not detected" unless the browser (or an extension) provides `document.modelContext`; with WebMCP available it lists the published tool names, and a browser agent can add or list tasks without going through the chat thread. To try it in Chrome, enable `chrome://flags/#enable-webmcp-testing` and relaunch the browser; a deployed copy needs a WebMCP origin trial token instead (see [Browser support](https://www.assistant-ui.com/docs/tools/webmcp#browser-support)).
+The chat works in any browser. The status line under the task list shows "WebMCP not detected" unless the browser (or an extension) provides `document.modelContext`; with WebMCP available it lists the published tool names, and a browser agent can add or list tasks without going through the chat thread. To try it in Chrome, enable `chrome://flags/#enable-webmcp-testing` and relaunch the browser; a deployed copy needs a WebMCP origin trial token instead (see [Browser support](https://openagentui.dev/docs/tools/webmcp#browser-support)).
 
 ## Related Documentation
 
-- [WebMCP provider](https://www.assistant-ui.com/docs/tools/webmcp)
-- [Defining Tools](https://www.assistant-ui.com/docs/tools/defining-tools)
+- [WebMCP provider](https://openagentui.dev/docs/tools/webmcp)
+- [Defining Tools](https://openagentui.dev/docs/tools/defining-tools)

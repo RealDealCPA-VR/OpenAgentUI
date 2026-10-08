@@ -30,22 +30,22 @@ export const docsToolDefinitions = [
   {
     name: "list_pages",
     description:
-      "List assistant-ui documentation pages. Optionally filter by a URL path prefix such as /docs/tools, /examples, /design, /elements, or /docs/tap.",
+      "List openagentui documentation pages. Optionally filter by a URL path prefix such as /docs/tools, /examples, /design, /elements, or /docs/tap.",
   },
   {
     name: "get_navigation",
-    description: "Return the assistant-ui docs navigation tree.",
+    description: "Return the openagentui docs navigation tree.",
   },
   {
     name: "search_docs",
     description:
-      "Search assistant-ui docs, examples, design components, elements, and Tap docs. Ranks each page over its title, headings, URL, description, and body text, and excerpts the paragraphs that matched, falling back to the page's opening paragraph when only its metadata matched.",
+      "Search openagentui docs, examples, design components, elements, and Tap docs. Ranks each page over its title, headings, URL, description, and body text, and excerpts the paragraphs that matched, falling back to the page's opening paragraph when only its metadata matched.",
     inputSchema: searchDocsInputSchema,
   },
   {
     name: "read_page",
     description:
-      "Read one assistant-ui docs, examples, design, elements, or Tap docs page as markdown. Accepts a slug, path, .md URL, or same-origin URL.",
+      "Read one openagentui docs, examples, design, elements, or Tap docs page as markdown. Accepts a slug, path, .md URL, or same-origin URL.",
     inputSchema: readPageInputSchema,
   },
 ] as const;

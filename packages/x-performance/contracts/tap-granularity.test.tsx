@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { createElement, useState, type ComponentType } from "react";
 import { createRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
-import { resource, useResources, withKey } from "@assistant-ui/tap";
+import { resource, useResources, withKey } from "@openagentui/tap";
 import { createRenderCounter } from "../src/render-counter";
 
 (

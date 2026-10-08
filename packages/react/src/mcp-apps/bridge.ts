@@ -1,5 +1,5 @@
 import type { SandboxHostFrame } from "../sandbox-host/SandboxHost";
-import { invokeUserCallback } from "@assistant-ui/core/internal";
+import { invokeUserCallback } from "@openagentui/core/internal";
 import {
   MCP_APP_PROTOCOL_VERSION,
   type McpAppBridgeHandlers,
@@ -11,7 +11,7 @@ import {
   type McpAppJsonRpcRequest,
   type McpAppJsonRpcResponse,
 } from "./types";
-import { isRecord } from "@assistant-ui/core/internal";
+import { isRecord } from "@openagentui/core/internal";
 
 const VALID_DISPLAY_MODES = [
   "inline",
@@ -37,7 +37,7 @@ export type McpAppBridge = {
 };
 
 const DEFAULT_HOST_INFO: McpAppHostInfo = {
-  name: "assistant-ui",
+  name: "openagentui",
   version: "0.1",
 };
 
@@ -129,7 +129,7 @@ export function createMcpAppBridge(
   const reportError = (error: Error) => {
     if (disposed) return;
     invokeUserCallback(
-      "assistant-ui",
+      "openagentui",
       "MCP App onError",
       handlers.onError?.bind(handlers),
       error,

@@ -11,7 +11,7 @@ Pass a selector to `useAuiState`. It returns a computed ref, so read `.value` in
 
 ```vue title="app/components/ThreadStatus.vue"
 <script setup lang="ts">
-import { useAuiState } from "@assistant-ui/vue";
+import { useAuiState } from "@openagentui/vue";
 
 const isRunning = useAuiState((s) => s.thread.isRunning);
 const draftLength = useAuiState((s) => s.composer.text.length);
@@ -53,7 +53,7 @@ An item provider retains its parent scopes. For example, a part can still read i
 
 ```vue title="app/components/ThreadActions.vue"
 <script setup lang="ts">
-import { useAui, useAuiState } from "@assistant-ui/vue";
+import { useAui, useAuiState } from "@openagentui/vue";
 
 const props = defineProps<{ targetThreadId: string }>();
 const aui = useAui();
@@ -106,7 +106,7 @@ When the condition also drives script logic, select it once with `useAuiState` a
 ```vue title="app/components/ThreadEvents.vue"
 <script setup lang="ts">
 import { ref } from "vue";
-import { useAuiEvent } from "@assistant-ui/vue";
+import { useAuiEvent } from "@openagentui/vue";
 
 const selectedThreadId = ref("");
 const lastRunEndThreadId = ref("");

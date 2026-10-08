@@ -3,7 +3,7 @@ import {
   AuiConfig,
   createAssistantClient,
   createClientFacade,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import type { AuiContext, ScopeTarget } from "../context";
 
 export const scheduleExpiry = (callback: () => void) =>

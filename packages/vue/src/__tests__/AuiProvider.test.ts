@@ -7,8 +7,8 @@ import {
   shallowRef,
   type Component,
 } from "vue";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig, type AssistantClient } from "@assistant-ui/store/client";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig, type AssistantClient } from "@openagentui/store/client";
 import { AuiProvider } from "../AuiProvider";
 import { useAui } from "../useAui";
 import {

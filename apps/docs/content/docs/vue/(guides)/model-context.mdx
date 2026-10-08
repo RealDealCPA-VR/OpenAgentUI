@@ -12,7 +12,7 @@ Register a provider in a component rendered under `AuiProvider`. `register` retu
 ```vue title="app/components/AssistantInstructions.vue"
 <script setup lang="ts">
 import { onScopeDispose } from "vue";
-import { useAui } from "@assistant-ui/vue";
+import { useAui } from "@openagentui/vue";
 
 const aui = useAui();
 const unregister = aui.modelContext.register({
@@ -38,7 +38,7 @@ Place the component around the part of your app that supplies the instructions. 
 ```vue title="app/components/EditableInstructions.vue"
 <script setup lang="ts">
 import { onScopeDispose, ref, watch } from "vue";
-import { useAui } from "@assistant-ui/vue";
+import { useAui } from "@openagentui/vue";
 
 const aui = useAui();
 const instruction = ref("Answer in short paragraphs.");
@@ -67,7 +67,7 @@ The default transport sends `system` and tool definitions in the body. `frontend
 
 ```ts title="server/api/chat.post.ts"
 import { openai } from "@ai-sdk/openai";
-import { frontendTools, type FrontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools, type FrontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
 
 export default defineEventHandler(async (event) => {
@@ -103,7 +103,7 @@ Tools are keyed by name. Different names accumulate. At the same priority, two d
 ```vue title="app/components/ModelContextStatus.vue"
 <script setup lang="ts">
 import { ref } from "vue";
-import { useAui, useAuiEvent, useAuiState } from "@assistant-ui/vue";
+import { useAui, useAuiEvent, useAuiState } from "@openagentui/vue";
 
 const aui = useAui();
 const toolNames = useAuiState((s) => s.modelContext.toolNames);

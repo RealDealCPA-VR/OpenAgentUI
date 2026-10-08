@@ -4,7 +4,7 @@ import {
   type PressableProps,
   type PressableStateCallbackType,
 } from "react-native";
-import { useActionBarStopSpeaking } from "@assistant-ui/core/react";
+import { useActionBarStopSpeaking } from "@openagentui/core/react";
 
 export type ActionBarStopSpeakingProps = Omit<
   PressableProps,

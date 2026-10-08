@@ -1,6 +1,6 @@
 ---
 title: Message Editing
-description: Let users edit their messages and regenerate AI responses with custom editor interfaces. Edit-and-resubmit patterns for React chat via assistant-ui.
+description: Let users edit their messages and regenerate AI responses with custom editor interfaces. Edit-and-resubmit patterns for React chat via openagentui.
 platforms: ["react"]
 ---
 
@@ -18,7 +18,7 @@ import {
   ComposerPrimitive,
   MessagePrimitive,
   ThreadPrimitive,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const Thread = () => {
   return (
@@ -79,7 +79,7 @@ The `isEditing` flag is available on both `ThreadComposerState` and `EditCompose
 `aui.composer.beginEdit()` is the programmatic entry point for entering edit mode on a message. Use it for headless or keyboard-shortcut-driven flows where `ActionBarPrimitive.Edit` is not rendered:
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 const EditButton = () => {
   const aui = useAui();

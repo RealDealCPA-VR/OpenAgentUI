@@ -3,7 +3,7 @@ import {
   DataStreamDecoder,
   DataStreamEncoder,
   type AssistantStreamChunk,
-} from "assistant-stream";
+} from "openagentui-stream";
 
 const makeChunks = (deltas: number, chars: number): AssistantStreamChunk[] => {
   const text = "x".repeat(chars);
@@ -57,7 +57,7 @@ for (const n of SIZES) {
   wireBySize.set(n, await encodeAll(makeChunks(n, 16)));
 }
 
-describe("assistant-stream: data stream encode (16-char deltas)", () => {
+describe("openagentui-stream: data stream encode (16-char deltas)", () => {
   for (const n of SIZES) {
     const chunks = makeChunks(n, 16);
     test(`${n} deltas`, async ({ bench }) => {
@@ -68,7 +68,7 @@ describe("assistant-stream: data stream encode (16-char deltas)", () => {
   }
 });
 
-describe("assistant-stream: data stream decode (16-char deltas)", () => {
+describe("openagentui-stream: data stream decode (16-char deltas)", () => {
   for (const n of SIZES) {
     const wire = wireBySize.get(n)!;
     test(`${n} deltas`, async ({ bench }) => {

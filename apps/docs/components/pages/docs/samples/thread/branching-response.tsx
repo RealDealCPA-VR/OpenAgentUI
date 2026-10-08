@@ -1,7 +1,7 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { AssistantRuntimeProvider, useLocalRuntime } from "@assistant-ui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { AssistantRuntimeProvider, useLocalRuntime } from "@openagentui/react";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 export function Chat() {
@@ -12,7 +12,7 @@ export function Chat() {
           content: [
             {
               type: "text",
-              text: "assistant-ui ships primitives, runtimes, and a component registry for chat interfaces.",
+              text: "openagentui ships primitives, runtimes, and a component registry for chat interfaces.",
             },
           ],
         };
@@ -20,11 +20,11 @@ export function Chat() {
     },
     {
       initialMessages: [
-        { role: "user", content: "What is assistant-ui?" },
+        { role: "user", content: "What is openagentui?" },
         {
           role: "assistant",
           content:
-            "assistant-ui provides composable primitives for AI chat interfaces.",
+            "openagentui provides composable primitives for AI chat interfaces.",
         },
       ],
     },

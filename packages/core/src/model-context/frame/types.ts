@@ -46,4 +46,4 @@ export type FrameMessage =
       type: "provider-disposed";
     };
 
-export const FRAME_MESSAGE_CHANNEL = "assistant-ui-frame";
+export const FRAME_MESSAGE_CHANNEL = "openagentui-frame";

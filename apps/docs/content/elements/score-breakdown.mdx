@@ -9,7 +9,7 @@ A verdict backed by its own arithmetic: a total out of a max, a colored verdict 
 
 <RuntimeMode>
 
-No assistant-ui primitive backs this element, so the runtime wiring is a tool renderer. A score usually comes from grading work, such as running tests or comparing against a rubric, so the criteria belong on the tool's `result`, not on its streamed `args`.
+No openagentui primitive backs this element, so the runtime wiring is a tool renderer. A score usually comes from grading work, such as running tests or comparing against a rubric, so the criteria belong on the tool's `result`, not on its streamed `args`.
 
 <Steps>
   <Step>
@@ -19,8 +19,8 @@ No assistant-ui primitive backs this element, so the runtime wiring is a tool re
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { ScoreBreakdown } from "@/components/assistant-ui/elements/score-breakdown";
+import { defineToolkit } from "@openagentui/react";
+import { ScoreBreakdown } from "@/components/openagentui/elements/score-breakdown";
 
 export const toolkit = defineToolkit({
   review_change: {
@@ -53,8 +53,8 @@ import {
   AssistantRuntimeProvider,
   AuiConfig,
   Tools,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({
@@ -94,7 +94,7 @@ Standalone, the element is a display component with no state of its own. The min
 import {
   ScoreBreakdown,
   type ScoreCriterion,
-} from "@/components/assistant-ui/elements/score-breakdown";
+} from "@/components/openagentui/elements/score-breakdown";
 
 const criteria: readonly ScoreCriterion[] = [
   {

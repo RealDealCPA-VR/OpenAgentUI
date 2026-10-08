@@ -22,11 +22,11 @@ import {
 import type {
   Unstable_DirectiveFormatter,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   unstable_useTriggerPopoverRootContextOptional,
   type Unstable_RegisteredTrigger,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 export type DirectivePluginProps = {
   onDirectiveSelect?: ((item: Unstable_TriggerItem) => void) | undefined;

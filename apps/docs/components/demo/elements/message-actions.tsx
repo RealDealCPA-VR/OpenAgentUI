@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {
   MessageActions,
   type Reaction,
-} from "@/components/assistant-ui/elements/message-actions";
+} from "@/components/openagentui/elements/message-actions";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 export function MessageActionsDemo() {

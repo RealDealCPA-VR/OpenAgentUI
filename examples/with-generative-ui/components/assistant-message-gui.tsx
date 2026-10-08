@@ -1,20 +1,20 @@
 "use client";
 
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import {
   Reasoning,
   ReasoningContent,
   ReasoningRoot,
   ReasoningText,
   ReasoningTrigger,
-} from "@/components/assistant-ui/elements/reasoning.aui";
-import { ToolFallback } from "@/components/assistant-ui/elements/tool-fallback.aui";
+} from "@/components/openagentui/elements/reasoning.aui";
+import { ToolFallback } from "@/components/openagentui/elements/tool-fallback.aui";
 import {
   ToolGroupContent,
   ToolGroupRoot,
   ToolGroupTrigger,
-} from "@/components/assistant-ui/elements/tool-group.aui";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+} from "@/components/openagentui/elements/tool-group.aui";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import {
   UnknownComponentFallback,
   componentsAllowlist,
@@ -25,7 +25,7 @@ import {
   parseRenderGuiResult,
 } from "@/lib/render-gui-tool";
 import { cn } from "@/lib/utils";
-import type { GenerativeUISpec } from "@assistant-ui/react";
+import type { GenerativeUISpec } from "@openagentui/react";
 import {
   ActionBarPrimitive,
   AuiIf,
@@ -34,7 +34,7 @@ import {
   getMcpAppFromToolPart,
   MessagePrimitive,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   CheckIcon,
   ChevronLeftIcon,

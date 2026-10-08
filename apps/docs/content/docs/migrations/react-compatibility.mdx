@@ -5,12 +5,12 @@ description: Compatibility notes for React 18 and 19.
 
 
 <Callout type="warning" title="React 18 Required">
-  assistant-ui requires React 18 or React 19. React 17 and React 16 are not
-  supported. `@assistant-ui/react-ink` requires React 19. If you need help with an upgrade, join our
+  openagentui requires React 18 or React 19. React 17 and React 16 are not
+  supported. `@openagentui/react-ink` requires React 19. If you need help with an upgrade, join our
   [Discord](https://discord.gg/S9dwgCNEFs).
 </Callout>
 
-This guide provides instructions for configuring assistant-ui to work with React 18.
+This guide provides instructions for configuring openagentui to work with React 18.
 
 ## React 18
 
@@ -129,7 +129,7 @@ For a Base UI wrapper, preserve its existing combined popup and positioner props
 
 ### Updating the Reasoning Components
 
-Both reasoning layers need forwarding. In `/components/assistant-ui/elements/reasoning.tsx`, add `forwardRef` to the existing named React import, wrap `ReasoningRoot` with `forwardRef<HTMLDivElement, ReasoningRootProps>`, accept `ref` as the second argument, and add `ref={ref}` to the existing `<Collapsible>`. In `/components/assistant-ui/elements/reasoning.aui.tsx`, add the same import and wrapper, remove `ref` from the props destructuring, and use the forwarded second argument in the existing composed-ref callback. Set `ReasoningRoot.displayName = "ReasoningRoot"` in both files.
+Both reasoning layers need forwarding. In `/components/openagentui/elements/reasoning.tsx`, add `forwardRef` to the existing named React import, wrap `ReasoningRoot` with `forwardRef<HTMLDivElement, ReasoningRootProps>`, accept `ref` as the second argument, and add `ref={ref}` to the existing `<Collapsible>`. In `/components/openagentui/elements/reasoning.aui.tsx`, add the same import and wrapper, remove `ref` from the props destructuring, and use the forwarded second argument in the existing composed-ref callback. Set `ReasoningRoot.displayName = "ReasoningRoot"` in both files.
 
 Updating only `Collapsible` is not enough. `useScrollLock` reads the disclosure element through `reasoning.tsx`, so that file must forward its ref or the scroll lock silently no-ops. The `reasoning.aui.tsx` change lets a ref passed directly to `ReasoningRoot` reach the element; on React 18, `ref` never arrives in props, so the destructured value is always `undefined` and the caller's ref is dropped. Neither failure is a type error, so a green typecheck does not mean you can skip these files.
 

@@ -95,7 +95,7 @@ export function Footer(): React.ReactElement {
                 </svg>
               </a>
               <a
-                href="https://github.com/assistant-ui/assistant-ui"
+                href="https://github.com/RealDealCPA-VR/OpenAgentUI"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground flex size-7 items-center justify-center transition-colors"

@@ -1,13 +1,13 @@
 # React Router Integration
 
-This example demonstrates how to use assistant-ui with React Router (v8) and Vite.
+This example demonstrates how to use openagentui with React Router (v8) and Vite.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-react-router
+npx openagentui@latest create my-app --example with-react-router
 cd my-app
 ```
 
@@ -36,5 +36,5 @@ npm run dev
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
+- [openagentui Documentation](https://openagentui.dev/docs)
 - [React Router Documentation](https://reactrouter.com/)

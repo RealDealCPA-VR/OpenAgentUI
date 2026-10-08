@@ -1,7 +1,7 @@
-import type { SdkIdentity } from "assistant-cloud";
+import type { SdkIdentity } from "openagentui-cloud";
 
 export const PI_SDK: SdkIdentity = {
-  name: "@assistant-ui/react-pi",
+  name: "@openagentui/react-pi",
   version:
     typeof __AUI_PACKAGE_VERSION__ === "string"
       ? __AUI_PACKAGE_VERSION__

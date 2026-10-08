@@ -8,9 +8,9 @@ import type {
   RealtimeVoiceAdapter,
   RemoteThreadListAdapter,
   ThreadMessage,
-} from "@assistant-ui/core";
-import { getThreadMessageText } from "@assistant-ui/core/internal";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
+} from "@openagentui/core";
+import { getThreadMessageText } from "@openagentui/core/internal";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
 import type { LangChainBaseMessage } from "./types";
 import { useStreamRuntime } from "./useStreamRuntime";
 import { settleOutsideAct } from "./tests/settleOutsideAct";

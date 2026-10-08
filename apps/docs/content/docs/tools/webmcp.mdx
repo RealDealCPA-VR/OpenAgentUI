@@ -7,7 +7,7 @@ WebMCP is a browser-native way for a page to publish tools to the agent the *use
 
 By default the explainer exposes a registered tool to the page itself, to same-origin documents in the same frame tree, and to the browser's built-in agent. Reaching an author-provided agent in another origin needs the `exposedTo` option, which this hook does not set, so treat the audience as the built-in agent unless that changes.
 
-`unstable_useWebMcpProvider` connects the two directions you already have. Every frontend tool registered in the assistant-ui model context is published to the browser's WebMCP host, and the results come back through the same `Tool` contract your chat runtime uses. You define a tool once; both your assistant and the user's browser agent can call it.
+`unstable_useWebMcpProvider` connects the two directions you already have. Every frontend tool registered in the openagentui model context is published to the browser's WebMCP host, and the results come back through the same `Tool` contract your chat runtime uses. You define a tool once; both your assistant and the user's browser agent can call it.
 
 <Callout type="warn">
   This hook is `unstable_`. WebMCP itself is an emerging browser API and the
@@ -29,7 +29,7 @@ Chrome's [WebMCP guide](https://developer.chrome.com/docs/ai/webmcp) covers the 
 Mount it once, anywhere inside your `AuiProvider`:
 
 ```tsx title="app/page.tsx"
-import { unstable_useWebMcpProvider } from "@assistant-ui/react";
+import { unstable_useWebMcpProvider } from "@openagentui/react";
 
 const WebMcpTools = () => {
   const { status, registeredToolNames } = unstable_useWebMcpProvider();
@@ -43,7 +43,7 @@ const WebMcpTools = () => {
 
 With no `filter`, the provider publishes every enabled frontend tool that has an `execute`; backend tools, disabled tools, and tools with no client-side implementation are skipped. A tool authored without a `type` counts as frontend when it has an `execute`, since that is what separates the deprecated type-less form from a backend or human tool. A `filter` you pass **replaces** that default rather than narrowing it; see below.
 
-A complete setup (a task-list page whose toolkit is published to the browser, with a destructive tool held back) runs in [`examples/with-webmcp`](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-webmcp).
+A complete setup (a task-list page whose toolkit is published to the browser, with a destructive tool held back) runs in [`examples/with-webmcp`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-webmcp).
 
 ## Choosing which tools to publish
 
@@ -55,7 +55,7 @@ Your `filter` **replaces** the default predicate, it does not run after it. A na
 import {
   unstable_useWebMcpProvider,
   unstable_defaultWebMcpFilter,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const PUBLIC_TOOLS = new Set(["search_docs", "get_order_status"]);
 
@@ -78,7 +78,7 @@ The provider owns its registrations:
 - Unmounting unregisters everything.
 - A registration the host rejects is dropped with a `console.warn`, and its name is left alone; the provider only ever aborts its own registration signal, so it cannot remove a tool it does not own. That name is then not retried while the tool stays in the model context, so a permanent collision warns once rather than on every sync. The trade-off is that a *transient* collision is not retried either: if the page later frees the name, the provider does not notice. Removing the tool from the model context and adding it back retries it, as does remounting.
 
-Calls are executed through the same path as a frontend tool call: Standard Schema parameters are validated first (including `experimental_onSchemaValidationError`), `toModelOutput` shapes the result if you define it, and the host's `AbortSignal` is merged with the registration's own lifetime, so an unregistered tool cancels in-flight work. `human()` is not available, because a WebMCP caller has no assistant-ui composer to answer with.
+Calls are executed through the same path as a frontend tool call: Standard Schema parameters are validated first (including `experimental_onSchemaValidationError`), `toModelOutput` shapes the result if you define it, and the host's `AbortSignal` is merged with the registration's own lifetime, so an unregistered tool cancels in-flight work. `human()` is not available, because a WebMCP caller has no openagentui composer to answer with.
 
 ## API
 

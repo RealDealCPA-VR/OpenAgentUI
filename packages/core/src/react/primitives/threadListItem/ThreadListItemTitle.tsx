@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export namespace ThreadListItemPrimitiveTitle {
   export type Props = {

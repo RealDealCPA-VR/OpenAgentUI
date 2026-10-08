@@ -2,7 +2,7 @@ import type {
   ChatModelAdapter,
   ChatModelRunOptions,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { DataStreamRuntimeAdapter } from "./DataStreamRuntimeAdapter";
 

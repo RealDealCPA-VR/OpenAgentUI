@@ -1,6 +1,6 @@
 ---
 title: File Attachments
-description: Let users attach images, PDFs, and other files to AI chat messages in React. Drag-drop, paste, and vision-model support, built into assistant-ui.
+description: Let users attach images, PDFs, and other files to AI chat messages in React. Drag-drop, paste, and vision-model support, built into openagentui.
 platforms: ["react"]
 ---
 
@@ -18,7 +18,7 @@ The attachment system consists of:
 
 - **Attachment Adapters**: Backend logic for processing attachment files
 - **UI Components**: Pre-built components for attachment display and interaction
-- **Runtime Integration**: Attachment support in the assistant-ui runtimes
+- **Runtime Integration**: Attachment support in the openagentui runtimes
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ Add the attachment UI components to your project:
 
 <InstallCommand shadcn={["attachment"]} />
 
-This adds `/components/assistant-ui/elements/attachment.aui.tsx` to your project.
+This adds `/components/openagentui/elements/attachment.aui.tsx` to your project.
 
 <Callout type="tip">
   Adjust these components (styling, layout, behavior) to match your
@@ -46,7 +46,7 @@ This adds `/components/assistant-ui/elements/attachment.aui.tsx` to your project
 `useChatRuntime` supports attachments without additional configuration:
 
 ```tsx title="/app/MyRuntimeProvider.tsx"
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 const runtime = useChatRuntime();
 ```
@@ -127,7 +127,7 @@ import {
   AttachmentAdapter,
   PendingAttachment,
   CompleteAttachment,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 class VisionImageAdapter implements AttachmentAdapter {
   accept = "image/jpeg,image/png,image/webp,image/gif";
@@ -153,7 +153,7 @@ class VisionImageAdapter implements AttachmentAdapter {
     // Convert image to base64 data URL
     const base64 = await this.fileToBase64DataURL(attachment.file);
 
-    // Return in assistant-ui format with image content
+    // Return in openagentui format with image content
     return {
       id: attachment.id,
       type: "image",
@@ -195,7 +195,7 @@ import {
   AttachmentAdapter,
   PendingAttachment,
   CompleteAttachment,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 class PDFAttachmentAdapter implements AttachmentAdapter {
   accept = "application/pdf";
@@ -267,7 +267,7 @@ class PDFAttachmentAdapter implements AttachmentAdapter {
 When using `LocalRuntime`, you need to handle images in your `ChatModelAdapter` (the adapter that connects to your AI backend):
 
 ```tsx
-import { useLocalRuntime, ChatModelAdapter } from "@assistant-ui/react";
+import { useLocalRuntime, ChatModelAdapter } from "@openagentui/react";
 
 // This adapter connects LocalRuntime to your AI backend
 const MyModelAdapter: ChatModelAdapter = {
@@ -528,7 +528,7 @@ The event payload carries a `reason` discriminator and a human-readable `message
 
 ```tsx
 import { toast } from "sonner"; // or your toast library of choice
-import { useAuiEvent } from "@assistant-ui/react";
+import { useAuiEvent } from "@openagentui/react";
 
 function AttachmentErrorToast() {
   useAuiEvent("composer.attachmentAddError", ({ reason, message }) => {
@@ -596,7 +596,7 @@ Attachments are sent to the backend as file content parts.
 
 ## Runtime Support
 
-Attachments work with all assistant-ui runtimes:
+Attachments work with all openagentui runtimes:
 
 - **AI SDK Runtime**: `useChatRuntime`
 - **External Store**: `useExternalStoreRuntime`
@@ -646,7 +646,7 @@ class ServerUploadAdapter implements AttachmentAdapter {
 ```
 
 <Callout type="tip">
-  [assistant-ui Cloud](/docs/cloud/ai-sdk) includes `CloudFileAttachmentAdapter`, which uploads through `cloud.files.generatePresignedUploadUrl` and persists the returned `publicUrl` with the message. For a private bucket, `cloud.files.generatePresignedDownloadUrl({ key })` or `cloud.files.generatePresignedDownloadUrl({ url })` returns a signed read URL together with its expiry.
+  [openagentui Cloud](/docs/cloud/ai-sdk) includes `CloudFileAttachmentAdapter`, which uploads through `cloud.files.generatePresignedUploadUrl` and persists the returned `publicUrl` with the message. For a private bucket, `cloud.files.generatePresignedDownloadUrl({ key })` or `cloud.files.generatePresignedDownloadUrl({ url })` returns a signed read URL together with its expiry.
 </Callout>
 
 ## Best Practices

@@ -1,23 +1,23 @@
 "use client";
 
-import { resource, useResource, withKey } from "@assistant-ui/tap";
+import { resource, useResource, withKey } from "@openagentui/tap";
 import { useEffect, useMemo, useState } from "react";
 import type { Chat, UIMessage } from "@ai-sdk/react";
 import type { ChatTransport } from "ai";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import {
   InMemoryThreadList,
   RemoteThreadList,
   inMemoryThreadListTransformScopes,
-} from "@assistant-ui/core/store";
-import { ThreadClient } from "@assistant-ui/core/store/internal";
-import { useCloudThreadListAdapter } from "@assistant-ui/core/react";
+} from "@openagentui/core/store";
+import { ThreadClient } from "@openagentui/core/store/internal";
+import { useCloudThreadListAdapter } from "@openagentui/core/react";
 import {
   attachTransformScopes,
   useAssistantClientRef,
   useAssistantScopeEffect,
-} from "@assistant-ui/store/client";
-import { useAui } from "@assistant-ui/store";
+} from "@openagentui/store/client";
+import { useAui } from "@openagentui/store";
 import { AssistantChatTransport } from "../transport/AssistantChatTransport";
 import {
   createChat,
@@ -25,7 +25,7 @@ import {
   useChatThread,
   type ChatThreadOptions,
 } from "./useChatThread";
-import { MessageRepository } from "@assistant-ui/core/internal";
+import { MessageRepository } from "@openagentui/core/internal";
 import { useResourceCleanup } from "./useResourceCleanup";
 import { AI_SDK_SDK } from "./sdkIdentity";
 
@@ -35,7 +35,7 @@ export type AISDKThreadsOptions<UI_MESSAGE extends UIMessage = UIMessage> =
      * The transport threads send through. A factory is invoked once per
      * thread so each thread owns its instance. A plain
      * `AssistantChatTransport` instance is cloned per thread (its
-     * assistant-ui wiring is per thread); any other transport instance is
+     * openagentui wiring is per thread); any other transport instance is
      * shared as-is. Defaults to one `AssistantChatTransport` per thread.
      */
     transport?:
@@ -44,7 +44,7 @@ export type AISDKThreadsOptions<UI_MESSAGE extends UIMessage = UIMessage> =
       | undefined;
     /**
      * When set, the thread list is a `RemoteThreadList` backed by this
-     * assistant-cloud. Omit it to keep the in-memory list. Every visited
+     * openagentui-cloud. Omit it to keep the in-memory list. Every visited
      * cloud thread stays mounted, so an in-flight run continues after a
      * switch and stops on delete; per-thread history loads once per thread.
      */

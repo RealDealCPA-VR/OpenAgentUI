@@ -1,11 +1,11 @@
 ---
 title: Installation
-description: Get assistant-ui running in an Expo or React Native app with your first chat screen.
+description: Get openagentui running in an Expo or React Native app with your first chat screen.
 ---
 
 ## Quick Start
 
-The scaffold is an Expo Router app with the assistant-ui elements installed from the registry (thread and thread list, including the composer and attachment subcomponents) and the AI SDK runtime wired up.
+The scaffold is an Expo Router app with the openagentui elements installed from the registry (thread and thread list, including the composer and attachment subcomponents) and the AI SDK runtime wired up.
 
 <Steps>
   <Step>
@@ -13,7 +13,7 @@ The scaffold is an Expo Router app with the assistant-ui elements installed from
 ### Create a new project
 
 ```sh
-npx assistant-ui@latest create --native my-chat-app
+npx openagentui@latest create --native my-chat-app
 cd my-chat-app
 ```
 
@@ -42,17 +42,17 @@ npx expo start
 
 ## Manual Setup
 
-If you prefer to add assistant-ui to an existing Expo project, follow these steps.
+If you prefer to add openagentui to an existing Expo project, follow these steps.
 
 <Steps>
   <Step>
 
 ### Install dependencies
 
-<InstallCommand expo={["@assistant-ui/react-native", "@assistant-ui/ai-sdk"]} />
+<InstallCommand expo={["@openagentui/react-native", "@openagentui/ai-sdk"]} />
 
-<Callout type="warn" title="One assistant-ui package per app">
-  Install only `@assistant-ui/react-native` in a React Native app. `@assistant-ui/react` is the web distribution: it pulls Radix and the DOM-coupled primitives into a native bundle, and if the two packages ever resolve different versions of the shared core, the second copy of the store breaks `useAui`. The runtime, tools, model context and external store APIs are all exported from `@assistant-ui/react-native`.
+<Callout type="warn" title="One openagentui package per app">
+  Install only `@openagentui/react-native` in a React Native app. `@openagentui/react` is the web distribution: it pulls Radix and the DOM-coupled primitives into a native bundle, and if the two packages ever resolve different versions of the shared core, the second copy of the store breaks `useAui`. The runtime, tools, model context and external store APIs are all exported from `@openagentui/react-native`.
 </Callout>
 
   </Step>
@@ -60,7 +60,7 @@ If you prefer to add assistant-ui to an existing Expo project, follow these step
 
 ### Setup Backend Endpoint
 
-Create a backend API route using the Vercel AI SDK. This is the same endpoint you'd use with `@assistant-ui/react` on the web:
+Create a backend API route using the Vercel AI SDK. This is the same endpoint you'd use with `@openagentui/react` on the web:
 
 <Tabs groupId="provider" items={["OpenAI", "Anthropic", "Google"]}>
 
@@ -115,7 +115,7 @@ export async function POST(req: Request) {
 </Tabs>
 
 <Callout type="info">
-  This is the same backend you'd use with `@assistant-ui/react` on the web. If you already have an API route, you can reuse it as-is.
+  This is the same backend you'd use with `@openagentui/react` on the web. If you already have an API route, you can reuse it as-is.
 </Callout>
 
   </Step>
@@ -124,7 +124,7 @@ export async function POST(req: Request) {
 ### Set up the runtime
 
 ```tsx title="hooks/use-app-runtime.ts"
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
 
 const API_URL = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000";
 
@@ -148,7 +148,7 @@ The elements are styled with Tailwind classes through [Uniwind](https://uniwind.
 npx expo install uniwind tailwindcss
 ```
 
-Wrap your Metro config. If you ship `"use generative"` toolkits, install `@assistant-ui/metro` and wrap the config in its `withAui` inside `withUniwindConfig`, which has to stay outermost.
+Wrap your Metro config. If you ship `"use generative"` toolkits, install `@openagentui/metro` and wrap the config in its `withAui` inside `withUniwindConfig`, which has to stay outermost.
 
 ```js title="metro.config.js"
 const { getDefaultConfig } = require("expo/metro-config");
@@ -160,7 +160,7 @@ module.exports = withUniwindConfig(getDefaultConfig(__dirname), {
 });
 ```
 
-Create the CSS entry with the assistant-ui color tokens. Declare the colors directly as `--color-*` custom properties under `@layer theme`; Uniwind resolves those on native, while an `@theme inline` indirection only works on web.
+Create the CSS entry with the openagentui color tokens. Declare the colors directly as `--color-*` custom properties under `@layer theme`; Uniwind resolves those on native, while an `@theme inline` indirection only works on web.
 
 ```css title="global.css"
 @import "tailwindcss";
@@ -229,7 +229,7 @@ import "../global.css";
 
 ### Add the elements
 
-The elements install like shadcn components: the assistant-ui CLI detects `react-native` in your `package.json` and reads the native registry tree. Create a `components.json` first so the files land under `components/` and `lib/`:
+The elements install like shadcn components: the openagentui CLI detects `react-native` in your `package.json` and reads the native registry tree. Create a `components.json` first so the files land under `components/` and `lib/`:
 
 ```json title="components.json"
 {
@@ -255,11 +255,11 @@ The elements install like shadcn components: the assistant-ui CLI detects `react
 ```
 
 ```sh
-npx assistant-ui@latest add thread thread-list
+npx openagentui@latest add thread thread-list
 npx expo install --fix
 ```
 
-This writes `components/assistant-ui/elements/{thread,attachment,thread-list}.aui.tsx` and the elements the thread renders (markdown text, reasoning, file, image, tool fallback), `components/ui/icon.tsx` and `lib/utils.ts`, and installs what they import (`lucide-react-native`, `react-native-svg`, `react-native-safe-area-context`, `react-native-marked`, `expo-clipboard`, `expo-image-picker`, `expo-image-manipulator`). `npx expo install --fix` aligns those Expo modules with your SDK version. The thread reads safe area insets, so wrap the app in `SafeAreaProvider` from `react-native-safe-area-context` unless Expo Router already provides it.
+This writes `components/openagentui/elements/{thread,attachment,thread-list}.aui.tsx` and the elements the thread renders (markdown text, reasoning, file, image, tool fallback), `components/ui/icon.tsx` and `lib/utils.ts`, and installs what they import (`lucide-react-native`, `react-native-svg`, `react-native-safe-area-context`, `react-native-marked`, `expo-clipboard`, `expo-image-picker`, `expo-image-manipulator`). `npx expo install --fix` aligns those Expo modules with your SDK version. The thread reads safe area insets, so wrap the app in `SafeAreaProvider` from `react-native-safe-area-context` unless Expo Router already provides it.
 
   </Step>
   <Step>
@@ -269,8 +269,8 @@ This writes `components/assistant-ui/elements/{thread,attachment,thread-list}.au
 Wrap your app with `AssistantRuntimeProvider` and render the thread. The [primitives](/docs/react-native/primitives) are there when you want to build your own elements instead.
 
 ```tsx title="app/index.tsx"
-import { AssistantRuntimeProvider } from "@assistant-ui/react-native";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react-native";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { useAppRuntime } from "@/hooks/use-app-runtime";
 
 export default function App() {
@@ -307,7 +307,7 @@ export default function App() {
   />
   <Card
     title="Migration from Web"
-    description="Already using assistant-ui? Migrate your web app to React Native."
+    description="Already using openagentui? Migrate your web app to React Native."
     href="/docs/react-native/migration"
   />
   <Card
@@ -323,6 +323,6 @@ export default function App() {
   <Card
     title="Example App"
     description="Full Expo example with drawer navigation, thread list, and styled UI."
-    href="https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-expo"
+    href="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-expo"
   />
 </Cards>

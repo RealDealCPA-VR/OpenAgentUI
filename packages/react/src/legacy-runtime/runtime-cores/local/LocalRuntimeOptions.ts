@@ -1,3 +1,3 @@
-export type { LocalRuntimeOptionsBase } from "@assistant-ui/core";
-export type { LocalRuntimeOptions } from "@assistant-ui/core/react";
-export { splitLocalRuntimeOptions } from "@assistant-ui/core/react";
+export type { LocalRuntimeOptionsBase } from "@openagentui/core";
+export type { LocalRuntimeOptions } from "@openagentui/core/react";
+export { splitLocalRuntimeOptions } from "@openagentui/core/react";

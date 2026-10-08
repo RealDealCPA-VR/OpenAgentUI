@@ -1,6 +1,6 @@
 "use client";
 
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import {
   ComposerPrimitive,
   createThreadRowsSelector,
@@ -8,7 +8,7 @@ import {
   MessagePrimitive,
   ThreadPrimitive,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { ArrowDownIcon, SendHorizontalIcon } from "lucide-react";
 import {

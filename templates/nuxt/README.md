@@ -1,6 +1,6 @@
 # Nuxt starter
 
-This is a minimal, styled [assistant-ui](https://github.com/assistant-ui/assistant-ui) chat starter for Nuxt. It uses `@assistant-ui/vue` for the interface and `@assistant-ui/ai-sdk` with the Vercel AI SDK for streaming responses from a Nitro route.
+This is a minimal, styled [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) chat starter for Nuxt. It uses `@openagentui/vue` for the interface and `@openagentui/ai-sdk` with the Vercel AI SDK for streaming responses from a Nitro route.
 
 ## Setup
 

@@ -2,13 +2,13 @@ import { describe, expect, it } from "vitest";
 import { createElement, useState, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
-import { resource, flushTapSync } from "@assistant-ui/tap";
+import { resource, flushTapSync } from "@openagentui/tap";
 import {
   AuiConfig,
   AuiProvider,
   useAui,
   useAuiState,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import { createRenderCounter } from "../src/render-counter";
 
 (

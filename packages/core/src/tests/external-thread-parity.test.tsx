@@ -6,7 +6,7 @@
 import { render, waitFor } from "@testing-library/react";
 import type { FC } from "react";
 import { describe, it, expect, vi } from "vitest";
-import { useAui, AuiProvider } from "@assistant-ui/store";
+import { useAui, AuiProvider } from "@openagentui/store";
 import type { ThreadMessage } from "../index";
 import {
   ExternalThread,
@@ -140,7 +140,7 @@ describe("ExternalThread part status", () => {
       messages: [
         assistantMessageWithContent(
           { type: "running" },
-          // assistant-stream sends shapes core's MessagePartStatus does not
+          // openagentui-stream sends shapes core's MessagePartStatus does not
           // declare (a reason on complete, an unlisted incomplete reason);
           // the normalizer absorbs them.
           [

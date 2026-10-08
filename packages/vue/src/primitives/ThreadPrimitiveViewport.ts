@@ -9,10 +9,10 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import type {} from "@assistant-ui/core/store";
+import type {} from "@openagentui/core/store";
 import { useAuiEvent } from "../useAuiEvent";
 import { useAuiState } from "../useAuiState";
-import { createThreadViewportAutoScroll } from "@assistant-ui/store/client";
+import { createThreadViewportAutoScroll } from "@openagentui/store/client";
 import { viewportInjectionKey } from "./viewportContext";
 
 /**

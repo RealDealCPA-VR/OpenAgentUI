@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import { isJSONValueEqual } from "../../utils/json/is-json-equal";
 
 export function useJSONEqualValue<T extends ReadonlyJSONValue>(value: T): T {

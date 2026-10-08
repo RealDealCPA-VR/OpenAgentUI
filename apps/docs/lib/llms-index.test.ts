@@ -35,7 +35,7 @@ describe("buildLLMSIndex", () => {
   it("names the repo skills next to the Agent Skills index", () => {
     const index = buildLLMSIndex([], []);
     expect(index).toContain(
-      "- Agent skills: task-shaped SKILL.md guides listed in the Agent Skills index, one per area (assistant-ui, ",
+      "- Agent skills: task-shaped SKILL.md guides listed in the Agent Skills index, one per area (openagentui, ",
     );
     expect(index).toContain(", tools, update).");
   });

@@ -1,6 +1,6 @@
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import { useMemo } from "react";
-import { generateId } from "@assistant-ui/core";
+import { generateId } from "@openagentui/core";
 import type { MCPCustomServerRecord } from "../../mcp-scope";
 import type { MCPPersistedAuthState } from "../../auth/types";
 import type { MCPStorage } from "./types";

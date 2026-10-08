@@ -1,4 +1,4 @@
-# @assistant-ui/docs
+# @openagentui/docs
 
 The documentation site; the root AGENTS.md still applies.
 

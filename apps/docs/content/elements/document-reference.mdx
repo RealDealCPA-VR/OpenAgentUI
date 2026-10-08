@@ -9,22 +9,22 @@ DocumentReference is a citation card for one source document: a header naming th
 
 <RuntimeMode>
 
-assistant-ui's built-in `source` message part covers a single document citation (a title, a filename), but not a list of page anchors with quoted passages. The closest real building block for that shape is a tool call: ask the model to read a document and return its anchors, then render the result.
+openagentui's built-in `source` message part covers a single document citation (a title, a filename), but not a list of page anchors with quoted passages. The closest real building block for that shape is a tool call: ask the model to read a document and return its anchors, then render the result.
 
 <Steps>
   <Step>
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/read-document-tool-ui.tsx"
+```tsx title="components/openagentui/elements/read-document-tool-ui.tsx"
 "use client";
 
 import { useState } from "react";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import {
   DocumentReference,
   type DocumentAnchor,
-} from "@/components/assistant-ui/elements/document-reference";
+} from "@/components/openagentui/elements/document-reference";
 
 type ReadDocumentResult = {
   title: string;
@@ -59,9 +59,9 @@ export const ReadDocumentToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { ReadDocumentToolUI } from "@/components/assistant-ui/elements/read-document-tool-ui";
+import { ReadDocumentToolUI } from "@/components/openagentui/elements/read-document-tool-ui";
 
 export const toolkit = defineToolkit({
   read_document: {
@@ -75,8 +75,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -110,7 +110,7 @@ Standalone, the element is fully controlled: you hold the anchor list and the ac
 "use client";
 
 import { useState } from "react";
-import { DocumentReference } from "@/components/assistant-ui/elements/document-reference";
+import { DocumentReference } from "@/components/openagentui/elements/document-reference";
 
 const ANCHORS = [
   { page: 4, quote: "Composer state moved off the thread runtime in 0.14." },

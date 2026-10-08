@@ -3,14 +3,14 @@
 import {
   WebSearch,
   type WebSearchResult,
-} from "@/components/assistant-ui/elements/web-search";
+} from "@/components/openagentui/elements/web-search";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
-const QUERY = "assistant-ui draft persistence";
+const QUERY = "openagentui draft persistence";
 const RESULTS: readonly WebSearchResult[] = [
   {
     title: "Persisting composer state across threads",
-    domain: "assistant-ui.com",
+    domain: "openagentui.dev",
   },
   {
     title: "Draft autosave patterns in chat UIs",

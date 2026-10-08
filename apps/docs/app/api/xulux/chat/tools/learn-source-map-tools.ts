@@ -50,11 +50,11 @@ export function createLearnSourceMapTools({
   return {
     inspectSourceMap: tool({
       description:
-        "Execute bash commands in a source mount. Use scope=course for the selected Learn stage under /course. Use scope=repo for the assistant-ui monorepo under /repo.",
+        "Execute bash commands in a source mount. Use scope=course for the selected Learn stage under /course. Use scope=repo for the openagentui monorepo under /repo.",
       inputSchema: zodSchema(
         z.object({
           scope: sourceScopeSchema.describe(
-            "Use course for the selected lesson application or repo for the assistant-ui monorepo.",
+            "Use course for the selected lesson application or repo for the openagentui monorepo.",
           ),
           command: z
             .string()
@@ -75,11 +75,11 @@ export function createLearnSourceMapTools({
     }),
     readSourceMapFile: tool({
       description:
-        "Read a source file from /course for the selected Learn stage or /repo for the assistant-ui monorepo.",
+        "Read a source file from /course for the selected Learn stage or /repo for the openagentui monorepo.",
       inputSchema: zodSchema(
         z.object({
           scope: sourceScopeSchema.describe(
-            "Use course for the selected lesson application or repo for the assistant-ui monorepo.",
+            "Use course for the selected lesson application or repo for the openagentui monorepo.",
           ),
           path: z
             .string()

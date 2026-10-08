@@ -26,7 +26,7 @@ describe("primitive-if-to-aui-if", () => {
   describe("ThreadPrimitive.If", () => {
     it("should migrate <ThreadPrimitive.If empty> to AuiIf", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -38,7 +38,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -54,7 +54,7 @@ function MyComponent() {
 
     it("should migrate <ThreadPrimitive.If empty={false}>", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -66,7 +66,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -82,7 +82,7 @@ function MyComponent() {
 
     it("should migrate <ThreadPrimitive.If running>", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -94,7 +94,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -110,7 +110,7 @@ function MyComponent() {
 
     it("should migrate <ThreadPrimitive.If running={false}>", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -122,7 +122,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -138,7 +138,7 @@ function MyComponent() {
 
     it("should migrate <ThreadPrimitive.If disabled>", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -150,7 +150,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -166,7 +166,7 @@ function MyComponent() {
 
     it("should handle self-closing ThreadPrimitive.If", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return <ThreadPrimitive.If empty />;
@@ -174,7 +174,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return <AuiIf condition={(s) => s.thread.isEmpty} />;
@@ -190,7 +190,7 @@ function MyComponent() {
   describe("MessagePrimitive.If", () => {
     it("should migrate <MessagePrimitive.If user>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -202,7 +202,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -220,7 +220,7 @@ function MyComponent() {
       "should migrate <MessagePrimitive.If %s={false}> to the inequality",
       (role) => {
         const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -232,7 +232,7 @@ function MyComponent() {
 `;
 
         const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -249,7 +249,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If assistant>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -261,7 +261,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -277,7 +277,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If copied>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -289,7 +289,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -305,7 +305,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If copied={false}>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -317,7 +317,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -333,7 +333,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If speaking>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -345,7 +345,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -361,7 +361,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If speaking={false}>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -373,7 +373,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -389,7 +389,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If last>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -401,7 +401,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -417,7 +417,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If hasBranches>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -429,7 +429,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -445,7 +445,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If hasAttachments>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -457,7 +457,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -473,7 +473,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If hasContent>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -485,7 +485,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -501,7 +501,7 @@ function MyComponent() {
 
     it("should migrate <MessagePrimitive.If lastOrHover>", () => {
       const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -513,7 +513,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -533,7 +533,7 @@ function MyComponent() {
   describe("ComposerPrimitive.If", () => {
     it("should migrate <ComposerPrimitive.If editing>", () => {
       const input = `
-import { ComposerPrimitive } from "@assistant-ui/react";
+import { ComposerPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -545,7 +545,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ComposerPrimitive, AuiIf } from "@assistant-ui/react";
+import { ComposerPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -561,7 +561,7 @@ function MyComponent() {
 
     it("should migrate <ComposerPrimitive.If editing={false}>", () => {
       const input = `
-import { ComposerPrimitive } from "@assistant-ui/react";
+import { ComposerPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -573,7 +573,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ComposerPrimitive, AuiIf } from "@assistant-ui/react";
+import { ComposerPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -589,7 +589,7 @@ function MyComponent() {
 
     it("should migrate <ComposerPrimitive.If dictation>", () => {
       const input = `
-import { ComposerPrimitive } from "@assistant-ui/react";
+import { ComposerPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -601,7 +601,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ComposerPrimitive, AuiIf } from "@assistant-ui/react";
+import { ComposerPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -621,7 +621,7 @@ function MyComponent() {
   describe("ThreadPrimitive.Empty", () => {
     it("should migrate <ThreadPrimitive.Empty> to AuiIf", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -633,7 +633,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -649,7 +649,7 @@ function MyComponent() {
 
     it("should handle self-closing <ThreadPrimitive.Empty />", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return <ThreadPrimitive.Empty />;
@@ -657,7 +657,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return <AuiIf condition={(s) => s.thread.isEmpty} />;
@@ -669,7 +669,7 @@ function MyComponent() {
 
     it("should handle ThreadPrimitive.Empty alongside ThreadPrimitive.If", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -686,7 +686,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -711,7 +711,7 @@ function MyComponent() {
   describe("edge cases", () => {
     it("should not add duplicate AuiIf import if already present", () => {
       const input = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -723,7 +723,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -739,7 +739,7 @@ function MyComponent() {
 
     it("should handle multiple Primitive.If in the same file", () => {
       const input = `
-import { ThreadPrimitive, MessagePrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive, MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -756,7 +756,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, MessagePrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, MessagePrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -775,7 +775,7 @@ function MyComponent() {
       expect(applyTransform(input)?.trim()).toBe(expected.trim());
     });
 
-    it("should not transform if no @assistant-ui import", () => {
+    it("should not transform if no @openagentui import", () => {
       const input = `
 function MyComponent() {
   return (
@@ -791,7 +791,7 @@ function MyComponent() {
 
     it("should not transform non-If member expressions", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -807,7 +807,7 @@ function MyComponent() {
 
     it("should handle multiple props combined into a single condition", () => {
       const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -819,7 +819,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -835,7 +835,7 @@ function MyComponent() {
 
     it("should preserve other JSX elements alongside migrated ones", () => {
       const input = `
-import { ThreadPrimitive, ComposerPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive, ComposerPrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -850,7 +850,7 @@ function MyComponent() {
 `;
 
       const expected = `
-import { ThreadPrimitive, ComposerPrimitive, AuiIf } from "@assistant-ui/react";
+import { ThreadPrimitive, ComposerPrimitive, AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -909,7 +909,7 @@ describe("elements that cannot be migrated stay intact", () => {
     ],
   ])("leaves an element with %s unchanged", (_label, jsx) => {
     const input = `
-import { ThreadPrimitive, MessagePrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive, MessagePrimitive } from "@openagentui/react";
 
 function MyComponent({ someFlag }: { someFlag: boolean }) {
   return (
@@ -923,7 +923,7 @@ function MyComponent({ someFlag }: { someFlag: boolean }) {
 
   it("converts only the migratable element and keeps the output parseable", () => {
     const input = `
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function MyComponent(props: Record<string, unknown>) {
   return (
@@ -951,7 +951,7 @@ function MyComponent(props: Record<string, unknown>) {
 describe("null literal prop values", () => {
   it("maps submittedFeedback={null} to the null comparison", () => {
     const input = `
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -972,7 +972,7 @@ function MyComponent() {
 describe("condition precedence", () => {
   const compileCondition = (jsx: string) => {
     const output = applyTransform(`
-import { MessagePrimitive, ComposerPrimitive } from "@assistant-ui/react";
+import { MessagePrimitive, ComposerPrimitive } from "@openagentui/react";
 
 const view = ${jsx};
 `);

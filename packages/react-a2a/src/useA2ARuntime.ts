@@ -12,14 +12,14 @@ import {
   useExternalStoreRuntime,
   useExternalStoreSharedOptions,
   useRuntimeAdapters,
-} from "@assistant-ui/core/react";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+} from "@openagentui/core/react";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import type {
   AssistantRuntime,
   AppendMessage,
   ExternalStoreAdapter,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { A2AClient, type A2AClientOptions } from "./A2AClient";
 import { A2AThreadRuntimeCore } from "./A2AThreadRuntimeCore";
 import { a2aExtras } from "./a2aExtras";

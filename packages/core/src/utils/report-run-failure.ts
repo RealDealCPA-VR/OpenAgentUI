@@ -9,6 +9,6 @@ export const reportRunFailure = (
 ): void => {
   void Promise.resolve(task).catch((error: unknown) => {
     if (isMessageNotSentError(error)) return;
-    console.error(`[assistant-ui] ${label} failed`, error);
+    console.error(`[openagentui] ${label} failed`, error);
   });
 };

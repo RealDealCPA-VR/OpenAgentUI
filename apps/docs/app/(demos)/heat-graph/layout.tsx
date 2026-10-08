@@ -20,8 +20,8 @@ export default function HeatGraphLayout({
 }): React.ReactElement {
   return (
     <SubProjectLayout
-      name="heat-graph"
-      githubPath="https://github.com/assistant-ui/assistant-ui/tree/main/packages/heat-graph"
+      name="@openagentui/heat-graph"
+      githubPath="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/heat-graph"
     >
       {children}
     </SubProjectLayout>

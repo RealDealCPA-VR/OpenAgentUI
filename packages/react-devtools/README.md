@@ -1,11 +1,11 @@
-# `@assistant-ui/react-devtools`
+# `@openagentui/react-devtools`
 
-React DevTools UI for `@assistant-ui/react`. Embed an event log, context viewer, and runtime inspector in any host application.
+React DevTools UI for `@openagentui/react`. Embed an event log, context viewer, and runtime inspector in any host application.
 
 ## Installation
 
 ```bash
-npm install @assistant-ui/react-devtools
+npm install @openagentui/react-devtools
 ```
 
 ## Usage
@@ -13,14 +13,14 @@ npm install @assistant-ui/react-devtools
 Drop `DevToolsModal` inside your `AssistantRuntimeProvider`. It renders a floating launcher and an inline panel (isolated in a shadow root), and is a no-op in production builds.
 
 ```tsx
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { DevToolsModal } from "@assistant-ui/react-devtools";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { DevToolsModal } from "@openagentui/react-devtools";
 
 export function App() {
   return (
     <AssistantRuntimeProvider runtime={runtime}>
       <DevToolsModal />
-      {/* ...your assistant-ui... */}
+      {/* ...your openagentui... */}
     </AssistantRuntimeProvider>
   );
 }
@@ -31,7 +31,7 @@ export function App() {
 The panel is extensible through a plugin registry. Each plugin receives the inspected instance's projected data and renders a tab body.
 
 ```tsx
-import { createDevToolsPlugin, DevToolsModal } from "@assistant-ui/react-devtools";
+import { createDevToolsPlugin, DevToolsModal } from "@openagentui/react-devtools";
 
 const myTab = createDevToolsPlugin({
   id: "my-tab",
@@ -44,4 +44,4 @@ const myTab = createDevToolsPlugin({
 
 ## Documentation
 
-Full reference at [assistant-ui.com/docs/devtools](https://www.assistant-ui.com/docs/devtools).
+Full reference at [openagentui.dev/docs/devtools](https://openagentui.dev/docs/devtools).

@@ -1,10 +1,10 @@
 import { type ReactNode, useMemo, useRef, useState } from "react";
 import { Box, Text } from "ink";
 import Spinner from "ink-spinner";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { Pressable } from "../internal/Pressable";
-import type { ToolCallMessagePartStatus } from "@assistant-ui/core";
-import type { ToolCallMessagePartProps } from "@assistant-ui/core/react";
+import type { ToolCallMessagePartStatus } from "@openagentui/core";
+import type { ToolCallMessagePartProps } from "@openagentui/core/react";
 
 export type ToolCallStatus =
   | "running"

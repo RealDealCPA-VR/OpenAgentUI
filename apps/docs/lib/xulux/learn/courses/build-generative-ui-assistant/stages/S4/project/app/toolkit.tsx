@@ -1,6 +1,6 @@
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
 import { WeatherCard } from "../components/tools/weather-card";
 

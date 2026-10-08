@@ -7,14 +7,14 @@ import {
   ThreadListPrimitive,
   useAuiEvent,
   useAuiState,
-} from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   ThreadListItems,
   ThreadListRoot,
   ThreadListSearch,
-} from "@/components/assistant-ui/elements/thread-list.aui";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+} from "@/components/openagentui/elements/thread-list.aui";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import { SampleFrame } from "./sample-frame";
 
 export function AssistantModalSample() {

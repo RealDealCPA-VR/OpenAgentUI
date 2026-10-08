@@ -9,16 +9,16 @@ description: "Inline SVG marks for OpenAI, Anthropic, and Google model providers
 
 <RuntimeMode>
 
-`ModelSelector`'s own `ModelOption` type carries an optional `icon: ReactNode`, rendered next to the model's name in both the trigger and the list. assistant-ui doesn't map marks to providers; set the icon when you build the option list.
+`ModelSelector`'s own `ModelOption` type carries an optional `icon: ReactNode`, rendered next to the model's name in both the trigger and the list. openagentui doesn't map marks to providers; set the icon when you build the option list.
 
 <Steps>
   <Step>
 
 ### Attach a logo to each model option
 
-```tsx title="components/assistant-ui/elements/model-catalog.tsx"
-import { ClaudeLogo, OpenAILogo, GeminiLogo } from "@/components/assistant-ui/elements/logos";
-import type { ModelOption } from "@/components/assistant-ui/elements/model-selector";
+```tsx title="components/openagentui/elements/model-catalog.tsx"
+import { ClaudeLogo, OpenAILogo, GeminiLogo } from "@/components/openagentui/elements/logos";
+import type { ModelOption } from "@/components/openagentui/elements/model-selector";
 
 export const models: ModelOption[] = [
   { id: "claude-sonnet-5", name: "Sonnet 5", icon: <ClaudeLogo className="size-4" /> },
@@ -44,7 +44,7 @@ Standalone, there's no state at all: render the mark you need, sized and colored
 ### Render a mark
 
 ```tsx title="app/providers.tsx"
-import { ClaudeLogo, OpenAILogo, GeminiLogo } from "@/components/assistant-ui/elements/logos";
+import { ClaudeLogo, OpenAILogo, GeminiLogo } from "@/components/openagentui/elements/logos";
 
 export function Providers() {
   return (

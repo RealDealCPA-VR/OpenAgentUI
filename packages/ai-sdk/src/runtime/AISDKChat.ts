@@ -1,14 +1,14 @@
 "use client";
 
-import { resource, useResource } from "@assistant-ui/tap";
+import { resource, useResource } from "@openagentui/tap";
 import { useState } from "react";
 import { generateId } from "ai";
 import type { UIMessage } from "@ai-sdk/react";
 import {
   RuntimeAdapter,
   runtimeAdapterTransformScopes,
-} from "@assistant-ui/core/store";
-import { attachTransformScopes } from "@assistant-ui/store/client";
+} from "@openagentui/core/store";
+import { attachTransformScopes } from "@openagentui/store/client";
 import { useChatThread, type ChatThreadOptions } from "./useChatThread";
 
 export type AISDKChatOptions<UI_MESSAGE extends UIMessage = UIMessage> =
@@ -34,7 +34,7 @@ const useAISDKChat = <UI_MESSAGE extends UIMessage = UIMessage>(
  * `AuiConfig` entry that runs the AI SDK chat as the `threads` scope. Hosts the
  * same orchestration as `useChatRuntime` inside the client's own resource tree,
  * so it works with any `AssistantClient` host, React or not. Single thread; the
- * multi-thread and assistant-cloud surface is {@link AISDKThreads}. The chat
+ * multi-thread and openagentui-cloud surface is {@link AISDKThreads}. The chat
  * id is captured when the entry mounts, so a later `id` change in the options
  * has no effect.
  */

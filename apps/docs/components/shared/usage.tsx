@@ -1,6 +1,6 @@
 "use client";
 
-import type { ToolCallMessagePartProps } from "@assistant-ui/react";
+import type { ToolCallMessagePartProps } from "@openagentui/react";
 import type { ReactNode } from "react";
 import { TraceLine } from "@/components/shared/trace-line";
 

@@ -30,7 +30,7 @@ test("each example's inputs follow its workspace dependency graph", () => {
     "packages/core",
     "packages/store",
     "packages/tap",
-    "packages/assistant-stream",
+    "packages/openagentui-stream",
     "packages/x-generative-compiler",
     "packages/x-buildutils",
     "pnpm-lock.yaml",
@@ -112,7 +112,7 @@ test("an unknown base deploys every example", () => {
   assert.deepEqual(examplesOf(plan), ["with-expo", "with-react-ink-web"]);
   assert.equal(
     plan.matrix.include[0]["chat-endpoint-url"],
-    "https://www.assistant-ui.com/api/chat",
+    "https://openagentui.dev/api/chat",
   );
   assert.equal(plan.any, true);
 });
@@ -161,7 +161,7 @@ test("the Ink deployment uses the same scoped install inside and outside Vercel"
   );
   assert.equal(
     config.installCommand,
-    `pnpm install --frozen-lockfile --filter=${root.name} --filter=with-react-ink-web... --filter=@assistant-ui/react-devtools...`,
+    `pnpm install --frozen-lockfile --filter=${root.name} --filter=with-react-ink-web... --filter=@openagentui/react-devtools...`,
   );
   const workflow = readFileSync(path.join(repoRoot, WORKFLOW_FILE), "utf8");
   assert.match(
@@ -250,6 +250,6 @@ test("the Expo native bundle installs only its workspace graph", () => {
   assert.match(setup?.[0] ?? "", /cache: false/);
   assert.match(
     install?.[0] ?? "",
-    /pnpm install --frozen-lockfile --filter \. --filter="@assistant-ui\/react-devtools\.\.\." --filter="with-expo\.\.\."/,
+    /pnpm install --frozen-lockfile --filter \. --filter="@openagentui\/react-devtools\.\.\." --filter="with-expo\.\.\."/,
   );
 });

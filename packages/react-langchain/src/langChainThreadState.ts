@@ -1,4 +1,4 @@
-import type { AppendMessage } from "@assistant-ui/core";
+import type { AppendMessage } from "@openagentui/core";
 import type { LangChainBaseMessage } from "./types";
 import { getMessageType } from "./convertMessages";
 

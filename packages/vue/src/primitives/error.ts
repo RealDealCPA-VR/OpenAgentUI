@@ -5,7 +5,7 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import { messageErrorText } from "@assistant-ui/core/store/internal";
+import { messageErrorText } from "@openagentui/core/store/internal";
 import { useAuiState } from "../useAuiState";
 
 /** A wrapper element for the current message's error state. */

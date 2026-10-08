@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useInsertionEffect, useRef } from "react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiState } from "@openagentui/store";
 import { actionBarCopyDisabled } from "../../store/primitive-predicates";
 
 export type UseActionBarCopyOptions = {

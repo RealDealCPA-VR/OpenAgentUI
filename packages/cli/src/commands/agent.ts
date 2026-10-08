@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { launch } from "@assistant-ui/agent-launcher";
+import { launch } from "@openagentui/agent-launcher";
 import { ensureSkillsPlugin, skillsPluginDir } from "../lib/agent-skill";
 import { logger } from "../lib/utils/logger";
 
@@ -15,7 +15,7 @@ async function resolvePluginDir(dry: boolean): Promise<string> {
 
 export const agent = new Command()
   .name("agent")
-  .description("launch Claude Code with assistant-ui skills")
+  .description("launch Claude Code with openagentui skills")
   .argument("<prompt...>", "prompt for the agent")
   .option("--dry", "print the command instead of running it")
   .action(async (promptParts: string[], opts: { dry?: boolean }) => {
@@ -24,7 +24,7 @@ export const agent = new Command()
 
     launch({
       pluginDir,
-      skillName: "assistant-ui",
+      skillName: "openagentui",
       prompt: promptParts.join(" "),
       dry,
     });

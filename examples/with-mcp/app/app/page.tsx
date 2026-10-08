@@ -1,7 +1,7 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { McpConfigDialog } from "@/components/assistant-ui/elements/mcp-config.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { McpConfigDialog } from "@/components/openagentui/elements/mcp-config.aui";
 import { Providers } from "./providers";
 
 export default function Home() {

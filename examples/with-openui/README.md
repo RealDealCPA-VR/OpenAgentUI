@@ -1,15 +1,15 @@
 # OpenUI Example
 
-This example renders streaming [OpenUI Lang](https://www.openui.com) interfaces inside an assistant-ui conversation using [`@openuidev/assistant-ui`](https://www.npmjs.com/package/@openuidev/assistant-ui), the integration package published and maintained by OpenUI.
+This example renders streaming [OpenUI Lang](https://www.openui.com) interfaces inside an openagentui conversation using [`@openuidev/assistant-ui`](https://www.npmjs.com/package/@openuidev/assistant-ui), the integration package published and maintained by OpenUI.
 
-assistant-ui owns the chat shell, runtime, messages, streaming, and tool lifecycle. OpenUI renders the `ui` argument of two tool calls: `present_openui` for display-only interfaces and `prompt_openui` for forms and choices that wait for the user to submit.
+openagentui owns the chat shell, runtime, messages, streaming, and tool lifecycle. OpenUI renders the `ui` argument of two tool calls: `present_openui` for display-only interfaces and `prompt_openui` for forms and choices that wait for the user to submit.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-openui
+npx openagentui@latest create my-app --example with-openui
 cd my-app
 ```
 
@@ -35,8 +35,8 @@ Open [http://localhost:3000](http://localhost:3000) to see the result.
 To develop against the workspace packages directly, clone the repository and build the packages the example imports before starting the dev server. Create `examples/with-openui/.env.local` with your `OPENAI_API_KEY` first.
 
 ```bash
-git clone https://github.com/assistant-ui/assistant-ui.git
-cd assistant-ui
+git clone https://github.com/RealDealCPA-VR/OpenAgentUI.git
+cd openagentui
 pnpm install
 pnpm exec turbo build --filter='with-openui^...'
 pnpm -C examples/with-openui dev
@@ -58,5 +58,5 @@ pnpm -C examples/with-openui dev
 
 ## Related Documentation
 
-- [assistant-ui OpenUI guide](https://www.assistant-ui.com/docs/tools/openui)
-- [OpenUI assistant-ui integration reference](https://www.openui.com/docs/api-reference/assistant-ui)
+- [openagentui OpenUI guide](https://openagentui.dev/docs/tools/openui)
+- [OpenUI openagentui integration reference](https://www.openui.com/docs/api-reference/openagentui)

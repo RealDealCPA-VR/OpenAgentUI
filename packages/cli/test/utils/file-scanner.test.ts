@@ -22,7 +22,7 @@ describe("file-scanner utilities", () => {
 
   describe("scanForImport", () => {
     it("should return false when no files match", () => {
-      const result = scanForImport("@assistant-ui/react", { cwd: testDir });
+      const result = scanForImport("@openagentui/react", { cwd: testDir });
       expect(result).toBe(false);
     });
 
@@ -30,10 +30,10 @@ describe("file-scanner utilities", () => {
       const filePath = path.join(testDir, "test.ts");
       fs.writeFileSync(
         filePath,
-        'import { Thread } from "@assistant-ui/react";',
+        'import { Thread } from "@openagentui/react";',
       );
 
-      const result = scanForImport("@assistant-ui/react", { cwd: testDir });
+      const result = scanForImport("@openagentui/react", { cwd: testDir });
       expect(result).toBe(true);
     });
 
@@ -41,11 +41,11 @@ describe("file-scanner utilities", () => {
       const filePath = path.join(testDir, "test.tsx");
       fs.writeFileSync(
         filePath,
-        'import { useChat } from "@assistant-ui/react-ai-sdk";',
+        'import { useChat } from "@openagentui/react-ai-sdk";',
       );
 
       const result = scanForImport(
-        ["@assistant-ui/react", "@assistant-ui/react-ai-sdk"],
+        ["@openagentui/react", "@openagentui/react-ai-sdk"],
         { cwd: testDir },
       );
       expect(result).toBe(true);
@@ -56,7 +56,7 @@ describe("file-scanner utilities", () => {
       fs.writeFileSync(filePath, 'import React from "react";');
 
       const result = scanForImport(
-        ["@assistant-ui/react", "@assistant-ui/react-ai-sdk"],
+        ["@openagentui/react", "@openagentui/react-ai-sdk"],
         { cwd: testDir },
       );
       expect(result).toBe(false);
@@ -67,10 +67,10 @@ describe("file-scanner utilities", () => {
       fs.mkdirSync(nodeModulesPath);
       fs.writeFileSync(
         path.join(nodeModulesPath, "test.ts"),
-        'import { Thread } from "@assistant-ui/react";',
+        'import { Thread } from "@openagentui/react";',
       );
 
-      const result = scanForImport("@assistant-ui/react", { cwd: testDir });
+      const result = scanForImport("@openagentui/react", { cwd: testDir });
       expect(result).toBe(false);
     });
 
@@ -79,10 +79,10 @@ describe("file-scanner utilities", () => {
       fs.mkdirSync(distPath);
       fs.writeFileSync(
         path.join(distPath, "test.js"),
-        'import { Thread } from "@assistant-ui/react";',
+        'import { Thread } from "@openagentui/react";',
       );
 
-      const result = scanForImport("@assistant-ui/react", { cwd: testDir });
+      const result = scanForImport("@openagentui/react", { cwd: testDir });
       expect(result).toBe(false);
     });
 
@@ -91,10 +91,10 @@ describe("file-scanner utilities", () => {
       fs.mkdirSync(srcPath, { recursive: true });
       fs.writeFileSync(
         path.join(srcPath, "Chat.tsx"),
-        'import { Thread } from "@assistant-ui/react";',
+        'import { Thread } from "@openagentui/react";',
       );
 
-      const result = scanForImport("@assistant-ui/react", { cwd: testDir });
+      const result = scanForImport("@openagentui/react", { cwd: testDir });
       expect(result).toBe(true);
     });
   });
@@ -102,7 +102,7 @@ describe("file-scanner utilities", () => {
   describe("readProjectFiles", () => {
     it("should skip entries it cannot read", () => {
       const file = path.join(testDir, "test1.ts");
-      fs.writeFileSync(file, 'import { Thread } from "@assistant-ui/react";');
+      fs.writeFileSync(file, 'import { Thread } from "@openagentui/react";');
       fs.mkdirSync(path.join(testDir, "unreadable.ts"));
 
       const files = [...readProjectFiles("**/*.ts", { cwd: testDir })].map(

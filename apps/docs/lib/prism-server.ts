@@ -60,7 +60,7 @@ export function createPrismTracer(
 
   return new AuixPrism({
     apiKey: "local-agent-eval",
-    project: "assistant-ui-docs",
+    project: "openagentui-docs",
     transport: (events: TraceEvent[]) =>
       postLocalTraceEvents(localTraceUrl, options.evalRunId, events),
   });

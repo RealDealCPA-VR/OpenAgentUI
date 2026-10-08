@@ -12,9 +12,9 @@ import {
   createAssistantClient,
   type AssistantClient,
   type AuiConfig,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { auiInjectionKey, createClientFacade } from "./context";
-import { isDevelopment } from "@assistant-ui/core/store/internal";
+import { isDevelopment } from "@openagentui/core/store/internal";
 
 /**
  * Creates an `AssistantClient` from the given config and provides it to the

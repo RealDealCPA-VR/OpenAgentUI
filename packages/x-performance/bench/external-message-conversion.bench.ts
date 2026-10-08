@@ -1,7 +1,7 @@
 import {
   convertExternalMessages,
   type useExternalMessageConverter,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { describe, inject, test } from "vitest";
 
 type Message = useExternalMessageConverter.Message;

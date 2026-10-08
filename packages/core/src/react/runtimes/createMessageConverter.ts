@@ -1,7 +1,7 @@
 "use client";
 import type { ThreadMessage } from "../../types/message";
 import type { ThreadRuntimeState } from "../../runtime/api/thread-runtime";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiState } from "@openagentui/store";
 import {
   useExternalMessageConverter,
   convertExternalMessages,

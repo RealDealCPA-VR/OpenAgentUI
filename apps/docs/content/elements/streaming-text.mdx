@@ -16,12 +16,12 @@ Word by word text with the newest two words tinted blue and a caret at the end w
 
 ### Register it as a part renderer
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
 import { useMemo } from "react";
-import type { TextMessagePartComponent } from "@assistant-ui/react";
-import { StreamingText, type Segment } from "@/components/assistant-ui/elements/streaming-text";
+import type { TextMessagePartComponent } from "@openagentui/react";
+import { StreamingText, type Segment } from "@/components/openagentui/elements/streaming-text";
 
 const StreamingTextPart: TextMessagePartComponent = ({ text, status }) => {
   const segments = useMemo<Segment[]>(() => [{ text }], [text]);
@@ -38,7 +38,7 @@ const StreamingTextPart: TextMessagePartComponent = ({ text, status }) => {
 ### Plug it into the parts list
 
 ```tsx
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 <MessagePrimitive.Parts components={{ Text: StreamingTextPart, Reasoning: StreamingTextPart }} />
 ```
@@ -63,7 +63,7 @@ Standalone, you decide both what the segments say and how many words are current
 "use client";
 
 import { useState } from "react";
-import { StreamingText, type Segment } from "@/components/assistant-ui/elements/streaming-text";
+import { StreamingText, type Segment } from "@/components/openagentui/elements/streaming-text";
 
 const SEGMENTS: Segment[] = [
   { text: "The response streams in as" },

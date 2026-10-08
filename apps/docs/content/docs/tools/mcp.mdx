@@ -1,9 +1,9 @@
 ---
 title: Model Context Protocol (MCP)
-description: Connect MCP servers as a tool catalog in your assistant-ui app.
+description: Connect MCP servers as a tool catalog in your openagentui app.
 ---
 
-[MCP](https://modelcontextprotocol.io/) is an open protocol for exposing tools, resources, and prompts to LLMs. One MCP server can publish many tools (file system, GitHub, Slack, your own service) and any MCP-aware client can use them. The AI SDK has a built-in MCP client; this page is the wiring guide for plugging it into an assistant-ui app.
+[MCP](https://modelcontextprotocol.io/) is an open protocol for exposing tools, resources, and prompts to LLMs. One MCP server can publish many tools (file system, GitHub, Slack, your own service) and any MCP-aware client can use them. The AI SDK has a built-in MCP client; this page is the wiring guide for plugging it into an openagentui app.
 
 <AgentSetup product="guides/mcp" />
 
@@ -15,7 +15,7 @@ flowchart LR
     mcp --> tools["tools()"] --> stream["passed to<br/>streamText({ tools })"]
 ```
 
-The MCP client lives on the server inside your AI SDK route handler. It connects to one or more MCP servers, calls `tools()` to get a tool map, and hands that map to `streamText`. assistant-ui's existing tool-call UI (`ToolFallback`, or toolkit entries with `render`) renders the results.
+The MCP client lives on the server inside your AI SDK route handler. It connects to one or more MCP servers, calls `tools()` to get a tool map, and hands that map to `streamText`. openagentui's existing tool-call UI (`ToolFallback`, or toolkit entries with `render`) renders the results.
 
 <Callout type="info">
   If you use a `"use generative"` toolkit, spread `defineMcpToolkit({ ... })`
@@ -89,7 +89,7 @@ tool-listing, and close errors for debugging.
 ```tsx title="app/toolkit.tsx"
 "use generative";
 
-import { defineMcpToolkit, defineToolkit } from "@assistant-ui/react";
+import { defineMcpToolkit, defineToolkit } from "@openagentui/react";
 
 export default defineToolkit({
   ...defineMcpToolkit({
@@ -166,7 +166,7 @@ Use `AISDKToolkit` in the route. It opens the MCP clients, merges their tools
 with the rest of your toolkit, and closes them when you call `close()`:
 
 ```ts title="app/api/chat/route.ts"
-import { AISDKToolkit } from "@assistant-ui/ai-sdk";
+import { AISDKToolkit } from "@openagentui/ai-sdk";
 import { openai } from "@ai-sdk/openai";
 import { streamText, convertToModelMessages } from "ai";
 import type { UIMessage } from "ai";
@@ -266,7 +266,7 @@ If two servers expose tools with the same name, the later spread wins. Rename or
 
 ### Render results in the UI
 
-Tool calls flow through the existing assistant-ui tool-call rendering. With no
+Tool calls flow through the existing openagentui tool-call rendering. With no
 setup, the bundled `<ToolFallback>` component renders the call name, arguments,
 and result. To customize the appearance for a specific tool in a generative
 toolkit, add an `externalTool()` renderer whose key matches the MCP tool name:
@@ -277,7 +277,7 @@ toolkit, add an `externalTool()` renderer whose key matches the MCP tool name:
 ```tsx title="app/toolkit.tsx"
 "use generative";
 
-import { defineMcpToolkit, defineToolkit, externalTool } from "@assistant-ui/react";
+import { defineMcpToolkit, defineToolkit, externalTool } from "@openagentui/react";
 
 type Args = { repo: string; number: number };
 type Result = { title: string; state: string; url: string };
@@ -306,7 +306,7 @@ export default defineToolkit({
 <Tab value="React Native">
 
 ```tsx title="components/GitHubIssueToolUI.tsx"
-import { defineToolkit } from "@assistant-ui/react-native";
+import { defineToolkit } from "@openagentui/react-native";
 import { Linking, Pressable, Text, View } from "react-native";
 
 type Args = { repo: string; number: number };
@@ -337,7 +337,7 @@ export const toolkit = defineToolkit({
 <Tab value="React Ink">
 
 ```tsx title="components/GitHubIssueToolUI.tsx"
-import { defineToolkit } from "@assistant-ui/react-ink";
+import { defineToolkit } from "@openagentui/react-ink";
 import { Box, Text } from "ink";
 
 type Args = { repo: string; number: number };
@@ -371,8 +371,8 @@ Register the toolkit once with `Tools({ toolkit })`. Renderer keys such as
 ```tsx title="app/components/RuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import type { ReactNode } from "react";
 
 import toolkit from "../toolkit";
@@ -449,7 +449,7 @@ Start the app and trigger a tool call (e.g., ask the assistant to do something t
 
 - **Server-side only.** The MCP client uses Node APIs (sockets, optionally child processes). Never instantiate it in client code.
 - **Per-request lifecycle.** A fresh client per request keeps connection state simple. For high-throughput servers, pool clients yourself with care: the AI SDK's `tools()` call assumes the connection is alive when `streamText` runs.
-- **Sampling.** If your MCP server uses `sampling/createMessage` (lets the server ask the LLM mid-call), assistant-cloud users can use [`wrapSamplingHandler`](/docs/cloud/traces) and [`createSamplingCollector`](/docs/cloud/traces) for observability. This is independent of the wiring above.
+- **Sampling.** If your MCP server uses `sampling/createMessage` (lets the server ask the LLM mid-call), openagentui-cloud users can use [`wrapSamplingHandler`](/docs/cloud/traces) and [`createSamplingCollector`](/docs/cloud/traces) for observability. This is independent of the wiring above.
 - **Transport choice.** HTTP for any networked server. SSE only if the server doesn't speak HTTP. stdio is for local development against an MCP server in your monorepo.
 
 ## Related

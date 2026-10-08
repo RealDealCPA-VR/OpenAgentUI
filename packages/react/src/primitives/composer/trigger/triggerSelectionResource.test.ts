@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
-import { createTapRoot, flushTapSync, useResource } from "@assistant-ui/tap";
+import { createTapRoot, flushTapSync, useResource } from "@openagentui/tap";
 import type {
   Unstable_DirectiveFormatter,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
-import type { AssistantClient } from "@assistant-ui/store";
+} from "@openagentui/core";
+import type { AssistantClient } from "@openagentui/store";
 import { TriggerDetectionResource } from "./triggerDetectionResource";
 import {
   TriggerSelectionResource,

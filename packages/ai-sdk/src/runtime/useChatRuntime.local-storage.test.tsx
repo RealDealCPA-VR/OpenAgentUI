@@ -6,7 +6,7 @@ import {
   createLocalStorageAdapter,
   useRemoteThreadListRuntime,
   type AsyncStorageLike,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import type { ChatTransport, UIMessage } from "ai";
 import { useState, type ReactNode } from "react";
 import { describe, expect, it } from "vitest";
@@ -100,7 +100,7 @@ describe("useChatRuntime with createLocalStorageAdapter", () => {
     await waitFor(async () =>
       expect(
         await storage.getItem(
-          `@assistant-ui:formatted-messages:${JSON.stringify([remoteId, "ai-sdk/v6"])}`,
+          `@openagentui:formatted-messages:${JSON.stringify([remoteId, "ai-sdk/v6"])}`,
         ),
       ).toContain("stored answer"),
     );

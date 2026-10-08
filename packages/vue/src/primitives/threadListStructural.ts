@@ -5,8 +5,8 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import type { AssistantClient } from "@assistant-ui/store/client";
-import { threadListLoadMoreDisabled } from "@assistant-ui/core/store/internal";
+import type { AssistantClient } from "@openagentui/store/client";
+import { threadListLoadMoreDisabled } from "@openagentui/core/store/internal";
 import { isAttrDisabled } from "./attrDisabled";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";

@@ -1,17 +1,17 @@
 {
-  "name": "@assistant-ui/react-syntax-highlighter",
+  "name": "@openagentui/react-syntax-highlighter",
   "version": "0.14.7",
-  "description": "Syntax highlighting for assistant-ui",
+  "description": "Syntax highlighting for openagentui",
   "keywords": [
     "syntax-highlighter",
     "code",
     "highlighting",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -43,8 +43,8 @@
     "test:watch": "vitest"
   },
   "peerDependencies": {
-    "@assistant-ui/react": "^0.15.0",
-    "@assistant-ui/react-markdown": "^0.14.8",
+    "@openagentui/react": "^0.15.0",
+    "@openagentui/react-markdown": "^0.14.8",
     "@types/react": "*",
     "@types/react-syntax-highlighter": "*",
     "react": "^18 || ^19",
@@ -59,10 +59,10 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/react-markdown": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/react-markdown": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -77,13 +77,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-syntax-highlighter"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

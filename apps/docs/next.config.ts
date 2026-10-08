@@ -1,5 +1,5 @@
 import { createMDX } from "fumadocs-mdx/next";
-import { withAui } from "@assistant-ui/next";
+import { withAui } from "@openagentui/next";
 import type { NextConfig } from "next";
 import {
   AGENT_DISCOVERY_REWRITES,
@@ -92,13 +92,13 @@ const config: NextConfig = {
   compiler: {
     define: sdkVersion ? { __AUI_PACKAGE_VERSION__: sdkVersion } : {},
   },
-  transpilePackages: ["@assistant-ui/ui", "shiki"],
+  transpilePackages: ["@openagentui/ui", "shiki"],
   serverExternalPackages: ["just-bash"],
   skipTrailingSlashRedirect: true,
   outputFileTracingIncludes: {
     "/elements/[slug]": [
       "./components/demo/elements/*.tsx",
-      "../../packages/ui/src/components/react/assistant-ui/elements/*.tsx",
+      "../../packages/ui/src/components/react/openagentui/elements/*.tsx",
     ],
     "/api/doc/chat": REPO_SOURCE_TRACE,
     "/api/xulux/chat": REPO_SOURCE_TRACE,
@@ -187,7 +187,7 @@ const config: NextConfig = {
       permanent: true,
     },
     {
-      source: "/docs/cloud/ai-sdk-assistant-ui",
+      source: "/docs/cloud/ai-sdk-openagentui",
       destination: "/docs/cloud/ai-sdk",
       permanent: true,
     },
@@ -566,7 +566,7 @@ const config: NextConfig = {
       },
       {
         source: "/umami/:path*",
-        destination: "https://assistant-ui-umami.vercel.app/:path*",
+        destination: "https://openagentui-umami.vercel.app/:path*",
       },
       {
         source: "/blog/:path.md",

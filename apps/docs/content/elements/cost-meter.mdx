@@ -9,21 +9,21 @@ CostMeter shows what a run cost as a big number, a segmented bar split by model,
 
 <RuntimeMode>
 
-assistant-ui tracks token usage per step of a run, but not dollars and not which model produced a given step. Both are your own bookkeeping. The closest data is `message.metadata.steps`, an array of `{ usage: { inputTokens, outputTokens } }` entries.
+openagentui tracks token usage per step of a run, but not dollars and not which model produced a given step. Both are your own bookkeeping. The closest data is `message.metadata.steps`, an array of `{ usage: { inputTokens, outputTokens } }` entries.
 
 <Steps>
   <Step>
 
 ### Turn a run's steps into a cost line
 
-```tsx title="components/assistant-ui/elements/run-cost.tsx"
+```tsx title="components/openagentui/elements/run-cost.tsx"
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import {
   CostMeter,
   type CostLine,
-} from "@/components/assistant-ui/elements/cost-meter";
+} from "@/components/openagentui/elements/cost-meter";
 
 const PRICE_PER_MILLION = { in: 3, out: 15 };
 
@@ -56,7 +56,7 @@ export function RunCost({ model }: { model: string }) {
 }
 ```
 
-`PRICE_PER_MILLION` and the `model` label are yours; assistant-ui never names a price or a provider.
+`PRICE_PER_MILLION` and the `model` label are yours; openagentui never names a price or a provider.
 
   </Step>
   <Step>
@@ -101,7 +101,7 @@ Standalone, you already have the numbers, from wherever your backend reports the
 import {
   CostMeter,
   type CostLine,
-} from "@/components/assistant-ui/elements/cost-meter";
+} from "@/components/openagentui/elements/cost-meter";
 
 const LINES: CostLine[] = [
   { model: "Opus 5", inputTokens: 48_200, outputTokens: 12_400, cost: "$1.66", share: 0.62 },
@@ -177,7 +177,7 @@ const lines: CostLine[] = raw.map((r) => ({
 | `s.message.metadata.steps` | `readonly ThreadStep[]` | Present on assistant messages. Each step's `usage` gives `inputTokens` / `outputTokens` for that step; sum across steps for one message's run cost. |
 | `s.thread.messages` | `readonly MessageState[]` | Every message on the active branch. Sum `.metadata.steps` across its assistant messages for a session total. |
 
-assistant-ui tracks token counts, not dollars, and `ThreadStep` carries no model name. `cost`, `share`, and any per-model split are computed by your own price table and your own record of which model ran which message.
+openagentui tracks token counts, not dollars, and `ThreadStep` carries no model name. `cost`, `share`, and any per-model split are computed by your own price table and your own record of which model ran which message.
 
 </RuntimeMode>
 

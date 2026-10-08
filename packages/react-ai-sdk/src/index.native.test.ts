@@ -7,17 +7,17 @@ const { nativeEntryPath } = await vi.hoisted(async () => {
   return {
     nativeEntryPath: fileURLToPath(
       new URL(
-        "../node_modules/@assistant-ui/ai-sdk/dist/index.native.js",
+        "../node_modules/@openagentui/ai-sdk/dist/index.native.js",
         import.meta.url,
       ),
     ),
   };
 });
 
-vi.mock("@assistant-ui/ai-sdk", () => import(nativeEntryPath));
+vi.mock("@openagentui/ai-sdk", () => import(nativeEntryPath));
 
-describe("@assistant-ui/react-ai-sdk react-native entry", () => {
-  it("exports exactly what the @assistant-ui/ai-sdk react-native entry exports", async () => {
+describe("@openagentui/react-ai-sdk react-native entry", () => {
+  it("exports exactly what the @openagentui/ai-sdk react-native entry exports", async () => {
     const upstream: Record<string, unknown> = await import(nativeEntryPath);
     const entry: Record<string, unknown> = await import("./index.native");
 

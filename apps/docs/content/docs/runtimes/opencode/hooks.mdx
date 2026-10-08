@@ -9,12 +9,12 @@ These React hooks read and act on the running OpenCode session. Use them inside 
 
 ## Permissions
 
-OpenCode pauses tool execution to ask the user for permission (e.g. running shell commands, writing files). Permissions linked to a tool call are projected into assistant-ui's standard tool approval contract, so the default `ToolFallback` renders working **Allow**, **Always allow**, and **Deny** actions without a custom permission component. The always option only appears when OpenCode offers patterns to persist.
+OpenCode pauses tool execution to ask the user for permission (e.g. running shell commands, writing files). Permissions linked to a tool call are projected into openagentui's standard tool approval contract, so the default `ToolFallback` renders working **Allow**, **Always allow**, and **Deny** actions without a custom permission component. The always option only appears when OpenCode offers patterns to persist.
 
 `useOpenCodePermissions` remains available for custom tool renderers and permission requests that are not linked to a tool call. It returns the pending permission requests and a reply function:
 
 ```tsx
-import { useOpenCodePermissions } from "@assistant-ui/react-opencode";
+import { useOpenCodePermissions } from "@openagentui/react-opencode";
 
 function PermissionPrompt() {
   const { pending, reply } = useOpenCodePermissions();
@@ -59,7 +59,7 @@ The default tool fallback renders a question as an approval questionnaire on its
 import {
   useOpenCodeQuestions,
   useOpenCodeRuntimeExtras,
-} from "@assistant-ui/react-opencode";
+} from "@openagentui/react-opencode";
 
 function QuestionPrompt() {
   const questions = useOpenCodeQuestions();
@@ -92,7 +92,7 @@ Each request carries a `questions` array. To reply, use `replyToQuestion(id, ans
 `useOpenCodeSession` returns the current OpenCode `Session` object (server-side session metadata):
 
 ```tsx
-import { useOpenCodeSession } from "@assistant-ui/react-opencode";
+import { useOpenCodeSession } from "@openagentui/react-opencode";
 
 function SessionInfo() {
   const session = useOpenCodeSession();
@@ -106,7 +106,7 @@ function SessionInfo() {
 `useOpenCodeThreadState` returns the full projected thread state (messages, run state, interactions, sync metadata). Use it for custom views that need more than the thread messages.
 
 ```tsx
-import { useOpenCodeThreadState } from "@assistant-ui/react-opencode";
+import { useOpenCodeThreadState } from "@openagentui/react-opencode";
 
 function RunStatus() {
   const state = useOpenCodeThreadState();
@@ -133,7 +133,7 @@ const isStreaming = useOpenCodeThreadState((s) => s.runState.type === "streaming
 `useOpenCodeRuntimeExtras` exposes session-level imperative actions:
 
 ```tsx
-import { useOpenCodeRuntimeExtras } from "@assistant-ui/react-opencode";
+import { useOpenCodeRuntimeExtras } from "@openagentui/react-opencode";
 
 function SessionActions() {
   const {
@@ -172,7 +172,7 @@ For custom integrations that bypass `useOpenCodeRuntime`:
 | `OpenCodeEventSource` | Wraps the OpenCode server's event stream into a typed subscription. |
 | `OpenCodeThreadController` | Per-session controller managing message state. |
 | `createOpenCodeThreadState`, `reduceOpenCodeThreadState` | Pure state reducers if you want to drive the state machine yourself. |
-| `projectOpenCodeThreadMessages` | Project raw OpenCode messages into assistant-ui thread messages. |
+| `projectOpenCodeThreadMessages` | Project raw OpenCode messages into openagentui thread messages. |
 | `createOpencodeClient` (re-exported from `@opencode-ai/sdk`) | Build a client with custom config. |
 
 Most apps do not need these and use `useOpenCodeRuntime` directly.

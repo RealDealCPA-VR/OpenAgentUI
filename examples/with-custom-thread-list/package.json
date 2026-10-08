@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.82",
-    "@assistant-ui/ai-sdk": "workspace:*",
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/react-markdown": "workspace:*",
-    "@assistant-ui/ui": "workspace:*",
+    "@openagentui/ai-sdk": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/react-markdown": "workspace:*",
+    "@openagentui/ui": "workspace:*",
     "ai": "^7.0.123",
-    "assistant-stream": "workspace:*",
+    "openagentui-stream": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
     "lucide-react": "^1.49.0",
@@ -25,8 +25,8 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@assistant-ui/next": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/next": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",

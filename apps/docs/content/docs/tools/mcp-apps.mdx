@@ -4,11 +4,11 @@ description: Render MCP App UI resources inline in chat. Native renderer for the
 platforms: ["react"]
 ---
 
-[MCP Apps](https://apps.extensions.modelcontextprotocol.io/) lets a Model Context Protocol server ship a UI resource alongside a tool: a self-contained HTML widget that the chat host renders inline when the tool is called. assistant-ui ships a native renderer that mounts the widget in a sandboxed iframe via [`SafeContentFrame`](/safe-content-frame) and runs a JSON-RPC postMessage bridge so the widget can call tools, send messages, request a display mode, and read host context.
+[MCP Apps](https://apps.extensions.modelcontextprotocol.io/) lets a Model Context Protocol server ship a UI resource alongside a tool: a self-contained HTML widget that the chat host renders inline when the tool is called. openagentui ships a native renderer that mounts the widget in a sandboxed iframe via [`SafeContentFrame`](/safe-content-frame) and runs a JSON-RPC postMessage bridge so the widget can call tools, send messages, request a display mode, and read host context.
 
 ## Overview
 
-When an MCP server attaches a `_meta.ui.resourceUri` (the [`text/html;profile=mcp-app`](https://apps.extensions.modelcontextprotocol.io/api/index.html) MIME) to a tool, AI SDK forwards that metadata through the message stream. assistant-ui's renderer picks it up off the `mcp` field on `ToolCallMessagePart`, fetches the resource through your backend route, and mounts it.
+When an MCP server attaches a `_meta.ui.resourceUri` (the [`text/html;profile=mcp-app`](https://apps.extensions.modelcontextprotocol.io/api/index.html) MIME) to a tool, AI SDK forwards that metadata through the message stream. openagentui's renderer picks it up off the `mcp` field on `ToolCallMessagePart`, fetches the resource through your backend route, and mounts it.
 
 The renderer only acts on URIs that start with `ui://` (per the MCP Apps spec). Tools whose `resourceUri` uses any other scheme are treated as non-MCP-Apps tools and fall through to your regular tool UI.
 
@@ -42,7 +42,7 @@ import {
   McpAppRenderer,
   McpAppsRemoteHost,
   useAui,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 function MyAssistant({ children }) {
   const aui = useAui();
@@ -71,11 +71,11 @@ Changes to `headers` or a custom `fetch` function apply to subsequent host reque
 Install the resource helper:
 
 ```bash
-pnpm add @assistant-ui/tap
+pnpm add @openagentui/tap
 ```
 
 ```tsx
-import { withKey } from "@assistant-ui/tap";
+import { withKey } from "@openagentui/tap";
 
 const mcpApp = McpAppRenderer({
   host: withKey(
@@ -244,13 +244,13 @@ Forward the resource's `_meta.ui` object as `meta`. Metadata on the `resources/r
 
 ### Multiple MCP servers
 
-When a tool part carries `mcp.app.serverId`, the renderer forwards it to the host operations as `params.serverId` so the route can select the MCP client that owns the resource or tool. The agent stack emits this routable identity in part metadata. For `@ag-ui/mcp-apps-middleware`, assistant-ui uses its configured `serverId`, falling back to `serverHash` when `serverId` is absent or empty. Match the route's map keys to whichever identity your setup emits: configure an explicit `serverId` on each middleware server, or key the map by the emitted hashes. Omitting `serverId` preserves the single-server behavior, as shown by the fallback client in the route example.
+When a tool part carries `mcp.app.serverId`, the renderer forwards it to the host operations as `params.serverId` so the route can select the MCP client that owns the resource or tool. The agent stack emits this routable identity in part metadata. For `@ag-ui/mcp-apps-middleware`, openagentui uses its configured `serverId`, falling back to `serverHash` when `serverId` is absent or empty. Match the route's map keys to whichever identity your setup emits: configure an explicit `serverId` on each middleware server, or key the map by the emitted hashes. Omitting `serverId` preserves the single-server behavior, as shown by the fallback client in the route example.
 
 Per-name `setToolUI` registrations always win over the MCP fallback, so you can still customize specific tools.
 
 ## AI SDK integration
 
-AI SDK tool UI parts carry tool-owned metadata in `toolMetadata`. `@assistant-ui/ai-sdk` forwards `toolMetadata.app` into `ToolCallMessagePart.mcp.app`, while retaining `callProviderMetadata.mcp.app` and result `_meta` as compatibility sources. With an MCP-Apps-capable MCP server, no extra wiring is required on the part shape.
+AI SDK tool UI parts carry tool-owned metadata in `toolMetadata`. `@openagentui/ai-sdk` forwards `toolMetadata.app` into `ToolCallMessagePart.mcp.app`, while retaining `callProviderMetadata.mcp.app` and result `_meta` as compatibility sources. With an MCP-Apps-capable MCP server, no extra wiring is required on the part shape.
 
 The `serverId` routing key comes only from `callProviderMetadata.mcp.app`. A `serverId` supplied in tool metadata or result `_meta` is ignored.
 
@@ -275,7 +275,7 @@ const result = streamText({
 
 [OpenAI Apps SDK](https://developers.openai.com/apps-sdk) servers carry the same `ui://` template under a different convention: the pointer is `_meta["openai/outputTemplate"]` on the tool definition (not `_meta.ui.resourceUri`), and the resource is served as `text/html+skybridge` rather than `text/html;profile=mcp-app`. `@ai-sdk/mcp` does not recognize `openai/outputTemplate`, so it never populates `toolMetadata.app` and the renderer stays idle.
 
-The renderer needs no change; you only have to surface the pointer. assistant-ui reads the canonical `result._meta.ui.resourceUri` off tool results (and still accepts the deprecated flat `result._meta["ui/resourceUri"]`), so the smallest bridge is to copy the template onto the result by tool name. Build the map once from the tool listing, then stamp it inside each tool's `execute`:
+The renderer needs no change; you only have to surface the pointer. openagentui reads the canonical `result._meta.ui.resourceUri` off tool results (and still accepts the deprecated flat `result._meta["ui/resourceUri"]`), so the smallest bridge is to copy the template onto the result by tool name. Build the map once from the tool listing, then stamp it inside each tool's `execute`:
 
 ```ts
 import type { Tool } from "ai";
@@ -319,11 +319,11 @@ const wrappedTools = Object.fromEntries(
 
 Your `mcp-apps/read-resource` handler reads the `ui://` resource as in the route example above. Set the response `mimeType` to the `text/html;profile=mcp-app` literal that `McpAppResource` expects and keep the server's HTML in `html`; don't forward the raw `text/html+skybridge` value, which the type rejects.
 
-`@ai-sdk/mcp` does not currently read `openai/outputTemplate`. If it includes that pointer in tool metadata, `@assistant-ui/ai-sdk` forwards it through `toolMetadata.app`, and the result metadata bridge is unnecessary.
+`@ai-sdk/mcp` does not currently read `openai/outputTemplate`. If it includes that pointer in tool metadata, `@openagentui/ai-sdk` forwards it through `toolMetadata.app`, and the result metadata bridge is unnecessary.
 
 ## AG-UI integration
 
-With `@assistant-ui/react-ag-ui`, the backend associates an MCP App with a tool call through an `ACTIVITY_SNAPSHOT`. Include the tool call ID, the app's `ui://` resource URI, and the MCP server identity when routing across multiple servers:
+With `@openagentui/react-ag-ui`, the backend associates an MCP App with a tool call through an `ACTIVITY_SNAPSHOT`. Include the tool call ID, the app's `ui://` resource URI, and the MCP server identity when routing across multiple servers:
 
 ```json
 {
@@ -372,7 +372,7 @@ Alternatively, AG-UI servers can place MCP host fields directly on `TOOL_CALL_RE
 
 In this form, the runtime assembles a `CallToolResult`-shaped `part.result` from `content`, `structuredContent`, `_meta`, and `isError`. At least one of `structuredContent` or `_meta` must be present; when both are absent the enriched path does not activate and the result falls back to the plain `content` string. The `_meta` can also carry the app pointer itself (canonical `ui.resourceUri`, or the deprecated flat `"ui/resourceUri"`), in which case no `ACTIVITY_SNAPSHOT` is needed to activate the widget. A snapshot remains the only carrier for server identity (`serverId`), and when both provide a `resourceUri` the snapshot wins.
 
-The visibility split follows the MCP Apps contract: `content` is model-visible; `structuredContent` and `_meta` are available only to the host and widget. When assistant-ui serializes history into a later AG-UI request, it sends the saved model-visible text and never includes `structuredContent` or `_meta`.
+The visibility split follows the MCP Apps contract: `content` is model-visible; `structuredContent` and `_meta` are available only to the host and widget. When openagentui serializes history into a later AG-UI request, it sends the saved model-visible text and never includes `structuredContent` or `_meta`.
 
 ## Bridge protocol
 

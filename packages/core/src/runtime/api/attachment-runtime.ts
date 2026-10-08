@@ -23,7 +23,7 @@ export type AttachmentRuntimeState =
   | MessageAttachmentState;
 
 /**
- * @deprecated Use `AttachmentRuntimeState`. From `@assistant-ui/react` 0.16, `AttachmentState` names the attachment state read through `useAuiState`.
+ * @deprecated Use `AttachmentRuntimeState`. From `@openagentui/react` 0.16, `AttachmentState` names the attachment state read through `useAuiState`.
  */
 export type AttachmentState = AttachmentRuntimeState;
 

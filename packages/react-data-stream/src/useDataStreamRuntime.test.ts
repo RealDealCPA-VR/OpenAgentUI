@@ -3,15 +3,15 @@ import type {
   ChatModelRunOptions,
   ThreadAssistantMessage,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   useLocalRuntime: vi.fn((adapter: ChatModelAdapter) => adapter),
 }));
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/core/react")>()),
+vi.mock("@openagentui/core/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/core/react")>()),
   useLocalRuntime: mocks.useLocalRuntime,
 }));
 

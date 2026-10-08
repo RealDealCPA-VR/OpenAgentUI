@@ -80,14 +80,14 @@ describe("PreviewCode", () => {
     );
 
     expect(code).toContain(
-      'import type { ToolCallMessagePartProps } from "@assistant-ui/react";',
+      'import type { ToolCallMessagePartProps } from "@openagentui/react";',
     );
     expect(code).not.toContain("AssistantRuntime");
   });
 
   it.each([
-    ["rn", "@assistant-ui/react-native"],
-    ["ink", "@assistant-ui/react-ink"],
+    ["rn", "@openagentui/react-native"],
+    ["ink", "@openagentui/react-ink"],
   ] as const)(
     "rewrites LLM preview imports for %s",
     (platform, packageName) => {
@@ -103,7 +103,7 @@ describe("PreviewCode", () => {
       );
 
       expect(markup).toContain(packageName);
-      expect(markup).not.toContain("@assistant-ui/react&quot;");
+      expect(markup).not.toContain("@openagentui/react&quot;");
     },
   );
 });

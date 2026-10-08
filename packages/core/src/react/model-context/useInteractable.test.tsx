@@ -34,8 +34,8 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => mocks.aui,
   useAuiState: (selector: (state: typeof mocks.state) => unknown) =>
     selector(mocks.state),

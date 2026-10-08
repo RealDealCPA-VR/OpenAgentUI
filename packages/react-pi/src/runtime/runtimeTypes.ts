@@ -2,8 +2,8 @@ import type {
   ExternalStoreAdapter,
   ExternalStoreSharedOptions,
   ThreadMessageLike,
-} from "@assistant-ui/react";
-import type { AssistantCloud } from "assistant-cloud";
+} from "@openagentui/react";
+import type { AssistantCloud } from "openagentui-cloud";
 import type { PiThreadControllerLike } from "./ThreadController";
 import type { PiInterruptAnswer } from "./hostUi";
 import type { PiThreadState } from "./threadState";

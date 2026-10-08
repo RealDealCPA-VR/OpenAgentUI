@@ -116,7 +116,7 @@ export function createDeclarationProbe(packageDir, pkg) {
   const paths = {};
   const imports = [];
   for (const [index, entry] of entries.entries()) {
-    const alias = `__assistant_ui_strict_libcheck_${index}__`;
+    const alias = `__openagentui_strict_libcheck_${index}__`;
     paths[alias] = [posixPath(path.relative(tempDir, entry.file))];
     imports.push(`import "${alias}";`);
   }

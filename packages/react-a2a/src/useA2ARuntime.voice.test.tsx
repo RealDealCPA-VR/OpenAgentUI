@@ -5,8 +5,8 @@ import type {
   RealtimeVoiceAdapter,
   ThreadHistoryAdapter,
   ThreadMessage,
-} from "@assistant-ui/core";
-import { getThreadMessageText } from "@assistant-ui/core/internal";
+} from "@openagentui/core";
+import { getThreadMessageText } from "@openagentui/core/internal";
 import { describe, expect, it, vi } from "vitest";
 import type { A2AClient } from "./A2AClient";
 import type { A2AStreamEvent } from "./types";

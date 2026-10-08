@@ -1,14 +1,14 @@
 "use client";
 
-import { createAssistantStream } from "assistant-stream";
+import { createAssistantStream } from "openagentui-stream";
 import { type FC, type PropsWithChildren, useMemo, useRef } from "react";
 import {
   type AssistantCloud,
   RuntimeAdapterProvider,
   type RemoteThreadListAdapter,
   type ThreadMessage,
-} from "@assistant-ui/react";
-import { useAssistantCloudThreadHistoryAdapter } from "@assistant-ui/core/react";
+} from "@openagentui/react";
+import { useAssistantCloudThreadHistoryAdapter } from "@openagentui/core/react";
 import {
   findXuluxSessionStub,
   findXuluxThread,

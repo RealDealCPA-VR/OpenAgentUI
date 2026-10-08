@@ -24,12 +24,12 @@ import { GET } from "./route";
 const user = {
   id: "user_1",
   name: "Harry Yep",
-  email: "harry@assistant-ui.com",
+  email: "harry@openagentui.dev",
   image: null,
 };
 
 const request = () =>
-  new NextRequest("https://www.assistant-ui.com/api/auth/session");
+  new NextRequest("https://openagentui.dev/api/auth/session");
 
 const configured = (resolution: { session: unknown; cookies: string[] }) => {
   mocks.accounts = { resolveSession: vi.fn().mockResolvedValue(resolution) };

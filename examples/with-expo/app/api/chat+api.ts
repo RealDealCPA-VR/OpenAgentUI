@@ -1,4 +1,4 @@
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { openai } from "@ai-sdk/openai";
 import {
   convertToModelMessages,

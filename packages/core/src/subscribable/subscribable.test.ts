@@ -185,7 +185,7 @@ describe("ShallowMemoizeSubject", () => {
 
     expect(() => subject.subscribe(() => {})).toThrow(connectionError);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Subscription rollback cleanup threw",
+      "[openagentui] Subscription rollback cleanup threw",
       cleanupError,
     );
   });
@@ -395,7 +395,7 @@ describe("nested subscription swaps", () => {
 
     expect(() => subject.subscribe(() => {})).toThrow(connectionError);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Subscription rollback cleanup threw",
+      "[openagentui] Subscription rollback cleanup threw",
       cleanupError,
     );
   });
@@ -424,7 +424,7 @@ describe("nested subscription swaps", () => {
 
     expect(() => subject.subscribe(() => {})).toThrow(connectionError);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Subscription rollback cleanup threw",
+      "[openagentui] Subscription rollback cleanup threw",
       cleanupError,
     );
   });

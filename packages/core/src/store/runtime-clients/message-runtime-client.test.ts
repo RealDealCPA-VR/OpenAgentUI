@@ -1,6 +1,6 @@
-import { getClientId } from "@assistant-ui/store";
-import { AuiConfig, createAssistantClient } from "@assistant-ui/store/client";
-import { flushTapSync } from "@assistant-ui/tap";
+import { getClientId } from "@openagentui/store";
+import { AuiConfig, createAssistantClient } from "@openagentui/store/client";
+import { flushTapSync } from "@openagentui/tap";
 import { describe, expect, it } from "vitest";
 import { AssistantRuntimeImpl } from "../../runtime/api/assistant-runtime";
 import type { ThreadMessageLike } from "../../runtime/utils/thread-message-like";

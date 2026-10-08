@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import { useContextProvider } from "@assistant-ui/tap";
-import { useShallowStable } from "@assistant-ui/store/internal";
+import { useContextProvider } from "@openagentui/tap";
+import { useShallowStable } from "@openagentui/store/internal";
 import type { RuntimeAdapters } from "../../runtimes/remote-thread-list/types";
 
 const RuntimeAdaptersContext = createContext<RuntimeAdapters | null>(null);

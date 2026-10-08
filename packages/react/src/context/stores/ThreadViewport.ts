@@ -1,8 +1,8 @@
 "use client";
 
 import { create } from "zustand";
-import type { Unsubscribe } from "@assistant-ui/core";
-import { notifyEventListeners } from "@assistant-ui/core/internal";
+import type { Unsubscribe } from "@openagentui/core";
+import { notifyEventListeners } from "@openagentui/core/internal";
 
 export type SizeHandle = {
   /** Update the height */

@@ -11,7 +11,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import type {
   ExportedMessageRepository,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type { A2AClient } from "./A2AClient";
 import type { A2AStreamEvent } from "./types";
 import { useA2ARuntime } from "./useA2ARuntime";

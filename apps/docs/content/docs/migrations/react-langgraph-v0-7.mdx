@@ -6,7 +6,7 @@ description: Guide to upgrading to the simplified LangGraph integration API.
 
 ## Overview
 
-This guide helps you migrate from the previous LangGraph integration pattern to the new simplified API introduced in `@assistant-ui/react-langgraph` v0.7. The new API consolidates thread management directly into `useLangGraphRuntime`, eliminating the need for separate runtime hooks and manual thread state management.
+This guide helps you migrate from the previous LangGraph integration pattern to the new simplified API introduced in `@openagentui/react-langgraph` v0.7. The new API consolidates thread management directly into `useLangGraphRuntime`, eliminating the need for separate runtime hooks and manual thread state management.
 
 ## Key Changes
 
@@ -39,8 +39,8 @@ Cloud persistence can now be configured directly in `useLangGraphRuntime` with t
 import {
   useCloudThreadListRuntime,
   useThreadListItemRuntime,
-} from "@assistant-ui/react";
-import { useLangGraphRuntime } from "@assistant-ui/react-langgraph";
+} from "@openagentui/react";
+import { useLangGraphRuntime } from "@openagentui/react-langgraph";
 
 const useMyLangGraphRuntime = () => {
   const threadListItemRuntime = useThreadListItemRuntime();
@@ -80,7 +80,7 @@ const runtime = useCloudThreadListRuntime({
 #### After (New Pattern)
 
 ```tsx
-import { useLangGraphRuntime } from "@assistant-ui/react-langgraph";
+import { useLangGraphRuntime } from "@openagentui/react-langgraph";
 
 // Directly in your component:
 const runtime = useLangGraphRuntime({
@@ -119,8 +119,8 @@ Remove unused imports:
 - import {
 -   useCloudThreadListRuntime,
 -   useThreadListItemRuntime,
-- } from "@assistant-ui/react";
-+ import { AssistantCloud } from "@assistant-ui/react";
+- } from "@openagentui/react";
++ import { AssistantCloud } from "@openagentui/react";
 ```
 
 </Step>
@@ -246,8 +246,8 @@ import {
   AssistantRuntimeProvider,
   useCloudThreadListRuntime,
   useThreadListItemRuntime,
-} from "@assistant-ui/react";
-import { useLangGraphRuntime } from "@assistant-ui/react-langgraph";
+} from "@openagentui/react";
+import { useLangGraphRuntime } from "@openagentui/react-langgraph";
 
 const useMyRuntime = () => {
   const threadListItemRuntime = useThreadListItemRuntime();
@@ -286,8 +286,8 @@ export function Provider({ children }) {
 import {
   AssistantCloud,
   AssistantRuntimeProvider,
-} from "@assistant-ui/react";
-import { useLangGraphRuntime } from "@assistant-ui/react-langgraph";
+} from "@openagentui/react";
+import { useLangGraphRuntime } from "@openagentui/react-langgraph";
 
 export function Provider({ children }) {
   const cloud = new AssistantCloud({ /* config */ });
@@ -316,5 +316,5 @@ export function Provider({ children }) {
 
 If you encounter issues during migration:
 1. Check the updated [LangGraph documentation](/docs/runtimes/langgraph/overview)
-2. Review the [example implementation](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-langgraph)
-3. Report issues on [GitHub](https://github.com/assistant-ui/assistant-ui/issues)
+2. Review the [example implementation](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-langgraph)
+3. Report issues on [GitHub](https://github.com/RealDealCPA-VR/OpenAgentUI/issues)

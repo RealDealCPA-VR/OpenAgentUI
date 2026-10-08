@@ -100,7 +100,7 @@ it("loads the tracker when the roll lands under the rate", () => {
   expect(appended[0]!.attrs["data-website-id"]).toBe(
     "6f07c001-46a2-411f-9241-4f7f5afb60ee",
   );
-  expect(appended[0]!.attrs["data-domains"]).toBe("www.assistant-ui.com");
+  expect(appended[0]!.attrs["data-domains"]).toBe("openagentui.dev");
 });
 
 it("never loads on the conversation renderer", () => {

@@ -3,8 +3,8 @@
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { markPartialJsonObjectComplete } from "assistant-stream/internal";
-import { parsePartialJsonObject } from "assistant-stream/utils";
+import { markPartialJsonObjectComplete } from "openagentui-stream/internal";
+import { parsePartialJsonObject } from "openagentui-stream/utils";
 
 const state = vi.hoisted(() => ({
   part: {
@@ -15,8 +15,8 @@ const state = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAuiState: (selector: (value: typeof state) => unknown) =>

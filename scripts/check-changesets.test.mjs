@@ -55,18 +55,18 @@ function createWorkspace(changeset, config = {}) {
 
 test("parseBumpLine reads every quoting style changesets accepts", () => {
   for (const line of [
-    '"@assistant-ui/vue": patch',
-    "'@assistant-ui/vue': patch",
-    "@assistant-ui/vue: patch",
-    '"@assistant-ui/vue": "patch"',
-    "\"@assistant-ui/vue\": 'patch'",
-    '"@assistant-ui/vue": patch # keeps the release train moving',
-    '"@assistant-ui/vue": "patch" # keeps the release train moving',
-    '  "@assistant-ui/vue": patch  ',
+    '"@openagentui/vue": patch',
+    "'@openagentui/vue': patch",
+    "@openagentui/vue: patch",
+    '"@openagentui/vue": "patch"',
+    "\"@openagentui/vue\": 'patch'",
+    '"@openagentui/vue": patch # keeps the release train moving',
+    '"@openagentui/vue": "patch" # keeps the release train moving',
+    '  "@openagentui/vue": patch  ',
   ]) {
     assert.deepEqual(
       parseBumpLine(line),
-      { name: "@assistant-ui/vue", bump: "patch" },
+      { name: "@openagentui/vue", bump: "patch" },
       line,
     );
   }
@@ -76,9 +76,9 @@ test("parseBumpLine ignores lines that are not bumps", () => {
   for (const line of [
     "",
     "---",
-    '# "@assistant-ui/vue": patch',
-    '"@assistant-ui/vue": prerelease',
-    '"@assistant-ui/vue"',
+    '# "@openagentui/vue": patch',
+    '"@openagentui/vue": prerelease',
+    '"@openagentui/vue"',
   ]) {
     assert.equal(parseBumpLine(line), null, line);
   }
@@ -121,7 +121,7 @@ test("parseWorkspaceGlobs matches the repo's own workspace file", () => {
 test("findUnreleasablePackages flags private and unknown names", () => {
   const packages = new Map([
     [
-      "@assistant-ui/core",
+      "@openagentui/core",
       {
         manifest: "packages/core/package.json",
         isPrivate: false,
@@ -129,7 +129,7 @@ test("findUnreleasablePackages flags private and unknown names", () => {
       },
     ],
     [
-      "@assistant-ui/ui",
+      "@openagentui/ui",
       {
         manifest: "packages/ui/package.json",
         isPrivate: true,
@@ -143,7 +143,7 @@ test("findUnreleasablePackages flags private and unknown names", () => {
   assert.deepEqual(
     findUnreleasablePackages(
       packages,
-      [{ file: "a.md", name: "@assistant-ui/core" }],
+      [{ file: "a.md", name: "@openagentui/core" }],
       rules,
     ),
     [],
@@ -152,8 +152,8 @@ test("findUnreleasablePackages flags private and unknown names", () => {
   const problems = findUnreleasablePackages(
     packages,
     [
-      { file: "a.md", name: "@assistant-ui/ui" },
-      { file: "a.md", name: "@assistant-ui/nope" },
+      { file: "a.md", name: "@openagentui/ui" },
+      { file: "a.md", name: "@openagentui/nope" },
     ],
     rules,
   );
@@ -227,11 +227,11 @@ test("every releasable workspace package publishes its src directory", () => {
 test("findMissingPackageChangesets requires each changed package bump", () => {
   const packages = new Map([
     [
-      "@assistant-ui/store",
+      "@openagentui/store",
       { manifest: "packages/store/package.json", releaseFiles: ["src"] },
     ],
     [
-      "@assistant-ui/core",
+      "@openagentui/core",
       { manifest: "packages/core/package.json", releaseFiles: ["src"] },
     ],
   ]);
@@ -244,15 +244,15 @@ test("findMissingPackageChangesets requires each changed package bump", () => {
     findMissingPackageChangesets(
       packages,
       changedFiles,
-      new Set(["@assistant-ui/core"]),
+      new Set(["@openagentui/core"]),
     ),
-    [{ name: "@assistant-ui/store", files: ["packages/store/src/index.ts"] }],
+    [{ name: "@openagentui/store", files: ["packages/store/src/index.ts"] }],
   );
   assert.deepEqual(
     findMissingPackageChangesets(
       packages,
       changedFiles,
-      new Set(["@assistant-ui/core", "@assistant-ui/store"]),
+      new Set(["@openagentui/core", "@openagentui/store"]),
     ),
     [],
   );

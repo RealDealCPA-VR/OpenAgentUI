@@ -43,7 +43,7 @@ export default function TwShimmerPage() {
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
           <CopyCommandButton
-            command="npm install tw-shimmer"
+            command="npm install @openagentui/tw-shimmer"
             analyticsContext={{ page: ANALYTICS_PAGE, section: "hero" }}
           />
           <Link
@@ -71,7 +71,7 @@ export default function TwShimmerPage() {
         </div>
         <figcaption className="text-muted-foreground/70 mt-2 flex items-baseline justify-between font-mono text-[11px] tracking-wide">
           <span>fig. 01</span>
-          <span>what loading looks like in assistant-ui</span>
+          <span>what loading looks like in openagentui</span>
         </figcaption>
       </figure>
 
@@ -99,7 +99,7 @@ export default function TwShimmerPage() {
             lang="css"
             title="app/globals.css"
             code={`@import "tailwindcss";
-@import "tw-shimmer";`}
+@import "@openagentui/tw-shimmer";`}
           />
         </DemoSection>
 

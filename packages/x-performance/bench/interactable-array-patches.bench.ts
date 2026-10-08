@@ -1,4 +1,4 @@
-import { unstable_getInteractableVersions } from "@assistant-ui/core";
+import { unstable_getInteractableVersions } from "@openagentui/core";
 import { describe, inject, test } from "vitest";
 
 const makeMessages = (size: number) => {

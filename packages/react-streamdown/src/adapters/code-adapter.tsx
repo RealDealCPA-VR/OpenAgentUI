@@ -10,7 +10,7 @@ import {
   type ReactNode,
   useContext,
 } from "react";
-import { parseLanguageClass } from "@assistant-ui/react-markdown/code-fence";
+import { parseLanguageClass } from "@openagentui/react-markdown/code-fence";
 import { isSameHastNode } from "../memoization";
 import { useCallbackRef } from "../useCallbackRef";
 import type {
@@ -70,7 +70,7 @@ function DefaultCode({ node: _, ...props }: CodeProps): ReactNode {
 }
 
 /**
- * Bridges the assistant-ui SyntaxHighlighter/CodeHeader API to streamdown's
+ * Bridges the openagentui SyntaxHighlighter/CodeHeader API to streamdown's
  * code component, using streamdown's data-block marker for inline/block
  * detection.
  */

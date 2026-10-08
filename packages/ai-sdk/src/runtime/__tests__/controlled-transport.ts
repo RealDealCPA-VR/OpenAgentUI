@@ -1,6 +1,6 @@
 import type { ChatTransport, UIMessage, UIMessageChunk } from "ai";
-import { useAui, type AssistantClient } from "@assistant-ui/store";
-import { flushTapSync } from "@assistant-ui/tap";
+import { useAui, type AssistantClient } from "@openagentui/store";
+import { flushTapSync } from "@openagentui/tap";
 
 export const createControlledTransport = () => {
   let controller!: ReadableStreamDefaultController<UIMessageChunk>;

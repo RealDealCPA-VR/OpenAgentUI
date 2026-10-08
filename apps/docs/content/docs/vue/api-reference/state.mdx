@@ -3,7 +3,7 @@ title: State and methods
 description: Every scope's state fields and methods, as read with useAuiState and called through useAui.
 ---
 
-Read a scope with `useAuiState((s) => s.thread.isRunning)` and call its methods through `const aui = useAui()` from `@assistant-ui/vue`. A missing required scope throws; `s.optional.message` and `aui.optional.message` return `undefined` when the message scope is absent. See [State and actions](/docs/vue/state) for provider placement and reactive reads.
+Read a scope with `useAuiState((s) => s.thread.isRunning)` and call its methods through `const aui = useAui()` from `@openagentui/vue`. A missing required scope throws; `s.optional.message` and `aui.optional.message` return `undefined` when the message scope is absent. See [State and actions](/docs/vue/state) for provider placement and reactive reads.
 
 Each State table describes the object selected from `s.scope`; each Methods table describes calls on `aui.scope`. `getState()` returns a snapshot for a one-off read.
 

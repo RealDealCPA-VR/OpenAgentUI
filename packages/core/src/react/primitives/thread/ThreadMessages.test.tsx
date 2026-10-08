@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
-import { AuiProvider, useAui } from "@assistant-ui/store";
+import { AuiProvider, useAui } from "@openagentui/store";
 import { type FC, useState } from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import {

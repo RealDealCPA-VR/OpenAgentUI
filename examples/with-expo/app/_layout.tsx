@@ -21,9 +21,9 @@ import {
   Tools,
   useAui,
   useAuiEvent,
-} from "@assistant-ui/react-native";
-import { useHydrated } from "@/components/assistant-ui/elements/surfaces";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
+} from "@openagentui/react-native";
+import { useHydrated } from "@/components/openagentui/elements/surfaces";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
 import { Icon } from "@/components/ui/icon";
 import toolkit from "@/components/tools";
 import { useAppRuntime } from "@/hooks/use-app-runtime";

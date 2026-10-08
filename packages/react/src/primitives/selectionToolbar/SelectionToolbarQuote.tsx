@@ -8,7 +8,7 @@ import {
   forwardRef,
   useCallback,
 } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { useSelectionToolbarInfo } from "./SelectionToolbarRoot";
 
 export namespace SelectionToolbarPrimitiveQuote {

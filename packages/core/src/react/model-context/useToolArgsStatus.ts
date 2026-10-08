@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import {
   getPartialJsonObjectFieldState,
   getPartialJsonObjectMeta,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import { nullProtoRecord } from "../../utils/record";
 
 type PropFieldStatus = "streaming" | "complete";

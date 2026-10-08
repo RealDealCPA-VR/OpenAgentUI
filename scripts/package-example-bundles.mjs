@@ -121,7 +121,7 @@ for (const example of examples) {
   delete all["bundle-shared"];
   for (const [name, version] of Object.entries(all)) {
     if (version.startsWith("workspace:")) {
-      const namePath = name.replace("@assistant-ui/", "");
+      const namePath = name.replace("@openagentui/", "");
       const local = JSON.parse(
         await readFile(
           resolve(root, "packages", namePath, "package.json"),
@@ -131,7 +131,7 @@ for (const example of examples) {
       all[name] = `^${local.version}`;
     }
   }
-  delete all["@assistant-ui/ui"];
+  delete all["@openagentui/ui"];
   await writeFile(
     resolve(scratch, "package.json"),
     JSON.stringify(
@@ -167,7 +167,7 @@ await writeFile("dist/index.html",'<!doctype html><html lang="en"><head><meta ch
     "src/main.tsx",
     "shared/chat.tsx",
     "shared/transport.ts",
-    "ui/components/react/assistant-ui/elements/thread.aui.tsx",
+    "ui/components/react/openagentui/elements/thread.aui.tsx",
     ...(example.sourceFiles ?? []),
   ];
   await writeFile(

@@ -10,7 +10,7 @@ import {
   useAuiState,
   useLocalRuntime,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import { ThreadShell } from "./thread-shell";
 
 afterEach(cleanup);

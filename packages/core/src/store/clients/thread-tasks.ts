@@ -1,5 +1,5 @@
-import { resource } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+import { resource } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import type {
   ThreadMessage,
   ToolCallMessagePart,

@@ -17,7 +17,7 @@ function linkifyCommits(markdown: string): string {
   return markdown.replace(
     /\[([a-f0-9]{6,10})\]/gi,
     (_, hash: string) =>
-      `[${hash}](https://github.com/assistant-ui/assistant-ui/commit/${hash})`,
+      `[${hash}](https://github.com/RealDealCPA-VR/OpenAgentUI/commit/${hash})`,
   );
 }
 

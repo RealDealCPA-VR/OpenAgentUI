@@ -19,8 +19,8 @@ import {
   useAuiState,
   Tools,
   Suggestions,
-} from "@assistant-ui/react";
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
 import {
   lastAssistantMessageIsCompleteWithToolCalls,
   type UIMessage,
@@ -30,7 +30,7 @@ import {
   createPlaygroundChatToolkit,
   type PartialBuilderConfig,
 } from "@/lib/playground-chat-toolkit";
-import { AuiConfig, useAui, AuiProvider } from "@assistant-ui/store";
+import { AuiConfig, useAui, AuiProvider } from "@openagentui/store";
 import type { BuilderConfig } from "./types";
 import { applyDiff } from "@/lib/playground-config-codec";
 

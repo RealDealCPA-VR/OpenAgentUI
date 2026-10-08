@@ -18,10 +18,10 @@ Mentions and slash commands share one trigger system, keyed by which character o
 
 `unstable_useMentionAdapter` bundles a person list into the `{ adapter, directive }` pair the trigger needs. Left with no `items` or `categories`, it defaults to listing the tools registered on the thread's model context instead, so `@` can mention a tool as well as a person:
 
-```tsx title="components/assistant-ui/elements/composer-mentions.tsx"
+```tsx title="components/openagentui/elements/composer-mentions.tsx"
 "use client";
 
-import { unstable_useMentionAdapter } from "@assistant-ui/react";
+import { unstable_useMentionAdapter } from "@openagentui/react";
 
 export function useComposerMentions() {
   return unstable_useMentionAdapter({
@@ -38,12 +38,12 @@ export function useComposerMentions() {
 
 ### Open the popover on `@`
 
-```tsx title="components/assistant-ui/elements/composer-bar.tsx"
+```tsx title="components/openagentui/elements/composer-bar.tsx"
 "use client";
 
-import { ComposerPrimitive } from "@assistant-ui/react";
+import { ComposerPrimitive } from "@openagentui/react";
 import { cn } from "@/lib/utils";
-import { floating, mono } from "@/components/assistant-ui/elements/surfaces";
+import { floating, mono } from "@/components/openagentui/elements/surfaces";
 import { useComposerMentions } from "./composer-mentions";
 
 export function ComposerBar() {
@@ -105,7 +105,7 @@ Standalone, nothing detects the `@` for you. `useMentionMatches` filters a perso
 "use client";
 
 import { useState } from "react";
-import { useMentionMatches, applyMention, ComposerMenu, ComposerPersonItem, type ComposerPerson } from "@/components/assistant-ui/elements/composer";
+import { useMentionMatches, applyMention, ComposerMenu, ComposerPersonItem, type ComposerPerson } from "@/components/openagentui/elements/composer";
 
 const people: ComposerPerson[] = [
   { name: "Ada", role: "human" },

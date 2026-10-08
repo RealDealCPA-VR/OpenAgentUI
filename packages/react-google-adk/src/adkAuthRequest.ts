@@ -1,5 +1,5 @@
-import { generateId } from "@assistant-ui/core";
-import { isRecord } from "@assistant-ui/core/internal";
+import { generateId } from "@openagentui/core";
+import { isRecord } from "@openagentui/core/internal";
 import type { AdkAuthCredential, AdkAuthRequest, AdkMessage } from "./types";
 
 export const ADK_REQUEST_CREDENTIAL = "adk_request_credential";

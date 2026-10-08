@@ -5,7 +5,7 @@ export interface LaunchOptions {
   /** Absolute path to the Claude Code plugin directory */
   pluginDir: string;
 
-  /** Skill name to invoke (e.g. "assistant-ui") */
+  /** Skill name to invoke (e.g. "openagentui") */
   skillName?: string;
 
   /** The user's prompt */

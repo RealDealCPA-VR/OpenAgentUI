@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
-import { createTapRoot, flushTapSync, useResource } from "@assistant-ui/tap";
+import { createTapRoot, flushTapSync, useResource } from "@openagentui/tap";
 import type {
   Unstable_TriggerCategory,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { TriggerKeyboardResource } from "./triggerKeyboardResource";
 
 const item = (id: string): Unstable_TriggerItem => ({

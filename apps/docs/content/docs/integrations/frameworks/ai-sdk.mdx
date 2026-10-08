@@ -1,11 +1,11 @@
 ---
 title: Vercel AI SDK
-description: Wire the Vercel AI SDK into a React chat UI with assistant-ui, covering useChat, streaming, tools, attachments, multi-step agents, and persistence.
+description: Wire the Vercel AI SDK into a React chat UI with openagentui, covering useChat, streaming, tools, attachments, multi-step agents, and persistence.
 ---
 
 import { VercelIcon } from "@/components/icons/vercel";
 
-[Vercel AI SDK](https://ai-sdk.dev/) is the most common framework people pair with assistant-ui. The full setup, attachments, persistence, tool-call patterns, and version notes are documented under [runtimes/ai-sdk](/docs/runtimes/ai-sdk/overview); this page is the entry point in the integrations tree for discoverability and architecture context.
+[Vercel AI SDK](https://ai-sdk.dev/) is the most common framework people pair with openagentui. The full setup, attachments, persistence, tool-call patterns, and version notes are documented under [runtimes/ai-sdk](/docs/runtimes/ai-sdk/overview); this page is the entry point in the integrations tree for discoverability and architecture context.
 
 <Callout type="info">
 If you arrived here looking to wire up your first chat: jump to [AI SDK v7 quickstart](/docs/runtimes/ai-sdk/v7). This page is a high-level pointer.
@@ -23,7 +23,7 @@ flowchart LR
     client --> runtime --> api --> provider
 ```
 
-`@assistant-ui/ai-sdk` wraps the AI SDK's `useChat` hook and exposes it as an assistant-ui runtime. The runtime owns conversation state on the client; your `/api/chat` route returns a UI message stream from `streamText`. Everything else (tools, attachments, observability, gateways, custom persistence) layers on top of this base.
+`@openagentui/ai-sdk` wraps the AI SDK's `useChat` hook and exposes it as an openagentui runtime. The runtime owns conversation state on the client; your `/api/chat` route returns a UI message stream from `streamText`. Everything else (tools, attachments, observability, gateways, custom persistence) layers on top of this base.
 
 ## Pick a version
 

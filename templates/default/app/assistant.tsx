@@ -1,15 +1,15 @@
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { ThreadListSidebar } from "@/components/assistant-ui/elements/threadlist-sidebar.aui";
+import { ThreadListSidebar } from "@/components/openagentui/elements/threadlist-sidebar.aui";
 import { Separator } from "@/components/ui/separator";
 import {
   Breadcrumb,
@@ -41,7 +41,7 @@ export const Assistant = () => {
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">
                     <BreadcrumbLink
-                      href="https://www.assistant-ui.com/docs/getting-started"
+                      href="https://openagentui.dev/docs/getting-started"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

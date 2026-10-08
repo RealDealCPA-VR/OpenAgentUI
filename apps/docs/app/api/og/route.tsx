@@ -87,7 +87,7 @@ export async function GET(request: NextRequest) {
             letterSpacing: "-0.02em",
           }}
         >
-          assistant-ui
+          openagentui
         </span>
       </div>
       <div
@@ -163,7 +163,7 @@ export async function GET(request: NextRequest) {
               letterSpacing: "-0.01em",
             }}
           >
-            assistant-ui
+            openagentui
           </span>
         </div>
         <span
@@ -174,7 +174,7 @@ export async function GET(request: NextRequest) {
             fontFamily: fontMono,
           }}
         >
-          assistant-ui.com
+          openagentui.dev
         </span>
       </div>
 

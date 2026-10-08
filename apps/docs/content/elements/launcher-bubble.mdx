@@ -16,14 +16,14 @@ Nothing about the panel is runtime state except what happens when you press some
 
 ### Wire the prompts and the start button to the runtime
 
-```tsx title="components/assistant-ui/elements/launcher.tsx"
+```tsx title="components/openagentui/elements/launcher.tsx"
 "use client";
 
 import { useState } from "react";
-import { ComposerPrimitive, ThreadPrimitive, useAuiEvent } from "@assistant-ui/react";
+import { ComposerPrimitive, ThreadPrimitive, useAuiEvent } from "@openagentui/react";
 import { MessageCircleIcon, XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { field, floating, inkButton, mono } from "@/components/assistant-ui/elements/surfaces";
+import { field, floating, inkButton, mono } from "@/components/openagentui/elements/surfaces";
 
 const PROMPTS = ["Summarize this page", "Find a teammate", "Report a bug"];
 
@@ -99,7 +99,7 @@ Standalone, `open`, `unread`, picking a prompt, and starting are four plain call
 "use client";
 
 import { useState } from "react";
-import { LauncherBubble } from "@/components/assistant-ui/elements/launcher-bubble";
+import { LauncherBubble } from "@/components/openagentui/elements/launcher-bubble";
 
 const prompts = ["Reset my password", "Talk to a person", "Where is my order?"];
 
@@ -183,7 +183,7 @@ The runtime has no concept of unread messages; nothing distinguishes "a message 
 
 <RuntimeMode>
 
-This element has no dedicated primitive; its two interactive pieces are `ThreadPrimitive.Suggestion` and `ComposerPrimitive.Send`, both part of `@assistant-ui/react`'s primitive set. The rest, opening, closing, and the unread count, is component state you own, as in Getting started.
+This element has no dedicated primitive; its two interactive pieces are `ThreadPrimitive.Suggestion` and `ComposerPrimitive.Send`, both part of `@openagentui/react`'s primitive set. The rest, opening, closing, and the unread count, is component state you own, as in Getting started.
 
 ### Thread events used above
 

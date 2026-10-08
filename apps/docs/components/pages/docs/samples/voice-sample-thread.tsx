@@ -4,7 +4,7 @@ import {
   ComposerAddAttachment,
   ComposerAttachments,
   UserMessageAttachments,
-} from "@/components/assistant-ui/elements/attachment.aui";
+} from "@/components/openagentui/elements/attachment.aui";
 import {
   ActionBarPrimitive,
   AuiIf,
@@ -13,8 +13,8 @@ import {
   ErrorPrimitive,
   MessagePrimitive,
   ThreadPrimitive,
-} from "@assistant-ui/react";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+} from "@openagentui/react";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import type { FC, ReactNode } from "react";
 import {
   ArrowDownIcon,
@@ -27,10 +27,10 @@ import {
   ChevronRightIcon,
   Square,
 } from "lucide-react";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ToolFallback } from "@/components/assistant-ui/elements/tool-fallback.aui";
+import { ToolFallback } from "@/components/openagentui/elements/tool-fallback.aui";
 import { useHydrated } from "@/hooks/use-hydrated";
 
 type VoiceSampleThreadProps = {

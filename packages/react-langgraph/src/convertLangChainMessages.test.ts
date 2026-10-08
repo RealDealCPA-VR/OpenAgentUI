@@ -3,9 +3,9 @@ import type {
   AppendMessage,
   CompleteAttachment,
   MessageTiming,
-} from "@assistant-ui/core";
-import { convertExternalMessages } from "@assistant-ui/core/react";
-import { getPartialJsonObjectMeta } from "assistant-stream/utils";
+} from "@openagentui/core";
+import { convertExternalMessages } from "@openagentui/core/react";
+import { getPartialJsonObjectMeta } from "openagentui-stream/utils";
 import {
   convertLangChainMessages as convertLangChainMessagesImpl,
   createLangGraphMetadataKey,

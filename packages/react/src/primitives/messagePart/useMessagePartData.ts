@@ -1,7 +1,7 @@
 "use client";
 
-import type { DataMessagePart } from "@assistant-ui/core";
-import { useAuiState } from "@assistant-ui/store";
+import type { DataMessagePart } from "@openagentui/core";
+import { useAuiState } from "@openagentui/store";
 
 /**
  * @deprecated Use {@link useAuiState} to select and narrow `s.part`.
@@ -18,7 +18,7 @@ import { useAuiState } from "@assistant-ui/store";
  * );
  * ```
  *
- * See the {@link https://assistant-ui.com/docs/migrations/v0-12 migration guide}.
+ * See the {@link https://openagentui.dev/docs/migrations/v0-12 migration guide}.
  */
 export const useMessagePartData = <T = any>(name?: string) => {
   const part = useAuiState((s) => {

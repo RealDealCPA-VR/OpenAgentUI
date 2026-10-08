@@ -33,7 +33,7 @@ describe("generativeLoader", () => {
       { path: "/app/tool.ts" },
     );
 
-    expect(result).toContain("@assistant-ui/next/bundler-redirect/");
+    expect(result).toContain("@openagentui/next/bundler-redirect/");
   });
 
   it.each(["bundler-redirect.server.js", "bundler-redirect.client.js"])(
@@ -44,7 +44,7 @@ describe("generativeLoader", () => {
         '"use generative"; export default {};',
       );
 
-      expect(result).toContain("@assistant-ui/next/bundler-redirect/");
+      expect(result).toContain("@openagentui/next/bundler-redirect/");
     },
   );
 
@@ -55,7 +55,7 @@ describe("generativeLoader", () => {
     "recognizes the package %s indirection module",
     async (name, target) => {
       const result = await runLoader(
-        `/node_modules/@assistant-ui/next/dist/bundler-redirect.${name}.js`,
+        `/node_modules/@openagentui/next/dist/bundler-redirect.${name}.js`,
         "",
         { path: "/app/tool.ts" },
       );

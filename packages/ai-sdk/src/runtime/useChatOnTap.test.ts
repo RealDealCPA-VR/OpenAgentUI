@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createTapRoot } from "@assistant-ui/tap";
+import { createTapRoot } from "@openagentui/tap";
 import { useChat } from "@ai-sdk/react";
 import { createControlledTransport } from "./__tests__/controlled-transport";
 

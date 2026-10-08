@@ -9,7 +9,7 @@ import { parseLearnAutoStartSource } from "@/lib/xulux/learn/types";
 
 export const instant = false;
 
-const title = "Learn assistant-ui";
+const title = "Learn openagentui";
 const description =
   "Build assistant interfaces through a guided course in the Xulux playground.";
 
@@ -30,7 +30,7 @@ export default async function LearnPage({
   return (
     <SubProjectLayout
       name="learn"
-      githubPath="https://github.com/assistant-ui/assistant-ui/tree/main/apps/docs/lib/xulux/learn"
+      githubPath="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/apps/docs/lib/xulux/learn"
       fullHeight
       hideFooter
     >

@@ -3,7 +3,7 @@
 import {
   ContextBreakdown,
   type ContextSegment,
-} from "@/components/assistant-ui/elements/context-breakdown";
+} from "@/components/openagentui/elements/context-breakdown";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const GROWTH = [0.45, 0.72, 1] as const;

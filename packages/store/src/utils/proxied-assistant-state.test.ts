@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { useState } from "react";
-import { flushTapSync, resource } from "@assistant-ui/tap";
+import { flushTapSync, resource } from "@openagentui/tap";
 import { createAssistantClient } from "../createAssistantClient";
 import type { AssistantClient } from "../types/client";
 import {

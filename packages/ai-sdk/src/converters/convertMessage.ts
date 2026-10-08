@@ -9,7 +9,7 @@ import {
 import {
   createMessageConverter as unstable_createMessageConverter,
   type useExternalMessageConverter,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import {
   isMcpAppUri,
   type ReasoningMessagePart,
@@ -28,14 +28,14 @@ import {
   type MessagePartStreamStatus,
   type RespondToToolApprovalOptions,
   type Unstable_ToolInteractionLog,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { normalizeToolApprovalAnswers } from "./toolApprovalAnswers";
-import { stableStringifyToolArgs } from "@assistant-ui/core/internal";
-import { markPartialJsonObjectComplete } from "assistant-stream/internal";
+import { stableStringifyToolArgs } from "@openagentui/core/internal";
+import { markPartialJsonObjectComplete } from "openagentui-stream/internal";
 import {
   parsePartialJsonObject,
   type ReadonlyJSONObject,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import { unwrapModelContentEnvelope } from "./modelContentEnvelope";
 
 type MessageMetadata = ThreadMessageLike["metadata"];

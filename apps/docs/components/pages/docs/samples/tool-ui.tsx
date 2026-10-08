@@ -1,6 +1,6 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 export const ToolUISample = () => {

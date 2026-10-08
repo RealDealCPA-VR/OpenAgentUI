@@ -3,7 +3,7 @@
 import {
   ComputerUse,
   type ComputerStep,
-} from "@/components/assistant-ui/elements/computer-use";
+} from "@/components/openagentui/elements/computer-use";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const STEPS: readonly ComputerStep[] = [
@@ -20,7 +20,7 @@ export function ComputerUseDemo() {
 
   return (
     <ComputerUse
-      url="github.com/assistant-ui/assistant-ui/issues"
+      url="https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
       steps={STEPS}
       activeIndex={phase}
     >

@@ -6,18 +6,18 @@ import {
   useRef,
   useCallback,
 } from "react";
-import { useResource, resource, withKey } from "@assistant-ui/tap";
+import { useResource, resource, withKey } from "@openagentui/tap";
 import {
   useClientLookup,
   useAssistantClientRef,
   attachTransformScopes,
   type ClientOutput,
-} from "@assistant-ui/store";
-import { useAssistantScopeEffect } from "@assistant-ui/store/client";
-import { ModelContext } from "@assistant-ui/core/store";
+} from "@openagentui/store";
+import { useAssistantScopeEffect } from "@openagentui/store/client";
+import { ModelContext } from "@openagentui/core/store";
 import { createMcpId } from "../utils/createMcpId";
 import { clearOAuthProviderAuthState } from "../auth/createOAuthProvider";
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import { McpServerResource } from "./McpServerResource";
 import { withMcpServerRemovalFence } from "./McpServerRemovalFence";
 import { McpLocalStorage } from "./storage/McpLocalStorage";
@@ -55,14 +55,14 @@ const reportCustomStorageFailure = (
   error: unknown,
 ) => {
   console.error(
-    `[assistant-ui/react-mcp] failed to ${operation} custom servers:`,
+    `[openagentui/react-mcp] failed to ${operation} custom servers:`,
     error,
   );
 };
 
 const reportBlockedCustomServerPersistence = () => {
   console.error(
-    "[assistant-ui/react-mcp] custom server changes remain in memory because loading the persisted list failed; remount the manager to retry",
+    "[openagentui/react-mcp] custom server changes remain in memory because loading the persisted list failed; remount the manager to retry",
   );
 };
 
@@ -121,7 +121,7 @@ const deduplicateCustomServers = (records: MCPCustomServerRecord[]) => {
   return records.filter((record) => {
     if (seen.has(record.id)) {
       console.error(
-        `[assistant-ui/react-mcp] ignored duplicate custom server id "${record.id}" loaded from storage`,
+        `[openagentui/react-mcp] ignored duplicate custom server id "${record.id}" loaded from storage`,
       );
       return false;
     }

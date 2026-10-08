@@ -9,8 +9,8 @@ import {
   ErrorPrimitive,
   LoadingPrimitive,
   LiveChecklist,
-} from "@assistant-ui/react-ink";
-import { MarkdownText } from "@assistant-ui/react-ink-markdown";
+} from "@openagentui/react-ink";
+import { MarkdownText } from "@openagentui/react-ink-markdown";
 
 // markdansi defaults width and color from process.stdout, which does not
 // exist in the browser bundle; pass both explicitly so it never reads it.
@@ -89,7 +89,7 @@ export const Thread = ({
               A real LLM streaming into a real Ink render loop in your browser.
             </Text>
             <Text dimColor>
-              {'  try: "what is assistant-ui?" or "how do I render markdown?"'}
+              {'  try: "what is openagentui?" or "how do I render markdown?"'}
             </Text>
           </Box>
         </AuiIf>

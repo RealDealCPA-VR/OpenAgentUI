@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-const STORAGE_KEY = "assistant-ui::docs:platform";
+const STORAGE_KEY = "openagentui::docs:platform";
 
 type Handler = (event: unknown) => void;
 

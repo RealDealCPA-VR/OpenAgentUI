@@ -2,14 +2,14 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { Text } from "react-native";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type * as Store from "@assistant-ui/store";
+import type * as Store from "@openagentui/store";
 import { ThreadIf } from "./ThreadIf";
 
 const h = vi.hoisted(() => ({
   thread: { isEmpty: true, isRunning: false },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
+vi.mock("@openagentui/store", async (importOriginal) => {
   const actual = await importOriginal<typeof Store>();
   return {
     ...actual,

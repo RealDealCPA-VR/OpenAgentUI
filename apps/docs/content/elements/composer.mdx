@@ -9,20 +9,20 @@ The composer is the rounded bar where a person writes the next message: a growin
 
 <RuntimeMode>
 
-Every assistant-ui runtime carries a composer scoped to the active thread (or to a message being edited): a place to hold the draft text, staged attachments, and the send and cancel actions. Build the bar from `ComposerPrimitive`, the same primitives the `Thread` element renders internally, and pair them with the shared surface tokens from `surfaces.tsx` to match this catalog's look.
+Every openagentui runtime carries a composer scoped to the active thread (or to a message being edited): a place to hold the draft text, staged attachments, and the send and cancel actions. Build the bar from `ComposerPrimitive`, the same primitives the `Thread` element renders internally, and pair them with the shared surface tokens from `surfaces.tsx` to match this catalog's look.
 
 <Steps>
   <Step>
 
 ### Compose the bar
 
-```tsx title="components/assistant-ui/elements/composer-bar.tsx"
+```tsx title="components/openagentui/elements/composer-bar.tsx"
 "use client";
 
-import { AuiIf, ComposerPrimitive } from "@assistant-ui/react";
+import { AuiIf, ComposerPrimitive } from "@openagentui/react";
 import { ArrowUpIcon, PlusIcon, SquareIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ghostButton, inkButton, paper } from "@/components/assistant-ui/elements/surfaces";
+import { ghostButton, inkButton, paper } from "@/components/openagentui/elements/surfaces";
 
 export function ComposerBar() {
   return (
@@ -88,7 +88,7 @@ Standalone, `Composer` and its children are presentational: they render the shap
 "use client";
 
 import { useState } from "react";
-import { Composer, ComposerBar, ComposerInput, ComposerToolbar, ComposerActions, ComposerAttachButton, ComposerSend } from "@/components/assistant-ui/elements/composer";
+import { Composer, ComposerBar, ComposerInput, ComposerToolbar, ComposerActions, ComposerAttachButton, ComposerSend } from "@/components/openagentui/elements/composer";
 
 export function ChatBox() {
   const [text, setText] = useState("");

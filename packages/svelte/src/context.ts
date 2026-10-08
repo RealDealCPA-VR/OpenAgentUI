@@ -4,7 +4,7 @@ import {
   DefaultAssistantClient,
   type AssistantClient,
   type AssistantClientSource,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 
 export type AuiContext = {
   source: AssistantClientSource;
@@ -17,7 +17,7 @@ export type AuiContext = {
  */
 export type ScopeTarget = AuiContext;
 
-export const auiContextKey: symbol = Symbol("assistant-ui.svelte.aui");
+export const auiContextKey: symbol = Symbol("openagentui.svelte.aui");
 
 const NO_OP_SUBSCRIBE = () => () => {};
 

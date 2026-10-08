@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { act, render, waitFor } from "@testing-library/react";
-import { useResource } from "@assistant-ui/tap";
+import { useResource } from "@openagentui/tap";
 import {
   startTransition,
   Suspense,

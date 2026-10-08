@@ -2,9 +2,9 @@
 
 import { act, cleanup, render } from "@testing-library/react";
 import type { FC, ReactNode } from "react";
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import { afterEach, describe, expect, it } from "vitest";
-import { AuiProvider, useAui } from "@assistant-ui/store";
+import { AuiProvider, useAui } from "@openagentui/store";
 import { ExternalThread } from "../store/clients/external-thread";
 import { SingleThreadList } from "../store/clients/single-thread-list";
 

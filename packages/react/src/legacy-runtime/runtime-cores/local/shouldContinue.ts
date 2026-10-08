@@ -1,1 +1,1 @@
-export { shouldContinue } from "@assistant-ui/core/internal";
+export { shouldContinue } from "@openagentui/core/internal";

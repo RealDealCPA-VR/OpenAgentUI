@@ -2,7 +2,7 @@
 
 import { Activity, act, version } from "react";
 import type { UIMessage } from "ai";
-import type { SuggestionAdapter } from "@assistant-ui/core";
+import type { SuggestionAdapter } from "@openagentui/core";
 import { afterAll, afterEach, expect, it, vi } from "vitest";
 
 const onReact18 = version.startsWith("18.");

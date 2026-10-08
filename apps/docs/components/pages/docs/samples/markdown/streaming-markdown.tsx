@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { PlayIcon } from "lucide-react";
-import { TextMessagePartProvider } from "@assistant-ui/react";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { TextMessagePartProvider } from "@openagentui/react";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import { Button } from "@/components/ui/button";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 

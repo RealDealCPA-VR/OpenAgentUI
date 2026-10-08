@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { PlayIcon } from "lucide-react";
-import type { ToolCallMessagePartStatus } from "@assistant-ui/react";
+import type { ToolCallMessagePartStatus } from "@openagentui/react";
 import {
   ToolFallbackRoot,
   ToolFallbackTrigger,
@@ -10,7 +10,7 @@ import {
   ToolFallbackArgs,
   ToolFallbackApproval,
   ToolFallbackResult,
-} from "@/components/assistant-ui/elements/tool-fallback.aui";
+} from "@/components/openagentui/elements/tool-fallback.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 import { Button } from "@/components/ui/button";
 

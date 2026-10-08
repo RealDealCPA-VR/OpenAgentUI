@@ -1,7 +1,7 @@
 let sessionPromise: Promise<void> | null = null;
 let sessionToken: string | null = null;
 
-const ANONYMOUS_SESSION_HEADER = "x-assistant-ui-anonymous-session";
+const ANONYMOUS_SESSION_HEADER = "x-openagentui-anonymous-session";
 
 // The session route refuses with either a plain text limit body or a JSON
 // `{ error }` envelope; the message that reaches the chat error rail is the

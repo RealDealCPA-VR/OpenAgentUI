@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { logger } from "./logger";
 
-export interface AssistantUIConfig {
+export interface OpenAgentUIConfig {
   $schema?: string;
   style?: string;
   tailwind?: {
@@ -20,19 +20,19 @@ export interface AssistantUIConfig {
 }
 
 const CONFIG_FILE_NAMES = [
-  "assistant-ui.json",
+  "openagentui.json",
   "components.json", // For backward compatibility with shadcn
 ];
 
 export function getConfig(
   cwd: string = process.cwd(),
-): AssistantUIConfig | null {
+): OpenAgentUIConfig | null {
   for (const fileName of CONFIG_FILE_NAMES) {
     const configPath = path.join(cwd, fileName);
     if (fs.existsSync(configPath)) {
       try {
         const configContent = fs.readFileSync(configPath, "utf8");
-        return JSON.parse(configContent) as AssistantUIConfig;
+        return JSON.parse(configContent) as OpenAgentUIConfig;
       } catch (error) {
         const errorDetails =
           error instanceof Error
@@ -46,10 +46,10 @@ export function getConfig(
 }
 
 export function saveConfig(
-  config: AssistantUIConfig,
+  config: OpenAgentUIConfig,
   cwd: string = process.cwd(),
 ): void {
-  const configPath = path.join(cwd, "assistant-ui.json");
+  const configPath = path.join(cwd, "openagentui.json");
   fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
 }
 

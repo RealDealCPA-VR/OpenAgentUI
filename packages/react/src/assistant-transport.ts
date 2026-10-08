@@ -4,19 +4,19 @@ import type {
   AssistantRuntime,
   UserCommands as CoreUserCommands,
   UserExternalState as CoreUserExternalState,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   useAssistantTransportRuntime as useCoreAssistantTransportRuntime,
   useAssistantTransportSendCommand as useCoreAssistantTransportSendCommand,
   useAssistantTransportState as useCoreAssistantTransportState,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import type {
   AssistantTransportCommand as CoreAssistantTransportCommand,
   AssistantTransportConnectionMetadata as CoreAssistantTransportConnectionMetadata,
   AssistantTransportOptions as CoreAssistantTransportOptions,
   AssistantTransportProtocol,
   SendCommandsRequestBody as CoreSendCommandsRequestBody,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import type { UserCommands, UserExternalState } from "./augmentations";
 
 export type { AssistantTransportProtocol };

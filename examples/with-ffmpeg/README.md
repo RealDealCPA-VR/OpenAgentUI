@@ -1,13 +1,13 @@
 # FFmpeg Video Processing Tool
 
-This example demonstrates how to create a file conversion assistant using FFmpeg WebAssembly with assistant-ui.
+This example demonstrates how to create a file conversion assistant using FFmpeg WebAssembly with openagentui.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-ffmpeg
+npx openagentui@latest create my-app --example with-ffmpeg
 cd my-app
 ```
 
@@ -35,5 +35,5 @@ npm run dev
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
-- [Tool UI Guide](https://www.assistant-ui.com/docs/tools)
+- [openagentui Documentation](https://openagentui.dev/docs)
+- [Tool UI Guide](https://openagentui.dev/docs/tools)

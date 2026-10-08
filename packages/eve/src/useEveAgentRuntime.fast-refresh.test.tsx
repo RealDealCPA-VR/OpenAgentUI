@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { act, type ReactNode } from "react";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import { afterAll, afterEach, expect, it, vi } from "vitest";
 import type { EveCloudSessions } from "./eveCloudSessions";
 
@@ -18,8 +18,8 @@ vi.mock("eve/react", async (importOriginal) => ({
   useEveAgent: mockUseEveAgent,
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...original,
     useAui: () => {
@@ -40,9 +40,9 @@ vi.mock("@assistant-ui/store", async (importOriginal) => {
   };
 });
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => {
+vi.mock("@openagentui/core/react", async (importOriginal) => {
   const original =
-    await importOriginal<typeof import("@assistant-ui/core/react")>();
+    await importOriginal<typeof import("@openagentui/core/react")>();
   return {
     ...original,
     useRemoteThreadListRuntime: (
@@ -89,10 +89,10 @@ vi.stubGlobal("__REACT_DEVTOOLS_GLOBAL_HOOK__", {
   onCommitFiberUnmount: () => {},
 });
 const { cleanup, render, waitFor } = await import("@testing-library/react");
-const { AssistantRuntimeProvider } = await import("@assistant-ui/core/react");
+const { AssistantRuntimeProvider } = await import("@openagentui/core/react");
 const { useEveAgentRuntime } = await import("./useEveAgentRuntime");
 const { useEveReset } = await import("./hooks");
-const { useAui } = await import("@assistant-ui/store");
+const { useAui } = await import("@openagentui/store");
 
 afterEach(() => {
   cleanup();

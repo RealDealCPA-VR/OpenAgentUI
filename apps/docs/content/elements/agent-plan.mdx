@@ -21,8 +21,8 @@ Register a toolkit entry whose `render` maps the call straight onto `AgentPlan`.
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { AgentPlan } from "@/components/assistant-ui/elements/agent-plan";
+import { defineToolkit } from "@openagentui/react";
+import { AgentPlan } from "@/components/openagentui/elements/agent-plan";
 
 export const toolkit = defineToolkit({
   update_plan: {
@@ -46,7 +46,7 @@ The model calls `update_plan` again each time it checks a step off, so a plan re
 ### Register the toolkit
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
 import { toolkit } from "./toolkit";
 
 const config = AuiConfig({ tools: Tools({ toolkit }) });
@@ -80,7 +80,7 @@ Standalone, the element is a controlled display: you own the step list and move 
 "use client";
 
 import { useState } from "react";
-import { AgentPlan } from "@/components/assistant-ui/elements/agent-plan";
+import { AgentPlan } from "@/components/openagentui/elements/agent-plan";
 
 const STEPS = [
   { id: "read", label: "Read existing composer state" },

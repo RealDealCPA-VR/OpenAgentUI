@@ -1,9 +1,9 @@
 ---
 title: Image Generation
-description: Generate images in your backend and render them inline in an assistant-ui thread.
+description: Generate images in your backend and render them inline in an openagentui thread.
 ---
 
-Image generation needs no dedicated primitive. Generate the image wherever you already run model calls (a route handler or a tool), store the result as an `ImageMessagePart`, and render it with the `image` element (`npx assistant-ui@latest add image`).
+Image generation needs no dedicated primitive. Generate the image wherever you already run model calls (a route handler or a tool), store the result as an `ImageMessagePart`, and render it with the `image` element (`npx openagentui@latest add image`).
 
 <Callout type="info">
   This covers non-streaming generation, rendering, and actions. Streaming partial images and multi-image galleries are out of scope.
@@ -52,7 +52,7 @@ const part: ImageMessagePart = {
 
 ## Render with the `Image` component
 
-The `image` element (`npx assistant-ui@latest add image`, installed at `components/assistant-ui/elements/image.tsx`) handles the render states for you:
+The `image` element (`npx openagentui@latest add image`, installed at `components/openagentui/elements/image.tsx`) handles the render states for you:
 
 1. **Running** (`status.type === "running"`) renders a spinner.
 2. **Content filter** (`status.type === "incomplete"` with `reason: "content-filter"`) renders an error card with no `<img src>`.
@@ -61,7 +61,7 @@ The `image` element (`npx assistant-ui@latest add image`, installed at `componen
 `Image.Actions` provides download and copy buttons, plus a regenerate button when you pass an `onRegenerate` callback. Wire it to the same generation flow you used above; debounce, rate limiting, and confirmation are your call.
 
 ```tsx
-import { Image } from "@/components/assistant-ui/elements/image";
+import { Image } from "@/components/openagentui/elements/image";
 
 <>
   <Image {...imagePart} />
@@ -71,4 +71,4 @@ import { Image } from "@/components/assistant-ui/elements/image";
 
 ## Example
 
-A complete Next.js example (with a mock fallback when `OPENAI_API_KEY` is unset) lives in [`examples/with-image-generation`](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-image-generation).
+A complete Next.js example (with a mock fallback when `OPENAI_API_KEY` is unset) lives in [`examples/with-image-generation`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-image-generation).

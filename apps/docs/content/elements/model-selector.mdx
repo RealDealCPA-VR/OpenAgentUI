@@ -15,7 +15,7 @@ import * as ModelSelectorEffortRadixSample from "@/components/pages/docs/samples
 import { ModelSelectorMetadataSample } from "@/components/pages/docs/samples/model-selector/capability-metadata";
 import * as ModelSelectorMetadataRadixSample from "@/components/pages/docs/samples/model-selector/capability-metadata.radix";
 
-Model selector is a popover that lists AI models and, for models that support it, a reasoning effort level: Low, Medium, High, or a custom set. With a runtime the selection registers with assistant-ui's `ModelContext` system automatically, so it reaches your backend on every request; standalone you hold the value and effort yourself. It comes in two designs: the runtime variant renders a popover of models with reasoning-effort controls, and the static variant, `ModelPicker`, renders a full-page list grouped by family with pricing and capability chips (see [The model-picker design](#the-model-picker-design)).
+Model selector is a popover that lists AI models and, for models that support it, a reasoning effort level: Low, Medium, High, or a custom set. With a runtime the selection registers with openagentui's `ModelContext` system automatically, so it reaches your backend on every request; standalone you hold the value and effort yourself. It comes in two designs: the runtime variant renders a popover of models with reasoning-effort controls, and the static variant, `ModelPicker`, renders a full-page list grouped by family with pricing and capability chips (see [The model-picker design](#the-model-picker-design)).
 
 ## Getting started
 
@@ -28,8 +28,8 @@ Model selector is a popover that lists AI models and, for models that support it
 
 Each model needs an `id` and a display `name`; everything else is optional.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { ModelSelector } from "@/components/assistant-ui/elements/model-selector.aui";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { ModelSelector } from "@/components/openagentui/elements/model-selector.aui";
 
 function ComposerAction() {
   return (
@@ -138,7 +138,7 @@ Open the picker and pick a level: the trigger shows it next to the model name, a
 `Effort`'s default layout is horizontal segments, which overflows once a model offers more than a few levels. `useModelSelectorEfforts` exposes the selected model's levels and the active selection for any other layout, from inside `Content`:
 
 ```tsx
-import { useModelSelectorEfforts } from "@/components/assistant-ui/elements/model-selector";
+import { useModelSelectorEfforts } from "@/components/openagentui/elements/model-selector";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -256,7 +256,7 @@ Use `ModelSelectorGroup` to group the models by provider. A model with `disabled
 ### How registration works
 
 1. `ModelSelector` calls `aui.modelContext.register()` with `config.modelName` set to the selected id, plus `config.reasoningEffort` whenever the selected model supports the chosen level.
-2. `AssistantChatTransport` (from `@assistant-ui/ai-sdk`) includes `config` in the body of every chat request.
+2. `AssistantChatTransport` (from `@openagentui/ai-sdk`) includes `config` in the body of every chat request.
 3. Your API route reads `config.modelName` and `config.reasoningEffort`.
 
 `ModelSelector.Root` (the same `ModelSelectorRoot` documented below) performs no registration on its own; it is purely presentational.
@@ -310,22 +310,22 @@ Use `ModelSelectorGroup` to group the models by provider. A model with `disabled
 The Static variant in the rail is a second design for the same picker: `ModelPicker` renders every model in a full-page list grouped by family, each row carrying its context window, price, and capability chips, with the active model checked, instead of a searchable popover. It is a single props-driven component with no runtime dependency:
 
 ```sh
-npx shadcn@latest add "@assistant-ui/elements-model-picker"
+npx shadcn@latest add "@openagentui/elements-model-picker"
 ```
 
 <RuntimeMode>
 
-With a runtime there is no catalog of available models to read: assistant-ui tracks the model configuration for the next call, not a directory of every model you could switch to. Unlike the popover, `ModelPicker` does no registration on its own, so register a provider that reports the selected id and seed the initial selection from whatever the model context already reports, for example a default set on the server.
+With a runtime there is no catalog of available models to read: openagentui tracks the model configuration for the next call, not a directory of every model you could switch to. Unlike the popover, `ModelPicker` does no registration on its own, so register a provider that reports the selected id and seed the initial selection from whatever the model context already reports, for example a default set on the server.
 
-```tsx title="components/assistant-ui/elements/model-picker.tsx"
+```tsx title="components/openagentui/elements/model-picker.tsx"
 "use client";
 
-import { useAui, useAuiState } from "@assistant-ui/react";
+import { useAui, useAuiState } from "@openagentui/react";
 import { useEffect, useState } from "react";
 import {
   ModelPicker,
   type PickableModel,
-} from "@/components/assistant-ui/elements/model-picker";
+} from "@/components/openagentui/elements/model-picker";
 
 export function ModelPickerPanel({
   models,
@@ -363,7 +363,7 @@ import { useState } from "react";
 import {
   ModelPicker,
   type PickableModel,
-} from "@/components/assistant-ui/elements/model-picker";
+} from "@/components/openagentui/elements/model-picker";
 
 const MODELS: PickableModel[] = [
   { id: "sonnet", name: "Claude Sonnet 5", family: "Anthropic", context: "1M", price: "$2 / 1M", capabilities: ["vision", "tools"] },

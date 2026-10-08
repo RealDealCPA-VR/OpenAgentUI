@@ -142,7 +142,7 @@ describe("createResumableSessionStorage", () => {
     expect(() => storage.setStreamId("stream-1")).not.toThrow();
     expect(laterListener).toHaveBeenCalledOnce();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] resumable storage listener failed",
+      "[openagentui] resumable storage listener failed",
       error,
     );
   });

@@ -7,8 +7,8 @@ const h = vi.hoisted(() => ({
   runningMessageIsOptimistic: false,
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAuiState: <T,>(

@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import * as standalone from "./index";
 
-describe("@assistant-ui/tap/standalone-shim parity", () => {
+describe("@openagentui/tap/standalone-shim parity", () => {
   it("exports every explicit react-shim hook plus its standalone additions", () => {
     const reactShimSource = readFileSync(
       resolve(__dirname, "../react-shim/index.ts"),

@@ -7,7 +7,7 @@ import {
   isDeclarationBlock,
   type CssDeclarationBlock,
   type CssMediaBlock,
-} from "@assistant-ui/ui/lib/generative-ui-vocabulary-css.ts";
+} from "@openagentui/ui/lib/generative-ui-vocabulary-css.ts";
 import { nativeRegistry, registry, vueRegistry } from "../src/registry";
 import { registrySchema, type RegistryItem } from "../src/schema";
 
@@ -25,7 +25,7 @@ const NATIVE_REGISTRY_INDEX_PATH = path.join(
 const REGISTRY_ITEM_SCHEMA_URL =
   "https://ui.shadcn.com/schema/registry-item.json";
 const ASSISTANT_REGISTRY_DEPENDENCY_RE =
-  /^https:\/\/r\.assistant-ui\.com\/(?:(?:base|native)\/)?(.+)\.json$/;
+  /^https:\/\/r\.openagentui\.com\/(?:(?:base|native)\/)?(.+)\.json$/;
 const RADIX_IMPORT_RE =
   /(?:from|import)\s*\(?\s*["'](?:radix-ui["']|@radix-ui\/)/;
 const BASE_VARIANT_FORBIDDEN_PATTERNS = [
@@ -183,9 +183,9 @@ const VUE_FORBIDDEN_PACKAGES = [
   "radix-ui",
   "@radix-ui",
   "@base-ui",
-  "@assistant-ui/react",
+  "@openagentui/react",
 ];
-const VUE_FORBIDDEN_PREFIXES = ["@assistant-ui/react-"];
+const VUE_FORBIDDEN_PREFIXES = ["@openagentui/react-"];
 
 function isVueForbiddenPackage(specifier: string) {
   return (
@@ -231,7 +231,7 @@ const NATIVE_FORBIDDEN_PACKAGES = new Set([
   "radix-ui",
   "@base-ui/react",
   "lucide-react",
-  "@assistant-ui/react",
+  "@openagentui/react",
 ]);
 export const NATIVE_SHARED_REGISTRY_ITEMS = new Set(["utils"]);
 
@@ -240,8 +240,8 @@ function isNativeForbiddenPackage(specifier: string) {
   return (
     NATIVE_FORBIDDEN_PACKAGES.has(packageName) ||
     packageName.startsWith("@radix-ui/") ||
-    (packageName.startsWith("@assistant-ui/react-") &&
-      packageName !== "@assistant-ui/react-native")
+    (packageName.startsWith("@openagentui/react-") &&
+      packageName !== "@openagentui/react-native")
   );
 }
 
@@ -255,8 +255,8 @@ export function validateNativeFlavorContent(
       const name = getAssistantRegistryDependencyName(dependency);
       const expected =
         name && NATIVE_SHARED_REGISTRY_ITEMS.has(name)
-          ? `https://r.assistant-ui.com/${name}.json`
-          : `https://r.assistant-ui.com/native/${name}.json`;
+          ? `https://r.openagentui.dev/${name}.json`
+          : `https://r.openagentui.dev/native/${name}.json`;
       if (dependency !== expected) {
         findings.add(
           `${payload.name}: registry dependency "${dependency}" is not a native item`,
@@ -774,7 +774,7 @@ function getFlavorRegistryDependency(
 ) {
   const name = getAssistantRegistryDependencyName(dependency);
   return flavor === "base" && name
-    ? `https://r.assistant-ui.com/base/${name}.json`
+    ? `https://r.openagentui.dev/base/${name}.json`
     : dependency;
 }
 
@@ -1042,9 +1042,9 @@ export function pinWorkspaceDependencies<
   const pin = (dependency: string) => {
     const version = versions.get(dependency);
     if (version === undefined) {
-      if (dependency.startsWith("@assistant-ui/")) {
+      if (dependency.startsWith("@openagentui/")) {
         throw new Error(
-          `Dependency "${dependency}" is not a workspace package; a registry item may only depend on an @assistant-ui package this repository publishes`,
+          `Dependency "${dependency}" is not a workspace package; a registry item may only depend on an @openagentui package this repository publishes`,
         );
       }
       return dependency;
@@ -1461,7 +1461,7 @@ export function validateRegistryInstallMetadata(
           !installContext.packages.has(packageName)
         ) {
           findings.add(
-            `${item.name}: ${file.path} imports package "${packageName}", but it is not declared in dependencies/devDependencies or a transitive assistant-ui registry dependency`,
+            `${item.name}: ${file.path} imports package "${packageName}", but it is not declared in dependencies/devDependencies or a transitive openagentui registry dependency`,
           );
         }
       }
@@ -1470,7 +1470,7 @@ export function validateRegistryInstallMetadata(
     for (const packageName of collectCssPackageImports(item.css)) {
       if (!installContext.packages.has(packageName)) {
         findings.add(
-          `${item.name}: registry css imports package "${packageName}", but it is not declared in dependencies/devDependencies or a transitive assistant-ui registry dependency`,
+          `${item.name}: registry css imports package "${packageName}", but it is not declared in dependencies/devDependencies or a transitive openagentui registry dependency`,
         );
       }
     }
@@ -1664,8 +1664,8 @@ export async function buildRegistry(
 
   const registryIndex = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
-    name: "assistant-ui",
-    homepage: "https://assistant-ui.com",
+    name: "openagentui",
+    homepage: "https://openagentui.dev",
     items: pinAll(radixRegistry.map(stripRegistryDependencyUsageExemptions)),
   };
 

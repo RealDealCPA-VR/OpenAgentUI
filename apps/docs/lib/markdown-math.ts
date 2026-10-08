@@ -1,7 +1,7 @@
 import {
   escapeCurrencyDollars,
   normalizeMathDelimiters,
-} from "@assistant-ui/react-markdown";
+} from "@openagentui/react-markdown";
 
 const CODE_FENCE_OPEN = /^ {0,3}(`{3,}|~{3,})/;
 const CODE_FENCE_CLOSE = /^ {0,3}(`{3,}|~{3,})[ \t\r]*$/;

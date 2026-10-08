@@ -5,8 +5,8 @@ import {
   useAssistantInstructions,
   useAui,
   useAuiEvent,
-} from "@assistant-ui/react";
-import { getThreadMessageTokenUsage } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { getThreadMessageTokenUsage } from "@openagentui/ai-sdk";
 import { useCurrentPage } from "@/components/pages/docs/contexts/current-page";
 import { analytics } from "@/lib/analytics";
 import {

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useActionBarFeedbackPositive } from "@assistant-ui/core/react";
+import { useActionBarFeedbackPositive } from "@openagentui/core/react";
 import {
   Pressable,
   type PressableProps,

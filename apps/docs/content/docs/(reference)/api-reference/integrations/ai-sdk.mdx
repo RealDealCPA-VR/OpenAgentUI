@@ -1,6 +1,6 @@
 ---
-title: "@assistant-ui/ai-sdk"
-description: Vercel AI SDK runtime hooks, chat transports, and message conversion utilities for assistant-ui applications.
+title: "@openagentui/ai-sdk"
+description: Vercel AI SDK runtime hooks, chat transports, and message conversion utilities for openagentui applications.
 ---
 
 import { aiSdk_AISDKChat, aiSdk_AISDKThreads, aiSdk_AISDKToolkit, aiSdk_AssistantChatTransport, aiSdk_createResumableSessionStorage, aiSdk_getThreadMessageTokenUsage, aiSdk_injectQuoteContext, aiSdk_unstable_injectInteractableContext, aiSdk_useAISDKRuntime, aiSdk_useChatRuntime } from "@/generated/integrationTypeDocs";
@@ -19,7 +19,7 @@ import { aiSdk_AISDKChat, aiSdk_AISDKThreads, aiSdk_AISDKToolkit, aiSdk_Assistan
 `AuiConfig` entry that runs the AI SDK chat as the `threads` scope. Hosts the
 same orchestration as `useChatRuntime` inside the client's own resource tree,
 so it works with any `AssistantClient` host, React or not. Single thread; the
-multi-thread and assistant-cloud surface is [AISDKThreads](/docs/api-reference/integrations/ai-sdk#aisdkthreads). The chat
+multi-thread and openagentui-cloud surface is [AISDKThreads](/docs/api-reference/integrations/ai-sdk#aisdkthreads). The chat
 id is captured when the entry mounts, so a later `id` change in the options
 has no effect.
 
@@ -74,7 +74,7 @@ sees the quoted text that the user is referring to.
 
 ```ts
 import { convertToModelMessages, streamText } from "ai";
-import { injectQuoteContext } from "@assistant-ui/ai-sdk";
+import { injectQuoteContext } from "@openagentui/ai-sdk";
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
@@ -114,7 +114,7 @@ only the fields that changed since the model's last known state.
 
 ```ts
 import { convertToModelMessages, streamText } from "ai";
-import { unstable_injectInteractableContext } from "@assistant-ui/ai-sdk";
+import { unstable_injectInteractableContext } from "@openagentui/ai-sdk";
 
 export async function POST(req: Request) {
   const { messages } = await req.json();

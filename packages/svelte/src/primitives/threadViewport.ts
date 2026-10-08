@@ -3,7 +3,7 @@ import { createSubscriber } from "svelte/reactivity";
 import { getAuiContext } from "../context";
 import { useAuiEvent } from "../useAuiEvent";
 import { useAuiState } from "../useAuiState";
-import { createThreadViewportAutoScroll } from "@assistant-ui/store/client";
+import { createThreadViewportAutoScroll } from "@openagentui/store/client";
 
 /**
  * Builder for the scrollable thread container. Call during component

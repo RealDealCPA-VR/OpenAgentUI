@@ -1,6 +1,6 @@
 ---
 title: Quickstart
-description: Build a streaming Nuxt chat with Vue, assistant-ui, and the AI SDK.
+description: Build a streaming Nuxt chat with Vue, openagentui, and the AI SDK.
 ---
 
 This guide adds a streaming chat to a Nuxt app in about five minutes. The runtime stays in a client-only component and the model call stays in a Nitro route.
@@ -13,10 +13,10 @@ This guide adds a streaming chat to a Nuxt app in about five minutes. The runtim
 Install the Vue binding, the AI SDK runtime, and an AI SDK provider:
 
 ```sh
-pnpm add @assistant-ui/vue @assistant-ui/ai-sdk ai @ai-sdk/openai react
+pnpm add @openagentui/vue @openagentui/ai-sdk ai @ai-sdk/openai react
 ```
 
-The AI SDK runtime runs on `react`. It is an optional peer of `@assistant-ui/ai-sdk`, so it does not install on its own.
+The AI SDK runtime runs on `react`. It is an optional peer of `@openagentui/ai-sdk`, so it does not install on its own.
 
 Add your provider key to `.env`:
 
@@ -31,12 +31,12 @@ OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 The styled components install with the [shadcn-vue](https://www.shadcn-vue.com) CLI. If the app does not use shadcn-vue yet, set up Tailwind CSS and run `npx shadcn-vue@latest init` as the [shadcn-vue Nuxt guide](https://www.shadcn-vue.com/docs/installation/nuxt) describes.
 
-Then add the assistant-ui registry once in `components.json`:
+Then add the openagentui registry once in `components.json`:
 
 ```json title="components.json"
 {
   "registries": {
-    "@assistant-ui": "https://r.assistant-ui.com/vue/{name}.json"
+    "@openagentui": "https://r.openagentui.dev/vue/{name}.json"
   }
 }
 ```
@@ -44,10 +44,10 @@ Then add the assistant-ui registry once in `components.json`:
 Install the chat surface:
 
 ```sh
-npx shadcn-vue@latest add @assistant-ui/thread @assistant-ui/thread-list
+npx shadcn-vue@latest add @openagentui/thread @openagentui/thread-list
 ```
 
-This writes the Vue components to `app/components/assistant-ui` and installs their dependencies.
+This writes the Vue components to `app/components/openagentui` and installs their dependencies.
 
   </Step>
   <Step>
@@ -58,9 +58,9 @@ Use a `.client.vue` file so the runtime is created only in the browser:
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
-import Thread from "~/components/assistant-ui/thread.vue";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
+import Thread from "~/components/openagentui/thread.vue";
 
 const config = AuiConfig({
   threads: AISDKChat(),

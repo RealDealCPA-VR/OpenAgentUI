@@ -30,7 +30,7 @@ describe("handleRuntimeAction", () => {
         handleRuntimeAction("thread list archive", () => Promise.reject(error)),
       ).rejects.toBe(error);
       expect(consoleError).toHaveBeenCalledExactlyOnceWith(
-        "[assistant-ui] thread list archive failed:",
+        "[openagentui] thread list archive failed:",
         error,
       );
     } finally {

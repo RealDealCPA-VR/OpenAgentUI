@@ -1,5 +1,5 @@
 import { Pressable, type PressableProps } from "react-native";
-import { useComposerCancel } from "@assistant-ui/core/react";
+import { useComposerCancel } from "@openagentui/core/react";
 
 export type ComposerCancelProps = Omit<
   PressableProps,

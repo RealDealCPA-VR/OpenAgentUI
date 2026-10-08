@@ -4,7 +4,7 @@ import { MyRuntimeProvider } from "@/app/MyRuntimeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "assistant-ui virtualized thread",
+  title: "openagentui virtualized thread",
   description: "Long threads with @tanstack/react-virtual",
 };
 

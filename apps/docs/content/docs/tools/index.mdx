@@ -1,10 +1,10 @@
 ---
 title: Tools
-description: Give the model callable capabilities with assistant-ui toolkits. Define frontend, backend, human, and provider tools, render tool calls as interactive UI, and connect MCP servers.
+description: Give the model callable capabilities with openagentui toolkits. Define frontend, backend, human, and provider tools, render tool calls as interactive UI, and connect MCP servers.
 platforms: ["react"]
 ---
 
-Tools are how the model takes action: fetch data, call an API, query a database, drive your UI, or run a workflow. In assistant-ui you declare tools in a **toolkit**, a named map where each key is the tool name the model sees and each value describes the tool's schema, where it runs, and how its call renders in the chat.
+Tools are how the model takes action: fetch data, call an API, query a database, drive your UI, or run a workflow. In openagentui you declare tools in a **toolkit**, a named map where each key is the tool name the model sees and each value describes the tool's schema, where it runs, and how its call renders in the chat.
 
 ## Start here
 
@@ -37,7 +37,7 @@ In a `"use generative"` file every tool declares an `execute` and the kind is
 
 ## Rendering AI output as UI
 
-assistant-ui has a few ways to turn model output into React UI. Pick by **who decides what renders**:
+openagentui has a few ways to turn model output into React UI. Pick by **who decides what renders**:
 
 | You want… | Use | The decider |
 | --- | --- | --- |

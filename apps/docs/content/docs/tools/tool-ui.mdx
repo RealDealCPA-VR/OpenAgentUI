@@ -1,6 +1,6 @@
 ---
 title: Tool UI
-description: Render AI tool calls as custom React components that show loading, result, and interactive states for each tool invocation in assistant-ui.
+description: Render AI tool calls as custom React components that show loading, result, and interactive states for each tool invocation in openagentui.
 platforms: ["react"]
 ---
 
@@ -36,7 +36,7 @@ If you're creating tools on the client side, register them in a toolkit with `To
 ```tsx title="app/toolkit.tsx"
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
 
 export default defineToolkit({
@@ -70,8 +70,8 @@ export default defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import toolkit from "./toolkit";
 
 function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -128,7 +128,7 @@ This example uses a backend toolkit entry for a tool that the server defines. Th
 ### Create a Tool UI Renderer
 
 ```tsx
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import { z } from "zod";
 
 type WeatherArgs = {
@@ -266,7 +266,7 @@ export async function POST(req: Request) {
 Create standalone tool UI components:
 
 ```tsx
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 
 export const WebSearchToolUI: ToolCallMessagePartComponent<
   { query: string },
@@ -322,7 +322,7 @@ When a renderer needs component props or state, build the toolkit in a hook and 
 ```tsx title="inventory-toolkit.tsx"
 "use client";
 
-import { defineToolkit, useInlineRender } from "@assistant-ui/react";
+import { defineToolkit, useInlineRender } from "@openagentui/react";
 import { useMemo } from "react";
 
 export function useInventoryToolkit(productId: string, productName: string) {
@@ -352,7 +352,7 @@ export function useInventoryToolkit(productId: string, productName: string) {
 ```
 
 ```tsx title="ProductPage.tsx"
-import { AuiConfig, AuiProvider, Tools, useAui } from "@assistant-ui/react";
+import { AuiConfig, AuiProvider, Tools, useAui } from "@openagentui/react";
 import { useInventoryToolkit } from "./inventory-toolkit";
 
 function ProductPage({ productId, productName }) {
@@ -422,7 +422,7 @@ A frontend tool can pause during `execute` and wait for the user. Call `human()`
 ```tsx title="app/approval-toolkit.tsx"
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { useState } from "react";
 import { z } from "zod";
 
@@ -504,11 +504,11 @@ export default defineToolkit({
 
 ### Server-side approval gates
 
-Some runtimes (notably AI SDK v7's `toolApproval`-gated tools) pause on the server and emit an approval request that the client must acknowledge before the tool runs. assistant-ui surfaces this on the tool part as `approval` and exposes `respondToApproval({ approved, reason? })` on the renderer:
+Some runtimes (notably AI SDK v7's `toolApproval`-gated tools) pause on the server and emit an approval request that the client must acknowledge before the tool runs. openagentui surfaces this on the tool part as `approval` and exposes `respondToApproval({ approved, reason? })` on the renderer:
 
 ```tsx
 import { useState } from "react";
-import type { ToolApprovalResponse } from "@assistant-ui/react";
+import type { ToolApprovalResponse } from "@openagentui/react";
 
 const toolkit = defineToolkit({
   deploy: {
@@ -594,7 +594,7 @@ Renderers respond with the chosen option instead of a boolean; the option's kind
 respondToApproval({ optionId: "session" });
 ```
 
-The runtime receives `{ approvalId, approved, optionId, text?, reason? }`, so a host that persists "always allow" decisions can key its store off `optionId`. Persistence is entirely host-owned: assistant-ui never stores a decision and never auto-answers future approvals. `grants` lists the patterns an option would persist (shown to the user before they commit), and `confirm` opts the option into a confirmation step. Options with custom `_`-prefixed kinds must be answered with an explicit `approved` value, optionally alongside the `optionId` so the chosen option is still recorded. The default `ToolFallback` bar renders them next to the known kinds and sends `{ optionId, approved: true }` when one is chosen, since picking a declared option is an answer rather than a refusal; it also keeps a Deny control available whenever a decision request declares no reject-kind option.
+The runtime receives `{ approvalId, approved, optionId, text?, reason? }`, so a host that persists "always allow" decisions can key its store off `optionId`. Persistence is entirely host-owned: openagentui never stores a decision and never auto-answers future approvals. `grants` lists the patterns an option would persist (shown to the user before they commit), and `confirm` opts the option into a confirmation step. Options with custom `_`-prefixed kinds must be answered with an explicit `approved` value, optionally alongside the `optionId` so the chosen option is still recorded. The default `ToolFallback` bar renders them next to the known kinds and sends `{ optionId, approved: true }` when one is chosen, since picking a declared option is an answer rather than a refusal; it also keeps a Deny control available whenever a decision request declares no reject-kind option.
 
 ### Approval questions
 
@@ -731,7 +731,7 @@ The same `render` shape works inside the [`Tools()`](/docs/tools/defining-tools)
 If the component should sit *outside* the message parts (for example, a card attached under the avatar block rather than inline with text), gate at the message level with [`AuiIf`](/docs/api-reference/primitives/assistant-if) and read `s.message.status`:
 
 ```tsx
-import { MessagePrimitive, AuiIf, useAuiState } from "@assistant-ui/react";
+import { MessagePrimitive, AuiIf, useAuiState } from "@openagentui/react";
 
 function PostMessageCard() {
   const parts = useAuiState((s) => s.message.parts);
@@ -765,7 +765,7 @@ For the opposite pattern (showing partial data as it streams in), see [Field-Lev
 Use `useToolArgsStatus` to distinguish argument streaming from tool execution. The hook returns a `propStatus` map where each top-level key in the args object resolves from `"streaming"` to `"complete"` as the partial JSON arrives, and `argsStatus` tracks completion of the full arguments object. Call it inside a tool-call message part context:
 
 ```tsx
-import { useToolArgsStatus } from "@assistant-ui/react";
+import { useToolArgsStatus } from "@openagentui/react";
 
 const toolkit = defineToolkit({
   submitForm: {
@@ -968,7 +968,7 @@ const toolkit = defineToolkit({
 });
 ```
 
-Some interactions are recorded for you: the answer passed to `resume()` is recorded as a `human-response` once the runtime accepts it, and every action that `present` or `prompt_user` output of `@assistant-ui/react-generative-ui` dispatches to its action registry is recorded as an `action`.
+Some interactions are recorded for you: the answer passed to `resume()` is recorded as a `human-response` once the runtime accepts it, and every action that `present` or `prompt_user` output of `@openagentui/react-generative-ui` dispatches to its action registry is recorded as an `action`.
 
 Recording is best effort. A payload must be plain JSON of at most 16,384 characters, and an `action` payload must be a JSON object. A tool call keeps its latest 32 entries within 65,536 characters (earlier ones are counted in `omitted`). The promise rejects when a runtime cannot record or a payload is invalid, so catch it as the example does; a failed recording never affects the user's action. The local runtime and the AI SDK, AG-UI and A2A runtimes record interactions. Runtimes built on `useExternalStoreRuntime` under a cloud thread list, such as LangGraph, LangChain and ADK, keep them on the cloud copy of the conversation, which is on unless the `AssistantCloud` client sets `telemetry: { messages: false }` or `telemetry: false`; their own messages do not carry them. A readonly thread ignores them. Interactions are never sent to the model or the agent.
 
@@ -1055,7 +1055,7 @@ The assistant's text introduces the tool UI and the tool UI carries the structur
 
 ## Data-Part Generative UI
 
-Alongside tool-call rendering, assistant-ui supports a second generative UI mechanism based on `DataMessagePart`. Instead of attaching UI to a tool invocation, the backend (or the LangGraph graph) emits named data events that are appended as `{ type: "data", name, data }` parts on the parent assistant message.
+Alongside tool-call rendering, openagentui supports a second generative UI mechanism based on `DataMessagePart`. Instead of attaching UI to a tool invocation, the backend (or the LangGraph graph) emits named data events that are appended as `{ type: "data", name, data }` parts on the parent assistant message.
 
 **When to choose which:**
 
@@ -1067,7 +1067,7 @@ If you want a component to appear only after the message is complete and you con
 Use `makeAssistantDataUI` to register a renderer for a named data part:
 
 ```tsx
-import { makeAssistantDataUI } from "@assistant-ui/react";
+import { makeAssistantDataUI } from "@openagentui/react";
 
 type ChartProps = { series: number[]; title: string };
 

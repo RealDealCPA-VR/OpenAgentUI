@@ -1,6 +1,6 @@
 ---
 title: AI SDK v7
-description: Integrate Vercel AI SDK v7 with assistant-ui for streaming chat.
+description: Integrate Vercel AI SDK v7 with openagentui for streaming chat.
 ---
 
 This page covers the current integration, which requires `ai@^7` and `@ai-sdk/react@^4`. For older versions see the [overview](/docs/runtimes/ai-sdk/overview).
@@ -48,17 +48,17 @@ npm init -y
 <PlatformTabs>
 <Tab value="React">
 
-<InstallCommand npm={["@assistant-ui/react", "@assistant-ui/ai-sdk", "ai@^7", "@ai-sdk/react@^4", "@ai-sdk/openai", "zod"]} />
+<InstallCommand npm={["@openagentui/react", "@openagentui/ai-sdk", "ai@^7", "@ai-sdk/react@^4", "@ai-sdk/openai", "zod"]} />
 
 </Tab>
 <Tab value="React Native">
 
-<InstallCommand expo={["@assistant-ui/react-native", "@assistant-ui/ai-sdk", "ai@^7", "@ai-sdk/react@^4", "@ai-sdk/openai", "zod"]} />
+<InstallCommand expo={["@openagentui/react-native", "@openagentui/ai-sdk", "ai@^7", "@ai-sdk/react@^4", "@ai-sdk/openai", "zod"]} />
 
 </Tab>
 <Tab value="React Ink">
 
-<InstallCommand npm={["@assistant-ui/react-ink", "@assistant-ui/ai-sdk", "ai@^7", "@ai-sdk/react@^4", "@ai-sdk/openai", "zod", "ink", "react"]} />
+<InstallCommand npm={["@openagentui/react-ink", "@openagentui/ai-sdk", "ai@^7", "@ai-sdk/react@^4", "@ai-sdk/openai", "zod", "ink", "react"]} />
 
 </Tab>
 </PlatformTabs>
@@ -120,9 +120,9 @@ export async function POST(req: Request) {
 ```tsx title="@/app/page.tsx"
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 export default function Home() {
   const runtime = useChatRuntime();
@@ -140,13 +140,13 @@ export default function Home() {
 <Tab value="React Native">
 
 ```tsx title="app/index.tsx"
-import { AssistantRuntimeProvider } from "@assistant-ui/react-native";
+import { AssistantRuntimeProvider } from "@openagentui/react-native";
 import {
   AssistantChatTransport,
   useChatRuntime,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { View } from "react-native";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const API_URL = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000";
 
@@ -170,11 +170,11 @@ export default function Home() {
 <Tab value="React Ink">
 
 ```tsx title="app.tsx"
-import { AssistantRuntimeProvider } from "@assistant-ui/react-ink";
+import { AssistantRuntimeProvider } from "@openagentui/react-ink";
 import {
   AssistantChatTransport,
   useChatRuntime,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { Box } from "ink";
 import { Thread } from "./components/thread.js";
 
@@ -231,7 +231,7 @@ Follow the [Ink setup](/docs/ink) to add a terminal Thread, composer, and suppor
 import { openai } from "@ai-sdk/openai";
 import { streamText, convertToModelMessages, zodSchema, createUIMessageStreamResponse, toUIMessageStream } from "ai";
 import type { UIMessage } from "ai";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 
 export async function POST(req: Request) {
   const {
@@ -298,7 +298,7 @@ Without a `stopWhen`, AI SDK runs a single inference step. Set `stepCountIs` (or
 
 ## Server-side tool approval
 
-AI SDK v7 gates tool execution with the call-level `toolApproval` option. The server pauses, emits an `approval-requested` part, and resumes once the client posts an approval response. assistant-ui surfaces the gate as `approval` on the tool part and adds a `respondToApproval` prop on the renderer, so tool components stay decoupled from `chatHelpers`.
+AI SDK v7 gates tool execution with the call-level `toolApproval` option. The server pauses, emits an `approval-requested` part, and resumes once the client posts an approval response. openagentui surfaces the gate as `approval` on the tool part and adds a `respondToApproval` prop on the renderer, so tool components stay decoupled from `chatHelpers`.
 
 On the backend, configure the gate with the call-level `toolApproval` option (per-tool status or function):
 
@@ -338,10 +338,10 @@ On the client, configure `useChat` with `sendAutomaticallyWhen: lastAssistantMes
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useAISDKRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useAISDKRuntime } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithApprovalResponses } from "ai";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function Page() {
   const chat = useChat({
@@ -369,10 +369,10 @@ import {
   defineToolkit,
   Tools,
   type ToolApprovalResponse,
-} from "@assistant-ui/react";
-import { useAISDKRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useAISDKRuntime } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithApprovalResponses } from "ai";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const toolkit = defineToolkit({
   deploy: {
@@ -430,7 +430,7 @@ See the [tool UI guide](/docs/tools/tool-ui#server-side-approval-gates) for the 
 
 ## Quote context
 
-assistant-ui's composer can attach quote metadata to user messages (e.g. when the user selects text and clicks "Quote"). On the server, `injectQuoteContext` flattens that metadata into a markdown blockquote prefix so the LLM sees the quoted text:
+openagentui's composer can attach quote metadata to user messages (e.g. when the user selects text and clicks "Quote"). On the server, `injectQuoteContext` flattens that metadata into a markdown blockquote prefix so the LLM sees the quoted text:
 
 ```ts title="@/app/api/chat/route.ts"
 import {
@@ -439,7 +439,7 @@ import {
   createUIMessageStreamResponse,
   toUIMessageStream,
 } from "ai";
-import { injectQuoteContext } from "@assistant-ui/ai-sdk";
+import { injectQuoteContext } from "@openagentui/ai-sdk";
 import { openai } from "@ai-sdk/openai";
 
 export async function POST(req: Request) {
@@ -462,7 +462,7 @@ export async function POST(req: Request) {
 
 ```ts title="@/app/api/chat/route.ts"
 import { streamText, convertToModelMessages, createUIMessageStreamResponse, toUIMessageStream } from "ai";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 
 export async function POST(req: Request) {
   const { messages, tools, config } = await req.json();
@@ -491,7 +491,7 @@ export async function POST(req: Request) {
 ```tsx title="@/components/TokenCounter.tsx"
 "use client";
 
-import { useThreadTokenUsage } from "@assistant-ui/ai-sdk";
+import { useThreadTokenUsage } from "@openagentui/ai-sdk";
 
 export function TokenCounter() {
   const usage = useThreadTokenUsage();
@@ -557,8 +557,8 @@ For server-side cloud persistence without writing an adapter, see the [Assistant
 ```tsx
 "use client";
 
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import type { ThreadHistoryAdapter } from "@assistant-ui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import type { ThreadHistoryAdapter } from "@openagentui/react";
 
 const historyAdapter: ThreadHistoryAdapter = {
   // Required by the type — unused by useChatRuntime.
@@ -603,7 +603,7 @@ Each persisted row follows `{ id, parent_id, format, content }`. `fmt.encode` pr
 import {
   useChatRuntime,
   AssistantChatTransport,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 
 const runtime = useChatRuntime({
   transport: new AssistantChatTransport({ api: "/my-custom-api/chat" }),
@@ -611,7 +611,7 @@ const runtime = useChatRuntime({
 ```
 
 `useChatRuntime`, `AISDKChat`, and `AISDKThreads` clone
-`AssistantChatTransport` instances per thread so their assistant-ui runtime
+`AssistantChatTransport` instances per thread so their openagentui runtime
 wiring stays isolated. Subclasses that keep additional constructor arguments or
 instance fields should override `__internal_clone()` to preserve that state.
 Other AI SDK `ChatTransport` instances passed directly are shared as-is;
@@ -741,17 +741,17 @@ const runtime = useChatRuntime({
 
 ## Advanced: useAISDKRuntime
 
-When you need direct access to the `useChat` instance (e.g. to share it with non-assistant-ui code), drop down to `useAISDKRuntime`:
+When you need direct access to the `useChat` instance (e.g. to share it with non-openagentui code), drop down to `useAISDKRuntime`:
 
 ```tsx
 import { useChat } from "@ai-sdk/react";
-import { useAISDKRuntime } from "@assistant-ui/ai-sdk";
+import { useAISDKRuntime } from "@openagentui/ai-sdk";
 
 const chat = useChat();
 const runtime = useAISDKRuntime(chat);
 ```
 
-`useAISDKRuntime` does not provide `cloud` or the higher-level adapter slots; those are part of `useChatRuntime`. If you need both access to the `useChat` state and cloud thread support, use `useChatRuntime` and read the chat state through assistant-ui hooks.
+`useAISDKRuntime` does not provide `cloud` or the higher-level adapter slots; those are part of `useChatRuntime`. If you need both access to the `useChat` state and cloud thread support, use `useChatRuntime` and read the chat state through openagentui hooks.
 
 `useAISDKRuntime` accepts `joinStrategy`, `onResume`, `onRespondToToolApproval`, `messageRepository`, and `unstable_onBranchChange` (see [Runtime options](#runtime-options)) plus one option of its own, `cancelPendingToolCallsOnSend`:
 
@@ -785,9 +785,9 @@ When enabled (the default), sending a new message marks any pending interactive 
 
 ## Example
 
-[`examples/with-ai-sdk-v7`](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-ai-sdk-v7) shows a complete reference implementation.
+[`examples/with-ai-sdk-v7`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-ai-sdk-v7) shows a complete reference implementation.
 
-For responses that should survive a page reload mid-stream, see [Resumable streams](/docs/guides/resumable-streams), which wraps the same v7 byte stream in `assistant-stream/resumable`.
+For responses that should survive a page reload mid-stream, see [Resumable streams](/docs/guides/resumable-streams), which wraps the same v7 byte stream in `openagentui-stream/resumable`.
 
 ## Next
 

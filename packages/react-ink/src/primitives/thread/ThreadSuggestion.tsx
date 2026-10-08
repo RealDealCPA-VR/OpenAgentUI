@@ -1,4 +1,4 @@
-import { useSuggestionTrigger } from "@assistant-ui/core/react";
+import { useSuggestionTrigger } from "@openagentui/core/react";
 import { Pressable, type PressableProps } from "../internal/Pressable";
 
 export type ThreadSuggestionProps = Omit<

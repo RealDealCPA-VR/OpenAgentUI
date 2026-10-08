@@ -33,7 +33,7 @@ const { aui, getProvider, resetProvider } = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
+vi.mock("@openagentui/store", async (importOriginal) => ({
   ...(await importOriginal()),
   useAui: () => aui,
 }));

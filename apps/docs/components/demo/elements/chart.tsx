@@ -1,6 +1,6 @@
 "use client";
 
-import { Chart } from "@/components/assistant-ui/elements/chart";
+import { Chart } from "@/components/openagentui/elements/chart";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const POINTS = [

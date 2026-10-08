@@ -1,7 +1,7 @@
 "use client";
 
-import { useAuiState } from "@assistant-ui/store";
-import type { MessageTiming } from "@assistant-ui/core";
+import { useAuiState } from "@openagentui/store";
+import type { MessageTiming } from "@openagentui/core";
 
 /**
  * Hook that returns timing information for the current assistant message.

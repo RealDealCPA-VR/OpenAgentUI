@@ -1,6 +1,6 @@
 "use client";
 
-import { RESUMABLE_STREAM_ID_HEADER as RESUMABLE_STREAM_ID_HEADER_VALUE } from "assistant-stream/resumable";
+import { RESUMABLE_STREAM_ID_HEADER as RESUMABLE_STREAM_ID_HEADER_VALUE } from "openagentui-stream/resumable";
 
 /** Response header used by the [Resumable Streams](/docs/guides/resumable-streams) server and client wiring. */
 export const RESUMABLE_STREAM_ID_HEADER = RESUMABLE_STREAM_ID_HEADER_VALUE;
@@ -82,10 +82,7 @@ export function createResumableSessionStorage(options?: {
       try {
         subscription.listener();
       } catch (error) {
-        console.error(
-          "[assistant-ui] resumable storage listener failed",
-          error,
-        );
+        console.error("[openagentui] resumable storage listener failed", error);
       }
     }
   };

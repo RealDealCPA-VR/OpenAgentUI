@@ -9,10 +9,10 @@
     "start": "next start"
   },
   "dependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/react-a2a": "workspace:*",
-    "@assistant-ui/react-markdown": "workspace:*",
-    "@assistant-ui/ui": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/react-a2a": "workspace:*",
+    "@openagentui/react-markdown": "workspace:*",
+    "@openagentui/ui": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
     "lucide-react": "^1.49.0",
@@ -21,8 +21,8 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "@assistant-ui/next": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/next": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",

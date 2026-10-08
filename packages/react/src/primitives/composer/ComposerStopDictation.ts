@@ -1,13 +1,13 @@
 "use client";
 
 import { useCallback } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type {
   ActionButtonElement,
   ActionButtonProps,
 } from "../../utils/createActionButton";
 import { createActionButton } from "../../utils/createActionButton";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 const useComposerStopDictation = () => {
   const aui = useAui();

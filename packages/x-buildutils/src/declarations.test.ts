@@ -71,7 +71,7 @@ test("outputSpecifier rewrites only relative specifiers that resolve to emitted 
   assert.equal(resolve("./data.json"), "./data.json");
   assert.equal(resolve("./missing"), "./missing");
   assert.equal(resolve("react"), "react");
-  assert.equal(resolve("@assistant-ui/core/react"), "@assistant-ui/core/react");
+  assert.equal(resolve("@openagentui/core/react"), "@openagentui/core/react");
 });
 
 test("emitDeclarations writes one deterministic declaration per entry with runtime specifiers", (t) => {

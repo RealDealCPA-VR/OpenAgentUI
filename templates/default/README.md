@@ -1,4 +1,4 @@
-This is the [assistant-ui](https://github.com/assistant-ui/assistant-ui) starter project.
+This is the [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project.
 
 ## Getting Started
 

@@ -9,19 +9,19 @@ RegenerateMenu turns the regenerate action into a small picker: open it, see the
 
 <RuntimeMode>
 
-`aui.message.reload(config)` starts a new run for the current turn, and `config.runConfig.custom` reaches your model adapter untouched. assistant-ui has no built-in model field on a run. With `useLocalRuntime` and a `ChatModelAdapter`, `run(options)` receives the config as `options.runConfig`, so the adapter can read the pick for that run without changing what later turns use.
+`aui.message.reload(config)` starts a new run for the current turn, and `config.runConfig.custom` reaches your model adapter untouched. openagentui has no built-in model field on a run. With `useLocalRuntime` and a `ChatModelAdapter`, `run(options)` receives the config as `options.runConfig`, so the adapter can read the pick for that run without changing what later turns use.
 
 <Steps>
   <Step>
 
 ### Wire picks to reload
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
 import { useState } from "react";
-import { useAui } from "@assistant-ui/react";
-import { RegenerateMenu, type RegenerateOption } from "@/components/assistant-ui/elements/regenerate-menu";
+import { useAui } from "@openagentui/react";
+import { RegenerateMenu, type RegenerateOption } from "@/components/openagentui/elements/regenerate-menu";
 
 const MODELS: RegenerateOption[] = [
   { id: "opus", label: "Try again with Opus 5", detail: "slower" },
@@ -54,7 +54,7 @@ function RegenerateWith({ currentModel }: { currentModel: string }) {
 ### Read the pick on the model side
 
 ```tsx title="lib/model-adapter.ts"
-import type { ChatModelAdapter } from "@assistant-ui/react";
+import type { ChatModelAdapter } from "@openagentui/react";
 
 export const adapter: ChatModelAdapter = {
   async run({ messages, runConfig, abortSignal }) {
@@ -82,7 +82,7 @@ Standalone, the menu is fully controlled: open state, the current pick, and what
 "use client";
 
 import { useState } from "react";
-import { RegenerateMenu, type RegenerateOption } from "@/components/assistant-ui/elements/regenerate-menu";
+import { RegenerateMenu, type RegenerateOption } from "@/components/openagentui/elements/regenerate-menu";
 
 const OPTIONS: RegenerateOption[] = [
   { id: "opus", label: "Try again with Opus 5", detail: "slower" },
@@ -177,7 +177,7 @@ Both lanes take `className` on the root. The dropdown reads the shared `floating
 | Selector / method | Type | Description |
 |--------------------|------|-------------|
 | `aui.message.reload(config?)` | `(config?: { runConfig?: RunConfig }) => void` | Starts a new run for this turn. `runConfig.custom` reaches your `ChatModelAdapter` as `options.runConfig.custom`, untouched. |
-| `RunConfig` | `{ custom?: Record<string, unknown> }` | The shape `reload`'s `runConfig` accepts. assistant-ui has no built-in model field; the key you read back is your own convention. |
+| `RunConfig` | `{ custom?: Record<string, unknown> }` | The shape `reload`'s `runConfig` accepts. openagentui has no built-in model field; the key you read back is your own convention. |
 
 </RuntimeMode>
 

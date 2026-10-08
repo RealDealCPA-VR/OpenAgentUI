@@ -4,7 +4,7 @@ import { useMemo, type ReactNode } from "react";
 import {
   AssistantRuntimeProvider,
   SimpleImageAttachmentAdapter,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { feedbackAdapter } from "@/lib/feedback-adapter";
 import { useDocsChatRuntime } from "./chat-runtime";
 import {

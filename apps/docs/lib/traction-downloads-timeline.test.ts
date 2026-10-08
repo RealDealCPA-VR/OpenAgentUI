@@ -62,7 +62,7 @@ describe("fetchDownloadsTimeline", () => {
   });
 
   it("reads the year as a settled window it can hold plus the unsettled tail", async () => {
-    await fetchDownloadsTimeline("@assistant-ui/react");
+    await fetchDownloadsTimeline("@openagentui/react");
 
     expect(windows()).toEqual([
       "2025-09-01:2026-08-31",
@@ -79,7 +79,7 @@ describe("fetchDownloadsTimeline", () => {
       end: "2026-08-30",
     });
 
-    await fetchDownloadsTimeline("@assistant-ui/react");
+    await fetchDownloadsTimeline("@openagentui/react");
 
     expect(windows()).toEqual([
       "2025-08-01:2026-07-31",
@@ -96,7 +96,7 @@ describe("fetchDownloadsTimeline", () => {
       end: "2026-09-29",
     });
 
-    const points = await fetchDownloadsTimeline("@assistant-ui/react");
+    const points = await fetchDownloadsTimeline("@openagentui/react");
 
     expect(windows()).toEqual([
       "2025-09-01:2026-08-31",
@@ -116,7 +116,7 @@ describe("fetchDownloadsTimeline", () => {
       end: "2026-09-30",
     });
 
-    const points = await fetchDownloadsTimeline("@assistant-ui/react");
+    const points = await fetchDownloadsTimeline("@openagentui/react");
 
     expect(windows()).toEqual(["2025-09-01:2026-09-30"]);
     expect(points).toHaveLength(13);
@@ -124,7 +124,7 @@ describe("fetchDownloadsTimeline", () => {
   });
 
   it("covers thirteen months, one point each", async () => {
-    const points = await fetchDownloadsTimeline("@assistant-ui/react");
+    const points = await fetchDownloadsTimeline("@openagentui/react");
 
     expect(points.map((point) => point.date)).toEqual([
       "2025-09",
@@ -151,7 +151,7 @@ describe("fetchDownloadsTimeline", () => {
         ),
     );
 
-    const points = await fetchDownloadsTimeline("@assistant-ui/react");
+    const points = await fetchDownloadsTimeline("@openagentui/react");
 
     expect(points).toEqual([]);
   });
@@ -164,7 +164,7 @@ describe("fetchDownloadsTimeline", () => {
         ),
     );
 
-    const points = await fetchDownloadsTimeline("@assistant-ui/react");
+    const points = await fetchDownloadsTimeline("@openagentui/react");
 
     expect(points).toEqual([]);
   });
@@ -172,13 +172,13 @@ describe("fetchDownloadsTimeline", () => {
   it("returns nothing when npm is unreachable for both windows", async () => {
     getDownloadsRange.mockResolvedValue([]);
 
-    await expect(
-      fetchDownloadsTimeline("@assistant-ui/react"),
-    ).resolves.toEqual([]);
+    await expect(fetchDownloadsTimeline("@openagentui/react")).resolves.toEqual(
+      [],
+    );
   });
 
   it("sums whole months and projects the month in flight", async () => {
-    const points = await fetchDownloadsTimeline("@assistant-ui/react");
+    const points = await fetchDownloadsTimeline("@openagentui/react");
 
     expect(points.at(-2)).toEqual({ date: "2026-08", value: 31 * PER_DAY });
     // 8 settled days of 100 over a 30 day month, blended 8/30 with August's 3100.
@@ -193,7 +193,7 @@ describe("fetchDownloadsTimeline", () => {
       end: "2026-09-11",
     });
 
-    const points = await fetchDownloadsTimeline("@assistant-ui/react");
+    const points = await fetchDownloadsTimeline("@openagentui/react");
 
     expect(windows()).toEqual([
       "2025-09-01:2026-08-31",
@@ -212,9 +212,9 @@ describe("fetchDownloadsTimeline", () => {
   ] as const)("reads nothing when npm %s", async (_, week) => {
     getLastWeek.mockResolvedValue(week);
 
-    await expect(
-      fetchDownloadsTimeline("@assistant-ui/react"),
-    ).resolves.toEqual([]);
+    await expect(fetchDownloadsTimeline("@openagentui/react")).resolves.toEqual(
+      [],
+    );
     expect(getDownloadsRange).not.toHaveBeenCalled();
   });
 });
@@ -239,14 +239,14 @@ describe("fetchTimelineSeries", () => {
   it("keeps the series and reads nothing when npm withholds its window", async () => {
     getLastWeek.mockResolvedValue(null);
 
-    const timeline = await fetchTimelineSeries(["@assistant-ui/react"]);
+    const timeline = await fetchTimelineSeries(["@openagentui/react"]);
 
     expect(getDownloadsRange).not.toHaveBeenCalled();
     expect(timeline).toEqual({
       series: [
         {
           key: "s0",
-          pkg: "@assistant-ui/react",
+          pkg: "@openagentui/react",
           label: "react",
           chartIndex: 1,
         },
@@ -305,7 +305,7 @@ describe("fetchTimelineSeries", () => {
     });
     serveWindows();
 
-    const timeline = await fetchTimelineSeries(["@assistant-ui/react"]);
+    const timeline = await fetchTimelineSeries(["@openagentui/react"]);
 
     expect(timeline.projectedMonth).toBe("2026-09");
     expect(timeline.data.map((row) => row.date).slice(-2)).toEqual([
@@ -324,7 +324,7 @@ describe("fetchTimelineSeries", () => {
     });
     serveWindows();
 
-    const timeline = await fetchTimelineSeries(["@assistant-ui/react"]);
+    const timeline = await fetchTimelineSeries(["@openagentui/react"]);
 
     expect(timeline.projectedMonth).toBeUndefined();
     expect(timeline.data.at(-1)).toEqual({ date: "2026-09", s0: 30 * PER_DAY });

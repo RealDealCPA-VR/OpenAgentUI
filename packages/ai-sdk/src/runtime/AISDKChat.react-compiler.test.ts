@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig, createAssistantClient } from "@assistant-ui/store/client";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig, createAssistantClient } from "@openagentui/store/client";
 import { AISDKChat } from "./AISDKChat";
 import { createControlledTransport } from "./__tests__/controlled-transport";
 

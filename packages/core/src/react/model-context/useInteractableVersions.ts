@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import {
   unstable_getInteractableVersions as getInteractableVersions,
   type Unstable_InteractableVersion,

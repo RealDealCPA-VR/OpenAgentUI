@@ -4,7 +4,7 @@ description: Render very long threads with @tanstack/react-virtual, one row per 
 platforms: ["react"]
 ---
 
-Virtualization mounts only the messages near the viewport and represents the rest as empty space, so a thread with thousands of messages scrolls like one with twenty. assistant-ui does not ship a virtualized thread component; this guide shows the supported composition, extracted from a production consumer and available as a runnable example: [`examples/with-virtualized-thread`](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-virtualized-thread).
+Virtualization mounts only the messages near the viewport and represents the rest as empty space, so a thread with thousands of messages scrolls like one with twenty. openagentui does not ship a virtualized thread component; this guide shows the supported composition, extracted from a production consumer and available as a runnable example: [`examples/with-virtualized-thread`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-virtualized-thread).
 
 ## Do you need this?
 
@@ -23,7 +23,7 @@ import {
   createThreadRowsSelector,
   groupPartByType,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const selectRows = createThreadRowsSelector({
   groupBy: groupPartByType({ reasoning: ["group-reasoning"] }),
@@ -110,7 +110,7 @@ The production consumer this is extracted from disables streaming auto-follow en
 ## Try it
 
 ```sh
-npx assistant-ui@latest create my-app
+npx openagentui@latest create my-app
 ```
 
-Then copy `app/VirtualizedThread.tsx`, `app/MyRuntimeProvider.tsx`, and `app/seed-messages.ts` from [the example](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-virtualized-thread), or clone the repo and run `pnpm --filter with-virtualized-thread dev`.
+Then copy `app/VirtualizedThread.tsx`, `app/MyRuntimeProvider.tsx`, and `app/seed-messages.ts` from [the example](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-virtualized-thread), or clone the repo and run `pnpm --filter with-virtualized-thread dev`.

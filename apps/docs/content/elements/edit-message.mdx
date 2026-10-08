@@ -16,13 +16,13 @@ The sent bubble becomes a small composer in place: rewrite it, and a warning nam
 
 ### Trigger editing from the bubble
 
-```tsx title="components/assistant-ui/elements/edit-message.tsx"
+```tsx title="components/openagentui/elements/edit-message.tsx"
 "use client";
 
-import { ActionBarPrimitive, MessagePrimitive, useAuiState } from "@assistant-ui/react";
+import { ActionBarPrimitive, MessagePrimitive, useAuiState } from "@openagentui/react";
 import { PencilLineIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { field, ghostButton } from "@/components/assistant-ui/elements/surfaces";
+import { field, ghostButton } from "@/components/openagentui/elements/surfaces";
 
 export function UserTurn() {
   const isEditing = useAuiState((s) => s.message.composer.isEditing);
@@ -52,7 +52,7 @@ export function UserTurn() {
 Inside a message that's editing, `ComposerPrimitive.*` scopes itself to that message's own composer rather than the thread's.
 
 ```tsx
-import { ComposerPrimitive } from "@assistant-ui/react";
+import { ComposerPrimitive } from "@openagentui/react";
 
 function EditComposer() {
   return (
@@ -71,7 +71,7 @@ function EditComposer() {
 }
 ```
 
-`Thread` already ships this exact swap for user and assistant messages, without the discard warning covered below; install `@assistant-ui/thread` for the full composition.
+`Thread` already ships this exact swap for user and assistant messages, without the discard warning covered below; install `@openagentui/thread` for the full composition.
 
   </Step>
 </Steps>
@@ -91,7 +91,7 @@ Standalone, `EditMessage` is a controlled component: the bubble calls `onStartEd
 "use client";
 
 import { useState } from "react";
-import { EditMessage } from "@/components/assistant-ui/elements/edit-message";
+import { EditMessage } from "@/components/openagentui/elements/edit-message";
 
 export function Turn() {
   const [editing, setEditing] = useState(false);

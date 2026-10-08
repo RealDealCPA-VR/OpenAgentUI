@@ -4,10 +4,10 @@ import {
   useAuiState,
   AuiConfig,
   AuiProvider,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import { ChainOfThoughtClient } from "../../store/clients/chain-of-thought-client";
 import type { ChainOfThoughtPart } from "../../store/scopes/chain-of-thought";
-import { useShallowSelector } from "@assistant-ui/store/internal";
+import { useShallowSelector } from "@openagentui/store/internal";
 import { getMessagePartKeys } from "../../utils/getMessagePartKeys";
 
 export const ChainOfThoughtPartsContext = createContext<{

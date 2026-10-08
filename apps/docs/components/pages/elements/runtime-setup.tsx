@@ -2,8 +2,8 @@ import Link from "next/link";
 import { CodeBlock } from "@/components/ui/code-block";
 import { highlightElementSource } from "@/lib/element-source";
 
-const PROVIDER_SNIPPET = `import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
+const PROVIDER_SNIPPET = `import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
 
 export default function App() {
   const runtime = useChatRuntime({
@@ -27,12 +27,12 @@ export async function RuntimeSetup() {
       </summary>
       <div className="border-foreground/10 space-y-4 border-t px-4 py-4 text-sm">
         <p className="text-muted-foreground">
-          Runtime components read their state from an assistant-ui runtime. Add
+          Runtime components read their state from an openagentui runtime. Add
           one to an existing project:
         </p>
-        <CodeBlock copyText="npx assistant-ui@latest init">
+        <CodeBlock copyText="npx openagentui@latest init">
           <pre className="overflow-x-auto p-3.5 text-[13px] leading-relaxed">
-            <code>npx assistant-ui@latest init</code>
+            <code>npx openagentui@latest init</code>
           </pre>
         </CodeBlock>
         <p className="text-muted-foreground">

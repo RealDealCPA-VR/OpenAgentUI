@@ -7,8 +7,8 @@ import type {
   RealtimeVoiceAdapter,
   RemoteThreadListAdapter,
   SpeechSynthesisAdapter,
-} from "@assistant-ui/core";
-import type { AssistantCloud } from "assistant-cloud";
+} from "@openagentui/core";
+import type { AssistantCloud } from "openagentui-cloud";
 import type {
   UseStreamOptions,
   AssembledToolCall,

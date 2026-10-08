@@ -1,4 +1,4 @@
-import type { ToolResponse } from "assistant-stream";
+import type { ToolResponse } from "openagentui-stream";
 import type {
   ThreadUserMessagePart,
   ThreadAssistantMessagePart,

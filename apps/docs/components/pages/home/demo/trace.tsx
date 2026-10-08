@@ -1,8 +1,8 @@
 "use client";
 
-import type { ToolCallMessagePartProps } from "@assistant-ui/react";
+import type { ToolCallMessagePartProps } from "@openagentui/react";
 import type { ReactNode } from "react";
-import { ShimmerLabel } from "@/components/assistant-ui/elements/surfaces";
+import { ShimmerLabel } from "@/components/openagentui/elements/surfaces";
 import { CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   TraceLine,

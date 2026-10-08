@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { CloudMessage } from "assistant-cloud";
+import type { CloudMessage } from "openagentui-cloud";
 import type {
   MessageStatus,
   ThreadAssistantMessage,

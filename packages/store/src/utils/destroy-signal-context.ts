@@ -1,5 +1,5 @@
 import { createContext, use } from "react";
-import { useContextProvider } from "@assistant-ui/tap";
+import { useContextProvider } from "@openagentui/tap";
 
 export const DestroySignalContext = createContext<AbortSignal | undefined>(
   undefined,

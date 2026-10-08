@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import {
   updateXuluxPendingUserMessage,
   updateXuluxThreadStatus,

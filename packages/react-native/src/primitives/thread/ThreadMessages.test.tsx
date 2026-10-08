@@ -2,8 +2,8 @@ import { act, createRef } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { FlatList, FlatListProps } from "react-native";
-import type { ThreadMessage } from "@assistant-ui/core";
-import type { MessageState } from "@assistant-ui/core/store";
+import type { ThreadMessage } from "@openagentui/core";
+import type { MessageState } from "@openagentui/core/store";
 import { ThreadMessages, ThreadMessagesFlatList } from "./ThreadMessages";
 
 type Msg = { id: string; role: string };
@@ -81,7 +81,7 @@ vi.mock("react-native", async (importOriginal) => {
   };
 });
 
-vi.mock("@assistant-ui/store", async () => {
+vi.mock("@openagentui/store", async () => {
   const React = await import("react");
 
   const aui = { thread: { loadEarlier: h.loadEarlier } };
@@ -112,7 +112,7 @@ vi.mock("@assistant-ui/store", async () => {
   };
 });
 
-vi.mock("@assistant-ui/core/react", () => ({
+vi.mock("@openagentui/core/react", () => ({
   MessageByIndexProvider: ({ children }: { children: unknown }) => children,
 }));
 

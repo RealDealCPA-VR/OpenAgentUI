@@ -32,7 +32,7 @@ export function buildLLMSIndex(
   elementsPages: LLMIndexPage[] = [],
 ) {
   const lines: string[] = [];
-  lines.push("# assistant-ui");
+  lines.push("# openagentui");
   lines.push("");
   lines.push("> React components for AI chat interfaces");
   lines.push("");

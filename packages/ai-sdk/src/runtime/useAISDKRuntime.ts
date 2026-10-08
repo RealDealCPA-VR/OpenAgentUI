@@ -19,13 +19,13 @@ import {
   useExternalStoreRuntime,
   useRuntimeAdapters,
   type JoinStrategy,
-} from "@assistant-ui/core/react";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+} from "@openagentui/core/react";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import type {
   SuggestionAdapter,
   ThreadSuggestion,
   ToolExecutionStatus,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type {
   ExternalStoreAdapter,
   ExternalStoreSharedOptions,
@@ -40,18 +40,18 @@ import type {
   McpAppMetadata,
   RespondToToolApprovalOptions,
   Unstable_ToolInteractionLog,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   getExternalStoreMessages,
   pickExternalStoreSharedOptions,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   appendToolInteraction,
   consumeSuggestionResult,
   MessageRepository,
-} from "@assistant-ui/core/internal";
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
-import type { AssistantError } from "@assistant-ui/core";
+} from "@openagentui/core/internal";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
+import type { AssistantError } from "@openagentui/core";
 import { sliceMessagesUntil } from "../utils/sliceMessagesUntil";
 import { toCreateMessage } from "../converters/toCreateMessage";
 import { vercelAttachmentAdapter } from "../adapters/vercelAttachmentAdapter";

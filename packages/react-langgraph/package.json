@@ -1,17 +1,17 @@
 {
-  "name": "@assistant-ui/react-langgraph",
+  "name": "@openagentui/react-langgraph",
   "version": "0.14.33",
-  "description": "LangGraph adapter for assistant-ui",
+  "description": "LangGraph adapter for openagentui",
   "keywords": [
     "langgraph",
     "langchain",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat",
     "agents"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -38,11 +38,11 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/react-langchain": "^0.0.35",
-    "@assistant-ui/store": "^0.3.17",
-    "assistant-cloud": "*",
-    "assistant-stream": "^0.3.48"
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/react-langchain": "^0.0.35",
+    "@openagentui/store": "^0.3.17",
+    "openagentui-cloud": "*",
+    "openagentui-stream": "^0.3.48"
   },
   "peerDependencies": {
     "@langchain/langgraph-sdk": "^1.9.20",
@@ -58,8 +58,8 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@langchain/langgraph-sdk": "^1.12.0",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
@@ -73,13 +73,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-langgraph"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

@@ -16,11 +16,11 @@ Use the same result shape your backend tool returns. The renderer stays small be
 
 ### Render the result
 
-```tsx title="components/assistant-ui/elements/compare-models-tool-ui.tsx"
+```tsx title="components/openagentui/elements/compare-models-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { DataTable, type DataTableColumn, type DataTableRow } from "@/components/assistant-ui/elements/data-table";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { DataTable, type DataTableColumn, type DataTableRow } from "@/components/openagentui/elements/data-table";
 
 type CompareModelsResult = {
   columns: readonly DataTableColumn[];
@@ -47,9 +47,9 @@ export const CompareModelsToolUI: ToolCallMessagePartComponent<
 ### Register the backend tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { CompareModelsToolUI } from "@/components/assistant-ui/elements/compare-models-tool-ui";
+import { CompareModelsToolUI } from "@/components/openagentui/elements/compare-models-tool-ui";
 
 export const toolkit = defineToolkit({
   compare_models: {
@@ -75,7 +75,7 @@ Pass the same payload yourself. `defaultSort` gives an initial order, and `sort`
 "use client";
 
 import { useState } from "react";
-import { DataTable, type DataTableColumn, type DataTableSort } from "@/components/assistant-ui/elements/data-table";
+import { DataTable, type DataTableColumn, type DataTableSort } from "@/components/openagentui/elements/data-table";
 
 const columns = [
   { key: "name", label: "Model", priority: "primary" },

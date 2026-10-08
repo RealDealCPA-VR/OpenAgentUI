@@ -3,7 +3,7 @@
 import {
   ConversationMap,
   type ConversationMapEntry,
-} from "@/components/assistant-ui/elements/conversation-map";
+} from "@/components/openagentui/elements/conversation-map";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 import { cn } from "@/lib/utils";
 

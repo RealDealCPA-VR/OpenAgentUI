@@ -19,9 +19,9 @@ Nothing in the runtime tracks a todo list on its own. The list is ordinary tool 
 A frontend tool is enough here: the model needs somewhere to write the plan, and the renderer reads it from `args`.
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { TodoList } from "@/components/assistant-ui/elements/todo-list";
+import { TodoList } from "@/components/openagentui/elements/todo-list";
 
 export const toolkit = defineToolkit({
   update_todos: {
@@ -64,8 +64,8 @@ See [Defining tools](/docs/tools/defining-tools) for toolkit registration and se
 ```tsx title="app/MyRuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -99,7 +99,7 @@ Standalone, the element is fully controlled: you hold the array of items and han
 "use client";
 
 import { useState } from "react";
-import { TodoList, type TodoItem } from "@/components/assistant-ui/elements/todo-list";
+import { TodoList, type TodoItem } from "@/components/openagentui/elements/todo-list";
 
 const initialItems: TodoItem[] = [
   { id: "1", text: "Read the failing test", description: "Trace the current behavior.", status: "done" },
@@ -213,7 +213,7 @@ The five states rendered together, independent of how the list is produced:
 While the tool call is still streaming, `args.items` is a partial parse: fields can be missing until the model finishes writing them. `useToolArgsStatus` reports whether the `items` argument itself is still arriving, which is enough to dim the whole list without claiming a specific item is settled:
 
 ```tsx
-import { useToolArgsStatus } from "@assistant-ui/react";
+import { useToolArgsStatus } from "@openagentui/react";
 
 function TodoToolUI({ args }: { args: { items?: TodoItem[] } }) {
   const { propStatus } = useToolArgsStatus<{ items: TodoItem[] }>();

@@ -5,14 +5,11 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import { isMcpAppUri } from "@assistant-ui/core";
-import { getMessagePartKeys } from "@assistant-ui/core/internal";
-import {
-  resolveToolCallText,
-  type PartMethods,
-} from "@assistant-ui/core/store";
-import { isDevelopment } from "@assistant-ui/core/store/internal";
-import type { AssistantState } from "@assistant-ui/store/client";
+import { isMcpAppUri } from "@openagentui/core";
+import { getMessagePartKeys } from "@openagentui/core/internal";
+import { resolveToolCallText, type PartMethods } from "@openagentui/core/store";
+import { isDevelopment } from "@openagentui/core/store/internal";
+import type { AssistantState } from "@openagentui/store/client";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";
 import { PartByIndexProvider } from "./PartByIndexProvider";

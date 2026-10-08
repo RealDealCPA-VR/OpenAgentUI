@@ -3,7 +3,7 @@ title: "Directive text"
 description: "A message renderer that turns mention directives into inline, runtime-aware chips."
 ---
 
-Directive text parses a message's plain text for directive syntax and renders each one as an inline chip instead of raw markup, leaving ordinary text untouched. With a runtime it plugs into `MessagePrimitive.Parts` as the text renderer and understands assistant-ui's own directive format out of the box; standalone you supply your own parser and get the same chip rendering with no runtime underneath it.
+Directive text parses a message's plain text for directive syntax and renders each one as an inline chip instead of raw markup, leaving ordinary text untouched. With a runtime it plugs into `MessagePrimitive.Parts` as the text renderer and understands openagentui's own directive format out of the box; standalone you supply your own parser and get the same chip rendering with no runtime underneath it.
 
 ## Getting started
 
@@ -14,11 +14,11 @@ Directive text parses a message's plain text for directive syntax and renders ea
 
 ### Register the renderer
 
-`DirectiveText` is pre-wired with assistant-ui's default directive format. Pass it as the `Text` renderer on `MessagePrimitive.Parts` wherever directive chips should appear.
+`DirectiveText` is pre-wired with openagentui's default directive format. Pass it as the `Text` renderer on `MessagePrimitive.Parts` wherever directive chips should appear.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { DirectiveText } from "@/components/assistant-ui/elements/directive-text.aui";
-import { MessagePrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { DirectiveText } from "@/components/openagentui/elements/directive-text.aui";
+import { MessagePrimitive } from "@openagentui/react";
 
 function UserMessage() {
   return (
@@ -52,7 +52,7 @@ import {
   createDirectiveText,
   type DirectiveTextFormatter,
   type DirectiveTextSegment,
-} from "@/components/assistant-ui/elements/directive-text";
+} from "@/components/openagentui/elements/directive-text";
 
 const bracketFormatter: DirectiveTextFormatter = {
   parse(text) {
@@ -132,7 +132,7 @@ createDirectiveText(defaultDirectiveFormatter, {
 
 | Export | Type | Description |
 |--------|------|-------------|
-| `DirectiveText` | `TextMessagePartComponent` | Ready to use; parses assistant-ui's default `:type[label]{name=id}` syntax. Pass as `MessagePrimitive.Parts`'s `components.Text`. |
+| `DirectiveText` | `TextMessagePartComponent` | Ready to use; parses openagentui's default `:type[label]{name=id}` syntax. Pass as `MessagePrimitive.Parts`'s `components.Text`. |
 | `createDirectiveText(formatter, options?)` | `(formatter, options?) => TextMessagePartComponent` | Builds a `Text` renderer around any formatter, for a custom `iconMap` or `fallbackIcon`. |
 
 ### Directive segment

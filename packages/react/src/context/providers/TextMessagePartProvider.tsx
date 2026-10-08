@@ -1,3 +1,3 @@
 "use client";
 
-export { TextMessagePartProvider } from "@assistant-ui/core/react";
+export { TextMessagePartProvider } from "@openagentui/core/react";

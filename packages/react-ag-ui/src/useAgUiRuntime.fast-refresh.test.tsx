@@ -6,7 +6,7 @@ import type { HttpAgent } from "@ag-ui/client";
 import type {
   AssistantRuntime,
   MessageQueueController,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { AgUiThreadRuntimeCore } from "./runtime/AgUiThreadRuntimeCore";
 import type { UseAgUiRuntimeOptions } from "./runtime/types";
 import { useAgUiRuntime, type AgUiAssistantRuntime } from "./useAgUiRuntime";
@@ -19,8 +19,8 @@ const queue = vi.hoisted(() => ({
   busy: vi.fn(),
   idle: vi.fn(),
 }));
-vi.mock("@assistant-ui/core", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/core")>();
+vi.mock("@openagentui/core", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/core")>();
   return {
     ...actual,
     createMessageQueue: (
@@ -42,9 +42,9 @@ vi.mock("@assistant-ui/core", async (importOriginal) => {
     },
   };
 });
-vi.mock("@assistant-ui/core/react", async (importOriginal) => {
+vi.mock("@openagentui/core/react", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@assistant-ui/core/react")>();
+    await importOriginal<typeof import("@openagentui/core/react")>();
   const derived = new WeakMap<AssistantRuntime, AssistantRuntime>();
   return {
     ...actual,

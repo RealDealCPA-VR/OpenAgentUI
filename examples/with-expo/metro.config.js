@@ -1,5 +1,5 @@
 const { getDefaultConfig } = require("expo/metro-config");
-const { withAui } = require("@assistant-ui/metro");
+const { withAui } = require("@openagentui/metro");
 const { withUniwindConfig } = require("uniwind/metro");
 const fs = require("node:fs");
 const path = require("node:path");

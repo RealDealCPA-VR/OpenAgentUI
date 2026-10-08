@@ -4,8 +4,8 @@ import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { useResource } from "@assistant-ui/tap";
-import { AuiProvider, useAui, type ClientOutput } from "@assistant-ui/store";
+import { useResource } from "@openagentui/tap";
+import { AuiProvider, useAui, type ClientOutput } from "@openagentui/store";
 import * as SpanPrimitive from "../primitives/span";
 import { SpanResource, type SpanData } from "./SpanResource";
 

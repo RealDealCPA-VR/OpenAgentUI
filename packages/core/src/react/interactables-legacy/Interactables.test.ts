@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createTapRoot, flushTapSync, useResource } from "@assistant-ui/tap";
-import { parsePartialJsonObject } from "assistant-stream/utils";
+import { createTapRoot, flushTapSync, useResource } from "@openagentui/tap";
+import { parsePartialJsonObject } from "openagentui-stream/utils";
 import { z } from "zod";
 import type {
   InteractablePersistedState,
@@ -19,8 +19,8 @@ let registeredModelContextProvider:
     }
   | undefined;
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAssistantClientRef: () => ({
@@ -31,9 +31,9 @@ vi.mock("@assistant-ui/store", async (importOriginal) => {
   };
 });
 
-vi.mock("@assistant-ui/store/client", async (importOriginal) => {
+vi.mock("@openagentui/store/client", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@assistant-ui/store/client")>();
+    await importOriginal<typeof import("@openagentui/store/client")>();
   const { useEffect } = await import("react");
   const useScopeEffectShim = (
     scope: string,

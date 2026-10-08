@@ -7,7 +7,7 @@ import {
   SimpleImageAttachmentAdapter,
   unstable_Interactables,
   AuiConfig,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { useDocsCloud, useDocsChatRuntime } from "./chat-runtime";
 
 const EMPTY_CONFIG = AuiConfig({});

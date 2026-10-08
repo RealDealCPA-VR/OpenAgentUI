@@ -9,6 +9,6 @@ Distinguish the core concepts:
 - thread-list metadata makes conversations listable and nameable;
 - thread history restores the messages and interactive state inside a conversation.
 
-The page now renders an application shell with responsive thread navigation and New Chat. The runtime combines assistant-ui’s public thread-list and history adapter interfaces with a small application-owned browser-storage adapter, so the downloadable project works without registration or a hosted persistence service.
+The page now renders an application shell with responsive thread navigation and New Chat. The runtime combines openagentui’s public thread-list and history adapter interfaces with a small application-owned browser-storage adapter, so the downloadable project works without registration or a hosted persistence service.
 
 Ask the learner to create separate weather and writing conversations, switch between them, reload the page, and confirm that the correct history returns. Mention Assistant Cloud only as a managed alternative.

@@ -883,7 +883,7 @@ export function CodeBlockBareSpecimen(): ReactNode {
       <CodeBlock className="my-0 w-full">
         <pre>
           <code className="text-foreground/80 block text-[12.5px]">
-            <span className="line">{"npx assistant-ui init"}</span>
+            <span className="line">{"npx openagentui init"}</span>
           </code>
         </pre>
       </CodeBlock>
@@ -898,10 +898,10 @@ export function CommandTabsSpecimen(): ReactNode {
         className="my-0 w-full"
         storageKey="specimen-command-tabs"
         commands={{
-          npm: "npm install @assistant-ui/react",
-          pnpm: "pnpm add @assistant-ui/react",
-          yarn: "yarn add @assistant-ui/react",
-          bun: "bun add @assistant-ui/react",
+          npm: "npm install @openagentui/react",
+          pnpm: "pnpm add @openagentui/react",
+          yarn: "yarn add @openagentui/react",
+          bun: "bun add @openagentui/react",
         }}
       />
     </SampleFrame>
@@ -915,20 +915,20 @@ export function CommandTabsSyncSpecimen(): ReactNode {
         className="my-0 w-full"
         storageKey="specimen-command-tabs"
         commands={{
-          npm: "npx assistant-ui init",
-          pnpm: "pnpm dlx assistant-ui init",
-          yarn: "yarn dlx assistant-ui init",
-          bun: "bunx assistant-ui init",
+          npm: "npx openagentui init",
+          pnpm: "pnpm dlx openagentui init",
+          yarn: "yarn dlx openagentui init",
+          bun: "bunx openagentui init",
         }}
       />
       <CommandTabs
         className="my-0 w-full"
         storageKey="specimen-command-tabs"
         commands={{
-          npm: "npx shadcn@latest add @assistant-ui/thread",
-          pnpm: "pnpm dlx shadcn@latest add @assistant-ui/thread",
-          yarn: "npx shadcn@latest add @assistant-ui/thread",
-          bun: "bunx --bun shadcn@latest add @assistant-ui/thread",
+          npm: "npx shadcn@latest add @openagentui/thread",
+          pnpm: "pnpm dlx shadcn@latest add @openagentui/thread",
+          yarn: "npx shadcn@latest add @openagentui/thread",
+          bun: "bunx --bun shadcn@latest add @openagentui/thread",
         }}
       />
     </SampleFrame>

@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { getDistinctId } from "./posthog-server";
 
 const withIp = (ip: string) =>
-  new Request("https://www.assistant-ui.com/api/chat", {
+  new Request("https://openagentui.dev/api/chat", {
     headers: { "x-forwarded-for": ip },
   });
 
@@ -13,7 +13,7 @@ afterEach(() => {
 
 describe("analytics distinct id", () => {
   it("prefers the posthog cookie the browser already carries", () => {
-    const request = new Request("https://www.assistant-ui.com/api/chat", {
+    const request = new Request("https://openagentui.dev/api/chat", {
       headers: {
         cookie: `ph_key_posthog=${encodeURIComponent(
           JSON.stringify({ distinct_id: "person_1" }),
@@ -53,8 +53,8 @@ describe("analytics distinct id", () => {
   it("stays anonymous when the platform sends no address", () => {
     vi.stubEnv("AUI_ANONYMOUS_SESSION_SECRET", "a-secret-with-enough-entropy");
 
-    expect(
-      getDistinctId(new Request("https://www.assistant-ui.com/api/chat")),
-    ).toBe("anon_unknown");
+    expect(getDistinctId(new Request("https://openagentui.dev/api/chat"))).toBe(
+      "anon_unknown",
+    );
   });
 });

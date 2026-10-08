@@ -1,6 +1,6 @@
 # Connect your first assistant
 
-This stage connects an assistant-ui conversation surface to a streaming AI SDK route.
+This stage connects an openagentui conversation surface to a streaming AI SDK route.
 
 Explain the responsibility of each part:
 
@@ -12,7 +12,7 @@ Explain the responsibility of each part:
 Trace one message through the application:
 
 ```text
-Composer → assistant-ui runtime → POST /api/chat
+Composer → openagentui runtime → POST /api/chat
   → AI SDK model → streamed UI message → Thread
 ```
 

@@ -1,13 +1,13 @@
 "use client";
 
-import "@assistant-ui/react-markdown/styles/dot.css";
+import "@openagentui/react-markdown/styles/dot.css";
 
 import {
   MarkdownTextPrimitive,
   type SyntaxHighlighterProps,
   unstable_memoizeMarkdownComponents as memoizeMarkdownComponents,
   useIsMarkdownCodeBlock,
-} from "@assistant-ui/react-markdown";
+} from "@openagentui/react-markdown";
 import remarkGfm from "remark-gfm";
 import {
   type FC,

@@ -5,14 +5,14 @@ import {
   ComposerPrimitive,
   MessagePrimitive,
   unstable_useMentionAdapter,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { ArrowUpIcon, MicIcon, PlusIcon, SquareIcon } from "lucide-react";
 import { useMemo, type ReactNode } from "react";
-import { ComposerAttachments } from "@/components/assistant-ui/elements/attachment.aui";
-import { ComposerTriggerPopover } from "@/components/assistant-ui/elements/composer-trigger-popover.aui";
-import { ContextDisplay } from "@/components/assistant-ui/elements/context-display.aui";
-import { ModelSelector } from "@/components/assistant-ui/elements/model-selector.aui";
-import { ComposerQuotePreview } from "@/components/assistant-ui/elements/quote.aui";
+import { ComposerAttachments } from "@/components/openagentui/elements/attachment.aui";
+import { ComposerTriggerPopover } from "@/components/openagentui/elements/composer-trigger-popover.aui";
+import { ContextDisplay } from "@/components/openagentui/elements/context-display.aui";
+import { ModelSelector } from "@/components/openagentui/elements/model-selector.aui";
+import { ComposerQuotePreview } from "@/components/openagentui/elements/quote.aui";
 import { docsModelOptions } from "@/components/pages/docs/assistant/docs-model-options";
 import {
   DEFAULT_MODEL_ID,

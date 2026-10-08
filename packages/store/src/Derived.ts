@@ -1,4 +1,4 @@
-import { resource, type ResourceElement } from "@assistant-ui/tap";
+import { resource, type ResourceElement } from "@openagentui/tap";
 import type {
   AssistantClient,
   ClientNames,

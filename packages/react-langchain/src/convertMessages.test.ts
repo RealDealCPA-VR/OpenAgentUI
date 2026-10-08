@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import type { AppendMessage } from "@assistant-ui/core";
-import { convertExternalMessages } from "@assistant-ui/core/react";
+import type { AppendMessage } from "@openagentui/core";
+import { convertExternalMessages } from "@openagentui/core/react";
 import {
   convertLangChainBaseMessage,
   getMessageContent,

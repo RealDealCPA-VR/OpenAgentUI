@@ -1,8 +1,8 @@
 import { afterAll, describe, expect, it, vi } from "vitest";
-import { withAui } from "@assistant-ui/next";
+import { withAui } from "@openagentui/next";
 
-vi.mock("@assistant-ui/next", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/next")>();
+vi.mock("@openagentui/next", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/next")>();
   return { ...actual, withAui: vi.fn(actual.withAui) };
 });
 
@@ -35,7 +35,7 @@ describe("docs Next config composition", () => {
         as: "*.js",
       },
       "*.tsx": {
-        loaders: [{ loader: "@assistant-ui/next/loader" }],
+        loaders: [{ loader: "@openagentui/next/loader" }],
       },
     });
   });

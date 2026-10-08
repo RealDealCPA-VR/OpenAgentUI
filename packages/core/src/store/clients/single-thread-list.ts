@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
-import { resource } from "@assistant-ui/tap";
-import type { ClientElement, ClientOutput } from "@assistant-ui/store";
-import { useClientResource } from "@assistant-ui/store/client";
+import { resource } from "@openagentui/tap";
+import type { ClientElement, ClientOutput } from "@openagentui/store";
+import { useClientResource } from "@openagentui/store/client";
 
 const RESOLVED_PROMISE = Promise.resolve();
 const THREAD_ID = "default";

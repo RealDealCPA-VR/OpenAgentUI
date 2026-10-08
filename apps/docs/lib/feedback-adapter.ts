@@ -1,4 +1,4 @@
-import type { FeedbackAdapter } from "@assistant-ui/react";
+import type { FeedbackAdapter } from "@openagentui/react";
 
 /**
  * Every runtime that can render AssistantActionBar must pass this adapter.

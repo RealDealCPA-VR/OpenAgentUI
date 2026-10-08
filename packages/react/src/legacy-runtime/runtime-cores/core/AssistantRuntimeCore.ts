@@ -1,1 +1,1 @@
-export type { AssistantRuntimeCore } from "@assistant-ui/core";
+export type { AssistantRuntimeCore } from "@openagentui/core";

@@ -1,4 +1,4 @@
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 import type { AssistantCloud } from "./AssistantCloud";
 import type { CloudMessage } from "./AssistantCloudThreadMessages";
 

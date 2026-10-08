@@ -3,7 +3,7 @@ title: LangGraph Generative UI
 description: Render structured UI components emitted by LangGraph alongside assistant messages.
 ---
 
-LangGraph's [Generative UI](https://docs.langchain.com/langsmith/generative-ui-react) lets your graph emit structured UI components alongside assistant messages via `push_ui_message` (Python) or `typedUi().push()` (TypeScript). The assistant-ui adapter translates these into [`DataMessagePart`s](/docs/tools/tool-ui) on the associated assistant message, which you render with the existing `makeAssistantDataUI` API.
+LangGraph's [Generative UI](https://docs.langchain.com/langsmith/generative-ui-react) lets your graph emit structured UI components alongside assistant messages via `push_ui_message` (Python) or `typedUi().push()` (TypeScript). The openagentui adapter translates these into [`DataMessagePart`s](/docs/tools/tool-ui) on the associated assistant message, which you render with the existing `makeAssistantDataUI` API.
 
 ## Enable the `custom` stream mode
 
@@ -78,7 +78,7 @@ Passing `message` (Python) or `{ message }` (TypeScript) is what links the UI co
 <Tab value="React">
 
 ```tsx title="@/components/ChartUI.tsx"
-import { makeAssistantDataUI } from "@assistant-ui/react";
+import { makeAssistantDataUI } from "@openagentui/react";
 
 type ChartProps = {
   series: number[];
@@ -100,7 +100,7 @@ export const ChartUI = makeAssistantDataUI<ChartProps>({
 <Tab value="React Native">
 
 ```tsx title="components/ChartUI.tsx"
-import { makeAssistantDataUI } from "@assistant-ui/react-native";
+import { makeAssistantDataUI } from "@openagentui/react-native";
 import { Text, View } from "react-native";
 
 type ChartProps = {
@@ -123,7 +123,7 @@ export const ChartUI = makeAssistantDataUI<ChartProps>({
 <Tab value="React Ink">
 
 ```tsx title="components/chart-ui.tsx"
-import { makeAssistantDataUI } from "@assistant-ui/react-ink";
+import { makeAssistantDataUI } from "@openagentui/react-ink";
 import { Box, Text } from "ink";
 
 type ChartProps = {
@@ -162,7 +162,7 @@ Mount the component once somewhere inside the `AssistantRuntimeProvider` tree. I
 
 ```tsx title="components/MyAssistant.tsx"
 import { View } from "react-native";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 <AssistantRuntimeProvider runtime={runtime}>
   <ChartUI />
@@ -275,7 +275,7 @@ Without this, each reload starts with an empty UI list even though the messages 
 ## Escape hatch: `useLangGraphUIMessages`
 
 ```tsx
-import { useLangGraphUIMessages } from "@assistant-ui/react-langgraph";
+import { useLangGraphUIMessages } from "@openagentui/react-langgraph";
 
 function Sidebar() {
   const uiMessages = useLangGraphUIMessages();

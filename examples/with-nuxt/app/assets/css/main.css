@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@source "../../../../../packages/ui/src/components/vue/assistant-ui";
+@source "../../../../../packages/ui/src/components/vue/openagentui";
 
 @custom-variant dark (&:is(.dark *));
 

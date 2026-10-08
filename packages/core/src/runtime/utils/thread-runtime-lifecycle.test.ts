@@ -183,7 +183,7 @@ describe("thread runtime lifecycle", () => {
 
     expect(() => disposeThreadRuntime(runtime)).not.toThrow();
     expect(consoleError).toHaveBeenCalledExactlyOnceWith(
-      "[assistant-ui] Voice cleanup threw while discarding a thread runtime",
+      "[openagentui] Voice cleanup threw while discarding a thread runtime",
       error,
     );
     expect(captureThreadRuntimeGeneration(runtime).aborted).toBe(true);

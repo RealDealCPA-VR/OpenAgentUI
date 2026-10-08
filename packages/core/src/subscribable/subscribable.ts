@@ -1,4 +1,4 @@
-import { shallowEqual } from "@assistant-ui/store/client";
+import { shallowEqual } from "@openagentui/store/client";
 import type { Unsubscribe } from "../types/unsubscribe";
 import { notifyEventListeners } from "../utils/notify-event-listeners";
 
@@ -77,7 +77,7 @@ const rollbackSubscription = (
     cleanup();
   } catch (cleanupError) {
     console.error(
-      "[assistant-ui] Subscription rollback cleanup threw",
+      "[openagentui] Subscription rollback cleanup threw",
       cleanupError,
     );
   }

@@ -30,7 +30,7 @@ const MODES: {
   {
     value: "agent",
     title: "Coding agent",
-    detail: "Your agent reads the project and installs assistant-ui for you.",
+    detail: "Your agent reads the project and installs openagentui for you.",
     icon: BotIcon,
     recommended: true,
   },
@@ -66,7 +66,7 @@ export function StartSetupDialog({
     if (mode === null) return;
     analytics.cta.clicked(`start_setup_${mode}`, location);
     setOpen(false);
-    if (mode === "agent") beginSetup(["assistant-ui"]);
+    if (mode === "agent") beginSetup(["openagentui"]);
     else router.push("/docs/installation");
   };
 
@@ -85,11 +85,11 @@ export function StartSetupDialog({
             <DialogHeader className="px-6 pt-7 pb-6 sm:px-8 sm:pt-8">
               <span
                 role="img"
-                aria-label="assistant-ui"
+                aria-label="openagentui"
                 className="bg-foreground/45 mb-4 block h-[18px] w-[108px] [mask-image:url(/brand/logotype.svg)] [mask-size:contain] [mask-position:left_center] [mask-repeat:no-repeat]"
               />
               <DialogTitle className={cn(typeSection, "max-w-[22ch] pr-5")}>
-                How do you want to set up assistant-ui?
+                How do you want to set up openagentui?
               </DialogTitle>
               <DialogDescription className="mt-1 leading-relaxed">
                 Both paths end with the same code in your project.

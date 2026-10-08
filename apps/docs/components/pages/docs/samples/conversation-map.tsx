@@ -5,8 +5,8 @@ import {
   ThreadPrimitive,
   useAuiState,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
-import { ConversationMapAui } from "@/components/assistant-ui/elements/conversation-map.aui";
+} from "@openagentui/react";
+import { ConversationMapAui } from "@/components/openagentui/elements/conversation-map.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 import { SampleRuntimeProvider } from "@/components/pages/docs/samples/sample-runtime-provider";
 import { cn } from "@/lib/utils";

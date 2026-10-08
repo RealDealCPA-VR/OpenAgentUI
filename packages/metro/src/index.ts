@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url);
  * preserved and only `transformer.babelTransformerPath` is augmented.
  */
 export type MetroConfigLike = {
-  /** assistant-ui options, stripped from the config handed back to Metro. */
+  /** openagentui options, stripped from the config handed back to Metro. */
   aui?: WithAuiOptions | undefined;
   transformer?:
     | {
@@ -42,9 +42,9 @@ export interface WithAuiOptions {
 }
 
 /**
- * Wraps a Metro (or Expo) config so assistant-ui `"use generative"` modules are
+ * Wraps a Metro (or Expo) config so openagentui `"use generative"` modules are
  * compiled. Such a file colocates a tool's schema, its `execute`, and its
- * `render` via {@link https://www.assistant-ui.com/docs/tools/defining-tools | defineToolkit}.
+ * `render` via {@link https://openagentui.dev/docs/tools/defining-tools | defineToolkit}.
  *
  * It points Metro's `babelTransformerPath` at this package's transformer, which
  * runs the `"use generative"` compiler and then delegates to your project's
@@ -55,7 +55,7 @@ export interface WithAuiOptions {
  * ```js
  * // metro.config.js
  * const { getDefaultConfig } = require("expo/metro-config");
- * const { withAui } = require("@assistant-ui/metro");
+ * const { withAui } = require("@openagentui/metro");
  *
  * module.exports = withAui({
  *   ...getDefaultConfig(__dirname),
@@ -67,7 +67,7 @@ export interface WithAuiOptions {
  * export is `defineToolkit({ ... })`, registered with `Tools({ toolkit })`.
  */
 export function withAui<T extends MetroConfigLike>(config: T): T {
-  const self = require.resolve("@assistant-ui/metro/transformer");
+  const self = require.resolve("@openagentui/metro/transformer");
   // Metro validates config keys it does not recognize, so `aui` must not
   // survive into the returned config.
   const { aui, ...baseConfig } = config;

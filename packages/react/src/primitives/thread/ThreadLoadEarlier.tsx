@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiState } from "@openagentui/store";
 import {
   type ActionButtonElement,
   type ActionButtonProps,

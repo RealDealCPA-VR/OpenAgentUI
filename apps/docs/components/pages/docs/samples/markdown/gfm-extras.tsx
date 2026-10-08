@@ -1,7 +1,7 @@
 "use client";
 
-import { TextMessagePartProvider } from "@assistant-ui/react";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { TextMessagePartProvider } from "@openagentui/react";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 export function GfmMarkdown() {
@@ -13,7 +13,7 @@ export function GfmMarkdown() {
 
 The legacy renderer is ~~no longer maintained~~ replaced.
 
-Docs live at https://www.assistant-ui.com
+Docs live at https://openagentui.dev
 
 | Feature | Status | Notes |
 | :-- | :-: | --: |

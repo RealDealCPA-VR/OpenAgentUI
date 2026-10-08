@@ -1,6 +1,6 @@
 "use client";
 
-import { useMessagePartText, useSmooth } from "@assistant-ui/react";
+import { useMessagePartText, useSmooth } from "@openagentui/react";
 import { harden } from "rehype-harden";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, {
@@ -177,7 +177,7 @@ export const StreamdownTextPrimitive = forwardRef<
 >(
   (
     {
-      // assistant-ui compatibility props
+      // openagentui compatibility props
       components,
       componentsByLanguage,
       preprocess,

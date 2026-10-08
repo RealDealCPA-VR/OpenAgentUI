@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Generative UI Assistant",
-  description: "Built with assistant-ui.",
+  description: "Built with openagentui.",
 };
 
 export default function RootLayout({

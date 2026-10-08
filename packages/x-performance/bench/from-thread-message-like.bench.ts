@@ -2,7 +2,7 @@ import { describe, inject, test } from "vitest";
 import {
   fromThreadMessageLike,
   type ThreadMessageLike,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 const status = { type: "complete", reason: "unknown" } as const;
 

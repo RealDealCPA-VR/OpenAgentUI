@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import {
   Derived,
   useAssistantEmit,
   useClientResource,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 
 export type AnyClient = Record<string, any>;
 

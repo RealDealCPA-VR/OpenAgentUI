@@ -4,7 +4,7 @@ description: Add intelligence to React components through readable interfaces an
 platforms: ["react"]
 ---
 
-React components combine logic, structure, and style. assistant-ui adds a fourth element: intelligence. This page builds a smart component through a banking app example.
+React components combine logic, structure, and style. openagentui adds a fourth element: intelligence. This page builds a smart component through a banking app example.
 
 ## The Evolution of Components
 
@@ -38,14 +38,14 @@ function TransactionHistory({ transactions }) {
 
 ## Adding Intelligence
 
-assistant-ui adds intelligence to this component through four APIs:
+openagentui adds intelligence to this component through four APIs:
 
 ### 1. Making Components Readable (makeAssistantVisible)
 
 Make the buttons readable and clickable:
 
 ```tsx
-import { makeAssistantVisible } from "@assistant-ui/react";
+import { makeAssistantVisible } from "@openagentui/react";
 
 // Make the refund button intelligent
 const SmartButton = makeAssistantVisible(
@@ -82,7 +82,7 @@ Now the assistant can:
 Give the assistant instructions about its role:
 
 ```tsx
-import { useAssistantInstructions } from "@assistant-ui/react";
+import { useAssistantInstructions } from "@openagentui/react";
 
 function SmartTransactionHistory() {
   useAssistantInstructions(`
@@ -104,7 +104,7 @@ Add transaction-specific tools for the assistant:
 ```tsx title="app/transaction-toolkit.tsx"
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
 
 export default defineToolkit({
@@ -130,7 +130,7 @@ export default defineToolkit({
 ```
 
 ```tsx title="app/SmartTransactionHistory.tsx"
-import { AuiConfig, AuiProvider, Tools, useAui } from "@assistant-ui/react";
+import { AuiConfig, AuiProvider, Tools, useAui } from "@openagentui/react";
 import toolkit from "./transaction-toolkit";
 
 function SmartTransactionHistory() {
@@ -150,7 +150,7 @@ function SmartTransactionHistory() {
 Add dynamic context based on the user's transaction patterns:
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import { useEffect } from "react";
 
 function SmartTransactionHistory({ userProfile }) {

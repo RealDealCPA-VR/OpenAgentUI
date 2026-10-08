@@ -36,8 +36,8 @@ const stream = unstable_createLangGraphStream({
 import {
   useLangGraphState,
   useLangGraphSetState,
-} from "@assistant-ui/react-langgraph";
-import { useAuiState } from "@assistant-ui/react";
+} from "@openagentui/react-langgraph";
+import { useAuiState } from "@openagentui/react";
 
 type GraphState = {
   messages: unknown[];
@@ -64,9 +64,9 @@ Render graph state beside the chat and stage an optimistic filter update:
 import {
   useLangGraphState,
   useLangGraphSetState,
-} from "@assistant-ui/react-langgraph";
-import { useAuiState } from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/react-langgraph";
+import { useAuiState } from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 type GraphState = {
   filters: { region: string; maxResults: number };
@@ -156,8 +156,8 @@ The built-in path that uses the package helpers performs this merge for you. Cus
 
 Keep the three state layers distinct:
 
-- **Your app state** stays yours (React state, URL, a store). assistant-ui does not own it.
-- **`useAuiState`** reads assistant-ui's client state (messages, composer, thread status).
+- **Your app state** stays yours (React state, URL, a store). openagentui does not own it.
+- **`useAuiState`** reads openagentui's client state (messages, composer, thread status).
 - **`useLangGraphState` / `useLangGraphSetState`** mirror state the **agent** (your LangGraph graph) owns, synced over the wire via `values` events.
 
 Use `useLangGraphState` and `useLangGraphSetState` for fields that live in the graph state schema. Use `useAuiState` for UI that depends on the chat thread itself. Use your own state for everything else.

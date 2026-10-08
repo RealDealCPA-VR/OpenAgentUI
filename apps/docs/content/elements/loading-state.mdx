@@ -16,10 +16,10 @@ The runtime does not tick a clock or provide a status string. It does tell you w
 
 ### Gate it on an empty run
 
-```tsx title="components/assistant-ui/elements/loading-state.tsx"
+```tsx title="components/openagentui/elements/loading-state.tsx"
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 function useIsAwaitingFirstToken() {
   return useAuiState((s) => {
@@ -39,7 +39,7 @@ function useIsAwaitingFirstToken() {
 
 ```tsx
 import { useEffect, useState } from "react";
-import { GenerationLoader } from "@/components/assistant-ui/elements/loading-state";
+import { GenerationLoader } from "@/components/openagentui/elements/loading-state";
 
 function useTick(active: boolean) {
   const [tick, setTick] = useState(0);
@@ -79,7 +79,7 @@ Standalone, both `label` and `tick` are yours: the component only turns a tick n
 "use client";
 
 import { useEffect, useState } from "react";
-import { GenerationLoader } from "@/components/assistant-ui/elements/loading-state";
+import { GenerationLoader } from "@/components/openagentui/elements/loading-state";
 
 export function Loader({ label }: { label: string }) {
   const [tick, setTick] = useState(0);

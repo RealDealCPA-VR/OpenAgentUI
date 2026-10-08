@@ -52,7 +52,7 @@ export default async function Page(props: {
 
   const path = `apps/docs/content/docs/${page.path}`;
   const markdownUrl = `${page.url}.md`;
-  const githubEditUrl = `https://github.com/assistant-ui/assistant-ui/edit/main/${path}`;
+  const githubEditUrl = `https://github.com/RealDealCPA-VR/OpenAgentUI/edit/main/${path}`;
 
   const neighbours = getDocsNeighbours(source.pageTree, page.url);
   const footerPrevious = neighbours.previous;

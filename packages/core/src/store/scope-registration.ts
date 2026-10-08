@@ -12,7 +12,7 @@ import type { ChainOfThoughtClientSchema } from "./scopes/chain-of-thought";
 import type { QueueItemClientSchema } from "./scopes/queue-item";
 import type { TaskClientSchema } from "./scopes/task";
 
-declare module "@assistant-ui/store" {
+declare module "@openagentui/store" {
   interface ScopeRegistry {
     threads: ThreadsClientSchema;
     threadListItem: ThreadListItemClientSchema;

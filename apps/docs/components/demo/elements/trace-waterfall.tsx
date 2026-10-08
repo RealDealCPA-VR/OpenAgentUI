@@ -3,7 +3,7 @@
 import {
   TraceWaterfall,
   type TraceSpan,
-} from "@/components/assistant-ui/elements/trace-waterfall";
+} from "@/components/openagentui/elements/trace-waterfall";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const SPANS: readonly TraceSpan[] = [

@@ -6,8 +6,8 @@ import { mockPart, renderFrame, type UseAuiStateSelector } from "./helpers";
 
 const mockUseAuiState = vi.fn();
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAuiState: (selector: UseAuiStateSelector) => mockUseAuiState(selector),

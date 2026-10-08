@@ -1,12 +1,12 @@
 "use client";
 
-import { useAuiState, useAui } from "@assistant-ui/react";
+import { useAuiState, useAui } from "@openagentui/react";
 import { PlusIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { analytics } from "@/lib/analytics";
 import { useCurrentPage } from "@/components/pages/docs/contexts/current-page";
-import { useThreadTokenUsage } from "@assistant-ui/ai-sdk";
-import { ContextDisplay } from "@assistant-ui/ui/components/react/assistant-ui/elements/context-display.aui";
+import { useThreadTokenUsage } from "@openagentui/ai-sdk";
+import { ContextDisplay } from "@openagentui/ui/components/react/openagentui/elements/context-display.aui";
 import { useSharedDocsModelSelection } from "./composer";
 import { getContextWindow } from "@/lib/model";
 

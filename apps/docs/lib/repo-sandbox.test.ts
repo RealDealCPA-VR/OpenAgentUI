@@ -13,7 +13,7 @@ vi.mock("./repo-source", async (importOriginal) => ({
 }));
 
 const SOURCE_FILES = {
-  "AGENTS.md": "# assistant-ui\n",
+  "AGENTS.md": "# openagentui\n",
   "packages/core/src/index.ts": "export const useLocalRuntime = 1;\n",
 };
 
@@ -44,7 +44,7 @@ describe("createRepoSandbox", () => {
   it("serves reads from the generated source tree", async () => {
     const getToolkit = createRepoSandbox({ toolPrompt: "" });
 
-    expect(await run(getToolkit, "cat /repo/AGENTS.md")).toBe("# assistant-ui");
+    expect(await run(getToolkit, "cat /repo/AGENTS.md")).toBe("# openagentui");
     expect(await run(getToolkit, "grep -rl useLocalRuntime /repo")).toBe(
       "/repo/packages/core/src/index.ts",
     );
@@ -69,7 +69,7 @@ describe("createRepoSandbox", () => {
     expect(await run(reader, "cat /repo/pwned.txt")).toContain(
       "No such file or directory",
     );
-    expect(await run(reader, "cat /repo/AGENTS.md")).toBe("# assistant-ui");
+    expect(await run(reader, "cat /repo/AGENTS.md")).toBe("# openagentui");
     expect(await run(reader, "cat /repo/packages/core/src/index.ts")).toBe(
       "export const useLocalRuntime = 1;",
     );
@@ -128,6 +128,6 @@ describe("createRepoSandbox", () => {
     expect(existsSync(path.join(mocks.sourceRoot, "pwned.txt"))).toBe(false);
     expect(
       readFileSync(path.join(mocks.sourceRoot, "AGENTS.md"), "utf-8"),
-    ).toBe("# assistant-ui\n");
+    ).toBe("# openagentui\n");
   });
 });

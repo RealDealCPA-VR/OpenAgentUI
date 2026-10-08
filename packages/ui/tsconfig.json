@@ -17,8 +17,8 @@
     ],
     "types": ["browser-process"],
     "paths": {
-      "@assistant-ui/ui/*": ["./src/*"],
-      "@/components/assistant-ui/*": ["./src/components/react/assistant-ui/*"],
+      "@openagentui/ui/*": ["./src/*"],
+      "@/components/openagentui/*": ["./src/components/react/openagentui/*"],
       "@/components/icons/*": ["./src/components/react/icons/*"],
       "@/components/ui/*": [
         "./src/components/react/ui/base/*",

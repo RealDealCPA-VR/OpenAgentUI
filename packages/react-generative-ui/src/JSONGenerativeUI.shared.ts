@@ -1,4 +1,4 @@
-import type { ToolDefinition } from "@assistant-ui/react";
+import type { ToolDefinition } from "@openagentui/react";
 import type { JSONSchema7 } from "json-schema";
 import type { ActionRegistry } from "./actionRegistry";
 import type { GenerativeUILibrary } from "./types";

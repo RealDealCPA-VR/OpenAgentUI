@@ -22,7 +22,7 @@ import {
   type ThreadMessageLike,
 } from "../../../runtime/utils/thread-message-like";
 import { readToolInteractionLog } from "../../../runtime/utils/tool-interactions";
-import type { CloudMessage } from "assistant-cloud";
+import type { CloudMessage } from "openagentui-cloud";
 import { isJSONValue, isRecord } from "../../../utils/json/is-json";
 import {
   MAX_STORED_MESSAGE_DEPTH,
@@ -36,8 +36,8 @@ import {
 import type {
   ReadonlyJSONObject,
   ReadonlyJSONValue,
-} from "assistant-stream/utils";
-import type { ToolModelContentPart } from "assistant-stream";
+} from "openagentui-stream/utils";
+import type { ToolModelContentPart } from "openagentui-stream";
 import type { ExportedMessageRepositoryItem } from "../../../runtime/utils/message-repository";
 
 type AuiV0ToolApproval = {

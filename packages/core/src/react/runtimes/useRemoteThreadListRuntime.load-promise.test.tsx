@@ -2,7 +2,7 @@
 
 import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { useAui, useAuiState, type AssistantClient } from "@assistant-ui/store";
+import { useAui, useAuiState, type AssistantClient } from "@openagentui/store";
 import { Suspense, use, useEffect, useState, type ReactNode } from "react";
 import {
   deferred,

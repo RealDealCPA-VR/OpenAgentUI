@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   AgentCard,
   type AgentSkill,
-} from "@/components/assistant-ui/elements/agent-card";
+} from "@/components/openagentui/elements/agent-card";
 
 const SKILLS: readonly AgentSkill[] = [
   { name: "triage", description: "Read an issue and label it" },
@@ -19,7 +19,7 @@ export function AgentCardDemo() {
     <AgentCard
       name="Maintainer"
       description="Works through the issue queue: reproduces the report, writes the fix, and opens the PR."
-      provider="assistant-ui"
+      provider="openagentui"
       version="1.4.0"
       model="opus"
       endpoint="https://agents.example.com/a2a"

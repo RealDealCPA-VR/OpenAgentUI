@@ -4,7 +4,7 @@ import {
   INTERNAL,
   type SmoothOptions,
   useMessagePartText,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   type ComponentRef,
   type ElementType,

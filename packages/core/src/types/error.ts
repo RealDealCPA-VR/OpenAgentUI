@@ -52,7 +52,7 @@ export const isAssistantError = (value: unknown): value is AssistantError => {
   return true;
 };
 
-const MESSAGE_NOT_SENT = Symbol.for("assistant-ui.message-not-sent");
+const MESSAGE_NOT_SENT = Symbol.for("openagentui.message-not-sent");
 
 /**
  * Rejection reason for a send that never reached the backend, so nothing ran

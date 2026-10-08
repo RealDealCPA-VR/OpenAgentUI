@@ -3,11 +3,11 @@
 import { act, render, renderHook } from "@testing-library/react";
 import { startTransition, Suspense, useLayoutEffect } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
 import type {
   AssistantRuntime,
   RemoteThreadListAdapter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { useLangGraphRuntime } from "./useLangGraphRuntime";
 import { mockStreamCallbackFactory } from "./testUtils";
 import { settleOutsideAct } from "./tests/settleOutsideAct";

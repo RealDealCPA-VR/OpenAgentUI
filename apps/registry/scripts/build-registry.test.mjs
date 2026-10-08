@@ -111,11 +111,11 @@ test("the native registry serves every component the Expo example imports", asyn
     ...nativeRegistry.map((item) => item.name),
     ...SHARED_REGISTRY_ITEMS,
   ]);
-  const { assistantUI, shadcnUI } = scanRequiredComponents(
+  const { openAgentUI, shadcnUI } = scanRequiredComponents(
     fileURLToPath(new URL("../../../examples/with-expo", import.meta.url)),
   );
-  assert.ok(assistantUI.length > 0);
-  for (const name of [...assistantUI, ...shadcnUI]) {
+  assert.ok(openAgentUI.length > 0);
+  for (const name of [...openAgentUI, ...shadcnUI]) {
     assert.ok(served.has(name), `${name} is not a native registry item`);
   }
 });
@@ -126,17 +126,17 @@ test("native flavor content validation rejects web packages and accepts the kit"
       validateNativeFlavorContent([
         createBuilt("thread", [
           [
-            "components/assistant-ui/elements/thread.aui.tsx",
+            "components/openagentui/elements/thread.aui.tsx",
             'import { createRoot } from "react-dom/client";\n',
           ],
         ]),
       ]),
-    /thread: native tree file components\/assistant-ui\/elements\/thread\.aui\.tsx imports forbidden "react-dom\/client"/,
+    /thread: native tree file components\/openagentui\/elements\/thread\.aui\.tsx imports forbidden "react-dom\/client"/,
   );
 
   for (const dependency of [
-    "https://r.assistant-ui.com/attachment.json",
-    "https://r.assistant-ui.com/native/utils.json",
+    "https://r.openagentui.dev/attachment.json",
+    "https://r.openagentui.dev/native/utils.json",
     "button",
   ]) {
     const built = createBuilt("thread", []);
@@ -173,21 +173,21 @@ test("native registry build emits the React Native kit", async () => {
 
   assert.equal(
     thread.files[0].path,
-    "components/assistant-ui/elements/thread.aui.tsx",
+    "components/openagentui/elements/thread.aui.tsx",
   );
   assert.ok(
     thread.dependencies.includes(
-      `@assistant-ui/react-native@^${workspaceVersions.get("@assistant-ui/react-native")}`,
+      `@openagentui/react-native@^${workspaceVersions.get("@openagentui/react-native")}`,
     ),
   );
   assert.ok(
     thread.registryDependencies.includes(
-      "https://r.assistant-ui.com/native/attachment.json",
+      "https://r.openagentui.dev/native/attachment.json",
     ),
   );
   assert.ok(
     thread.registryDependencies.includes(
-      "https://r.assistant-ui.com/native/icon.json",
+      "https://r.openagentui.dev/native/icon.json",
     ),
   );
   assert.deepEqual(
@@ -240,27 +240,27 @@ test("vue registry build emits self-contained items", async () => {
   const thread = JSON.parse(threadContent);
   const threadList = JSON.parse(threadListContent);
   const threadFile = thread.files.find(
-    (file) => file.path === "components/assistant-ui/thread.vue",
+    (file) => file.path === "components/openagentui/thread.vue",
   );
   const threadListFile = threadList.files.find(
-    (file) => file.path === "components/assistant-ui/thread-list.vue",
+    (file) => file.path === "components/openagentui/thread-list.vue",
   );
 
   assert.ok(
     threadFile,
-    "vue thread registry output includes components/assistant-ui/thread.vue",
+    "vue thread registry output includes components/openagentui/thread.vue",
   );
   assert.ok(
     threadListFile,
-    "vue thread list registry output includes components/assistant-ui/thread-list.vue",
+    "vue thread list registry output includes components/openagentui/thread-list.vue",
   );
   assert.deepEqual(
     vueIndex.items.map((item) => item.name),
     ["thread-list", "thread"],
   );
   assert.deepEqual(thread.dependencies, [
-    `@assistant-ui/core@^${workspaceVersions.get("@assistant-ui/core")}`,
-    `@assistant-ui/vue@^${workspaceVersions.get("@assistant-ui/vue")}`,
+    `@openagentui/core@^${workspaceVersions.get("@openagentui/core")}`,
+    `@openagentui/vue@^${workspaceVersions.get("@openagentui/vue")}`,
     "@lucide/vue",
     "markdown-it",
     "reka-ui",
@@ -268,7 +268,7 @@ test("vue registry build emits self-contained items", async () => {
   assert.deepEqual(thread.devDependencies, ["@types/markdown-it"]);
   assert.equal("target" in threadFile, false);
   assert.deepEqual(threadList.dependencies, [
-    `@assistant-ui/vue@^${workspaceVersions.get("@assistant-ui/vue")}`,
+    `@openagentui/vue@^${workspaceVersions.get("@openagentui/vue")}`,
     "reka-ui",
     "@lucide/vue",
   ]);
@@ -279,32 +279,32 @@ test("vue registry build emits self-contained items", async () => {
 
 test("workspace dependencies are pinned to the caret range of the built version", () => {
   const versions = new Map([
-    ["@assistant-ui/react", "0.15.22"],
-    ["tw-shimmer", "0.4.13"],
-    ["@assistant-ui/ui", null],
+    ["@openagentui/react", "0.15.22"],
+    ["@openagentui/tw-shimmer", "0.4.13"],
+    ["@openagentui/ui", null],
   ]);
   const item = pinWorkspaceDependencies(
     {
       name: "thread",
       type: "registry:component",
       dependencies: [
-        "@assistant-ui/react",
-        "@assistant-ui/ui",
-        "tw-shimmer",
+        "@openagentui/react",
+        "@openagentui/ui",
+        "@openagentui/tw-shimmer",
         "lucide-react",
       ],
-      devDependencies: ["@assistant-ui/react"],
+      devDependencies: ["@openagentui/react"],
     },
     versions,
   );
 
   assert.deepEqual(item.dependencies, [
-    "@assistant-ui/react@^0.15.22",
-    "@assistant-ui/ui",
-    "tw-shimmer@^0.4.13",
+    "@openagentui/react@^0.15.22",
+    "@openagentui/ui",
+    "@openagentui/tw-shimmer@^0.4.13",
     "lucide-react",
   ]);
-  assert.deepEqual(item.devDependencies, ["@assistant-ui/react@^0.15.22"]);
+  assert.deepEqual(item.devDependencies, ["@openagentui/react@^0.15.22"]);
   assert.equal(
     "dependencies" in
       pinWorkspaceDependencies(
@@ -319,19 +319,19 @@ test("workspace dependencies are pinned to the caret range of the built version"
         {
           name: "thread",
           type: "registry:component",
-          dependencies: ["@assistant-ui/missing"],
+          dependencies: ["@openagentui/missing"],
         },
         versions,
       ),
-    /"@assistant-ui\/missing" is not a workspace package/,
+    /"@openagentui\/missing" is not a workspace package/,
   );
 });
 
-test("web registry build pins every published assistant-ui dependency", async () => {
+test("web registry build pins every published openagentui dependency", async () => {
   const { registry, vueRegistry } = await import("../src/registry.ts");
   await buildRegistry(registry, vueRegistry);
 
-  const reactRange = `@assistant-ui/react@^${workspaceVersions.get("@assistant-ui/react")}`;
+  const reactRange = `@openagentui/react@^${workspaceVersions.get("@openagentui/react")}`;
   for (const file of [
     "dist/thread.json",
     "dist/base/thread.json",
@@ -349,7 +349,7 @@ test("web registry build pins every published assistant-ui dependency", async ()
       ]) {
         assert.doesNotMatch(
           dependency,
-          /^@assistant-ui\/[^@]+$/,
+          /^@openagentui\/[^@]+$/,
           `${file}: ${item.name} declares unpinned "${dependency}"`,
         );
       }
@@ -369,15 +369,15 @@ test("emitted vue artifacts compile as SFCs and pass the vue purity gate", async
     file.content,
   ]);
   assert.deepEqual(threadEmitted.map(([outputPath]) => outputPath).sort(), [
-    "components/assistant-ui/markdown-text.vue",
-    "components/assistant-ui/message.vue",
-    "components/assistant-ui/reasoning.vue",
-    "components/assistant-ui/thread.vue",
-    "components/assistant-ui/tool-fallback.vue",
+    "components/openagentui/markdown-text.vue",
+    "components/openagentui/message.vue",
+    "components/openagentui/reasoning.vue",
+    "components/openagentui/thread.vue",
+    "components/openagentui/tool-fallback.vue",
   ]);
   assert.deepEqual(
     threadListEmitted.map(([outputPath]) => outputPath),
-    ["components/assistant-ui/thread-list.vue"],
+    ["components/openagentui/thread-list.vue"],
   );
 
   for (const [outputPath, content] of [
@@ -405,7 +405,7 @@ test("vue payload parsing fails on a malformed sfc", () => {
           payload: {
             files: [
               {
-                path: "components/assistant-ui/broken.vue",
+                path: "components/openagentui/broken.vue",
                 content:
                   "<script setup>const a = 1</script>\n<script setup>const b = 2</script>",
               },
@@ -430,8 +430,8 @@ test("vue flavor content validation rejects forbidden package subpaths", () => {
       validateVueFlavorContent([
         createBuilt("thread", [
           [
-            "components/assistant-ui/thread.vue",
-            '<script setup lang="ts">\nimport { jsx } from "react/jsx-runtime";\nimport "react-dom/client";\nimport "@assistant-ui/react/runtime";\nimport { CopyIcon } from "lucide-react";\nimport "@assistant-ui/react";\n</script>',
+            "components/openagentui/thread.vue",
+            '<script setup lang="ts">\nimport { jsx } from "react/jsx-runtime";\nimport "react-dom/client";\nimport "@openagentui/react/runtime";\nimport { CopyIcon } from "lucide-react";\nimport "@openagentui/react";\n</script>',
           ],
         ]),
       ]),
@@ -440,27 +440,27 @@ test("vue flavor content validation rejects forbidden package subpaths", () => {
       assert.match(error.message, /^Invalid vue flavor content:/);
       assert.ok(
         error.message.includes(
-          '- thread: vue tree file components/assistant-ui/thread.vue imports forbidden "react/jsx-runtime"',
+          '- thread: vue tree file components/openagentui/thread.vue imports forbidden "react/jsx-runtime"',
         ),
       );
       assert.ok(
         error.message.includes(
-          '- thread: vue tree file components/assistant-ui/thread.vue imports forbidden "react-dom/client"',
+          '- thread: vue tree file components/openagentui/thread.vue imports forbidden "react-dom/client"',
         ),
       );
       assert.ok(
         error.message.includes(
-          '- thread: vue tree file components/assistant-ui/thread.vue imports forbidden "@assistant-ui/react/runtime"',
+          '- thread: vue tree file components/openagentui/thread.vue imports forbidden "@openagentui/react/runtime"',
         ),
       );
       assert.ok(
         error.message.includes(
-          '- thread: vue tree file components/assistant-ui/thread.vue imports forbidden "lucide-react"',
+          '- thread: vue tree file components/openagentui/thread.vue imports forbidden "lucide-react"',
         ),
       );
       assert.ok(
         error.message.includes(
-          '- thread: vue tree file components/assistant-ui/thread.vue imports forbidden "@assistant-ui/react"',
+          '- thread: vue tree file components/openagentui/thread.vue imports forbidden "@openagentui/react"',
         ),
       );
       return true;
@@ -474,7 +474,7 @@ test("vue flavor content validation scans script tags closed with whitespace", (
       validateVueFlavorContent([
         createBuilt("thread", [
           [
-            "components/assistant-ui/thread.vue",
+            "components/openagentui/thread.vue",
             '<script setup lang="ts">\nimport { createElement } from "react";\n</script \t\nbar>',
           ],
         ]),
@@ -484,7 +484,7 @@ test("vue flavor content validation scans script tags closed with whitespace", (
       assert.match(error.message, /^Invalid vue flavor content:/);
       assert.ok(
         error.message.includes(
-          '- thread: vue tree file components/assistant-ui/thread.vue imports forbidden "react"',
+          '- thread: vue tree file components/openagentui/thread.vue imports forbidden "react"',
         ),
       );
       return true;
@@ -498,7 +498,7 @@ test("vue flavor content validation rejects unsupported script languages", () =>
       validateVueFlavorContent([
         createBuilt("thread", [
           [
-            "components/assistant-ui/thread.vue",
+            "components/openagentui/thread.vue",
             '<script setup lang="tsx">\nconst thread = <div />;\n</script>',
           ],
         ]),
@@ -508,7 +508,7 @@ test("vue flavor content validation rejects unsupported script languages", () =>
       assert.match(error.message, /^Invalid vue flavor content:/);
       assert.ok(
         error.message.includes(
-          '- thread: vue tree file components/assistant-ui/thread.vue has unsupported script lang "tsx"',
+          '- thread: vue tree file components/openagentui/thread.vue has unsupported script lang "tsx"',
         ),
       );
       return true;
@@ -521,15 +521,15 @@ test("base registry item merges, rewrites, and deduplicates dependencies in orde
     name: "example",
     type: "registry:ui",
     registryDependencies: [
-      "https://r.assistant-ui.com/thread.json",
+      "https://r.openagentui.dev/thread.json",
       "tooltip",
       "https://example.com/foreign.json",
-      "https://r.assistant-ui.com/base/message.json",
+      "https://r.openagentui.dev/base/message.json",
     ],
     baseRegistryDependencies: [
-      "https://r.assistant-ui.com/thread.json",
+      "https://r.openagentui.dev/thread.json",
       "popover",
-      "https://r.assistant-ui.com/message.json",
+      "https://r.openagentui.dev/message.json",
     ],
     radixRegistryDependencies: ["input"],
     registryDependencyUsageExemptions: {
@@ -541,10 +541,10 @@ test("base registry item merges, rewrites, and deduplicates dependencies in orde
     name: "example",
     type: "registry:ui",
     registryDependencies: [
-      "https://r.assistant-ui.com/base/thread.json",
+      "https://r.openagentui.dev/base/thread.json",
       "tooltip",
       "https://example.com/foreign.json",
-      "https://r.assistant-ui.com/base/message.json",
+      "https://r.openagentui.dev/base/message.json",
       "popover",
     ],
   });
@@ -554,14 +554,14 @@ test("base registry item rewriting is idempotent", () => {
   const once = createBaseRegistryItem({
     name: "example",
     type: "registry:ui",
-    registryDependencies: ["https://r.assistant-ui.com/base/thread.json"],
-    baseRegistryDependencies: ["https://r.assistant-ui.com/thread.json"],
+    registryDependencies: ["https://r.openagentui.dev/base/thread.json"],
+    baseRegistryDependencies: ["https://r.openagentui.dev/thread.json"],
   });
   const twice = createBaseRegistryItem(once);
 
   assert.deepEqual(twice, once);
   assert.deepEqual(once.registryDependencies, [
-    "https://r.assistant-ui.com/base/thread.json",
+    "https://r.openagentui.dev/base/thread.json",
   ]);
 });
 
@@ -571,11 +571,11 @@ test("radix registry item merges radix-only registry dependencies and removes ba
       name: "example",
       type: "registry:ui",
       registryDependencies: [
-        "https://r.assistant-ui.com/thread.json",
+        "https://r.openagentui.dev/thread.json",
         "tooltip",
       ],
       radixRegistryDependencies: ["tooltip", "input"],
-      baseRegistryDependencies: ["https://r.assistant-ui.com/popover.json"],
+      baseRegistryDependencies: ["https://r.openagentui.dev/popover.json"],
       registryDependencyUsageExemptions: {
         tooltip: "Installs tooltip styles selected at runtime.",
       },
@@ -584,7 +584,7 @@ test("radix registry item merges radix-only registry dependencies and removes ba
       name: "example",
       type: "registry:ui",
       registryDependencies: [
-        "https://r.assistant-ui.com/thread.json",
+        "https://r.openagentui.dev/thread.json",
         "tooltip",
         "input",
       ],
@@ -1003,16 +1003,16 @@ const bundleFixtures = () => {
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/thread.tsx",
+        path: "components/openagentui/thread.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/thread.tsx",
+          "../../packages/ui/src/components/react/openagentui/thread.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
     radixDependencies: ["radix-ui"],
     registryDependencies: [
       "button",
-      "https://r.assistant-ui.com/reasoning.json",
+      "https://r.openagentui.dev/reasoning.json",
     ],
     radixRegistryDependencies: ["input"],
     baseRegistryDependencies: ["popover"],
@@ -1023,12 +1023,12 @@ const bundleFixtures = () => {
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/reasoning.tsx",
+        path: "components/openagentui/reasoning.tsx",
       },
     ],
-    dependencies: ["tw-shimmer"],
+    dependencies: ["@openagentui/tw-shimmer"],
     registryDependencies: ["collapsible"],
-    css: { '@import "tw-shimmer"': {} },
+    css: { '@import "@openagentui/tw-shimmer"': {} },
   };
 
   return {
@@ -1038,8 +1038,8 @@ const bundleFixtures = () => {
       files: [
         { type: "registry:file", path: "app/page.tsx", target: "app/page.tsx" },
       ],
-      dependencies: ["@assistant-ui/eve"],
-      bundledRegistryDependencies: ["https://r.assistant-ui.com/thread.json"],
+      dependencies: ["@openagentui/eve"],
+      bundledRegistryDependencies: ["https://r.openagentui.dev/thread.json"],
     },
     itemsByName: new Map(
       [thread, reasoning].map((dependencyItem) => [
@@ -1067,10 +1067,10 @@ test("bundling inlines the closure as targeted files and merges its dependencies
       ["registry:file", "app/page.tsx", undefined],
       [
         "registry:file",
-        "components/assistant-ui/thread.tsx",
-        "../../packages/ui/src/components/react/assistant-ui/thread.tsx",
+        "components/openagentui/thread.tsx",
+        "../../packages/ui/src/components/react/openagentui/thread.tsx",
       ],
-      ["registry:file", "components/assistant-ui/reasoning.tsx", undefined],
+      ["registry:file", "components/openagentui/reasoning.tsx", undefined],
       [
         "registry:file",
         "components/ui/button.tsx",
@@ -1089,12 +1089,14 @@ test("bundling inlines the closure as targeted files and merges its dependencies
     ],
   );
   assert.deepEqual(expanded.dependencies, [
-    "@assistant-ui/eve",
-    "@assistant-ui/react",
-    "tw-shimmer",
+    "@openagentui/eve",
+    "@openagentui/react",
+    "@openagentui/tw-shimmer",
   ]);
   assert.deepEqual(expanded.radixDependencies, ["radix-ui"]);
-  assert.deepEqual(Object.keys(expanded.css), ['@import "tw-shimmer"']);
+  assert.deepEqual(Object.keys(expanded.css), [
+    '@import "@openagentui/tw-shimmer"',
+  ]);
 });
 
 test("bundling sources ui primitives and their package from the requested flavor", () => {
@@ -1119,7 +1121,7 @@ test("bundling leaves an item without bundled dependencies untouched and rejects
   const item = {
     name: "thread",
     type: "registry:component",
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
   };
 
   assert.deepEqual(
@@ -1133,13 +1135,13 @@ test("bundling leaves an item without bundled dependencies untouched and rejects
           name: "eve-chat",
           type: "registry:item",
           bundledRegistryDependencies: [
-            "https://r.assistant-ui.com/missing.json",
+            "https://r.openagentui.dev/missing.json",
           ],
         },
         new Map(),
         "radix",
       ),
-    /eve-chat: bundled registry dependency "https:\/\/r\.assistant-ui\.com\/missing\.json" does not match a local registry item/,
+    /eve-chat: bundled registry dependency "https:\/\/r\.openagentui\.com\/missing\.json" does not match a local registry item/,
   );
 });
 
@@ -1157,7 +1159,7 @@ test("bundling rejects a foreign registry url inside the closure", () => {
           name: "eve-chat",
           type: "registry:item",
           bundledRegistryDependencies: [
-            "https://r.assistant-ui.com/thread.json",
+            "https://r.openagentui.dev/thread.json",
           ],
         },
         new Map([["thread", thread]]),
@@ -1176,7 +1178,7 @@ test("universal item validation rejects a bundled item a partial config cannot i
         { type: "registry:page", path: "app/page.tsx", target: "app/page.tsx" },
         {
           type: "registry:component",
-          path: "components/assistant-ui/thread.tsx",
+          path: "components/openagentui/thread.tsx",
         },
       ],
       registryDependencies: ["button"],
@@ -1187,7 +1189,7 @@ test("universal item validation rejects a bundled item a partial config cannot i
       files: [
         {
           type: "registry:component",
-          path: "components/assistant-ui/thread.tsx",
+          path: "components/openagentui/thread.tsx",
         },
       ],
     },
@@ -1200,7 +1202,7 @@ test("universal item validation rejects a bundled item a partial config cannot i
         'eve-chat: type "registry:page" is not installable without a full project config',
       ) &&
       error.message.includes(
-        "eve-chat: components/assistant-ui/thread.tsx needs an explicit target and a universal file type",
+        "eve-chat: components/openagentui/thread.tsx needs an explicit target and a universal file type",
       ) &&
       error.message.includes('eve-chat: registry dependency "button"') &&
       !error.message.includes("thread:"),
@@ -1715,7 +1717,7 @@ test("every element's sibling imports are declared as registry dependencies", as
   const { join } = await import("node:path");
   const { registry } = await import("../src/registry.ts");
 
-  const dir = "packages/ui/src/components/react/assistant-ui/elements";
+  const dir = "packages/ui/src/components/react/openagentui/elements";
   const declared = new Map(
     registry
       .filter((item) => item.name.startsWith("elements-"))
@@ -1747,36 +1749,36 @@ test("every element's sibling imports are declared as registry dependencies", as
 });
 
 test("relative import candidates cover extensions, directory indexes, and .js sources", () => {
-  const from = "components/assistant-ui/sources.tsx";
+  const from = "components/openagentui/sources.tsx";
 
   assert.deepEqual(getRelativeImportCandidates("./badge", from), [
-    "components/assistant-ui/badge.tsx",
-    "components/assistant-ui/badge.ts",
-    "components/assistant-ui/badge.jsx",
-    "components/assistant-ui/badge.js",
-    "components/assistant-ui/badge/index.tsx",
-    "components/assistant-ui/badge/index.ts",
-    "components/assistant-ui/badge/index.jsx",
-    "components/assistant-ui/badge/index.js",
+    "components/openagentui/badge.tsx",
+    "components/openagentui/badge.ts",
+    "components/openagentui/badge.jsx",
+    "components/openagentui/badge.js",
+    "components/openagentui/badge/index.tsx",
+    "components/openagentui/badge/index.ts",
+    "components/openagentui/badge/index.jsx",
+    "components/openagentui/badge/index.js",
   ]);
 
   assert.deepEqual(getRelativeImportCandidates("./badge.tsx", from), [
-    "components/assistant-ui/badge.tsx",
+    "components/openagentui/badge.tsx",
   ]);
 
   assert.deepEqual(getRelativeImportCandidates("./styles.css", from), [
-    "components/assistant-ui/styles.css",
+    "components/openagentui/styles.css",
   ]);
 
   assert.deepEqual(getRelativeImportCandidates("./badge.js", from), [
-    "components/assistant-ui/badge.js",
-    "components/assistant-ui/badge.tsx",
-    "components/assistant-ui/badge.ts",
-    "components/assistant-ui/badge.jsx",
+    "components/openagentui/badge.js",
+    "components/openagentui/badge.tsx",
+    "components/openagentui/badge.ts",
+    "components/openagentui/badge.jsx",
   ]);
 
   assert.deepEqual(getRelativeImportCandidates("./icon.svg?url", from), [
-    "components/assistant-ui/icon.svg",
+    "components/openagentui/icon.svg",
   ]);
 
   assert.equal(
@@ -1791,60 +1793,60 @@ test("relative import candidates cover extensions, directory indexes, and .js so
 });
 
 test("a dotted basename without a recognized extension probes module and index forms", () => {
-  const from = "components/assistant-ui/thread.tsx";
+  const from = "components/openagentui/thread.tsx";
 
   assert.deepEqual(getRelativeImportCandidates("./tool.config", from), [
-    "components/assistant-ui/tool.config.tsx",
-    "components/assistant-ui/tool.config.ts",
-    "components/assistant-ui/tool.config.jsx",
-    "components/assistant-ui/tool.config.js",
-    "components/assistant-ui/tool.config/index.tsx",
-    "components/assistant-ui/tool.config/index.ts",
-    "components/assistant-ui/tool.config/index.jsx",
-    "components/assistant-ui/tool.config/index.js",
+    "components/openagentui/tool.config.tsx",
+    "components/openagentui/tool.config.ts",
+    "components/openagentui/tool.config.jsx",
+    "components/openagentui/tool.config.js",
+    "components/openagentui/tool.config/index.tsx",
+    "components/openagentui/tool.config/index.ts",
+    "components/openagentui/tool.config/index.jsx",
+    "components/openagentui/tool.config/index.js",
   ]);
 
   assert.deepEqual(getRelativeImportCandidates("./thread.v2", from), [
-    "components/assistant-ui/thread.v2.tsx",
-    "components/assistant-ui/thread.v2.ts",
-    "components/assistant-ui/thread.v2.jsx",
-    "components/assistant-ui/thread.v2.js",
-    "components/assistant-ui/thread.v2/index.tsx",
-    "components/assistant-ui/thread.v2/index.ts",
-    "components/assistant-ui/thread.v2/index.jsx",
-    "components/assistant-ui/thread.v2/index.js",
+    "components/openagentui/thread.v2.tsx",
+    "components/openagentui/thread.v2.ts",
+    "components/openagentui/thread.v2.jsx",
+    "components/openagentui/thread.v2.js",
+    "components/openagentui/thread.v2/index.tsx",
+    "components/openagentui/thread.v2/index.ts",
+    "components/openagentui/thread.v2/index.jsx",
+    "components/openagentui/thread.v2/index.js",
   ]);
 });
 
 test("a recognized asset extension resolves to the literal file only", () => {
-  const from = "components/assistant-ui/thread.tsx";
+  const from = "components/openagentui/thread.tsx";
 
   assert.deepEqual(getRelativeImportCandidates("./globals.css", from), [
-    "components/assistant-ui/globals.css",
+    "components/openagentui/globals.css",
   ]);
 
   assert.deepEqual(getRelativeImportCandidates("./logo.png", from), [
-    "components/assistant-ui/logo.png",
+    "components/openagentui/logo.png",
   ]);
 
   assert.deepEqual(getRelativeImportCandidates("./tool.config.json", from), [
-    "components/assistant-ui/tool.config.json",
+    "components/openagentui/tool.config.json",
   ]);
 
   assert.deepEqual(getRelativeImportCandidates("./logo.PNG", from), [
-    "components/assistant-ui/logo.PNG",
+    "components/openagentui/logo.PNG",
   ]);
 });
 
 test("an uppercase module extension still probes TypeScript sources", () => {
-  const from = "components/assistant-ui/thread.tsx";
+  const from = "components/openagentui/thread.tsx";
 
   assert.deepEqual(getRelativeImportCandidates("./legacy.JS", from), [
-    "components/assistant-ui/legacy.JS",
-    "components/assistant-ui/legacy.tsx",
-    "components/assistant-ui/legacy.ts",
-    "components/assistant-ui/legacy.jsx",
-    "components/assistant-ui/legacy.js",
+    "components/openagentui/legacy.JS",
+    "components/openagentui/legacy.tsx",
+    "components/openagentui/legacy.ts",
+    "components/openagentui/legacy.jsx",
+    "components/openagentui/legacy.js",
   ]);
 });
 
@@ -1877,26 +1879,26 @@ test("install validation flags a relative import with no providing file", () => 
   const findings = findingsFrom([
     componentItem([
       {
-        path: "components/assistant-ui/thread.tsx",
+        path: "components/openagentui/thread.tsx",
         content: 'import { Badge } from "./badge";\n',
       },
     ]),
   ]);
 
   assert.match(findings, /thread\.tsx imports "\.\/badge"/);
-  assert.match(findings, /components\/assistant-ui\/badge\.tsx/);
+  assert.match(findings, /components\/openagentui\/badge\.tsx/);
 });
 
 test("install validation resolves a sibling through file.target, not file.path", () => {
   const files = [
     {
-      path: "packages/ui/src/components/react/assistant-ui/thread.tsx",
-      target: "components/assistant-ui/thread.tsx",
+      path: "packages/ui/src/components/react/openagentui/thread.tsx",
+      target: "components/openagentui/thread.tsx",
       content: 'import { Badge } from "./badge";\n',
     },
     {
-      path: "packages/ui/src/components/react/assistant-ui/badge.tsx",
-      target: "components/assistant-ui/badge.tsx",
+      path: "packages/ui/src/components/react/openagentui/badge.tsx",
+      target: "components/openagentui/badge.tsx",
       content: "export const Badge = () => null;\n",
     },
   ];
@@ -1907,7 +1909,7 @@ test("install validation resolves a sibling through file.target, not file.path",
   const untargetedFindings = findingsFrom([componentItem(withoutTargets)]);
   assert.match(
     untargetedFindings,
-    /thread\.tsx lands at components\/react\/assistant-ui\/thread\.tsx/,
+    /thread\.tsx lands at components\/react\/openagentui\/thread\.tsx/,
   );
   assert.doesNotMatch(untargetedFindings, /imports "\.\/badge"/);
 
@@ -1922,11 +1924,11 @@ test("install validation resolves a sibling through file.target, not file.path",
 });
 
 test("install validation places an untargeted lib file where shadcn does", () => {
-  const dependency = "https://r.assistant-ui.com/elements-surfaces.json";
+  const dependency = "https://r.openagentui.dev/elements-surfaces.json";
   const consumer = componentItem(
     [
       {
-        path: "components/assistant-ui/elements/error-state.tsx",
+        path: "components/openagentui/elements/error-state.tsx",
         type: "registry:component",
         content: 'import { surface } from "./surfaces";\n',
       },
@@ -1934,7 +1936,7 @@ test("install validation places an untargeted lib file where shadcn does", () =>
     { registryDependencies: [dependency] },
   );
   const surfaces = {
-    path: "components/assistant-ui/elements/surfaces.tsx",
+    path: "components/openagentui/elements/surfaces.tsx",
     type: "registry:lib",
     content: "export const surface = {};\n",
   };
@@ -1965,9 +1967,9 @@ test("install validation rejects a target written with the ~/ prefix", () => {
   const findings = findingsFrom([
     componentItem([
       {
-        path: "components/assistant-ui/demo.tsx",
+        path: "components/openagentui/demo.tsx",
         type: "registry:component",
-        target: "~/components/assistant-ui/demo.tsx",
+        target: "~/components/openagentui/demo.tsx",
         content: "export const Demo = () => null;\n",
       },
     ]),
@@ -1975,7 +1977,7 @@ test("install validation rejects a target written with the ~/ prefix", () => {
 
   assert.match(
     findings,
-    /declares the target "~\/components\/assistant-ui\/demo\.tsx"/,
+    /declares the target "~\/components\/openagentui\/demo\.tsx"/,
   );
   assert.doesNotMatch(findings, /lands at/);
 });
@@ -1985,7 +1987,7 @@ test("shadcn install paths follow the type directory, keep the nested tail, and 
     [
       {
         type: "registry:lib",
-        path: "components/assistant-ui/elements/surfaces.tsx",
+        path: "components/openagentui/elements/surfaces.tsx",
       },
       "lib/surfaces.tsx",
     ],
@@ -1996,9 +1998,9 @@ test("shadcn install paths follow the type directory, keep the nested tail, and 
     [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/surfaces.tsx",
+        path: "components/openagentui/elements/surfaces.tsx",
       },
-      "components/assistant-ui/elements/surfaces.tsx",
+      "components/openagentui/elements/surfaces.tsx",
     ],
     [
       { type: "registry:ui", path: "components/ui/button.tsx" },
@@ -2029,7 +2031,7 @@ test("install validation reports an import that escapes the installed tree", () 
   const findings = findingsFrom([
     componentItem([
       {
-        path: "components/assistant-ui/thread.tsx",
+        path: "components/openagentui/thread.tsx",
         content: 'import { helper } from "../../../outside/helper";\n',
       },
     ]),
@@ -2040,15 +2042,15 @@ test("install validation reports an import that escapes the installed tree", () 
 
 test("install validation resolves a dotted alias basename to its shipped source", () => {
   const importer = {
-    path: "components/assistant-ui/thread.tsx",
+    path: "components/openagentui/thread.tsx",
     content:
-      'import { toolConfig } from "@/components/assistant-ui/tool.config";\n',
+      'import { toolConfig } from "@/components/openagentui/tool.config";\n',
   };
 
   for (const providerPath of [
-    "components/assistant-ui/tool.config.tsx",
-    "components/assistant-ui/tool.config.ts",
-    "components/assistant-ui/tool.config/index.tsx",
+    "components/openagentui/tool.config.tsx",
+    "components/openagentui/tool.config.ts",
+    "components/openagentui/tool.config/index.tsx",
   ]) {
     assert.equal(
       findingsFrom([
@@ -2063,21 +2065,21 @@ test("install validation resolves a dotted alias basename to its shipped source"
 
   assert.match(
     findingsFrom([componentItem([importer])]),
-    /provides components\/assistant-ui\/tool\.config\.tsx/,
+    /provides components\/openagentui\/tool\.config\.tsx/,
   );
 });
 
 test("install validation resolves an alias asset import behind a query suffix", () => {
   const importer = {
-    path: "components/assistant-ui/thread.tsx",
-    content: 'import logoUrl from "@/components/assistant-ui/logo.svg?url";\n',
+    path: "components/openagentui/thread.tsx",
+    content: 'import logoUrl from "@/components/openagentui/logo.svg?url";\n',
   };
 
   assert.equal(
     findingsFrom([
       componentItem([
         importer,
-        { path: "components/assistant-ui/logo.svg", content: "<svg />\n" },
+        { path: "components/openagentui/logo.svg", content: "<svg />\n" },
       ]),
     ]),
     null,
@@ -2085,7 +2087,7 @@ test("install validation resolves an alias asset import behind a query suffix", 
 
   assert.match(
     findingsFrom([componentItem([importer])]),
-    /provides components\/assistant-ui\/logo\.svg/,
+    /provides components\/openagentui\/logo\.svg/,
   );
 });
 
@@ -2096,12 +2098,12 @@ test("install validation resolves direct dependencies through any local alias ta
     ["@/data/client", "data/client/index.ts"],
     ["@/assets/logo.svg?url", "assets/logo.svg"],
   ]) {
-    const dependency = "https://r.assistant-ui.com/provider.json";
+    const dependency = "https://r.openagentui.dev/provider.json";
     const findings = findingsFrom([
       componentItem(
         [
           {
-            path: "components/assistant-ui/demo.tsx",
+            path: "components/openagentui/demo.tsx",
             content: `import value from "${specifier}";\n`,
           },
         ],
@@ -2128,7 +2130,7 @@ test("install validation rejects an unresolved non-ambient local alias", () => {
   const findings = findingsFrom([
     componentItem([
       {
-        path: "components/assistant-ui/demo.tsx",
+        path: "components/openagentui/demo.tsx",
         content: 'import value from "@/lib/feature";\n',
       },
     ]),
@@ -2143,7 +2145,7 @@ test("install validation allows the ambient lib/utils alias", () => {
     findingsFrom([
       componentItem([
         {
-          path: "components/assistant-ui/demo.tsx",
+          path: "components/openagentui/demo.tsx",
           content: 'import { cn } from "@/lib/utils";\n',
         },
       ]),
@@ -2163,7 +2165,7 @@ test("install validation resolves a sibling against the registryDependency insta
   assert.equal(findingsFrom([importing("components/ui/menu.tsx")]), null);
 
   assert.match(
-    findingsFrom([importing("components/assistant-ui/thread.tsx")]),
+    findingsFrom([importing("components/openagentui/thread.tsx")]),
     /imports "\.\/badge", but no file or registryDependency provides/,
   );
 });
@@ -2195,7 +2197,7 @@ test("cli scanner element mapping names a real registry item for every element f
     registry.flatMap((item) =>
       (item.files ?? []).flatMap((file) => {
         const match = file.sourcePath?.match(
-          /react\/assistant-ui\/elements\/([a-z0-9-]+)(\.aui(?:\.radix)?)?\.tsx$/,
+          /react\/openagentui\/elements\/([a-z0-9-]+)(\.aui(?:\.radix)?)?\.tsx$/,
         );
         if (!match) return [];
         const base = match[1];
@@ -2217,7 +2219,7 @@ test("install validation rejects a stale shadcn UI registry dependency", () => {
     componentItem(
       [
         {
-          path: "components/assistant-ui/demo.tsx",
+          path: "components/openagentui/demo.tsx",
           content: "export const Demo = () => null;\n",
         },
       ],
@@ -2236,7 +2238,7 @@ test("install validation recognizes a shadcn UI dependency used through an alias
     componentItem(
       [
         {
-          path: "components/assistant-ui/demo.tsx",
+          path: "components/openagentui/demo.tsx",
           content: 'import { Button } from "@/components/ui/button";\n',
         },
       ],
@@ -2252,12 +2254,12 @@ test("install validation recognizes a direct assistant URL used through an alias
     componentItem(
       [
         {
-          path: "components/assistant-ui/demo.tsx",
-          content: 'import { Badge } from "@/components/assistant-ui/badge";\n',
+          path: "components/openagentui/demo.tsx",
+          content: 'import { Badge } from "@/components/openagentui/badge";\n',
         },
       ],
       {
-        registryDependencies: ["https://r.assistant-ui.com/badge.json"],
+        registryDependencies: ["https://r.openagentui.dev/badge.json"],
       },
     ),
     {
@@ -2265,7 +2267,7 @@ test("install validation recognizes a direct assistant URL used through an alias
       type: "registry:component",
       files: [
         {
-          path: "components/assistant-ui/badge.tsx",
+          path: "components/openagentui/badge.tsx",
           content: "export const Badge = () => null;\n",
         },
       ],
@@ -2281,12 +2283,12 @@ test("install validation recognizes a direct assistant dependency through relati
       [
         {
           path: "packages/ui/src/components/thread.tsx",
-          target: "components/assistant-ui/thread.tsx",
+          target: "components/openagentui/thread.tsx",
           content: 'import { Badge } from "./badge";\n',
         },
       ],
       {
-        registryDependencies: ["https://r.assistant-ui.com/badge.json"],
+        registryDependencies: ["https://r.openagentui.dev/badge.json"],
       },
     ),
     {
@@ -2295,7 +2297,7 @@ test("install validation recognizes a direct assistant dependency through relati
       files: [
         {
           path: "packages/ui/src/components/badge.tsx",
-          target: "components/assistant-ui/badge.tsx",
+          target: "components/openagentui/badge.tsx",
           content: "export const Badge = () => null;\n",
         },
       ],
@@ -2310,12 +2312,12 @@ test("install validation does not count a transitive install as direct dependenc
     componentItem(
       [
         {
-          path: "components/assistant-ui/demo.tsx",
-          content: 'import { Badge } from "@/components/assistant-ui/badge";\n',
+          path: "components/openagentui/demo.tsx",
+          content: 'import { Badge } from "@/components/openagentui/badge";\n',
         },
       ],
       {
-        registryDependencies: ["https://r.assistant-ui.com/thread.json"],
+        registryDependencies: ["https://r.openagentui.dev/thread.json"],
       },
     ),
     {
@@ -2323,18 +2325,18 @@ test("install validation does not count a transitive install as direct dependenc
       type: "registry:component",
       files: [
         {
-          path: "components/assistant-ui/thread.tsx",
-          content: 'import { Badge } from "@/components/assistant-ui/badge";\n',
+          path: "components/openagentui/thread.tsx",
+          content: 'import { Badge } from "@/components/openagentui/badge";\n',
         },
       ],
-      registryDependencies: ["https://r.assistant-ui.com/badge.json"],
+      registryDependencies: ["https://r.openagentui.dev/badge.json"],
     },
     {
       name: "badge",
       type: "registry:component",
       files: [
         {
-          path: "components/assistant-ui/badge.tsx",
+          path: "components/openagentui/badge.tsx",
           content: "export const Badge = () => null;\n",
         },
       ],
@@ -2343,7 +2345,7 @@ test("install validation does not count a transitive install as direct dependenc
 
   assert.match(
     findings,
-    /demo: registry dependency "https:\/\/r\.assistant-ui\.com\/thread\.json" is not imported directly by this item/,
+    /demo: registry dependency "https:\/\/r\.openagentui\.com\/thread\.json" is not imported directly by this item/,
   );
 });
 
@@ -2355,10 +2357,10 @@ test("install validation accepts an explicitly documented non-imported style dep
   const item = {
     ...componentItem([], {
       registryDependencies: [
-        "https://r.assistant-ui.com/generative-ui-style.json",
+        "https://r.openagentui.dev/generative-ui-style.json",
       ],
       registryDependencyUsageExemptions: {
-        "https://r.assistant-ui.com/generative-ui-style.json":
+        "https://r.openagentui.dev/generative-ui-style.json":
           "Installs CSS variables and vocabulary rules consumed through class names.",
       },
     }),
@@ -2377,12 +2379,12 @@ test("install validation accepts an explicitly documented non-imported style dep
     findingsFrom([
       componentItem([], {
         registryDependencies: [
-          "https://r.assistant-ui.com/generative-ui-style.json",
+          "https://r.openagentui.dev/generative-ui-style.json",
         ],
       }),
       style,
     ]),
-    /demo: registry dependency "https:\/\/r\.assistant-ui\.com\/generative-ui-style\.json" is not imported directly by this item/,
+    /demo: registry dependency "https:\/\/r\.openagentui\.com\/generative-ui-style\.json" is not imported directly by this item/,
   );
 });
 
@@ -2401,9 +2403,9 @@ test("install validation accepts an explicitly documented page sidecar", () => {
   const quickStart = {
     name: "quick-start",
     type: "registry:page",
-    registryDependencies: ["https://r.assistant-ui.com/backend.json"],
+    registryDependencies: ["https://r.openagentui.dev/backend.json"],
     registryDependencyUsageExemptions: {
-      "https://r.assistant-ui.com/backend.json":
+      "https://r.openagentui.dev/backend.json":
         "Installs the API route used by the page without importing it into the client bundle.",
     },
   };
@@ -2419,11 +2421,11 @@ test("install validation accepts an explicitly documented page sidecar", () => {
   assert.match(
     findingsFrom([
       componentItem([], {
-        registryDependencies: ["https://r.assistant-ui.com/backend.json"],
+        registryDependencies: ["https://r.openagentui.dev/backend.json"],
       }),
       backend,
     ]),
-    /demo: registry dependency "https:\/\/r\.assistant-ui\.com\/backend\.json" is not imported directly by this item/,
+    /demo: registry dependency "https:\/\/r\.openagentui\.com\/backend\.json" is not imported directly by this item/,
   );
 
   assert.match(
@@ -2431,20 +2433,20 @@ test("install validation accepts an explicitly documented page sidecar", () => {
       {
         name: "quick-start",
         type: "registry:page",
-        registryDependencies: ["https://r.assistant-ui.com/thread.json"],
+        registryDependencies: ["https://r.openagentui.dev/thread.json"],
       },
       {
         name: "thread",
         type: "registry:component",
         files: [
           {
-            path: "components/assistant-ui/thread.tsx",
+            path: "components/openagentui/thread.tsx",
             content: "export const Thread = () => null;\n",
           },
         ],
       },
     ]),
-    /quick-start: registry dependency "https:\/\/r\.assistant-ui\.com\/thread\.json" is not imported directly by this item/,
+    /quick-start: registry dependency "https:\/\/r\.openagentui\.com\/thread\.json" is not imported directly by this item/,
   );
 });
 
@@ -2516,7 +2518,7 @@ test("registry dependency usage exemptions require a reviewable reason", async (
 });
 
 test("registry dependency usage exemptions do not hide missing local items", () => {
-  const dependency = "https://r.assistant-ui.com/missing.json";
+  const dependency = "https://r.openagentui.dev/missing.json";
   const item = componentItem([], {
     registryDependencies: [dependency],
     registryDependencyUsageExemptions: {
@@ -2535,7 +2537,7 @@ test("registry dependency usage exemptions reject directly imported dependencies
   const item = componentItem(
     [
       {
-        path: "components/assistant-ui/demo.tsx",
+        path: "components/openagentui/demo.tsx",
         content: 'import { Button } from "@/components/ui/button";\n',
       },
     ],
@@ -2558,7 +2560,7 @@ test("registry dependency usage exemptions reject directly imported dependencies
 });
 
 test("registry dependency usage exemptions include only the active flavor", () => {
-  const commonDependency = "https://r.assistant-ui.com/theme.json";
+  const commonDependency = "https://r.openagentui.dev/theme.json";
   const item = componentItem([], {
     registryDependencies: [commonDependency],
     radixRegistryDependencies: ["input"],
@@ -2582,7 +2584,7 @@ test("registry dependency usage exemptions include only the active flavor", () =
   assert.deepEqual([...radixExemptions], [commonDependency, "input"]);
   assert.deepEqual(
     [...baseExemptions],
-    ["https://r.assistant-ui.com/base/theme.json", "popover"],
+    ["https://r.openagentui.dev/base/theme.json", "popover"],
   );
 });
 
@@ -2639,15 +2641,15 @@ test("emitted files carry a repo-root sourcePath for source links", () => {
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/thread.aui.tsx",
+        path: "components/openagentui/elements/thread.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/thread.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/thread.aui.tsx",
       },
     ],
   });
   assert.equal(
     kit.payload.files[0].sourcePath,
-    "packages/ui/src/components/react/assistant-ui/elements/thread.aui.tsx",
+    "packages/ui/src/components/react/openagentui/elements/thread.aui.tsx",
   );
 
   const radix = createRegistryPayload(
@@ -2657,9 +2659,9 @@ test("emitted files carry a repo-root sourcePath for source links", () => {
       files: [
         {
           type: "registry:component",
-          path: "components/assistant-ui/elements/threadlist-sidebar.aui.tsx",
+          path: "components/openagentui/elements/threadlist-sidebar.aui.tsx",
           sourcePath:
-            "../../packages/ui/src/components/react/assistant-ui/elements/threadlist-sidebar.aui.tsx",
+            "../../packages/ui/src/components/react/openagentui/elements/threadlist-sidebar.aui.tsx",
         },
       ],
     },
@@ -2667,7 +2669,7 @@ test("emitted files carry a repo-root sourcePath for source links", () => {
   );
   assert.equal(
     radix.payload.files[0].sourcePath,
-    "packages/ui/src/components/react/assistant-ui/elements/threadlist-sidebar.aui.radix.tsx",
+    "packages/ui/src/components/react/openagentui/elements/threadlist-sidebar.aui.radix.tsx",
   );
 
   const template = createRegistryPayload({
@@ -2862,8 +2864,8 @@ test("the built dist serves every packaged file at the docs' URL convention", as
   };
 
   for (const [distRoot, flavor, origin] of [
-    ["dist", "radix", "https://r.assistant-ui.com/files/"],
-    ["dist/base", "base", "https://r.assistant-ui.com/base/files/"],
+    ["dist", "radix", "https://r.openagentui.dev/files/"],
+    ["dist/base", "base", "https://r.openagentui.dev/base/files/"],
   ]) {
     const jsonPaths = [];
     await collectItemJsons(distRoot, jsonPaths);
@@ -2911,6 +2913,6 @@ test("the built dist serves every packaged file at the docs' URL convention", as
       [{ name: resumable.name, path: bracketed.target ?? bracketed.path }],
       "radix",
     ),
-    "curl -fsSL --create-dirs \\\n  -o 'app/api/chat/resume/[streamId]/route.ts' https://r.assistant-ui.com/files/ai-sdk-backend-resumable/app/api/chat/resume/%5BstreamId%5D/route.ts",
+    "curl -fsSL --create-dirs \\\n  -o 'app/api/chat/resume/[streamId]/route.ts' https://r.openagentui.dev/files/ai-sdk-backend-resumable/app/api/chat/resume/%5BstreamId%5D/route.ts",
   );
 });

@@ -2,8 +2,8 @@
 import { cleanup, render } from "@testing-library/react";
 import { useState, type PropsWithChildren } from "react";
 import { afterEach, describe, expect, it } from "vitest";
-import { AuiConfig } from "@assistant-ui/store";
-import { resource } from "@assistant-ui/tap";
+import { AuiConfig } from "@openagentui/store";
+import { resource } from "@openagentui/tap";
 import type { ThreadMessageLike } from "../../../runtime/utils/thread-message-like";
 import { AssistantRuntimeProvider } from "../../AssistantRuntimeProvider";
 import { Tools } from "../../client/Tools";

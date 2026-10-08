@@ -1,9 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { AssistantRuntimeProvider, AuiConfig } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { McpManagerResource, defineConnector } from "@assistant-ui/react-mcp";
+import { AssistantRuntimeProvider, AuiConfig } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { McpManagerResource, defineConnector } from "@openagentui/react-mcp";
 
 const connectors = [
   defineConnector({

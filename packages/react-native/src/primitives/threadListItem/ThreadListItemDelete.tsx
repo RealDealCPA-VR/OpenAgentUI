@@ -1,5 +1,5 @@
 import { Pressable, type PressableProps } from "react-native";
-import { useThreadListItemDelete } from "@assistant-ui/core/react";
+import { useThreadListItemDelete } from "@openagentui/core/react";
 
 export type ThreadListItemDeleteProps = Omit<
   PressableProps,

@@ -14,7 +14,7 @@ export type PackagedFileRef = {
 const encodeUrlPath = (value: string) =>
   value.split("/").map(encodeURIComponent).join("/");
 
-const REGISTRY_ORIGIN = "https://r.assistant-ui.com";
+const REGISTRY_ORIGIN = "https://r.openagentui.dev";
 
 export const packagedFileUrl = (
   flavor: RegistryFlavor,

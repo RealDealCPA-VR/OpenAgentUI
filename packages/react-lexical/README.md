@@ -1,11 +1,11 @@
-# `@assistant-ui/react-lexical`
+# `@openagentui/react-lexical`
 
-[Lexical](https://lexical.dev) rich-text composer for `@assistant-ui/react`, with first-class support for `@`-mention directive chips. Drop `LexicalComposerInput` in place of the default plain-text composer to render mentions and slash commands as inline chips while keeping the underlying message format clean.
+[Lexical](https://lexical.dev) rich-text composer for `@openagentui/react`, with first-class support for `@`-mention directive chips. Drop `LexicalComposerInput` in place of the default plain-text composer to render mentions and slash commands as inline chips while keeping the underlying message format clean.
 
 ## Installation
 
 ```bash
-npm install @assistant-ui/react @assistant-ui/react-lexical lexical @lexical/react @lexical/utils @lexical/history @lexical/plain-text
+npm install @openagentui/react @openagentui/react-lexical lexical @lexical/react @lexical/utils @lexical/history @lexical/plain-text
 ```
 
 `lexical` and the `@lexical/*` packages this package imports are peer dependencies: your app owns the single Lexical copy that the composer and your own plugins share, so keep every Lexical package at one version.
@@ -13,8 +13,8 @@ npm install @assistant-ui/react @assistant-ui/react-lexical lexical @lexical/rea
 ## Usage
 
 ```tsx
-import { ComposerPrimitive } from "@assistant-ui/react";
-import { LexicalComposerInput } from "@assistant-ui/react-lexical";
+import { ComposerPrimitive } from "@openagentui/react";
+import { LexicalComposerInput } from "@openagentui/react-lexical";
 
 export function Composer() {
   return (
@@ -34,6 +34,6 @@ Pass custom Lexical plugin components as `children` to hook into the editor via 
 
 ## See also
 
-- `@assistant-ui/react-hook-form` for binding the composer to a form whose fields the assistant can read and fill.
+- `@openagentui/react-hook-form` for binding the composer to a form whose fields the assistant can read and fill.
 
-Full reference at [assistant-ui.com/docs](https://www.assistant-ui.com/docs).
+Full reference at [openagentui.dev/docs](https://openagentui.dev/docs).

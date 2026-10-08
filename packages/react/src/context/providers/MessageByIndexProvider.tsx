@@ -1,3 +1,3 @@
 "use client";
 
-export { MessageByIndexProvider } from "@assistant-ui/core/react";
+export { MessageByIndexProvider } from "@openagentui/core/react";

@@ -992,7 +992,7 @@ describe("createMessageQueue", () => {
       expect(adapter.items).toHaveLength(0);
       expect(laterSubscriber).toHaveBeenCalledTimes(2);
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Message queue listener threw an error",
+        "[openagentui] Message queue listener threw an error",
         error,
       );
     } finally {

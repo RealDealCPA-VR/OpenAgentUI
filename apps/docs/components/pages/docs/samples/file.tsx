@@ -6,7 +6,7 @@ import {
   FileName,
   FileSize,
   FileDownload,
-} from "@/components/assistant-ui/elements/file";
+} from "@/components/openagentui/elements/file";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 // Sample base64 data (small placeholder)

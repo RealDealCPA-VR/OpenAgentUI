@@ -3,16 +3,16 @@ title: Primitives
 description: Composable React Native components for building chat UIs.
 ---
 
-Primitives are thin wrappers around React Native components (`View`, `TextInput`, `FlatList`, `Pressable`) that integrate with the assistant-ui runtime. They accept all standard React Native props and add runtime-aware behavior.
+Primitives are thin wrappers around React Native components (`View`, `TextInput`, `FlatList`, `Pressable`) that integrate with the openagentui runtime. They accept all standard React Native props and add runtime-aware behavior.
 
-Primitives are accessed via namespace imports (e.g. `ThreadPrimitive.Root`, `ComposerPrimitive.Input`), matching the pattern used in `@assistant-ui/react`.
+Primitives are accessed via namespace imports (e.g. `ThreadPrimitive.Root`, `ComposerPrimitive.Input`), matching the pattern used in `@openagentui/react`.
 
-Many primitives share their core logic with `@assistant-ui/react` via `@assistant-ui/core/react`. Only the UI layer (View/Pressable/Text instead of DOM elements) differs.
+Many primitives share their core logic with `@openagentui/react` via `@openagentui/core/react`. Only the UI layer (View/Pressable/Text instead of DOM elements) differs.
 
 ## Thread
 
 ```tsx
-import { AuiIf, ThreadPrimitive } from "@assistant-ui/react-native";
+import { AuiIf, ThreadPrimitive } from "@openagentui/react-native";
 ```
 
 ### ThreadPrimitive.Root
@@ -87,7 +87,7 @@ The built-in auto-scroll behavior assumes the default, non-inverted `FlatList` d
 A `FlatList` over the thread flattened into rows, for long threads where one assistant message holds many parts: a row per user or system message (and per message being edited), per top-level node of an assistant message's part grouping, and per turn end. Each row renders through [`ThreadPrimitive.Row`](/docs/primitives/thread#row), so it mounts only that row's scopes, and rows keep stable keys while tokens stream and earlier pages arrive.
 
 ```tsx
-import { groupPartByType, ThreadPrimitive } from "@assistant-ui/react-native";
+import { groupPartByType, ThreadPrimitive } from "@openagentui/react-native";
 
 const groupBy = groupPartByType({ reasoning: ["group-reasoning"] });
 
@@ -125,7 +125,7 @@ Without `inverted`, it keeps the first visible row anchored with `{ minIndexForV
 
 ### ThreadPrimitive.MessageByIndex
 
-Renders a single message at a specific index in the thread. Provides message context so that `useAuiState((s) => s.message)` works inside the rendered component. This component is shared from `@assistant-ui/core/react`.
+Renders a single message at a specific index in the thread. Provides message context so that `useAuiState((s) => s.message)` works inside the rendered component. This component is shared from `@openagentui/core/react`.
 
 ```tsx
 <ThreadPrimitive.MessageByIndex
@@ -200,7 +200,7 @@ Conditional rendering based on thread state. Deprecated in favor of `AuiIf`.
 
 ### ThreadPrimitive.Suggestions
 
-Renders all suggestions through a `children` render function. This component is shared from `@assistant-ui/core/react`.
+Renders all suggestions through a `children` render function. This component is shared from `@openagentui/core/react`.
 
 ```tsx
 <ThreadPrimitive.Suggestions>
@@ -215,7 +215,7 @@ Renders all suggestions through a `children` render function. This component is 
 
 ### ThreadPrimitive.SuggestionByIndex
 
-Renders a single suggestion at the specified index, providing suggestion context. This component is shared from `@assistant-ui/core/react`.
+Renders a single suggestion at the specified index, providing suggestion context. This component is shared from `@openagentui/core/react`.
 
 ```tsx
 <ThreadPrimitive.SuggestionByIndex
@@ -234,7 +234,7 @@ Renders a single suggestion at the specified index, providing suggestion context
 Conditional rendering based on assistant state. Replaces the deprecated `ThreadPrimitive.Empty`, `ThreadPrimitive.If`, `MessagePrimitive.If`, and `ComposerPrimitive.If`.
 
 ```tsx
-import { AuiIf } from "@assistant-ui/react-native";
+import { AuiIf } from "@openagentui/react-native";
 
 <AuiIf condition={(s) => s.thread.isEmpty}>
   <Text>Send a message to get started</Text>
@@ -255,7 +255,7 @@ import { AuiIf } from "@assistant-ui/react-native";
 import {
   ComposerPrimitive,
   QueueItemPrimitive,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 ```
 
 ### ComposerPrimitive.Root
@@ -329,7 +329,7 @@ Renders composer attachments through a `children` render function.
 `Pressable` for adding attachments. It is disabled while the composer cannot accept attachments. React Native has no file input, so the caller opens the platform picker (for example `expo-document-picker` or `expo-image-picker`) in `onPress` and passes the selection to `aui.composer.addAttachment`.
 
 ```tsx
-import { useAui } from "@assistant-ui/react-native";
+import { useAui } from "@openagentui/react-native";
 import * as ImagePicker from "expo-image-picker";
 import { Text } from "react-native";
 
@@ -361,7 +361,7 @@ const aui = useAui();
 
 ### ComposerPrimitive.Queue
 
-Renders all queued composer items. Each item is wrapped in a `QueueItemByIndexProvider`, so `QueueItemPrimitive.*` can read item state and call queue actions inside the render prop. Backed by the shared `ComposerPrimitiveQueue` from `@assistant-ui/core/react`.
+Renders all queued composer items. Each item is wrapped in a `QueueItemByIndexProvider`, so `QueueItemPrimitive.*` can read item state and call queue actions inside the render prop. Backed by the shared `ComposerPrimitiveQueue` from `@openagentui/core/react`.
 
 ```tsx
 <ComposerPrimitive.Queue>
@@ -461,7 +461,7 @@ import {
   ComposerPrimitive,
   MessagePrimitive,
   useAuiState,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 
 function MessageRow() {
   const isEditing = useAuiState((s) => s.message.composer.isEditing);
@@ -505,7 +505,7 @@ Use `AuiIf` for conditional rendering based on composer state:
 ## Message
 
 ```tsx
-import { MessagePrimitive } from "@assistant-ui/react-native";
+import { MessagePrimitive } from "@openagentui/react-native";
 ```
 
 ### MessagePrimitive.Root
@@ -552,7 +552,7 @@ Renders message content parts using render-prop functions instead of the compone
 
 ```tsx
 import Markdown from "react-native-markdown-display";
-import { MessagePrimitive } from "@assistant-ui/react-native";
+import { MessagePrimitive } from "@openagentui/react-native";
 
 const AssistantMessage = () => {
   return (
@@ -605,7 +605,7 @@ Renders message content parts through a `children` render function or a `compone
 
 ### MessagePrimitive.PartByIndex
 
-Renders a single message part at the specified index, providing part context. Useful for building custom part layouts outside of `MessagePrimitive.Parts`. This component is shared from `@assistant-ui/core/react`.
+Renders a single message part at the specified index, providing part context. Useful for building custom part layouts outside of `MessagePrimitive.Parts`. This component is shared from `@openagentui/core/react`.
 
 ```tsx
 <MessagePrimitive.PartByIndex
@@ -624,7 +624,7 @@ Renders a single message part at the specified index, providing part context. Us
 
 ### MessagePrimitive.Quote
 
-Renders the quote a message was sent with, read from `s.message.metadata.custom.quote`. Renders nothing when the message carries no quote. Place it above `MessagePrimitive.Parts` in the user message. This component is shared from `@assistant-ui/core/react`.
+Renders the quote a message was sent with, read from `s.message.metadata.custom.quote`. Renders nothing when the message carries no quote. Place it above `MessagePrimitive.Parts` in the user message. This component is shared from `@openagentui/core/react`.
 
 ```tsx
 <MessagePrimitive.Quote>
@@ -690,7 +690,7 @@ Renders a single message attachment at the specified index. Useful for building 
 ## Attachment
 
 ```tsx
-import { AttachmentPrimitive } from "@assistant-ui/react-native";
+import { AttachmentPrimitive } from "@openagentui/react-native";
 ```
 
 Primitives for rendering individual attachments (inside `ComposerPrimitive.Attachments` or `MessagePrimitive.Attachments`).
@@ -734,7 +734,7 @@ Container `View` for an attachment.
 ## QueueItem
 
 ```tsx
-import { QueueItemPrimitive } from "@assistant-ui/react-native";
+import { QueueItemPrimitive } from "@openagentui/react-native";
 ```
 
 Primitives for rendering individual queued composer items. Use inside a `ComposerPrimitive.Queue` render prop, where the queue item context is set up by `QueueItemByIndexProvider`.
@@ -785,7 +785,7 @@ Renders the queue item's text with React Native `<Text>`. Pass `children` to ove
 ## ActionBar
 
 ```tsx
-import { ActionBarPrimitive } from "@assistant-ui/react-native";
+import { ActionBarPrimitive } from "@openagentui/react-native";
 ```
 
 ### ActionBarPrimitive.Copy
@@ -850,7 +850,7 @@ const copyToClipboard = async (text: string) => {
 ## BranchPicker
 
 ```tsx
-import { BranchPickerPrimitive } from "@assistant-ui/react-native";
+import { BranchPickerPrimitive } from "@openagentui/react-native";
 ```
 
 ### BranchPickerPrimitive.Previous / BranchPickerPrimitive.Next
@@ -878,7 +878,7 @@ import { BranchPickerPrimitive } from "@assistant-ui/react-native";
 ## ThreadList
 
 ```tsx
-import { ThreadListPrimitive } from "@assistant-ui/react-native";
+import { ThreadListPrimitive } from "@openagentui/react-native";
 ```
 
 ### ThreadListPrimitive.Root
@@ -921,7 +921,7 @@ Container `View` for the thread list.
 ## ThreadListItem
 
 ```tsx
-import { ThreadListItemPrimitive } from "@assistant-ui/react-native";
+import { ThreadListItemPrimitive } from "@openagentui/react-native";
 ```
 
 Primitives for rendering individual thread list items.
@@ -938,7 +938,7 @@ Container `View` for a thread list item.
 
 ### ThreadListItemPrimitive.Title
 
-Renders the thread title text. Falls back to the provided fallback when title is empty. This component is shared from `@assistant-ui/core/react`.
+Renders the thread title text. Falls back to the provided fallback when title is empty. This component is shared from `@openagentui/core/react`.
 
 ```tsx
 <ThreadListItemPrimitive.Title fallback="New Chat" />
@@ -985,7 +985,7 @@ Renders the thread title text. Falls back to the provided fallback when title is
 ## Suggestion
 
 ```tsx
-import { SuggestionPrimitive } from "@assistant-ui/react-native";
+import { SuggestionPrimitive } from "@openagentui/react-native";
 ```
 
 Primitives for rendering suggestions. Use inside `ThreadPrimitive.Suggestions` or a `SuggestionByIndexProvider`.
@@ -1024,7 +1024,7 @@ Primitives for rendering suggestions. Use inside `ThreadPrimitive.Suggestions` o
 ## ChainOfThought
 
 ```tsx
-import { ChainOfThoughtPrimitive } from "@assistant-ui/react-native";
+import { ChainOfThoughtPrimitive } from "@openagentui/react-native";
 ```
 
 Primitives for rendering chain of thought content (grouped reasoning and tool-call parts).
@@ -1051,7 +1051,7 @@ Container `View` for chain of thought content.
 
 ### ChainOfThoughtPrimitive.Parts
 
-Renders the parts within a chain of thought. Shared from `@assistant-ui/core/react`.
+Renders the parts within a chain of thought. Shared from `@openagentui/core/react`.
 
 ```tsx
 <ChainOfThoughtPrimitive.Parts>

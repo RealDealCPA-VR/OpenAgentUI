@@ -4,8 +4,8 @@ import { forwardRef } from "react";
 import type { ActionButtonProps } from "../../utils/createActionButton";
 import { composeEventHandlers } from "radix-ui/internal";
 import { Primitive } from "../../utils/Primitive";
-import { useActionBarCopy } from "@assistant-ui/core/react";
-import { useAuiState } from "@assistant-ui/store";
+import { useActionBarCopy } from "@openagentui/core/react";
+import { useAuiState } from "@openagentui/store";
 
 /**
  * Hook that provides copy functionality for action bar buttons.

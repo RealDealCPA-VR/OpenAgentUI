@@ -3,7 +3,7 @@ title: "Activity graph"
 description: "A half-year of runs as a calendar of cells, dense where the work was."
 ---
 
-Activity graph is a calendar of cells, tinted darker on days with more work, wrapping the `heat-graph` package's grid with a title, a total, and its own five-step tint scale. With a runtime the day counts come from a tool's result; standalone you pass the same data in directly.
+Activity graph is a calendar of cells, tinted darker on days with more work, wrapping the `@openagentui/heat-graph` package's grid with a title, a total, and its own five-step tint scale. With a runtime the day counts come from a tool's result; standalone you pass the same data in directly.
 
 ## Getting started
 
@@ -16,12 +16,12 @@ With a runtime, `data` is exactly the shape a tool would return: one count per d
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/run-activity-tool-ui.tsx"
+```tsx title="components/openagentui/elements/run-activity-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import type { DataPoint } from "heat-graph";
-import { ActivityGraph } from "@/components/assistant-ui/elements/activity-graph";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import type { DataPoint } from "@openagentui/heat-graph";
+import { ActivityGraph } from "@/components/openagentui/elements/activity-graph";
 
 type ActivityArgs = { days: number };
 type ActivityResult = {
@@ -55,9 +55,9 @@ export const RunActivityToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { RunActivityToolUI } from "@/components/assistant-ui/elements/run-activity-tool-ui";
+import { RunActivityToolUI } from "@/components/openagentui/elements/run-activity-tool-ui";
 
 export const toolkit = defineToolkit({
   get_run_activity: {
@@ -71,8 +71,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -105,8 +105,8 @@ Standalone, hold the same `data`, `start`, and `end` yourself; the element does 
 ```tsx title="app/agent-activity.tsx"
 "use client";
 
-import type { DataPoint } from "heat-graph";
-import { ActivityGraph } from "@/components/assistant-ui/elements/activity-graph";
+import type { DataPoint } from "@openagentui/heat-graph";
+import { ActivityGraph } from "@/components/openagentui/elements/activity-graph";
 
 const START = new Date(2026, 1, 2);
 const DAYS = 182;
@@ -162,13 +162,13 @@ const data = useRunHistory(start, end);
 </div>
 ```
 
-Each cell's shade comes from `heat-graph`'s own `level` classification (0 through 4) for that `DataPoint`, mapped here onto a five-step blue tint; a level outside that range falls back to the lightest tint. Day labels print only on odd grid rows (Tuesday, Thursday, and Saturday), so the left edge does not crowd. The week always starts on Monday; that choice is fixed by this element and is not exposed as a prop.
+Each cell's shade comes from `@openagentui/heat-graph`'s own `level` classification (0 through 4) for that `DataPoint`, mapped here onto a five-step blue tint; a level outside that range falls back to the lightest tint. Day labels print only on odd grid rows (Tuesday, Thursday, and Saturday), so the left edge does not crowd. The week always starts on Monday; that choice is fixed by this element and is not exposed as a prop.
 
 ## Examples
 
 ### Choosing the date range
 
-`start` and `end` bound the grid; `heat-graph` fills in every day between them from `data`, including days with no matching point, which render at the lowest tint.
+`start` and `end` bound the grid; `@openagentui/heat-graph` fills in every day between them from `data`, including days with no matching point, which render at the lowest tint.
 
 ```tsx
 <ActivityGraph data={data} start={sixMonthsAgo} end={today} title="Agent runs" total={total} />
@@ -215,6 +215,6 @@ Register the renderer on a toolkit entry's `render` field and attach the toolkit
 | `total` | `string` | required | Summary text, already formatted, shown opposite the title. |
 | `className` | `string` | | Merged onto the root. |
 
-`DataPoint`, from the `heat-graph` package, is `{ date: string | Date; count: number }`. All other `div` props are forwarded to the root.
+`DataPoint`, from the `@openagentui/heat-graph` package, is `{ date: string | Date; count: number }`. All other `div` props are forwarded to the root.
 
 </StandaloneMode>

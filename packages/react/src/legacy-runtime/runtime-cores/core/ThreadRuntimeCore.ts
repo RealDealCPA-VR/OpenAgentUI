@@ -10,4 +10,4 @@ export type {
   StartRunConfig,
   ResumeRunConfig,
   ThreadRuntimeCore,
-} from "@assistant-ui/core";
+} from "@openagentui/core";

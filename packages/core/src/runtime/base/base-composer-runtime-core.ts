@@ -322,7 +322,7 @@ export abstract class BaseComposerRuntimeCore
       try {
         this._dictationSession.cancel();
       } catch (error) {
-        console.error("[assistant-ui] Dictation session cancel threw", error);
+        console.error("[openagentui] Dictation session cancel threw", error);
       } finally {
         this._cleanupDictation({ sessionId });
       }
@@ -478,7 +478,7 @@ export abstract class BaseComposerRuntimeCore
     try {
       sendTask = this.handleSend(message, context.options);
     } catch (error) {
-      console.error("[assistant-ui] Failed to send the message", error);
+      console.error("[openagentui] Failed to send the message", error);
       this._leaveTransit(sent);
       if (generation === this._sendGeneration) this._returnToDraft(sent);
       else this._notifySubscribers();
@@ -539,7 +539,7 @@ export abstract class BaseComposerRuntimeCore
     });
     this._endSubmission();
     this._returnToDraft({ ...submission, attachments });
-    console.error("[assistant-ui] Failed to send attachments", reason);
+    console.error("[openagentui] Failed to send attachments", reason);
   }
 
   /** Ends the send being prepared, so nothing it started can dispatch it. */
@@ -895,7 +895,7 @@ export abstract class BaseComposerRuntimeCore
       });
     } catch (subscriberError) {
       console.error(
-        "[assistant-ui] attachmentAddError subscriber threw:",
+        "[openagentui] attachmentAddError subscriber threw:",
         subscriberError,
       );
     }
@@ -1061,7 +1061,7 @@ export abstract class BaseComposerRuntimeCore
           this._notifySubscribers();
         } catch (notifyError) {
           console.error(
-            "[assistant-ui] Dictation replacement rollback notification threw",
+            "[openagentui] Dictation replacement rollback notification threw",
             notifyError,
           );
         }
@@ -1076,7 +1076,7 @@ export abstract class BaseComposerRuntimeCore
       this._notifySubscribers();
     } catch (notifyError) {
       console.error(
-        "[assistant-ui] Dictation start notification threw",
+        "[openagentui] Dictation start notification threw",
         notifyError,
       );
     }
@@ -1091,7 +1091,7 @@ export abstract class BaseComposerRuntimeCore
         try {
           unsubscribe();
         } catch (cleanupError) {
-          console.error("[assistant-ui] Dictation cleanup threw", cleanupError);
+          console.error("[openagentui] Dictation cleanup threw", cleanupError);
         }
       }
     };
@@ -1175,7 +1175,7 @@ export abstract class BaseComposerRuntimeCore
           session.cancel();
         } catch (cancelError) {
           console.error(
-            "[assistant-ui] Dictation session cancel threw",
+            "[openagentui] Dictation session cancel threw",
             cancelError,
           );
         } finally {
@@ -1205,13 +1205,13 @@ export abstract class BaseComposerRuntimeCore
     try {
       task = session.stop();
     } catch (error) {
-      console.error("[assistant-ui] Dictation session stop threw", error);
+      console.error("[openagentui] Dictation session stop threw", error);
       onSettled();
       return;
     }
 
     void task.then(onSettled, (error) => {
-      console.error("[assistant-ui] Dictation session stop rejected", error);
+      console.error("[openagentui] Dictation session stop rejected", error);
       onSettled();
     });
   }
@@ -1230,7 +1230,7 @@ export abstract class BaseComposerRuntimeCore
       try {
         cleanup();
       } catch (error) {
-        console.error("[assistant-ui] Dictation cleanup threw", error);
+        console.error("[openagentui] Dictation cleanup threw", error);
       }
     };
 

@@ -16,15 +16,15 @@ A runtime keeps every thread's title, id, and recency in `s.threads.threadItems`
 
 ### Map thread state into the list
 
-```tsx title="components/assistant-ui/elements/thread-search-panel.tsx"
+```tsx title="components/openagentui/elements/thread-search-panel.tsx"
 "use client";
 
 import { useLayoutEffect, useMemo, useState } from "react";
-import { useAui, useAuiState } from "@assistant-ui/react";
+import { useAui, useAuiState } from "@openagentui/react";
 import {
   ThreadSearch,
   type SearchableThread,
-} from "@/components/assistant-ui/elements/thread-search";
+} from "@/components/openagentui/elements/thread-search";
 
 const DAY = 86_400_000;
 
@@ -90,7 +90,7 @@ Standalone, filtering, pinning, and grouping are computed for you from whatever 
 "use client";
 
 import { useState } from "react";
-import { ThreadSearch } from "@/components/assistant-ui/elements/thread-search";
+import { ThreadSearch } from "@/components/openagentui/elements/thread-search";
 
 const threads = [
   { id: "1", title: "Migration plan", group: "Today", preview: "Three tables, one rollback path", pinned: true },

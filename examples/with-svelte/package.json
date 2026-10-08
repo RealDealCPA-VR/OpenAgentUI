@@ -10,10 +10,10 @@
     "typecheck": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "@assistant-ui/core": "workspace:*",
-    "@assistant-ui/store": "workspace:*",
-    "@assistant-ui/svelte": "workspace:*",
-    "@assistant-ui/tap": "workspace:*",
+    "@openagentui/core": "workspace:*",
+    "@openagentui/store": "workspace:*",
+    "@openagentui/svelte": "workspace:*",
+    "@openagentui/tap": "workspace:*",
     "@lucide/svelte": "^1.49.0",
     "svelte": "^5.57.1"
   },

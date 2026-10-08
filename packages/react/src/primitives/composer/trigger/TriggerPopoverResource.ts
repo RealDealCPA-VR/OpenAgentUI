@@ -1,11 +1,11 @@
 import { useEffectEvent } from "react";
-import { useResource, resource } from "@assistant-ui/tap";
+import { useResource, resource } from "@openagentui/tap";
 import type {
   Unstable_TriggerAdapter,
   Unstable_TriggerCategory,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
-import type { AssistantClient } from "@assistant-ui/store";
+} from "@openagentui/core";
+import type { AssistantClient } from "@openagentui/store";
 import { TriggerDetectionResource } from "./triggerDetectionResource";
 import { TriggerKeyboardResource } from "./triggerKeyboardResource";
 import { TriggerNavigationResource } from "./triggerNavigationResource";

@@ -28,10 +28,10 @@ const reactUIExports: string[] = [
   "CodeHeader",
 ];
 
-const migrateAssistantUI = createTransformer(({ j, root, markAsChanged }) => {
+const migrateOpenAgentUI = createTransformer(({ j, root, markAsChanged }) => {
   const sourcesToMigrate: string[] = [
-    "@assistant-ui/react",
-    "@assistant-ui/react-markdown",
+    "@openagentui/react",
+    "@openagentui/react-markdown",
   ];
   const movedSpecifiers: any[] = [];
   let lastMigratedImportPath: any = null;
@@ -67,7 +67,7 @@ const migrateAssistantUI = createTransformer(({ j, root, markAsChanged }) => {
 
   if (movedSpecifiers.length > 0) {
     const existingReactUIImport = root.find(j.ImportDeclaration, {
-      source: { value: "@assistant-ui/react-ui" },
+      source: { value: "@openagentui/react-ui" },
     });
     if (existingReactUIImport.size() > 0) {
       existingReactUIImport.forEach((path: any) => {
@@ -84,7 +84,7 @@ const migrateAssistantUI = createTransformer(({ j, root, markAsChanged }) => {
     } else {
       const newImport = j.importDeclaration(
         movedSpecifiers,
-        j.literal("@assistant-ui/react-ui"),
+        j.literal("@openagentui/react-ui"),
       );
       if (lastMigratedImportPath) {
         j(lastMigratedImportPath).insertAfter(newImport);
@@ -101,12 +101,12 @@ const migrateAssistantUI = createTransformer(({ j, root, markAsChanged }) => {
   }
 
   const cssReplacements: Record<string, string> = {
-    "@assistant-ui/react/styles/index.css":
-      "@assistant-ui/react-ui/styles/index.css",
-    "@assistant-ui/react/styles/modal.css":
-      "@assistant-ui/react-ui/styles/modal.css",
-    "@assistant-ui/react-markdown/styles/markdown.css":
-      "@assistant-ui/react-ui/styles/markdown.css",
+    "@openagentui/react/styles/index.css":
+      "@openagentui/react-ui/styles/index.css",
+    "@openagentui/react/styles/modal.css":
+      "@openagentui/react-ui/styles/modal.css",
+    "@openagentui/react-markdown/styles/markdown.css":
+      "@openagentui/react-ui/styles/markdown.css",
   };
 
   root.find(j.ImportDeclaration).forEach((path: any) => {
@@ -125,7 +125,7 @@ const migrateAssistantUI = createTransformer(({ j, root, markAsChanged }) => {
       return (
         arg &&
         (arg.type === "Literal" || arg.type === "StringLiteral") &&
-        arg.value === "@assistant-ui/react-markdown/tailwindcss"
+        arg.value === "@openagentui/react-markdown/tailwindcss"
       );
     })
     .forEach((path: any) => {
@@ -157,11 +157,11 @@ const migrateAssistantUI = createTransformer(({ j, root, markAsChanged }) => {
       return (
         arg &&
         (arg.type === "Literal" || arg.type === "StringLiteral") &&
-        arg.value === "@assistant-ui/react/tailwindcss"
+        arg.value === "@openagentui/react/tailwindcss"
       );
     })
     .forEach((path: any) => {
-      path.value.arguments[0].value = "@assistant-ui/react-ui/tailwindcss";
+      path.value.arguments[0].value = "@openagentui/react-ui/tailwindcss";
       markAsChanged();
       if (removedMarkdownPlugin) {
         if (
@@ -194,4 +194,4 @@ const migrateAssistantUI = createTransformer(({ j, root, markAsChanged }) => {
     });
 });
 
-export default migrateAssistantUI;
+export default migrateOpenAgentUI;

@@ -214,7 +214,7 @@ export function Header() {
               </Button>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/assistant-ui/assistant-ui"
+                  href="https://github.com/RealDealCPA-VR/OpenAgentUI"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors"

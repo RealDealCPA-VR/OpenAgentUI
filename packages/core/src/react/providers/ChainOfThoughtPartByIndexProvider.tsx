@@ -1,5 +1,5 @@
 import { useContext, type FC, type PropsWithChildren } from "react";
-import { useAui, AuiConfig, AuiProvider, Derived } from "@assistant-ui/store";
+import { useAui, AuiConfig, AuiProvider, Derived } from "@openagentui/store";
 import { ChainOfThoughtPartsContext } from "./ChainOfThoughtByIndicesProvider";
 
 export const ChainOfThoughtPartByIndexProvider: FC<

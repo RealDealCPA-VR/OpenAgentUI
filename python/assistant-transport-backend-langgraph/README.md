@@ -1,6 +1,6 @@
 # Assistant Transport Backend with LangGraph
 
-This is a LangGraph-based implementation of the assistant transport backend, providing streaming chat capabilities using FastAPI, assistant-stream, and LangGraph.
+This is a LangGraph-based implementation of the assistant transport backend, providing streaming chat capabilities using FastAPI, openagentui-stream, and LangGraph.
 
 ## Features
 
@@ -9,7 +9,7 @@ This is a LangGraph-based implementation of the assistant transport backend, pro
 - Support for both message streaming and state updates
 - DeltaChannel-backed LangGraph message checkpoints (`langgraph>=1.2`)
 - Optional Postgres checkpoint storage via `langgraph-checkpoint-postgres`
-- Compatible with the assistant-ui frontend
+- Compatible with the openagentui frontend
 
 ## Installation
 
@@ -18,7 +18,7 @@ This is a LangGraph-based implementation of the assistant transport backend, pro
 1. Initialize and install dependencies:
 ```bash
 uv init --name assistant-transport-backend-langgraph --package
-uv add fastapi uvicorn[standard] assistant-stream pydantic python-dotenv "langgraph>=1.2.0" langgraph-checkpoint-postgres langchain langchain-core langchain-openai httpx
+uv add fastapi uvicorn[standard] openagentui-stream pydantic python-dotenv "langgraph>=1.2.0" langgraph-checkpoint-postgres langchain langchain-core langchain-openai httpx
 # Or simply:
 uv sync
 ```
@@ -104,7 +104,7 @@ Health check endpoint.
    - `astream` provides state updates
    - `astream_events` provides message streaming
 5. Both streams are synchronized to the frontend using `append_langgraph_event`
-6. The response is streamed back using assistant-stream's AssistantTransportResponse
+6. The response is streamed back using openagentui-stream's AssistantTransportResponse
 
 Frontend tools declared by `useAssistantTransportRuntime` are bound to the LangGraph model from the request `tools` payload, but they are not executed by this backend. For example, the `with-assistant-transport` demo keeps `get_weather` frontend-only: the backend streams the tool call, the browser runs the tool and sends an `add-tool-result` command, and LangGraph continues from that result. Server-owned smoke tools such as `calculate_sum`, `save_note`, and `task_tool` still execute inside the backend graph.
 
@@ -123,17 +123,17 @@ def add_messages_delta(state, writes):
     return result
 ```
 
-This keeps the assistant-ui API unchanged. The frontend still uses `useAssistantTransportRuntime`; the backend still accepts normal AssistantTransport `add-message` and `add-tool-result` commands; and the response uses the canonical assistant-transport encoding. The only required API adjustment is inside the LangGraph state definition: a delta-backed channel reducer receives `(state, writes)` where `writes` is a batch, not the old pairwise `(state, update)` reducer shape.
+This keeps the openagentui API unchanged. The frontend still uses `useAssistantTransportRuntime`; the backend still accepts normal AssistantTransport `add-message` and `add-tool-result` commands; and the response uses the canonical assistant-transport encoding. The only required API adjustment is inside the LangGraph state definition: a delta-backed channel reducer receives `(state, writes)` where `writes` is a batch, not the old pairwise `(state, update)` reducer shape.
 
 Postgres works through LangGraph's async checkpointer path:
 
 ```bash
 docker run --rm -p 127.0.0.1:55432:5432 \
   -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=assistant_ui \
+  -e POSTGRES_DB=openagentui \
   postgres:16-alpine
 
-LANGGRAPH_POSTGRES_URL=postgresql://postgres:postgres@127.0.0.1:55432/assistant_ui \
+LANGGRAPH_POSTGRES_URL=postgresql://postgres:postgres@127.0.0.1:55432/openagentui \
   uv run python main.py
 ```
 
@@ -141,7 +141,7 @@ Because the FastAPI route streams with `graph.astream`, the backend uses `AsyncP
 
 ## Integration with Frontend
 
-This backend is designed to work with the assistant-ui frontend. Update your frontend configuration to point to this server:
+This backend is designed to work with the openagentui frontend. Update your frontend configuration to point to this server:
 
 ```typescript
 const runtime = useExternalStoreRuntime({

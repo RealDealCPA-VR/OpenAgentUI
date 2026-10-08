@@ -425,7 +425,7 @@ describe("BaseComposerRuntimeCore", () => {
       expect(composer.dictation).toBeUndefined();
       expect(unhandledRejection).not.toHaveBeenCalled();
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Dictation session stop rejected",
+        "[openagentui] Dictation session stop rejected",
         stopError,
       );
     } finally {
@@ -456,7 +456,7 @@ describe("BaseComposerRuntimeCore", () => {
 
     expect(composer.dictation).toBeUndefined();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Dictation session stop threw",
+      "[openagentui] Dictation session stop threw",
       stopError,
     );
   });
@@ -514,7 +514,7 @@ describe("BaseComposerRuntimeCore", () => {
     expect(laterCleanup).toHaveBeenCalledOnce();
     expect(composer.dictation).toBeUndefined();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Dictation cleanup threw",
+      "[openagentui] Dictation cleanup threw",
       cleanupError,
     );
   });
@@ -570,7 +570,7 @@ describe("BaseComposerRuntimeCore", () => {
     expect(session.onSpeech).toHaveBeenCalledOnce();
     expect(session.cancel).not.toHaveBeenCalled();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Dictation start notification threw",
+      "[openagentui] Dictation start notification threw",
       listenerError,
     );
     unsubscribe();
@@ -685,11 +685,11 @@ describe("BaseComposerRuntimeCore", () => {
       { type: "text", text: "send me" },
     ]);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Dictation session cancel threw",
+      "[openagentui] Dictation session cancel threw",
       cancelError,
     );
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Dictation cleanup threw",
+      "[openagentui] Dictation cleanup threw",
       cleanupError,
     );
   });
@@ -726,7 +726,7 @@ describe("BaseComposerRuntimeCore", () => {
     expect(listen).toHaveBeenCalledTimes(2);
     expect(composer.dictation).toBeDefined();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Dictation session stop threw",
+      "[openagentui] Dictation session stop threw",
       stopError,
     );
     composer.stopDictation();
@@ -993,7 +993,7 @@ describe("BaseComposerRuntimeCore", () => {
         expect(composer.attachments).toHaveLength(1);
         expect(onError).not.toHaveBeenCalled();
         expect(consoleError).toHaveBeenCalledWith(
-          '[assistant-ui] Composer runtime "attachmentAdd" listener threw an error',
+          '[openagentui] Composer runtime "attachmentAdd" listener threw an error',
           listenerError,
         );
         consoleError.mockRestore();

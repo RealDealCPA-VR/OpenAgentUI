@@ -4,10 +4,10 @@ import {
   AuiConfig,
   AuiProvider,
   type ClientOutput,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import type { PartState } from "../../store/scopes/part";
 
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 
 const useTextMessagePartClient = ({
   text,

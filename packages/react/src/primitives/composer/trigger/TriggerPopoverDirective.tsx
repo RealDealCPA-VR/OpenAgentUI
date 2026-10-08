@@ -1,7 +1,7 @@
 "use client";
 
-import type { DirectiveFormatter, TriggerItem } from "@assistant-ui/core";
-import { defaultDirectiveFormatter } from "@assistant-ui/core";
+import type { DirectiveFormatter, TriggerItem } from "@openagentui/core";
+import { defaultDirectiveFormatter } from "@openagentui/core";
 import { useEffect, useInsertionEffect, useRef, type FC } from "react";
 import { useTriggerBehaviorRegistration } from "./TriggerPopover";
 import type { TriggerBehavior } from "./triggerSelectionResource";

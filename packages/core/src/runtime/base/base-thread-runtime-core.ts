@@ -360,7 +360,7 @@ export abstract class BaseThreadRuntimeCore
           this._notifySubscribers();
         } catch (notificationError) {
           console.error(
-            "[assistant-ui] Speech rollback notification threw",
+            "[openagentui] Speech rollback notification threw",
             notificationError,
           );
         }
@@ -407,7 +407,7 @@ export abstract class BaseThreadRuntimeCore
           notifySubscribers([stop, () => this._notifySubscribers()]);
         } catch (cleanupError) {
           console.error(
-            "[assistant-ui] Speech rollback cleanup threw",
+            "[openagentui] Speech rollback cleanup threw",
             cleanupError,
           );
         }
@@ -500,7 +500,7 @@ export abstract class BaseThreadRuntimeCore
       this._disconnectVoice(false);
     } catch (error) {
       console.error(
-        "[assistant-ui] Voice cleanup threw before reconnect",
+        "[openagentui] Voice cleanup threw before reconnect",
         error,
       );
     }
@@ -527,7 +527,7 @@ export abstract class BaseThreadRuntimeCore
         notifySubscribers(unsubs.splice(0));
       } catch (error) {
         console.error(
-          "[assistant-ui] Detached voice setup cleanup threw",
+          "[openagentui] Detached voice setup cleanup threw",
           error,
         );
       }
@@ -618,7 +618,7 @@ export abstract class BaseThreadRuntimeCore
           this._disconnectVoice(false);
         } catch (cleanupError) {
           console.error(
-            "[assistant-ui] Voice rollback cleanup threw",
+            "[openagentui] Voice rollback cleanup threw",
             cleanupError,
           );
         }
@@ -635,7 +635,7 @@ export abstract class BaseThreadRuntimeCore
 
   private _observeVoiceCommit(commit: () => void | Promise<void>) {
     void new Promise<void>((resolve) => resolve(commit())).catch((error) => {
-      console.error("[assistant-ui] Voice message commit failed", error);
+      console.error("[openagentui] Voice message commit failed", error);
     });
   }
 

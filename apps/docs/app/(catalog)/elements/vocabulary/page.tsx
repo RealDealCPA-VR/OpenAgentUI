@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from "lucide-react";
 import {
   defaultGenerativeUILibrary,
   generativeUIToJSX,
-} from "@assistant-ui/react-generative-ui";
+} from "@openagentui/react-generative-ui";
 import { cn } from "@/lib/utils";
 import { createOgMetadata } from "@/lib/og";
 import { highlightElementSource } from "@/lib/element-source";

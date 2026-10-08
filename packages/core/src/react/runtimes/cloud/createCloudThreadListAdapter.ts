@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { AssistantCloud, type SdkIdentity } from "assistant-cloud";
+import { AssistantCloud, type SdkIdentity } from "openagentui-cloud";
 import type {
   RemoteThreadListAdapter,
   RuntimeAdapters,
@@ -142,7 +142,7 @@ const parseListCursor = (after: string | undefined): CloudListCursor => {
 };
 
 /**
- * Builds the `RemoteThreadListAdapter` for an assistant-cloud backend without
+ * Builds the `RemoteThreadListAdapter` for an openagentui-cloud backend without
  * requiring a hook call site, so plain code (a Vue or Svelte setup function,
  * a module-level config) can construct it. Options are read through the
  * getter on every call, so a stable adapter can follow changing `create` and

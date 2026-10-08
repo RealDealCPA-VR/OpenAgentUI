@@ -18,36 +18,36 @@ const repoRoot = resolve(pkgRoot, "../..");
 describe("importedPackages", () => {
   it("collects measured packages from bare and subpath imports", () => {
     const source = `
-      import { resource } from "@assistant-ui/tap";
-      import { shim } from '@assistant-ui/tap/react-shim';
+      import { resource } from "@openagentui/tap";
+      import { shim } from '@openagentui/tap/react-shim';
       import { createRoot } from "react-dom/client";
-      const utils = await import("assistant-stream/utils");
+      const utils = await import("openagentui-stream/utils");
       import { bench } from "vitest";
     `;
     expect([...importedPackages(source)].sort()).toEqual([
-      "@assistant-ui/tap",
-      "assistant-stream",
+      "@openagentui/tap",
+      "openagentui-stream",
     ]);
   });
 
   it("counts side-effect imports and skips statement-level type imports", () => {
     const source = `
-      import "@assistant-ui/tap/react-shim";
-      import type { Foo } from "@assistant-ui/core";
-      import { type Bar, baz } from "@assistant-ui/store";
+      import "@openagentui/tap/react-shim";
+      import type { Foo } from "@openagentui/core";
+      import { type Bar, baz } from "@openagentui/store";
     `;
     expect([...importedPackages(source)].sort()).toEqual([
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
+      "@openagentui/store",
+      "@openagentui/tap",
     ]);
   });
 
   it("counts runtime re-exports and rejects relative imports", () => {
     expect([
-      ...importedPackages('export { x } from "@assistant-ui/core";'),
-    ]).toEqual(["@assistant-ui/core"]);
+      ...importedPackages('export { x } from "@openagentui/core";'),
+    ]).toEqual(["@openagentui/core"]);
     expect([
-      ...importedPackages('export type { T } from "@assistant-ui/core";'),
+      ...importedPackages('export type { T } from "@openagentui/core";'),
     ]).toEqual([]);
     expect(() =>
       importedPackages('import { helper } from "./helper";'),
@@ -55,7 +55,7 @@ describe("importedPackages", () => {
   });
 
   it("does not confuse a package with a longer name sharing a prefix", () => {
-    expect(importedPackages('import x from "@assistant-ui/tapestry";')).toEqual(
+    expect(importedPackages('import x from "@openagentui/tapestry";')).toEqual(
       new Set(),
     );
   });
@@ -84,77 +84,81 @@ describe("against the real workspace", () => {
   const coverage = benchCoverage(`${pkgRoot}/bench`, graph);
 
   it("reads the measured packages' workspace edges", () => {
-    expect(graph.get("@assistant-ui/tap")).toEqual([]);
-    expect(graph.get("@assistant-ui/store")).toEqual(["@assistant-ui/tap"]);
-    expect([...(graph.get("@assistant-ui/core") ?? [])].sort()).toEqual([
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
-      "assistant-stream",
+    expect(graph.get("@openagentui/tap")).toEqual([]);
+    expect(graph.get("@openagentui/store")).toEqual(["@openagentui/tap"]);
+    expect([...(graph.get("@openagentui/core") ?? [])].sort()).toEqual([
+      "@openagentui/store",
+      "@openagentui/tap",
+      "openagentui-stream",
     ]);
     expect(
-      [...(graph.get("@assistant-ui/react-markdown") ?? [])].sort(),
-    ).toEqual(["@assistant-ui/react"]);
-    expect([...(graph.get("@assistant-ui/react-pi") ?? [])].sort()).toEqual([
-      "@assistant-ui/core",
-      "@assistant-ui/react",
-      "@assistant-ui/store",
-      "assistant-stream",
+      [...(graph.get("@openagentui/react-markdown") ?? [])].sort(),
+    ).toEqual(["@openagentui/react"]);
+    expect([...(graph.get("@openagentui/react-pi") ?? [])].sort()).toEqual([
+      "@openagentui/core",
+      "@openagentui/react",
+      "@openagentui/store",
+      "openagentui-stream",
     ]);
-    expect([...(graph.get("@assistant-ui/ai-sdk") ?? [])].sort()).toEqual([
-      "@assistant-ui/core",
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
-      "assistant-stream",
+    expect([...(graph.get("@openagentui/ai-sdk") ?? [])].sort()).toEqual([
+      "@openagentui/core",
+      "@openagentui/store",
+      "@openagentui/tap",
+      "openagentui-stream",
     ]);
   });
 
   it("attributes each bench file to the dists it exercises", () => {
     const covers = (file: string) => [...(coverage.get(file) ?? [])].sort();
-    expect(covers("bench/accumulator.bench.ts")).toEqual(["assistant-stream"]);
-    expect(covers("bench/data-stream.bench.ts")).toEqual(["assistant-stream"]);
-    expect(covers("bench/tree.bench.tsx")).toEqual(["@assistant-ui/tap"]);
+    expect(covers("bench/accumulator.bench.ts")).toEqual([
+      "openagentui-stream",
+    ]);
+    expect(covers("bench/data-stream.bench.ts")).toEqual([
+      "openagentui-stream",
+    ]);
+    expect(covers("bench/tree.bench.tsx")).toEqual(["@openagentui/tap"]);
     expect(covers("bench/useResources.bench.tsx")).toEqual([
-      "@assistant-ui/tap",
+      "@openagentui/tap",
     ]);
     expect(covers("bench/from-thread-message-like.bench.ts")).toEqual([
-      "@assistant-ui/core",
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
-      "assistant-stream",
+      "@openagentui/core",
+      "@openagentui/store",
+      "@openagentui/tap",
+      "openagentui-stream",
     ]);
     expect(covers("bench/thread-scaling.bench.tsx")).toEqual([
-      "@assistant-ui/core",
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
-      "assistant-stream",
+      "@openagentui/core",
+      "@openagentui/store",
+      "@openagentui/tap",
+      "openagentui-stream",
     ]);
     expect(covers("bench/markdown-streaming.bench.tsx")).toEqual([
-      "@assistant-ui/core",
-      "@assistant-ui/react",
-      "@assistant-ui/react-markdown",
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
-      "assistant-stream",
+      "@openagentui/core",
+      "@openagentui/react",
+      "@openagentui/react-markdown",
+      "@openagentui/store",
+      "@openagentui/tap",
+      "openagentui-stream",
     ]);
     expect(covers("bench/react-pi-message-projection.bench.ts")).toEqual([
-      "@assistant-ui/core",
-      "@assistant-ui/react",
-      "@assistant-ui/react-pi",
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
-      "assistant-stream",
+      "@openagentui/core",
+      "@openagentui/react",
+      "@openagentui/react-pi",
+      "@openagentui/store",
+      "@openagentui/tap",
+      "openagentui-stream",
     ]);
     expect(covers("bench/ai-sdk-toolkit.bench.ts")).toEqual([
-      "@assistant-ui/ai-sdk",
-      "@assistant-ui/core",
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
-      "assistant-stream",
+      "@openagentui/ai-sdk",
+      "@openagentui/core",
+      "@openagentui/store",
+      "@openagentui/tap",
+      "openagentui-stream",
     ]);
   });
 
   it("plans a core change as its own benches plus three controls", () => {
-    expect(planBenches(coverage, ["@assistant-ui/core"])).toEqual({
+    expect(planBenches(coverage, ["@openagentui/core"])).toEqual({
       measured: [
         "bench/ai-sdk-toolkit.bench.ts",
         "bench/external-message-conversion.bench.ts",
@@ -180,11 +184,11 @@ describe("against the real workspace", () => {
       { id: "bench/tree.bench.tsx > g > react" },
       { id: "bench/from-thread-message-like.bench.ts > g > 1 text parts" },
     ];
-    const out = attributeRows(rows, coverage, ["@assistant-ui/tap"]);
+    const out = attributeRows(rows, coverage, ["@openagentui/tap"]);
     expect(out.map((r) => [r.measured, r.touched])).toEqual([
       [false, []],
-      [true, ["@assistant-ui/tap"]],
-      [true, ["@assistant-ui/tap"]],
+      [true, ["@openagentui/tap"]],
+      [true, ["@openagentui/tap"]],
     ]);
     expect(attributeRows(rows, coverage, []).every((r) => !r.measured)).toBe(
       true,
@@ -205,16 +209,16 @@ describe("benchCoverage", () => {
     mkdirSync(join(dir, "nested"));
     writeFileSync(
       join(dir, "top.bench.ts"),
-      'import { x } from "@assistant-ui/tap";',
+      'import { x } from "@openagentui/tap";',
     );
     writeFileSync(
       join(dir, "nested", "deep.bench.tsx"),
-      'import "@assistant-ui/store";',
+      'import "@openagentui/store";',
     );
-    writeFileSync(join(dir, "helper.ts"), 'import "@assistant-ui/core";');
+    writeFileSync(join(dir, "helper.ts"), 'import "@openagentui/core";');
     const graph = new Map([
-      ["@assistant-ui/tap", []],
-      ["@assistant-ui/store", ["@assistant-ui/tap"]],
+      ["@openagentui/tap", []],
+      ["@openagentui/store", ["@openagentui/tap"]],
     ]);
     const coverage = benchCoverage(dir, graph);
     expect([...coverage.keys()]).toEqual([
@@ -223,7 +227,7 @@ describe("benchCoverage", () => {
     ]);
     expect(
       [...(coverage.get("bench/nested/deep.bench.tsx") ?? [])].sort(),
-    ).toEqual(["@assistant-ui/store", "@assistant-ui/tap"]);
+    ).toEqual(["@openagentui/store", "@openagentui/tap"]);
   });
 
   it("refuses rows whose bench file has no coverage entry", () => {

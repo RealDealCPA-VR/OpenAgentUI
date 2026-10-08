@@ -86,7 +86,7 @@ describe("failureLines", () => {
         },
         {
           name: join(pkgRoot, "bench/y.bench.ts"),
-          message: "Failed to load url @assistant-ui/core",
+          message: "Failed to load url @openagentui/core",
           assertionResults: [],
         },
       ],
@@ -94,7 +94,7 @@ describe("failureLines", () => {
 
     expect(lines).toEqual([
       "bench/x.bench.ts > group broken: TypeError: x is not a function",
-      "bench/y.bench.ts: Failed to load url @assistant-ui/core",
+      "bench/y.bench.ts: Failed to load url @openagentui/core",
     ]);
   });
 });

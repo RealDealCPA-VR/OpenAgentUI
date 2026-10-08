@@ -1,13 +1,13 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   AssistantRuntimeProvider,
   AuiConfig,
   type ChatModelAdapter,
   Suggestions,
   useLocalRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 export function ChatWithSuggestions() {

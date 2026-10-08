@@ -9,7 +9,7 @@ import {
   type CreateAttachment,
   type LocalRuntimeOptions,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const noOpAdapter: ChatModelAdapter = {
   async *run() {
@@ -20,11 +20,11 @@ const noOpAdapter: ChatModelAdapter = {
 const CREATED_AT = new Date("2026-09-26T12:00:00Z");
 
 const defaultMessages: ThreadMessageLike[] = [
-  { role: "user", content: "What is assistant-ui?" },
+  { role: "user", content: "What is openagentui?" },
   {
     role: "assistant",
     content:
-      "assistant-ui is a set of React components for building AI chat interfaces. It provides unstyled primitives that handle state management, streaming, and accessibility; you bring the design.",
+      "openagentui is a set of React components for building AI chat interfaces. It provides unstyled primitives that handle state management, streaming, and accessibility; you bring the design.",
   },
 ];
 

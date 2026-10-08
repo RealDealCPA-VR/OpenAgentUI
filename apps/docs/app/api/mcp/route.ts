@@ -39,17 +39,17 @@ const templateToolDefinitions = [
   {
     name: "list_templates",
     description:
-      "List the hosted assistant-ui app templates and fixed demos with their features, customizable surfaces, and versions. Call this first for any assistant-ui app-building request. If customizable is empty, the entry is a fixed demo that should be used as-is rather than configured. Call read_template on the chosen template before requesting a preview.",
+      "List the hosted openagentui app templates and fixed demos with their features, customizable surfaces, and versions. Call this first for any openagentui app-building request. If customizable is empty, the entry is a fixed demo that should be used as-is rather than configured. Call read_template on the chosen template before requesting a preview.",
   },
   {
     name: "read_template",
     description:
-      "Get the full authoring surface for one hosted assistant-ui template: configRoots schemas (types, defaults, enums), rules, built-in tool contracts, and an exampleConfig. Fixed demos return no configRoots; use those as-is. Use this before preview_template to understand exactly what config to write. If preview_template returns validationWarnings, cross-reference configRoots here to correct the config.",
+      "Get the full authoring surface for one hosted openagentui template: configRoots schemas (types, defaults, enums), rules, built-in tool contracts, and an exampleConfig. Fixed demos return no configRoots; use those as-is. Use this before preview_template to understand exactly what config to write. If preview_template returns validationWarnings, cross-reference configRoots here to correct the config.",
   },
   {
     name: "preview_template",
     description:
-      "Return preview and download URLs for a hosted assistant-ui template. Passing config creates a preview session on the template sandbox and the returned URLs reflect that configuration. Do not pass config for fixed demos that have no configRoots in read_template. Show the previewUrl to the user or open it with an available browser tool if your client provides one.",
+      "Return preview and download URLs for a hosted openagentui template. Passing config creates a preview session on the template sandbox and the returned URLs reflect that configuration. Do not pass config for fixed demos that have no configRoots in read_template. Show the previewUrl to the user or open it with an available browser tool if your client provides one.",
   },
 ] as const;
 
@@ -62,13 +62,13 @@ const toolDefinitions = [
 ] as const;
 
 const templateWorkflowPrompt = {
-  name: "assistant-ui-template-workflow",
+  name: "openagentui-template-workflow",
   description:
-    "How to use the assistant-ui template tools to discover hosted templates, inspect their customization contracts, and retrieve preview/download URLs.",
-  text: `You have access to assistant-ui template tools for hosted app templates.
+    "How to use the openagentui template tools to discover hosted templates, inspect their customization contracts, and retrieve preview/download URLs.",
+  text: `You have access to openagentui template tools for hosted app templates.
 
 <workflow>
-Follow this template-first workflow for any assistant-ui app-building request:
+Follow this template-first workflow for any openagentui app-building request:
 
 1. Call **list_templates** FIRST. Never decide on a template or claim one exists without listing.
 2. Call **read_template** on any candidate template before deciding whether it fits.
@@ -77,7 +77,7 @@ Follow this template-first workflow for any assistant-ui app-building request:
 3. Decide one of three paths:
    - The template fits as-is: call **preview_template** with templateId and optional versionId.
    - The template fits with supported customization: author a config using the configRoots schemas and rules from read_template, then call **preview_template** with that config.
-   - No template fits: do NOT call preview_template. Do not force the request into a template or fake domain content with mock config. Instead, ground yourself in the assistant-ui docs (list_pages, search_docs, read_page) and produce an honest, docs-grounded build guide or prompt for the user.
+   - No template fits: do NOT call preview_template. Do not force the request into a template or fake domain content with mock config. Instead, ground yourself in the openagentui docs (list_pages, search_docs, read_page) and produce an honest, docs-grounded build guide or prompt for the user.
 </workflow>
 
 <important_constraints>
@@ -397,8 +397,8 @@ function registerResources(server: McpServer, request: NextRequest) {
   const requestUrl = request.url;
 
   server.registerResource(
-    "assistant-ui docs navigation",
-    "assistant-ui://navigation",
+    "openagentui docs navigation",
+    "openagentui://navigation",
     { mimeType: "application/json" },
     async (uri) => {
       await requireDocsToolBudget(request);
@@ -415,13 +415,13 @@ function registerResources(server: McpServer, request: NextRequest) {
   );
 
   server.registerResource(
-    "assistant-ui docs pages",
-    new ResourceTemplate("assistant-ui://{+path}", {
+    "openagentui docs pages",
+    new ResourceTemplate("openagentui://{+path}", {
       list: async () => {
         await requireDocsToolBudget(request);
         return {
           resources: allPages().map(({ page }) => ({
-            uri: `assistant-ui://${stripLeadingSlashes(page.url)}`,
+            uri: `openagentui://${stripLeadingSlashes(page.url)}`,
             name: page.data.title,
             mimeType: "text/markdown",
           })),
@@ -459,7 +459,7 @@ async function requireTemplateToolBudget(request: NextRequest) {
   const denial = await checkMcpTemplateToolRateLimit(request);
   if (!denial) return;
 
-  const suffix = " The assistant-ui docs tools remain available.";
+  const suffix = " The openagentui docs tools remain available.";
   if (denial.status !== 429) {
     throw new Error(`Template tools are temporarily unavailable.${suffix}`);
   }
@@ -477,7 +477,7 @@ async function requireDocsToolBudget(request: NextRequest) {
 
 function buildMcpServer(request: NextRequest) {
   const server = new McpServer({
-    name: "assistant-ui-docs",
+    name: "openagentui-docs",
     version: "1.0.0",
   });
   const requestUrl = request.url;
@@ -616,7 +616,7 @@ async function getManifest() {
   "use cache";
   cacheLife("max");
   return {
-    name: "assistant-ui-docs",
+    name: "openagentui-docs",
     protocol: "mcp",
     endpoints: ["/mcp", "/.well-known/mcp", "/docs/mcp"],
     tools: toolDefinitions.map((tool) => ({

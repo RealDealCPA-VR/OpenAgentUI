@@ -1,4 +1,4 @@
-import { createTapRoot, resource, useResource } from "@assistant-ui/tap";
+import { createTapRoot, resource, useResource } from "@openagentui/tap";
 import { useState } from "react";
 import { auth, type FetchLike } from "@modelcontextprotocol/client";
 import { describe, expect, it } from "vitest";

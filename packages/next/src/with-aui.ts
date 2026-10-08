@@ -1,11 +1,11 @@
 import { createRequire } from "node:module";
 import { statSync } from "node:fs";
 
-const LOADER = "@assistant-ui/next/loader";
+const LOADER = "@openagentui/next/loader";
 
 /**
  * A token that changes whenever the `"use generative"` compiler this loader runs
- * (`@assistant-ui/x-generative-compiler`) changes. Turbopack and webpack fold a
+ * (`@openagentui/x-generative-compiler`) changes. Turbopack and webpack fold a
  * loader's `options` into its cache key, so passing this invalidates cached
  * transforms when the compiler's behavior changes — node_modules content isn't
  * otherwise watched. The package version covers published upgrades (and is
@@ -17,7 +17,7 @@ const LOADER = "@assistant-ui/next/loader";
 function compilerCacheToken(): string {
   try {
     const require = createRequire(import.meta.url);
-    const entry = require.resolve("@assistant-ui/x-generative-compiler");
+    const entry = require.resolve("@openagentui/x-generative-compiler");
     return `${entry}:${statSync(entry).mtimeMs}`;
   } catch {
     return "unknown";
@@ -59,7 +59,7 @@ export interface WithAuiOptions {
 
 // Loosely typed so this module doesn't need `next` as a dependency.
 type NextConfigLike = {
-  /** assistant-ui options, stripped from the config handed back to Next. */
+  /** openagentui options, stripped from the config handed back to Next. */
   aui?: WithAuiOptions | undefined;
   turbopack?: { rules?: Record<string, unknown> } | undefined;
   webpack?: ((config: any, context: any) => any) | null | undefined;
@@ -72,7 +72,7 @@ type NextConfigLike = {
  * @example
  * ```ts
  * // next.config.ts
- * import { withAui } from "@assistant-ui/next";
+ * import { withAui } from "@openagentui/next";
  * export default withAui({ ...yourConfig, aui: { backendless: true } });
  * ```
  */

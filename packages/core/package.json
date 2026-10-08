@@ -1,7 +1,7 @@
 {
-  "name": "@assistant-ui/core",
+  "name": "@openagentui/core",
   "version": "0.3.24",
-  "description": "Framework-agnostic core runtime for assistant-ui",
+  "description": "Framework-agnostic core runtime for openagentui",
   "keywords": [
     "assistant",
     "ai",
@@ -9,7 +9,7 @@
     "runtime",
     "framework-agnostic"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -69,24 +69,24 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "assistant-stream": "^0.3.48",
+    "openagentui-stream": "^0.3.48",
     "nanoid": "^6.0.1"
   },
   "optionalDevDependencies": {
-    "@assistant-ui/x-generative-compiler": ">=0.0.3"
+    "@openagentui/x-generative-compiler": ">=0.0.3"
   },
   "peerDependencies": {
-    "@assistant-ui/store": "workspace:^",
-    "@assistant-ui/tap": "workspace:^",
+    "@openagentui/store": "workspace:^",
+    "@openagentui/tap": "workspace:^",
     "@types/react": "*",
     "react": "^18 || ^19",
-    "assistant-cloud": "^0.2.1"
+    "openagentui-cloud": "^0.2.1"
   },
   "peerDependenciesMeta": {
     "@types/react": {
       "optional": true
     },
-    "assistant-cloud": {
+    "openagentui-cloud": {
       "optional": true
     },
     "react": {
@@ -94,14 +94,14 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/store": "workspace:*",
-    "@assistant-ui/tap": "workspace:*",
-    "@assistant-ui/vite": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/store": "workspace:*",
+    "@openagentui/tap": "workspace:*",
+    "@openagentui/vite": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",
-    "assistant-cloud": "workspace:*",
+    "openagentui-cloud": "workspace:*",
     "jsdom": "^30.0.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
@@ -112,13 +112,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

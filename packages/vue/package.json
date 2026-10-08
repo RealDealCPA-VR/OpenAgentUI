@@ -1,7 +1,7 @@
 {
-  "name": "@assistant-ui/vue",
+  "name": "@openagentui/vue",
   "version": "0.0.1",
-  "description": "Vue bindings for assistant-ui",
+  "description": "Vue bindings for openagentui",
   "keywords": [
     "assistant",
     "ai",
@@ -9,7 +9,7 @@
     "vue",
     "nuxt"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -34,19 +34,19 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
-    "@assistant-ui/tap": "^0.9.21"
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
+    "@openagentui/tap": "^0.9.21"
   },
   "peerDependencies": {
     "@types/react": "*",
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
-    "assistant-cloud": "workspace:*",
+    "openagentui-cloud": "workspace:*",
     "jsdom": "^30.0.1",
     "vitest": "^5.0.3",
     "vue": "^3.5.43"
@@ -55,13 +55,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/vue"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

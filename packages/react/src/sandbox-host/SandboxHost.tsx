@@ -12,10 +12,10 @@ import {
   type RenderedFrame,
   SafeContentFrame,
   type SandboxOption,
-} from "safe-content-frame";
-import { invokeUserCallback } from "@assistant-ui/core/internal";
+} from "@openagentui/safe-content-frame";
+import { invokeUserCallback } from "@openagentui/core/internal";
 
-const DEFAULT_PRODUCT = "assistant-ui-sandbox";
+const DEFAULT_PRODUCT = "openagentui-sandbox";
 const DEFAULT_MAX_HEIGHT = 800;
 const LOAD_TIMEOUT_MS = 10_000;
 
@@ -114,7 +114,7 @@ export function SandboxHost({
     const reportError = (err: unknown) => {
       const error = err instanceof Error ? err : new Error(String(err));
       invokeUserCallback(
-        "assistant-ui",
+        "openagentui",
         "SandboxHost onError",
         liveRef.current.onError?.bind(liveRef.current),
         error,

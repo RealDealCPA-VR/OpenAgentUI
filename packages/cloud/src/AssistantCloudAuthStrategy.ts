@@ -327,7 +327,7 @@ const getWebLockManager = (): LockManager | null => {
 };
 
 const getAnonymousAuthLockName = (baseUrl: string): string =>
-  `assistant-cloud:anonymous-auth:${baseUrl}`;
+  `openagentui-cloud:anonymous-auth:${baseUrl}`;
 
 const getSharedAnonymousAuthToken = (
   baseUrl: string,

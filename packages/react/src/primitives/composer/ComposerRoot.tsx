@@ -1,7 +1,7 @@
 "use client";
 
 import { composeEventHandlers } from "radix-ui/internal";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { Primitive } from "../../utils/Primitive";
 import {
   type ComponentRef,

@@ -1,2 +1,2 @@
-export type { AssistantRuntime } from "@assistant-ui/core";
-export { AssistantRuntimeImpl } from "@assistant-ui/core/internal";
+export type { AssistantRuntime } from "@openagentui/core";
+export { AssistantRuntimeImpl } from "@openagentui/core/internal";

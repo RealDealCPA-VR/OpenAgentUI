@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "assistant-ui ink demo",
+  title: "openagentui ink demo",
   description: "The with-react-ink example running in the browser via ink-web.",
 };
 

@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
 import { act, render, waitFor } from "@testing-library/react";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
-import { AssistantCloud } from "assistant-cloud";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
+import { AssistantCloud } from "openagentui-cloud";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { useCloudRuntime } from "./useCloudRuntime";
 
@@ -149,7 +149,7 @@ describe("useCloudRuntime", () => {
     expect(first.headers.get("Authorization")).toBe("Bearer test-key");
     expect(first.headers.get("Aui-User-Id")).toBe("user-id");
     expect(first.headers.get("Aui-Workspace-Id")).toBe("workspace-id");
-    expect(first.headers.get("Aui-Sdk")).toMatch(/^assistant-cloud\//);
+    expect(first.headers.get("Aui-Sdk")).toMatch(/^openagentui-cloud\//);
     expect(first.headers.get("Accept")).toBe("text/plain");
     expect(first.headers.get("Content-Type")).toBe("application/json");
     expect(first.body).toMatchObject({

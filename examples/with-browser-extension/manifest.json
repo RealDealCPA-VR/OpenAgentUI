@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "assistant-ui Browser Extension Example",
+  "name": "openagentui Browser Extension Example",
   "version": "0.1.0",
-  "description": "Example Chrome extension with assistant-ui chat in a side panel",
+  "description": "Example Chrome extension with openagentui chat in a side panel",
   "permissions": ["sidePanel"],
   "action": {
-    "default_title": "Open assistant-ui Chat"
+    "default_title": "Open openagentui Chat"
   },
   "background": {
     "service_worker": "background.js"

@@ -1,15 +1,15 @@
 # LangGraph Integration
 
-[Hosted Demo](https://assistant-ui-langgraph.vercel.app/)
+[Hosted Demo](https://openagentui-langgraph.vercel.app/)
 
-This example demonstrates how to use LangChain LangGraph with assistant-ui. It is meant to be used with the backend found at LangGraph's Stockbroker example: https://github.com/bracesproul/langgraphjs-examples/tree/main/stockbroker
+This example demonstrates how to use LangChain LangGraph with openagentui. It is meant to be used with the backend found at LangGraph's Stockbroker example: https://github.com/bracesproul/langgraphjs-examples/tree/main/stockbroker
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-langgraph
+npx openagentui@latest create my-app --example with-langgraph
 cd my-app
 ```
 
@@ -36,12 +36,12 @@ npm run dev
 
 ## Features
 
-- LangGraph agent integration via `@assistant-ui/react-langchain`
+- LangGraph agent integration via `@openagentui/react-langchain`
 - Thread list for conversation management
 - Custom tool UI for stock price snapshots
 - Custom tool UI for stock purchases
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
-- [LangGraph Integration Guide](https://www.assistant-ui.com/docs/runtimes/langgraph)
+- [openagentui Documentation](https://openagentui.dev/docs)
+- [LangGraph Integration Guide](https://openagentui.dev/docs/runtimes/langgraph)

@@ -10,7 +10,7 @@ describe("docs page actions", () => {
     expect(url.origin).toBe("https://claude.ai");
     expect(url.pathname).toBe("/new");
     expect(url.searchParams.get("q")).toBe(
-      'Read https://www.assistant-ui.com/docs/runtimes/local.md (the assistant-ui documentation page "Local Runtime & Hooks") so I can ask questions about it.',
+      'Read https://openagentui.dev/docs/runtimes/local.md (the openagentui documentation page "Local Runtime & Hooks") so I can ask questions about it.',
     );
   });
 });

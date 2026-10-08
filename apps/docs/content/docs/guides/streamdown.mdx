@@ -1,6 +1,6 @@
 ---
 title: Streamdown Markdown Renderer
-description: Stream markdown into a React chat UI with syntax highlighting, math, and Mermaid diagrams. Powered by Vercel Streamdown, integrated for assistant-ui.
+description: Stream markdown into a React chat UI with syntax highlighting, math, and Mermaid diagrams. Powered by Vercel Streamdown, integrated for openagentui.
 links:
   - label: Streamdown
     url: https://github.com/vercel/streamdown
@@ -13,7 +13,7 @@ import { StreamdownSample } from "@/components/pages/docs/samples/streamdown";
 <StreamdownSample />
 
 <Callout type="info">
-  `@assistant-ui/react-streamdown` is an **alternative** to `@assistant-ui/react-markdown`:
+  `@openagentui/react-streamdown` is an **alternative** to `@openagentui/react-markdown`:
   - **react-markdown**: smaller, and you bring your own syntax highlighter
   - **react-streamdown**: Shiki, KaTeX, and Mermaid support through plugins
 </Callout>
@@ -22,7 +22,7 @@ import { StreamdownSample } from "@/components/pages/docs/samples/streamdown";
 
 ## Installation
 
-<PackageManagerTabs packages={["@assistant-ui/react-streamdown", "streamdown"]} />
+<PackageManagerTabs packages={["@openagentui/react-streamdown", "streamdown"]} />
 
 For additional features, install the optional plugins:
 
@@ -61,7 +61,7 @@ The bare `caret` prop does **not** require this import; only the word-level anim
 ## Basic Usage
 
 ```tsx
-import { StreamdownTextPrimitive } from "@assistant-ui/react-streamdown";
+import { StreamdownTextPrimitive } from "@openagentui/react-streamdown";
 
 // Inside a MessagePrimitive.Parts component
 <MessagePrimitive.Parts>
@@ -75,7 +75,7 @@ const StreamdownText = () => <StreamdownTextPrimitive />;
 ## With Plugins (Recommended)
 
 ```tsx
-import { StreamdownTextPrimitive } from "@assistant-ui/react-streamdown";
+import { StreamdownTextPrimitive } from "@openagentui/react-streamdown";
 import { code } from "@streamdown/code";
 import { math } from "@streamdown/math";
 import { mermaid } from "@streamdown/mermaid";
@@ -93,10 +93,10 @@ When `@streamdown/code` is provided, the default theme is `["github-light", "git
 
 ## Migration from react-markdown
 
-If you're migrating from `@assistant-ui/react-markdown`, your existing `SyntaxHighlighter` and `CodeHeader` components still work:
+If you're migrating from `@openagentui/react-markdown`, your existing `SyntaxHighlighter` and `CodeHeader` components still work:
 
 ```tsx
-import { StreamdownTextPrimitive } from "@assistant-ui/react-streamdown";
+import { StreamdownTextPrimitive } from "@openagentui/react-streamdown";
 
 const StreamdownText = () => (
   <StreamdownTextPrimitive
@@ -293,7 +293,7 @@ Restrict allowed URLs for links and images. This overrides streamdown's default 
 When building custom code components, you can use `useIsStreamdownCodeBlock` to detect whether you're inside a code block or inline code:
 
 ```tsx
-import { useIsStreamdownCodeBlock } from "@assistant-ui/react-streamdown";
+import { useIsStreamdownCodeBlock } from "@openagentui/react-streamdown";
 
 function MyCodeComponent({ children, ...props }) {
   const isCodeBlock = useIsStreamdownCodeBlock();
@@ -309,7 +309,7 @@ function MyCodeComponent({ children, ...props }) {
 You can also use `useStreamdownPreProps` to access the props passed to the parent `<pre>` element:
 
 ```tsx
-import { useStreamdownPreProps } from "@assistant-ui/react-streamdown";
+import { useStreamdownPreProps } from "@openagentui/react-streamdown";
 
 function MyCodeComponent({ children }) {
   const preProps = useStreamdownPreProps();
@@ -352,7 +352,7 @@ import {
   memoCompareNodes,
   // Default Shiki theme: ["github-light", "github-dark"]
   DEFAULT_SHIKI_THEME,
-} from "@assistant-ui/react-streamdown";
+} from "@openagentui/react-streamdown";
 ```
 
 ### Available Types
@@ -390,7 +390,7 @@ import type {
   RemarkRehypeOptions,
   BlockProps,
   SecurityConfig,
-} from "@assistant-ui/react-streamdown";
+} from "@openagentui/react-streamdown";
 ```
 
 ## Related Components

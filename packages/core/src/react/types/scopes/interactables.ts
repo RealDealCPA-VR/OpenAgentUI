@@ -1,9 +1,9 @@
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import type { Unsubscribe } from "../../..";
 import type { ToolCallMessagePartComponent } from "../MessagePartComponentTypes";
 
 /**
- * Schema type matching Tool["parameters"] from assistant-stream.
+ * Schema type matching Tool["parameters"] from openagentui-stream.
  * Accepts both StandardSchemaV1 and JSONSchema7.
  */
 export type Unstable_InteractableStateSchema = NonNullable<

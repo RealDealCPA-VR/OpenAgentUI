@@ -4,7 +4,7 @@ import {
   convertLangChainMessages,
   type LangChainMessage,
   type LangChainMessageChunk,
-} from "@assistant-ui/react-langgraph";
+} from "@openagentui/react-langgraph";
 
 type AiMessage = Extract<LangChainMessage, { type: "ai" }>;
 

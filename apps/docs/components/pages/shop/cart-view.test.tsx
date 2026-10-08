@@ -140,7 +140,7 @@ describe("CartView", () => {
   it("does not replace the cart from a shared link during setup", () => {
     replaceCart(["cloud"]);
     mocks.items = "items=guides/attachments";
-    mocks.session = { id: "session", products: ["assistant-ui"], startedAt: 1 };
+    mocks.session = { id: "session", products: ["openagentui"], startedAt: 1 };
 
     render(<CartView />);
 

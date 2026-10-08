@@ -1,13 +1,13 @@
 # ElevenLabs Scribe Integration
 
-This example demonstrates how to add voice-to-text dictation using ElevenLabs Scribe with assistant-ui.
+This example demonstrates how to add voice-to-text dictation using ElevenLabs Scribe with openagentui.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-elevenlabs-scribe
+npx openagentui@latest create my-app --example with-elevenlabs-scribe
 cd my-app
 ```
 
@@ -39,5 +39,5 @@ A request-context check is not authentication. Before deploying, require your ap
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
+- [openagentui Documentation](https://openagentui.dev/docs)
 - [ElevenLabs Scribe](https://elevenlabs.io/docs/overview/capabilities/speech-to-text)

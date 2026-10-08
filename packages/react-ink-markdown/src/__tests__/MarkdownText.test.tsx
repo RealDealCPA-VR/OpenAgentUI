@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { act } from "react";
-import { createRenderCounter } from "@assistant-ui/x-performance";
+import { createRenderCounter } from "@openagentui/x-performance";
 import { render } from "ink-testing-library";
 import { MarkdownText } from "../MarkdownText";
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {
   OptionList,
   type OptionListOption,
-} from "@/components/assistant-ui/elements/option-list";
+} from "@/components/openagentui/elements/option-list";
 
 const DUPLICATES: readonly OptionListOption[] = [
   {

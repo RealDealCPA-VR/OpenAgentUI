@@ -5,8 +5,8 @@ import {
   unstable_Interactables,
   AuiConfig,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react";
-import { AssistantChatTransport, useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { AssistantChatTransport, useChatRuntime } from "@openagentui/ai-sdk";
 import { useMemo } from "react";
 import { createBrowserThreadListAdapter } from "../lib/browser-thread-list-adapter";
 

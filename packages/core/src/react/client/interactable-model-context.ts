@@ -1,6 +1,6 @@
-import type { Tool } from "assistant-stream";
-import { toJSONSchema } from "assistant-stream";
-import { getPartialJsonObjectMeta } from "assistant-stream/utils";
+import type { Tool } from "openagentui-stream";
+import { toJSONSchema } from "openagentui-stream";
+import { getPartialJsonObjectMeta } from "openagentui-stream/utils";
 import type { Unstable_InteractableDefinition } from "../types/scopes/interactables";
 import {
   interactableToolName,

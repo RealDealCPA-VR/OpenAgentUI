@@ -56,7 +56,7 @@ export const analytics = {
     ) => trackEvent("cta_clicked", { cta, location }),
 
     npmCommandCopied: (
-      command = "npx assistant-ui init",
+      command = "npx openagentui init",
       properties?: AnalyticsProperties,
     ) => trackEvent("npm_command_copied", { ...properties, command }),
 

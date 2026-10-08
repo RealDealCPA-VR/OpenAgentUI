@@ -1,7 +1,7 @@
-import { withAui } from "@assistant-ui/next";
+import { withAui } from "@openagentui/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@assistant-ui/react", "@assistant-ui/ai-sdk"],
+  transpilePackages: ["@openagentui/react", "@openagentui/ai-sdk"],
 };
 
 export default withAui(nextConfig);

@@ -3,7 +3,7 @@
 import { useEffect, useState, type FC } from "react";
 import { act, cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import { resource, useResources, withKey } from "@assistant-ui/tap";
+import { resource, useResources, withKey } from "@openagentui/tap";
 import { AuiConfig } from "../AuiConfig";
 import { AuiProvider } from "../AuiProvider";
 import { useAui } from "../useAui";

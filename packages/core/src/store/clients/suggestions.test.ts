@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createTapRoot, flushTapSync, useResource } from "@assistant-ui/tap";
+import { createTapRoot, flushTapSync, useResource } from "@openagentui/tap";
 import { describe, expect, it } from "vitest";
 import type { ThreadSuggestion } from "../../runtime/interfaces/thread-runtime-core";
 import {

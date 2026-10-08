@@ -1,7 +1,7 @@
 "use client";
 
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ExportedMessageRepository } from "@assistant-ui/core";
+import { ExportedMessageRepository } from "@openagentui/core";
 import type {
   AppendMessage,
   ChatModelRunOptions,
@@ -9,7 +9,7 @@ import type {
   ThreadAssistantMessage,
   ThreadHistoryAdapter,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { EventType, HttpAgent, type AgentSubscriber } from "@ag-ui/client";
 import { AgUiThreadRuntimeCore } from "../src/runtime/AgUiThreadRuntimeCore";
 import { makeLogger, type Logger } from "../src/runtime/logger";

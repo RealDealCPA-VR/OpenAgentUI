@@ -11,7 +11,7 @@ import {
 import type {
   Unstable_TriggerAdapter,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 export type Unstable_UseLiveCompletionAdapterOptions = {
   /**

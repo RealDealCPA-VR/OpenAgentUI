@@ -1,17 +1,17 @@
 // @vitest-environment jsdom
 
-import * as upstream from "@assistant-ui/ai-sdk";
+import * as upstream from "@openagentui/ai-sdk";
 import { cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import * as entry from "./index";
 
 afterEach(cleanup);
 
-// oxlint cannot follow the `export *` from @assistant-ui/ai-sdk when it is unbuilt, so members are read through a typed alias.
+// oxlint cannot follow the `export *` from @openagentui/ai-sdk when it is unbuilt, so members are read through a typed alias.
 const index: typeof entry = entry;
 
-describe("@assistant-ui/react-ai-sdk", () => {
-  it("exports exactly what @assistant-ui/ai-sdk exports", () => {
+describe("@openagentui/react-ai-sdk", () => {
+  it("exports exactly what @openagentui/ai-sdk exports", () => {
     const exported: Record<string, unknown> = { ...entry };
     const expected: Record<string, unknown> = { ...upstream };
 

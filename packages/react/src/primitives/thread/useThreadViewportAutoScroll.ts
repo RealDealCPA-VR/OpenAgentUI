@@ -2,12 +2,12 @@
 
 import { useComposedRefs } from "radix-ui/internal";
 import { useCallback, useLayoutEffect, useRef, type RefCallback } from "react";
-import { useAui, useAuiEvent, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiEvent, useAuiState } from "@openagentui/store";
 import {
   isUserScrollUp,
   isViewportAtBottom,
   viewportOverflows,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { useOnResizeContent } from "../../utils/hooks/useOnResizeContent";
 import { useOnScrollToBottom } from "../../utils/hooks/useOnScrollToBottom";
 import { useManagedRef } from "../../utils/hooks/useManagedRef";

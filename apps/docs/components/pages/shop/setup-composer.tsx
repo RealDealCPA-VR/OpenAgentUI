@@ -11,7 +11,7 @@ import {
   Composer,
   ComposerBar,
   ComposerSend,
-} from "@/components/assistant-ui/elements/composer";
+} from "@/components/openagentui/elements/composer";
 import type { CheckoutContextValue } from "@/components/shared/checkout-provider";
 
 export function SetupComposer({

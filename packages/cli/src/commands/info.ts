@@ -11,36 +11,36 @@ import { findWorkspaceRoot, resolveRealPath } from "../lib/utils/workspace";
 
 export { findWorkspaceRoot };
 
-const ASSISTANT_UI_PACKAGES = [
+const OPENAGENTUI_PACKAGES = [
   // Distribution
-  "@assistant-ui/react",
-  "@assistant-ui/react-native",
-  "@assistant-ui/react-ink",
+  "@openagentui/react",
+  "@openagentui/react-native",
+  "@openagentui/react-ink",
   // Core (should not be installed directly)
-  "@assistant-ui/core",
-  "@assistant-ui/store",
-  "@assistant-ui/tap",
+  "@openagentui/core",
+  "@openagentui/store",
+  "@openagentui/tap",
   // Streaming & Cloud
-  "assistant-stream",
-  "assistant-cloud",
+  "openagentui-stream",
+  "openagentui-cloud",
   // Adapters
-  "@assistant-ui/eve",
-  "@assistant-ui/ai-sdk",
-  "@assistant-ui/react-ai-sdk",
-  "@assistant-ui/react-langgraph",
-  "@assistant-ui/react-ag-ui",
-  "@assistant-ui/react-a2a",
-  "@assistant-ui/react-data-stream",
-  "@assistant-ui/react-google-adk",
+  "@openagentui/eve",
+  "@openagentui/ai-sdk",
+  "@openagentui/react-ai-sdk",
+  "@openagentui/react-langgraph",
+  "@openagentui/react-ag-ui",
+  "@openagentui/react-a2a",
+  "@openagentui/react-data-stream",
+  "@openagentui/react-google-adk",
   // UI / Rendering
-  "@assistant-ui/react-markdown",
-  "@assistant-ui/react-streamdown",
-  "@assistant-ui/react-lexical",
-  "@assistant-ui/react-syntax-highlighter",
-  "@assistant-ui/react-hook-form",
+  "@openagentui/react-markdown",
+  "@openagentui/react-streamdown",
+  "@openagentui/react-lexical",
+  "@openagentui/react-syntax-highlighter",
+  "@openagentui/react-hook-form",
   // Observability & DevTools
-  "@assistant-ui/react-o11y",
-  "@assistant-ui/react-devtools",
+  "@openagentui/react-o11y",
+  "@openagentui/react-devtools",
 ];
 
 const ECOSYSTEM_PACKAGES = [
@@ -59,9 +59,9 @@ const ECOSYSTEM_PACKAGES = [
 // Packages that users should NOT install directly — they are internal
 // dependencies pulled in automatically by distribution packages.
 const SHOULD_NOT_DIRECT_INSTALL = new Set([
-  "@assistant-ui/core",
-  "@assistant-ui/store",
-  "@assistant-ui/tap",
+  "@openagentui/core",
+  "@openagentui/store",
+  "@openagentui/tap",
 ]);
 
 function resolvePackageJson(pkg: string, cwd: string): string | null {
@@ -106,10 +106,10 @@ function getAssistantUiPackageNames(
   projectPkg: Record<string, unknown>,
 ): string[] {
   const declaredPackages = Object.keys(readProjectDeps(projectPkg))
-    .filter((name) => name.startsWith("@assistant-ui/"))
+    .filter((name) => name.startsWith("@openagentui/"))
     .sort();
 
-  return [...new Set([...ASSISTANT_UI_PACKAGES, ...declaredPackages])];
+  return [...new Set([...OPENAGENTUI_PACKAGES, ...declaredPackages])];
 }
 
 function getSpecifiedRange(
@@ -344,7 +344,7 @@ function renderPlain(data: InfoData): string[] {
   const lines: string[] = [];
 
   lines.push("Environment:");
-  lines.push(`  assistant-ui CLI: ${data.cliVersion}`);
+  lines.push(`  openagentui CLI: ${data.cliVersion}`);
   lines.push(`  OS:               ${data.os}`);
   lines.push(`  Node.js:          ${data.node}`);
   lines.push(`  Package Manager:  ${data.pm.name} ${data.pm.version}`);
@@ -371,7 +371,7 @@ function renderColored(data: InfoData): string[] {
   const lines: string[] = [];
 
   lines.push(chalk.bold("Environment:"));
-  lines.push(`  assistant-ui CLI: ${data.cliVersion}`);
+  lines.push(`  openagentui CLI: ${data.cliVersion}`);
   lines.push(`  OS:               ${data.os}`);
   lines.push(`  Node.js:          ${data.node}`);
   lines.push(`  Package Manager:  ${data.pm.name} ${data.pm.version}`);
@@ -387,7 +387,7 @@ function renderColored(data: InfoData): string[] {
     lines.push(...section);
   } else {
     lines.push("");
-    lines.push(chalk.yellow("  No assistant-ui packages found."));
+    lines.push(chalk.yellow("  No openagentui packages found."));
   }
 
   if (data.ecosystem.length > 0) {

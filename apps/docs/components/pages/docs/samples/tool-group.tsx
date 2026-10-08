@@ -9,19 +9,19 @@ import {
   SearchIcon,
   MapPinIcon,
 } from "lucide-react";
-import type { ToolCallMessagePartStatus } from "@assistant-ui/react";
+import type { ToolCallMessagePartStatus } from "@openagentui/react";
 import {
   ToolGroupRoot,
   ToolGroupTrigger,
   ToolGroupContent,
-} from "@/components/assistant-ui/elements/tool-group.aui";
+} from "@/components/openagentui/elements/tool-group.aui";
 import {
   ToolFallbackRoot,
   ToolFallbackTrigger,
   ToolFallbackContent,
   ToolFallbackArgs,
   ToolFallbackResult,
-} from "@/components/assistant-ui/elements/tool-fallback.aui";
+} from "@/components/openagentui/elements/tool-fallback.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

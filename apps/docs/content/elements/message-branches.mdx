@@ -9,7 +9,7 @@ A regenerated answer does not replace the previous one; it becomes a sibling bra
 
 <RuntimeMode>
 
-Every assistant-ui runtime tracks branches per message. The stepper reads `branchNumber` and `branchCount` from the message and switches branches through the runtime, so nothing is stored in component state.
+Every openagentui runtime tracks branches per message. The stepper reads `branchNumber` and `branchCount` from the message and switches branches through the runtime, so nothing is stored in component state.
 
 <Steps>
   <Step>
@@ -18,13 +18,13 @@ Every assistant-ui runtime tracks branches per message. The stepper reads `branc
 
 Build the stepper from `BranchPickerPrimitive`. The primitives own the behavior (which branch is active, disabling at the ends, hiding when there is only one); the element's classes give it this look.
 
-```tsx title="components/assistant-ui/elements/branch-picker.tsx"
+```tsx title="components/openagentui/elements/branch-picker.tsx"
 "use client";
 
-import { BranchPickerPrimitive } from "@assistant-ui/react";
+import { BranchPickerPrimitive } from "@openagentui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ghostButton, mono } from "@/components/assistant-ui/elements/surfaces";
+import { ghostButton, mono } from "@/components/openagentui/elements/surfaces";
 
 export function BranchPicker() {
   return (
@@ -59,8 +59,8 @@ export function BranchPicker() {
 
 The picker must render inside a message scope, so it knows which message's branches to show. Put it in the assistant message's action row, next to copy and regenerate.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { MessagePrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { MessagePrimitive } from "@openagentui/react";
 import { BranchPicker } from "./branch-picker";
 
 function AssistantMessage() {
@@ -76,7 +76,7 @@ function AssistantMessage() {
 }
 ```
 
-The `Thread` element already ships this composition for both user and assistant messages, so installing `@assistant-ui/thread` gives you branch navigation without any of the above.
+The `Thread` element already ships this composition for both user and assistant messages, so installing `@openagentui/thread` gives you branch navigation without any of the above.
 
   </Step>
 </Steps>
@@ -96,7 +96,7 @@ Standalone, the element is a controlled component: you own the list of variants 
 "use client";
 
 import { useState } from "react";
-import { MessageBranches } from "@/components/assistant-ui/elements/message-branches";
+import { MessageBranches } from "@/components/openagentui/elements/message-branches";
 
 const variants = [
   "Paris is the capital of France.",
@@ -196,7 +196,7 @@ The element always renders the active variant above the stepper. To show the ste
 Reloading an assistant message creates a sibling branch and switches to it; editing a user message branches the conversation at that point. A regenerate button next to the picker is all it takes for the stepper to appear:
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import { RefreshCwIcon } from "lucide-react";
 
 function RegenerateButton() {

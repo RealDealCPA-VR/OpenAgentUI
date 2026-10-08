@@ -2,7 +2,7 @@
 
 Downloaded source: `npm install`, `npm run build`, then `npm run preview`.
 
-A client-only sales workspace with an assistant-ui thread using the shared AI SDK local preview transport. Suggested questions run actual aggregation functions against `src/data.ts` and update the visible region filter and chart grouping. The dropdown, grouping buttons, chart description, summary table, and source table expose the same data directly.
+A client-only sales workspace with an openagentui thread using the shared AI SDK local preview transport. Suggested questions run actual aggregation functions against `src/data.ts` and update the visible region filter and chart grouping. The dropdown, grouping buttons, chart description, summary table, and source table expose the same data directly.
 
 ## Dataset and demo behavior
 
@@ -18,4 +18,4 @@ Supported queries include region revenue rankings, comparisons, region filters, 
 
 ## Connect a real model
 
-Keep the dataset calculations and view state update functions. Replace the browser-local preview transport with an AI SDK transport targeting your approved server endpoint. Expose narrowly scoped server tools for aggregation and validated filters, then use assistant-ui's tool UI and tool result state to update this view. Preserve provenance and distinguish retrieved results from model interpretation. This example does not include or provision that endpoint.
+Keep the dataset calculations and view state update functions. Replace the browser-local preview transport with an AI SDK transport targeting your approved server endpoint. Expose narrowly scoped server tools for aggregation and validated filters, then use openagentui's tool UI and tool result state to update this view. Preserve provenance and distinguish retrieved results from model interpretation. This example does not include or provision that endpoint.

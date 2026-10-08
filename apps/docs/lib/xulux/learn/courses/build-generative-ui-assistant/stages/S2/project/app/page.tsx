@@ -1,4 +1,4 @@
-import { Thread } from "../components/assistant-ui/elements/thread.aui";
+import { Thread } from "../components/openagentui/elements/thread.aui";
 
 export default function Page() {
   return (

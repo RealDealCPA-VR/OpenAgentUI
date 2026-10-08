@@ -16,7 +16,7 @@ describe("buildXuluxMcpCatalog", () => {
 
   it("includes the required template ids", () => {
     const ids = catalog.templates.map((t) => t.templateId);
-    expect(ids).toContain("base-assistant-ui");
+    expect(ids).toContain("base-openagentui");
     expect(ids).toContain("webpage-assistant");
     expect(ids).toContain("product-page-assistant");
     expect(ids).toContain("expo-react-native");
@@ -61,7 +61,7 @@ describe("buildXuluxMcpCatalog", () => {
 
   it("includes authoring metadata for configurable templates", () => {
     for (const id of [
-      "base-assistant-ui",
+      "base-openagentui",
       "webpage-assistant",
       "product-page-assistant",
     ]) {

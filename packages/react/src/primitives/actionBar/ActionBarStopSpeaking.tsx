@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 import type { ActionButtonProps } from "../../utils/createActionButton";
 import { Primitive } from "../../utils/Primitive";
 import { composeEventHandlers } from "radix-ui/internal";
-import { useActionBarStopSpeaking as useActionBarStopSpeakingBehavior } from "@assistant-ui/core/react";
+import { useActionBarStopSpeaking as useActionBarStopSpeakingBehavior } from "@openagentui/core/react";
 
 const useActionBarStopSpeaking = () => {
   const { disabled, stopSpeaking } = useActionBarStopSpeakingBehavior();

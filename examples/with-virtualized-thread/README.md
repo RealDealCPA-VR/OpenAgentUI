@@ -19,4 +19,4 @@ pnpm --filter with-virtualized-thread dev
 | External store runtime with seeded messages and a streaming tail | `app/MyRuntimeProvider.tsx` |
 | Deterministic synthetic thread content | `app/seed-messages.ts` |
 
-See the [thread virtualization guide](https://assistant-ui.com/docs/guides/virtualization) for the full walkthrough.
+See the [thread virtualization guide](https://openagentui.dev/docs/guides/virtualization) for the full walkthrough.

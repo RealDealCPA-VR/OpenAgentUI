@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { flushSync, mount, unmount } from "svelte";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig } from "@assistant-ui/store/client";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig } from "@openagentui/store/client";
 import { provideAui } from "../provideAui";
 import { useAuiEvent } from "../useAuiEvent";
 import Host from "./fixtures/Host.svelte";

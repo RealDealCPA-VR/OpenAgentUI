@@ -137,8 +137,8 @@ test("source packaging relocates nested shared imports and vendors the reusable 
     const uiFiles = [
       "components/react/ui/base/button.tsx",
       "components/react/ui/base/input.tsx",
-      "components/react/assistant-ui/elements/thread.aui.tsx",
-      "components/react/assistant-ui/elements/assistant-modal.aui.tsx",
+      "components/react/openagentui/elements/thread.aui.tsx",
+      "components/react/openagentui/elements/assistant-modal.aui.tsx",
     ];
     await writeFile(
       join(source, "dist/build-info.json"),
@@ -228,7 +228,7 @@ for (const example of examples) {
       assert.ok(info.bytes > 0);
       assert.ok(
         info.inputs.some((path) =>
-          path.endsWith("assistant-ui/elements/thread.aui.tsx"),
+          path.endsWith("openagentui/elements/thread.aui.tsx"),
         ),
         `${example.slug}: preview must use the shipped shadcn Thread template`,
       );
@@ -295,7 +295,7 @@ for (const example of examples) {
           existsSync(
             join(
               scratch,
-              "ui/components/react/assistant-ui/elements/thread.aui.tsx",
+              "ui/components/react/openagentui/elements/thread.aui.tsx",
             ),
           ),
         );
@@ -376,7 +376,7 @@ test(
     );
     assert.ok(graph.tasks.length > 0);
     assert.ok(
-      !graph.tasks.some((task) => task.package === "@assistant-ui/docs"),
+      !graph.tasks.some((task) => task.package === "@openagentui/docs"),
     );
     for (const example of examples) {
       const task = graph.tasks.find(
@@ -406,12 +406,12 @@ test(
     const graph = JSON.parse(
       execFileSync(
         turbo,
-        ["run", "build", "--filter=@assistant-ui/docs", "--dry=json"],
+        ["run", "build", "--filter=@openagentui/docs", "--dry=json"],
         { cwd: root, encoding: "utf8", timeout: 30_000 },
       ),
     );
     const docs = graph.tasks.find(
-      (task) => task.taskId === "@assistant-ui/docs#build",
+      (task) => task.taskId === "@openagentui/docs#build",
     );
     assert.ok(docs, "Missing documentation build task");
     const outputs = docs.resolvedTaskDefinition.outputs;
@@ -546,12 +546,12 @@ test(
       const graph = JSON.parse(
         execFileSync(
           turbo,
-          ["run", "build", "--filter=@assistant-ui/docs", "--dry=json"],
+          ["run", "build", "--filter=@openagentui/docs", "--dry=json"],
           { cwd: root, encoding: "utf8", timeout: 30_000 },
         ),
       );
       const docs = graph.tasks.find(
-        (task) => task.taskId === "@assistant-ui/docs#build",
+        (task) => task.taskId === "@openagentui/docs#build",
       );
       assert.ok(docs);
       assert.ok(

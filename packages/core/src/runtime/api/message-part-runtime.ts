@@ -13,7 +13,7 @@ import type { SubscribableWithState } from "../../subscribable/subscribable";
 import type { ThreadRuntimeCoreBinding } from "./thread-runtime";
 import type { MessageStateBinding } from "./bindings";
 import type { MessagePartRuntimePath } from "./paths";
-import { ToolResponse } from "assistant-stream";
+import { ToolResponse } from "openagentui-stream";
 
 export type MessagePartState = (
   | ThreadUserMessagePart
@@ -83,7 +83,7 @@ export class MessagePartRuntimeImpl implements MessagePartRuntime {
 
     if (!this.messageApi)
       throw new Error(
-        "Message API is not available. This is likely a bug in assistant-ui.",
+        "Message API is not available. This is likely a bug in openagentui.",
       );
     if (!this.threadApi) throw new Error("Thread API is not available");
 
@@ -163,7 +163,7 @@ export class MessagePartRuntimeImpl implements MessagePartRuntime {
 
     if (!this.messageApi)
       throw new Error(
-        "Message API is not available. This is likely a bug in assistant-ui.",
+        "Message API is not available. This is likely a bug in openagentui.",
       );
     if (!this.threadApi) throw new Error("Thread API is not available");
 

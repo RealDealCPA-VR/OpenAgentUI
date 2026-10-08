@@ -1,7 +1,7 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { useAuiState } from "@assistant-ui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { useAuiState } from "@openagentui/react";
 
 export default function Home() {
   const isEmpty = useAuiState((s) => s.threads.main.isEmpty);

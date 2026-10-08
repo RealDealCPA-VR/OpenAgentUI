@@ -12,12 +12,12 @@ Version 0.12 introduces a complete rewrite of the state management system with a
 We provide a codemod to automatically migrate your code:
 
 ```bash
-npx assistant-ui@latest upgrade
+npx openagentui@latest upgrade
 ```
 
 This will automatically handle the hook renames and update your imports.
 
-Hook and component renames follow imports from `@assistant-ui/*`, including aliases, and leave unrelated or shadowed bindings unchanged. Imports through a local re-export need manual review. Unlike the v0.15 accessor codemod's existing hook-name fallback, this rename requires a direct assistant-ui import so it does not rename an unrelated hook.
+Hook and component renames follow imports from `@openagentui/*`, including aliases, and leave unrelated or shadowed bindings unchanged. Imports through a local re-export need manual review. Unlike the v0.15 accessor codemod's existing hook-name fallback, this rename requires a direct openagentui import so it does not rename an unrelated hook.
 
 ## Breaking Changes
 
@@ -41,7 +41,7 @@ import {
   useAssistantApi,
   useAssistantState,
   useAssistantEvent,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -62,7 +62,7 @@ function MyComponent() {
 **After:**
 
 ```tsx
-import { useAui, useAuiState, useAuiEvent } from "@assistant-ui/react";
+import { useAui, useAuiState, useAuiEvent } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();
@@ -85,7 +85,7 @@ function MyComponent() {
 Run the codemod to automatically update your code:
 
 ```bash
-npx assistant-ui@latest upgrade
+npx openagentui@latest upgrade
 ```
 
 The codemod will:
@@ -104,7 +104,7 @@ import {
   useAssistantApi,
   useAssistantState,
   useAssistantEvent,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const api = useAssistantApi(); // deprecated but functional
 ```
@@ -159,7 +159,7 @@ import {
   useComposerRuntime,
   useMessage,
   useMessageRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 function MyComponent() {
   // Reading state
@@ -192,7 +192,7 @@ function MyComponent() {
 **After:**
 
 ```tsx
-import { useAuiState, useAui } from "@assistant-ui/react";
+import { useAuiState, useAui } from "@openagentui/react";
 
 function MyComponent() {
   // Reading state - all through single hook
@@ -246,7 +246,7 @@ Events that remain unchanged:
 **Before:**
 
 ```tsx
-import { useAuiEvent } from "@assistant-ui/react";
+import { useAuiEvent } from "@openagentui/react";
 
 function MyComponent() {
   useAuiEvent("thread.run-start", () => {
@@ -268,7 +268,7 @@ function MyComponent() {
 **After:**
 
 ```tsx
-import { useAuiEvent } from "@assistant-ui/react";
+import { useAuiEvent } from "@openagentui/react";
 
 function MyComponent() {
   useAuiEvent("thread.runStart", () => {
@@ -292,7 +292,7 @@ function MyComponent() {
 Run the codemod to automatically update event names:
 
 ```bash
-npx assistant-ui@latest upgrade
+npx openagentui@latest upgrade
 ```
 
 The codemod will automatically replace all occurrences of the old kebab-case event names with their new camelCase equivalents.
@@ -303,4 +303,4 @@ If you encounter issues during migration:
 
 1. Check the updated API documentation for detailed examples
 2. Review the example applications in the repository
-3. Report issues at https://github.com/assistant-ui/assistant-ui/issues
+3. Report issues at https://github.com/RealDealCPA-VR/OpenAgentUI/issues

@@ -19,8 +19,8 @@ A shared conversation is somebody else's finished thread, handed to you to read:
 ```tsx title="app/shared/[id]/page.tsx"
 "use client";
 
-import { ReadonlyThreadProvider, ThreadPrimitive, MessagePrimitive } from "@assistant-ui/react";
-import type { ThreadMessage } from "@assistant-ui/react";
+import { ReadonlyThreadProvider, ThreadPrimitive, MessagePrimitive } from "@openagentui/react";
+import type { ThreadMessage } from "@openagentui/react";
 
 export function SharedThread({ messages }: { messages: readonly ThreadMessage[] }) {
   return (
@@ -45,8 +45,8 @@ Every capability on this thread, `edit`, `delete`, `reload`, `cancel`, `answerTo
 `ReadonlyThreadProvider` has no send path at all; put the continue action outside it, against your app's real runtime:
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
-import type { ThreadMessage } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
+import type { ThreadMessage } from "@openagentui/react";
 
 function ContinueButton({ messages }: { messages: readonly ThreadMessage[] }) {
   const app = useAui();
@@ -83,7 +83,7 @@ Standalone, `SharedConversation` is a self-contained card: title, who shared it,
 ```tsx title="app/shared-card.tsx"
 "use client";
 
-import { SharedConversation } from "@/components/assistant-ui/elements/shared-conversation";
+import { SharedConversation } from "@/components/openagentui/elements/shared-conversation";
 
 export function SharedCard({ onContinue }: { onContinue: () => void }) {
   return (

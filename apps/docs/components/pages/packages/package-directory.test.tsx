@@ -3,9 +3,9 @@ import { describe, expect, it } from "vitest";
 import { PackageDirectory, type DirectoryRow } from "./package-directory";
 
 const rows: DirectoryRow[] = [
-  ["@assistant-ui/react", false],
-  ["assistant-stream", false],
-  ["@assistant-ui/react-hook-form", true],
+  ["@openagentui/react", false],
+  ["openagentui-stream", false],
+  ["@openagentui/react-hook-form", true],
 ].map(([name, deprecated]) => ({
   name: name as string,
   description: "",

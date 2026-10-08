@@ -84,16 +84,14 @@ export default function NotFound() {
             <div className="bg-muted flex size-8 shrink-0 items-center justify-center rounded-full">
               <Image
                 src="/favicon/icon.svg"
-                alt="assistant-ui"
+                alt="openagentui"
                 width={16}
                 height={16}
                 className="dark:hue-rotate-180 dark:invert"
               />
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-muted-foreground text-xs">
-                assistant-ui
-              </span>
+              <span className="text-muted-foreground text-xs">openagentui</span>
               <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3">
                 <p className="text-sm font-medium">
                   {displayedTitle}

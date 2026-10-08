@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export type MessageIfProps = {
   children: ReactNode;

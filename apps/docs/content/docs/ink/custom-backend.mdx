@@ -10,7 +10,7 @@ By default, `useLocalRuntime` manages threads and messages in memory. You can co
 The simplest approach: keep thread management local, but send messages to your backend for inference.
 
 ```tsx title="adapters/my-chat-adapter.ts"
-import type { ChatModelAdapter } from "@assistant-ui/react-ink";
+import type { ChatModelAdapter } from "@openagentui/react-ink";
 
 export const myChatAdapter: ChatModelAdapter = {
   async *run({ messages, abortSignal }) {
@@ -40,7 +40,7 @@ export const myChatAdapter: ChatModelAdapter = {
 ```
 
 ```tsx title="app.tsx"
-import { useLocalRuntime, AssistantRuntimeProvider } from "@assistant-ui/react-ink";
+import { useLocalRuntime, AssistantRuntimeProvider } from "@openagentui/react-ink";
 import { myChatAdapter } from "./adapters/my-chat-adapter.js";
 
 export function App() {
@@ -71,7 +71,7 @@ import {
   useRemoteThreadListRuntime,
   createFileStorageAdapter,
   AssistantRuntimeProvider,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import { myChatAdapter } from "./adapters/my-chat-adapter.js";
 
 const threadListAdapter = createFileStorageAdapter({
@@ -102,7 +102,7 @@ Writes are atomic (temp file + `rename`), so a crash mid-write cannot leave a pa
 | Option | Description |
 |---|---|
 | `dir` | Directory where thread files are stored. Created if missing. |
-| `prefix` | Key prefix for stored files. Defaults to `@assistant-ui:`. Useful when two apps share a directory. |
+| `prefix` | Key prefix for stored files. Defaults to `@openagentui:`. Useful when two apps share a directory. |
 | `titleGenerator` | Optional [`TitleGenerationAdapter`](/docs/ink/adapters#titlegenerationadapter) that auto-generates thread titles from the first messages. Pass `createSimpleTitleAdapter()` for the built-in implementation. |
 
 ### When this fits
@@ -119,8 +119,8 @@ When you want your backend to own thread state (e.g. for persistence across sess
 ### Implement the adapter
 
 ```tsx title="adapters/my-thread-list-adapter.ts"
-import type { RemoteThreadListAdapter } from "@assistant-ui/react-ink";
-import { createAssistantStream } from "assistant-stream";
+import type { RemoteThreadListAdapter } from "@openagentui/react-ink";
+import { createAssistantStream } from "openagentui-stream";
 
 const API_BASE = "https://my-api.com";
 
@@ -205,7 +205,7 @@ import {
   useLocalRuntime,
   useRemoteThreadListRuntime,
   AssistantRuntimeProvider,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import { myChatAdapter } from "./adapters/my-chat-adapter.js";
 import { myThreadListAdapter } from "./adapters/my-thread-list-adapter.js";
 

@@ -34,7 +34,7 @@ do not create a scheduling boundary.
 new resource root with its own tap scheduler:
 
 ```ts
-import { useResource, useTapRoot } from "@assistant-ui/tap";
+import { useResource, useTapRoot } from "@openagentui/tap";
 
 const useCounterRoot = () =>
   useTapRoot(function CounterRoot() {
@@ -108,7 +108,7 @@ only if the callback also updates the same root; otherwise it waits for the next
 scheduled flush.
 
 ```ts
-import { flushTapSync } from "@assistant-ui/tap";
+import { flushTapSync } from "@openagentui/tap";
 
 flushTapSync(() => {
   handle.getValue().increment();

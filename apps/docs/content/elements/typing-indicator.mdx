@@ -16,11 +16,11 @@ This belongs on screen for exactly one window: a run is active and the newest me
 
 ### Show it before the first token
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
-import { TypingIndicator } from "@/components/assistant-ui/elements/typing-indicator";
+import { useAuiState } from "@openagentui/react";
+import { TypingIndicator } from "@/components/openagentui/elements/typing-indicator";
 
 function AssistantTyping() {
   const waiting = useAuiState((s) => {
@@ -58,7 +58,7 @@ Standalone, `TypingIndicator` takes no data at all; mounting and unmounting it i
 "use client";
 
 import { useState } from "react";
-import { TypingIndicator } from "@/components/assistant-ui/elements/typing-indicator";
+import { TypingIndicator } from "@/components/openagentui/elements/typing-indicator";
 
 export function Chat() {
   const [waiting, setWaiting] = useState(false);

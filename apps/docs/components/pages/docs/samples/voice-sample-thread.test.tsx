@@ -11,7 +11,7 @@ import {
   useExternalStoreRuntime,
   useAuiState,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { VoiceSampleThread } from "./voice-sample-thread";
 import { DocsRuntimeProvider } from "@/runtimes/docs";
 
@@ -20,14 +20,14 @@ const compilerStubs = vi.hoisted(() => ({
   defineGenerativeComponents: () => ({}),
 }));
 
-vi.mock("@assistant-ui/react-generative-ui", async (importOriginal) => ({
+vi.mock("@openagentui/react-generative-ui", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@assistant-ui/react-generative-ui")
+    typeof import("@openagentui/react-generative-ui")
   >()),
   defineGenerativeComponents: compilerStubs.defineGenerativeComponents,
 }));
-vi.mock("@assistant-ui/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/react")>()),
+vi.mock("@openagentui/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/react")>()),
   humanTool: compilerStubs.humanTool,
 }));
 

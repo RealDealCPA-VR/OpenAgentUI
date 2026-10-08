@@ -15,14 +15,14 @@ Pass an adapter through `adapters.attachments`. The image and text adapters can 
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
 import {
   CompositeAttachmentAdapter,
   SimpleImageAttachmentAdapter,
   SimpleTextAttachmentAdapter,
-} from "@assistant-ui/core";
-import Thread from "~/components/assistant-ui/thread.vue";
+} from "@openagentui/core";
+import Thread from "~/components/openagentui/thread.vue";
 
 const attachments = new CompositeAttachmentAdapter([
   new SimpleImageAttachmentAdapter(),
@@ -59,7 +59,7 @@ import {
   ComposerPrimitiveInput,
   ComposerPrimitiveSend,
   useAuiState,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 
 const acceptsAttachments = useAuiState((s) => s.thread.capabilities.attachments);
 </script>
@@ -98,7 +98,7 @@ The picker button renders only while `s.thread.capabilities.attachments` is true
 
 ```vue title="app/components/MessageAttachments.vue"
 <script setup lang="ts">
-import { AttachmentPrimitiveName, MessagePrimitiveAttachments } from "@assistant-ui/vue";
+import { AttachmentPrimitiveName, MessagePrimitiveAttachments } from "@openagentui/vue";
 </script>
 
 <template>
@@ -131,7 +131,7 @@ An attachment's `status` shows where it is in preparation or sending:
 ```vue title="app/components/AttachmentErrors.vue"
 <script setup lang="ts">
 import { ref } from "vue";
-import { useAuiEvent } from "@assistant-ui/vue";
+import { useAuiEvent } from "@openagentui/vue";
 
 const lastError = ref<string | null>(null);
 
@@ -157,7 +157,7 @@ import type {
   AttachmentAdapter,
   CompleteAttachment,
   PendingAttachment,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 export class SmallTextAttachmentAdapter implements AttachmentAdapter {
   accept = "text/plain";
@@ -192,4 +192,4 @@ export class SmallTextAttachmentAdapter implements AttachmentAdapter {
 }
 ```
 
-Pass an instance as `adapters.attachments` in the runtime config above. For attachments stored in assistant-cloud, see [Cloud persistence](/docs/vue/cloud).
+Pass an instance as `adapters.attachments` in the runtime config above. For attachments stored in openagentui-cloud, see [Cloud persistence](/docs/vue/cloud).

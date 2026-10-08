@@ -1,8 +1,8 @@
 import type {
   ReadonlyJSONArray,
   ReadonlyJSONObject,
-} from "assistant-stream/utils";
-import type { AssistantState } from "@assistant-ui/store";
+} from "openagentui-stream/utils";
+import type { AssistantState } from "@openagentui/store";
 
 /**
  * Disabled predicates shared by every binding's primitive layer. Each binding

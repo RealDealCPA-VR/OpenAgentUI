@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { AuiConfig, provideAui } from "@assistant-ui/svelte";
-  import { RuntimeAdapter, Suggestions } from "@assistant-ui/core/store";
+  import { AuiConfig, provideAui } from "@openagentui/svelte";
+  import { RuntimeAdapter, Suggestions } from "@openagentui/core/store";
   import App from "./App.svelte";
   import { createEchoRuntime } from "./runtime";
 

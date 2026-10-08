@@ -19,8 +19,8 @@ A retrieval tool renders through that tool's own toolkit entry: the model's quer
 ```tsx title="app/toolkit.tsx"
 "use generative";
 
-import { defineToolkit, externalTool } from "@assistant-ui/react";
-import { RetrievalChunks } from "@/components/assistant-ui/elements/retrieval-chunks";
+import { defineToolkit, externalTool } from "@openagentui/react";
+import { RetrievalChunks } from "@/components/openagentui/elements/retrieval-chunks";
 
 export default defineToolkit({
   search_docs: {
@@ -47,9 +47,9 @@ export default defineToolkit({
 ```tsx title="app/MyRuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import toolkit from "./toolkit";
 
 export function App() {
@@ -87,7 +87,7 @@ import { useState } from "react";
 import {
   RetrievalChunks,
   type RetrievalChunk,
-} from "@/components/assistant-ui/elements/retrieval-chunks";
+} from "@/components/openagentui/elements/retrieval-chunks";
 
 const CHUNKS: readonly RetrievalChunk[] = [
   {

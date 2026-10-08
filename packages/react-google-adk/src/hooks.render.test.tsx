@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
 import { act, render, waitFor } from "@testing-library/react";
-import type { AssistantRuntime } from "@assistant-ui/core";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
+import type { AssistantRuntime } from "@openagentui/core";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
 import { describe, expect, it, vi } from "vitest";
 import { useAdkAppState, useAdkAuthRequests, useAdkSubmitAuth } from "./hooks";
 import type { AdkAuthRequest, AdkEvent, AdkMessage } from "./types";

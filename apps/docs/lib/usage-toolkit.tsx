@@ -1,7 +1,7 @@
 "use generative";
 
 import { z } from "zod";
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { UsageToolUI } from "@/components/shared/usage";
 
 // The budget is charged per surface, and only the landing demo opts in, so this

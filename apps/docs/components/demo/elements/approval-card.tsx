@@ -5,7 +5,7 @@ import { Trash2Icon } from "lucide-react";
 import {
   ApprovalCard,
   type ApprovalState,
-} from "@/components/assistant-ui/elements/approval-card";
+} from "@/components/openagentui/elements/approval-card";
 
 export function ApprovalCardDemo() {
   const [state, setState] = useState<ApprovalState>("request");

@@ -20,18 +20,18 @@ test("packageSpecifierName keeps the scope and drops the subpath", () => {
 
 test("declaredImports admits the runtime graph and nothing from devDependencies", () => {
   const manifest = {
-    name: "@assistant-ui/fixture",
+    name: "@openagentui/fixture",
     dependencies: { "remark-rehype": "^11.0.0" },
     peerDependencies: { react: "^19.0.0" },
-    optionalDependencies: { "assistant-cloud": "^0.2.0" },
+    optionalDependencies: { "openagentui-cloud": "^0.2.0" },
     devDependencies: { vitest: "^5.0.0" },
   };
   const allowed = declaredImports(manifest);
   for (const name of [
-    "@assistant-ui/fixture",
+    "@openagentui/fixture",
     "remark-rehype",
     "react",
-    "assistant-cloud",
+    "openagentui-cloud",
   ]) {
     assert.ok(allowed.includes(name), name);
   }

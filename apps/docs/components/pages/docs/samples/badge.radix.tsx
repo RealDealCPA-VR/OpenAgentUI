@@ -43,7 +43,7 @@ export function BadgeAsLinkSample() {
     <SampleFrame className="flex h-auto items-center justify-center gap-3 p-6">
       <Badge asChild variant="secondary">
         <a
-          href="https://github.com/assistant-ui/assistant-ui"
+          href="https://github.com/RealDealCPA-VR/OpenAgentUI"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -53,7 +53,7 @@ export function BadgeAsLinkSample() {
       </Badge>
       <Badge asChild variant="outline">
         <a
-          href="https://www.npmjs.com/package/@assistant-ui/react"
+          href="https://www.npmjs.com/package/@openagentui/react"
           target="_blank"
           rel="noopener noreferrer"
         >

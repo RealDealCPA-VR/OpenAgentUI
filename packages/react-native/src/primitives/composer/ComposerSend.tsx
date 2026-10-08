@@ -1,5 +1,5 @@
 import { Pressable, type PressableProps } from "react-native";
-import { useComposerSend } from "@assistant-ui/core/react";
+import { useComposerSend } from "@openagentui/core/react";
 
 export type ComposerSendProps = Omit<PressableProps, "onPress" | "children"> & {
   children: PressableProps["children"];

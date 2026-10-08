@@ -13,8 +13,8 @@ import {
   ThreadPrimitiveScrollToBottom,
   ThreadPrimitiveSuggestions,
   ThreadPrimitiveViewport,
-} from "@assistant-ui/vue";
-import type {} from "@assistant-ui/core/store";
+} from "@openagentui/vue";
+import type {} from "@openagentui/core/store";
 import { ArrowDownIcon, ArrowUpIcon, PlusIcon, SquareIcon } from "@lucide/vue";
 import Message from "./Message.vue";
 import ThreadItem from "./ThreadItem.vue";

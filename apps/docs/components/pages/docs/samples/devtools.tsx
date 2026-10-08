@@ -29,14 +29,14 @@ import {
   type ThreadAssistantMessagePart,
   type ThreadMessageLike,
   type ToolCallMessagePartProps,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   DevToolsPanel,
   ShadowRoot,
   inProcessClient,
   type DevToolsClient,
   type DevToolsSnapshot,
-} from "@assistant-ui/react-devtools";
+} from "@openagentui/react-devtools";
 import { SampleFrame } from "./sample-frame";
 
 const RESPONSES = [
@@ -133,7 +133,7 @@ const panelSeed = [
   msg("user", "What am I looking at?"),
   msg(
     "assistant",
-    "A live assistant-ui app (top) inspected by the real DevTools panel (bottom). Send a message and watch the Thread and Activity tabs react in real time.",
+    "A live openagentui app (top) inspected by the real DevTools panel (bottom). Send a message and watch the Thread and Activity tabs react in real time.",
   ),
 ];
 
@@ -206,7 +206,7 @@ function DevToolsWiring({
 }) {
   const aui = useAui();
   useAssistantInstructions(
-    "You are the assistant-ui docs demo assistant. Keep replies short and reference the assistant-ui DevTools.",
+    "You are the openagentui docs demo assistant. Keep replies short and reference the openagentui DevTools.",
   );
   useEffect(() => {
     const unregister = DevToolsProviderApi.register(aui);
@@ -400,8 +400,8 @@ function DevToolsModalSampleInner() {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            aria-label="Open assistant-ui DevTools"
-            title="Open assistant-ui DevTools"
+            aria-label="Open openagentui DevTools"
+            title="Open openagentui DevTools"
             className="bg-foreground text-background absolute right-5 bottom-5 flex size-9 items-center justify-center rounded-full transition-transform duration-150 ease-out hover:scale-105 active:scale-95"
           >
             <MessageSquareIcon className="size-4.5" strokeWidth={1.75} />
@@ -410,7 +410,7 @@ function DevToolsModalSampleInner() {
         {open && (
           <div
             role="dialog"
-            aria-label="assistant-ui DevTools"
+            aria-label="openagentui DevTools"
             className="border-border bg-background absolute inset-x-3 top-14 bottom-3 flex flex-col overflow-hidden rounded-xl border"
           >
             <ShadowRoot theme={theme} className="h-full">

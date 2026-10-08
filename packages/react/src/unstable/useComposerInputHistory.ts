@@ -8,10 +8,10 @@ import {
   type KeyboardEvent,
   type KeyboardEventHandler,
 } from "react";
-import { useAui } from "@assistant-ui/store";
-import { flushTapSync } from "@assistant-ui/tap";
-import type { ThreadMessage } from "@assistant-ui/core";
-import { getThreadMessageText } from "@assistant-ui/core/internal";
+import { useAui } from "@openagentui/store";
+import { flushTapSync } from "@openagentui/tap";
+import type { ThreadMessage } from "@openagentui/core";
+import { getThreadMessageText } from "@openagentui/core/internal";
 import { useTriggerPopoverRootContextOptional } from "../primitives/composer/trigger/TriggerPopoverRootContext";
 
 export type Unstable_ComposerInputHistory = {

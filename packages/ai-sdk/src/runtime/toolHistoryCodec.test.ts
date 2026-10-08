@@ -2,7 +2,7 @@ import type {
   RespondToToolApprovalOptions,
   ThreadMessage,
   Unstable_ToolInteractionLog,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { describe, expect, it } from "vitest";
 import {
   addToolData,

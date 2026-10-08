@@ -1,4 +1,4 @@
-import type { AssistantState } from "@assistant-ui/store";
+import type { AssistantState } from "@openagentui/store";
 import type { MessageState } from "../../store/scopes/message";
 import type { PartState } from "../../store/scopes/part";
 import { getMessagePartKeys } from "../../utils/getMessagePartKeys";

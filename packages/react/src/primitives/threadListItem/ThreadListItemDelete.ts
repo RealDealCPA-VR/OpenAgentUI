@@ -5,7 +5,7 @@ import {
   type ActionButtonProps,
   createActionButton,
 } from "../../utils/createActionButton";
-import { useThreadListItemDelete as useThreadListItemDeleteBehavior } from "@assistant-ui/core/react";
+import { useThreadListItemDelete as useThreadListItemDeleteBehavior } from "@openagentui/core/react";
 
 const useThreadListItemDelete = () => {
   const { delete: deleteThread } = useThreadListItemDeleteBehavior();

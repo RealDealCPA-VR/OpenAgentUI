@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { flushSync, mount, unmount } from "svelte";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig, type AssistantClient } from "@assistant-ui/store/client";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig, type AssistantClient } from "@openagentui/store/client";
 import { provideAui } from "../provideAui";
 import { useAui } from "../useAui";
 import Host from "./fixtures/Host.svelte";

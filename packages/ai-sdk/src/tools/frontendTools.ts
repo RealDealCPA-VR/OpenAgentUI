@@ -1,5 +1,5 @@
 import { jsonSchema, type ToolSet } from "ai";
-import type { ToolJSONSchema } from "assistant-stream";
+import type { ToolJSONSchema } from "openagentui-stream";
 import { unwrapModelContentEnvelope } from "../converters/modelContentEnvelope";
 import {
   toAISDKContent,

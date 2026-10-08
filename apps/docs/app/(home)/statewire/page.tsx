@@ -84,7 +84,7 @@ export default function StatewireSetupPage() {
         </p>
         <div className="flex flex-wrap items-center gap-5">
           <a
-            href="https://statewire-tic-tac-toe-hackathon-20261003.assistant-ui.workers.dev/"
+            href="https://statewire-tic-tac-toe-hackathon-20261003.openagentui.workers.dev/"
             className="hover:underline"
           >
             Play tic-tac-toe

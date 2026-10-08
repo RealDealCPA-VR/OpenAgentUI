@@ -9,7 +9,7 @@ Two options set side by side, each with its own traits and one of them marked as
 
 <RuntimeMode>
 
-This element has no assistant-ui primitive of its own, so the runtime wiring is a tool renderer rather than a primitive composition. A comparison has no natural row by row reveal, and option cards filling in out of order as JSON streams in would read as broken, so wait for the call to finish before mounting the card.
+This element has no openagentui primitive of its own, so the runtime wiring is a tool renderer rather than a primitive composition. A comparison has no natural row by row reveal, and option cards filling in out of order as JSON streams in would read as broken, so wait for the call to finish before mounting the card.
 
 <Steps>
   <Step>
@@ -19,8 +19,8 @@ This element has no assistant-ui primitive of its own, so the runtime wiring is 
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { ComparisonCard } from "@/components/assistant-ui/elements/comparison-card";
+import { defineToolkit } from "@openagentui/react";
+import { ComparisonCard } from "@/components/openagentui/elements/comparison-card";
 
 export const toolkit = defineToolkit({
   compare_options: {
@@ -45,8 +45,8 @@ import {
   AssistantRuntimeProvider,
   AuiConfig,
   Tools,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({
@@ -64,7 +64,7 @@ export function MyRuntimeProvider({
 }
 ```
 
-Once the toolkit is registered, `Thread` and any custom message list built on assistant-ui's message part primitives (`MessagePrimitive.Parts` or `MessagePrimitive.GroupedParts`) render the registered UI wherever the `compare_options` call appears in the message, so nothing needs to be placed by hand.
+Once the toolkit is registered, `Thread` and any custom message list built on openagentui's message part primitives (`MessagePrimitive.Parts` or `MessagePrimitive.GroupedParts`) render the registered UI wherever the `compare_options` call appears in the message, so nothing needs to be placed by hand.
 
   </Step>
 </Steps>
@@ -86,7 +86,7 @@ Standalone, the element is a plain display component: it owns no state of its ow
 import {
   ComparisonCard,
   type ComparisonOption,
-} from "@/components/assistant-ui/elements/comparison-card";
+} from "@/components/openagentui/elements/comparison-card";
 
 const traitLabels = ["Streaming", "Multi-thread", "Self-hosted"] as const;
 

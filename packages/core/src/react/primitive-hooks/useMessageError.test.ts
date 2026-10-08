@@ -2,12 +2,12 @@ import { describe, it, expect, vi } from "vitest";
 
 const { mockUseAuiState } = vi.hoisted(() => ({ mockUseAuiState: vi.fn() }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAuiState: ((selector: (s: unknown) => unknown) =>
     mockUseAuiState(
       selector,
-    )) as typeof import("@assistant-ui/store").useAuiState,
+    )) as typeof import("@openagentui/store").useAuiState,
 }));
 
 import { useMessageError } from "./useMessageError";

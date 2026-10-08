@@ -41,9 +41,9 @@ The AI SDK integration can generate this list instead of taking a static one: pa
 
 Place `ThreadFollowupSuggestions` after the message list and before the composer.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { ThreadPrimitive } from "@assistant-ui/react";
-import { ThreadFollowupSuggestions } from "@/components/assistant-ui/elements/follow-up-suggestions.aui";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { ThreadPrimitive } from "@openagentui/react";
+import { ThreadFollowupSuggestions } from "@/components/openagentui/elements/follow-up-suggestions.aui";
 
 function ThreadViewportFooter() {
   return (
@@ -131,19 +131,19 @@ Each chip uses `ThreadPrimitive.Suggestion` with `send`, so clicking one sends t
 The Static variant in the rail is a second design for the same follow-up row: `Suggestions` renders a staggered row of rounded pills, or a left-aligned list, from a plain list of strings you hold yourself, instead of the horizontally scrolling row driven by a runtime's own `suggestions`. It is a single props-driven component with no runtime dependency:
 
 ```sh
-npx shadcn@latest add "@assistant-ui/elements-suggestions"
+npx shadcn@latest add "@openagentui/elements-suggestions"
 ```
 
 <RuntimeMode>
 
 A runtime tracks the active thread's follow-ups as `s.thread.suggestions`; `ThreadPrimitive.Suggestion` turns one into a clickable prompt. Style it to match the paper-pill look instead of driving `Suggestions` itself, since a runtime suggestion sends immediately and the row unmounts rather than holding a selection:
 
-```tsx title="components/assistant-ui/elements/suggestions.tsx"
+```tsx title="components/openagentui/elements/suggestions.tsx"
 "use client";
 
-import { ThreadPrimitive, useAuiState } from "@assistant-ui/react";
+import { ThreadPrimitive, useAuiState } from "@openagentui/react";
 import { cn } from "@/lib/utils";
-import { paper } from "@/components/assistant-ui/elements/surfaces";
+import { paper } from "@/components/openagentui/elements/surfaces";
 
 function SuggestionRow() {
   const suggestions = useAuiState((s) => s.thread.suggestions);
@@ -181,7 +181,7 @@ Standalone, `Suggestions` renders the list you pass it and reports which one was
 "use client";
 
 import { useState } from "react";
-import { Suggestions } from "@/components/assistant-ui/elements/suggestions";
+import { Suggestions } from "@/components/openagentui/elements/suggestions";
 
 export function NextTurn() {
   const [cycle, setCycle] = useState(0);

@@ -24,7 +24,7 @@ afterEach(() => {
 describe("shop entry points", () => {
   it("loads the banner when a checkout worker is configured", async () => {
     const { AgentSetup } = await load();
-    render(<AgentSetup product="assistant-ui" />);
+    render(<AgentSetup product="openagentui" />);
     expect(
       await screen.findByRole("button", { name: "Begin setup" }),
     ).toBeTruthy();
@@ -36,7 +36,7 @@ describe("shop entry points", () => {
     const { container } = render(
       <>
         <CartButton />
-        <AgentSetup product="assistant-ui" />
+        <AgentSetup product="openagentui" />
       </>,
     );
     expect(container.innerHTML).toBe("");

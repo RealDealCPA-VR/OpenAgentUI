@@ -22,17 +22,17 @@ import {
   type SpeechSynthesisAdapter,
   type ThreadMessage,
   type ToolExecutionStatus,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   useCloudThreadListAdapter,
   useExternalStoreRuntime,
   useRemoteThreadListRuntime,
   useRuntimeAdapters,
-} from "@assistant-ui/core/react";
-import { invokeUserCallback } from "@assistant-ui/core/internal";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
-import { useAui } from "@assistant-ui/store";
-import type { AssistantCloud } from "assistant-cloud";
+} from "@openagentui/core/react";
+import { invokeUserCallback } from "@openagentui/core/internal";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
+import { useAui } from "@openagentui/store";
+import type { AssistantCloud } from "openagentui-cloud";
 import {
   useEveAgent,
   type EveMessageData,
@@ -99,7 +99,7 @@ type EveClientContext = { readonly [key: string]: EveJsonValue };
 /**
  * Only the `custom` bag crosses the wire. Eve reads `clientContext` as its own
  * namespace and serializes it into a model-visible context message, so sending
- * the assistant-ui envelope would surface a literal `"custom"` key in the
+ * the openagentui envelope would surface a literal `"custom"` key in the
  * prompt and to every eve-side handler.
  */
 const toEveSendOptions = (
@@ -202,7 +202,7 @@ const useEveThreadRuntime = (
       ? {
           onError: (error) =>
             void invokeUserCallback(
-              "assistant-ui/eve",
+              "openagentui/eve",
               "onError",
               onError,
               error,
@@ -213,7 +213,7 @@ const useEveThreadRuntime = (
       ? {
           onEvent: (event) =>
             void invokeUserCallback(
-              "assistant-ui/eve",
+              "openagentui/eve",
               "onEvent",
               onEvent,
               event,
@@ -223,7 +223,7 @@ const useEveThreadRuntime = (
     onFinish: (snapshot) => {
       lastFinishStatusRef.current = snapshot.status;
       void invokeUserCallback(
-        "assistant-ui/eve",
+        "openagentui/eve",
         "onFinish",
         onFinish,
         snapshot,
@@ -244,7 +244,7 @@ const useEveThreadRuntime = (
                 aui.threadListItem.initialize().catch(() => {});
             }
             void invokeUserCallback(
-              "assistant-ui/eve",
+              "openagentui/eve",
               "onSessionChange",
               onSessionChange,
               session,
@@ -652,10 +652,10 @@ const useEveCloudRuntime = (
 };
 
 /**
- * Connects Eve's `useEveAgent` hook to assistant-ui's runtime contract.
+ * Connects Eve's `useEveAgent` hook to openagentui's runtime contract.
  *
  * The runtime renders Eve messages, forwards new user messages to the Eve
- * session, supports cancellation, and maps Eve input requests to assistant-ui
+ * session, supports cancellation, and maps Eve input requests to openagentui
  * tool approval UI.
  */
 export const useEveAgentRuntime = (options: UseEveAgentRuntimeOptions = {}) => {

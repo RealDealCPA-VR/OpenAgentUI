@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, render } from "ink-testing-library";
-import { createRenderCounter } from "@assistant-ui/x-performance";
+import { createRenderCounter } from "@openagentui/x-performance";
 import { DiffView } from "./DiffView";
 
 const { recordHighlight } = vi.hoisted(() => ({ recordHighlight: vi.fn() }));

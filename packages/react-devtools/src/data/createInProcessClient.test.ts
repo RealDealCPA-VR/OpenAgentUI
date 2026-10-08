@@ -16,8 +16,8 @@ const { registry, projectApi } = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/react")>()),
+vi.mock("@openagentui/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/react")>()),
   DevToolsHooks: registry,
 }));
 
@@ -75,7 +75,7 @@ describe("createInProcessClient", () => {
 
     expect(second).toHaveBeenCalledTimes(1);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] DevTools listener threw an error",
+      "[openagentui] DevTools listener threw an error",
       failure,
     );
   });

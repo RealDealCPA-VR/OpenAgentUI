@@ -3,7 +3,7 @@
   "compilerOptions": {
     "lib": ["ESNext"],
     "paths": {
-      "@/components/assistant-ui/*": ["./assistant-ui/*"],
+      "@/components/openagentui/*": ["./openagentui/*"],
       "@/components/ui/*": ["./ui/*"],
       "@/lib/utils": ["../../lib/utils"]
     }

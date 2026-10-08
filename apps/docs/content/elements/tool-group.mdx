@@ -18,13 +18,13 @@ Tool group collapses a run of consecutive tool calls behind a single row: a coun
 
 `Thread` groups adjacent tool-call parts with `MessagePrimitive.GroupedParts`, and renders each group with exactly the pieces below.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { groupPartByType, MessagePrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { groupPartByType, MessagePrimitive } from "@openagentui/react";
 import {
   ToolGroupContent,
   ToolGroupRoot,
   ToolGroupTrigger,
-} from "@/components/assistant-ui/elements/tool-group.aui";
+} from "@/components/openagentui/elements/tool-group.aui";
 
 <MessagePrimitive.GroupedParts
   groupBy={groupPartByType({
@@ -170,22 +170,22 @@ The trigger's label always reads the plural "tool calls" except for a group of e
 The Static variant in the rail is a second design for the same collapse: `ToolGroup` takes the calls as an explicit `tools` array instead of reading a message's grouped parts, and computes its own summary (progress, a failure count, or a done count) from each call's `state` rather than the `count` and `active` props the kit's trigger takes. It is a single props-driven component with no runtime dependency:
 
 ```sh
-npx shadcn@latest add "@assistant-ui/elements-tool-group"
+npx shadcn@latest add "@openagentui/elements-tool-group"
 ```
 
 <RuntimeMode>
 
 Wire it by mapping a message's `tool-call` parts into `GroupedTool` records. `s.message.parts` is the store's own array, so selecting it directly is cheap; deriving `tools` still needs `useMemo`, since mapping to a fresh array inside the selector would re-render the group on every store update.
 
-```tsx title="components/assistant-ui/elements/tool-group-live.tsx"
+```tsx title="components/openagentui/elements/tool-group-live.tsx"
 "use client";
 
 import { useMemo, useState } from "react";
-import { useAuiState, type ToolCallMessagePart } from "@assistant-ui/react";
+import { useAuiState, type ToolCallMessagePart } from "@openagentui/react";
 import {
   ToolGroup,
   type GroupedTool,
-} from "@/components/assistant-ui/elements/tool-group";
+} from "@/components/openagentui/elements/tool-group";
 
 function toGroupedTool(part: ToolCallMessagePart): GroupedTool {
   const args = part.args as Record<string, unknown>;
@@ -243,7 +243,7 @@ Standalone you hold the array of calls yourself and flip `open` on click; the tr
 "use client";
 
 import { useState } from "react";
-import { ToolGroup, type GroupedTool } from "@/components/assistant-ui/elements/tool-group";
+import { ToolGroup, type GroupedTool } from "@/components/openagentui/elements/tool-group";
 
 const initialCalls: GroupedTool[] = [
   { id: "1", name: "read_file", target: "src/index.ts", state: "done", durationMs: 120 },

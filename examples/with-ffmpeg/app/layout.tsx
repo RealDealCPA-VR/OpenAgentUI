@@ -3,8 +3,8 @@ import "./globals.css";
 import { MyRuntimeProvider } from "./MyRuntimeProvider";
 
 export const metadata: Metadata = {
-  title: "ConvertGPT with assistant-ui",
-  description: "FFmpeg integration with assistant-ui",
+  title: "ConvertGPT with openagentui",
+  description: "FFmpeg integration with openagentui",
 };
 
 export default function RootLayout({

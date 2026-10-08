@@ -8,7 +8,7 @@ import {
   useAui,
   useAuiState,
   type AssistantClient,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import type { ThreadSuggestion } from "../../runtime/interfaces/thread-runtime-core";
 import type { ThreadMessage } from "../../types/message";
 import { Suggestions } from "../../store/clients/suggestions";

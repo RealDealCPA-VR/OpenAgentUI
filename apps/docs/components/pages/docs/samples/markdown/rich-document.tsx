@@ -1,13 +1,13 @@
 "use client";
 
-import { TextMessagePartProvider } from "@assistant-ui/react";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { TextMessagePartProvider } from "@openagentui/react";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 export function MarkdownDocument() {
   const richMarkdown = `## Product brief
 
-A useful response can combine **clear structure**, _emphasis_, and [source links](https://www.assistant-ui.com).
+A useful response can combine **clear structure**, _emphasis_, and [source links](https://openagentui.dev).
 
 ### What ships
 

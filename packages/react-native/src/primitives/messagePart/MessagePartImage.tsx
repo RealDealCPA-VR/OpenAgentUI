@@ -5,7 +5,7 @@ import {
   type RefAttributes,
 } from "react";
 import { Image, type ImageProps } from "react-native";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export namespace MessagePartPrimitiveImage {
   export type Element = ComponentRef<typeof Image>;

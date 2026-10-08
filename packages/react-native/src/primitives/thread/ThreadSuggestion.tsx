@@ -1,5 +1,5 @@
 import { Pressable, type PressableProps } from "react-native";
-import { useSuggestionTrigger } from "@assistant-ui/core/react";
+import { useSuggestionTrigger } from "@openagentui/core/react";
 
 export type ThreadSuggestionProps = Omit<
   PressableProps,

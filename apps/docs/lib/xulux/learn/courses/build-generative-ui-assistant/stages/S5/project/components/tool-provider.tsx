@@ -1,6 +1,6 @@
 "use client";
 
-import { AuiConfig, AuiProvider, Tools, useAui } from "@assistant-ui/react";
+import { AuiConfig, AuiProvider, Tools, useAui } from "@openagentui/react";
 import toolkit from "../app/toolkit";
 
 export function ToolProvider({ children }: { children: React.ReactNode }) {

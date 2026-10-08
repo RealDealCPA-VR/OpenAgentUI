@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useAuiState, useAui } from "@assistant-ui/store";
+import { useAuiState, useAui } from "@openagentui/store";
 import { Pressable, type PressableProps } from "../internal/Pressable";
 
 export type ChainOfThoughtAccordionTriggerProps = Omit<

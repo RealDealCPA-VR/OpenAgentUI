@@ -27,7 +27,7 @@ import { ThreadListItemDelete } from "./threadListItem/ThreadListItemDelete";
 import { ThreadListItemTrigger } from "./threadListItem/ThreadListItemTrigger";
 import { ThreadListItemUnarchive } from "./threadListItem/ThreadListItemUnarchive";
 
-vi.mock("@assistant-ui/store", () => ({
+vi.mock("@openagentui/store", () => ({
   useAui: () => ({
     attachment: { remove: vi.fn() },
     chainOfThought: { setCollapsed: vi.fn() },
@@ -50,7 +50,7 @@ vi.mock("@assistant-ui/store", () => ({
     }),
 }));
 
-vi.mock("@assistant-ui/core/react", () => ({
+vi.mock("@openagentui/core/react", () => ({
   useActionBarCopy: () => ({
     copy: vi.fn(),
     disabled: false,

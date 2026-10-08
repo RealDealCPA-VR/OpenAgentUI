@@ -1,6 +1,6 @@
 # Build a Generative UI Assistant
 
-This project is one canonical stage from the assistant-ui Learn course.
+This project is one canonical stage from the openagentui Learn course.
 
 ```bash
 cp .env.example .env.local

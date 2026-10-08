@@ -1,6 +1,6 @@
 ---
 title: Integrations
-description: Adapters for Vercel AI SDK, LangChain, LangGraph, Mastra, plus auth, persistence, observability, and tool services, for a React chat UI built with assistant-ui.
+description: Adapters for Vercel AI SDK, LangChain, LangGraph, Mastra, plus auth, persistence, observability, and tool services, for a React chat UI built with openagentui.
 ---
 
 import { CloudflareIcon } from "@/components/icons/cloudflare";
@@ -10,7 +10,7 @@ import { LangChainIcon } from "@/components/icons/langchain";
 import { McpIcon } from "@/components/icons/mcp";
 import { VercelIcon } from "@/components/icons/vercel";
 
-Integrations are wiring guides for using third-party services with assistant-ui, plus canonical recipes for the adapter slots (persistence, attachments). They are distinct from [runtimes](/docs/runtimes/pick-a-runtime), which are the React adapter packages (`@assistant-ui/ai-sdk`, `@assistant-ui/react-langgraph`, etc.) that connect the UI to a backend. An integration assumes you already have a working runtime and adds something on top.
+Integrations are wiring guides for using third-party services with openagentui, plus canonical recipes for the adapter slots (persistence, attachments). They are distinct from [runtimes](/docs/runtimes/pick-a-runtime), which are the React adapter packages (`@openagentui/ai-sdk`, `@openagentui/react-langgraph`, etc.) that connect the UI to a backend. An integration assumes you already have a working runtime and adds something on top.
 
 ## Where integrations slot in
 
@@ -25,7 +25,7 @@ Integrations live on the server. **Agent frameworks** like Mastra take over the 
 
 ## Frameworks
 
-Framework integrations that pair with assistant-ui at the API-route layer.
+Framework integrations that pair with openagentui at the API-route layer.
 
 <Cards>
   <Card
@@ -148,12 +148,12 @@ Upload chat attachments to object storage instead of inlining as data URLs.
 
 ## Don't see your service?
 
-assistant-ui doesn't ship a guide for every tool, but most fit one of two patterns:
+openagentui doesn't ship a guide for every tool, but most fit one of two patterns:
 
 - **Routes through your AI SDK handler** (agent frameworks, observability tools, gateways): adapt the [Mastra full-stack](/docs/integrations/frameworks/mastra/full-stack) or [LLM gateway](/docs/integrations/gateways) pattern using the service's own SDK.
 - **Replaces the runtime entirely** (custom backends): see [custom backend](/docs/runtimes/custom/overview).
 
-If you build something useful, [open an issue](https://github.com/assistant-ui/assistant-ui/issues) or post in [Discord](https://discord.gg/S9dwgCNEFs); the docs are open to contributions.
+If you build something useful, [open an issue](https://github.com/RealDealCPA-VR/OpenAgentUI/issues) or post in [Discord](https://discord.gg/S9dwgCNEFs); the docs are open to contributions.
 
 ## Related
 

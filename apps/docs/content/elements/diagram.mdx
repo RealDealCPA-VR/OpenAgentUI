@@ -16,12 +16,12 @@ With a runtime, `Diagram` renders whatever a tool has already turned into a grap
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/render-diagram-tool-ui.tsx"
+```tsx title="components/openagentui/elements/render-diagram-tool-ui.tsx"
 "use client";
 
 import { useState } from "react";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { Diagram } from "@/components/assistant-ui/elements/diagram";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { Diagram } from "@/components/openagentui/elements/diagram";
 
 type RenderDiagramResult = { title: string; imageUrl: string };
 
@@ -52,9 +52,9 @@ export const RenderDiagramToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { RenderDiagramToolUI } from "@/components/assistant-ui/elements/render-diagram-tool-ui";
+import { RenderDiagramToolUI } from "@/components/openagentui/elements/render-diagram-tool-ui";
 
 export const toolkit = defineToolkit({
   render_diagram: {
@@ -68,8 +68,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -103,7 +103,7 @@ Standalone, `Diagram` never touches `zoom` itself: hold it in state and clamp it
 "use client";
 
 import { useState } from "react";
-import { Diagram } from "@/components/assistant-ui/elements/diagram";
+import { Diagram } from "@/components/openagentui/elements/diagram";
 import { FlowSvg } from "./flow-svg";
 
 export function MessageFlow() {

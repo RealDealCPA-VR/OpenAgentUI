@@ -15,14 +15,14 @@
 import {
   ExportedMessageRepository,
   MessageNotSentError,
-} from "@assistant-ui/react";
-import type { AppendMessage, ThreadMessageLike } from "@assistant-ui/react";
+} from "@openagentui/react";
+import type { AppendMessage, ThreadMessageLike } from "@openagentui/react";
 import {
   bytesToBase64,
   detectImageMediaType,
   parseDataUrl,
   resolveImageMediaType,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import {
   createPiThreadState,
   reducePiThreadState,

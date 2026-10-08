@@ -18,12 +18,12 @@ A thread renders as a list of messages, each one either from the user or the ass
 
 `ThreadPrimitive.Messages` iterates the thread; branch on `s.message.role` to choose which half of the pair to render.
 
-```tsx title="components/assistant-ui/elements/message-pair.tsx"
+```tsx title="components/openagentui/elements/message-pair.tsx"
 "use client";
 
-import { MessagePrimitive, ThreadPrimitive, useAuiState } from "@assistant-ui/react";
+import { MessagePrimitive, ThreadPrimitive, useAuiState } from "@openagentui/react";
 import { cn } from "@/lib/utils";
-import { paper } from "@/components/assistant-ui/elements/surfaces";
+import { paper } from "@/components/openagentui/elements/surfaces";
 
 export function Turn() {
   return <ThreadPrimitive.Messages>{() => <TurnMessage />}</ThreadPrimitive.Messages>;
@@ -53,9 +53,9 @@ function TurnMessage() {
 Wrap the action row in `ActionBarPrimitive.Root` with `autohide="always"`: it renders nothing until `s.message.isHovering` turns true, which `MessagePrimitive.Root` already tracks from pointer enter and leave.
 
 ```tsx
-import { ActionBarPrimitive } from "@assistant-ui/react";
+import { ActionBarPrimitive } from "@openagentui/react";
 import { CopyIcon, RefreshCwIcon } from "lucide-react";
-import { ghostButton } from "@/components/assistant-ui/elements/surfaces";
+import { ghostButton } from "@/components/openagentui/elements/surfaces";
 
 function AssistantReply() {
   return (
@@ -76,7 +76,7 @@ function AssistantReply() {
 }
 ```
 
-The `Thread` element ships the same user and assistant composition, but its action row uses `autohide="not-last"`: hover-gated on older replies, always visible on the newest one. Install `@assistant-ui/thread` to get it.
+The `Thread` element ships the same user and assistant composition, but its action row uses `autohide="not-last"`: hover-gated on older replies, always visible on the newest one. Install `@openagentui/thread` to get it.
 
   </Step>
 </Steps>
@@ -96,7 +96,7 @@ Standalone, the pair is a controlled reveal: you hold the full list of words and
 "use client";
 
 import { useEffect, useState } from "react";
-import { MessagePair } from "@/components/assistant-ui/elements/message-pair";
+import { MessagePair } from "@/components/openagentui/elements/message-pair";
 
 const reply = "Paris is the capital of France.".split(" ");
 

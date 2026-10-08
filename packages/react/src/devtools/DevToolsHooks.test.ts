@@ -28,7 +28,7 @@ describe("DevToolsHooks", () => {
       expect(laterListener).toHaveBeenCalledTimes(2);
       expect(consoleError).toHaveBeenCalledTimes(2);
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] DevTools listener threw an error",
+        "[openagentui] DevTools listener threw an error",
         error,
       );
     } finally {

@@ -1,6 +1,6 @@
 ---
 title: State Hooks
-description: State selector and action hooks for reading assistant-ui runtime state and controlling threads, composers, messages, and attachments.
+description: State selector and action hooks for reading openagentui runtime state and controlling threads, composers, messages, and attachments.
 ---
 
 import { useAuiEvent, useAuiState } from "@/generated/typeDocs";
@@ -31,7 +31,7 @@ throw a descriptive error whenever they are called.
 
 {/* api-example:useAui:start */}
 ```tsx
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 const aui = useAui();
 
@@ -56,7 +56,7 @@ need to memoize it.
 
 {/* api-example:useAuiEvent:start */}
 ```tsx
-import { useAuiEvent } from "@assistant-ui/react";
+import { useAuiEvent } from "@openagentui/react";
 
 useAuiEvent("thread.modelContextUpdate", ({ threadId }) => {
   console.log("Model context updated", threadId);
@@ -85,7 +85,7 @@ which resolves to `undefined` instead of throwing.
 
 {/* api-example:useAuiState:start */}
 ```tsx
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 const messages = useAuiState((s) => s.thread.messages);
 const isRunning = useAuiState((s) => s.thread.isRunning);

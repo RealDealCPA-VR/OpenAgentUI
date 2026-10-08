@@ -5,16 +5,16 @@ export type {
   ComposerRuntime,
   ThreadComposerRuntime,
   EditComposerRuntime,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 export type {
   ComposerRuntimeCoreBinding,
   ThreadComposerRuntimeCoreBinding,
   EditComposerRuntimeCoreBinding,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 
 export {
   ComposerRuntimeImpl,
   ThreadComposerRuntimeImpl,
   EditComposerRuntimeImpl,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";

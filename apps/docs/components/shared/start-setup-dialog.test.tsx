@@ -47,11 +47,11 @@ describe("start setup dialog", () => {
     );
   });
 
-  it("starts an assistant-ui setup session for the coding agent", () => {
+  it("starts an openagentui setup session for the coding agent", () => {
     const confirm = open();
     fireEvent.click(screen.getByRole("radio", { name: /Coding agent/ }));
     fireEvent.click(confirm);
-    expect(mocks.beginSetup).toHaveBeenCalledWith(["assistant-ui"]);
+    expect(mocks.beginSetup).toHaveBeenCalledWith(["openagentui"]);
     expect(mocks.push).not.toHaveBeenCalled();
   });
 

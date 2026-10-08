@@ -43,11 +43,11 @@ async function getMarkdown() {
   "use cache";
   cacheLife("max");
   const markdown = [
-    "# assistant-ui catalog",
+    "# openagentui catalog",
     "",
     AGENT_DOCS_DIRECTIVE_MARKDOWN,
     "",
-    "Everything you can add to an assistant-ui project. To install a set of products, fetch the install guide with their slugs, for example:",
+    "Everything you can add to an openagentui project. To install a set of products, fetch the install guide with their slugs, for example:",
     "",
     `${BASE_URL}${installGuideUrl(CATALOG.map((product) => product.slug))}`,
     "",

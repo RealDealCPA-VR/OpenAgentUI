@@ -1,6 +1,6 @@
 ---
 title: Message Timing & Token Stats
-description: Display stream metadata in AI chat — generation duration, tokens per second, and time to first token, rendered via assistant-ui's React components.
+description: Display stream metadata in AI chat — generation duration, tokens per second, and time to first token, rendered via openagentui's React components.
 platforms: ["react"]
 ---
 
@@ -20,7 +20,7 @@ Use `useMessageTiming()` inside a message component to access timing data:
 
 ```tsx
 import type { FC } from "react";
-import { useMessageTiming } from "@assistant-ui/react";
+import { useMessageTiming } from "@openagentui/react";
 
 const MessageTimingDisplay: FC = () => {
   const timing = useMessageTiming();
@@ -85,7 +85,7 @@ const AssistantMessage: FC = () => {
 Timing is tracked automatically inside `AssistantMessageAccumulator`. No setup required.
 
 ```tsx
-import { useDataStreamRuntime } from "@assistant-ui/react-data-stream";
+import { useDataStreamRuntime } from "@openagentui/react-data-stream";
 
 const runtime = useDataStreamRuntime({ api: "/api/chat" });
 // useMessageTiming() works out of the box
@@ -100,7 +100,7 @@ Timing is tracked automatically on the client side by observing streaming state 
 </Callout>
 
 ```tsx
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 const runtime = useChatRuntime();
 // useMessageTiming() works out of the box
@@ -111,7 +111,7 @@ const runtime = useChatRuntime();
 Pass timing in the `metadata` field of your `ChatModelRunResult`:
 
 ```tsx
-import type { ChatModelAdapter } from "@assistant-ui/react";
+import type { ChatModelAdapter } from "@openagentui/react";
 
 const myAdapter: ChatModelAdapter = {
   async run({ messages, abortSignal }) {
@@ -144,7 +144,7 @@ const myAdapter: ChatModelAdapter = {
 Pass timing in the `metadata.timing` field of your `ThreadMessageLike` messages:
 
 ```tsx
-import type { ThreadMessageLike } from "@assistant-ui/react";
+import type { ThreadMessageLike } from "@openagentui/react";
 
 const message: ThreadMessageLike = {
   role: "assistant",
@@ -168,7 +168,7 @@ const message: ThreadMessageLike = {
 Timing is tracked automatically on the client side by observing streaming state transitions and `LangChainMessage` content changes. No setup required.
 
 ```tsx
-import { useLangGraphRuntime } from "@assistant-ui/react-langgraph";
+import { useLangGraphRuntime } from "@openagentui/react-langgraph";
 
 const runtime = useLangGraphRuntime({ stream: myStream });
 // useMessageTiming() works out of the box
@@ -180,7 +180,7 @@ Timing is tracked automatically on the client side by the AG-UI run aggregator. 
 
 ```tsx
 import { useMemo } from "react";
-import { useAgUiRuntime } from "@assistant-ui/react-ag-ui";
+import { useAgUiRuntime } from "@openagentui/react-ag-ui";
 import { HttpAgent } from "@ag-ui/client";
 
 const agent = useMemo(
@@ -196,7 +196,7 @@ const runtime = useAgUiRuntime({ agent });
 Timing is tracked automatically on the client side by observing `OpenCodeThreadState` transitions and assistant message content deltas. No setup required.
 
 ```tsx
-import { useOpenCodeRuntime } from "@assistant-ui/react-opencode";
+import { useOpenCodeRuntime } from "@openagentui/react-opencode";
 
 const runtime = useOpenCodeRuntime();
 // useMessageTiming() works out of the box

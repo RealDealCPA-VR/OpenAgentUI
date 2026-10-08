@@ -12,7 +12,7 @@ Reference for the A2A client, the `useA2ARuntime` options, and the hooks. Start 
 `A2AClient` handles communication with the A2A server: JSON serialization, SSE streaming, ProtoJSON enum normalization, and structured errors.
 
 ```ts
-import { A2AClient } from "@assistant-ui/react-a2a";
+import { A2AClient } from "@openagentui/react-a2a";
 
 const client = new A2AClient({
   baseUrl: "https://my-agent.example.com",
@@ -93,7 +93,7 @@ Pass either a pre-built `client` or a `baseUrl`, from which the runtime creates 
 <Tab value="React">
 
 ```tsx
-import { useA2ATask } from "@assistant-ui/react-a2a";
+import { useA2ATask } from "@openagentui/react-a2a";
 
 function TaskStatus() {
   const task = useA2ATask();
@@ -110,7 +110,7 @@ function TaskStatus() {
 <Tab value="React Native">
 
 ```tsx
-import { useA2ATask } from "@assistant-ui/react-a2a";
+import { useA2ATask } from "@openagentui/react-a2a";
 import { Text, View } from "react-native";
 
 function TaskStatus() {
@@ -130,7 +130,7 @@ function TaskStatus() {
 <Tab value="React Ink">
 
 ```tsx
-import { useA2ATask } from "@assistant-ui/react-a2a";
+import { useA2ATask } from "@openagentui/react-a2a";
 import { Text } from "ink";
 
 function TaskStatus() {
@@ -157,7 +157,7 @@ The assistant message also stores the merged artifact list at `metadata.custom.a
 <Tab value="React">
 
 ```tsx
-import { useA2AArtifacts } from "@assistant-ui/react-a2a";
+import { useA2AArtifacts } from "@openagentui/react-a2a";
 
 function ArtifactList() {
   const artifacts = useA2AArtifacts();
@@ -177,7 +177,7 @@ function ArtifactList() {
 <Tab value="React Native">
 
 ```tsx
-import { useA2AArtifacts } from "@assistant-ui/react-a2a";
+import { useA2AArtifacts } from "@openagentui/react-a2a";
 import { Text, View } from "react-native";
 
 function ArtifactList() {
@@ -198,7 +198,7 @@ function ArtifactList() {
 <Tab value="React Ink">
 
 ```tsx
-import { useA2AArtifacts } from "@assistant-ui/react-a2a";
+import { useA2AArtifacts } from "@openagentui/react-a2a";
 import { Box, Text } from "ink";
 
 function ArtifactList() {
@@ -226,7 +226,7 @@ function ArtifactList() {
 <Tab value="React">
 
 ```tsx
-import { useA2AAgentCard } from "@assistant-ui/react-a2a";
+import { useA2AAgentCard } from "@openagentui/react-a2a";
 
 function AgentInfo() {
   const card = useA2AAgentCard();
@@ -245,7 +245,7 @@ function AgentInfo() {
 <Tab value="React Native">
 
 ```tsx
-import { useA2AAgentCard } from "@assistant-ui/react-a2a";
+import { useA2AAgentCard } from "@openagentui/react-a2a";
 import { Text, View } from "react-native";
 
 function AgentInfo() {
@@ -265,7 +265,7 @@ function AgentInfo() {
 <Tab value="React Ink">
 
 ```tsx
-import { useA2AAgentCard } from "@assistant-ui/react-a2a";
+import { useA2AAgentCard } from "@openagentui/react-a2a";
 import { Box, Text } from "ink";
 
 function AgentInfo() {
@@ -286,7 +286,7 @@ function AgentInfo() {
 
 ## Task states
 
-The A2A protocol defines 9 task states. The runtime maps them to assistant-ui message statuses:
+The A2A protocol defines 9 task states. The runtime maps them to openagentui message statuses:
 
 | A2A task state | Description | Message status |
 | --- | --- | --- |
@@ -335,7 +335,7 @@ The runtime selects the communication mode from the agent card:
 The client throws `A2AError` instances with structured error information following the `google.rpc.Status` format:
 
 ```tsx
-import { A2AError } from "@assistant-ui/react-a2a";
+import { A2AError } from "@openagentui/react-a2a";
 
 const runtime = useA2ARuntime({
   baseUrl: "http://localhost:9999",

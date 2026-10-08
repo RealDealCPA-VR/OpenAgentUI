@@ -1,16 +1,16 @@
 {
-  "name": "@assistant-ui/react-generative-ui",
+  "name": "@openagentui/react-generative-ui",
   "version": "0.0.24",
-  "description": "Generative UI components for assistant-ui",
+  "description": "Generative UI components for openagentui",
   "keywords": [
     "generative-ui",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat",
     "rendering"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -60,10 +60,10 @@
   },
   "dependencies": {
     "@types/json-schema": "^7.0.15",
-    "assistant-stream": "^0.3.48"
+    "openagentui-stream": "^0.3.48"
   },
   "peerDependencies": {
-    "@assistant-ui/react": "^0.15.0",
+    "@openagentui/react": "^0.15.0",
     "@types/react": "*",
     "react": "^18 || ^19",
     "zod": "^4.0.0"
@@ -74,9 +74,9 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@types/react": "^19.3.0",
     "jsdom": "^30.0.1",
     "react": "^19.3.0",
@@ -88,13 +88,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-generative-ui"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

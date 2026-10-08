@@ -3,7 +3,7 @@
 import { act, render, waitFor } from "@testing-library/react";
 import type { FC } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type { ThreadHistoryAdapter } from "../../../adapters/thread-history";
 import { ExportedMessageRepository } from "../../../runtime/utils/message-repository";
 import type { ThreadMessage } from "../../../types/message";

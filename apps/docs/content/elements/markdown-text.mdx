@@ -16,9 +16,9 @@ MarkdownText reads the current message part through `MarkdownTextPrimitive`, whi
 
 ### Wire it into the message
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { MessagePrimitive } from "@assistant-ui/react";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { MessagePrimitive } from "@openagentui/react";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 
 function AssistantMessage() {
   return (
@@ -29,7 +29,7 @@ function AssistantMessage() {
 }
 ```
 
-The `Thread` element already ships this composition, so installing `@assistant-ui/thread` gives you formatted assistant messages without wiring MarkdownText yourself.
+The `Thread` element already ships this composition, so installing `@openagentui/thread` gives you formatted assistant messages without wiring MarkdownText yourself.
 
   </Step>
   <Step>
@@ -72,7 +72,7 @@ The root's `data-status` mirrors the part's streaming state: `running` while tex
 `components` merges onto the defaults, so passing one key leaves the rest untouched.
 
 ```tsx
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 
 <MarkdownText
   components={{
@@ -88,7 +88,7 @@ import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
 `CodeHeader` renders above every fenced block, next to the copy button. Replace it to add, for example, a "run" action:
 
 ```tsx
-import type { CodeHeaderProps } from "@assistant-ui/react-markdown";
+import type { CodeHeaderProps } from "@openagentui/react-markdown";
 
 const CustomCodeHeader = ({ language, code }: CodeHeaderProps) => (
   <div className="aui-code-header-root ...">
@@ -112,7 +112,7 @@ Tables, task-list checkboxes, strikethrough, and bare autolinks all render becau
 - [x] Ship the renderer
 - [ ] Add highlighting
 
-~~deprecated~~ · https://assistant-ui.com
+~~deprecated~~ · https://openagentui.dev
 ```
 
 ## API reference

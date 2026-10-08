@@ -1,7 +1,7 @@
 import { describe, inject, test } from "vitest";
-import { SSEEventDecoder } from "assistant-stream/utils";
+import { SSEEventDecoder } from "openagentui-stream/utils";
 
-describe("assistant-stream: fragmented SSE events", () => {
+describe("openagentui-stream: fragmented SSE events", () => {
   for (const size of [100 * 1024, 1024 * 1024]) {
     const wire = `data: ${JSON.stringify({ content: "x".repeat(size) })}\n\n`;
     for (const chunkSize of [1024, wire.length]) {

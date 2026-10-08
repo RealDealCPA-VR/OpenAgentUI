@@ -3,7 +3,7 @@
 import {
   ComparisonCard,
   type ComparisonOption,
-} from "@/components/assistant-ui/elements/comparison-card";
+} from "@/components/openagentui/elements/comparison-card";
 
 const TRAITS = ["Streaming", "Multi-thread", "Self-hosted"] as const;
 

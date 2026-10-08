@@ -4,13 +4,13 @@ import { createMarkdownResponse } from "@/lib/markdown-response";
 
 const markdown = `# Build shared application state with Statewire
 
-Statewire replicates server-owned state to connected clients and exposes typed commands that change it. Cloudflare Durable Objects provide one host per named room and save its snapshots. This setup works independently of assistant-ui chat components or Assistant Cloud.
+Statewire replicates server-owned state to connected clients and exposes typed commands that change it. Cloudflare Durable Objects provide one host per named room and save its snapshots. This setup works independently of openagentui chat components or Assistant Cloud.
 
 ## Installable source starter
 
 Download ${BASE_URL}/downloads/statewire-tic-tac-toe.zip. It contains a React frontend, a Worker, SQLite Durable Object bindings, a multiplayer game and a Statewire matchmaking lobby. Use it as verified source material for the application the user asks to build.
 
-The vendor archives contain Statewire 0.19.3 and statewire-durable-objects 0.2.0 from official repository revision 3d3a180f0400b84267f62969d42f8b102bed4479. The adapter is not currently a published npm package. vendor/provenance.json records the source revision, SHA-256 hashes, and required tap/statewire peer normalizations; MIT licenses are included. Install both archives together with one @assistant-ui/tap runtime.
+The vendor archives contain Statewire 0.19.3 and statewire-durable-objects 0.2.0 from official repository revision 3d3a180f0400b84267f62969d42f8b102bed4479. The adapter is not currently a published npm package. vendor/provenance.json records the source revision, SHA-256 hashes, and required tap/statewire peer normalizations; MIT licenses are included. Install both archives together with one @openagentui/tap runtime.
 
 Requires Node.js 22.12 or newer and npm. To run the starter after choosing its directory:
 

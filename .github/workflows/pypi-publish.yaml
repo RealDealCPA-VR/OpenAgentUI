@@ -15,8 +15,8 @@ permissions:
 
 env:
   CI: true
-  PYTHON_PACKAGE_DIR: python/assistant-stream
-  PYTHON_PACKAGE_NAME: assistant-stream
+  PYTHON_PACKAGE_DIR: python/openagentui-stream
+  PYTHON_PACKAGE_NAME: openagentui-stream
 
 jobs:
   approve:

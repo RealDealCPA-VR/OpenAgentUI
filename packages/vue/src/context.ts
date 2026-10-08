@@ -4,7 +4,7 @@ import {
   DefaultAssistantClient,
   type AssistantClient,
   type AssistantClientSource,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 
 export type AuiContext = {
   source: AssistantClientSource;
@@ -12,7 +12,7 @@ export type AuiContext = {
 };
 
 export const auiInjectionKey: InjectionKey<AuiContext> = Symbol(
-  "assistant-ui.vue.aui",
+  "openagentui.vue.aui",
 );
 
 const NO_OP_SUBSCRIBE = () => () => {};

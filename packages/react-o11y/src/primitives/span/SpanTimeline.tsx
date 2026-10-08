@@ -8,7 +8,7 @@ import {
   useMemo,
 } from "react";
 import { Primitive } from "@radix-ui/react-primitive";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export type SpanTimelineRange = { min: number; max: number };
 

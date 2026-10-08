@@ -1,6 +1,6 @@
 ---
 title: Radix UI and Base UI
-description: How the assistant-ui component registry serves Radix UI and Base UI flavored components for every shadcn style.
+description: How the openagentui component registry serves Radix UI and Base UI flavored components for every shadcn style.
 platforms: ["react"]
 ---
 
@@ -8,21 +8,21 @@ shadcn/ui ships every component for two headless libraries, Radix UI and Base UI
 
 ## Component registry
 
-assistant-ui's component registry serves both flavors from the same host. Configure the style-aware URL in `components.json`:
+openagentui's component registry serves both flavors from the same host. Configure the style-aware URL in `components.json`:
 
 ```json title="components.json"
 {
   "registries": {
-    "@assistant-ui": "https://r.assistant-ui.com/styles/{style}/{name}.json"
+    "@openagentui": "https://r.openagentui.dev/styles/{style}/{name}.json"
   }
 }
 ```
 
-The shadcn CLI fills `{style}` from your `components.json` `style` field. Styles whose name starts with `base-` receive Base UI flavored components; all other styles receive the Radix flavored ones. The plain `https://r.assistant-ui.com/{name}.json` form remains available as a Radix fallback.
+The shadcn CLI fills `{style}` from your `components.json` `style` field. Styles whose name starts with `base-` receive Base UI flavored components; all other styles receive the Radix flavored ones. The plain `https://r.openagentui.dev/{name}.json` form remains available as a Radix fallback.
 
 ## How compatibility works
 
-assistant-ui's headless primitives, the components exported from `@assistant-ui/react`, accept both composition conventions: Radix's `asChild` prop and Base UI's `render` prop. Most registry components only compose these primitives, so a single implementation renders correctly under either flavor and the registry has no need for a separate variant.
+openagentui's headless primitives, the components exported from `@openagentui/react`, accept both composition conventions: Radix's `asChild` prop and Base UI's `render` prop. Most registry components only compose these primitives, so a single implementation renders correctly under either flavor and the registry has no need for a separate variant.
 
 Open-state styling and panel-height animation do not force a variant either: the kit styles state through custom variants that match both libraries' data attributes, and animates collapsibles through keyframes that read both libraries' height variables, so components like `reasoning`, `tool-group`, and `tool-fallback` serve one source to both flavors.
 
@@ -34,6 +34,6 @@ Under Base UI styles, the assistant modal composes the project's Base UI popover
 
 ## FAQ
 
-- **Do I need to change anything on an existing Radix project?** No. The plain `https://r.assistant-ui.com/{name}.json` URL keeps resolving to Radix flavored components, so an existing setup needs no changes.
+- **Do I need to change anything on an existing Radix project?** No. The plain `https://r.openagentui.dev/{name}.json` URL keeps resolving to Radix flavored components, so an existing setup needs no changes.
 - **What happens if I switch styles later?** Re-add the components you use through the shadcn CLI. The style-aware URL resolves the correct flavor for the new style, and no other migration step is required.
-- **Does `@assistant-ui/react` behave differently under Base UI?** No. The headless `@assistant-ui/react` package works identically in both worlds; only the registry components under `components/assistant-ui` differ by flavor.
+- **Does `@openagentui/react` behave differently under Base UI?** No. The headless `@openagentui/react` package works identically in both worlds; only the registry components under `components/openagentui` differ by flavor.

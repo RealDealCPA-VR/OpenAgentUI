@@ -1,17 +1,17 @@
 ---
 title: LangChain React Runtime
-description: Use LangChain's useStream hook with a React chat UI through assistant-ui — a lighter LangGraph adapter that delegates streaming to @langchain/react.
+description: Use LangChain's useStream hook with a React chat UI through openagentui — a lighter LangGraph adapter that delegates streaming to @langchain/react.
 ---
 
 import { LangGraphIcon } from "@/components/icons/langgraph";
 
-`@assistant-ui/react-langchain` wraps [`useStream`](https://reference.langchain.com/javascript/langchain-react/use-stream) from `@langchain/react` and exposes it as an assistant-ui runtime. It targets the same backend as [`@assistant-ui/react-langgraph`](/docs/runtimes/langgraph/overview) (LangGraph Cloud) but at a higher level, delegating stream plumbing to the upstream hook.
+`@openagentui/react-langchain` wraps [`useStream`](https://reference.langchain.com/javascript/langchain-react/use-stream) from `@langchain/react` and exposes it as an openagentui runtime. It targets the same backend as [`@openagentui/react-langgraph`](/docs/runtimes/langgraph/overview) (LangGraph Cloud) but at a higher level, delegating stream plumbing to the upstream hook.
 
 ## When to use it
 
 Pick `react-langchain` over `react-langgraph` when:
 
-- You are scaffolding via `npx create-assistant-ui -t langchain` (the official template uses it).
+- You are scaffolding via `npx create-openagentui -t langchain` (the official template uses it).
 - Your app already depends on `@langchain/react` and uses `useStream` elsewhere.
 - You want to read custom state keys (`todos`, `files`, plans) reactively with `useLangChainState<T>(key)`.
 - You prefer a thin wrapper that stays pinned to upstream behavior.
@@ -24,7 +24,7 @@ The [comparison](#comparison-with-react-langgraph) below lists what each adapter
 
 ## Architecture
 
-`@assistant-ui/react-langchain` is layered on `ExternalStoreRuntime` (see [architecture](/docs/runtimes/concepts/architecture)). Graph state is the source of truth; the runtime renders messages from `state.values.messages` and submits user input back to the graph.
+`@openagentui/react-langchain` is layered on `ExternalStoreRuntime` (see [architecture](/docs/runtimes/concepts/architecture)). Graph state is the source of truth; the runtime renders messages from `state.values.messages` and submits user input back to the graph.
 
 Shared adapters (attachments, speech, dictation, voice, feedback) work the same way described in [adapters](/docs/runtimes/concepts/adapters). Cloud thread persistence is built in.
 
@@ -45,17 +45,17 @@ Shared adapters (attachments, speech, dictation, voice, feedback) work the same 
 <PlatformTabs>
 <Tab value="React">
 
-<InstallCommand npm={["@assistant-ui/react", "@assistant-ui/react-langchain", "@langchain/react", "@langchain/langgraph-sdk"]} />
+<InstallCommand npm={["@openagentui/react", "@openagentui/react-langchain", "@langchain/react", "@langchain/langgraph-sdk"]} />
 
 </Tab>
 <Tab value="React Native">
 
-<InstallCommand expo={["@assistant-ui/react-native", "@assistant-ui/react-langchain", "@langchain/react", "@langchain/langgraph-sdk"]} />
+<InstallCommand expo={["@openagentui/react-native", "@openagentui/react-langchain", "@langchain/react", "@langchain/langgraph-sdk"]} />
 
 </Tab>
 <Tab value="React Ink">
 
-<InstallCommand npm={["@assistant-ui/react-ink", "@assistant-ui/react-langchain", "@langchain/react", "@langchain/langgraph-sdk", "ink", "react"]} />
+<InstallCommand npm={["@openagentui/react-ink", "@openagentui/react-langchain", "@langchain/react", "@langchain/langgraph-sdk", "ink", "react"]} />
 
 </Tab>
 </PlatformTabs>
@@ -71,9 +71,9 @@ Shared adapters (attachments, speech, dictation, voice, feedback) work the same 
 ```tsx title="@/components/MyAssistant.tsx"
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useStreamRuntime } from "@assistant-ui/react-langchain";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useStreamRuntime } from "@openagentui/react-langchain";
 
 export function MyAssistant() {
   const runtime = useStreamRuntime({
@@ -93,9 +93,9 @@ export function MyAssistant() {
 <Tab value="React Native">
 
 ```tsx title="components/MyAssistant.tsx"
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { AssistantRuntimeProvider } from "@assistant-ui/react-native";
-import { useStreamRuntime } from "@assistant-ui/react-langchain";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react-native";
+import { useStreamRuntime } from "@openagentui/react-langchain";
 
 export function MyAssistant() {
   const runtime = useStreamRuntime({
@@ -116,8 +116,8 @@ export function MyAssistant() {
 
 ```tsx title="components/MyAssistant.tsx"
 import { Thread } from "./thread.js";
-import { AssistantRuntimeProvider } from "@assistant-ui/react-ink";
-import { useStreamRuntime } from "@assistant-ui/react-langchain";
+import { AssistantRuntimeProvider } from "@openagentui/react-ink";
+import { useStreamRuntime } from "@openagentui/react-langchain";
 
 export function MyAssistant() {
   const runtime = useStreamRuntime({
@@ -251,7 +251,7 @@ Follow the [Ink setup](/docs/ink).
 
 ## `useStreamRuntime` options
 
-`useStreamRuntime` accepts every option upstream `useStream` does, plus these assistant-ui-specific fields:
+`useStreamRuntime` accepts every option upstream `useStream` does, plus these openagentui-specific fields:
 
 | Option | Type | Description |
 | --- | --- | --- |
@@ -278,7 +278,7 @@ LangGraph agents often expose structured state beyond messages (plans, todos, sc
 <Tab value="React">
 
 ```tsx
-import { useLangChainState } from "@assistant-ui/react-langchain";
+import { useLangChainState } from "@openagentui/react-langchain";
 
 type Todo = { id: string; title: string; done: boolean };
 
@@ -300,7 +300,7 @@ function TodoList() {
 <Tab value="React Native">
 
 ```tsx
-import { useLangChainState } from "@assistant-ui/react-langchain";
+import { useLangChainState } from "@openagentui/react-langchain";
 import { Text, View } from "react-native";
 
 type Todo = { id: string; title: string; done: boolean };
@@ -323,7 +323,7 @@ function TodoList() {
 <Tab value="React Ink">
 
 ```tsx
-import { useLangChainState } from "@assistant-ui/react-langchain";
+import { useLangChainState } from "@openagentui/react-langchain";
 import { Box, Text } from "ink";
 
 type Todo = { id: string; title: string; done: boolean };
@@ -367,7 +367,7 @@ Prefer `useLangChainRespond`: it carries the response payload via `useStream().r
 import {
   useLangChainInterruptState,
   useLangChainRespond,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 
 function InterruptPrompt() {
   const interrupt = useLangChainInterruptState();
@@ -389,7 +389,7 @@ function InterruptPrompt() {
 import {
   useLangChainInterruptState,
   useLangChainRespond,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 import { Pressable, Text, View } from "react-native";
 
 function InterruptPrompt() {
@@ -414,7 +414,7 @@ function InterruptPrompt() {
 import {
   useLangChainInterruptState,
   useLangChainRespond,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 import { Box, Text, useInput } from "ink";
 
 function InterruptPrompt() {
@@ -445,7 +445,7 @@ When several interrupts are pending at once (e.g. parallel approvals), use `useL
 import {
   useLangChainInterrupts,
   useLangChainRespondAll,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 
 const interrupts = useLangChainInterrupts();
 const respondAll = useLangChainRespondAll();
@@ -466,7 +466,7 @@ You can also resume with a raw `Command` via `useLangChainSubmit`:
 import {
   useLangChainInterruptState,
   useLangChainSubmit,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 
 function InterruptPrompt() {
   const interrupt = useLangChainInterruptState();
@@ -494,7 +494,7 @@ function InterruptPrompt() {
 import {
   useLangChainInterruptState,
   useLangChainSubmit,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 import { Pressable, Text, View } from "react-native";
 
 function InterruptPrompt() {
@@ -523,7 +523,7 @@ function InterruptPrompt() {
 import {
   useLangChainInterruptState,
   useLangChainSubmit,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 import { Box, Text, useInput } from "ink";
 
 function InterruptPrompt() {
@@ -556,7 +556,7 @@ function InterruptPrompt() {
 <Tab value="React">
 
 ```tsx
-import { useLangChainToolCalls } from "@assistant-ui/react-langchain";
+import { useLangChainToolCalls } from "@openagentui/react-langchain";
 
 function PendingToolCalls() {
   const toolCalls = useLangChainToolCalls();
@@ -576,7 +576,7 @@ function PendingToolCalls() {
 <Tab value="React Native">
 
 ```tsx
-import { useLangChainToolCalls } from "@assistant-ui/react-langchain";
+import { useLangChainToolCalls } from "@openagentui/react-langchain";
 import { Text, View } from "react-native";
 
 function PendingToolCalls() {
@@ -597,7 +597,7 @@ function PendingToolCalls() {
 <Tab value="React Ink">
 
 ```tsx
-import { useLangChainToolCalls } from "@assistant-ui/react-langchain";
+import { useLangChainToolCalls } from "@openagentui/react-langchain";
 import { Box, Text } from "ink";
 
 function PendingToolCalls() {
@@ -627,7 +627,7 @@ These replace `react-langgraph`'s subgraph `eventHandlers`: v1 surfaces discover
 import {
   useLangChainSubagents,
   useLangChainSubgraphs,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 
 function Discovered() {
   const subagents = useLangChainSubagents();
@@ -655,7 +655,7 @@ The discovery maps above pair with v1's scoped selector hooks to build a custom 
 import {
   useLangChainStream,
   useLangChainSubagents,
-} from "@assistant-ui/react-langchain";
+} from "@openagentui/react-langchain";
 import { useMessages, useToolCalls } from "@langchain/react";
 
 function SubagentCard({ stream, subagent }) {
@@ -689,7 +689,7 @@ function Subagents() {
 `useMessageMetadata` (from `@langchain/react`) reads per-message metadata (e.g. `parentCheckpointId`) for a given message id. Pair it with `useLangChainStream`, which returns `undefined` outside the runtime provider; guard the stream before calling the selector, since `useMessageMetadata` throws on an undefined stream.
 
 ```tsx
-import { useLangChainStream } from "@assistant-ui/react-langchain";
+import { useLangChainStream } from "@openagentui/react-langchain";
 import { useMessageMetadata } from "@langchain/react";
 
 function MessageInfoView({
@@ -715,7 +715,7 @@ function MessageInfo({ messageId }: { messageId: string }) {
 The v1 media hooks surface multimodal media streamed by the agent. Feed the `useLangChainStream` handle to them, as in the views and metadata sections above.
 
 ```tsx
-import { useLangChainStream } from "@assistant-ui/react-langchain";
+import { useLangChainStream } from "@openagentui/react-langchain";
 import { useImages, useAudio } from "@langchain/react";
 
 function MediaView({
@@ -745,9 +745,9 @@ Register the components with `makeAssistantDataUI`, keyed by the `UIMessage`'s `
 import {
   AssistantRuntimeProvider,
   makeAssistantDataUI,
-} from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { useStreamRuntime } from "@assistant-ui/react-langchain";
+} from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { useStreamRuntime } from "@openagentui/react-langchain";
 
 const ChartUI = makeAssistantDataUI({
   name: "chart",
@@ -778,7 +778,7 @@ The live path requires the graph's `streamMode` to include `"custom"` so the UI 
 `useLangChainError` exposes the last run or hydration error from upstream `useStream().error`. It is untyped (`unknown`), so narrow it at the use site before rendering.
 
 ```tsx
-import { useLangChainError } from "@assistant-ui/react-langchain";
+import { useLangChainError } from "@openagentui/react-langchain";
 
 function ErrorBanner() {
   const error = useLangChainError();
@@ -789,10 +789,10 @@ function ErrorBanner() {
 
 ## Message conversion
 
-`convertLangChainBaseMessage` transforms a LangChain `BaseMessage` into an assistant-ui message. Use it when building a custom `ExternalStoreAdapter` that consumes LangChain messages outside `useStreamRuntime`.
+`convertLangChainBaseMessage` transforms a LangChain `BaseMessage` into an openagentui message. Use it when building a custom `ExternalStoreAdapter` that consumes LangChain messages outside `useStreamRuntime`.
 
 ```ts
-import { convertLangChainBaseMessage } from "@assistant-ui/react-langchain";
+import { convertLangChainBaseMessage } from "@openagentui/react-langchain";
 ```
 
 ## Cloud persistence
@@ -822,7 +822,7 @@ const runtime = useStreamRuntime({
 
 ## Comparison with `react-langgraph`
 
-Both packages connect assistant-ui to LangGraph backends. They are independent adapters for different upstream libraries; one is not a successor to the other. The official `create-assistant-ui` template (`-t langchain`) ships `react-langchain`. `react-langgraph` remains the choice for a custom backend stream or an existing `react-langgraph` app.
+Both packages connect openagentui to LangGraph backends. They are independent adapters for different upstream libraries; one is not a successor to the other. The official `create-openagentui` template (`-t langchain`) ships `react-langchain`. `react-langgraph` remains the choice for a custom backend stream or an existing `react-langgraph` app.
 
 | Aspect | `react-langgraph` | `react-langchain` |
 | --- | --- | --- |
@@ -830,7 +830,7 @@ Both packages connect assistant-ui to LangGraph backends. They are independent a
 | Age | Sept 2024 onward | April 2026 onward |
 | Version | `0.14.x` | `0.0.x` |
 | Built on | `useExternalStoreRuntime` | `useExternalStoreRuntime` |
-| `create-assistant-ui` template | No template | `-t langchain` |
+| `create-openagentui` template | No template | `-t langchain` |
 
 ### Feature coverage
 

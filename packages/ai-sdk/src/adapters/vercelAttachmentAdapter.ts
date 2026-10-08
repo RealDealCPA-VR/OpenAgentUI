@@ -1,5 +1,5 @@
-import type { AttachmentAdapter } from "@assistant-ui/core";
-import { getFileDataURL } from "@assistant-ui/core/internal";
+import type { AttachmentAdapter } from "@openagentui/core";
+import { getFileDataURL } from "@openagentui/core/internal";
 import { generateId } from "ai";
 
 export const vercelAttachmentAdapter: AttachmentAdapter = {

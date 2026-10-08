@@ -14,10 +14,10 @@ A scroll anchor keeps a message list pinned to the bottom while it grows, then g
 
 ### Let the viewport pin itself
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 
 function Viewport() {
   return (
@@ -36,7 +36,7 @@ function Viewport() {
 ### Add the jump-back pill
 
 ```tsx
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 import { ArrowDownIcon } from "lucide-react";
 
 <ThreadPrimitive.ScrollToBottom className="absolute inset-x-0 bottom-3 mx-auto flex w-fit items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs disabled:invisible">
@@ -65,7 +65,7 @@ Standalone, `ScrollAnchor` owns the whole simulation: it appends `messages` on a
 "use client";
 
 import { useState } from "react";
-import { ScrollAnchor, type ScrollAnchorMessage } from "@/components/assistant-ui/elements/scroll-anchor";
+import { ScrollAnchor, type ScrollAnchorMessage } from "@/components/openagentui/elements/scroll-anchor";
 
 const messages: ScrollAnchorMessage[] = [
   { role: "user", text: "Keep summarizing as you go." },

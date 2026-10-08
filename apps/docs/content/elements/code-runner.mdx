@@ -20,8 +20,8 @@ A tool the user completes by pressing a button, rather than one that executes th
 "use client";
 
 import { useState } from "react";
-import { defineToolkit, type ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { CodeRunner, type RunState } from "@/components/assistant-ui/elements/code-runner";
+import { defineToolkit, type ToolCallMessagePartComponent } from "@openagentui/react";
+import { CodeRunner, type RunState } from "@/components/openagentui/elements/code-runner";
 import { z } from "zod";
 
 type RunArgs = { language: string; code: string };
@@ -90,7 +90,7 @@ Standalone, the element is a controlled component: you own the run state and pus
 "use client";
 
 import { useState } from "react";
-import { CodeRunner, type RunState } from "@/components/assistant-ui/elements/code-runner";
+import { CodeRunner, type RunState } from "@/components/openagentui/elements/code-runner";
 
 const code = `console.log("hello")`;
 

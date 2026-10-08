@@ -3,7 +3,7 @@
 import {
   CostMeter,
   type CostLine,
-} from "@/components/assistant-ui/elements/cost-meter";
+} from "@/components/openagentui/elements/cost-meter";
 
 const LINES: readonly CostLine[] = [
   {

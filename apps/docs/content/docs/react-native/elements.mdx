@@ -3,11 +3,11 @@ title: Elements
 description: The React Native elements, what each one installs, and what changes when the same design runs on a phone.
 ---
 
-The React Native elements are the [elements](/elements) catalog rebuilt for Expo and React Native: the same names and visual language, and for the agent elements the same props, written against `@assistant-ui/react-native` and styled with [Uniwind](https://uniwind.dev) classes instead of DOM markup. They install the way shadcn components do, as source files in your project, so you can edit them once they land.
+The React Native elements are the [elements](/elements) catalog rebuilt for Expo and React Native: the same names and visual language, and for the agent elements the same props, written against `@openagentui/react-native` and styled with [Uniwind](https://uniwind.dev) classes instead of DOM markup. They install the way shadcn components do, as source files in your project, so you can edit them once they land.
 
 ## What ships
 
-Every element below is a registry item in the native tree at `https://r.assistant-ui.com/native/`. The CLI resolves that tree automatically when it finds `react-native` in your `package.json`.
+Every element below is a registry item in the native tree at `https://r.openagentui.dev/native/`. The CLI resolves that tree automatically when it finds `react-native` in your `package.json`.
 
 | Element | Install as | Web twin |
 | --- | --- | --- |
@@ -41,14 +41,14 @@ The shared pieces come along as registry dependencies: `elements-surfaces` (the 
 Add elements by name. The first install also needs the `components.json` from the [installation guide](/docs/react-native#add-the-elements), and every element expects Uniwind to be wired into Metro, because `className` on a React Native primitive does nothing without it.
 
 ```sh
-npx assistant-ui@latest add elements-approval-card elements-agent-status
+npx openagentui@latest add elements-approval-card elements-agent-status
 npx expo install --fix
 ```
 
-Each element lands in `components/assistant-ui/elements/` next to the files it imports. The same items are reachable through shadcn directly when you want to pin the tree explicitly:
+Each element lands in `components/openagentui/elements/` next to the files it imports. The same items are reachable through shadcn directly when you want to pin the tree explicitly:
 
 ```sh
-npx shadcn@latest add https://r.assistant-ui.com/native/elements-approval-card.json
+npx shadcn@latest add https://r.openagentui.dev/native/elements-approval-card.json
 ```
 
 The web catalog pages carry a React Native tab for every element that ships natively, with the element running inside a live Expo build and the install command above.
@@ -58,8 +58,8 @@ The web catalog pages carry a React Native tab for every element that ships nati
 The thread element exposes the parts a host most often replaces through a `components` prop. `Welcome`, `AssistantMessage` and `ToolFallback` mirror the web thread. `ComposerInput` is the React Native addition: it swaps the text input of both the new message composer and the edit composer, which is how a host with its own rich text editor keeps the attachments row and the send button.
 
 ```tsx title="app/index.tsx"
-import { useAui, useAuiState } from "@assistant-ui/react-native";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { useAui, useAuiState } from "@openagentui/react-native";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { RichEditor } from "@/components/rich-editor";
 
 function ComposerInput() {
@@ -85,8 +85,8 @@ export default function ChatScreen() {
 The thread also takes a `history` prop for a thread that keeps only a window of its messages loaded; [Windowed History](/docs/react-native/history) covers the runtime side and the list edge.
 
 ```tsx title="app/index.tsx"
-import { ConversationMapAui } from "@/components/assistant-ui/elements/conversation-map.aui";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { ConversationMapAui } from "@/components/openagentui/elements/conversation-map.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function ChatScreen() {
   return <Thread components={{ Rail: ConversationMapAui }} />;
@@ -95,11 +95,11 @@ export default function ChatScreen() {
 
 ### The `TaskGroup` slot
 
-Delegated tool calls, meaning a tool call carrying `messages`, render through the `TaskGroup` slot only when you pass it. The bound task card and tray import `ReadonlyThreadProvider` from `@assistant-ui/react-native`, so they need a release that exports it (0.1.44 or later). The bound group shows four lanes at a time, and hidden lanes are never mounted until you reveal them. The bound `AgentStatus` and `TaskTray` from `agent-status.aui` sit outside the thread and read `s.thread.tasks`; the tray opens as a native bottom sheet rather than a popover.
+Delegated tool calls, meaning a tool call carrying `messages`, render through the `TaskGroup` slot only when you pass it. The bound task card and tray import `ReadonlyThreadProvider` from `@openagentui/react-native`, so they need a release that exports it (0.1.44 or later). The bound group shows four lanes at a time, and hidden lanes are never mounted until you reveal them. The bound `AgentStatus` and `TaskTray` from `agent-status.aui` sit outside the thread and read `s.thread.tasks`; the tray opens as a native bottom sheet rather than a popover.
 
 ```tsx title="app/index.tsx"
-import { TaskGroup } from "@/components/assistant-ui/elements/task-card.aui";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { TaskGroup } from "@/components/openagentui/elements/task-card.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function ChatScreen() {
   return <Thread components={{ TaskGroup }} />;
@@ -110,10 +110,10 @@ export default function ChatScreen() {
 
 Approval card, agent status, tool timeline, stopped run and error state take plain props, so they render wherever your runtime puts the state. The usual home is a `ToolFallback` passed through the thread's `components`, where the tool call part carries `toolName`, `args`, `status` and, for server side approval gates, `approval` with `respondToApproval`. The installed fallback already answers approval gates, interrupts and approval questions with the same controls as the web fallback, and a replacement takes that job over for every call it renders.
 
-```tsx title="components/assistant-ui/elements/tool-ui.tsx"
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react-native";
-import { AgentStatus } from "@/components/assistant-ui/elements/agent-status";
-import { ApprovalCard } from "@/components/assistant-ui/elements/approval-card";
+```tsx title="components/openagentui/elements/tool-ui.tsx"
+import type { ToolCallMessagePartComponent } from "@openagentui/react-native";
+import { AgentStatus } from "@/components/openagentui/elements/agent-status";
+import { ApprovalCard } from "@/components/openagentui/elements/approval-card";
 
 export const ToolUI: ToolCallMessagePartComponent = ({
   toolName,
@@ -154,7 +154,7 @@ The elements keep the web design but a few things are decided differently on a d
 - **Keyboard.** The thread measures where it sits in the window and passes that offset to `KeyboardAvoidingView`, so a navigation header above it does not hide the composer behind the keyboard.
 - **Long histories.** `ThreadPrimitive.MessagesFlatList` keeps the visible message anchored while older ones load above it; the thread relies on that default.
 - **Styling.** Tokens are the same `--color-*` variables as the web kit, declared under `@layer theme` with light and dark variants in your `global.css`; `dark:` classes and `active:` press states work as on the web. Web only classes are prefixed with `web:`.
-- **Web export.** The same files run under react-native-web, which is how the [live showcase](https://assistant-ui-expo.vercel.app/showcase) and the catalog previews are built. Attributes that react-native-web does not map, such as `accessibilityState`, are written as their `aria-*` form.
+- **Web export.** The same files run under react-native-web, which is how the [live showcase](https://openagentui-expo.vercel.app/showcase) and the catalog previews are built. Attributes that react-native-web does not map, such as `accessibilityState`, are written as their `aria-*` form.
 
 ## From web to React Native
 

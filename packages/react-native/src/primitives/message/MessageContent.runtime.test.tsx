@@ -1,14 +1,14 @@
 import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { describe, expect, it } from "vitest";
-import type { MessagePartState, ThreadMessageLike } from "@assistant-ui/core";
+import type { MessagePartState, ThreadMessageLike } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   MessageByIndexProvider,
   useAssistantDataUI,
   useAssistantToolUI,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { MessageContent } from "./MessageContent";
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;

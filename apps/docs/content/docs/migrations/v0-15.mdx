@@ -10,10 +10,10 @@ Version 0.15 finishes the deprecation cycle started in v0.12: the legacy context
 Paste this into an AI coding agent to run the migration for you:
 
 ```text
-Migrate this codebase from assistant-ui v0.14 to v0.15.
+Migrate this codebase from openagentui v0.14 to v0.15.
 
-1. Read the migration guide: https://assistant-ui.com/docs/migrations/v0-15
-2. Run `npx assistant-ui@latest upgrade` to apply the codemods.
+1. Read the migration guide: https://openagentui.dev/docs/migrations/v0-15
+2. Run `npx openagentui@latest upgrade` to apply the codemods.
 3. Apply the remaining changes from the guide by hand:
    - Replace removed legacy hooks with the useAui / useAuiState
      equivalents from the guide's mapping table.
@@ -26,7 +26,7 @@ Migrate this codebase from assistant-ui v0.14 to v0.15.
 ## Automatic Migration
 
 ```bash
-npx assistant-ui@latest upgrade
+npx openagentui@latest upgrade
 ```
 
 This runs the `v0-15/aui-accessor-calls-to-properties` codemod, which rewrites nullary accessor calls (`aui.thread()`) to property access (`aui.thread`).
@@ -171,7 +171,7 @@ const config = AuiConfig({ tools: Tools({ toolkit }) });
 <AuiProvider extends={null} config={config}>
 ```
 
-`AuiConfig` is exported from `@assistant-ui/store` and re-exported from `@assistant-ui/react`, `@assistant-ui/react-native`, and `@assistant-ui/react-ink`.
+`AuiConfig` is exported from `@openagentui/store` and re-exported from `@openagentui/react`, `@openagentui/react-native`, and `@openagentui/react-ink`.
 
 ### `value` Prop Deprecated
 
@@ -268,5 +268,5 @@ The new event also fires in situations where the deprecated pair did not: `InMem
 
 ## Getting Help
 
-- File issues at https://github.com/assistant-ui/assistant-ui/issues
+- File issues at https://github.com/RealDealCPA-VR/OpenAgentUI/issues
 - See the [deprecation policy](/docs/migrations/deprecation-policy) for the support window

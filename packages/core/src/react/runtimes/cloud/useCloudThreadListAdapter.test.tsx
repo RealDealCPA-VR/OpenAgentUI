@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { act, render, renderHook } from "@testing-library/react";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import {
   startTransition,
   Suspense,

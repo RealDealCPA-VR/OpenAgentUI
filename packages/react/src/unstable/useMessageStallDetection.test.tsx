@@ -10,14 +10,14 @@ const { message } = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAuiState: (selector: (state: { message: typeof message }) => unknown) =>
     selector({ message }),
 }));
 
-vi.mock("@assistant-ui/store/internal", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store/internal")>()),
+vi.mock("@openagentui/store/internal", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store/internal")>()),
   useShallowSelector: <T,>(selector: T) => selector,
 }));
 

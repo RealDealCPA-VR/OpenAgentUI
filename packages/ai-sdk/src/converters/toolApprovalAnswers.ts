@@ -1,4 +1,4 @@
-import type { ToolApprovalAnswer } from "@assistant-ui/core";
+import type { ToolApprovalAnswer } from "@openagentui/core";
 
 export const normalizeToolApprovalAnswers = (
   answers: unknown,

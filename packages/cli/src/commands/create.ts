@@ -56,30 +56,6 @@ export const PROJECT_METADATA: ProjectMetadata[] = [
     hasLocalComponents: true,
   },
   {
-    name: "cloud",
-    label: "Cloud",
-    description: "Cloud-backed persistence starter",
-    category: "template",
-    path: "templates/cloud",
-    hasLocalComponents: false,
-  },
-  {
-    name: "cloud-clerk",
-    label: "Cloud + Clerk",
-    description: "Cloud-backed starter with Clerk auth",
-    category: "template",
-    path: "templates/cloud-clerk",
-    hasLocalComponents: false,
-  },
-  {
-    name: "cloud-harness",
-    label: "Shared cloud chat",
-    description: "A hosted harness with a shared conversation across browsers",
-    category: "template",
-    path: "templates/cloud-harness",
-    hasLocalComponents: true,
-  },
-  {
     name: "langchain",
     label: "LangChain",
     description: "LangGraph starter with the react-langchain adapter",
@@ -158,14 +134,6 @@ export const PROJECT_METADATA: ProjectMetadata[] = [
     description: "Chain-of-thought, tool calls, and source citations",
     category: "example",
     path: "examples/with-chain-of-thought",
-    hasLocalComponents: false,
-  },
-  {
-    name: "with-cloud",
-    label: "Cloud Example",
-    description: "Cloud integration example",
-    category: "example",
-    path: "examples/with-cloud",
     hasLocalComponents: false,
   },
   {
@@ -453,8 +421,7 @@ export function resolveProjectDirectoryGuidance(params: {
   return { display, cdCommand: `cd ${quoted}` };
 }
 
-const PLAYGROUND_PRESET_BASE_URL =
-  "https://www.assistant-ui.com/playground/init";
+const PLAYGROUND_PRESET_BASE_URL = "https://openagentui.dev/playground/init";
 
 export function resolvePresetUrl(preset: string): string {
   if (preset.startsWith("http://") || preset.startsWith("https://")) {
@@ -540,7 +507,7 @@ export const create = new Command()
   )
   .option(
     "-p, --preset <name-or-url>",
-    "preset name or URL (e.g., chatgpt or https://www.assistant-ui.com/playground/init?preset=chatgpt)",
+    "preset name or URL (e.g., chatgpt or https://openagentui.dev/playground/init?preset=chatgpt)",
   )
   .option("--use-npm", "explicitly use npm")
   .option("--use-pnpm", "explicitly use pnpm")
@@ -549,8 +516,8 @@ export const create = new Command()
   .option("--native", "create an Expo / React Native project")
   .option("--ink", "create a React Ink terminal project")
   .option("--skip-install", "skip installing packages")
-  .option("--skills", "add assistant-ui agent skills for AI coding assistants")
-  .option("--no-skills", "skip adding assistant-ui agent skills")
+  .option("--skills", "add openagentui agent skills for AI coding assistants")
+  .option("--no-skills", "skip adding openagentui agent skills")
   .addOption(
     new Option(
       "--cwd <cwd>",
@@ -560,7 +527,7 @@ export const create = new Command()
   .addOption(
     new Option(
       "--debug-source-root <path>",
-      "copy templates/examples from a local assistant-ui repo root",
+      "copy templates/examples from a local openagentui repo root",
     ).hideHelp(),
   )
   .action(async (projectDirectory, opts) => {
@@ -646,7 +613,7 @@ export const create = new Command()
     });
     if (installSkills === undefined) {
       const result = await p.confirm({
-        message: "Add assistant-ui agent skills for AI coding assistants?",
+        message: "Add openagentui agent skills for AI coding assistants?",
         initialValue: true,
       });
 
@@ -754,7 +721,7 @@ export const create = new Command()
         });
 
         if (installSkills) {
-          logger.step("Adding assistant-ui agent skills...");
+          logger.step("Adding openagentui agent skills...");
           const [skillsCmd, skillsArgs] = buildSkillsAddCommand(pm, {
             stdinIsTTY,
           });
@@ -763,7 +730,7 @@ export const create = new Command()
           } catch (error) {
             if (error instanceof SpawnSignalError) throw error;
             logger.warn(
-              `Could not add assistant-ui agent skills. You can add them later with:\n  ${skillsCmd} ${skillsArgs.join(" ")}`,
+              `Could not add openagentui agent skills. You can add them later with:\n  ${skillsCmd} ${skillsArgs.join(" ")}`,
             );
           }
         }

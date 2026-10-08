@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { renderHook, waitFor } from "@testing-library/react";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { ThreadAssistantMessage } from "../../../types/message";
 import {
@@ -36,7 +36,7 @@ const mocks = vi.hoisted(() => {
       thread: { getState: () => ({ isEmpty: false, suggestions: [] }) },
       on: () => () => {},
       subscribe: () => () => {},
-    } as unknown as import("@assistant-ui/store").AssistantClient;
+    } as unknown as import("@openagentui/store").AssistantClient;
   };
 
   const makeSplitClient = (remoteId: string) => {
@@ -59,7 +59,7 @@ const mocks = vi.hoisted(() => {
       thread: { getState: () => ({ isEmpty: false, suggestions: [] }) },
       on: () => () => {},
       subscribe: () => () => {},
-    } as unknown as import("@assistant-ui/store").AssistantClient;
+    } as unknown as import("@openagentui/store").AssistantClient;
   };
 
   return {
@@ -69,8 +69,8 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => mocks.aui,
 }));
 
@@ -174,7 +174,7 @@ describe("useAssistantCloudThreadHistoryAdapter", () => {
         notify = callback;
         return () => {};
       }),
-    } as unknown as import("@assistant-ui/store").AssistantClient;
+    } as unknown as import("@openagentui/store").AssistantClient;
     const cloud = makeCloud();
     const { result } = renderHook(() =>
       useAssistantCloudThreadHistoryAdapter({ current: cloud }),
@@ -464,7 +464,7 @@ describe("useAssistantCloudThreadHistoryAdapter", () => {
           return () => set.delete(callback);
         }),
         subscribe: vi.fn(() => () => {}),
-      }) as unknown as import("@assistant-ui/store").AssistantClient;
+      }) as unknown as import("@openagentui/store").AssistantClient;
     const cloud = makeCloud();
 
     const firstClient = makeClient("thread-1", "remote-1");
@@ -795,7 +795,7 @@ describe("useAssistantCloudThreadHistoryAdapter", () => {
       expect(client.threadListItem.initialize).toHaveBeenCalledTimes(6),
     );
     expect(errorSpy).toHaveBeenCalledWith(
-      "[assistant-ui] Cloud feedback submission failed:",
+      "[openagentui] Cloud feedback submission failed:",
       adapterChanged,
     );
     expect(cloud.threads.messages.create).not.toHaveBeenCalled();
@@ -912,7 +912,7 @@ describe("useAssistantCloudThreadHistoryAdapter", () => {
     await append;
     await vi.waitFor(() =>
       expect(errorSpy).toHaveBeenCalledWith(
-        "[assistant-ui] Cloud feedback submission failed:",
+        "[openagentui] Cloud feedback submission failed:",
         expect.objectContaining({
           message: "Cloud scope changed during the persistence operation",
         }),
@@ -961,7 +961,7 @@ describe("useAssistantCloudThreadHistoryAdapter", () => {
 
     await waitFor(() => {
       expect(warn).toHaveBeenCalledWith(
-        "[assistant-ui] Skipping feedback for message local-message-1: the thread has no remote id.",
+        "[openagentui] Skipping feedback for message local-message-1: the thread has no remote id.",
       );
     });
     expect(cloud.threads.messages.feedback).not.toHaveBeenCalled();
@@ -980,7 +980,7 @@ describe("useAssistantCloudThreadHistoryAdapter", () => {
 
     await waitFor(() => {
       expect(warn).toHaveBeenCalledWith(
-        "[assistant-ui] Skipping feedback for message local-message-1: no cloud message id is mapped.",
+        "[openagentui] Skipping feedback for message local-message-1: no cloud message id is mapped.",
       );
     });
     expect(cloud.threads.messages.feedback).not.toHaveBeenCalled();
@@ -1006,7 +1006,7 @@ describe("useAssistantCloudThreadHistoryAdapter", () => {
 
     await waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Cloud feedback submission failed:",
+        "[openagentui] Cloud feedback submission failed:",
         error,
       );
     });

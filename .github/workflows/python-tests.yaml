@@ -30,8 +30,8 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - assistant-stream
-          - assistant-ui-sync-server-api
+          - openagentui-stream
+          - openagentui-sync-server-api
         python-version: ["3.10", "3.12", "3.14"]
     defaults:
       run:
@@ -57,8 +57,8 @@ jobs:
         run: |
           set -euo pipefail
           case "$PACKAGE" in
-            assistant-stream) other=assistant-ui-sync-server-api ;;
-            assistant-ui-sync-server-api) other=assistant-stream ;;
+            openagentui-stream) other=openagentui-sync-server-api ;;
+            openagentui-sync-server-api) other=openagentui-stream ;;
             *) exit 1 ;;
           esac
           run=true

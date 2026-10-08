@@ -2,7 +2,7 @@
 import {
   ThreadListItemPrimitiveTitle,
   ThreadListItemPrimitiveTrigger,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 </script>
 
 <template>

@@ -35,13 +35,13 @@ export function HeaderBrandLink({
       >
         <Image
           src="/favicon/icon.svg"
-          alt="assistant-ui logo"
+          alt="openagentui logo"
           width={18}
           height={18}
           className="dark:hue-rotate-180 dark:invert"
         />
         <span className={cn("font-medium tracking-tight", labelClassName)}>
-          assistant-ui
+          openagentui
         </span>
       </Link>
     </BrandAssetsMenu>
@@ -86,7 +86,7 @@ function BrandAssetsMenu({ children }: BrandAssetsMenuProps) {
         </ContextMenuItem>
 
         <ContextMenuItem asChild>
-          <a href="/assistant-ui-brand.zip" download>
+          <a href="/openagentui-brand.zip" download>
             <DownloadIcon className="size-4" />
             Download Brand Assets
           </a>

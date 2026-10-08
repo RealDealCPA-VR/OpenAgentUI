@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SubProjectLayout } from "@/components/shared/sub-project-layout";
 import { createOgMetadata } from "@/lib/og";
 
-const title = "safe-content-frame";
+const title = "@openagentui/safe-content-frame";
 const description =
   "Untrusted HTML in a sandboxed iframe. Unique origin per render. Pure JS.";
 
@@ -20,8 +20,8 @@ export default function SafeContentFrameLayout({
 }): React.ReactElement {
   return (
     <SubProjectLayout
-      name="safe-content-frame"
-      githubPath="https://github.com/assistant-ui/assistant-ui/tree/main/packages/safe-content-frame"
+      name="@openagentui/safe-content-frame"
+      githubPath="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/safe-content-frame"
     >
       {children}
     </SubProjectLayout>

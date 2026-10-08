@@ -6,7 +6,7 @@ import {
   useLocalRuntime,
   StatusBarPrimitive,
   Tools,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import { ThreadShell } from "./components/thread-shell.js";
 import { Thread } from "./components/thread.js";
 import { createScriptedAdapter, MODEL_NAME } from "./scripted-adapter.js";

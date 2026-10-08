@@ -13,7 +13,7 @@ import {
   type NativeScrollEvent,
   type NativeSyntheticEvent,
 } from "react-native";
-import { useAui, useAuiEvent, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiEvent, useAuiState } from "@openagentui/store";
 
 export type FlatListHistory = {
   hasMore: boolean;

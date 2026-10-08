@@ -1,1 +1,1 @@
-export { LocalRuntimeCore } from "@assistant-ui/core/internal";
+export { LocalRuntimeCore } from "@openagentui/core/internal";

@@ -7,28 +7,28 @@ export const agentTools: CatalogProduct = {
   name: "Agent Tool",
   tagline: "An action the model can call, with its own UI in the thread.",
   description:
-    "A tool with a schema, an executor, and a component that renders its calls in the thread. Specify an action for each tool; your coding agent writes it into your existing assistant-ui project.",
+    "A tool with a schema, an executor, and a component that renders its calls in the thread. Specify an action for each tool; your coding agent writes it into your existing openagentui project.",
   kind: "library",
-  audience: "existing assistant-ui apps",
+  audience: "existing openagentui apps",
   license: "MIT",
   oss: true,
   glyph: "frame",
   docs: "/docs/tools/defining-tools",
-  repo: "https://github.com/assistant-ui/assistant-ui",
-  packages: ["@assistant-ui/react", "@assistant-ui/ai-sdk"],
+  repo: "https://github.com/RealDealCPA-VR/OpenAgentUI",
+  packages: ["@openagentui/react", "@openagentui/ai-sdk"],
   includes: [
     "A tool schema and executor added to your project toolkit, creating one if needed",
     "A component per tool that renders the call while it runs and once it has a result",
     "Registration on the assistant and in the chat route",
   ],
-  requires: ["An assistant-ui app with a chat route on the AI SDK"],
+  requires: ["An openagentui app with a chat route on the AI SDK"],
   preview: "tool-call",
   agentMinutes: [4, 9],
   steps: [
     {
       title: "Enable the compiler",
       detail:
-        "Wrap next.config.ts with withAui from @assistant-ui/next, or add the aui() plugin from @assistant-ui/vite.",
+        "Wrap next.config.ts with withAui from @openagentui/next, or add the aui() plugin from @openagentui/vite.",
     },
     {
       title: "Write the toolkit",

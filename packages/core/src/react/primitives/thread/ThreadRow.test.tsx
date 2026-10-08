@@ -2,7 +2,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { useState, type FC } from "react";
 import { afterEach, describe, expect, it } from "vitest";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import type { ThreadMessageLike } from "../../../runtime/utils/thread-message-like";
 import { AssistantRuntimeProvider } from "../../AssistantRuntimeProvider";
 import { useExternalStoreRuntime } from "../../runtimes/useExternalStoreRuntime";

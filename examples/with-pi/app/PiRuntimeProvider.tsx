@@ -3,8 +3,8 @@
 import {
   AssistantRuntimeProvider,
   SimpleImageAttachmentAdapter,
-} from "@assistant-ui/react";
-import { createPiHttpClient, usePiRuntime } from "@assistant-ui/react-pi";
+} from "@openagentui/react";
+import { createPiHttpClient, usePiRuntime } from "@openagentui/react-pi";
 import { useMemo, type ReactNode } from "react";
 
 /**

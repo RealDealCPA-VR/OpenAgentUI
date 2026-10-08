@@ -9,7 +9,7 @@ FeedbackDialog turns a thumbs-down into a short form: pick what went wrong, add 
 
 <RuntimeMode>
 
-assistant-ui's own feedback signal is binary: positive or negative, recorded on the message. `ActionBarPrimitive.FeedbackNegative` already submits that in one click. FeedbackDialog asks why first, so it sits in front of that signal rather than replacing it: keep the binary rating for the runtime, and pass the reasons and note as `comment`.
+openagentui's own feedback signal is binary: positive or negative, recorded on the message. `ActionBarPrimitive.FeedbackNegative` already submits that in one click. FeedbackDialog asks why first, so it sits in front of that signal rather than replacing it: keep the binary rating for the runtime, and pass the reasons and note as `comment`.
 
 <Steps>
   <Step>
@@ -18,12 +18,12 @@ assistant-ui's own feedback signal is binary: positive or negative, recorded on 
 
 A separate trigger owns the open state. `FeedbackDialog` itself has no `open` prop; it always renders its form (or its confirmation) once mounted.
 
-```tsx title="components/assistant-ui/elements/message-feedback.tsx"
+```tsx title="components/openagentui/elements/message-feedback.tsx"
 "use client";
 
 import { useState } from "react";
-import { useAui } from "@assistant-ui/react";
-import { FeedbackDialog } from "@/components/assistant-ui/elements/feedback-dialog";
+import { useAui } from "@openagentui/react";
+import { FeedbackDialog } from "@/components/openagentui/elements/feedback-dialog";
 
 const REASONS = [
   "Not factual",
@@ -82,7 +82,7 @@ export function MessageFeedback() {
 `submitFeedback` reaches a `FeedbackAdapter` you register on the runtime. Its `submit` receives the message, type, and optional `comment`, so reasons and a note travel in `comment`. Structured reasons still need their own transport when they must remain separate. The example caps the comment at 2,000 characters, the longest Assistant Cloud accepts; a backend with another limit sets its own.
 
 ```tsx title="app/assistant.tsx"
-import { useLocalRuntime } from "@assistant-ui/react";
+import { useLocalRuntime } from "@openagentui/react";
 
 const runtime = useLocalRuntime(adapter, {
   adapters: {
@@ -116,7 +116,7 @@ Standalone, FeedbackDialog is fully controlled: you hold `selected`, `note`, and
 "use client";
 
 import { useState } from "react";
-import { FeedbackDialog } from "@/components/assistant-ui/elements/feedback-dialog";
+import { FeedbackDialog } from "@/components/openagentui/elements/feedback-dialog";
 
 const REASONS = ["Not factual", "Didn't follow instructions", "Too long", "Unsafe"];
 
@@ -199,7 +199,7 @@ useEffect(() => {
 An external-store runtime takes the same `feedback` adapter shape as `useLocalRuntime`:
 
 ```tsx
-import { useExternalStoreRuntime } from "@assistant-ui/react";
+import { useExternalStoreRuntime } from "@openagentui/react";
 
 const runtime = useExternalStoreRuntime({
   // ...messages, onNew, isRunning, etc.

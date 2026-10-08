@@ -1,5 +1,5 @@
 import { describe, expect, it, onTestFinished, vi } from "vitest";
-import { isMessageNotSentError, type AppendMessage } from "@assistant-ui/react";
+import { isMessageNotSentError, type AppendMessage } from "@openagentui/react";
 import { PiThreadController } from "./ThreadController";
 import type { PiThreadState } from "./threadState";
 import type {

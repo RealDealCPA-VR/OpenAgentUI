@@ -9,18 +9,18 @@ SpeakerIdentity rows each turn with an icon and tone keyed to who or what produc
 
 <RuntimeMode>
 
-`s.message.role` gives you the user/assistant split directly. Tool calls live as parts inside an assistant message's `content`, each with a `toolName` and, when the runtime tracks it, a `timing`. A nested subagent run shows up as a tool call's own `messages` field, a real part of `ToolCallMessagePart` for exactly this case. assistant-ui has no fixed "agent name" concept beyond that: a display name for a particular agent or model is something you attach yourself through the message's open `metadata.custom` bag.
+`s.message.role` gives you the user/assistant split directly. Tool calls live as parts inside an assistant message's `content`, each with a `toolName` and, when the runtime tracks it, a `timing`. A nested subagent run shows up as a tool call's own `messages` field, a real part of `ToolCallMessagePart` for exactly this case. openagentui has no fixed "agent name" concept beyond that: a display name for a particular agent or model is something you attach yourself through the message's open `metadata.custom` bag.
 
 <Steps>
   <Step>
 
 ### Turn a top-level message into a row
 
-```tsx title="components/assistant-ui/elements/speaker-list.tsx"
+```tsx title="components/openagentui/elements/speaker-list.tsx"
 "use client";
 
-import type { ThreadMessage } from "@assistant-ui/react";
-import type { SpeakerTurn } from "@/components/assistant-ui/elements/speaker-identity";
+import type { ThreadMessage } from "@openagentui/react";
+import type { SpeakerTurn } from "@/components/openagentui/elements/speaker-identity";
 
 function textOf(content: readonly { type: string; text?: string }[]) {
   return content
@@ -56,7 +56,7 @@ function messageTurn(message: ThreadMessage): SpeakerTurn {
 ### Add tool calls and nested subagents
 
 ```tsx
-import type { ToolCallMessagePart } from "@assistant-ui/react";
+import type { ToolCallMessagePart } from "@openagentui/react";
 
 function toolTurn(part: ToolCallMessagePart): SpeakerTurn {
   const ms =
@@ -104,7 +104,7 @@ Standalone, SpeakerIdentity takes a flat list of turns; you decide what counts a
 ### Build the turn list
 
 ```tsx title="app/session.tsx"
-import { SpeakerIdentity, type SpeakerTurn } from "@/components/assistant-ui/elements/speaker-identity";
+import { SpeakerIdentity, type SpeakerTurn } from "@/components/openagentui/elements/speaker-identity";
 
 const TURNS: SpeakerTurn[] = [
   { id: "1", kind: "user", name: "You", text: "Find out why the converter drops turns." },

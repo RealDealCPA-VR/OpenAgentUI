@@ -41,7 +41,7 @@ const FEATURES = [
   {
     title: "ANSI markdown",
     description:
-      "Headings, tables, links, and syntax-highlighted code via @assistant-ui/react-ink-markdown.",
+      "Headings, tables, links, and syntax-highlighted code via @openagentui/react-ink-markdown.",
   },
   {
     title: "Shared runtime",
@@ -57,7 +57,7 @@ import {
   AuiConfig,
   Tools,
   useLocalRuntime,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import { Thread } from "./components/thread.js";
 import { createAdapter } from "./adapter.js";
 import toolkit from "./tools.js";
@@ -93,12 +93,12 @@ const SESSION_LINES: {
       </>
     ),
   },
-  { text: "model: assistant-ui · 2 messages · streaming", dim: true },
+  { text: "model: openagentui · 2 messages · streaming", dim: true },
   { text: " " },
   {
     text: (
       <>
-        <span className="opacity-45">&gt; </span>what is assistant-ui?
+        <span className="opacity-45">&gt; </span>what is openagentui?
       </>
     ),
   },
@@ -148,7 +148,7 @@ export default function InkPage() {
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
           <CopyCommandButton
-            command="npx assistant-ui@latest create --ink my-app"
+            command="npx openagentui@latest create --ink my-app"
             analyticsContext={{ page: ANALYTICS_PAGE, section: "hero" }}
           />
           <Link

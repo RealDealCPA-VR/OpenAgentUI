@@ -2,8 +2,8 @@
 
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
-import type { AssistantRuntime } from "@assistant-ui/core";
+import type { AssistantCloud } from "openagentui-cloud";
+import type { AssistantRuntime } from "@openagentui/core";
 
 const mocks = vi.hoisted(() => ({
   cloudAdapter: {},
@@ -12,14 +12,14 @@ const mocks = vi.hoisted(() => ({
   useRemoteThreadListRuntime: vi.fn(() => ({})),
 }));
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/core/react")>()),
+vi.mock("@openagentui/core/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/core/react")>()),
   useCloudThreadListAdapter: mocks.useCloudThreadListAdapter,
   useRemoteThreadListRuntime: mocks.useRemoteThreadListRuntime,
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => ({
     threadListItem: {
       source: null,

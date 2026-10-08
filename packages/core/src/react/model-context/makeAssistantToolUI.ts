@@ -12,7 +12,7 @@ import {
  *
  * @deprecated Put `render`/`renderText` on the matching toolkit entry, or use
  * `MessagePrimitive.Parts` inline tool render overrides for per-message UI.
- * See https://assistant-ui.com/docs/migrations/toolkit-tools.
+ * See https://openagentui.dev/docs/migrations/toolkit-tools.
  */
 export type AssistantToolUI = FC & {
   /** Tool renderer registered by this component. */
@@ -29,7 +29,7 @@ export type AssistantToolUI = FC & {
  *
  * @deprecated Put `render`/`renderText` on the matching toolkit entry, or use
  * `MessagePrimitive.Parts` inline tool render overrides for per-message UI.
- * See https://assistant-ui.com/docs/migrations/toolkit-tools.
+ * See https://openagentui.dev/docs/migrations/toolkit-tools.
  */
 export const makeAssistantToolUI = <TArgs, TResult>(
   tool: AssistantToolUIProps<TArgs, TResult>,

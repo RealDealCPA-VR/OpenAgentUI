@@ -1,6 +1,6 @@
 # Simple AI SDK chat
 
-A complete assistant-ui conversation using the real `useChatRuntime` integration. The local preview uses an AI SDK `ChatTransport` that returns scripted UI message chunks in the browser. It does not call a model or persist conversations.
+A complete openagentui conversation using the real `useChatRuntime` integration. The local preview uses an AI SDK `ChatTransport` that returns scripted UI message chunks in the browser. It does not call a model or persist conversations.
 
 In the monorepo: `pnpm build:bundles`, then `pnpm package:bundles`.
 

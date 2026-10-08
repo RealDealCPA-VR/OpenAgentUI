@@ -11,7 +11,7 @@ import {
   ToolTimeline,
   type TimelineStat,
   type TimelineStep,
-} from "@/components/assistant-ui/elements/tool-timeline";
+} from "@/components/openagentui/elements/tool-timeline";
 import { useElapsed, useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const STEPS: TimelineStep[] = [

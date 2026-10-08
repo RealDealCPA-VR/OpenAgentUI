@@ -10,7 +10,7 @@ import { HeatGraphDemo } from "./heat-graph-demo";
 
 const ANALYTICS_PAGE = "heat-graph" as const;
 
-const INSTALL_COMMAND = "npm install heat-graph";
+const INSTALL_COMMAND = "npm install @openagentui/heat-graph";
 
 const PARTS = [
   "Root",
@@ -125,7 +125,7 @@ export default function HeatGraphPage() {
           .
         </p>
         <a
-          href="https://github.com/assistant-ui/assistant-ui/tree/main/packages/heat-graph"
+          href="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/packages/heat-graph"
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground group inline-flex items-center gap-1.5 text-sm transition-colors"

@@ -1,15 +1,15 @@
 {
-  "name": "assistant-cloud",
+  "name": "openagentui-cloud",
   "version": "0.2.5",
-  "description": "Cloud integration for assistant-ui",
+  "description": "Cloud integration for openagentui",
   "keywords": [
     "assistant",
     "cloud",
     "ai",
     "chat",
-    "assistant-ui"
+    "openagentui"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -45,7 +45,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "assistant-stream": "^0.3.47"
+    "openagentui-stream": "^0.3.47"
   },
   "peerDependencies": {
     "@opentelemetry/api": "^1.9.0",
@@ -68,7 +68,7 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@opentelemetry/api": "^1.9.1",
     "@opentelemetry/exporter-trace-otlp-http": "^0.222.0",
     "@opentelemetry/sdk-trace-base": "^2.11.0",
@@ -82,13 +82,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/cloud"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

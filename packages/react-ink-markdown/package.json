@@ -1,18 +1,18 @@
 {
-  "name": "@assistant-ui/react-ink-markdown",
+  "name": "@openagentui/react-ink-markdown",
   "version": "0.0.47",
-  "description": "Terminal markdown rendering for @assistant-ui/react-ink",
+  "description": "Terminal markdown rendering for @openagentui/react-ink",
   "keywords": [
     "markdown",
     "terminal",
     "ink",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat",
     "cli"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -40,19 +40,19 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
     "markdansi": "^0.3.4"
   },
   "peerDependencies": {
-    "@assistant-ui/react-ink": "^0.0.48",
+    "@openagentui/react-ink": "^0.0.48",
     "@types/react": "*",
     "ink": ">=6",
     "react": "^19",
     "shiki": ">=4"
   },
   "peerDependenciesMeta": {
-    "@assistant-ui/react-ink": {
+    "@openagentui/react-ink": {
       "optional": true
     },
     "@types/react": {
@@ -63,11 +63,11 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/core": "workspace:*",
-    "@assistant-ui/react-ink": "workspace:*",
-    "@assistant-ui/store": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-performance": "workspace:*",
+    "@openagentui/core": "workspace:*",
+    "@openagentui/react-ink": "workspace:*",
+    "@openagentui/store": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-performance": "workspace:*",
     "@types/react": "^19.3.0",
     "ink": "^7.1.1",
     "ink-testing-library": "^4.0.0",
@@ -79,13 +79,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-ink-markdown"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

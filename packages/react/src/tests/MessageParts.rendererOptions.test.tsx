@@ -7,8 +7,8 @@ import {
   AssistantRuntimeProvider,
   MessageByIndexProvider,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
-import type { ThreadMessageLike } from "@assistant-ui/core";
+} from "@openagentui/core/react";
+import type { ThreadMessageLike } from "@openagentui/core";
 import { MessagePrimitiveParts } from "../primitives/message/MessageParts";
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;

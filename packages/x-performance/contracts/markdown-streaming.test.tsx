@@ -7,11 +7,11 @@ import {
   ThreadPrimitive,
   useExternalStoreRuntime,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   MarkdownTextPrimitive,
   unstable_memoizeMarkdownComponents as memoizeMarkdownComponents,
-} from "@assistant-ui/react-markdown";
+} from "@openagentui/react-markdown";
 import { createRenderCounter } from "../src/render-counter";
 
 (

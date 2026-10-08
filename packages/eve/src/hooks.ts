@@ -1,6 +1,6 @@
 "use client";
 
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { eveExtras } from "./eveExtras";
 import type { EveRuntimeExtras } from "./eveExtras";
 

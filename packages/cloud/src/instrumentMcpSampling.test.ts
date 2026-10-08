@@ -51,7 +51,7 @@ describe("wrapSamplingHandler", () => {
           wrapSamplingHandler(async () => response, observer)(request),
         ).resolves.toBe(response);
         expect(log).toHaveBeenCalledWith(
-          "[assistant-cloud] onSamplingCall callback threw an error",
+          "[openagentui-cloud] onSamplingCall callback threw an error",
           error,
         );
       } finally {

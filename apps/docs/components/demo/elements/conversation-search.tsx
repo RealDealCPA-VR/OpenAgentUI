@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   ConversationSearch,
   type SearchHit,
-} from "@/components/assistant-ui/elements/conversation-search";
+} from "@/components/openagentui/elements/conversation-search";
 
 const HITS: readonly SearchHit[] = [
   {

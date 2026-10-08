@@ -17,7 +17,7 @@ const b = "b".repeat(40);
 
 const bodyFor = (pin, commit) =>
   pin.file.endsWith(".json")
-    ? `{\n  "source": "assistant-ui/skills@${commit}",\n  "skills": []\n}\n`
+    ? `{\n  "source": "openagentui/skills@${commit}",\n  "skills": []\n}\n`
     : pin.file.includes("cli")
       ? `export const SKILLS_COMMIT = "${commit}";\n`
       : `const COMMIT = "${commit}";\n`;

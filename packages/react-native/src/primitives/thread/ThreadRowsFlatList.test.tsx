@@ -1,9 +1,9 @@
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { AssistantState } from "@assistant-ui/store";
-import type { MessageState } from "@assistant-ui/core/store";
-import { groupPartByType, type ThreadRow } from "@assistant-ui/core/react";
+import type { AssistantState } from "@openagentui/store";
+import type { MessageState } from "@openagentui/core/store";
+import { groupPartByType, type ThreadRow } from "@openagentui/core/react";
 import { ThreadRowsFlatList } from "./ThreadRowsFlatList";
 
 const h = vi.hoisted(() => ({
@@ -52,8 +52,8 @@ vi.mock("react-native", async (importOriginal) => {
   return { ...actual, FlatList: FlatListMock };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAui: () => ({ thread: { loadEarlier: h.loadEarlier } }),
@@ -63,9 +63,9 @@ vi.mock("@assistant-ui/store", async (importOriginal) => {
   };
 });
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => {
+vi.mock("@openagentui/core/react", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@assistant-ui/core/react")>();
+    await importOriginal<typeof import("@openagentui/core/react")>();
   return {
     ...actual,
     ThreadPrimitiveRow: ({

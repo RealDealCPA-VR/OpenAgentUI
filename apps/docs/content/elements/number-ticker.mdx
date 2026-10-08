@@ -16,11 +16,11 @@ With a runtime, the ticker only needs a number and a label, so its renderer is o
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/token-count-tool-ui.tsx"
+```tsx title="components/openagentui/elements/token-count-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { NumberTicker } from "@/components/assistant-ui/elements/number-ticker";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { NumberTicker } from "@/components/openagentui/elements/number-ticker";
 
 export const TokenCountToolUI: ToolCallMessagePartComponent<
   Record<string, never>,
@@ -39,9 +39,9 @@ export const TokenCountToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { TokenCountToolUI } from "@/components/assistant-ui/elements/token-count-tool-ui";
+import { TokenCountToolUI } from "@/components/openagentui/elements/token-count-tool-ui";
 
 export const toolkit = defineToolkit({
   get_token_count: {
@@ -55,8 +55,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -90,7 +90,7 @@ Standalone, the ticker is fully controlled: it re-renders and rolls whenever `va
 "use client";
 
 import { useState } from "react";
-import { NumberTicker } from "@/components/assistant-ui/elements/number-ticker";
+import { NumberTicker } from "@/components/openagentui/elements/number-ticker";
 
 export function TokenCount() {
   const [value, setValue] = useState(0);

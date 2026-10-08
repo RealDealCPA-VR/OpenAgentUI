@@ -49,7 +49,7 @@ export function ExamplePreview({ slug }: { slug: string }): ReactNode {
         <DemoIframe
           title="Form Filling Co-Pilot demo"
           className="h-full w-full border-none"
-          src="https://assistant-ui-form-demo.vercel.app/"
+          src="https://openagentui-form-demo.vercel.app/"
         />
       );
     case "chatgpt":
@@ -101,7 +101,7 @@ export function ExamplePreview({ slug }: { slug: string }): ReactNode {
         <DemoIframe
           title="Stockbroker example"
           className="h-full w-full border-none"
-          src="https://assistant-ui-stockbroker.vercel.app/"
+          src="https://openagentui-stockbroker.vercel.app/"
         />
       );
     case "artifacts":

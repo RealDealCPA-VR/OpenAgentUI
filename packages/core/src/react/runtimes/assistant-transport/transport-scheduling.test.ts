@@ -267,7 +267,7 @@ describe("assistant transport scheduling contracts", () => {
         expect(result.current.runBatchesRef.current).toHaveLength(2);
       });
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Assistant transport onFinish callback threw an error",
+        "[openagentui] Assistant transport onFinish callback threw an error",
         error,
       );
     } finally {
@@ -283,7 +283,7 @@ describe("assistant transport scheduling contracts", () => {
       .mockImplementation((message) => {
         if (
           message ===
-          "[assistant-ui] Assistant transport onError callback threw an error"
+          "[openagentui] Assistant transport onError callback threw an error"
         ) {
           throw new Error("console unavailable");
         }
@@ -309,7 +309,7 @@ describe("assistant transport scheduling contracts", () => {
 
       expect(onError).toHaveBeenCalledTimes(1);
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Assistant transport onError callback threw an error",
+        "[openagentui] Assistant transport onError callback threw an error",
         callbackError,
       );
       expect(unhandledRejections).toEqual([]);
@@ -358,7 +358,7 @@ describe("assistant transport scheduling contracts", () => {
 
       expect(onCancel).toHaveBeenCalledTimes(1);
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Assistant transport onCancel callback threw an error",
+        "[openagentui] Assistant transport onCancel callback threw an error",
         callbackError,
       );
       expect(unhandledRejections).toEqual([]);

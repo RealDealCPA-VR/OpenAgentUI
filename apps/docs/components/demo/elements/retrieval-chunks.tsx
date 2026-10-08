@@ -3,7 +3,7 @@
 import {
   RetrievalChunks,
   type RetrievalChunk,
-} from "@/components/assistant-ui/elements/retrieval-chunks";
+} from "@/components/openagentui/elements/retrieval-chunks";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const CHUNKS: readonly RetrievalChunk[] = [

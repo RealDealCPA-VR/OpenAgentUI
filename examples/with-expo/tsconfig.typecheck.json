@@ -14,8 +14,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@/components/assistant-ui/*": [
-        "../../packages/ui/src/components/react-native/assistant-ui/*"
+      "@/components/openagentui/*": [
+        "../../packages/ui/src/components/react-native/openagentui/*"
       ],
       "@/components/ui/*": [
         "../../packages/ui/src/components/react-native/ui/*"

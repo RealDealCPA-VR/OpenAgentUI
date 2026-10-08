@@ -6,7 +6,7 @@ import {
   MessagePartComponent as MessagePartComponentBase,
   MessagePrimitivePartByIndex as MessagePrimitivePartByIndexBase,
   messagePartsDefaultComponents,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { MessagePartPrimitiveText } from "../messagePart/MessagePartText";
 import { MessagePartPrimitiveImage } from "../messagePart/MessagePartImage";
 import { MessagePartPrimitiveInProgress } from "../messagePart/MessagePartInProgress";

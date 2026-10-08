@@ -13,9 +13,9 @@ Sources has two lanes. The runtime binding renders each message source as a comp
 
 Register `Sources` as the `Source` renderer on `MessagePrimitive.Parts`. Every source part in the message routes through it automatically.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { Sources } from "@/components/assistant-ui/elements/sources.aui";
-import { MessagePrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { Sources } from "@/components/openagentui/elements/sources.aui";
+import { MessagePrimitive } from "@openagentui/react";
 
 function AssistantMessage() {
   return (
@@ -38,7 +38,7 @@ A safe `url` part becomes a link, a `document` part becomes a badge, and any oth
 "use client";
 
 import { useState } from "react";
-import { Sources, type Source } from "@/components/assistant-ui/elements/sources";
+import { Sources, type Source } from "@/components/openagentui/elements/sources";
 
 const sources: Source[] = [
   {
@@ -117,8 +117,8 @@ The trigger begins with up to three overlapping domain initials, then its Source
 Compose the exported sub-parts when the default favicon service is not appropriate. Keep the safe URL check before providing an `href`:
 
 ```tsx
-import { safeHref } from "@/components/assistant-ui/utils/href";
-import { Source, SourceIcon, SourceTitle } from "@/components/assistant-ui/elements/sources.aui";
+import { safeHref } from "@/components/openagentui/utils/href";
+import { Source, SourceIcon, SourceTitle } from "@/components/openagentui/elements/sources.aui";
 
 function CustomSource({ url, title }: { url: string; title: string }) {
   const href = safeHref(url);
@@ -148,9 +148,9 @@ Linked cards carry the excerpt a reader needs to judge a citation before opening
 const sources = [
   {
     title: "Runtime drafts API",
-    url: "https://www.assistant-ui.com/docs/runtimes",
+    url: "https://openagentui.dev/docs/runtimes",
     snippet: "Keep a draft while the thread runtime streams and reconnects.",
-    author: "assistant-ui",
+    author: "openagentui",
     publishedAt: "2025-09-16",
   },
 ];

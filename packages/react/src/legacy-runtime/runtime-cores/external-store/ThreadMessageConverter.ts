@@ -1,2 +1,2 @@
-export { ThreadMessageConverter } from "@assistant-ui/core/internal";
-export type { ConverterCallback } from "@assistant-ui/core/internal";
+export { ThreadMessageConverter } from "@openagentui/core/internal";
+export type { ConverterCallback } from "@openagentui/core/internal";

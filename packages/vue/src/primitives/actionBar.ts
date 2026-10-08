@@ -6,12 +6,12 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import { flushTapSync } from "@assistant-ui/tap";
+import { flushTapSync } from "@openagentui/tap";
 import {
   actionBarCopyDisabled,
   actionBarEditDisabled,
   actionBarReloadDisabled,
-} from "@assistant-ui/core/store/internal";
+} from "@openagentui/core/store/internal";
 import { isAttrDisabled } from "./attrDisabled";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { AssistantState } from "@assistant-ui/store";
+import type { AssistantState } from "@openagentui/store";
 import type { MessageState } from "../../store/scopes/message";
 import { groupPartByType } from "./groupParts";
 import {

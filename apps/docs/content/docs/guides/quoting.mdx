@@ -1,6 +1,6 @@
 ---
 title: Quote Selected Text
-description: Let users select text from AI messages and quote it back into the composer. Full quoting flow with backend handling and programmatic API in assistant-ui.
+description: Let users select text from AI messages and quote it back into the composer. Full quoting flow with backend handling and programmatic API in openagentui.
 platforms: ["react"]
 ---
 
@@ -24,7 +24,7 @@ When a user selects text in an assistant message, a floating toolbar appears wit
 
 When the message is sent, the composer runtime automatically writes the quote to `message.metadata.custom.quote` and clears it from the composer.
 
-On the backend, the route handler extracts the quote from metadata and surfaces it to the LLM. For the AI SDK, `@assistant-ui/ai-sdk` exports the `injectQuoteContext` helper, which does this. Without this step, the quote appears in the UI but is not sent to the model as context. See [Backend Handling](#backend-handling) for more info and alternatives.
+On the backend, the route handler extracts the quote from metadata and surfaces it to the LLM. For the AI SDK, `@openagentui/ai-sdk` exports the `injectQuoteContext` helper, which does this. Without this step, the quote appears in the UI but is not sent to the model as context. See [Backend Handling](#backend-handling) for more info and alternatives.
 
 ### Data Shape
 
@@ -111,7 +111,7 @@ function injectQuoteForOpenAI(messages) {
 Use `useMessageQuote` to access quote data in custom components:
 
 ```tsx
-import { useMessageQuote } from "@assistant-ui/react";
+import { useMessageQuote } from "@openagentui/react";
 
 function CustomQuoteDisplay() {
   const quote = useMessageQuote();
@@ -127,10 +127,10 @@ function CustomQuoteDisplay() {
 
 ## Programmatic API
 
-Set or clear quotes via `useAui` from `@assistant-ui/react`. Call `aui.thread.composer().setQuote()` when your component is rendered outside of a specific thread context, or `aui.composer.setQuote()` when it is rendered inside a thread:
+Set or clear quotes via `useAui` from `@openagentui/react`. Call `aui.thread.composer().setQuote()` when your component is rendered outside of a specific thread context, or `aui.composer.setQuote()` when it is rendered inside a thread:
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();

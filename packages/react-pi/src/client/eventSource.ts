@@ -7,7 +7,7 @@
  *
  * Two pieces:
  * - `createSseDecoder()` — an incremental SSE frame parser wrapping
- *   assistant-stream's `SSEEventDecoder`. Feed it text chunks (which may split
+ *   openagentui-stream's `SSEEventDecoder`. Feed it text chunks (which may split
  *   a frame mid-line); it returns the complete frames so far.
  * - `openPiEventStream()` — a `fetch` + `ReadableStream` loop that feeds the
  *   decoder and emits parsed `PiAnyClientEvent`s. Snapshot-first reconnect: the
@@ -17,8 +17,8 @@
  *
  * Browser-safe: imports no `@earendil-works/pi-*`.
  */
-import { SSEEventDecoder } from "assistant-stream/utils";
-import { invokeUserCallback, isRecord } from "@assistant-ui/core/internal";
+import { SSEEventDecoder } from "openagentui-stream/utils";
+import { invokeUserCallback, isRecord } from "@openagentui/core/internal";
 import { isKnownPiClientEventType } from "../eventTypes";
 import type { PiAnyClientEvent } from "../types";
 import {

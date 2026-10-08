@@ -29,8 +29,8 @@ test("installs each measured template's dependency graph and aliased UI sources"
     "install",
     "--frozen-lockfile",
     "--filter=.",
-    "--filter=@assistant-ui/ui...",
-    "--filter=@assistant-ui/react-devtools...",
+    "--filter=@openagentui/ui...",
+    "--filter=@openagentui/react-devtools...",
     ...templates
       .split(/\s+/)
       .map((name) => `--filter={./templates/${name}}...`),

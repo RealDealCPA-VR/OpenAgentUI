@@ -5,7 +5,7 @@ export const OG_SIZE = {
   height: 630,
 };
 
-/** The assistant-ui chat bubble logo as JSX for OG images */
+/** The openagentui chat bubble logo as JSX for OG images */
 export function OgLogo({
   size = 64,
   color = "white",
@@ -81,7 +81,7 @@ export function OgHeader({
             letterSpacing: "-0.01em",
           }}
         >
-          assistant-ui
+          openagentui
         </span>
       </div>
       <span
@@ -92,7 +92,7 @@ export function OgHeader({
           fontFamily: fontMono,
         }}
       >
-        assistant-ui.com
+        openagentui.dev
       </span>
     </div>
   );
@@ -108,7 +108,7 @@ export function OgTemplate({
 }: {
   children: ReactNode;
   backgroundDecoration?: ReactNode;
-  /** Use smaller, more muted assistant-ui branding for sub-projects */
+  /** Use smaller, more muted openagentui branding for sub-projects */
   subtleBranding?: boolean;
 }) {
   return (

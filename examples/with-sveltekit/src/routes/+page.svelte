@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { AuiConfig, provideAui } from "@assistant-ui/svelte";
-  import { Suggestions } from "@assistant-ui/core/store";
-  import { AISDKThreads } from "@assistant-ui/ai-sdk";
+  import { AuiConfig, provideAui } from "@openagentui/svelte";
+  import { Suggestions } from "@openagentui/core/store";
+  import { AISDKThreads } from "@openagentui/ai-sdk";
   import App from "$lib/App.svelte";
 
   provideAui(

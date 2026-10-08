@@ -4,7 +4,7 @@ import type { UIMessage } from "ai";
 import {
   AISDKToolkit,
   type AISDKToolkitToolsOptions,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import presentToolkit from "../../present-toolkit";
 
 export const maxDuration = 30;

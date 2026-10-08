@@ -3,7 +3,7 @@
 import { render } from "@testing-library/react";
 import type { FC } from "react";
 import { describe, it, expect } from "vitest";
-import { useAui, AuiProvider } from "@assistant-ui/store";
+import { useAui, AuiProvider } from "@openagentui/store";
 import {
   ExternalThread,
   type ExternalThreadProps,

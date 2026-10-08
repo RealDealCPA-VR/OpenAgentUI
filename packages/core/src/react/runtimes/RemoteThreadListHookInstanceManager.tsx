@@ -10,8 +10,8 @@ import {
   type ComponentType,
   Fragment,
 } from "react";
-import { useResources, useTapHost, withKey } from "@assistant-ui/tap";
-import type { AssistantClient } from "@assistant-ui/store";
+import { useResources, useTapHost, withKey } from "@openagentui/tap";
+import type { AssistantClient } from "@openagentui/store";
 import { ThreadListItemRuntimeProvider } from "../providers/ThreadListItemRuntimeProvider";
 import type {
   ThreadRuntimeCore,
@@ -358,7 +358,7 @@ export class RemoteThreadListHookInstanceManager extends BaseSubscribable {
         this.stopThreadRuntime(threadId);
       } catch (error) {
         console.error(
-          "[assistant-ui] Thread runtime cleanup threw while stopping a thread",
+          "[openagentui] Thread runtime cleanup threw while stopping a thread",
           error,
         );
       }

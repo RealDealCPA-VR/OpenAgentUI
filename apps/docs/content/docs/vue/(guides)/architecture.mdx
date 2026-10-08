@@ -3,9 +3,9 @@ title: Architecture
 description: How AuiProvider, the assistant client, its scopes, and the Vue composables fit together.
 ---
 
-A Vue chat built with assistant-ui has three layers. A runtime holds the messages and talks to your backend. The assistant client exposes the runtime as named scopes with state, methods, and events. The Vue layer, made of `AuiProvider`, the composables, and the primitives, reads those scopes and calls their methods.
+A Vue chat built with openagentui has three layers. A runtime holds the messages and talks to your backend. The assistant client exposes the runtime as named scopes with state, methods, and events. The Vue layer, made of `AuiProvider`, the composables, and the primitives, reads those scopes and calls their methods.
 
-This component, from the `@assistant-ui/vue` README, shows all three:
+This component, from the `@openagentui/vue` README, shows all three:
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
@@ -17,8 +17,8 @@ import {
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
   ThreadPrimitiveViewport,
-} from "@assistant-ui/vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
+} from "@openagentui/vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
 
 const config = AuiConfig({ threads: AISDKChat() });
 </script>
@@ -42,7 +42,7 @@ const config = AuiConfig({ threads: AISDKChat() });
 
 A runtime fills the `threads` key of `AuiConfig`. `AISDKChat` and `AISDKThreads` run AI SDK chats against a streaming route, and `RuntimeAdapter` connects a runtime you build over your own store. The runtime decides where messages live, how a run starts and stops, and which actions are available. [Runtimes](/docs/vue/runtimes) compares them.
 
-The runtimes are the same code that runs `@assistant-ui/react`. Both bindings sit on `@assistant-ui/core`, `@assistant-ui/store`, and `@assistant-ui/tap`, where runtimes are written as tap resources. The AI SDK runtime calls React hooks from `@ai-sdk/react` inside such a resource, and tap runs them without rendering anything. That is why the AI SDK path needs `react` installed in a Vue app.
+The runtimes are the same code that runs `@openagentui/react`. Both bindings sit on `@openagentui/core`, `@openagentui/store`, and `@openagentui/tap`, where runtimes are written as tap resources. The AI SDK runtime calls React hooks from `@ai-sdk/react` inside such a resource, and tap runs them without rendering anything. That is why the AI SDK path needs `react` installed in a Vue app.
 
 ## The assistant client
 

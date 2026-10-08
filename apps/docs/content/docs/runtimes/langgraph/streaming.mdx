@@ -13,7 +13,7 @@ LangGraph emits several kinds of stream events: top-level message chunks, subgra
 import {
   LangGraphMessageAccumulator,
   appendLangChainChunk,
-} from "@assistant-ui/react-langgraph";
+} from "@openagentui/react-langgraph";
 
 const accumulator = new LangGraphMessageAccumulator({
   appendMessage: appendLangChainChunk,
@@ -26,10 +26,10 @@ if (event.event === "messages/partial") {
 
 ## Message conversion
 
-`convertLangChainMessages` transforms LangChain messages to assistant-ui's format. Use it when bridging into a custom adapter or rendering messages outside the runtime.
+`convertLangChainMessages` transforms LangChain messages to openagentui's format. Use it when bridging into a custom adapter or rendering messages outside the runtime.
 
 ```ts
-import { convertLangChainMessages } from "@assistant-ui/react-langgraph";
+import { convertLangChainMessages } from "@openagentui/react-langgraph";
 
 const threadMessage = convertLangChainMessages(langChainMessage);
 ```
@@ -92,7 +92,7 @@ const runtime = useLangGraphRuntime({
 When using `streamMode: "messages-tuple"`, each chunk includes metadata from the LangGraph server. Access accumulated metadata per message with `useLangGraphMessageMetadata`:
 
 ```ts
-import { useLangGraphMessageMetadata } from "@assistant-ui/react-langgraph";
+import { useLangGraphMessageMetadata } from "@openagentui/react-langgraph";
 
 function MyComponent() {
   const metadata = useLangGraphMessageMetadata();
@@ -102,7 +102,7 @@ function MyComponent() {
 
 ## Generative UI
 
-LangGraph can emit structured UI components alongside assistant messages via `push_ui_message` (Python) or `typedUi().push()` (TypeScript). The assistant-ui adapter translates these into [`DataMessagePart`s](/docs/tools/tool-ui) on the associated assistant message, which you render with the existing `makeAssistantDataUI` API.
+LangGraph can emit structured UI components alongside assistant messages via `push_ui_message` (Python) or `typedUi().push()` (TypeScript). The openagentui adapter translates these into [`DataMessagePart`s](/docs/tools/tool-ui) on the associated assistant message, which you render with the existing `makeAssistantDataUI` API.
 
 See [Generative UI](/docs/runtimes/langgraph/generative-ui) for full setup: enabling the `custom` stream channel, emitting UI messages, registering renderers, dynamic loading, and persisting UI state across thread switches.
 

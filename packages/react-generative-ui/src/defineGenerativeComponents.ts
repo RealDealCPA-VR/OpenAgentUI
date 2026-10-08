@@ -30,7 +30,7 @@ export function defineGenerativeComponents(
   _library: GenerativeUILibrary,
 ): GenerativeUILibrary {
   throw new Error(
-    "[assistant-ui] defineGenerativeComponents() has no runtime implementation " +
+    "[openagentui] defineGenerativeComponents() has no runtime implementation " +
       "— it is stripped at build time by the use-generative compiler. Reaching " +
       "it means this module was not compiled (e.g. used outside a " +
       '"use generative" file). Add the directive, or do not use it here.',

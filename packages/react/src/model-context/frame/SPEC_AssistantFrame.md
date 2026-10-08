@@ -65,7 +65,7 @@ All messages are wrapped with a channel identifier to avoid conflicts with other
 
 ```typescript
 {
-  channel: "assistant-ui-frame",
+  channel: "openagentui-frame",
   message: FrameMessage
 }
 ```

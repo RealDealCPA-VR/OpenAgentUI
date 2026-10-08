@@ -7,11 +7,11 @@ import {
   defineToolkit,
   Tools,
   useLocalRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 // This type has a separate import because the preview drops a complete unused block.
-import type { AssistantRuntime } from "@assistant-ui/react";
-import type { ToolCallMessagePartProps } from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import type { AssistantRuntime } from "@openagentui/react";
+import type { ToolCallMessagePartProps } from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 

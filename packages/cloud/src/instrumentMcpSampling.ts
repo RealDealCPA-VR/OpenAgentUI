@@ -46,7 +46,7 @@ export type McpSamplingResponse = {
 const reportSamplingError = (error: unknown): void => {
   try {
     console.error(
-      "[assistant-cloud] onSamplingCall callback threw an error",
+      "[openagentui-cloud] onSamplingCall callback threw an error",
       error,
     );
   } catch {}

@@ -21,7 +21,7 @@ const chatModel: ChatModelAdapter = {
 const initialMessages: readonly ThreadMessageLike[] = [
   {
     role: "user",
-    content: "What is assistant-ui?",
+    content: "What is openagentui?",
     createdAt: new Date("2026-01-01T00:00:00Z"),
   },
   {

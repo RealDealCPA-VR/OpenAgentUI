@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { resource, withKey } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
-import { useClientLookup } from "@assistant-ui/store/client";
-import { shallowEqual } from "@assistant-ui/store/internal";
+import { resource, withKey } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
+import { useClientLookup } from "@openagentui/store/client";
+import { shallowEqual } from "@openagentui/store/internal";
 import type { SuggestionsState } from "../scopes/suggestions";
 import type { SuggestionState } from "../scopes/suggestion";
 import type { ThreadSuggestion } from "../../runtime/interfaces/thread-runtime-core";

@@ -3,7 +3,7 @@ import {
   defineToolkit,
   DiffView,
   type ToolCallMessagePartComponent,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 
 const ApplyPatchToolUI: ToolCallMessagePartComponent<
   { path: string; patch: string },

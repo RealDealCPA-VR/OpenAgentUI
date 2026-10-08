@@ -1,11 +1,11 @@
 ---
 title: AI SDK Chat Persistence
-description: Vercel AI SDK chat with thread persistence. Open-source React example combining the AI SDK and assistant-ui for streaming, thread management, and message history.
+description: Vercel AI SDK chat with thread persistence. Open-source React example combining the AI SDK and openagentui for streaming, thread management, and message history.
 ---
 
 ## Overview
 
-This example integrates assistant-ui with the Vercel AI SDK. It is a chat application with thread management, message persistence, and a collapsible sidebar for conversation history.
+This example integrates openagentui with the Vercel AI SDK. It is a chat application with thread management, message persistence, and a collapsible sidebar for conversation history.
 
 ## Features
 
@@ -19,7 +19,7 @@ This example integrates assistant-ui with the Vercel AI SDK. It is a chat applic
 ## Quick Start
 
 ```bash
-npm install @assistant-ui/react @assistant-ui/ai-sdk ai@^7 @ai-sdk/react@^4 @ai-sdk/openai
+npm install @openagentui/react @openagentui/ai-sdk ai@^7 @ai-sdk/react@^4 @ai-sdk/openai
 ```
 
 ## Code
@@ -29,9 +29,9 @@ npm install @assistant-ui/react @assistant-ui/ai-sdk ai@^7 @ai-sdk/react@^4 @ai-
 ```tsx
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 export default function Chat() {
   const runtime = useChatRuntime();
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
 
 | Hook/Function | Purpose |
 |---------------|---------|
-| `useChatRuntime` | Connects AI SDK to assistant-ui |
+| `useChatRuntime` | Connects AI SDK to openagentui |
 | `streamText` | Server-side streaming response generation |
 | `toUIMessageStreamResponse` | Converts stream to Response object |
 
@@ -107,4 +107,4 @@ const savedMessages = await db.messages.findMany({ threadId });
 
 ## Source
 
-<SourceLink href="https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/examples/base.tsx" />
+<SourceLink href="https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/examples/base.tsx" />

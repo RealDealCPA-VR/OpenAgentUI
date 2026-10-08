@@ -1,5 +1,5 @@
 {
-  "name": "safe-content-frame",
+  "name": "@openagentui/safe-content-frame",
   "version": "0.0.33",
   "description": "Secure iframe rendering for untrusted content using SafeContentFrame",
   "keywords": [
@@ -10,7 +10,7 @@
     "content",
     "safe"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -40,7 +40,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "jsdom": "^30.0.1",
     "vite": "^8.3.1",
     "vitest": "^5.0.3"
@@ -49,13 +49,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/safe-content-frame",
+  "homepage": "https://openagentui.dev/safe-content-frame",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/safe-content-frame"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

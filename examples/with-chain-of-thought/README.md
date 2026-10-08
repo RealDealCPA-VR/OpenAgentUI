@@ -7,7 +7,7 @@ A real chat flow that renders reasoning, tool calls, and source citations as gro
 ### Using the CLI
 
 ```bash
-npx assistant-ui@latest create my-app --example with-chain-of-thought
+npx openagentui@latest create my-app --example with-chain-of-thought
 cd my-app
 ```
 
@@ -58,11 +58,11 @@ The thread groups three part types under one collapsible "Thinking" section, the
 
 Each part is mapped to a nested group key path. Adjacent parts that share a path are coalesced and rendered through the matching `group-*` case in the render function. `null` leaves a part ungrouped.
 
-This is the canonical pattern. For non-adjacent clustering (parts that share an identifier but appear at different positions in the message), see [`/docs/ui/part-grouping`](https://www.assistant-ui.com/docs/ui/part-grouping).
+This is the canonical pattern. For non-adjacent clustering (parts that share an identifier but appear at different positions in the message), see [`/docs/ui/part-grouping`](https://openagentui.dev/docs/ui/part-grouping).
 
 ## How sources are emitted
 
-The route emits structured `source-url` chunks; `@assistant-ui/ai-sdk` converts them to `source` message parts that the `Sources` component renders as badges. They are not URLs scraped from assistant text.
+The route emits structured `source-url` chunks; `@openagentui/ai-sdk` converts them to `source` message parts that the `Sources` component renders as badges. They are not URLs scraped from assistant text.
 
 ```ts
 writer.write({
@@ -81,6 +81,6 @@ Chain-of-thought, tool calls, and citation sources are the parts of an assistant
 
 ## Related documentation
 
-- [Message Part Grouping](https://www.assistant-ui.com/docs/ui/part-grouping)
-- [Sources component](https://www.assistant-ui.com/docs/ui/sources)
-- [AI SDK v6 runtime](https://www.assistant-ui.com/docs/runtimes/ai-sdk/v6)
+- [Message Part Grouping](https://openagentui.dev/docs/ui/part-grouping)
+- [Sources component](https://openagentui.dev/docs/ui/sources)
+- [AI SDK v6 runtime](https://openagentui.dev/docs/runtimes/ai-sdk/v6)

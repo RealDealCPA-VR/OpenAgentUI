@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 import { Text } from "ink";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export type MessagePartPrimitiveReasoningProps = Omit<
   ComponentProps<typeof Text>,

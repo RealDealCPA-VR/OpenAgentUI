@@ -69,18 +69,18 @@ describe("repoSourceRoot", () => {
 describe("createRepoSourceReader", () => {
   it("reads one named file as utf-8 without touching the rest of the tree", async () => {
     const root = await createSourceTree({
-      "AGENTS.md": "🙂 assistant-ui\n",
+      "AGENTS.md": "🙂 openagentui\n",
       "packages/core/src/index.ts": "export const a = 1;\n",
     });
 
     await expect(
       createRepoSourceReader(root).readFile("AGENTS.md"),
-    ).resolves.toBe("🙂 assistant-ui\n");
+    ).resolves.toBe("🙂 openagentui\n");
     expect(reads.paths).toEqual([path.join(root, "AGENTS.md")]);
   });
 
   it("resolves a missing file to undefined so callers keep their own error", async () => {
-    const root = await createSourceTree({ "AGENTS.md": "# assistant-ui\n" });
+    const root = await createSourceTree({ "AGENTS.md": "# openagentui\n" });
 
     await expect(
       createRepoSourceReader(root).readFile("packages/core/package.json"),
@@ -88,7 +88,7 @@ describe("createRepoSourceReader", () => {
   });
 
   it("rejects a path that climbs out of the tree", async () => {
-    const root = await createSourceTree({ "AGENTS.md": "# assistant-ui\n" });
+    const root = await createSourceTree({ "AGENTS.md": "# openagentui\n" });
 
     await expect(
       createRepoSourceReader(root).readFile("../../etc/passwd"),
@@ -97,7 +97,7 @@ describe("createRepoSourceReader", () => {
 
   it("keys a prefix read by its path relative to that prefix", async () => {
     const root = await createSourceTree({
-      "AGENTS.md": "# assistant-ui\n",
+      "AGENTS.md": "# openagentui\n",
       "packages/core/src/index.ts": "export const a = 1;\n",
       "packages/core/package.json": "{}\n",
       "packages/core-other/secret.ts": "not part of the package\n",
@@ -112,7 +112,7 @@ describe("createRepoSourceReader", () => {
   });
 
   it("resolves a missing prefix to an empty map", async () => {
-    const root = await createSourceTree({ "AGENTS.md": "# assistant-ui\n" });
+    const root = await createSourceTree({ "AGENTS.md": "# openagentui\n" });
 
     await expect(
       createRepoSourceReader(root).readUnder("packages/absent"),
@@ -159,7 +159,7 @@ describe("createRepoSourceReader", () => {
 
 describe("snapshotSourceReader", () => {
   const snapshot = {
-    "AGENTS.md": "# assistant-ui\n",
+    "AGENTS.md": "# openagentui\n",
     "packages/core/src/index.ts": "export const a = 1;\n",
     "packages/core-other/secret.ts": "not part of the package\n",
   };
@@ -167,15 +167,13 @@ describe("snapshotSourceReader", () => {
   it("serves named entries and prefix reads from a literal map", async () => {
     const reader = snapshotSourceReader(snapshot);
 
-    await expect(reader.readFile("AGENTS.md")).resolves.toBe(
-      "# assistant-ui\n",
-    );
+    await expect(reader.readFile("AGENTS.md")).resolves.toBe("# openagentui\n");
     await expect(
       reader.readFile("packages/absent.ts"),
     ).resolves.toBeUndefined();
     await expect(
       reader.readFiles(["AGENTS.md", "packages/absent.ts"]),
-    ).resolves.toEqual(["# assistant-ui\n", undefined]);
+    ).resolves.toEqual(["# openagentui\n", undefined]);
     await expect(reader.readUnder("packages/core")).resolves.toEqual({
       "src/index.ts": "export const a = 1;\n",
     });

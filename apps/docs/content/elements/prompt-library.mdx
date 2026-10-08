@@ -3,13 +3,13 @@ title: "Prompt library"
 description: "Prompts you saved, searchable, with their variables shown before you insert one."
 ---
 
-A searchable list of saved prompts that previews the highlighted one, body and variable placeholders included, before you commit to it. With a runtime only the final insert reaches into assistant-ui state; standalone you own selection and insertion too.
+A searchable list of saved prompts that previews the highlighted one, body and variable placeholders included, before you commit to it. With a runtime only the final insert reaches into openagentui state; standalone you own selection and insertion too.
 
 ## Getting started
 
 <RuntimeMode>
 
-assistant-ui does not store saved prompts, so there is no library to read from the runtime. The catalog, its storage, and its search are yours, as in the standalone lane. The runtime is involved only when a prompt is inserted.
+openagentui does not store saved prompts, so there is no library to read from the runtime. The catalog, its storage, and its search are yours, as in the standalone lane. The runtime is involved only when a prompt is inserted.
 
 <Steps>
   <Step>
@@ -18,15 +18,15 @@ assistant-ui does not store saved prompts, so there is no library to read from t
 
 With `onSelect`, `onInsert` fires on Enter or a double click. Without `onSelect`, each row is tabbable and a single pointer or keyboard activation inserts it. Write the chosen prompt's body straight into the live composer; the element does not touch variable placeholders like `{topic}`, so substituting them, if you want that, happens before this call.
 
-```tsx title="components/assistant-ui/elements/prompt-library-panel.tsx"
+```tsx title="components/openagentui/elements/prompt-library-panel.tsx"
 "use client";
 
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import { useState } from "react";
 import {
   PromptLibrary,
   type SavedPrompt,
-} from "@/components/assistant-ui/elements/prompt-library";
+} from "@/components/openagentui/elements/prompt-library";
 
 export function PromptLibraryPanel({
   prompts,
@@ -71,7 +71,7 @@ Standalone, `PromptLibrary` filters, previews, and handles its own arrow-key and
 "use client";
 
 import { useState } from "react";
-import { PromptLibrary } from "@/components/assistant-ui/elements/prompt-library";
+import { PromptLibrary } from "@/components/openagentui/elements/prompt-library";
 
 const prompts = [
   {

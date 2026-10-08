@@ -5,7 +5,7 @@ import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 import {
   VoiceOrb,
   type VoiceOrbState,
-} from "@/components/assistant-ui/elements/voice";
+} from "@/components/openagentui/elements/voice";
 
 const CYCLE_STATES: VoiceOrbState[] = [
   "idle",

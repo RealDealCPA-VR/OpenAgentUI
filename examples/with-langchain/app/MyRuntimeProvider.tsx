@@ -1,7 +1,7 @@
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useStreamRuntime } from "@assistant-ui/react-langchain";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useStreamRuntime } from "@openagentui/react-langchain";
 
 export function MyRuntimeProvider({
   children,

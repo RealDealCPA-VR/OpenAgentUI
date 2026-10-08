@@ -20,7 +20,7 @@ const source = path.resolve(
 const vendor = path.join(root, "templates/cloud-harness/vendor");
 const packages = [
   "packages/harness-sdk/core",
-  "packages/harness-sdk/assistant-ui",
+  "packages/harness-sdk/openagentui",
   "packages/statewire/core",
 ];
 const revision = execFileSync("git", ["rev-parse", "HEAD"], {
@@ -38,7 +38,7 @@ if (changes !== "")
   );
 const builder = path.join(
   source,
-  "node_modules/@assistant-ui/x-buildutils/bin/aui-build.js",
+  "node_modules/@openagentui/x-buildutils/bin/aui-build.js",
 );
 for (const directory of packages)
   execFileSync(process.execPath, [builder], {
@@ -72,9 +72,9 @@ try {
     published.peerDependencies ??= {};
     const normalizations = [];
     for (const name of [
-      "@assistant-ui/core",
-      "@assistant-ui/store",
-      "@assistant-ui/tap",
+      "@openagentui/core",
+      "@openagentui/store",
+      "@openagentui/tap",
     ])
       if (published.dependencies?.[name]) {
         const specifier = published.dependencies[name];
@@ -148,7 +148,7 @@ try {
   );
   writeFileSync(
     path.join(vendor, "README.md"),
-    `# Harness runtime packages\n\nThese MIT-licensed packages are built from [harness-sdk revision ${revision}](https://github.com/assistant-ui/harness-sdk/tree/${revision}). They compose the existing hosted harness runtime and assistant-ui adapter.\n\nPackage names, source directories, versions, and archive SHA-256 hashes are recorded in [provenance.json](provenance.json). Each archive includes its license.\n\nFrom an assistant-ui source checkout, reproduce them with:\n\n\`\`\`sh\nnode scripts/package-cloud-harness-template.mjs /path/to/harness-sdk\n\`\`\`\n\nThe harness-sdk checkout must have its dependencies installed and the package source directories clean. The script builds the packages with their existing \`aui-build\` tool and packs them without publishing.\n`,
+    `# Harness runtime packages\n\nThese MIT-licensed packages are built from [harness-sdk revision ${revision}](https://github.com/assistant-ui/harness-sdk/tree/${revision}). They compose the existing hosted harness runtime and openagentui adapter.\n\nPackage names, source directories, versions, and archive SHA-256 hashes are recorded in [provenance.json](provenance.json). Each archive includes its license.\n\nFrom an openagentui source checkout, reproduce them with:\n\n\`\`\`sh\nnode scripts/package-cloud-harness-template.mjs /path/to/harness-sdk\n\`\`\`\n\nThe harness-sdk checkout must have its dependencies installed and the package source directories clean. The script builds the packages with their existing \`aui-build\` tool and packs them without publishing.\n`,
   );
 } finally {
   rmSync(stage, { recursive: true, force: true });

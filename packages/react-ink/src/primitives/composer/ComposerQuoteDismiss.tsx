@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { Pressable, type PressableProps } from "../internal/Pressable";
 
 export type ComposerQuoteDismissProps = Omit<

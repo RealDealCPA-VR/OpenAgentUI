@@ -1,18 +1,18 @@
 ---
 title: Separate server integration
-description: Run Mastra as a standalone server with assistant-ui as a separate frontend.
+description: Run Mastra as a standalone server with openagentui as a separate frontend.
 ---
 
 import { MastraIcon } from "@/components/icons/mastra";
 import { VercelIcon } from "@/components/icons/vercel";
 
-Run Mastra as its own service and have the assistant-ui frontend hit it over HTTP. The two halves can deploy, scale, and version independently. The tradeoff is one extra hop and CORS to configure.
+Run Mastra as its own service and have the openagentui frontend hit it over HTTP. The two halves can deploy, scale, and version independently. The tradeoff is one extra hop and CORS to configure.
 
 For the simpler in-process variant, see [full-stack](/docs/integrations/frameworks/mastra/full-stack) instead.
 
 ## Setup
 
-The setup has two halves. Steps 1 to 4 happen in the **Mastra server** project; steps 5 to 7 happen in a **separate assistant-ui frontend** project. You'll have two terminals open by the end: one for each dev server.
+The setup has two halves. Steps 1 to 4 happen in the **Mastra server** project; steps 5 to 7 happen in a **separate openagentui frontend** project. You'll have two terminals open by the end: one for each dev server.
 
 <Steps>
 
@@ -103,16 +103,16 @@ The server starts on `http://localhost:4111` by default. Leave it running for th
 
 <Step>
 
-### Initialize the assistant-ui frontend
+### Initialize the openagentui frontend
 
 In a **different directory** from the Mastra server, scaffold the frontend:
 
 ```sh title="New project"
-npx assistant-ui@latest create
+npx openagentui@latest create
 ```
 
 ```sh title="Existing project"
-npx assistant-ui@latest init
+npx openagentui@latest init
 ```
 
 This creates a default chat page and a local API route at `app/api/chat/route.ts`. You won't use the local route, since the agent runs on the separate Mastra server; delete it once the next step is wired.
@@ -128,9 +128,9 @@ Open the file containing `useChatRuntime` (typically `app/assistant.tsx`) and pa
 ```tsx title="app/assistant.tsx" {8}
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { AssistantChatTransport, useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { AssistantChatTransport, useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export const Assistant = () => {
   const runtime = useChatRuntime({

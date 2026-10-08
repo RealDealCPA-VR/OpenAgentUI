@@ -25,8 +25,8 @@ describe("transform", () => {
       const file = join(directory, "app.tsx");
       const source =
         kind === "parse"
-          ? 'import "@assistant-ui/react"; const broken = ;'
-          : 'import "@assistant-ui/react"; const value = 1;';
+          ? 'import "@openagentui/react"; const broken = ;'
+          : 'import "@openagentui/react"; const value = 1;';
       writeFileSync(file, source);
       const codemod = join(directory, "transform.cjs");
       writeFileSync(

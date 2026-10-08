@@ -1,10 +1,10 @@
 import { useEffect, type ReactNode } from "react";
 import { render } from "@testing-library/react";
 import { expect, vi } from "vitest";
-import { AuiConfig, AuiProvider, useAui } from "@assistant-ui/store";
-import { ModelContext } from "@assistant-ui/core/store";
-import type { ModelContextProvider } from "@assistant-ui/core";
-import type { Tool } from "assistant-stream";
+import { AuiConfig, AuiProvider, useAui } from "@openagentui/store";
+import { ModelContext } from "@openagentui/core/store";
+import type { ModelContextProvider } from "@openagentui/core";
+import type { Tool } from "openagentui-stream";
 import type {
   WebMcpHost,
   WebMcpModelContext,

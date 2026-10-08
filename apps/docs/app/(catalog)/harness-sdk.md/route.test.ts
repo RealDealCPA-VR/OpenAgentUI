@@ -12,7 +12,7 @@ describe("harness-sdk setup markdown", () => {
       "x-robots-tag": "noindex, follow",
     });
     const markdown = await response.text();
-    expect(markdown).toContain("assistant-ui-cloud-harness-b9d8b56ad.tgz");
+    expect(markdown).toContain("openagentui-cloud-harness-b9d8b56ad.tgz");
     expect(markdown).toContain("--access-code MULTIPLAYER-2026");
     expect(markdown).toContain("vendor/provenance.json");
     expect(markdown).toMatch(/real device sign-in and production provisioning have passed/i);

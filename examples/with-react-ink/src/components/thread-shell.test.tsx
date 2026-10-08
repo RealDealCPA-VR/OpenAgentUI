@@ -41,8 +41,8 @@ const mocks = vi.hoisted(() => ({
   updateCustom: vi.fn(),
 }));
 
-vi.mock("@assistant-ui/react-ink", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/react-ink")>()),
+vi.mock("@openagentui/react-ink", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/react-ink")>()),
   useAui: () => ({ threads: { ...mocks } }),
   useAuiState: (
     selector: (state: { threads: typeof mocks.state }) => unknown,

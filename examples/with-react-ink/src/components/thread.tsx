@@ -8,8 +8,8 @@ import {
   ErrorPrimitive,
   LoadingPrimitive,
   LiveChecklist,
-} from "@assistant-ui/react-ink";
-import { MarkdownText } from "@assistant-ui/react-ink-markdown";
+} from "@openagentui/react-ink";
+import { MarkdownText } from "@openagentui/react-ink-markdown";
 
 const ThreadWidthContext = createContext(80);
 

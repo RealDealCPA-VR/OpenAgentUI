@@ -1,5 +1,5 @@
 /**
- * RPC-isomorphic, JSON-safe contract between assistant-ui and Pi.
+ * RPC-isomorphic, JSON-safe contract between openagentui and Pi.
  *
  * This module is **browser-safe**: it MUST NOT import `@earendil-works/pi-*`.
  * The Pi message/content/event shapes are mirrored here as plain serializable

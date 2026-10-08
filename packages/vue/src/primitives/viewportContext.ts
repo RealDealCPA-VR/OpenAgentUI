@@ -12,5 +12,5 @@ export type ViewportContext = {
 };
 
 export const viewportInjectionKey: InjectionKey<ViewportContext> = Symbol(
-  "assistant-ui.vue.viewport",
+  "openagentui.vue.viewport",
 );

@@ -5,8 +5,8 @@ import {
   useRef,
   useMemo,
 } from "react";
-import { generateId } from "@assistant-ui/core";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+import { generateId } from "@openagentui/core";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import { LangGraphMessageAccumulator } from "./LangGraphMessageAccumulator";
 import {
   type EventType,
@@ -26,12 +26,12 @@ import {
   type RemoveUIMessage,
   type UIMessage,
 } from "./types";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import {
   abortableIterable,
   invokeUserCallback,
   openAbortableIterable,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { normalizeLangGraphTupleMessage } from "./normalizeLangGraphTupleMessage";
 
 const DEFAULT_UI_STATE_KEY = "ui";

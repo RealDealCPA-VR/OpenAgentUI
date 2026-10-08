@@ -1,4 +1,4 @@
-import { generateId } from "@assistant-ui/core";
+import { generateId } from "@openagentui/core";
 
 /**
  * Both forms are alphanumeric or hyphenated, so neither can contain the

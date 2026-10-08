@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import { useAui, useAuiState } from "@openagentui/store";
 
 type StateUpdater<TState> = TState | ((prev: TState) => TState);
 
@@ -10,7 +10,7 @@ type StateUpdater<TState> = TState | ((prev: TState) => TState);
  *
  * @deprecated Since 2026-06-14 — migrate to the Unstable / Experimental API.
  * Scheduled for removal on/after 2026-09-14. See
- * {@link https://www.assistant-ui.com/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
+ * {@link https://openagentui.dev/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
  */
 export const useInteractableState = <TState>(
   id: string,

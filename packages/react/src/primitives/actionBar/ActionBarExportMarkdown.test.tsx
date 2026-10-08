@@ -3,7 +3,7 @@
  */
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
-import type * as AssistantStore from "@assistant-ui/store";
+import type * as AssistantStore from "@openagentui/store";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ActionBarPrimitiveExportMarkdown } from "./ActionBarExportMarkdown";
 
@@ -13,7 +13,7 @@ const { getCopyText } = vi.hoisted(() => ({
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
+vi.mock("@openagentui/store", async (importOriginal) => {
   const actual = await importOriginal<typeof AssistantStore>();
   return {
     ...actual,
@@ -90,7 +90,7 @@ describe("ActionBarPrimitiveExportMarkdown", () => {
 
     expect(onExport).toHaveBeenCalledWith("# Exported message");
     expect(errorSpy).toHaveBeenCalledWith(
-      "[assistant-ui] markdown export failed:",
+      "[openagentui] markdown export failed:",
       error,
     );
   });

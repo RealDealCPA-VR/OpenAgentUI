@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 
 import { act, render, renderHook, waitFor } from "@testing-library/react";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
-import type { AssistantRuntime } from "@assistant-ui/core";
-import type { AssistantCloud } from "assistant-cloud";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
+import type { AssistantRuntime } from "@openagentui/core";
+import type { AssistantCloud } from "openagentui-cloud";
 import type { ClientSessionState } from "eve/client";
 import type { EveMessageData, UseEveAgentOptions } from "eve/react";
 import { Component, StrictMode, useState, type ReactNode } from "react";
@@ -204,7 +204,7 @@ describe("useEveAgentRuntime with cloud", () => {
     expect(agent.initialOptions.initialSession).toBeUndefined();
     expect(agent.initialOptions.resume).toBeUndefined();
     expect(cloud.registerSdk).toHaveBeenCalledWith({
-      name: "@assistant-ui/eve",
+      name: "@openagentui/eve",
       version: expect.any(String),
     });
 

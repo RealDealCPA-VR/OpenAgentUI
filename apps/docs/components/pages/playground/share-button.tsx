@@ -38,7 +38,7 @@ export function ShareButton({ className }: ShareButtonProps) {
     if (navigator.share && /mobile|android/i.test(navigator.userAgent)) {
       try {
         await navigator.share({
-          title: "assistant-ui Playground",
+          title: "openagentui Playground",
           text: "Check out my chat UI configuration",
           url,
         });

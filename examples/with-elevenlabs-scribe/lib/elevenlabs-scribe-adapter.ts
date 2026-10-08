@@ -1,4 +1,4 @@
-import type { DictationAdapter } from "@assistant-ui/react";
+import type { DictationAdapter } from "@openagentui/react";
 import { Scribe, RealtimeEvents } from "@elevenlabs/client";
 
 /**

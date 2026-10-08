@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TaskCard } from "@/components/assistant-ui/elements/task-card";
+import { TaskCard } from "@/components/openagentui/elements/task-card";
 import {
   formatSeconds,
   useElapsed,

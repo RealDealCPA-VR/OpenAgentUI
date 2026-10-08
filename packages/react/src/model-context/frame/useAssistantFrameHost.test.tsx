@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { renderHook } from "@testing-library/react";
-import { AssistantFrameHost } from "@assistant-ui/core";
+import { AssistantFrameHost } from "@openagentui/core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { useAssistantFrameHost } from "./useAssistantFrameHost";
 
@@ -35,7 +35,7 @@ describe("useAssistantFrameHost", () => {
     expect(() => unmount()).toThrow(disposalError);
     expect(unsubscribe).toHaveBeenCalledOnce();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] AssistantFrameHost unregistration failed.",
+      "[openagentui] AssistantFrameHost unregistration failed.",
       unregistrationError,
     );
   });

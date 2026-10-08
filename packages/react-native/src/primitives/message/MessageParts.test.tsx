@@ -2,12 +2,12 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { Text } from "react-native";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { ThreadMessageLike } from "@assistant-ui/core";
+import type { ThreadMessageLike } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   MessageByIndexProvider,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { MessagePrimitiveParts } from "./MessageParts";
 
 const h = vi.hoisted(() => ({

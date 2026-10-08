@@ -8,8 +8,8 @@ description: Read and optimistically update agent-owned state with useAgUiState 
 ## Basic usage
 
 ```tsx
-import { useAgUiState, useAgUiSetState } from "@assistant-ui/react-ag-ui";
-import { useAuiState } from "@assistant-ui/react";
+import { useAgUiState, useAgUiSetState } from "@openagentui/react-ag-ui";
+import { useAuiState } from "@openagentui/react";
 
 type ResearchState = {
   topic: string;
@@ -33,9 +33,9 @@ Render agent state beside the chat and push an optimistic update from a control 
 ```tsx
 "use client";
 
-import { useAgUiState, useAgUiSetState } from "@assistant-ui/react-ag-ui";
-import { useAuiState } from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { useAgUiState, useAgUiSetState } from "@openagentui/react-ag-ui";
+import { useAuiState } from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 type ResearchState = {
   topic: string;
@@ -102,8 +102,8 @@ This works with any AG-UI agent (Mastra, Pydantic AI, CrewAI, LangGraph via AG-U
 
 Keep the three state layers distinct:
 
-- **Your app state** stays yours (React state, URL, a store). assistant-ui does not own it.
-- **`useAuiState`** reads assistant-ui's client state (messages, composer, thread status).
+- **Your app state** stays yours (React state, URL, a store). openagentui does not own it.
+- **`useAuiState`** reads openagentui's client state (messages, composer, thread status).
 - **`useAgUiState` / `useAgUiSetState`** mirror state the **agent** owns, synced over the AG-UI wire via snapshots and deltas.
 
 Use `useAgUiState` and `useAgUiSetState` for fields your agent maintains as shared state on the protocol. Use `useAuiState` for UI that depends on the chat thread itself. Use your own state for everything else.

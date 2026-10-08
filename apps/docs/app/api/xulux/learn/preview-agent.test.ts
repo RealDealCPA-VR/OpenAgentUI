@@ -1,4 +1,4 @@
-import type { FrontendTools } from "@assistant-ui/ai-sdk";
+import type { FrontendTools } from "@openagentui/ai-sdk";
 import {
   createLearnPreviewTools,
   getLearnPreviewStageId,
@@ -6,7 +6,7 @@ import {
 } from "./preview-agent";
 
 const routeUrl = (stageId: string, sessionId = "preview-session") =>
-  `https://assistant-ui.com/api/xulux/learn/preview/${stageId}/chat?sessionId=${sessionId}`;
+  `https://openagentui.dev/api/xulux/learn/preview/${stageId}/chat?sessionId=${sessionId}`;
 
 const updateNotepadTool: FrontendTools[string] = {
   description: "Update the active notepad.",
@@ -29,7 +29,7 @@ describe("hosted Learn preview agent", () => {
     expect(getLearnPreviewStageId(routeUrl("toString"))).toBeNull();
     expect(
       getLearnPreviewStageId(
-        "https://assistant-ui.com/api/xulux/learn/preview/S7/source",
+        "https://openagentui.dev/api/xulux/learn/preview/S7/source",
       ),
     ).toBeNull();
   });

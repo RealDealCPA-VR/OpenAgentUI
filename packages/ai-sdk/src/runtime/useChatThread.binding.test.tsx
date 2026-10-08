@@ -2,7 +2,7 @@
 
 import { Suspense, version } from "react";
 import { render } from "@testing-library/react";
-import type { AssistantRuntime } from "@assistant-ui/core";
+import type { AssistantRuntime } from "@openagentui/core";
 import type { ChatTransport, UIMessage } from "ai";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AssistantChatTransport } from "../transport/AssistantChatTransport";

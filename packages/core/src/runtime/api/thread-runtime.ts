@@ -44,7 +44,7 @@ import type {
   ChatModelRunOptions,
   ChatModelRunResult,
 } from "../utils/chat-model-adapter";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 
 export type CreateStartRunConfig = {
   parentId: string | null;
@@ -218,7 +218,7 @@ export type ThreadRuntimeState = {
 };
 
 /**
- * @deprecated Use `ThreadRuntimeState`. From `@assistant-ui/react` 0.16, `ThreadState` names the thread state read through `useAuiState`.
+ * @deprecated Use `ThreadRuntimeState`. From `@openagentui/react` 0.16, `ThreadState` names the thread state read through `useAuiState`.
  */
 export type ThreadState = ThreadRuntimeState;
 

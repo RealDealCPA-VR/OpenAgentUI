@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ShimmerLabel } from "@/components/assistant-ui/elements/surfaces";
+import { ShimmerLabel } from "@/components/openagentui/elements/surfaces";
 import { cn } from "@/lib/utils";
 
 /**

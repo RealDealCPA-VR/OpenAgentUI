@@ -4,17 +4,17 @@ import type {
   ChatModelAdapter,
   ChatModelRunOptions,
   ThreadMessage,
-} from "@assistant-ui/core";
-import { invokeUserCallback } from "@assistant-ui/core/internal";
-import type { LocalRuntimeOptions } from "@assistant-ui/core/react";
+} from "@openagentui/core";
+import { invokeUserCallback } from "@openagentui/core/internal";
+import type { LocalRuntimeOptions } from "@openagentui/core/react";
 import {
   AssistantMessageAccumulator,
   DataStreamDecoder,
   toToolsJSONSchema,
   UIMessageStreamDecoder,
   unstable_toolResultStream,
-} from "assistant-stream";
-import { asAsyncIterableStream } from "assistant-stream/utils";
+} from "openagentui-stream";
+import { asAsyncIterableStream } from "openagentui-stream/utils";
 import type { UseDataStreamRuntimeOptions } from "./useDataStreamRuntime";
 
 type DataStreamRuntimeRequestOptions = {
@@ -178,7 +178,7 @@ export class DataStreamRuntimeAdapter implements ChatModelAdapter {
       ) {
         didWarnProtocolFallback = true;
         console.warn(
-          '@assistant-ui/react-data-stream could not detect a stream protocol header; falling back to "ui-message-stream". Pass protocol explicitly or expose x-vercel-ai-data-stream / x-vercel-ai-ui-message-stream from the response.',
+          '@openagentui/react-data-stream could not detect a stream protocol header; falling back to "ui-message-stream". Pass protocol explicitly or expose x-vercel-ai-data-stream / x-vercel-ai-ui-message-stream from the response.',
         );
       }
       const decoder =

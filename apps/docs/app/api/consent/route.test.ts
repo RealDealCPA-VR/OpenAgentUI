@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 import { GET } from "./route";
 
 const request = (country?: string) =>
-  new NextRequest("https://www.assistant-ui.com/api/consent", {
+  new NextRequest("https://openagentui.dev/api/consent", {
     headers: country ? { "x-vercel-ip-country": country } : {},
   });
 

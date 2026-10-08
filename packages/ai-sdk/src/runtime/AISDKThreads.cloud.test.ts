@@ -2,17 +2,17 @@
 
 import { getEventListeners } from "node:events";
 import { describe, expect, it, vi } from "vitest";
-import { flushTapSync, resource, useResource } from "@assistant-ui/tap";
+import { flushTapSync, resource, useResource } from "@openagentui/tap";
 import {
   attachTransformScopes,
   AuiConfig,
   createAssistantClient,
-} from "@assistant-ui/store/client";
-import { useAssistantClientDestroySignal } from "@assistant-ui/store/internal";
-import { inMemoryThreadListTransformScopes } from "@assistant-ui/core/store";
-import type { AssistantCloud } from "assistant-cloud";
-import type { RemoteThreadListAdapter } from "@assistant-ui/core";
-import type { ThreadHistoryAdapter } from "@assistant-ui/core";
+} from "@openagentui/store/client";
+import { useAssistantClientDestroySignal } from "@openagentui/store/internal";
+import { inMemoryThreadListTransformScopes } from "@openagentui/core/store";
+import type { AssistantCloud } from "openagentui-cloud";
+import type { RemoteThreadListAdapter } from "@openagentui/core";
+import type { ThreadHistoryAdapter } from "@openagentui/core";
 
 const load = vi.hoisted(() => vi.fn(async () => ({ messages: [] })));
 const append = vi.hoisted(() => vi.fn(async () => {}));
@@ -67,8 +67,8 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/core/react")>()),
+vi.mock("@openagentui/core/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/core/react")>()),
   useCloudThreadListAdapter: mocks.useCloudThreadListAdapter,
 }));
 

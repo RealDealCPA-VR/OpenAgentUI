@@ -3,7 +3,7 @@
 import {
   ConnectionState,
   type ConnectionPhase,
-} from "@/components/assistant-ui/elements/connection-state";
+} from "@/components/openagentui/elements/connection-state";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const PHASES = [1600, 2400, 0] as const;

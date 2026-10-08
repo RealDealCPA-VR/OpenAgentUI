@@ -38,8 +38,8 @@ export const DevToolsOverlay = ({
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        aria-label="Open assistant-ui DevTools"
-        title="Open assistant-ui DevTools"
+        aria-label="Open openagentui DevTools"
+        title="Open openagentui DevTools"
         className="bg-foreground text-background fixed end-5 bottom-5 z-[2147483646] flex size-9 [animation:aui-dt-launcher-in_200ms_cubic-bezier(0.175,0.885,0.32,1.1)] items-center justify-center rounded-full shadow-[var(--shadow-launcher)] backdrop-blur-2xl transition-transform duration-150 ease-out hover:scale-105 active:scale-95"
       >
         <svg
@@ -69,7 +69,7 @@ export const DevToolsOverlay = ({
       />
       <div
         role="dialog"
-        aria-label="assistant-ui DevTools"
+        aria-label="openagentui DevTools"
         className="bg-background text-foreground border-border fixed top-1/2 left-1/2 z-[2147483647] flex h-[min(560px,80vh)] w-[min(960px,92vw)] -translate-x-1/2 -translate-y-1/2 [animation:aui-dt-window-in_200ms_cubic-bezier(0.175,0.885,0.32,1.1)] flex-col overflow-hidden rounded-xl border shadow-[var(--shadow-window)]"
       >
         <DevToolsPanel

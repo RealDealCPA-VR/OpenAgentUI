@@ -3,7 +3,7 @@ import type { Checkout } from "./protocol";
 const TYPESCRIPT = { id: "typescript", label: "TypeScript" };
 const PYTHON = { id: "python", label: "Python" };
 
-const DOCS = "https://www.assistant-ui.com";
+const DOCS = "https://openagentui.dev";
 
 export type PresetId = "framework" | "llm-provider";
 

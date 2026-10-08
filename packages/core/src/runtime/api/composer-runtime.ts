@@ -102,7 +102,7 @@ export type EditComposerState = BaseComposerState & {
 export type ComposerRuntimeState = ThreadComposerState | EditComposerState;
 
 /**
- * @deprecated Use `ComposerRuntimeState`. From `@assistant-ui/react` 0.16, `ComposerState` names the composer state read through `useAuiState`.
+ * @deprecated Use `ComposerRuntimeState`. From `@openagentui/react` 0.16, `ComposerState` names the composer state read through `useAuiState`.
  */
 export type ComposerState = ComposerRuntimeState;
 

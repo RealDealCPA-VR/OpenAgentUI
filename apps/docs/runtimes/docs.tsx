@@ -8,8 +8,8 @@ import {
   Tools,
   unstable_Interactables,
   AuiConfig,
-} from "@assistant-ui/react";
-import { DevToolsModal } from "@assistant-ui/react-devtools";
+} from "@openagentui/react";
+import { DevToolsModal } from "@openagentui/react-devtools";
 import { feedbackAdapter } from "@/lib/feedback-adapter";
 import docsToolkit from "@/lib/docs-toolkit";
 import usageToolkit from "@/lib/usage-toolkit";

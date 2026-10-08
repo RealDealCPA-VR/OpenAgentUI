@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import type { AbstractAgent } from "@ag-ui/client";
-import type { AppendMessage, ThreadHistoryAdapter } from "@assistant-ui/core";
+import type { AppendMessage, ThreadHistoryAdapter } from "@openagentui/core";
 import { AgUiThreadRuntimeCore } from "./AgUiThreadRuntimeCore";
 import { makeLogger } from "./logger";
 

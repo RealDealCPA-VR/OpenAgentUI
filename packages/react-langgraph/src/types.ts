@@ -8,10 +8,10 @@ import type {
   RealtimeVoiceAdapter,
   RemoteThreadListAdapter,
   SpeechSynthesisAdapter,
-} from "@assistant-ui/core";
-import type { DataMessagePartComponent } from "@assistant-ui/core/react";
-import type { AssistantCloud } from "assistant-cloud";
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+} from "@openagentui/core";
+import type { DataMessagePartComponent } from "@openagentui/core/react";
+import type { AssistantCloud } from "openagentui-cloud";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 import type {
   LangGraphInterruptState,
   LangGraphSendMessageConfig,
@@ -450,7 +450,7 @@ export type UseLangGraphRuntimeOptions = ExternalStoreSharedOptions & {
    * A `RemoteThreadListAdapter` to use instead of the cloud adapter. Provide
    * this to back the thread list with a custom store (e.g. LangGraph
    * `client.threads.search()`) so pre-existing LangGraph thread ids appear in
-   * the UI and can be switched between without assistant-cloud.
+   * the UI and can be switched between without openagentui-cloud.
    *
    * When provided, `cloud`, `create`, and `delete` are ignored — the adapter
    * owns the full thread list lifecycle. The `externalId` returned by the

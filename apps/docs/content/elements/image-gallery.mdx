@@ -22,11 +22,11 @@ A backend tool can return its finished images as `{ images }`. Its render functi
 import {
   defineToolkit,
   type ToolCallMessagePartComponent,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   ImageGallery,
   type GalleryImage,
-} from "@/components/assistant-ui/elements/image-gallery";
+} from "@/components/openagentui/elements/image-gallery";
 
 type ImageSearchResult = { images: GalleryImage[] };
 
@@ -53,7 +53,7 @@ export const toolkit = defineToolkit({
 Render the gallery with images from your own search or generation request. `onOpen` is useful for lightweight analytics or for synchronizing a nearby detail panel.
 
 ```tsx title="app/results.tsx"
-import { ImageGallery, type GalleryImage } from "@/components/assistant-ui/elements/image-gallery";
+import { ImageGallery, type GalleryImage } from "@/components/openagentui/elements/image-gallery";
 
 const images: GalleryImage[] = [
   {

@@ -37,11 +37,11 @@ describe("catalog registry", () => {
     vi.resetModules();
     const closed = await import("./index");
     expect(closed.CATALOG.map((product) => product.slug)).toEqual([
-      "assistant-ui",
+      "openagentui",
     ]);
     expect(closed.CATALOG_ITEMS.map((item) => item.slug)).toEqual([
       "react-app",
-      "assistant-ui",
+      "openagentui",
     ]);
     expect(
       closed
@@ -50,10 +50,10 @@ describe("catalog registry", () => {
           "agent-tools",
           "guides/mcp",
           "elements/thread-list",
-          "assistant-ui",
+          "openagentui",
         ])
         .map((product) => product.slug),
-    ).toEqual(["assistant-ui"]);
+    ).toEqual(["openagentui"]);
     expect(closed.isCartSlug("cloud")).toBe(false);
     expect(closed.isCartSlug("statewire")).toBe(false);
     expect(closed.isCartSlug("harness-sdk")).toBe(false);
@@ -83,11 +83,11 @@ describe("catalog registry", () => {
       "agent-tools",
       "cloud",
       "nope",
-      "assistant-ui",
+      "openagentui",
       "cloud",
     ]);
     expect(products.map((product) => product.slug)).toEqual([
-      "assistant-ui",
+      "openagentui",
       "cloud",
       "agent-tools",
     ]);
@@ -95,7 +95,7 @@ describe("catalog registry", () => {
 
   it("sums the bounds of every product and formats a range", () => {
     const both = estimateAgentMinutes(
-      resolveProducts(["assistant-ui", "cloud"]),
+      resolveProducts(["openagentui", "cloud"]),
     );
     expect(both).toEqual([8, 15]);
     expect(formatMinutes(both)).toBe("8–15 min");

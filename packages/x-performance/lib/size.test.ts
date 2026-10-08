@@ -469,7 +469,7 @@ describe("compareSizes", () => {
           args: [
             "install",
             "--filter=.",
-            "--filter=@assistant-ui/react-devtools...",
+            "--filter=@openagentui/react-devtools...",
             "--filter=@aui-test/gone...",
             "--filter=@aui-test/kept...",
             "--filter=@aui-test/same...",
@@ -551,7 +551,7 @@ describe("compareSizes", () => {
         expect(install?.args).toEqual([
           "install",
           "--filter=.",
-          "--filter=@assistant-ui/react-devtools...",
+          "--filter=@openagentui/react-devtools...",
           "--filter=@aui-test/gone...",
         ]);
         expect(readFileSync(report, "utf8")).toMatch(

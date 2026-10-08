@@ -8,7 +8,7 @@ import {
   MessagePrimitive,
   ThreadPrimitive,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   ArrowUpIcon,
   AudioLines,
@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 import { useState, type FC } from "react";
 import { useAttachmentSrc } from "./use-attachment-src";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import { CloneThreadShell } from "./clone-thread-shell";
 import {
   DropdownMenu,

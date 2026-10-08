@@ -159,17 +159,17 @@ const bare = (name, version) => ({
 
 test("a peer on a package this workspace releases must ride the protocol", () => {
   const problems = findDriftingPeerRanges([
-    bare("@assistant-ui/store", "0.3.11"),
-    bare("@assistant-ui/tap", "0.9.15"),
-    bare("@assistant-ui/react", "0.15.17"),
+    bare("@openagentui/store", "0.3.11"),
+    bare("@openagentui/tap", "0.9.15"),
+    bare("@openagentui/react", "0.15.17"),
     {
       manifest: "packages/core/package.json",
       pkg: {
-        name: "@assistant-ui/core",
+        name: "@openagentui/core",
         version: "0.3.16",
         peerDependencies: {
-          "@assistant-ui/store": "^0.3.0",
-          "@assistant-ui/tap": "workspace:^",
+          "@openagentui/store": "^0.3.0",
+          "@openagentui/tap": "workspace:^",
           react: "^18 || ^19",
         },
       },
@@ -177,11 +177,11 @@ test("a peer on a package this workspace releases must ride the protocol", () =>
     {
       manifest: "packages/react-lexical/package.json",
       pkg: {
-        name: "@assistant-ui/react-lexical",
+        name: "@openagentui/react-lexical",
         version: "0.2.11",
         peerDependencies: {
-          "@assistant-ui/react": "^0.15.0",
-          "@assistant-ui/store": "*",
+          "@openagentui/react": "^0.15.0",
+          "@openagentui/store": "*",
         },
       },
     },
@@ -195,13 +195,13 @@ test("a peer on a package this workspace releases must ride the protocol", () =>
     })),
     [
       {
-        name: "@assistant-ui/core",
-        dependency: "@assistant-ui/store",
+        name: "@openagentui/core",
+        dependency: "@openagentui/store",
         range: "^0.3.0",
       },
       {
-        name: "@assistant-ui/react-lexical",
-        dependency: "@assistant-ui/store",
+        name: "@openagentui/react-lexical",
+        dependency: "@openagentui/store",
         range: "*",
       },
     ],
@@ -210,41 +210,41 @@ test("a peer on a package this workspace releases must ride the protocol", () =>
 
 test("a first-party peer nobody classified is enforced, not exempt", () => {
   const problems = findDriftingPeerRanges([
-    bare("assistant-stream", "0.3.40"),
+    bare("openagentui-stream", "0.3.40"),
     {
       manifest: "packages/adapter/package.json",
       pkg: {
-        name: "@assistant-ui/adapter",
+        name: "@openagentui/adapter",
         version: "1.0.0",
-        peerDependencies: { "assistant-stream": "^0.3.40" },
+        peerDependencies: { "openagentui-stream": "^0.3.40" },
       },
     },
   ]);
 
   assert.deepEqual(
     problems.map(({ dependency, range }) => ({ dependency, range })),
-    [{ dependency: "assistant-stream", range: "^0.3.40" }],
+    [{ dependency: "openagentui-stream", range: "^0.3.40" }],
   );
 });
 
 test("an ordinary range and a private package are not this rule's business", () => {
   assert.deepEqual(
     findDriftingPeerRanges([
-      bare("@assistant-ui/store", "0.3.11"),
+      bare("@openagentui/store", "0.3.11"),
       {
         manifest: "packages/react/package.json",
         pkg: {
-          name: "@assistant-ui/react",
+          name: "@openagentui/react",
           version: "0.15.17",
-          dependencies: { "@assistant-ui/store": "^0.3.11" },
+          dependencies: { "@openagentui/store": "^0.3.11" },
         },
       },
       {
         manifest: "packages/ui/package.json",
         pkg: {
-          name: "@assistant-ui/ui",
+          name: "@openagentui/ui",
           private: true,
-          peerDependencies: { "@assistant-ui/store": "^0.3.0" },
+          peerDependencies: { "@openagentui/store": "^0.3.0" },
         },
       },
     ]),
@@ -255,7 +255,7 @@ test("an ordinary range and a private package are not this rule's business", () 
 const cloud = {
   manifest: "packages/cloud/package.json",
   pkg: {
-    name: "assistant-cloud",
+    name: "openagentui-cloud",
     version: "0.2.2",
     peerDependencies: { ai: "^6.0.0 || ^7.0.0" },
     peerDependenciesMeta: { ai: { optional: true } },
@@ -268,9 +268,9 @@ test("a private copy of a workspace package's peer is reported from either insta
     {
       manifest: "packages/ai-sdk/package.json",
       pkg: {
-        name: "@assistant-ui/ai-sdk",
+        name: "@openagentui/ai-sdk",
         version: "0.0.7",
-        dependencies: { ai: "^7.0.101", "assistant-cloud": "workspace:^" },
+        dependencies: { ai: "^7.0.101", "openagentui-cloud": "workspace:^" },
       },
     },
     {
@@ -278,7 +278,7 @@ test("a private copy of a workspace package's peer is reported from either insta
       pkg: {
         name: "@fixture/telemetry",
         version: "1.0.0",
-        dependencies: { "assistant-cloud": "workspace:^" },
+        dependencies: { "openagentui-cloud": "workspace:^" },
         optionalDependencies: { ai: "^7.0.0" },
       },
     },
@@ -287,11 +287,11 @@ test("a private copy of a workspace package's peer is reported from either insta
   assert.deepEqual(problems, [
     {
       manifest: "packages/ai-sdk/package.json",
-      name: "@assistant-ui/ai-sdk",
+      name: "@openagentui/ai-sdk",
       field: "dependencies",
       dependency: "ai",
       range: "^7.0.101",
-      peerOf: "assistant-cloud",
+      peerOf: "openagentui-cloud",
     },
     {
       manifest: "packages/telemetry/package.json",
@@ -299,7 +299,7 @@ test("a private copy of a workspace package's peer is reported from either insta
       field: "optionalDependencies",
       dependency: "ai",
       range: "^7.0.0",
-      peerOf: "assistant-cloud",
+      peerOf: "openagentui-cloud",
     },
   ]);
 });
@@ -310,9 +310,9 @@ test("a peer declared further down the workspace tree is reported once per priva
     {
       manifest: "packages/ai-sdk/package.json",
       pkg: {
-        name: "@assistant-ui/ai-sdk",
+        name: "@openagentui/ai-sdk",
         version: "0.0.8",
-        dependencies: { "assistant-cloud": "workspace:^" },
+        dependencies: { "openagentui-cloud": "workspace:^" },
       },
     },
     {
@@ -320,16 +320,16 @@ test("a peer declared further down the workspace tree is reported once per priva
       pkg: {
         name: "@fixture/telemetry",
         version: "1.0.0",
-        dependencies: { "assistant-cloud": "workspace:^" },
+        dependencies: { "openagentui-cloud": "workspace:^" },
       },
     },
     {
       manifest: "packages/react-ai-sdk/package.json",
       pkg: {
-        name: "@assistant-ui/react-ai-sdk",
+        name: "@openagentui/react-ai-sdk",
         version: "1.4.13",
         dependencies: {
-          "@assistant-ui/ai-sdk": "workspace:^",
+          "@openagentui/ai-sdk": "workspace:^",
           "@fixture/telemetry": "workspace:^",
           ai: "^7.0.101",
         },
@@ -340,11 +340,11 @@ test("a peer declared further down the workspace tree is reported once per priva
   assert.deepEqual(problems, [
     {
       manifest: "packages/react-ai-sdk/package.json",
-      name: "@assistant-ui/react-ai-sdk",
+      name: "@openagentui/react-ai-sdk",
       field: "dependencies",
       dependency: "ai",
       range: "^7.0.101",
-      peerOf: "assistant-cloud",
+      peerOf: "openagentui-cloud",
     },
   ]);
 });
@@ -353,24 +353,24 @@ test("a shared peer, a peered workspace package, a first-party peer, and a priva
   assert.deepEqual(
     findPrivatePeerCopies([
       cloud,
-      bare("@assistant-ui/store", "0.3.14"),
+      bare("@openagentui/store", "0.3.14"),
       {
         manifest: "packages/core/package.json",
         pkg: {
-          name: "@assistant-ui/core",
+          name: "@openagentui/core",
           version: "0.3.20",
-          peerDependencies: { "@assistant-ui/store": "workspace:^" },
+          peerDependencies: { "@openagentui/store": "workspace:^" },
         },
       },
       {
         manifest: "packages/ai-sdk/package.json",
         pkg: {
-          name: "@assistant-ui/ai-sdk",
+          name: "@openagentui/ai-sdk",
           version: "0.0.8",
           dependencies: {
-            "@assistant-ui/core": "workspace:^",
-            "@assistant-ui/store": "workspace:^",
-            "assistant-cloud": "workspace:^",
+            "@openagentui/core": "workspace:^",
+            "@openagentui/store": "workspace:^",
+            "openagentui-cloud": "workspace:^",
           },
           peerDependencies: { ai: "^7.0.101" },
           devDependencies: { ai: "^7.0.101" },
@@ -382,7 +382,7 @@ test("a shared peer, a peered workspace package, a first-party peer, and a priva
           name: "@fixture/relay",
           version: "1.0.0",
           dependencies: { ai: "^7.0.101" },
-          peerDependencies: { "assistant-cloud": "workspace:^" },
+          peerDependencies: { "openagentui-cloud": "workspace:^" },
         },
       },
       {
@@ -390,7 +390,7 @@ test("a shared peer, a peered workspace package, a first-party peer, and a priva
         pkg: {
           name: "with-cloud",
           private: true,
-          dependencies: { ai: "^7.0.101", "assistant-cloud": "workspace:^" },
+          dependencies: { ai: "^7.0.101", "openagentui-cloud": "workspace:^" },
         },
       },
     ]),
@@ -465,13 +465,13 @@ test("the executable reports success and exits 0", () => {
 
 test("the executable reports a hand-written first-party peer floor and exits 1", () => {
   const root = createWorkspace([
-    ["tap", { name: "@assistant-ui/tap", version: "0.9.15" }],
+    ["tap", { name: "@openagentui/tap", version: "0.9.15" }],
     [
       "core",
       {
-        name: "@assistant-ui/core",
+        name: "@openagentui/core",
         version: "0.3.16",
-        peerDependencies: { "@assistant-ui/tap": "^0.9.0" },
+        peerDependencies: { "@openagentui/tap": "^0.9.0" },
       },
     ],
   ]);
@@ -480,7 +480,7 @@ test("the executable reports a hand-written first-party peer floor and exits 1",
     assert.equal(result.status, 1);
     assert.match(
       result.stderr,
-      /packages\/core\/package\.json: "@assistant-ui\/core" peerDependencies\["@assistant-ui\/tap"\] is "\^0\.9\.0"/,
+      /packages\/core\/package\.json: "@openagentui\/core" peerDependencies\["@openagentui\/tap"\] is "\^0\.9\.0"/,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -517,9 +517,9 @@ test("the executable reports a private copy of a workspace package's peer and ex
     [
       "ai-sdk",
       {
-        name: "@assistant-ui/ai-sdk",
+        name: "@openagentui/ai-sdk",
         version: "0.0.7",
-        dependencies: { ai: "^7.0.101", "assistant-cloud": "workspace:^" },
+        dependencies: { ai: "^7.0.101", "openagentui-cloud": "workspace:^" },
       },
     ],
   ]);
@@ -528,7 +528,7 @@ test("the executable reports a private copy of a workspace package's peer and ex
     assert.equal(result.status, 1);
     assert.match(
       result.stderr,
-      /packages\/ai-sdk\/package\.json: "@assistant-ui\/ai-sdk" dependencies\["ai"\] is "\^7\.0\.101", a peer of "assistant-cloud"/,
+      /packages\/ai-sdk\/package\.json: "@openagentui\/ai-sdk" dependencies\["ai"\] is "\^7\.0\.101", a peer of "openagentui-cloud"/,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });

@@ -8,11 +8,11 @@ import {
   AuiConfig,
   Suggestions,
   Tools,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { toBlobURL } from "@ffmpeg/util";
 import { type FC, type ReactNode, useEffect, useRef, useState } from "react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { useFfmpegToolkit } from "./toolkit";
 
 // MVP: upload file, enter command

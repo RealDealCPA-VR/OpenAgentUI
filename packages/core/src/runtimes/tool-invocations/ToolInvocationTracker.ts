@@ -8,16 +8,16 @@ import {
   type Tool,
   type ToolModelContentPart,
   type ToolResultStreamOptions,
-} from "assistant-stream";
+} from "openagentui-stream";
 import {
   AssistantMetaTransformStream,
   type ReadonlyJSONValue,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import { isJSONValueEqual } from "../../utils/json/is-json-equal";
 import type { ThreadMessage, ToolCallMessagePart } from "../../types/message";
 import { walkToolCallTree } from "../../runtime/utils/tool-call-tree";
 
-const TOOL_EXECUTION_ID = Symbol.for("assistant-stream.tool-execution-id");
+const TOOL_EXECUTION_ID = Symbol.for("openagentui-stream.tool-execution-id");
 
 /**
  * The promise `ToolInvocationTracker.abort()` returns when no execution is in
@@ -104,7 +104,7 @@ const getToolExecutionId = (value: object): symbol | undefined =>
 
 /**
  * Plain-class port of the former `useToolInvocations` React hook. Owns the
- * assistant-stream pipeline that drives client-side `streamCall` / `execute`
+ * openagentui-stream pipeline that drives client-side `streamCall` / `execute`
  * for tool-call parts surfaced by a thread runtime, plus the per-tool-call
  * status map that consumers render against.
  *
@@ -163,7 +163,7 @@ export class ToolInvocationTracker {
   private _controller!: ReturnType<typeof createAssistantStreamController>[1];
 
   /**
-   * Set when the assistant-stream pipeline has died (errored out via
+   * Set when the openagentui-stream pipeline has died (errored out via
    * `.pipeTo(...).catch(...)`). The next `setState` re-initializes the
    * pipeline and demotes each active entry that reached the executor to
    * restored, so it survives the restart without re-firing `streamCall`.
@@ -188,7 +188,7 @@ export class ToolInvocationTracker {
   }
 
   /**
-   * Build the assistant-stream pipeline. Called once from the constructor
+   * Build the openagentui-stream pipeline. Called once from the constructor
    * and at most once again if `_pipelineDead` is set (see F.4 in
    * EDGE_CASES.md).
    */

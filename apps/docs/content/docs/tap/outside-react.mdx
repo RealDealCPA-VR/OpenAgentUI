@@ -5,12 +5,12 @@ description: Run resources standalone, with no React tree.
 
 Resources don't need React. `createTapRoot` hosts a resource tree
 imperatively, which is how libraries and tests drive resources, and how
-`createAssistantClient` from `@assistant-ui/store/client` hosts a client without React.
+`createAssistantClient` from `@openagentui/store/client` hosts a client without React.
 
 ## createTapRoot
 
 ```ts
-import { createTapRoot, useResource } from "@assistant-ui/tap";
+import { createTapRoot, useResource } from "@openagentui/tap";
 
 const root = createTapRoot(function CounterRoot() {
   return useResource(Counter({ initialValue: 0 }));
@@ -58,7 +58,7 @@ scheduled before the call commits in that flush only if the callback also
 updates the same root; otherwise it commits on the next scheduled flush.
 
 ```ts
-import { flushTapSync } from "@assistant-ui/tap";
+import { flushTapSync } from "@openagentui/tap";
 
 flushTapSync(() => root.getValue().increment());
 console.log(root.getValue().count); // already updated
@@ -83,7 +83,7 @@ React's scheduler:
 No special configuration is needed.
 
 <Callout type="warn">
-`@assistant-ui/store` bridges resources into React with `useSyncExternalStore`, so
+`@openagentui/store` bridges resources into React with `useSyncExternalStore`, so
 those reads trigger synchronous re-renders and opt out of concurrent scheduling.
 This may change in a future release.
 </Callout>

@@ -1,6 +1,6 @@
 "use client";
 
-import { GenerativeUIRender, type GenerativeUISpec } from "@assistant-ui/react";
+import { GenerativeUIRender, type GenerativeUISpec } from "@openagentui/react";
 import {
   UnknownComponentFallback,
   componentsAllowlist,

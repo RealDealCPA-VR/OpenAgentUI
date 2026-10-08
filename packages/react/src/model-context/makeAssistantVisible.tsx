@@ -11,9 +11,9 @@ import {
   createContext,
   useContext,
 } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { useComposedRefs } from "radix-ui/internal";
-import { tool } from "@assistant-ui/core";
+import { tool } from "@openagentui/core";
 
 const DEFAULT_ACTION_SETTLE_DELAY_MS = 2000;
 const MAX_ACTION_SETTLE_DELAY_MS = 2_147_483_647;

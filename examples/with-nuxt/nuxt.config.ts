@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   components: [
     "./components",
     {
-      path: "../../../packages/ui/src/components/vue/assistant-ui",
+      path: "../../../packages/ui/src/components/vue/openagentui",
       pathPrefix: false,
     },
   ],

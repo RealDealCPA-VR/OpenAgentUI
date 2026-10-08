@@ -3,7 +3,7 @@
 import {
   AudioPlayer,
   VideoPlayer,
-} from "@/components/assistant-ui/elements/media-player";
+} from "@/components/openagentui/elements/media-player";
 
 export function AudioPlayerDemo() {
   return (

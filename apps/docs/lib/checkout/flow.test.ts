@@ -197,8 +197,8 @@ describe("checkout flow", () => {
     setupStorage();
     const s = await load();
     s.addToCart("cloud");
-    const session = s.startCheckout(["assistant-ui"]);
-    expect(session?.products).toEqual(["assistant-ui"]);
+    const session = s.startCheckout(["openagentui"]);
+    expect(session?.products).toEqual(["openagentui"]);
     expect(s.getCart()).toEqual(["cloud"]);
     s.abandonCheckout();
     expect(s.getCheckoutSession()).toBeNull();

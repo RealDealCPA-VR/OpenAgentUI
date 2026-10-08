@@ -9,15 +9,15 @@ import {
   type PropsWithChildren,
 } from "react";
 import { describe, expect, it } from "vitest";
-import type { ThreadMessageLike } from "@assistant-ui/core";
+import type { ThreadMessageLike } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   Tools,
   useAssistantDataUI,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
-import { AuiConfig, useAui } from "@assistant-ui/store";
-import { resource } from "@assistant-ui/tap";
+} from "@openagentui/core/react";
+import { AuiConfig, useAui } from "@openagentui/store";
+import { resource } from "@openagentui/tap";
 import { ThreadPrimitiveMessageByIndex } from "../thread/ThreadMessages";
 import {
   type MessagePrimitiveUnstable_PartsGrouped,

@@ -7,12 +7,12 @@ const { extrasRef } = vi.hoisted(() => ({
   extrasRef: { current: undefined as unknown },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAuiState: ((selector: (s: unknown) => unknown) =>
     selector({
       thread: { extras: extrasRef.current },
-    })) as typeof import("@assistant-ui/store").useAuiState,
+    })) as typeof import("@openagentui/store").useAuiState,
 }));
 
 import { openCodeExtras } from "./openCodeExtras";

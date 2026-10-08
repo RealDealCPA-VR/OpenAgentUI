@@ -369,7 +369,7 @@ export function createOAuthProvider(
   }
 
   const clientMetadata: OAuthClientMetadata = {
-    client_name: "assistant-ui",
+    client_name: "openagentui",
     redirect_uris: [redirectUri],
     grant_types: ["authorization_code", "refresh_token"],
     response_types: ["code"],

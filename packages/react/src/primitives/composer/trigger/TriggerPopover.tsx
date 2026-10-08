@@ -1,8 +1,8 @@
 "use client";
 
-import { useAui, useAuiState } from "@assistant-ui/store";
-import { useResource } from "@assistant-ui/tap";
-import type { TriggerAdapter } from "@assistant-ui/core";
+import { useAui, useAuiState } from "@openagentui/store";
+import { useResource } from "@openagentui/tap";
+import type { TriggerAdapter } from "@openagentui/core";
 import {
   createContext,
   forwardRef,
@@ -149,7 +149,7 @@ export const ComposerPrimitiveTriggerPopover = forwardRef<
           registrationCountRef.current > 1
         ) {
           console.warn(
-            `[assistant-ui] TriggerPopover "${char}" received more than one behavior child. Exactly one <TriggerPopover.Directive> or <TriggerPopover.Action> is allowed per TriggerPopover; the last registration wins.`,
+            `[openagentui] TriggerPopover "${char}" received more than one behavior child. Exactly one <TriggerPopover.Directive> or <TriggerPopover.Action> is allowed per TriggerPopover; the last registration wins.`,
           );
         }
         behaviorRef.current = next;

@@ -42,7 +42,7 @@ describe("runSpawn", () => {
     const child = createChild();
     mocks.spawn.mockReturnValue(child);
     const sigterm = trackSignal("SIGTERM");
-    const result = runSpawn("assistant-ui", ["create"]);
+    const result = runSpawn("openagentui", ["create"]);
     const signalHandler = sigterm.added();
 
     expect(signalHandler).toBeDefined();
@@ -61,7 +61,7 @@ describe("runSpawn", () => {
     const child = createChild();
     mocks.spawn.mockReturnValue(child);
     const sigterm = trackSignal("SIGTERM");
-    const result = runSpawn("assistant-ui", ["create"]);
+    const result = runSpawn("openagentui", ["create"]);
     const signalHandler = sigterm.added();
 
     expect(signalHandler).toBeDefined();
@@ -103,7 +103,7 @@ describe("runSpawn", () => {
     const child = createChild();
     mocks.spawn.mockReturnValue(child);
     const sigterm = trackSignal("SIGTERM");
-    const result = runSpawn("assistant-ui", ["create"]);
+    const result = runSpawn("openagentui", ["create"]);
     const signalHandler = sigterm.added();
 
     signalHandler?.("SIGTERM");
@@ -126,7 +126,7 @@ describe("runSpawn", () => {
     mocks.spawn.mockReturnValue(child);
 
     expect(hasActiveSpawn()).toBe(false);
-    const result = runSpawn("assistant-ui", ["create"]);
+    const result = runSpawn("openagentui", ["create"]);
     expect(hasActiveSpawn()).toBe(true);
 
     child.emit("close", 0, null);
@@ -138,7 +138,7 @@ describe("runSpawn", () => {
   it("preserves normal child exit handling", async () => {
     const child = createChild();
     mocks.spawn.mockReturnValue(child);
-    const result = runSpawn("assistant-ui", ["create"]);
+    const result = runSpawn("openagentui", ["create"]);
 
     child.emit("close", 0, null);
 
@@ -148,7 +148,7 @@ describe("runSpawn", () => {
   it("reports nonzero child exits", async () => {
     const child = createChild();
     mocks.spawn.mockReturnValue(child);
-    const result = runSpawn("assistant-ui", ["create"]);
+    const result = runSpawn("openagentui", ["create"]);
 
     child.emit("close", 7, null);
 
@@ -159,7 +159,7 @@ describe("runSpawn", () => {
   it("distinguishes child signals from forwarded signals", async () => {
     const child = createChild();
     mocks.spawn.mockReturnValue(child);
-    const result = runSpawn("assistant-ui", ["create"]);
+    const result = runSpawn("openagentui", ["create"]);
 
     child.emit("close", null, "SIGSEGV");
 

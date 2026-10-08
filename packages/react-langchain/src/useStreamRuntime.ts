@@ -1,4 +1,4 @@
-/// <reference types="@assistant-ui/core/store" preserve="true" />
+/// <reference types="@openagentui/core/store" preserve="true" />
 "use client";
 
 import {
@@ -10,26 +10,26 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
-import type { AppendMessage, ToolExecutionStatus } from "@assistant-ui/core";
+import type { AppendMessage, ToolExecutionStatus } from "@openagentui/core";
 import {
   generateId,
   getExternalStoreMessages,
   pickExternalStoreSharedOptions,
-} from "@assistant-ui/core";
-import type { ThreadMessage } from "@assistant-ui/core";
+} from "@openagentui/core";
+import type { ThreadMessage } from "@openagentui/core";
 import {
   createCloudThreadListAdapterCreateFallback,
   createToolCallCancellationStub,
   getThreadMessageText,
   scanPendingToolCalls,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import {
   useCloudThreadListAdapter,
   useExternalStoreRuntime,
   useExternalMessageConverter,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/core/react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+} from "@openagentui/core/react";
+import { useAui, useAuiState } from "@openagentui/store";
 import { STREAM_CONTROLLER, useChannel, useStream } from "@langchain/react";
 import type {
   LangChainBaseMessage,
@@ -704,14 +704,14 @@ const useStreamThreadRuntime = (
 };
 
 /**
- * Creates an assistant-ui runtime backed by LangChain's `useStream` hook.
+ * Creates an openagentui runtime backed by LangChain's `useStream` hook.
  * Accepts the same options as `useStream` from `@langchain/react`, plus
  * `cloud`, `scopeId`, and `adapters`.
  *
  * @example
  * ```tsx
- * import { useStreamRuntime } from "@assistant-ui/react-langchain";
- * import { AssistantRuntimeProvider, Thread } from "@assistant-ui/react";
+ * import { useStreamRuntime } from "@openagentui/react-langchain";
+ * import { AssistantRuntimeProvider, Thread } from "@openagentui/react";
  *
  * function App() {
  *   const runtime = useStreamRuntime({

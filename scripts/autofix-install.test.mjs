@@ -18,7 +18,7 @@ test("package changes install only the dependencies autofix executes", () => {
     [
       ...installArgs,
       "--filter=.",
-      "--filter=@assistant-ui/x-buildutils...",
+      "--filter=@openagentui/x-buildutils...",
       "--filter=...[origin/main]...",
       "--filter=!./apps/*",
       "--filter=!./examples/*",
@@ -31,7 +31,7 @@ test("unrelated changes still install the root autofix tools", () => {
   assert.deepEqual(autofixInstallArgs(["README.md"], "origin/main"), [
     ...installArgs,
     "--filter=.",
-    "--filter=@assistant-ui/x-buildutils...",
+    "--filter=@openagentui/x-buildutils...",
     "--filter=...[origin/main]...",
     "--filter=!./apps/*",
     "--filter=!./examples/*",

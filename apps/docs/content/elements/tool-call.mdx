@@ -16,12 +16,12 @@ A tool call renders through a toolkit entry's `render` field, not through a stan
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/search-docs-tool-ui.tsx"
+```tsx title="components/openagentui/elements/search-docs-tool-ui.tsx"
 "use client";
 
 import { useState } from "react";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { ToolCall } from "@/components/assistant-ui/elements/tool-call";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { ToolCall } from "@/components/openagentui/elements/tool-call";
 
 export type SearchDocsResult = { count: number; bestPath: string };
 
@@ -51,17 +51,17 @@ export const SearchDocsToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
 import {
   SearchDocsToolUI,
   type SearchDocsResult,
-} from "@/components/assistant-ui/elements/search-docs-tool-ui";
+} from "@/components/openagentui/elements/search-docs-tool-ui";
 
 export const toolkit = defineToolkit({
   search_docs: {
     type: "frontend",
-    description: "Search the assistant-ui documentation.",
+    description: "Search the openagentui documentation.",
     parameters: z.object({ query: z.string() }),
     execute: async ({ query }) => {
       const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
@@ -73,8 +73,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -108,7 +108,7 @@ Standalone, the element is fully controlled: every string it shows and its open 
 "use client";
 
 import { useState } from "react";
-import { ToolCall } from "@/components/assistant-ui/elements/tool-call";
+import { ToolCall } from "@/components/openagentui/elements/tool-call";
 
 export function DocsSearchCall() {
   const [open, setOpen] = useState(false);

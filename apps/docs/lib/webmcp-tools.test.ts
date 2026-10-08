@@ -38,24 +38,24 @@ function fetchReturning(payload: unknown, ok = true, status = 200) {
 const skillsIndex = {
   skills: [
     {
-      name: "assistant-ui-docs",
+      name: "openagentui-docs",
       description: "Site skill.",
-      url: "https://www.assistant-ui.com/.well-known/agent-skills/assistant-ui-docs/SKILL.md",
+      url: "https://openagentui.dev/.well-known/agent-skills/openagentui-docs/SKILL.md",
     },
     {
-      name: "assistant-ui-design",
+      name: "openagentui-design",
       description: "Design law.",
-      url: "https://www.assistant-ui.com/design.md",
+      url: "https://openagentui.dev/design.md",
     },
     {
       name: "setup",
-      description: "Installs assistant-ui.",
-      url: "https://www.assistant-ui.com/.well-known/agent-skills/setup/SKILL.md",
+      description: "Installs openagentui.",
+      url: "https://openagentui.dev/.well-known/agent-skills/setup/SKILL.md",
     },
     {
       name: "tools",
       description: "Defines tools.",
-      url: "https://www.assistant-ui.com/.well-known/agent-skills/tools/SKILL.md",
+      url: "https://openagentui.dev/.well-known/agent-skills/tools/SKILL.md",
     },
   ],
 };
@@ -249,7 +249,7 @@ describe("registered tools", () => {
   it("getExample maps full URLs to their pathname before prefixing", async () => {
     const fetchImpl = fetchReturning({ result: okResult });
     await toolByName(fetchImpl, "getExample").execute({
-      path: "https://assistant-ui.com/examples/ai-sdk",
+      path: "https://openagentui.dev/examples/ai-sdk",
     });
 
     expect(sentRequest(fetchImpl).body.params).toEqual({
@@ -260,7 +260,7 @@ describe("registered tools", () => {
 
   it("getExample passes cross-origin URLs through for the route to reject", async () => {
     vi.stubGlobal("window", {
-      location: { origin: "https://assistant-ui.com" },
+      location: { origin: "https://openagentui.dev" },
     });
     try {
       const fetchImpl = fetchReturning({ result: okResult });
@@ -302,7 +302,7 @@ describe("registered tools", () => {
         {
           type: "text",
           text: JSON.stringify([
-            { name: "setup", description: "Installs assistant-ui." },
+            { name: "setup", description: "Installs openagentui." },
             { name: "tools", description: "Defines tools." },
           ]),
         },
@@ -356,7 +356,7 @@ describe("registered tools", () => {
 
   it("getSkill answers an unlisted name from the index without reading a document", async () => {
     const fetchImpl = fetchSkillRoutes();
-    for (const name of ["nope", "../nope", "assistant-ui-docs"]) {
+    for (const name of ["nope", "../nope", "openagentui-docs"]) {
       await expect(
         toolByName(fetchImpl, "getSkill").execute({ name }),
         name,

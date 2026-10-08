@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 import { flushSync, mount, unmount } from "svelte";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig } from "@assistant-ui/store/client";
-import { RuntimeAdapter } from "@assistant-ui/core/store";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig } from "@openagentui/store/client";
+import { RuntimeAdapter } from "@openagentui/core/store";
 import { provideAui } from "../provideAui";
 import {
   composerCancel,

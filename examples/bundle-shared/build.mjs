@@ -7,7 +7,7 @@ const require = createRequire(import.meta.url);
 
 export const uiAliases = (uiRoot) => ({
   "@/components/ui": resolve(uiRoot, "components/react/ui/base"),
-  "@/components/assistant-ui": resolve(uiRoot, "components/react/assistant-ui"),
+  "@/components/openagentui": resolve(uiRoot, "components/react/openagentui"),
   "@/hooks": resolve(uiRoot, "hooks"),
   "@/lib/utils": resolve(uiRoot, "lib/utils.ts"),
 });

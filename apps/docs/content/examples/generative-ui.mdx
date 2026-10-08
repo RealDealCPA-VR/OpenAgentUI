@@ -9,7 +9,7 @@ The main route of `examples/with-generative-ui` demonstrates **generative UI**: 
 
 - **Default vocabulary**: cards, facts, rows, tables, and charts come from `defaultGenerativeUILibrary`, so the app registers one tool and writes no renderers
 - **A custom component**: `DashboardHeader` is added through `defineGenerativeComponents`, showing how to extend the vocabulary with your own React component, and `Markdown` is swapped for the registry item's real renderer
-- **Styled output**: the vocabulary stylesheet is mounted from `@assistant-ui/ui` through the monorepo's tsconfig alias, the way every in-repo example consumes that package; in your own app the same CSS arrives through `shadcn add generative-ui`
+- **Styled output**: the vocabulary stylesheet is mounted from `@openagentui/ui` through the monorepo's tsconfig alias, the way every in-repo example consumes that package; in your own app the same CSS arrives through `shadcn add generative-ui`
 - **Dashboard prompts**: the suggestions describe data, not layout, and let the model decide the composition
 
 ### Routes in the same example app
@@ -128,4 +128,4 @@ const toolkit = defineToolkit({
 
 ## Source
 
-<SourceLink href="https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-generative-ui" />
+<SourceLink href="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-generative-ui" />

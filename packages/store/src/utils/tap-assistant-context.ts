@@ -1,5 +1,5 @@
 import { useEffect, useEffectEvent, use, createContext } from "react";
-import { useContextProvider } from "@assistant-ui/tap";
+import { useContextProvider } from "@openagentui/tap";
 import type {
   AssistantEventName,
   AssistantEventPayload,
@@ -67,7 +67,7 @@ export const useAssistantScopeEffect = (
     const client = clientRef.current;
     if (client === null) {
       throw new Error(
-        "useAssistantScopeEffect ran before the client was committed. This is likely an internal bug in assistant-ui.",
+        "useAssistantScopeEffect ran before the client was committed. This is likely an internal bug in openagentui.",
       );
     }
 

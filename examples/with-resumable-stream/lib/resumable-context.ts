@@ -3,9 +3,9 @@ import {
   createResumableStreamContext,
   type ResumableStreamContext,
   type ResumableStreamStore,
-} from "assistant-stream/resumable";
+} from "openagentui-stream/resumable";
 
-const GLOBAL_KEY = Symbol.for("assistant-ui.example.resumable-context");
+const GLOBAL_KEY = Symbol.for("openagentui.example.resumable-context");
 
 type GlobalSlot = typeof globalThis & {
   [GLOBAL_KEY]?: Promise<ResumableStreamContext>;
@@ -37,7 +37,7 @@ async function createStore(): Promise<ResumableStreamStore> {
 
   const { createClient } = await import("redis");
   const { createRedisResumableStreamStore } =
-    await import("assistant-stream/resumable/redis");
+    await import("openagentui-stream/resumable/redis");
 
   const client = createClient({ url });
   client.on("error", (err) => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import { createAssistantClient } from "../createAssistantClient";
 import {
   createClientAccessor,

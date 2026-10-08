@@ -1,29 +1,29 @@
 ---
 title: Installation
-description: Get assistant-ui running in 5 minutes with npm and your first chat component.
+description: Get openagentui running in 5 minutes with npm and your first chat component.
 platforms: ["react"]
 ---
 
 
 ## Quick Start
 
-![animated gif showing the steps to create a new project](../../../../../.github/assets/assistant-ui-starter.gif)
+![animated gif showing the steps to create a new project](../../../../../.github/assets/openagentui-starter.gif)
 
 <Steps>
   <Step>
 
-### Initialize assistant-ui
+### Initialize openagentui
 
 **Create a new project:**
 
 ```sh
-npx assistant-ui@latest create
+npx openagentui@latest create
 ```
 
 Or start from a template:
 
 ```sh
-npx assistant-ui@latest create -t cloud
+npx openagentui@latest create -t cloud
 ```
 
 The [CLI reference](/docs/cli#create) lists every template and example, and what each one includes.
@@ -31,7 +31,7 @@ The [CLI reference](/docs/cli#create) lists every template and example, and what
 **Add to an existing project:**
 
 ```sh
-npx assistant-ui@latest init
+npx openagentui@latest init
 ```
 
   </Step>
@@ -63,22 +63,22 @@ npm run dev
 
 If you prefer not to use the CLI, you can install components manually.
 
-Add the assistant-ui registry to your `components.json` so the shadcn CLI resolves components for your style. Styles whose name starts with `base-` receive Base UI flavored components; all other styles receive the Radix flavored ones. `npx shadcn init` defaults to Base UI styles (for example `base-nova`), so new projects need this style-aware URL for components that compile against that stack.
+Add the openagentui registry to your `components.json` so the shadcn CLI resolves components for your style. Styles whose name starts with `base-` receive Base UI flavored components; all other styles receive the Radix flavored ones. `npx shadcn init` defaults to Base UI styles (for example `base-nova`), so new projects need this style-aware URL for components that compile against that stack.
 
 ```json title="components.json"
 {
   "registries": {
-    "@assistant-ui": "https://r.assistant-ui.com/styles/{style}/{name}.json"
+    "@openagentui": "https://r.openagentui.dev/styles/{style}/{name}.json"
   }
 }
 ```
 
-Existing Radix projects can keep the plain form `https://r.assistant-ui.com/{name}.json` as a fallback (for example `npx shadcn@latest add https://r.assistant-ui.com/thread.json`).
+Existing Radix projects can keep the plain form `https://r.openagentui.dev/{name}.json` as a fallback (for example `npx shadcn@latest add https://r.openagentui.dev/thread.json`).
 
 <Steps>
   <Step>
 
-### Add assistant-ui
+### Add openagentui
 
 <InstallCommand shadcn={["thread", "thread-list"]} manualSetupInstructions />
 
@@ -91,37 +91,37 @@ Install provider SDK:
 
 <Tabs groupId="provider" items={["OpenAI", "Anthropic", "Azure", "AWS", "Gemini", "GCP", "Groq", "Fireworks", "Cohere", "Ollama", "Chrome AI"]}>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/openai"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/openai"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/anthropic"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/anthropic"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/azure"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/azure"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/amazon-bedrock"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/amazon-bedrock"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/google"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/google"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/google-vertex"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/google-vertex"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/groq"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/groq"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/fireworks"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/fireworks"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "@ai-sdk/cohere"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "@ai-sdk/cohere"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "ollama-ai-provider-v2"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "ollama-ai-provider-v2"]} />
   </Tab>
   <Tab>
-    <InstallCommand npm={["ai", "@assistant-ui/ai-sdk", "chrome-ai"]} />
+    <InstallCommand npm={["ai", "@openagentui/ai-sdk", "chrome-ai"]} />
   </Tab>
 </Tabs>
 
@@ -130,7 +130,7 @@ Add an API endpoint:
 <Tabs groupId="provider" items={["OpenAI", "Anthropic", "Azure", "AWS", "Gemini", "GCP", "Groq", "Fireworks", "Cohere", "Ollama", "Chrome AI"]}>
 ```ts title="/app/api/chat/route.ts" tab="OpenAI"
 import { openai } from "@ai-sdk/openai";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -149,7 +149,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="Anthropic"
 import { anthropic } from "@ai-sdk/anthropic";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -168,7 +168,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="Azure"
 import { azure } from "@ai-sdk/azure";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -187,7 +187,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="AWS"
 import { bedrock } from "@ai-sdk/amazon-bedrock";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -206,7 +206,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="Gemini"
 import { google } from "@ai-sdk/google";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -225,7 +225,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="GCP"
 import { vertex } from "@ai-sdk/google-vertex";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -244,7 +244,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="Groq"
 import { groq } from "@ai-sdk/groq";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -263,7 +263,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="Fireworks"
 import { fireworks } from "@ai-sdk/fireworks";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -282,7 +282,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="Cohere"
 import { cohere } from "@ai-sdk/cohere";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -301,7 +301,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="Ollama"
 import { ollama } from "ollama-ai-provider-v2";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -320,7 +320,7 @@ export async function POST(req: Request) {
 
 ```ts title="/app/api/chat/route.ts" tab="Chrome AI"
 import { chromeai } from "chrome-ai";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText } from "ai";
 
 export const maxDuration = 30;
@@ -407,10 +407,10 @@ If you aren't using Next.js, you can also deploy this endpoint to Cloudflare Wor
 ```tsx title="/app/page.tsx" tab="Thread"
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function MyApp() {
   const runtime = useChatRuntime({
@@ -433,11 +433,11 @@ export default function MyApp() {
 ```tsx title="/app/page.tsx" tab="AssistantModal"
 "use client";
 
-// run `npx shadcn@latest add @assistant-ui/assistant-modal`
+// run `npx shadcn@latest add @openagentui/assistant-modal`
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
-import { AssistantModal } from "@/components/assistant-ui/elements/assistant-modal.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
+import { AssistantModal } from "@/components/openagentui/elements/assistant-modal.aui";
 
 export default function MyApp() {
   const runtime = useChatRuntime({
@@ -480,6 +480,6 @@ export default function MyApp() {
   <Card
     title="Examples"
     description="Explore full implementations and demos"
-    href="https://github.com/assistant-ui/assistant-ui/tree/main/examples"
+    href="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples"
   />
 </Cards>

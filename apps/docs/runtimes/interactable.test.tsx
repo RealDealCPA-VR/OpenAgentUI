@@ -7,8 +7,8 @@ import { z } from "zod";
 import {
   unstable_useInteractable,
   type AssistantRuntime,
-} from "@assistant-ui/react";
-import { AssistantChatTransport, useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { AssistantChatTransport, useChatRuntime } from "@openagentui/ai-sdk";
 import {
   taskBoardInitialState,
   taskBoardSchema,
@@ -35,7 +35,7 @@ vi.mock("./chat-runtime", async (importOriginal) => ({
   },
 }));
 
-vi.mock("@assistant-ui/react-devtools", () => ({ DevToolsModal: () => null }));
+vi.mock("@openagentui/react-devtools", () => ({ DevToolsModal: () => null }));
 
 vi.mock("@/lib/docs-toolkit", () => ({
   default: {

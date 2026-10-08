@@ -5,7 +5,7 @@ import {
   GeoMap,
   type GeoMapPlace,
   type GeoMapRoute,
-} from "@/components/assistant-ui/elements/geo-map";
+} from "@/components/openagentui/elements/geo-map";
 
 const PLACES: readonly GeoMapPlace[] = [
   {

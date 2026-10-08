@@ -1,4 +1,4 @@
-import { createRenderCounter } from "@assistant-ui/x-performance";
+import { createRenderCounter } from "@openagentui/x-performance";
 import { describe, expect, it } from "vitest";
 import { getInlineJson } from "./getInlineJson";
 

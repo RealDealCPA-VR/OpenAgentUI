@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import { AssistantFrameProvider } from "./provider";
 import { FRAME_MESSAGE_CHANNEL } from "./types";
 
@@ -282,7 +282,7 @@ describe("AssistantFrameProvider", () => {
 
     await vi.waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] AssistantFrame tool result could not be sent.",
+        "[openagentui] AssistantFrame tool result could not be sent.",
         expect.objectContaining({ name: "DataCloneError" }),
       );
       expect(parentWindow.postMessage).toHaveBeenCalledWith(

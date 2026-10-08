@@ -1,1 +1,1 @@
-export { BaseComposerRuntimeCore } from "@assistant-ui/core/internal";
+export { BaseComposerRuntimeCore } from "@openagentui/core/internal";

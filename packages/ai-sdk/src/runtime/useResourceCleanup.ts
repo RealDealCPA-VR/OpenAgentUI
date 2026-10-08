@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useAssistantClientDestroySignal } from "@assistant-ui/store/internal";
+import { useAssistantClientDestroySignal } from "@openagentui/store/internal";
 
 export const useResourceCleanup = (
   enabled: boolean,

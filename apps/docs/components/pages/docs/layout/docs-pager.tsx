@@ -19,7 +19,7 @@ import { BASE_URL } from "@/lib/constants";
 import { useMarkdownCopy } from "@/hooks/use-markdown-copy";
 import { ClaudeIcon } from "@/components/icons/claude";
 import { McpIcon } from "@/components/icons/mcp";
-import { OpenAILogo } from "@/components/assistant-ui/elements/logos";
+import { OpenAILogo } from "@/components/openagentui/elements/logos";
 import {
   CODEX_URL,
   DOCS_MCP_URL,

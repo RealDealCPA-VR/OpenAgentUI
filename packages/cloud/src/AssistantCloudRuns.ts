@@ -1,6 +1,6 @@
 import type { AssistantCloudAPI } from "./AssistantCloudAPI";
 import type { AssistantCloudRunReportToolCall } from "./runTelemetry";
-import { AssistantStream, PlainTextDecoder } from "assistant-stream";
+import { AssistantStream, PlainTextDecoder } from "openagentui-stream";
 import {
   CloudResponseError,
   readCloudRecord,
@@ -14,7 +14,7 @@ type AssistantCloudRunsStreamBody = {
 };
 
 // NOTE: Keep this payload shape aligned with the strict runtime validator in
-// assistant-cloud: apps/api/src/endpoints/runs/create.ts
+// openagentui-cloud: apps/api/src/endpoints/runs/create.ts
 // (createRunSchema). New telemetry fields must be added in both repos together.
 export type AssistantCloudRunReport = {
   thread_id: string;

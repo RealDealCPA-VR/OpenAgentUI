@@ -1,17 +1,17 @@
 ---
-name: assistant-ui-design
-description: "Draw, review, or extend an assistant-ui surface: the documentation site, a marketing or product page, a component in the shipped kit, or a chat UI built on the primitives. Covers the print register, the sand palette, type roles, copy, the line budget, motion, and the closed token and component API."
+name: openagentui-design
+description: "Draw, review, or extend an openagentui surface: the documentation site, a marketing or product page, a component in the shipped kit, or a chat UI built on the primitives. Covers the print register, the sand palette, type roles, copy, the line budget, motion, and the closed token and component API."
 ---
 
-# Design surfaces like assistant-ui
+# Design surfaces like openagentui
 
-assistant-ui is a frontend library for AI agents. This file is the design guide for its documentation site, its marketing and product pages, and the component kit they share. Follow it when you draw, review, or extend any of those surfaces, so that a page added later matches the pages that exist now.
+openagentui is a frontend library for AI agents. This file is the design guide for its documentation site, its marketing and product pages, and the component kit they share. Follow it when you draw, review, or extend any of those surfaces, so that a page added later matches the pages that exist now.
 
 Keep a component library looking like a component library and do not restyle it into a landing page. When a page has little material, keep the page short and do not add decoration to fill it.
 
 ## The governing metaphor
 
-assistant-ui is drawn as a printed document. It is not styled as an application skin. To decide the shape of an element, identify which of three things it is:
+openagentui is drawn as a printed document. It is not styled as an application skin. To decide the shape of an element, identify which of three things it is:
 
 - **The page.** The page is treated as paper and is square. `--radius-page` is 0.
 - **Printed matter** (a code sheet, a table, a figure plate, a specimen frame, a thread specimen). It takes the smallest rounding on the scale, `--radius-document` (6px), declared explicitly so a parent radius cannot leak into it.
@@ -26,7 +26,7 @@ When a rule you need is not written below, derive it from this section rather th
 When requirements compete, protect them in this order:
 
 1. **Honesty.** Never draw a claim, capability, number, framework, or page that does not exist today.
-2. **The library hierarchy.** `assistant-ui` and its documentation are the subject. Design and Elements extend the library and never take the most prominent position on a page. Platforms (React, React Native, Ink) are ways to install the library and are not presented as a product line.
+2. **The library hierarchy.** `openagentui` and its documentation are the subject. Design and Elements extend the library and never take the most prominent position on a page. Platforms (React, React Native, Ink) are ways to install the library and are not presented as a product line.
 3. **The registers below.** Shape, color, type, copy, and the line budget are fixed. A local composition does not get an exception to them.
 4. **A composition specific to this page's material.** Inside the registers the layout is free. Choose it to suit the material.
 5. **Refinement.** Motion, hover, responsive behavior, and detail. None of these may weaken 1 to 4.
@@ -155,7 +155,7 @@ Use these names. Do not invent a sibling, do not extrapolate one from another pr
 
 **Motion** (`apps/docs/styles/animate.css`): `hero-word`, `hero-word-ink`, `hero-caret`, `hero-rise`, `hero-glint`, `code-cascade`, `line-hot`, `stage-progress`, `search-reveal`, and the `nav-glyph-*` keyframes selected by `[data-glyph-motion]`. Motion explains a state change, preserves continuity, or confirms an action. It never gates reading. Every one of these is disabled under `prefers-reduced-motion`, and any new keyframe must be too.
 
-**Components**: `packages/ui/src/components/react/ui/{base,radix}`, shipped as identical twins. Base is the standard and the radix twin mirrors it markup for markup. A new component lands in both or it does not land. Chat surfaces build on the assistant-ui primitives, not on a parallel widget.
+**Components**: `packages/ui/src/components/react/ui/{base,radix}`, shipped as identical twins. Base is the standard and the radix twin mirrors it markup for markup. A new component lands in both or it does not land. Chat surfaces build on the openagentui primitives, not on a parallel widget.
 
 ## Traps
 

@@ -1,5 +1,5 @@
 import { agentTools } from "./products/agent-tools";
-import { assistantUi } from "./products/assistant-ui";
+import { assistantUi } from "./products/openagentui";
 import { cloud } from "./products/cloud";
 import { ELEMENT_PRODUCTS } from "./products/elements";
 import { GUIDE_PRODUCTS } from "./products/guides";

@@ -1,7 +1,7 @@
 "use client";
 
-import { useAuiState } from "@assistant-ui/store";
-import type { AssistantClient } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
+import type { AssistantClient } from "@openagentui/store";
 import {
   createRuntimeExtrasBrand,
   type RuntimeExtrasBrand,

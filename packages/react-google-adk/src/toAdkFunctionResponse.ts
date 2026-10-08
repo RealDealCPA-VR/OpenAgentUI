@@ -1,4 +1,4 @@
-import { isRecord } from "@assistant-ui/core/internal";
+import { isRecord } from "@openagentui/core/internal";
 
 export const isAdkFunctionError = (response: unknown): boolean =>
   isRecord(response) &&

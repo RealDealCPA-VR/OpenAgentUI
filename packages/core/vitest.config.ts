@@ -1,5 +1,5 @@
 import { defineConfig } from "vitest/config";
-import { aui } from "@assistant-ui/vite";
+import { aui } from "@openagentui/vite";
 
 export default defineConfig({
   plugins: [aui()],

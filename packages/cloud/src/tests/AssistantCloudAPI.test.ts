@@ -48,7 +48,7 @@ describe("AssistantCloudAPI", () => {
       Authorization: "Bearer test-key",
       "Aui-User-Id": "u-1",
       "Aui-Workspace-Id": "w-1",
-      "Aui-Sdk": expect.stringMatching(/^assistant-cloud\//),
+      "Aui-Sdk": expect.stringMatching(/^openagentui-cloud\//),
       "Content-Type": "application/json",
       "X-Test": "1",
     });
@@ -69,7 +69,7 @@ describe("AssistantCloudAPI", () => {
     api.registerSdk({ name: "@scope/ok", version: " 1.0.0 " });
 
     expect(api.sdkHeader().split(" ")).toEqual([
-      expect.stringMatching(/^assistant-cloud\//),
+      expect.stringMatching(/^openagentui-cloud\//),
       "@scope/ok/1.0.0",
     ]);
   });
@@ -88,11 +88,11 @@ describe("AssistantCloudAPI", () => {
       workspaceId: "w-1",
     });
 
-    api.registerSdk({ name: " @assistant-ui/core ", version: " 0.3.18 " });
-    api.registerSdk({ name: "@assistant-ui/core", version: "0.3.18" });
-    api.registerSdk({ name: "@assistant-ui/ai-sdk", version: "0.0.5" });
+    api.registerSdk({ name: " @openagentui/core ", version: " 0.3.18 " });
+    api.registerSdk({ name: "@openagentui/core", version: "0.3.18" });
+    api.registerSdk({ name: "@openagentui/ai-sdk", version: "0.0.5" });
     api.registerSdk({ name: " ", version: "0.0.5" });
-    api.registerSdk({ name: "@assistant-ui/react-langgraph", version: " " });
+    api.registerSdk({ name: "@openagentui/react-langgraph", version: " " });
 
     await api.makeRawRequest("/threads", {
       headers: { "Aui-Sdk": "overridden" },
@@ -101,9 +101,9 @@ describe("AssistantCloudAPI", () => {
     const [, init] = fetchMock.mock.calls[0]!;
     expect(init.headers).toMatchObject({ "Aui-Sdk": api.sdkHeader() });
     expect(api.sdkHeader().split(" ")).toEqual([
-      expect.stringMatching(/^assistant-cloud\//),
-      "@assistant-ui/core/0.3.18",
-      "@assistant-ui/ai-sdk/0.0.5",
+      expect.stringMatching(/^openagentui-cloud\//),
+      "@openagentui/core/0.3.18",
+      "@openagentui/ai-sdk/0.0.5",
     ]);
   });
 

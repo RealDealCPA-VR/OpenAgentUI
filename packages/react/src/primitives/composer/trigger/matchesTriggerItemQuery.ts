@@ -1,4 +1,4 @@
-import type { Unstable_TriggerItem } from "@assistant-ui/core";
+import type { Unstable_TriggerItem } from "@openagentui/core";
 
 export function matchesTriggerItemQuery(
   item: Unstable_TriggerItem,

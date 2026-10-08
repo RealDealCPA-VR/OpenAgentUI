@@ -3,7 +3,7 @@
 import { act, render } from "@testing-library/react";
 import { useEffect, useState, type FC } from "react";
 import { describe, expect, it } from "vitest";
-import { AuiProvider, useAui, useAuiState } from "@assistant-ui/store";
+import { AuiProvider, useAui, useAuiState } from "@openagentui/store";
 import { ExternalThread, InMemoryThreadList } from "../../store";
 import { unstable_Interactables } from "./Interactables";
 

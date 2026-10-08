@@ -3,7 +3,7 @@ import { cleanup, render } from "@testing-library/react";
 import { useEffect, useState, type PropsWithChildren } from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import type { ThreadMessageLike } from "../../../runtime/utils/thread-message-like";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { AssistantRuntimeProvider } from "../../AssistantRuntimeProvider";
 import { ThreadPrimitiveMessages } from "../thread/ThreadMessages";
 import { useExternalStoreRuntime } from "../../runtimes/useExternalStoreRuntime";

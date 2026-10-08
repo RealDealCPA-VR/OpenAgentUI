@@ -44,27 +44,27 @@ test("cloud harness kit follows canonical sources and minimal overrides while ke
   const previous = "export const ToolFallback = () => 1;\n";
   const override = "export const Thread = () => 'minimal';\n";
   write(
-    `${sourceRoot}/components/react/assistant-ui/elements/tool-fallback.aui.tsx`,
+    `${sourceRoot}/components/react/openagentui/elements/tool-fallback.aui.tsx`,
     canonical,
   );
   write(
-    `${sourceRoot}/components/react/assistant-ui/elements/thread.aui.tsx`,
+    `${sourceRoot}/components/react/openagentui/elements/thread.aui.tsx`,
     "export const Thread = () => 'full';\n",
   );
   write(
-    "templates/minimal/components/assistant-ui/elements/tool-fallback.aui.tsx",
+    "templates/minimal/components/openagentui/elements/tool-fallback.aui.tsx",
     previous,
   );
   write(
-    "templates/minimal/components/assistant-ui/elements/thread.aui.tsx",
+    "templates/minimal/components/openagentui/elements/thread.aui.tsx",
     override,
   );
   write(
-    "templates/cloud-harness/components/assistant-ui/elements/tool-fallback.aui.tsx",
+    "templates/cloud-harness/components/openagentui/elements/tool-fallback.aui.tsx",
     previous,
   );
   write(
-    "templates/cloud-harness/components/assistant-ui/elements/thread.aui.tsx",
+    "templates/cloud-harness/components/openagentui/elements/thread.aui.tsx",
     "export const Thread = () => 'stale';\n",
   );
   write(
@@ -114,7 +114,7 @@ test("cloud harness kit follows canonical sources and minimal overrides while ke
     readFileSync(
       path.join(
         fixture,
-        "templates/cloud-harness/components/assistant-ui/elements/tool-fallback.aui.tsx",
+        "templates/cloud-harness/components/openagentui/elements/tool-fallback.aui.tsx",
       ),
       "utf8",
     ),
@@ -124,7 +124,7 @@ test("cloud harness kit follows canonical sources and minimal overrides while ke
     readFileSync(
       path.join(
         fixture,
-        "templates/cloud-harness/components/assistant-ui/elements/thread.aui.tsx",
+        "templates/cloud-harness/components/openagentui/elements/thread.aui.tsx",
       ),
       "utf8",
     ),

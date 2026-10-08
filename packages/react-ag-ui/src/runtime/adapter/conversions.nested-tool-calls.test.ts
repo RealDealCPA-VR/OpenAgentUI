@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ThreadMessageLike } from "@assistant-ui/core";
+import type { ThreadMessageLike } from "@openagentui/core";
 import { toAgUiMessages } from "./conversions";
 
 type Message = ThreadMessageLike;

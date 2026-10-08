@@ -1,13 +1,13 @@
 # Assistant Transport Example
 
-This example demonstrates how to use assistant-ui with the `useAssistantTransportRuntime` hook to connect to a custom backend server that implements the assistant-transport protocol.
+This example demonstrates how to use openagentui with the `useAssistantTransportRuntime` hook to connect to a custom backend server that implements the assistant-transport protocol.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-assistant-transport
+npx openagentui@latest create my-app --example with-assistant-transport
 cd my-app
 ```
 
@@ -30,11 +30,11 @@ The application will be available at [http://localhost:3000](http://localhost:30
 
 ## Overview
 
-The Assistant Transport runtime allows you to connect assistant-ui to any backend server that can handle:
+The Assistant Transport runtime allows you to connect openagentui to any backend server that can handle:
 
 - `AddMessageCommand` - for sending user messages
 - `AddToolResultCommand` - for sending tool execution results
-- Streaming responses using the `assistant-stream` format
+- Streaming responses using the `openagentui-stream` format
 
 ## Backend Server Requirements
 
@@ -44,7 +44,7 @@ Your backend server should:
 2. Handle the following command types in the request body:
    - `AddMessageCommand`: `{ type: "add-message", message: { role: "user", id: "client-message-id", parts: [...] } }`
    - `AddToolResultCommand`: `{ type: "add-tool-result", toolCallId: string, result: object }`
-3. Return streaming responses using the `assistant-stream` format
+3. Return streaming responses using the `openagentui-stream` format
 4. Include CORS headers to allow requests from the frontend
 
 ## Key Features
@@ -57,5 +57,5 @@ Your backend server should:
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
-- [Assistant Transport Runtime API](https://www.assistant-ui.com/docs/runtimes/custom/assistant-transport)
+- [openagentui Documentation](https://openagentui.dev/docs)
+- [Assistant Transport Runtime API](https://openagentui.dev/docs/runtimes/custom/assistant-transport)

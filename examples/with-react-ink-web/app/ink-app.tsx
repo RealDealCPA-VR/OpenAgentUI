@@ -7,8 +7,8 @@ import {
   AssistantRuntimeProvider,
   StatusBarPrimitive,
   useAui,
-} from "@assistant-ui/react-ink";
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react-ink";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import { ThreadShell } from "../../with-react-ink/src/components/thread-shell";
 import { Thread } from "./thread";
@@ -17,10 +17,10 @@ const CHAT_API =
   process.env.NEXT_PUBLIC_CHAT_ENDPOINT_URL ??
   (process.env.NODE_ENV === "development"
     ? "http://localhost:3000/api/chat"
-    : "https://www.assistant-ui.com/api/chat");
+    : "https://openagentui.dev/api/chat");
 
-const MODEL_NAME = "assistant-ui";
-const ANONYMOUS_SESSION_HEADER = "x-assistant-ui-anonymous-session";
+const MODEL_NAME = "openagentui";
+const ANONYMOUS_SESSION_HEADER = "x-openagentui-anonymous-session";
 
 // Mirrors examples/with-expo/hooks/anonymous-session-fetch.ts; keep in sync.
 function createAnonymousSessionFetch(chatApi: string): typeof fetch {
@@ -91,7 +91,7 @@ export const InkApp = () => {
           <Text bold color="cyan">
             {MODEL_NAME}
           </Text>
-          <Text dimColor>{"  ~/assistant-ui"}</Text>
+          <Text dimColor>{"  ~/openagentui"}</Text>
         </Box>
         <StatusBarPrimitive.Root>
           <Text dimColor>

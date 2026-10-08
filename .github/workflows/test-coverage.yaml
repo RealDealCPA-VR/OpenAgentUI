@@ -41,7 +41,7 @@ jobs:
     name: Test Coverage
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    # assistant-stream's resumable store and apps/docs need a live Redis, or their Redis suites skip and miss their coverage thresholds.
+    # openagentui-stream's resumable store and apps/docs need a live Redis, or their Redis suites skip and miss their coverage thresholds.
     services:
       redis:
         image: redis:8-alpine # ratchet:exclude

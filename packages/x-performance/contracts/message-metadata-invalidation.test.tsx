@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { act, createElement, useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { ThreadMessageLike } from "@assistant-ui/core";
-import { useExternalMessageConverter } from "@assistant-ui/core/react";
+import type { ThreadMessageLike } from "@openagentui/core";
+import { useExternalMessageConverter } from "@openagentui/core/react";
 
 (
   globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }

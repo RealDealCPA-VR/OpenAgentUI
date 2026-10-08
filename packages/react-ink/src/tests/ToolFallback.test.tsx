@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, render } from "ink-testing-library";
-import { ReadonlyThreadProvider } from "@assistant-ui/core/react";
+import { ReadonlyThreadProvider } from "@openagentui/core/react";
 import { ToolFallback } from "../primitives/toolCall/ToolFallback";
 
 type InputHandler = (input: string, key: { return?: boolean }) => void;

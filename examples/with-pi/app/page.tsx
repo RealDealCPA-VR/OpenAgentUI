@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Thread } from "../components/assistant-ui/elements/thread";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
-import { usePiThreadState } from "@assistant-ui/react-pi";
-import type { PiRuntimeReadiness } from "@assistant-ui/react-pi";
+import { Thread } from "../components/openagentui/elements/thread";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
+import { usePiThreadState } from "@openagentui/react-pi";
+import type { PiRuntimeReadiness } from "@openagentui/react-pi";
 // Type-only import — erased at build time, so no server code reaches the client.
 import type { PiHandshake } from "@/lib/pi-server";
 import { PiHandshakeProvider } from "../components/pi-handshake";
@@ -66,7 +66,7 @@ function Header({
 }) {
   return (
     <header className="flex items-center gap-3 border-b px-4 py-2">
-      <span className="font-semibold">assistant-ui × Pi</span>
+      <span className="font-semibold">openagentui × Pi</span>
 
       <div className="ml-auto flex items-center gap-2">
         <WorkspaceBrowser value={workspacePath} onCommit={onCommitWorkspace} />

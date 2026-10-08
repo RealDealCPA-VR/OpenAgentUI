@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Assistant Transport Backend with LangGraph - FastAPI + assistant-stream + LangGraph server
+Assistant Transport Backend with LangGraph - FastAPI + openagentui-stream + LangGraph server
 """
 
 import json
@@ -11,9 +11,9 @@ from typing import Annotated, Any, TypedDict
 from uuid import uuid4
 
 import uvicorn
-from assistant_stream import RunController, create_run
-from assistant_stream.modules.langgraph import append_langgraph_event, get_tool_call_subgraph_state
-from assistant_stream.serialization import AssistantTransportResponse
+from openagentui_stream import RunController, create_run
+from openagentui_stream.modules.langgraph import append_langgraph_event, get_tool_call_subgraph_state
+from openagentui_stream.serialization import AssistantTransportResponse
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -79,7 +79,7 @@ class ChatRequest(BaseModel):
     run_config: dict[str, Any] | None = Field(
         None, alias="runConfig", description="Run configuration"
     )
-    thread_id: str | None = Field(None, alias="threadId", description="Assistant UI thread ID")
+    thread_id: str | None = Field(None, alias="threadId", description="OpenAgentUI thread ID")
     state: dict[str, Any] | None = Field(None, description="State")
 
 
@@ -576,7 +576,7 @@ async def chat_endpoint(request: ChatRequest):
                 chunk
             )
 
-    # Create streaming response using assistant-stream
+    # Create streaming response using openagentui-stream
     stream = create_run(run_callback, state=request.state)
 
     return AssistantTransportResponse(stream)

@@ -11,7 +11,7 @@ import {
 } from "../../runtime/utils/thread-runtime-lifecycle";
 import { useRuntimeAdapters } from "./RuntimeAdapterProvider";
 import { ExternalStoreHistoryCopy } from "./external-store-history-copy";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import { useIsRemoteThreadRuntimeHosted } from "./RemoteThreadRuntimeHostContext";
 
 export const useExternalStoreRuntime = <T>(

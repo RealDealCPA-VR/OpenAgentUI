@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ComponentProps } from "react";
 
 import { Text } from "ink";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 const defaultFormat = (seconds: number) => {
   if (seconds < 60) return `(${seconds}s)`;

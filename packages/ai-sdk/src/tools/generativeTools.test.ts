@@ -3,7 +3,7 @@ import {
   defineMcpToolkit,
   defineToolkit,
   type ToolkitDefinition,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { AISDKToolkit } from "./generativeTools";
 import { wrapModelContentEnvelope } from "../converters/modelContentEnvelope";
 
@@ -818,10 +818,10 @@ describe("AISDKToolkit", () => {
         ) => Promise<string>)
       | undefined;
     await expect(
-      execute?.({ query: "assistant-ui" }, executeOptions),
+      execute?.({ query: "openagentui" }, executeOptions),
     ).resolves.toBe("docs result");
     expect(docsExecute).toHaveBeenCalledWith(
-      { query: "assistant-ui" },
+      { query: "openagentui" },
       executeOptions,
     );
   });
@@ -985,7 +985,7 @@ describe("AISDKToolkit toModelOutput", () => {
       } as any,
     }).tools();
 
-  it("adapts assistant-ui model content parts to the AI SDK tool output shape", async () => {
+  it("adapts openagentui model content parts to the AI SDK tool output shape", async () => {
     const tools = await createWeatherTools(({ output }: any) => [
       { type: "text", text: `Weather card displayed: ${output.location}` },
     ]);

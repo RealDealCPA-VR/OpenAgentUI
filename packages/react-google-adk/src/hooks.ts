@@ -1,7 +1,7 @@
-import { generateId } from "@assistant-ui/core";
-import { useAui } from "@assistant-ui/store";
-import { useShallowSelector } from "@assistant-ui/store/internal";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import { generateId } from "@openagentui/core";
+import { useAui } from "@openagentui/store";
+import { useShallowSelector } from "@openagentui/store/internal";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import { toAdkAuthReply } from "./adkAuthRequest";
 import { adkExtras } from "./adkExtras";
 import { toAdkConfirmationReply } from "./adkToolApproval";

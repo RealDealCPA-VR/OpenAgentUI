@@ -1,6 +1,6 @@
 ---
 title: Mentions in Chat
-description: Let users @-mention tools or custom items in the AI chat composer to guide the LLM. Mention picker built into assistant-ui's React composer.
+description: Let users @-mention tools or custom items in the AI chat composer to guide the LLM. Mention picker built into openagentui's React composer.
 platforms: ["react"]
 ---
 
@@ -38,7 +38,7 @@ The rest of this guide covers the underlying concepts and customization points.
 A `TriggerAdapter` provides the data for the popover. All methods are **synchronous**. For async data, load it with external state management (React Query, SWR, local state), then expose the loaded results through the adapter.
 
 ```ts
-import type { TriggerAdapter } from "@assistant-ui/react";
+import type { TriggerAdapter } from "@openagentui/react";
 
 const myAdapter: TriggerAdapter = {
   categories() {
@@ -90,8 +90,8 @@ When the fetcher reads from an account- or workspace-specific source, pass that 
 import {
   unstable_useLiveCompletionAdapter,
   defaultDirectiveFormatter,
-} from "@assistant-ui/react";
-import { ComposerTriggerPopover } from "@/components/assistant-ui/elements/composer-trigger-popover.aui";
+} from "@openagentui/react";
+import { ComposerTriggerPopover } from "@/components/openagentui/elements/composer-trigger-popover.aui";
 
 function MentionPopover() {
   const mentions = unstable_useLiveCompletionAdapter({
@@ -118,7 +118,7 @@ You can also wire async data by hand when you need a custom cache, no debounce, 
 
 ```tsx
 import { useState, useEffect, useMemo } from "react";
-import type { TriggerAdapter } from "@assistant-ui/react";
+import type { TriggerAdapter } from "@openagentui/react";
 
 function useUserMentionAdapter(query: string) {
   const [users, setUsers] = useState<{ id: string; name: string }[]>([]);
@@ -150,7 +150,7 @@ function useUserMentionAdapter(query: string) {
 ```tsx
 import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import type { TriggerAdapter } from "@assistant-ui/react";
+import type { TriggerAdapter } from "@openagentui/react";
 
 function useMentionAdapter(query: string): TriggerAdapter {
   const { data = [] } = useQuery({
@@ -171,8 +171,8 @@ function useMentionAdapter(query: string): TriggerAdapter {
 Pass the adapter to `TriggerPopover` and declare a `Directive` sub-primitive to bind the insertion behavior:
 
 ```tsx
-import { ComposerPrimitive } from "@assistant-ui/react";
-import { defaultDirectiveFormatter } from "@assistant-ui/react";
+import { ComposerPrimitive } from "@openagentui/react";
+import { defaultDirectiveFormatter } from "@openagentui/react";
 
 <ComposerPrimitive.TriggerPopoverRoot>
   <ComposerPrimitive.Root>
@@ -222,7 +222,7 @@ Exactly one behavior sub-primitive (`Directive` or `Action`) is allowed per `Tri
 **Tools from model context (default):**
 
 ```tsx
-import { unstable_useMentionAdapter } from "@assistant-ui/react";
+import { unstable_useMentionAdapter } from "@openagentui/react";
 
 const mention = unstable_useMentionAdapter();
 // → { adapter, directive } — spread into <ComposerTriggerPopover {...mention} />
@@ -330,7 +330,7 @@ When `id` equals `label`, the `{name=…}` attribute is omitted for brevity:
 Implement `DirectiveFormatter` to use a different format:
 
 ```ts
-import type { DirectiveFormatter } from "@assistant-ui/react";
+import type { DirectiveFormatter } from "@openagentui/react";
 
 const slashFormatter: DirectiveFormatter = {
   serialize(item) {
@@ -390,7 +390,7 @@ The mention system supports two input modes:
 | --- | --- | --- |
 | **Input component** | `ComposerPrimitive.Input` | `LexicalComposerInput` |
 | **Mention display in composer** | Raw directive text (`:tool[Label]`) | Inline chips (atomic nodes) |
-| **Dependencies** | None | `@assistant-ui/react-lexical` and its Lexical peers: `lexical`, `@lexical/react`, `@lexical/utils`, `@lexical/history`, `@lexical/plain-text` |
+| **Dependencies** | None | `@openagentui/react-lexical` and its Lexical peers: `lexical`, `@lexical/react`, `@lexical/utils`, `@lexical/history`, `@lexical/plain-text` |
 | **Best for** | Simple setups, minimal bundle | Rich editing, polished UX |
 
 With **textarea**, selecting a mention inserts the directive string directly into the text. The user sees `:tool[Get Weather]{name=get_weather}` in the input.
@@ -398,7 +398,7 @@ With **textarea**, selecting a mention inserts the directive string directly int
 With **Lexical**, selected mentions appear as styled inline chips that behave as atomic units: they are selected, deleted, and undone as a whole. The underlying text still uses the directive format.
 
 ```tsx
-import { LexicalComposerInput } from "@assistant-ui/react-lexical";
+import { LexicalComposerInput } from "@openagentui/react-lexical";
 
 <ComposerPrimitive.TriggerPopoverRoot>
   <ComposerPrimitive.Root>
@@ -419,7 +419,7 @@ import { LexicalComposerInput } from "@assistant-ui/react-lexical";
 
 ### Custom Lexical Plugins
 
-Children of `LexicalComposerInput` render inside the Lexical composer context after the built-in plugins, so standard Lexical plugin components built on `useLexicalComposerContext` work for editor concerns the mention system does not cover, such as paste normalization or length limits. `lexical` and the `@lexical/*` packages are peer dependencies of `@assistant-ui/react-lexical`, so the copy your plugins import is the one the composer runs on; keep every Lexical package in your app at a single version. The example below registers an update listener that flags messages over a maximum length.
+Children of `LexicalComposerInput` render inside the Lexical composer context after the built-in plugins, so standard Lexical plugin components built on `useLexicalComposerContext` work for editor concerns the mention system does not cover, such as paste normalization or length limits. `lexical` and the `@lexical/*` packages are peer dependencies of `@openagentui/react-lexical`, so the copy your plugins import is the one the composer runs on; keep every Lexical package in your app at a single version. The example below registers an update listener that flags messages over a maximum length.
 
 ```tsx
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
@@ -487,7 +487,7 @@ You can use the extracted mentions to:
 Use `unstable_useTriggerPopoverScopeContext` inside the `TriggerPopover` to programmatically access the popover state for that trigger:
 
 ```tsx
-import { unstable_useTriggerPopoverScopeContext } from "@assistant-ui/react";
+import { unstable_useTriggerPopoverScopeContext } from "@openagentui/react";
 
 function MyPopoverContent() {
   const scope = unstable_useTriggerPopoverScopeContext();

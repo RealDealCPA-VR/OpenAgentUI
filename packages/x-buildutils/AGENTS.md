@@ -1,4 +1,4 @@
-# @assistant-ui/x-buildutils
+# @openagentui/x-buildutils
 
 `aui-build` and the tsconfig presets every package builds with; the root and `packages/AGENTS.md` still apply.
 

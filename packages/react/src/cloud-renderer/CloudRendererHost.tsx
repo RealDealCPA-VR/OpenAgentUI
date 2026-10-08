@@ -15,14 +15,14 @@ import {
   AuiProvider,
   useAui,
   type AssistantClient,
-} from "@assistant-ui/store";
-import { resource } from "@assistant-ui/tap";
-import { ReadonlyThreadProvider } from "@assistant-ui/core/react";
-import type { ThreadMessage } from "@assistant-ui/core";
+} from "@openagentui/store";
+import { resource } from "@openagentui/tap";
+import { ReadonlyThreadProvider } from "@openagentui/core/react";
+import type { ThreadMessage } from "@openagentui/core";
 import { AssistantRuntimeProvider } from "../legacy-runtime/AssistantRuntimeProvider";
 import { useExternalStoreRuntime } from "../legacy-runtime/runtime-cores/external-store/useExternalStoreRuntime";
 
-const CHANNEL = "assistant-ui/cloud-renderer";
+const CHANNEL = "openagentui/cloud-renderer";
 
 const toOrigin = (value: string) => {
   try {

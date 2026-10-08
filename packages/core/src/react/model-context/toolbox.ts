@@ -3,7 +3,7 @@ import type {
   ToolCallReader,
   ToolDeclaration,
   ToolModelOutputFunction,
-} from "assistant-stream";
+} from "openagentui-stream";
 import type { ReactNode } from "react";
 import type {
   ToolCallMessagePartComponent,
@@ -55,7 +55,7 @@ type WithRender<T, TArgs extends Record<string, unknown>, TResult> = T extends {
 type ToolParameters<TArgs extends Record<string, unknown>> =
   ToolDeclaration<TArgs>["parameters"];
 
-// ToolExecutionContext is not re-exported from assistant-stream's public entry.
+// ToolExecutionContext is not re-exported from openagentui-stream's public entry.
 type ToolExecuteContext = Parameters<
   NonNullable<ToolDeclaration["execute"]>
 >[1];

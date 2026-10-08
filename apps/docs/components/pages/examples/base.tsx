@@ -4,25 +4,25 @@ import {
   ComposerAddAttachment,
   ComposerAttachments,
   UserMessageAttachments,
-} from "@/components/assistant-ui/elements/attachment.aui";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+} from "@/components/openagentui/elements/attachment.aui";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import { DotMatrix } from "@/components/ui/dot-matrix";
-import { MessageTiming } from "@/components/assistant-ui/elements/message-timing.aui";
-import { ToolFallback } from "@/components/assistant-ui/elements/tool-fallback.aui";
+import { MessageTiming } from "@/components/openagentui/elements/message-timing.aui";
+import { ToolFallback } from "@/components/openagentui/elements/tool-fallback.aui";
 import {
   ToolGroupContent,
   ToolGroupRoot,
   ToolGroupTrigger,
-} from "@/components/assistant-ui/elements/tool-group.aui";
+} from "@/components/openagentui/elements/tool-group.aui";
 import { CloneThreadShell } from "./clone-thread-shell";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import {
   Reasoning,
   ReasoningContent,
   ReasoningRoot,
   ReasoningText,
   ReasoningTrigger,
-} from "@/components/assistant-ui/elements/reasoning.aui";
+} from "@/components/openagentui/elements/reasoning.aui";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
@@ -31,9 +31,9 @@ import {
   ComposerQuotePreview,
   QuoteBlock,
   SelectionToolbar,
-} from "@/components/assistant-ui/elements/quote.aui";
-import { ComposerTriggerPopover } from "@/components/assistant-ui/elements/composer-trigger-popover.aui";
-import { DirectiveText } from "@/components/assistant-ui/elements/directive-text.aui";
+} from "@/components/openagentui/elements/quote.aui";
+import { ComposerTriggerPopover } from "@/components/openagentui/elements/composer-trigger-popover.aui";
+import { DirectiveText } from "@/components/openagentui/elements/directive-text.aui";
 import {
   ActionBarMorePrimitive,
   ActionBarPrimitive,
@@ -50,7 +50,7 @@ import {
   useAui,
   useAuiState,
   type Unstable_SlashCommand,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -82,10 +82,10 @@ import {
 import {
   LexicalComposerInput,
   type DirectiveChipProps,
-} from "@assistant-ui/react-lexical";
+} from "@openagentui/react-lexical";
 import Image from "next/image";
 import { Suspense, useState, type FC, type ReactNode } from "react";
-import { ModelSelector } from "@/components/assistant-ui/elements/model-selector.aui";
+import { ModelSelector } from "@/components/openagentui/elements/model-selector.aui";
 import { docsModelOptions } from "@/components/pages/docs/assistant/docs-model-options";
 import { DEFAULT_MODEL_ID } from "@/lib/model";
 
@@ -103,7 +103,7 @@ const Logo: FC<{ collapsed?: boolean }> = ({ collapsed = false }) => {
         className="size-5 shrink-0 dark:hue-rotate-180 dark:invert"
       />
       {!collapsed && (
-        <span className="text-foreground/90 truncate">assistant-ui</span>
+        <span className="text-foreground/90 truncate">openagentui</span>
       )}
     </div>
   );

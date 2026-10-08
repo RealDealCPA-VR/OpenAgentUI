@@ -1,13 +1,13 @@
 # React Hook Form Integration
 
-This example demonstrates how to integrate assistant-ui with React Hook Form, allowing the AI assistant to fill out and submit forms.
+This example demonstrates how to integrate openagentui with React Hook Form, allowing the AI assistant to fill out and submit forms.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-react-hook-form
+npx openagentui@latest create my-app --example with-react-hook-form
 cd my-app
 ```
 
@@ -27,7 +27,7 @@ npm run dev
 
 ## Features
 
-- React Hook Form integration via `@assistant-ui/react-hook-form`
+- React Hook Form integration via `@openagentui/react-hook-form`
 - AI-powered form filling with `useAssistantForm`
 - Custom tool rendering for form actions
 - Sidebar assistant layout
@@ -35,5 +35,5 @@ npm run dev
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
-- [Form-Filling AI Copilot Example](https://www.assistant-ui.com/examples/form-demo)
+- [openagentui Documentation](https://openagentui.dev/docs)
+- [Form-Filling AI Copilot Example](https://openagentui.dev/examples/form-demo)

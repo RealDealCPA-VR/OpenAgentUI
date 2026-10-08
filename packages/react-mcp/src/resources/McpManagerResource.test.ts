@@ -1,4 +1,4 @@
-import { createTapRoot, resource, useResource } from "@assistant-ui/tap";
+import { createTapRoot, resource, useResource } from "@openagentui/tap";
 import { describe, expect, it, vi } from "vitest";
 import { useState } from "react";
 import { defineConnector } from "../connector";
@@ -31,14 +31,14 @@ vi.mock("@modelcontextprotocol/client", async (importOriginal) => ({
   StreamableHTTPClientTransport: mocks.StreamableHTTPClientTransport,
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
+vi.mock("@openagentui/store", async (importOriginal) => ({
   ...(await importOriginal()),
   useAssistantClientRef: () => ({ current: null }),
 }));
 
-vi.mock("@assistant-ui/store/client", async (importOriginal) => {
+vi.mock("@openagentui/store/client", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@assistant-ui/store/client")>();
+    await importOriginal<typeof import("@openagentui/store/client")>();
   const { useEffect } = await import("react");
   const useScopeEffectShim = (
     _scope: string,
@@ -129,7 +129,7 @@ describe("McpManagerResource server ids", () => {
       });
       expect(saveCustomServers).not.toHaveBeenCalled();
       expect(consoleError).toHaveBeenCalledWith(
-        '[assistant-ui/react-mcp] ignored duplicate custom server id "docs" loaded from storage',
+        '[openagentui/react-mcp] ignored duplicate custom server id "docs" loaded from storage',
       );
     } finally {
       consoleError.mockRestore();
@@ -154,7 +154,7 @@ describe("McpManagerResource server ids", () => {
 
       expect(mocks.Client).toHaveBeenCalledWith(
         {
-          name: "assistant-ui-mcp",
+          name: "openagentui-mcp",
           version: "0.0.0",
         },
         expect.objectContaining({ defaultCacheTtlMs: 5_000 }),
@@ -183,7 +183,7 @@ describe("McpManagerResource server ids", () => {
 
       expect(mocks.Client).toHaveBeenCalledWith(
         {
-          name: "assistant-ui-mcp",
+          name: "openagentui-mcp",
           version: "0.0.0",
         },
         expect.objectContaining({ defaultCacheTtlMs: 5_000 }),
@@ -348,7 +348,7 @@ describe("McpManagerResource storage failures", () => {
       );
       expect(root.getValue().getState().customServers).toHaveLength(0);
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui/react-mcp] failed to load custom servers:",
+        "[openagentui/react-mcp] failed to load custom servers:",
         error,
       );
 
@@ -362,7 +362,7 @@ describe("McpManagerResource storage failures", () => {
       expect(root.getValue().getState().customServers).toHaveLength(1);
       expect(saveCustomServers).not.toHaveBeenCalled();
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui/react-mcp] custom server changes remain in memory because loading the persisted list failed; remount the manager to retry",
+        "[openagentui/react-mcp] custom server changes remain in memory because loading the persisted list failed; remount the manager to retry",
       );
       expect(consoleError).toHaveBeenCalledTimes(2);
     } finally {
@@ -408,7 +408,7 @@ describe("McpManagerResource storage failures", () => {
         expect(root.getValue().getState().customServers).toHaveLength(1);
       });
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui/react-mcp] failed to save custom servers:",
+        "[openagentui/react-mcp] failed to save custom servers:",
         error,
       );
     } finally {

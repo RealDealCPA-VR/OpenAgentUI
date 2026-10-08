@@ -16,7 +16,7 @@ A single tool call renders through that tool's own `render` field, but a timelin
 
 ### Derive steps from the message's parts
 
-```tsx title="components/assistant-ui/elements/session-timeline.tsx"
+```tsx title="components/openagentui/elements/session-timeline.tsx"
 "use client";
 
 import { useMemo, useState } from "react";
@@ -26,12 +26,12 @@ import {
   TerminalIcon,
   type LucideIcon,
 } from "lucide-react";
-import { useAuiState, type ToolCallMessagePart } from "@assistant-ui/react";
+import { useAuiState, type ToolCallMessagePart } from "@openagentui/react";
 import {
   ToolTimeline,
   type TimelineStat,
   type TimelineStep,
-} from "@/components/assistant-ui/elements/tool-timeline";
+} from "@/components/openagentui/elements/tool-timeline";
 
 const TOOL_META: Record<string, { verb: string; icon: LucideIcon }> = {
   read_file: { verb: "Read", icon: FileSearchIcon },
@@ -128,7 +128,7 @@ import {
   ToolTimeline,
   type TimelineStat,
   type TimelineStep,
-} from "@/components/assistant-ui/elements/tool-timeline";
+} from "@/components/openagentui/elements/tool-timeline";
 
 const STEPS: TimelineStep[] = [
   { verb: "Read", chip: "thread.tsx", icon: FileSearchIcon },

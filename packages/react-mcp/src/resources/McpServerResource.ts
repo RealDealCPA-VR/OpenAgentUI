@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useMemo, useEffectEvent } from "react";
-import { resource, useResource, withKey } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
-import { shallowEqual } from "@assistant-ui/store/internal";
+import { resource, useResource, withKey } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
+import { shallowEqual } from "@openagentui/store/internal";
 import {
   Client,
   StreamableHTTPClientTransport,
@@ -379,7 +379,7 @@ const useMcpServerResourceInstance = (
       }
       const client = new Client(
         {
-          name: "assistant-ui-mcp",
+          name: "openagentui-mcp",
           version: "0.0.0",
         },
         clientOptions,

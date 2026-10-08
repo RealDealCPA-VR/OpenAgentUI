@@ -381,10 +381,10 @@ it("renders reasoning parts only when reasoning is enabled", () => {
   const off = offRegistry.files[0]?.content ?? "";
 
   expect(onRegistry.registryDependencies).toContain(
-    "https://r.assistant-ui.com/base/reasoning.json",
+    "https://r.openagentui.dev/base/reasoning.json",
   );
   expect(on).toContain(
-    'from "@/components/assistant-ui/elements/reasoning.aui"',
+    'from "@/components/openagentui/elements/reasoning.aui"',
   );
   expect(on).toContain("<MessagePrimitive.GroupedParts");
   expect(on).toContain('reasoning: ["group-reasoning"]');
@@ -407,7 +407,7 @@ it("renders reasoning parts only when reasoning is enabled", () => {
   expect(on).not.toContain("ReasoningGroup");
   expect(on).not.toContain("ReasoningPart");
   expect(offRegistry.registryDependencies).not.toContain(
-    "https://r.assistant-ui.com/base/reasoning.json",
+    "https://r.openagentui.dev/base/reasoning.json",
   );
   expect(off).not.toContain("reasoning.aui");
   expect(off).toContain(
@@ -427,10 +427,10 @@ it("renders source parts only when sources are enabled", () => {
   const off = offRegistry.files[0]?.content ?? "";
 
   expect(onRegistry.registryDependencies).toContain(
-    "https://r.assistant-ui.com/base/sources.json",
+    "https://r.openagentui.dev/base/sources.json",
   );
   expect(on).toContain(
-    'import { Sources } from "@/components/assistant-ui/elements/sources.aui";',
+    'import { Sources } from "@/components/openagentui/elements/sources.aui";',
   );
   expect(on).toContain('source: ["group-source"]');
   expect(on).toContain(
@@ -440,7 +440,7 @@ it("renders source parts only when sources are enabled", () => {
     'case "source":\n                return <Sources {...part} />;',
   );
   expect(offRegistry.registryDependencies).not.toContain(
-    "https://r.assistant-ui.com/base/sources.json",
+    "https://r.openagentui.dev/base/sources.json",
   );
   expect(off).not.toContain("sources.aui");
   expect(off).not.toContain("group-source");

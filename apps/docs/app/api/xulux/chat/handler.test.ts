@@ -62,7 +62,7 @@ vi.mock("@/lib/ai/provider", async (importOriginal) => ({
   resolveChatModel: mocks.resolveChatModel,
 }));
 
-vi.mock("@assistant-ui/ai-sdk", async (importOriginal) => ({
+vi.mock("@openagentui/ai-sdk", async (importOriginal) => ({
   ...(await importOriginal()),
   injectQuoteContext: (messages: unknown) => messages,
 }));
@@ -87,7 +87,7 @@ const request = (
   config?: Record<string, unknown>,
   overrides?: Record<string, unknown>,
 ) =>
-  new Request("https://www.assistant-ui.com/api/xulux/chat", {
+  new Request("https://openagentui.dev/api/xulux/chat", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({

@@ -18,18 +18,18 @@ import {
   unstable_interactableTool,
   useAuiState,
   type ToolCallMessagePartComponent,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   JSONGenerativeUI,
   defaultGenerativeUILibrary,
   defineGenerativeComponents,
   generativeUIToJSX,
-} from "@assistant-ui/react-generative-ui";
+} from "@openagentui/react-generative-ui";
 import { ToolErrorCard, ToolStatusCard, ToolTraceCard } from "@/lib/tool-trace";
 import { Notepad } from "@/components/tool-ui/notepad";
 import { RememberToolUI } from "@/components/shared/memory";
 import { SetThemeToolUI } from "@/components/tool-ui/set-theme-card";
-import { styledGenerativeUILibrary } from "@/components/assistant-ui/elements/generative-ui";
+import { styledGenerativeUILibrary } from "@/components/openagentui/elements/generative-ui";
 
 const weatherFormatSchema = z.enum(["fahrenheit", "celsius"]);
 

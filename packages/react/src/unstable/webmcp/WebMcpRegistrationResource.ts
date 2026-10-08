@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { resource } from "@assistant-ui/tap";
-import type { Tool } from "assistant-stream";
+import { resource } from "@openagentui/tap";
+import type { Tool } from "openagentui-stream";
 import { toWebMcpTool } from "./convertTools";
 import type { WebMcpHost } from "./webmcp-host";
 
@@ -20,7 +20,7 @@ const notPermitted = (error: unknown) =>
   (error as { name?: unknown } | null | undefined)?.name === "NotAllowedError";
 
 const notPermittedMessage = (name: string) =>
-  `[assistant-ui] WebMCP registration for tool "${name}" was not permitted; the page's tools permission is disabled.`;
+  `[openagentui] WebMCP registration for tool "${name}" was not permitted; the page's tools permission is disabled.`;
 
 const useWebMcpRegistration = ({
   host,
@@ -59,7 +59,7 @@ const useWebMcpRegistration = ({
           refuse(
             notPermitted(error)
               ? notPermittedMessage(name)
-              : `[assistant-ui] WebMCP registration for tool "${name}" failed (name may already be registered).`,
+              : `[openagentui] WebMCP registration for tool "${name}" failed (name may already be registered).`,
             error,
           ),
       );
@@ -67,7 +67,7 @@ const useWebMcpRegistration = ({
       refuse(
         notPermitted(error)
           ? notPermittedMessage(name)
-          : `[assistant-ui] Skipping WebMCP registration for tool "${name}": registerTool failed (name may already be registered).`,
+          : `[openagentui] Skipping WebMCP registration for tool "${name}": registerTool failed (name may already be registered).`,
         error,
       );
       return undefined;
@@ -80,7 +80,7 @@ const useWebMcpRegistration = ({
         dispose();
       } catch (error) {
         console.warn(
-          `[assistant-ui] Unregistering WebMCP tool "${name}" failed.`,
+          `[openagentui] Unregistering WebMCP tool "${name}" failed.`,
           error,
         );
       }

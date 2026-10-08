@@ -6,8 +6,8 @@ import {
   ThreadListNew,
   ThreadListRoot,
   ThreadListSearch,
-} from "@/components/assistant-ui/elements/thread-list.aui";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+} from "@/components/openagentui/elements/thread-list.aui";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -22,7 +22,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import { MenuIcon, PanelLeftIcon } from "lucide-react";
 import { useState, type FC, type MouseEvent, type ReactNode } from "react";
 

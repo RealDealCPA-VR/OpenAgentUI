@@ -51,7 +51,7 @@ const resolveModelContext = (): WebMcpModelContext | undefined => {
   if (!context) return undefined;
   if (typeof context.registerTool === "function") return context;
   console.warn(
-    "[assistant-ui] Ignoring a modelContext with no callable registerTool; WebMCP reports unsupported.",
+    "[openagentui] Ignoring a modelContext with no callable registerTool; WebMCP reports unsupported.",
   );
   return undefined;
 };

@@ -120,9 +120,7 @@ describe("AssistantChatTransport.prepareSendMessagesRequest", () => {
 
     expect(setStreamId).toHaveBeenCalledWith("stream-1", "local-chat-id");
     const requestHeaders = new Headers(fetchMock.mock.calls[0]?.[1]?.headers);
-    expect(requestHeaders.has("x-assistant-ui-resumable-thread-id")).toBe(
-      false,
-    );
+    expect(requestHeaders.has("x-openagentui-resumable-thread-id")).toBe(false);
   });
 
   it("does not add the resumable thread header without resumable storage", async () => {
@@ -136,9 +134,7 @@ describe("AssistantChatTransport.prepareSendMessagesRequest", () => {
     await transport.sendMessages(sendMessagesOptions as never);
 
     const requestHeaders = new Headers(fetchMock.mock.calls[0]?.[1]?.headers);
-    expect(requestHeaders.has("x-assistant-ui-resumable-thread-id")).toBe(
-      false,
-    );
+    expect(requestHeaders.has("x-openagentui-resumable-thread-id")).toBe(false);
   });
 
   it("reads reconnect stream ids under the local thread id", async () => {
@@ -163,9 +159,7 @@ describe("AssistantChatTransport.prepareSendMessagesRequest", () => {
     expect(getStreamId).toHaveBeenCalledWith("local-chat-id");
     expect(fetchMock.mock.calls[0]?.[0]).toBe("/api/chat/resume/stream-1");
     const requestHeaders = new Headers(fetchMock.mock.calls[0]?.[1]?.headers);
-    expect(requestHeaders.has("x-assistant-ui-resumable-thread-id")).toBe(
-      false,
-    );
+    expect(requestHeaders.has("x-openagentui-resumable-thread-id")).toBe(false);
   });
 });
 

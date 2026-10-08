@@ -23,8 +23,8 @@ import { useOnScrollToBottom } from "../../utils/hooks/useOnScrollToBottom";
 import { useMediaQuery } from "../../utils/hooks/useMediaQuery";
 import { renderSlot } from "../../utils/Primitive";
 import { isCompositionKey } from "../../utils/isCompositionKey";
-import { useAui } from "@assistant-ui/store";
-import { flushTapSync } from "@assistant-ui/tap";
+import { useAui } from "@openagentui/store";
+import { flushTapSync } from "@openagentui/tap";
 import { useComposerInputPluginRegistryOptional } from "./ComposerInputPluginContext";
 import { useComposerCompactContextOptional } from "./ComposerCompactContext";
 import {

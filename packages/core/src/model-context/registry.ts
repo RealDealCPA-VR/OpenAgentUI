@@ -1,4 +1,4 @@
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import {
   type ModelContext,
   type ModelContextProvider,

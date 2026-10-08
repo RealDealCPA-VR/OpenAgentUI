@@ -16,15 +16,15 @@ The steps, their copy, and their order are content you write, so there is nothin
 
 ### Hand off to the thread when the tour ends
 
-```tsx title="components/assistant-ui/elements/first-run.tsx"
+```tsx title="components/openagentui/elements/first-run.tsx"
 "use client";
 
 import { useState } from "react";
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import {
   Onboarding,
   type OnboardingStep,
-} from "@/components/assistant-ui/elements/onboarding";
+} from "@/components/openagentui/elements/onboarding";
 
 const STEPS: OnboardingStep[] = [
   { title: "Ask anything", body: "Type a question, it answers in place.", example: "Summarize this PDF" },
@@ -76,7 +76,7 @@ import { useState } from "react";
 import {
   Onboarding,
   type OnboardingStep,
-} from "@/components/assistant-ui/elements/onboarding";
+} from "@/components/openagentui/elements/onboarding";
 
 const steps: OnboardingStep[] = [
   { title: "Welcome", body: "Three quick things before you start.", example: "…" },

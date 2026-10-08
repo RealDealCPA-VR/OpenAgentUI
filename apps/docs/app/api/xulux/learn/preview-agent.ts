@@ -2,7 +2,7 @@ import {
   frontendTools,
   unstable_injectInteractableContext as injectInteractableContext,
   type FrontendTools,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { NextResponse } from "next/server";
 import { tool, zodSchema, type ToolSet } from "ai";
 import { z } from "zod";

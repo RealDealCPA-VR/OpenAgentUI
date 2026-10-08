@@ -80,8 +80,8 @@ describe("checkout session store", () => {
     const values = setupStorage();
     const store = await loadStore();
     expect(store.startCheckout([])).toBeNull();
-    const started = store.startCheckout(["assistant-ui", "assistant-ui"]);
-    expect(started?.products).toEqual(["assistant-ui"]);
+    const started = store.startCheckout(["openagentui", "openagentui"]);
+    expect(started?.products).toEqual(["openagentui"]);
     expect(store.startCheckout(["cloud"])).toBe(started);
     expect(started?.id).toMatch(/^[A-Za-z0-9]{12}$/);
     expect(JSON.parse(values.get(storageKey)!).id).toBe(started?.id);
@@ -93,7 +93,7 @@ describe("checkout session store", () => {
   it("remembers that the intro was read across a reload", async () => {
     setupStorage();
     let store = await loadStore();
-    store.startCheckout(["assistant-ui"]);
+    store.startCheckout(["openagentui"]);
     expect(store.getCheckoutSession()?.introSeen).toBeUndefined();
     store.acknowledgeSetupIntro();
     expect(store.getCheckoutSession()?.introSeen).toBe(true);
@@ -134,7 +134,7 @@ describe("checkout session store", () => {
     expect(link).toMatch(/^[A-Za-z0-9]{12}$/);
     expect(values.get("aui-agent-link")).toBe(link);
     expect(store.agentLinkUrl()).toBe(`https://checkout.test/${link}`);
-    store.startCheckout(["assistant-ui"]);
+    store.startCheckout(["openagentui"]);
     expect(store.getCheckoutSession()?.id).not.toBe(link);
     store.endCheckout();
     expect(store.getAgentLinkId()).toBe(link);

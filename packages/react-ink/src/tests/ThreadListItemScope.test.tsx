@@ -2,8 +2,8 @@ import { afterEach, describe, expect, it } from "vitest";
 import { cleanup } from "ink-testing-library";
 import type { FC } from "react";
 import { Text } from "ink";
-import type { ThreadMessage } from "@assistant-ui/core";
-import { useExternalStoreRuntime } from "@assistant-ui/core/react";
+import type { ThreadMessage } from "@openagentui/core";
+import { useExternalStoreRuntime } from "@openagentui/core/react";
 import { renderFrame } from "./helpers";
 import {
   AssistantRuntimeProvider,

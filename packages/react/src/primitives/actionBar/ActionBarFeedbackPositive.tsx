@@ -3,9 +3,9 @@
 import { forwardRef } from "react";
 import type { ActionButtonProps } from "../../utils/createActionButton";
 import { composeEventHandlers } from "radix-ui/internal";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { Primitive } from "../../utils/Primitive";
-import { useActionBarFeedbackPositive as useActionBarFeedbackPositiveBehavior } from "@assistant-ui/core/react";
+import { useActionBarFeedbackPositive as useActionBarFeedbackPositiveBehavior } from "@openagentui/core/react";
 
 const useActionBarFeedbackPositive = () => {
   const { submit } = useActionBarFeedbackPositiveBehavior();

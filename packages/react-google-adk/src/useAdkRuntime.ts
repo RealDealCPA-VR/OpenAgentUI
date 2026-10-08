@@ -17,22 +17,22 @@ import {
   type ToolCallMessagePart,
   type ToolExecutionStatus,
   generateId,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   createAbortableThreadLoad,
   createCloudThreadListAdapterCreateFallback,
   isRecord,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import {
   useCloudThreadListAdapter,
   useRemoteThreadListRuntime,
   useExternalMessageConverter,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
-import { useAui } from "@assistant-ui/store";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
-import type { AssistantCloud } from "assistant-cloud";
-import type { RemoteThreadListAdapter } from "@assistant-ui/core";
+} from "@openagentui/core/react";
+import { useAui } from "@openagentui/store";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
+import type { AssistantCloud } from "openagentui-cloud";
+import type { RemoteThreadListAdapter } from "@openagentui/core";
 import type {
   AdkMessage,
   AdkThreadSnapshot,

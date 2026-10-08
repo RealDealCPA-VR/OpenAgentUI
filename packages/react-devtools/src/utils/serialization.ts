@@ -1,4 +1,4 @@
-import type { ModelContext } from "@assistant-ui/react";
+import type { ModelContext } from "@openagentui/react";
 import type { SerializedModelContext } from "../types";
 import { normalizeToolList, type NormalizedTool } from "./toolNormalization";
 import { readProperty, UNSERIALIZABLE } from "./unserializable";

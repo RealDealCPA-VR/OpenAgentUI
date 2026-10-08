@@ -43,7 +43,7 @@ export const SCENES: Record<string, GlyphSceneArt> = {
       { text: "<Thread />", x: 17, y: 10, tone: "whisper" },
       { text: "hello", x: 30, y: 14, tone: "live" },
       { text: "for React", x: 63, y: 21, tone: "ghost" },
-      { text: "npx assistant-ui init", x: 17, y: 22, tone: "whisper" },
+      { text: "npx openagentui init", x: 17, y: 22, tone: "whisper" },
     ],
   },
   "2024-09-11": {
@@ -163,7 +163,7 @@ export const SCENES: Record<string, GlyphSceneArt> = {
 # ######+##+ +##+####+ #++# +  ==== = ++===###+########+##+##++##+ +#   ########
 `,
     tokens: [
-      { text: "@assistant-ui/react", x: 17, y: 8, tone: "whisper" },
+      { text: "@openagentui/react", x: 17, y: 8, tone: "whisper" },
       { text: "10,000 a week", x: 42, y: 11, tone: "whisper" },
       { text: "shipped", x: 30, y: 20, tone: "live" },
       { text: "thirty-six releases", x: 50, y: 26, tone: "ghost" },

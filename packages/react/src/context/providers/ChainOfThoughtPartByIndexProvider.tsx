@@ -1,3 +1,3 @@
 "use client";
 
-export { ChainOfThoughtPartByIndexProvider } from "@assistant-ui/core/react";
+export { ChainOfThoughtPartByIndexProvider } from "@openagentui/core/react";

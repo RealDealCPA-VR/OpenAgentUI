@@ -2,7 +2,7 @@ import {
   IncrementalJsonObjectParser,
   parsePartialJsonObject,
   type ReadonlyJSONObject,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import type { LangChainToolCall } from "./types";
 
 type CachedParser = {

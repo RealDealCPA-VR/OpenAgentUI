@@ -4,4 +4,4 @@ A real corner launcher opens an accessible non-modal conversation next to a samp
 
 In the monorepo: `pnpm build:bundles`, then `pnpm package:bundles`. Downloaded source: `npm install`, `npm run build`, `npm run preview`.
 
-For live AI, pass article text to your server-side AI SDK chat route and use `DefaultChatTransport` instead of the local preview transport. The existing `/examples/modal` pattern demonstrates assistant-ui modal placement.
+For live AI, pass article text to your server-side AI SDK chat route and use `DefaultChatTransport` instead of the local preview transport. The existing `/examples/modal` pattern demonstrates openagentui modal placement.

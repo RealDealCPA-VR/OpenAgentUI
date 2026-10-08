@@ -1,4 +1,4 @@
-import { useComposerCancel } from "@assistant-ui/core/react";
+import { useComposerCancel } from "@openagentui/core/react";
 import { Pressable, type PressableProps } from "../internal/Pressable";
 
 export type ComposerCancelProps = Omit<

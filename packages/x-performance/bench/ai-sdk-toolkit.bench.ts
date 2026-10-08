@@ -1,4 +1,4 @@
-import { AISDKToolkit } from "@assistant-ui/ai-sdk";
+import { AISDKToolkit } from "@openagentui/ai-sdk";
 import { describe, inject, test } from "vitest";
 
 const makeToolkit = (size: number) =>

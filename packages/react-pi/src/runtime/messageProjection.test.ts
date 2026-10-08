@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toMessagePartStatus } from "@assistant-ui/core/internal";
+import { toMessagePartStatus } from "@openagentui/core/internal";
 import {
   PiThreadMessageProjector,
   projectPiThreadMessages,

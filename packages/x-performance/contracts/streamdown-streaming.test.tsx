@@ -8,18 +8,18 @@ import {
   ThreadPrimitive,
   useExternalStoreRuntime,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   StreamdownTextPrimitive,
   type SyntaxHighlighterProps,
   useStreamdownPreProps,
-} from "@assistant-ui/react-streamdown";
+} from "@openagentui/react-streamdown";
 import { createRenderCounter } from "../src/render-counter";
 
 const renderObserver = vi.hoisted(() => ({ current: () => {} }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@assistant-ui/react")>();
+vi.mock("@openagentui/react", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@openagentui/react")>();
   return {
     ...original,
     useMessagePartText: () => {

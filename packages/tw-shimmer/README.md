@@ -1,21 +1,21 @@
-# `tw-shimmer`
+# `@openagentui/tw-shimmer`
 
 [![npm version](https://img.shields.io/npm/v/tw-shimmer)](https://www.npmjs.com/package/tw-shimmer)
 [![npm downloads](https://img.shields.io/npm/dm/tw-shimmer)](https://www.npmjs.com/package/tw-shimmer)
-[![GitHub stars](https://img.shields.io/github/stars/assistant-ui/assistant-ui)](https://github.com/assistant-ui/assistant-ui)
+[![GitHub stars](https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI)](https://github.com/RealDealCPA-VR/OpenAgentUI)
 
 Tailwind CSS v4 plugin for shimmer effects. Zero-dependency, CSS-only, with sine-eased gradients for buttery-smooth highlights and OKLCH color space for perceptually uniform color mixing. Provides text-shimmer and skeleton/background-shimmer variants with customizable speed, spread, angle, and colors.
 
 ## Installation
 
 ```bash
-npm install tw-shimmer
+npm install @openagentui/tw-shimmer
 ```
 
 ```css
 /* app/globals.css */
 @import "tailwindcss";
-@import "tw-shimmer";
+@import "@openagentui/tw-shimmer";
 ```
 
 ## Usage
@@ -56,4 +56,4 @@ Variables are inheritable; set them on any ancestor element and descendants pick
 
 ## Documentation
 
-Full utility reference, accessibility notes, and the technical details of the sine-eased gradient pipeline at [assistant-ui.com/tw-shimmer](https://www.assistant-ui.com/tw-shimmer).
+Full utility reference, accessibility notes, and the technical details of the sine-eased gradient pipeline at [openagentui.dev/tw-shimmer](https://openagentui.dev/tw-shimmer).

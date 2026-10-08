@@ -14,7 +14,7 @@ SyntaxHighlighter tokenizes one fenced code block with Prism, through `react-syn
 
 ### Add it to MarkdownText's components
 
-```tsx title="components/assistant-ui/elements/markdown-text.tsx"
+```tsx title="components/openagentui/elements/markdown-text.tsx"
 import { SyntaxHighlighter } from "./syntax-highlighter";
 
 const defaultComponents = memoizeMarkdownComponents({
@@ -39,7 +39,7 @@ Every fenced code block in an assistant message now highlights, using the light 
 ### Call it directly
 
 ```tsx
-import { SyntaxHighlighter } from "@/components/assistant-ui/elements/syntax-highlighter";
+import { SyntaxHighlighter } from "@/components/openagentui/elements/syntax-highlighter";
 
 <SyntaxHighlighter
   language="tsx"
@@ -73,7 +73,7 @@ Both the light and the dark highlighter mount on every render; Tailwind's `dark:
 
 ### Register another language
 
-```tsx title="components/assistant-ui/elements/syntax-highlighter.tsx"
+```tsx title="components/openagentui/elements/syntax-highlighter.tsx"
 import { PrismAsyncLight } from "react-syntax-highlighter";
 import go from "react-syntax-highlighter/dist/esm/languages/prism/go";
 
@@ -84,15 +84,15 @@ Only `js`, `jsx`, `ts`, `tsx` (all mapped to the TSX grammar) and `python` are r
 
 ### Load every language instead
 
-```tsx title="components/assistant-ui/elements/syntax-highlighter.tsx"
-import { makePrismAsyncSyntaxHighlighter } from "@assistant-ui/react-syntax-highlighter/full";
+```tsx title="components/openagentui/elements/syntax-highlighter.tsx"
+import { makePrismAsyncSyntaxHighlighter } from "@openagentui/react-syntax-highlighter/full";
 ```
 
 Swap the light-build import for the full build to skip per-language registration entirely, at the cost of a larger bundle.
 
 ### Choose a different theme
 
-```tsx title="components/assistant-ui/elements/syntax-highlighter.tsx"
+```tsx title="components/openagentui/elements/syntax-highlighter.tsx"
 import { oneLight, oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const LightSyntaxHighlighter = makePrismAsyncLightSyntaxHighlighter({

@@ -12,8 +12,8 @@ import {
   AssistantCloud,
   AssistantRuntimeProvider,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react";
-import { AssistantChatTransport, useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { AssistantChatTransport, useChatRuntime } from "@openagentui/ai-sdk";
 import { AssistantPanelProvider } from "@/components/pages/docs/assistant/context";
 import { XuluxAnalyticsProvider } from "@/lib/xulux/analytics-context";
 import { feedbackAdapter } from "@/lib/feedback-adapter";

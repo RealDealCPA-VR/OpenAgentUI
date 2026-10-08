@@ -1,7 +1,7 @@
 {
-  "name": "@assistant-ui/react-ink",
+  "name": "@openagentui/react-ink",
   "version": "0.0.48",
-  "description": "React Ink (terminal UI) bindings for assistant-ui",
+  "description": "React Ink (terminal UI) bindings for openagentui",
   "keywords": [
     "assistant",
     "ai",
@@ -10,7 +10,7 @@
     "terminal",
     "cli"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -41,11 +41,11 @@
     "benchmark": "tsx benchmarks/run.ts"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
-    "@assistant-ui/tap": "^0.9.21",
-    "assistant-cloud": "workspace:^",
-    "assistant-stream": "^0.3.48",
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
+    "@openagentui/tap": "^0.9.21",
+    "openagentui-cloud": "workspace:^",
+    "openagentui-stream": "^0.3.48",
     "diff": "^9.0.0",
     "ink-spinner": "^5.0.0",
     "parse-diff": "^0.12.0",
@@ -62,8 +62,8 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-performance": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-performance": "workspace:*",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
     "ink": "^7.1.1",
@@ -76,13 +76,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-ink"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

@@ -11,8 +11,8 @@ const { part } = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAuiState: (
     selector: (state: { optional: { part: typeof part } }) => unknown,
   ) => selector({ optional: { part } }),

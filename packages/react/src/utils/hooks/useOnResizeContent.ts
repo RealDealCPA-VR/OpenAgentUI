@@ -1,4 +1,4 @@
-import { observeContentResize } from "@assistant-ui/store/client";
+import { observeContentResize } from "@openagentui/store/client";
 import { useCallbackRef } from "radix-ui/internal";
 import { useCallback } from "react";
 import { useManagedRef } from "./useManagedRef";

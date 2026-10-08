@@ -1,6 +1,6 @@
 "use client";
 
-import { LinkPreview } from "@/components/assistant-ui/elements/link-preview";
+import { LinkPreview } from "@/components/openagentui/elements/link-preview";
 
 export function LinkPreviewDemo() {
   return (
@@ -18,12 +18,12 @@ export function LinkPreviewDemo() {
 export function LinkPreviewCompactDemo() {
   return (
     <LinkPreview
-      href="https://www.assistant-ui.com/examples/ai-sdk"
+      href="https://openagentui.dev/examples/ai-sdk"
       title="AI SDK"
       description="Chat persistence with AI SDK."
       image="/screenshot/examples/ai-sdk.png"
       imageAlt="The AI SDK example chat"
-      siteName="assistant-ui"
+      siteName="openagentui"
       favicon="/favicon/icon.svg"
       layout="compact"
     />

@@ -3,7 +3,7 @@ title: Using primitives
 description: Unstyled Vue components that bind native elements to assistant state, and the conventions they share.
 ---
 
-Primitives are unstyled components exported from `@assistant-ui/vue`. Each one reads state from the nearest scope and renders a native element, plain text, or nothing of its own. Layout, styling, and icons stay in your templates. The [styled components](/docs/vue/components) are built from the same primitives.
+Primitives are unstyled components exported from `@openagentui/vue`. Each one reads state from the nearest scope and renders a native element, plain text, or nothing of its own. Layout, styling, and icons stay in your templates. The [styled components](/docs/vue/components) are built from the same primitives.
 
 ```vue title="app/components/MinimalThread.vue"
 <script setup lang="ts">
@@ -15,7 +15,7 @@ import {
   ThreadPrimitiveMessages,
   ThreadPrimitiveViewport,
   ThreadPrimitiveViewportFooter,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 </script>
 
 <template>
@@ -60,7 +60,7 @@ Your listener runs before the primitive's own handler. Call `preventDefault()` i
 
 ```vue title="app/components/GuardedNewThread.vue"
 <script setup lang="ts">
-import { ThreadListPrimitiveNew, useAui } from "@assistant-ui/vue";
+import { ThreadListPrimitiveNew, useAui } from "@openagentui/vue";
 
 const aui = useAui();
 

@@ -16,12 +16,12 @@ const h = vi.hoisted(() => ({
   inputHandler: null as InputHandler | null,
 }));
 
-vi.mock("@assistant-ui/core/react", () => ({
+vi.mock("@openagentui/core/react", () => ({
   useThreadListItemTrigger: () => ({ switchTo: h.switchTo }),
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAuiState: <T,>(selector: (s: typeof h.state) => T) => selector(h.state),

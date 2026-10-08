@@ -1,12 +1,12 @@
 "use client";
 
-import type { MessageTiming } from "@assistant-ui/core";
-import type { useExternalMessageConverter } from "@assistant-ui/core/react";
+import type { MessageTiming } from "@openagentui/core";
+import type { useExternalMessageConverter } from "@openagentui/core/react";
 import {
   createExternalMessageMetadataKey,
   shallowArrayEqual,
-} from "@assistant-ui/core/internal";
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+} from "@openagentui/core/internal";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 import {
   convertLangChainContentBlock,
   getCustomMetadata,

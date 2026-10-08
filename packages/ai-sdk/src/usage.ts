@@ -1,6 +1,6 @@
-/// <reference types="@assistant-ui/core/react" preserve="true" />
+/// <reference types="@openagentui/core/react" preserve="true" />
 import { useMemo } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export type ThreadTokenUsage = {
   totalTokens?: number;

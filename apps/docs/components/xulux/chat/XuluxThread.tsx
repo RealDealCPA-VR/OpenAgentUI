@@ -7,7 +7,7 @@ import { XuluxMarkdownText } from "./XuluxMarkdownText";
 import { AssistantFooter } from "@/components/pages/docs/assistant/footer";
 import { UserMessage } from "@/components/pages/docs/assistant/messages";
 import { useAssistantPanel } from "@/components/pages/docs/assistant/context";
-import { Reasoning } from "@/components/assistant-ui/elements/reasoning.aui";
+import { Reasoning } from "@/components/openagentui/elements/reasoning.aui";
 import { DotMatrix } from "@/components/ui/dot-matrix";
 import { analytics } from "@/lib/analytics";
 import { getComposerMessageMetrics } from "@/lib/assistant-analytics-helpers";
@@ -25,7 +25,7 @@ import {
   ThreadPrimitive,
   useAui,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { BookOpen } from "lucide-react";
 import { type ReactNode, useEffect, useMemo, useRef } from "react";
 import { XuluxPoweredBy } from "../XuluxPoweredBy";
@@ -175,7 +175,7 @@ function XuluxLearnWelcome({
       <p className="text-muted-foreground mt-1 max-w-sm text-sm">
         {started
           ? "Continue in this thread and your course progress will stay connected."
-          : "Follow a guided assistant-ui course while keeping the normal chat available for questions."}
+          : "Follow a guided openagentui course while keeping the normal chat available for questions."}
       </p>
       {!started ? (
         <Button

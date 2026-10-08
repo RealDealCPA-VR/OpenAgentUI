@@ -9,7 +9,7 @@ import type {
   SpeechSynthesisAdapter,
   ThreadMessageLike,
   ThreadUserMessagePart,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import type {
   Message,
   OpencodeClient,
@@ -20,7 +20,7 @@ import type {
   Session,
   SessionStatus,
 } from "@opencode-ai/sdk/v2/client";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 
 export type {
   AssistantMessage,
@@ -351,4 +351,4 @@ export type {
   AppendMessage,
   ThreadMessageLike,
   ThreadUserMessagePart,
-} from "@assistant-ui/react";
+} from "@openagentui/react";

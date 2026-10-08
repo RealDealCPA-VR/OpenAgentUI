@@ -27,7 +27,7 @@ vi.stubGlobal("__REACT_DEVTOOLS_GLOBAL_HOOK__", {
   onCommitFiberUnmount: () => {},
 });
 const { cleanup, render, waitFor } = await import("@testing-library/react");
-const { AssistantRuntimeProvider } = await import("@assistant-ui/core/react");
+const { AssistantRuntimeProvider } = await import("@openagentui/core/react");
 const { useChatRuntime } = await import("./useChatRuntime");
 const { createCancellableTransport, createStreamHarness } =
   await import("./__tests__/controlled-transport");

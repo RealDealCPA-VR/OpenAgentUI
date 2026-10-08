@@ -1,6 +1,6 @@
 "use client";
 
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export const REPLAY_CONTENT_LENGTH_HEADER = "Aui-Replay-Content-Length";

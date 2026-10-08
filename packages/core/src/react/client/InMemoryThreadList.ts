@@ -1,18 +1,18 @@
 import { useState, useMemo, useEffect } from "react";
-import { resource, withKey, type ResourceElement } from "@assistant-ui/tap";
+import { resource, withKey, type ResourceElement } from "@openagentui/tap";
 import type {
   AssistantClient,
   ClientOutput,
   ScopesConfig,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import {
   useClientLookup,
   Derived,
   attachTransformScopes,
   useClientResource,
   useDestroySignalProvider,
-} from "@assistant-ui/store/client";
-import { useAssistantClientDestroySignal } from "@assistant-ui/store/internal";
+} from "@openagentui/store/client";
+import { useAssistantClientDestroySignal } from "@openagentui/store/internal";
 import {
   useThreadListItemSelectionEvents,
   useThreadSelectionEvents,

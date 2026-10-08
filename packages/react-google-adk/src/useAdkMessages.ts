@@ -1,4 +1,4 @@
-import { isRecord } from "@assistant-ui/core/internal";
+import { isRecord } from "@openagentui/core/internal";
 import {
   useState,
   useCallback,
@@ -6,14 +6,14 @@ import {
   useMemo,
   useSyncExternalStore,
 } from "react";
-import { generateId } from "@assistant-ui/core";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
-import { useAui } from "@assistant-ui/store";
+import { generateId } from "@openagentui/core";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
+import { useAui } from "@openagentui/store";
 import {
   abortableIterable,
   invokeUserCallback,
   openAbortableIterable,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { AdkEventAccumulator } from "./AdkEventAccumulator";
 import { AdkThreadController } from "./AdkThreadController";
 import { contentToParts } from "./contentToParts";

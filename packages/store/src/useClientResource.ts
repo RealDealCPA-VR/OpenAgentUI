@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
-import { resource, useResource, type ResourceElement } from "@assistant-ui/tap";
+import { resource, useResource, type ResourceElement } from "@openagentui/tap";
 import type { ClientMethods, InferClientState } from "./types/client";
 import {
   useClientStack,
@@ -16,7 +16,7 @@ import { CLIENT_ID_SYMBOL, INSTANCE_TAG_SYMBOL } from "./utils/client-accessor";
  * Symbol used internally to get state from ClientProxy.
  * This allows getState() to be optional in the user-facing client.
  */
-const SYMBOL_GET_OUTPUT = Symbol("assistant-ui.store.getValue");
+const SYMBOL_GET_OUTPUT = Symbol("openagentui.store.getValue");
 
 type ClientInternal = {
   [SYMBOL_GET_OUTPUT]: ClientMethods;

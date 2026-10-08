@@ -6,7 +6,7 @@ import {
   forwardRef,
   type ComponentPropsWithoutRef,
 } from "react";
-import { AuiIf } from "@assistant-ui/store";
+import { AuiIf } from "@openagentui/store";
 
 export namespace BranchPickerPrimitiveRoot {
   export type Element = ComponentRef<typeof Primitive.div>;

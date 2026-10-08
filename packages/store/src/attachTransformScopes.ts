@@ -5,7 +5,7 @@ import type {
 } from "./types/client";
 import type { DerivedElement } from "./Derived";
 
-const TRANSFORM_SCOPES = Symbol("assistant-ui.transform-scopes");
+const TRANSFORM_SCOPES = Symbol("openagentui.transform-scopes");
 
 export type ScopesConfig = {
   [K in ClientNames]?: ClientElement<K> | DerivedElement<K>;

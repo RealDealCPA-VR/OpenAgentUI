@@ -7,12 +7,12 @@ import {
   WebSpeechSynthesisAdapter,
   createSuggestionAdapter,
   readAnonymousRefreshToken,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   AssistantChatTransport,
   useChatRuntime,
   type UseChatRuntimeOptions,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import { anonymousSessionFetch } from "@/lib/anonymous-session-client";
 import { refreshDemoUsage } from "@/lib/demo-usage-client";

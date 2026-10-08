@@ -8,7 +8,7 @@ import {
 } from "react-syntax-highlighter";
 import hljsJavascript from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
 import prismJavascript from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
-import type { SyntaxHighlighterProps } from "@assistant-ui/react-markdown";
+import type { SyntaxHighlighterProps } from "@openagentui/react-markdown";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   makeLightAsyncSyntaxHighlighter,

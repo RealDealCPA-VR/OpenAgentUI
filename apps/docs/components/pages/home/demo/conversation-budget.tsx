@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 import { refreshDemoUsage, useDemoUsage } from "@/lib/demo-usage-client";

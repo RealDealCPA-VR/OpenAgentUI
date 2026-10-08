@@ -1,6 +1,6 @@
 ---
 title: Input History
-description: Terminal-style ArrowUp/ArrowDown recall of previously sent messages in the assistant-ui React composer.
+description: Terminal-style ArrowUp/ArrowDown recall of previously sent messages in the openagentui React composer.
 platforms: ["react"]
 ---
 
@@ -18,7 +18,7 @@ Spread the hook's bundle onto `ComposerPrimitive.Input`:
 import {
   ComposerPrimitive,
   unstable_useComposerInputHistory,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const Composer = () => {
   const history = unstable_useComposerInputHistory();

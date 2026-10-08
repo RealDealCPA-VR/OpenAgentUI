@@ -9,7 +9,7 @@ platforms: ["react"]
 It covers three things:
 
 - State streaming: efficient updates to your agent state (any JSON object).
-- UI integration: your agent's native state becomes assistant-ui messages.
+- UI integration: your agent's native state becomes openagentui messages.
 - Command handling: user actions (messages, tool results, custom commands) flow back to the agent.
 
 ## When to use it
@@ -98,7 +98,7 @@ The runtime alternates between **idle** (no active backend request) and **sendin
 To implement this you build two pieces:
 
 1. **Backend endpoint** that accepts commands and returns a stream of state snapshots.
-2. **Frontend state converter** that maps state snapshots to assistant-ui's data format.
+2. **Frontend state converter** that maps state snapshots to openagentui's data format.
 
 ## Building a backend endpoint
 
@@ -121,7 +121,7 @@ The endpoint receives POST requests with this payload:
 The previous wire shape spread `callSettings` and `config` fields at the top level (e.g. `body.modelName`). Both formats are sent for compatibility, but the top-level fields are deprecated. Read from the nested objects.
 </Callout>
 
-The endpoint returns a stream of state snapshots using the [`assistant-stream`](https://www.npmjs.com/package/assistant-stream) library ([PyPI](https://pypi.org/project/assistant-stream/)).
+The endpoint returns a stream of state snapshots using the [`openagentui-stream`](https://www.npmjs.com/package/openagentui-stream) library ([PyPI](https://pypi.org/project/openagentui-stream/)).
 
 ### Handling commands
 
@@ -140,8 +140,8 @@ for command in request.commands:
 Mutate `controller.state` inside your run callback:
 
 ```python
-from assistant_stream import RunController, create_run
-from assistant_stream.serialization import DataStreamResponse
+from openagentui_stream import RunController, create_run
+from openagentui_stream.serialization import DataStreamResponse
 
 @app.post("/assistant")
 async def chat_endpoint(request: ChatRequest):
@@ -177,8 +177,8 @@ async def run_callback(controller: RunController):
 <Tab value="Custom agent">
 
 ```python
-from assistant_stream.serialization import DataStreamResponse
-from assistant_stream import RunController, create_run
+from openagentui_stream.serialization import DataStreamResponse
+from openagentui_stream import RunController, create_run
 
 @app.post("/assistant")
 async def chat_endpoint(request: ChatRequest):
@@ -201,9 +201,9 @@ async def chat_endpoint(request: ChatRequest):
 <Tab value="LangGraph">
 
 ```python
-from assistant_stream.serialization import DataStreamResponse
-from assistant_stream import RunController, create_run
-from assistant_stream.modules.langgraph import append_langgraph_event
+from openagentui_stream.serialization import DataStreamResponse
+from openagentui_stream import RunController, create_run
+from openagentui_stream.modules.langgraph import append_langgraph_event
 
 @app.post("/assistant")
 async def chat_endpoint(request: ChatRequest):
@@ -240,11 +240,11 @@ async def chat_endpoint(request: ChatRequest):
 </Tab>
 </Tabs>
 
-Full LangGraph example: [`python/assistant-transport-backend-langgraph`](https://github.com/assistant-ui/assistant-ui/tree/main/python/assistant-transport-backend-langgraph).
+Full LangGraph example: [`python/assistant-transport-backend-langgraph`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/python/assistant-transport-backend-langgraph).
 
 ## Streaming protocol
 
-assistant-stream replicates an arbitrary JSON object via two operations.
+openagentui-stream replicates an arbitrary JSON object via two operations.
 
 ### Operations
 
@@ -298,7 +298,7 @@ aui-state:[{"type":"set","path":["status"],"value":"completed"}]
 3:"error message"
 ```
 
-Pass `protocol: "assistant-transport"` to consume the SSE encoding that `AssistantTransportEncoder` produces today: one `data:` line per JSON encoded `AssistantStreamChunk`, each carrying its `path` (`[]` for message-level chunks), and a final `data: [DONE]` line, which `AssistantTransportDecoder` requires. The decoder also accepts message-level chunks such as `update-state` and `error` without a `path`, which is what the Python `assistant_stream` package emits, and fills in the empty one.
+Pass `protocol: "assistant-transport"` to consume the SSE encoding that `AssistantTransportEncoder` produces today: one `data:` line per JSON encoded `AssistantStreamChunk`, each carrying its `path` (`[]` for message-level chunks), and a final `data: [DONE]` line, which `AssistantTransportDecoder` requires. The decoder also accepts message-level chunks such as `update-state` and `error` without a `path`, which is what the Python `openagentui_stream` package emits, and fills in the empty one.
 
 ```
 data: {"type":"update-state","path":[],"operations":[{"type":"set","path":["status"],"value":"completed"}]}
@@ -335,7 +335,7 @@ data: [DONE]
 
 ### State converter
 
-The state converter transforms your agent state into assistant-ui's message format:
+The state converter transforms your agent state into openagentui's message format:
 
 ```ts
 (
@@ -354,13 +354,13 @@ The state converter transforms your agent state into assistant-ui's message form
 
 ### Converting messages
 
-`unstable_createMessageConverter` transforms agent messages to assistant-ui's format:
+`unstable_createMessageConverter` transforms agent messages to openagentui's format:
 
 <Tabs items={["Example", "LangChain"]}>
 <Tab value="Example">
 
 ```ts
-import { unstable_createMessageConverter as createMessageConverter } from "@assistant-ui/react";
+import { unstable_createMessageConverter as createMessageConverter } from "@openagentui/react";
 
 type YourMessage = {
   id: string;
@@ -384,8 +384,8 @@ const converter = (state: YourAgentState) => ({
 <Tab value="LangChain">
 
 ```ts
-import { unstable_createMessageConverter as createMessageConverter } from "@assistant-ui/react";
-import { convertLangChainMessages } from "@assistant-ui/react-langgraph";
+import { unstable_createMessageConverter as createMessageConverter } from "@openagentui/react";
+import { convertLangChainMessages } from "@openagentui/react-langgraph";
 
 const messageConverter = createMessageConverter(convertLangChainMessages);
 
@@ -558,7 +558,7 @@ Before resuming, the runtime posts `{ threadId }` to `resumeStateApi`. The endpo
 The runtime replaces its local base with this snapshot and includes `runId` in the resume request; the request carries no `state`, since the server replays from the snapshot it retained. A sync server should reject the resume when that ID no longer identifies the same run, preventing replay operations from being applied to a drifted or replaced base state. When no run is active, the endpoint responds `204 No Content` and the runtime skips the resume without raising an error. On a resume, `runId` takes precedence over fields supplied through `body` and survives `prepareSendCommandsRequest`; any `state` either of them supplies is stripped.
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import { useEffect, useRef } from "react";
 
 function useResumeOnMount(threadId: string) {
@@ -589,7 +589,7 @@ For `AssistantTransport`, do not pass a `stream` parameter; the runtime uses the
 `useAssistantTransportState` reads the current agent state from any component:
 
 ```ts
-import { useAssistantTransportState } from "@assistant-ui/react";
+import { useAssistantTransportState } from "@openagentui/react";
 
 function MyComponent() {
   const state = useAssistantTransportState();
@@ -607,9 +607,9 @@ function MessageCount() {
 Augment the module to type your agent state:
 
 ```ts title="assistant.config.ts"
-import "@assistant-ui/react";
+import "@openagentui/react";
 
-declare module "@assistant-ui/react" {
+declare module "@openagentui/react" {
   namespace Assistant {
     interface ExternalState {
       myState: {
@@ -625,10 +625,10 @@ Place this file anywhere in your project; TypeScript picks it up via module reso
 
 ### Accessing the original message
 
-If you used `createMessageConverter`, retrieve the original message from any assistant-ui state:
+If you used `createMessageConverter`, retrieve the original message from any openagentui state:
 
 ```ts
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 function MyMessageComponent() {
   const message = useAuiState((s) => s.message);
@@ -648,7 +648,7 @@ import {
   AssistantRuntimeProvider,
   AssistantTransportConnectionMetadata,
   useAssistantTransportRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 type State = { messages: Message[] };
 
@@ -689,16 +689,16 @@ export function MyRuntimeProvider({ children }) {
 }
 ```
 
-Full example: [`examples/with-assistant-transport`](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-assistant-transport). It converts LangChain messages with `convertLangChainMessages`.
+Full example: [`examples/with-assistant-transport`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-assistant-transport). It converts LangChain messages with `convertLangChainMessages`.
 
 ## Custom commands
 
 ### Define
 
 ```ts title="assistant.config.ts"
-import "@assistant-ui/react";
+import "@openagentui/react";
 
-declare module "@assistant-ui/react" {
+declare module "@openagentui/react" {
   namespace Assistant {
     interface Commands {
       myCustomCommand: {
@@ -713,7 +713,7 @@ declare module "@assistant-ui/react" {
 ### Issue
 
 ```ts
-import { useAssistantTransportSendCommand } from "@assistant-ui/react";
+import { useAssistantTransportSendCommand } from "@openagentui/react";
 
 function MyComponent() {
   const sendCommand = useAssistantTransportSendCommand();

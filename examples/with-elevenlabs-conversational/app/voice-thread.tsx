@@ -1,14 +1,14 @@
 "use client";
 
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import {
   VoiceOrb,
   VoiceConnectButton,
   VoiceMuteButton,
   VoiceDisconnectButton,
   deriveVoiceOrbState,
-} from "@/components/assistant-ui/elements/voice.aui";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+} from "@/components/openagentui/elements/voice.aui";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import {
   AuiIf,
   MessagePrimitive,
@@ -16,7 +16,7 @@ import {
   useAuiState,
   useVoiceState,
   useVoiceVolume,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { ArrowDownIcon } from "lucide-react";
 import type { FC } from "react";
 

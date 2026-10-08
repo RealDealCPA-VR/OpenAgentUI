@@ -1,24 +1,24 @@
-# `assistant-cloud`
+# `openagentui-cloud`
 
-[![npm version](https://img.shields.io/npm/v/assistant-cloud)](https://www.npmjs.com/package/assistant-cloud)
-[![npm downloads](https://img.shields.io/npm/dm/assistant-cloud)](https://www.npmjs.com/package/assistant-cloud)
-[![GitHub stars](https://img.shields.io/github/stars/assistant-ui/assistant-ui)](https://github.com/assistant-ui/assistant-ui)
+[![npm version](https://img.shields.io/npm/v/openagentui-cloud)](https://www.npmjs.com/package/openagentui-cloud)
+[![npm downloads](https://img.shields.io/npm/dm/openagentui-cloud)](https://www.npmjs.com/package/openagentui-cloud)
+[![GitHub stars](https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI)](https://github.com/RealDealCPA-VR/OpenAgentUI)
 
-Server- and client-side SDK for [Assistant Cloud](https://cloud.assistant-ui.com), the managed thread-history, telemetry, and file-storage backend for `@assistant-ui/react`.
+Server- and client-side SDK for [Assistant Cloud](https://cloud.assistant-ui.com), the managed thread-history, telemetry, and file-storage backend for `@openagentui/react`.
 
 ## Installation
 
 ```bash
-npm install @assistant-ui/react @assistant-ui/ai-sdk ai assistant-cloud
+npm install @openagentui/react @openagentui/ai-sdk ai openagentui-cloud
 ```
 
 ## Usage
 
-Pass an `AssistantCloud` instance to your runtime hook (typically `useChatRuntime` from `@assistant-ui/ai-sdk`):
+Pass an `AssistantCloud` instance to your runtime hook (typically `useChatRuntime` from `@openagentui/ai-sdk`):
 
 ```tsx
-import { AssistantCloud, AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantCloud, AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 const cloud = new AssistantCloud({
   baseUrl: process.env.NEXT_PUBLIC_ASSISTANT_BASE_URL!,
@@ -39,11 +39,11 @@ Every API request carries `Aui-Sdk` with the client's own version and the identi
 
 - `CloudRunReporter` sends run reports: nothing while telemetry is off, the cloud's environment, release and tags on every report, the `beforeReport` hook applied last, and a failed send that never surfaces. Keyed reports are deduplicated while in flight and after an attempt, while rate limiting releases the key for a later attempt; without a key every call reports.
 - `CloudEngagementReporter` derives engagement events (`message_sent`, `run_stopped`, `error_shown`, `suggestions_shown` and the rest) from what a chat integration observes and keeps the per thread state they need, such as a run's start for the stop duration. An id resolver turns the integration's own thread and message ids into the ids the cloud stores.
-- `assistant-cloud/ai-sdk` holds the AI SDK specifics: `aiSDKV6FormatAdapter`, the stored form of a `UIMessage`, and `extractAISDKRunTelemetry`, which reads the run report fields out of one run's assistant messages. The entry types its messages with `ai` and needs no runtime from it.
+- `openagentui-cloud/ai-sdk` holds the AI SDK specifics: `aiSDKV6FormatAdapter`, the stored form of a `UIMessage`, and `extractAISDKRunTelemetry`, which reads the run report fields out of one run's assistant messages. The entry types its messages with `ai` and needs no runtime from it.
 
 ```ts
-import { AssistantCloud, CloudRunReporter } from "assistant-cloud";
-import { extractAISDKRunTelemetry } from "assistant-cloud/ai-sdk";
+import { AssistantCloud, CloudRunReporter } from "openagentui-cloud";
+import { extractAISDKRunTelemetry } from "openagentui-cloud/ai-sdk";
 
 const cloud = new AssistantCloud({ baseUrl, anonymous: true });
 const reporter = new CloudRunReporter(cloud);
@@ -59,7 +59,7 @@ if (run) {
 
 ## Server telemetry
 
-Send AI SDK 7 GenAI spans to Assistant Cloud from a Next.js app. The AI SDK emits spans through `@ai-sdk/otel`, and the `assistant-cloud/telemetry` entry needs the OpenTelemetry packages installed next to it:
+Send AI SDK 7 GenAI spans to Assistant Cloud from a Next.js app. The AI SDK emits spans through `@ai-sdk/otel`, and the `openagentui-cloud/telemetry` entry needs the OpenTelemetry packages installed next to it:
 
 ```sh
 npm i @vercel/otel @ai-sdk/otel @opentelemetry/api @opentelemetry/sdk-trace-base @opentelemetry/exporter-trace-otlp-http
@@ -72,7 +72,7 @@ import { registerOTel } from "@vercel/otel";
 import {
   createAssistantCloudSpanProcessor,
   createAssistantCloudTraceExporter,
-} from "assistant-cloud/telemetry";
+} from "openagentui-cloud/telemetry";
 
 export function register() {
   registerOTel({
@@ -95,7 +95,7 @@ In the route that calls `streamText`, enable the OpenTelemetry integration and p
 import { OpenTelemetry } from "@ai-sdk/otel";
 import { openai } from "@ai-sdk/openai";
 import { convertToModelMessages, streamText } from "ai";
-import { withAssistantCloudTraceMetadata } from "assistant-cloud/telemetry";
+import { withAssistantCloudTraceMetadata } from "openagentui-cloud/telemetry";
 
 export async function POST(request: Request) {
   const { messages } = await request.json();
@@ -111,7 +111,7 @@ export async function POST(request: Request) {
 }
 ```
 
-[Traces](https://www.assistant-ui.com/docs/cloud/traces) covers the exporter options, the span filter, and how Assistant Cloud merges a trace with the browser's run report.
+[Traces](https://openagentui.dev/docs/cloud/traces) covers the exporter options, the span filter, and how Assistant Cloud merges a trace with the browser's run report.
 
 ## Authentication
 
@@ -121,4 +121,4 @@ export async function POST(request: Request) {
 | JWT              | `baseUrl`, `authToken: () => Promise<string \| null>`   | Browser apps with their own auth.     |
 | API key (server) | `apiKey`, `userId`, `workspaceId`                       | Server-side admin and data-plane jobs.|
 
-For advanced persistence adapters and MCP sampling instrumentation, see the [docs](https://www.assistant-ui.com/docs/cloud).
+For advanced persistence adapters and MCP sampling instrumentation, see the [docs](https://openagentui.dev/docs/cloud).

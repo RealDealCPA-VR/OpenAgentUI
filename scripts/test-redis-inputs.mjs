@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
-export const REDIS_TEST_PACKAGES = ["assistant-stream", "@assistant-ui/docs"];
+export const REDIS_TEST_PACKAGES = ["openagentui-stream", "@openagentui/docs"];
 
 export function needsRedisTestService(plan) {
   if (

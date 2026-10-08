@@ -1,11 +1,11 @@
 "use client";
 
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import type { ChatModelRunResult } from "@assistant-ui/core";
+import type { ChatModelRunResult } from "@openagentui/core";
 import {
   applyA2uiOperations,
   convertSurfaceToUISpec,
-} from "@assistant-ui/react-generative-ui/a2ui";
+} from "@openagentui/react-generative-ui/a2ui";
 import { RunAggregator } from "../src/runtime/adapter/run-aggregator";
 import { createAgUiSubscriber } from "../src/runtime/adapter/subscriber";
 import { parseAgUiEvent } from "../src/runtime/event-parser";

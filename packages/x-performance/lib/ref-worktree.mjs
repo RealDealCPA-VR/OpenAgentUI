@@ -47,7 +47,7 @@ export const ensureRefWorktree = (ref, { build = true } = {}) => {
         "install",
         "--frozen-lockfile",
         "--filter=.",
-        "--filter=@assistant-ui/react-devtools...",
+        "--filter=@openagentui/react-devtools...",
         ...filters.map((filter) => `${filter}...`),
       ],
       {

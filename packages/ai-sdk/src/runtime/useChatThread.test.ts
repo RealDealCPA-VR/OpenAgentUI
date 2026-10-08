@@ -1,18 +1,18 @@
 // @vitest-environment jsdom
 
 import { describe, expect, it, vi } from "vitest";
-import { resource, useResource, flushTapSync } from "@assistant-ui/tap";
+import { resource, useResource, flushTapSync } from "@openagentui/tap";
 import { useState } from "react";
 import type { ChatTransport, UIMessage } from "ai";
 import {
   RuntimeAdapter,
   runtimeAdapterTransformScopes,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 import {
   attachTransformScopes,
   AuiConfig,
   createAssistantClient,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import {
   createChat,
   useChatThread,
@@ -213,7 +213,7 @@ describe("useChatThread", () => {
         });
         expect(onResumeError).toHaveBeenCalledWith(error);
         expect(warn).toHaveBeenCalledWith(
-          "[assistant-ui] resumable: resume failed",
+          "[openagentui] resumable: resume failed",
           error,
         );
         expect(storage.getStreamId("main")).toBe(

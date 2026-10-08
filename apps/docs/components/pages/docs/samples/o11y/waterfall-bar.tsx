@@ -1,8 +1,8 @@
 "use client";
 
 import { type CSSProperties } from "react";
-import { useAuiState } from "@assistant-ui/store";
-import { SpanPrimitive, type SpanItemState } from "@assistant-ui/react-o11y";
+import { useAuiState } from "@openagentui/store";
+import { SpanPrimitive, type SpanItemState } from "@openagentui/react-o11y";
 import {
   FALLBACK_COLOR,
   TYPE_COLORS,

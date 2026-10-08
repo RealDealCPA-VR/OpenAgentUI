@@ -9,7 +9,7 @@ import { c } from "./compiler-runtime";
 import * as jsxRuntime from "./jsx-runtime";
 import * as jsxDevRuntime from "./jsx-dev-runtime";
 
-describe("@assistant-ui/tap/standalone-shim behavior", () => {
+describe("@openagentui/tap/standalone-shim behavior", () => {
   it("hosts stateful resource hooks under createTapRoot", () => {
     let cleanupCount = 0;
     const Counter = resource(function CounterResource() {

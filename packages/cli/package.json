@@ -1,41 +1,39 @@
 {
-  "name": "assistant-ui",
+  "name": "openagentui",
   "version": "0.0.121",
-  "description": "CLI for assistant-ui",
+  "description": "CLI for openagentui",
   "keywords": [
     "cli",
-    "assistant-ui",
+    "openagentui",
     "ai",
     "chat",
     "components",
     "react",
     "shadcn"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "bin": {
-    "assistant-ui": "./bin/assistant-ui.js"
+    "openagentui": "./bin/openagentui.js"
   },
   "files": [
     "bin",
     "dist",
     "src",
-    "README.md",
-    "templates/cloud-harness"
+    "README.md"
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "aui-build && node scripts/copy-cloud-harness-template.mjs",
-    "test": "vitest run && node --test scripts/copy-cloud-harness-template.test.mjs",
-    "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=html --coverage.reporter=json-summary && node --test scripts/copy-cloud-harness-template.test.mjs",
+    "build": "aui-build",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=html --coverage.reporter=json-summary",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/agent-launcher": "workspace:^",
+    "@openagentui/agent-launcher": "workspace:^",
     "@clack/prompts": "^1.8.1",
-    "aui-auth": "^0.0.11",
     "chalk": "^6.0.1",
     "cli-progress": "^3.12.0",
     "commander": "^15.0.0",
@@ -47,11 +45,10 @@
     "jscodeshift": "^17.4.0",
     "jsonc-parser": "^3.3.1",
     "react": "^19.3.0",
-    "semver": "^7.8.5",
-    "statewire": "^0.19.4"
+    "semver": "^7.8.5"
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@types/cli-progress": "^3.11.6",
     "@types/cross-spawn": "^6.0.6",
     "@types/debug": "^4.1.13",
@@ -65,13 +62,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

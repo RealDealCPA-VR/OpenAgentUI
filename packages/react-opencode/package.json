@@ -1,25 +1,25 @@
 {
-  "name": "@assistant-ui/react-opencode",
+  "name": "@openagentui/react-opencode",
   "version": "0.2.28",
-  "description": "OpenCode runtime adapter for assistant-ui",
+  "description": "OpenCode runtime adapter for openagentui",
   "keywords": [
     "opencode",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat",
     "agents"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-opencode"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   },
   "publishConfig": {
     "access": "public",
@@ -50,13 +50,13 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
     "@opencode-ai/sdk": "^1.18.33",
-    "assistant-cloud": "*"
+    "openagentui-cloud": "*"
   },
   "peerDependencies": {
-    "@assistant-ui/react": "^0.15.0",
+    "@openagentui/react": "^0.15.0",
     "@types/react": "*",
     "react": "^18 || ^19"
   },
@@ -66,9 +66,9 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",

@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type { ToolCallMessagePartComponent } from "../types/MessagePartComponentTypes";
 import type { AssistantToolProps as CoreAssistantToolProps } from "../..";
 import {
@@ -13,7 +13,7 @@ import {
  *
  * @deprecated Use a toolkit with `Tools({ toolkit })` and register it via
  * `AuiConfig({ tools: Tools({ toolkit }) })` on the provider's `config` prop instead. See
- * https://assistant-ui.com/docs/migrations/toolkit-tools.
+ * https://openagentui.dev/docs/migrations/toolkit-tools.
  */
 export type AssistantToolProps<
   TArgs extends Record<string, unknown>,
@@ -40,7 +40,7 @@ export type AssistantToolProps<
  *
  * @deprecated Use a toolkit with `Tools({ toolkit })` and register it via
  * `AuiConfig({ tools: Tools({ toolkit }) })` on the provider's `config` prop instead. See
- * https://assistant-ui.com/docs/migrations/toolkit-tools.
+ * https://openagentui.dev/docs/migrations/toolkit-tools.
  *
  * @example
  * ```tsx

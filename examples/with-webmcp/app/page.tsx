@@ -1,6 +1,6 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   AssistantRuntimeProvider,
   AuiConfig,
@@ -8,8 +8,8 @@ import {
   Tools,
   unstable_defaultWebMcpFilter,
   unstable_useWebMcpProvider,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import toolkit from "./toolkit";
 import { TaskPanel } from "./task-panel";

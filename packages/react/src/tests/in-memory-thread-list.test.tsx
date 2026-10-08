@@ -3,8 +3,8 @@
 import { render, waitFor } from "@testing-library/react";
 import type { FC } from "react";
 import { describe, it, expect, vi } from "vitest";
-import { useAui, AuiProvider } from "@assistant-ui/store";
-import { InMemoryThreadList } from "@assistant-ui/core/store";
+import { useAui, AuiProvider } from "@openagentui/store";
+import { InMemoryThreadList } from "@openagentui/core/store";
 import { ExternalThread } from "../index";
 
 const renderThreads = () => {

@@ -5,7 +5,7 @@ import {
   type ActionButtonProps,
   createActionButton,
 } from "../../utils/createActionButton";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { useCallback } from "react";
 
 const useQueueItemSteer = () => {

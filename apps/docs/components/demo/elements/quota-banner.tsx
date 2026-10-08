@@ -1,6 +1,6 @@
 "use client";
 
-import { QuotaBanner } from "@/components/assistant-ui/elements/quota-banner";
+import { QuotaBanner } from "@/components/openagentui/elements/quota-banner";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const PHASES = [1400, 1400, 0] as const;

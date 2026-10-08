@@ -1,9 +1,9 @@
 /**
- * Module augmentation namespace for assistant-ui type extensions.
+ * Module augmentation namespace for openagentui type extensions.
  *
  * @example
  * ```typescript
- * declare module "@assistant-ui/core" {
+ * declare module "@openagentui/core" {
  *   namespace Assistant {
  *     interface Commands {
  *       myCustomCommand: {

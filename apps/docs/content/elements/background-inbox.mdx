@@ -9,18 +9,18 @@ A background inbox lists work that kept going after you looked away: still runni
 
 <RuntimeMode>
 
-Every assistant-ui thread can keep running after you switch away from it. The thread list already tracks which ones are still active, so the inbox is a small projection of that state rather than a separate subsystem.
+Every openagentui thread can keep running after you switch away from it. The thread list already tracks which ones are still active, so the inbox is a small projection of that state rather than a separate subsystem.
 
 <Steps>
   <Step>
 
 ### Build the run list from thread state
 
-```tsx title="components/assistant-ui/elements/running-elsewhere.tsx"
+```tsx title="components/openagentui/elements/running-elsewhere.tsx"
 "use client";
 
-import { useAui, useAuiState } from "@assistant-ui/react";
-import type { BackgroundRun } from "@/components/assistant-ui/elements/background-inbox";
+import { useAui, useAuiState } from "@openagentui/react";
+import type { BackgroundRun } from "@/components/openagentui/elements/background-inbox";
 
 function formatElapsed(date: Date | undefined) {
   if (!date) return "";
@@ -50,7 +50,7 @@ function useBackgroundRuns(): BackgroundRun[] {
 ### Render it and wire collection to switching threads
 
 ```tsx
-import { BackgroundInbox } from "@/components/assistant-ui/elements/background-inbox";
+import { BackgroundInbox } from "@/components/openagentui/elements/background-inbox";
 
 export function RunningElsewhere() {
   const aui = useAui();
@@ -85,7 +85,7 @@ Standalone, the element is fully controlled: you hold the array of runs and upda
 "use client";
 
 import { useState } from "react";
-import { BackgroundInbox, type BackgroundRun } from "@/components/assistant-ui/elements/background-inbox";
+import { BackgroundInbox, type BackgroundRun } from "@/components/openagentui/elements/background-inbox";
 
 const initialRuns: BackgroundRun[] = [
   { id: "1", title: "Refactor auth module", state: "running", elapsed: "2m" },

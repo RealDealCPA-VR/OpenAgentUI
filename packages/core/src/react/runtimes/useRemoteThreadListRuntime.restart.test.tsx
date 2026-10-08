@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { render, waitFor } from "@testing-library/react";
-import { useAui, type AssistantClient } from "@assistant-ui/store";
+import { useAui, type AssistantClient } from "@openagentui/store";
 import { expect, it, vi } from "vitest";
 import {
   actSettled,

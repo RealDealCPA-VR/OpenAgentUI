@@ -287,7 +287,7 @@ describe("RemoteThreadList adapter changes", () => {
     expect(core.getItemById("thread-a")).toBeUndefined();
     expect(core.getItemById("thread-b")).toBeDefined();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Thread runtime cleanup threw while stopping a thread",
+      "[openagentui] Thread runtime cleanup threw while stopping a thread",
       error,
     );
   });

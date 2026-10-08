@@ -104,8 +104,8 @@ describe("highlightMatches", () => {
   });
 
   it("does not chip single letters", () => {
-    expect(highlightMatches("assistant-ui", ["s"])).toEqual([
-      { type: "text", content: "assistant-ui" },
+    expect(highlightMatches("openagentui", ["s"])).toEqual([
+      { type: "text", content: "openagentui" },
     ]);
   });
 });

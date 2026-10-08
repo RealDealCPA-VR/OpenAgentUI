@@ -82,7 +82,7 @@ export const SCENES: Record<string, GlyphSceneArt> = {
 `,
     tokens: [
       { text: "append-only", x: 12, y: 4, tone: "ghost" },
-      { text: "assistant-stream", x: 18, y: 11, tone: "whisper" },
+      { text: "openagentui-stream", x: 18, y: 11, tone: "whisper" },
       { text: "runtime", x: 55, y: 13, tone: "live" },
       { text: "AbortSignal", x: 40, y: 21, tone: "whisper" },
       { text: "chunk by chunk", x: 52, y: 26, tone: "ghost" },

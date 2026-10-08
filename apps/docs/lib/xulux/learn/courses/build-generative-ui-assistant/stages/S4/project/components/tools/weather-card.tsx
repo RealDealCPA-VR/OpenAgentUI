@@ -1,6 +1,6 @@
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import { CloudSun, Loader2, TriangleAlert, Wind } from "lucide-react";
 
 type WeatherArgs = {

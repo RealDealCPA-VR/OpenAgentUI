@@ -4,8 +4,8 @@ import { getEventListeners } from "node:events";
 import { act, render, waitFor } from "@testing-library/react";
 import { Activity, type FC, version } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { AuiConfig, AuiProvider, useAui } from "@assistant-ui/store";
-import { useAssistantClientDestroySignal } from "@assistant-ui/store/internal";
+import { AuiConfig, AuiProvider, useAui } from "@openagentui/store";
+import { useAssistantClientDestroySignal } from "@openagentui/store/internal";
 import {
   type AttachmentAdapter,
   CompositeAttachmentAdapter,

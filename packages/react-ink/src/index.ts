@@ -1,4 +1,4 @@
-/// <reference types="@assistant-ui/core/react" preserve="true" />
+/// <reference types="@openagentui/core/react" preserve="true" />
 
 // Re-export core types
 export type {
@@ -63,25 +63,25 @@ export type {
   CreateSuggestionAdapterOptions,
   // Other
   Unsubscribe,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 // Re-export core remote thread list types
 export type {
   RemoteThreadListAdapter,
   RemoteThreadListOptions,
   RemoteThreadListProviderComponent,
-} from "@assistant-ui/core";
-export { InMemoryThreadListAdapter } from "@assistant-ui/core";
-export { createVoiceSession } from "@assistant-ui/core";
-export { fromThreadMessageLike, generateId } from "@assistant-ui/core";
-export { createSuggestionAdapter } from "@assistant-ui/core";
+} from "@openagentui/core";
+export { InMemoryThreadListAdapter } from "@openagentui/core";
+export { createVoiceSession } from "@openagentui/core";
+export { fromThreadMessageLike, generateId } from "@openagentui/core";
+export { createSuggestionAdapter } from "@openagentui/core";
 
 // Attachment adapter implementations
 export {
   SimpleImageAttachmentAdapter,
   SimpleTextAttachmentAdapter,
   CompositeAttachmentAdapter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 // Re-export store scope state types
 export type {
@@ -93,7 +93,7 @@ export type {
   ThreadListItemState,
   QueueItemState,
   TaskState,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 
 // Store hooks and components
 export {
@@ -110,7 +110,7 @@ export {
   type AssistantEventName,
   type AssistantEventPayload,
   type AssistantEventCallback,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 
 // Context providers
 export { AssistantRuntimeProvider } from "./context/AssistantContext";
@@ -118,7 +118,7 @@ export {
   RuntimeAdapterProvider,
   useRuntimeAdapters,
   type RuntimeAdapters,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 // Runtime
 export {
@@ -133,7 +133,7 @@ export {
 export {
   createSimpleTitleAdapter,
   type TitleGenerationAdapter,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 export {
   useNotification,
   type NotificationConfig,
@@ -192,9 +192,9 @@ export {
   TextMessagePartProvider,
   ChainOfThoughtPartByIndexProvider,
   SuggestionByIndexProvider,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
-export { unstable_useThreadMessageIds } from "@assistant-ui/core/react";
+export { unstable_useThreadMessageIds } from "@openagentui/core/react";
 
 // Model context, tools & clients
 export {
@@ -253,7 +253,7 @@ export {
   type Unstable_InteractablesConfig,
   useToolArgsStatus,
   type ToolArgsStatus,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 // Ink runs single-process with no client/server boundary, so these are real
 // runtime helpers rather than the compiler-stripped markers used on web/RN.
@@ -271,28 +271,28 @@ export type {
   ModelContextProvider,
   LanguageModelConfig,
   LanguageModelV1CallSettings,
-} from "@assistant-ui/core";
-export { mergeModelContexts } from "@assistant-ui/core";
+} from "@openagentui/core";
+export { mergeModelContexts } from "@openagentui/core";
 export {
   unstable_getInteractableSnapshots,
   unstable_formatInteractableSnapshot,
   unstable_getInteractableVersions,
   type Unstable_InteractableSnapshotEntry,
   type Unstable_InteractableVersion,
-} from "@assistant-ui/core";
-export type { Tool } from "assistant-stream";
-export { tool } from "@assistant-ui/core";
-export { Suggestions, type SuggestionConfig } from "@assistant-ui/core/store";
-export { ModelContextRegistry } from "@assistant-ui/core";
+} from "@openagentui/core";
+export type { Tool } from "openagentui-stream";
+export { tool } from "@openagentui/core";
+export { Suggestions, type SuggestionConfig } from "@openagentui/core/store";
+export { ModelContextRegistry } from "@openagentui/core";
 export type {
   ModelContextRegistryToolHandle,
   ModelContextRegistryInstructionHandle,
   ModelContextRegistryProviderHandle,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 // Client exports
-export { ModelContext as ModelContextClient } from "@assistant-ui/core/store";
-export { ChainOfThoughtClient } from "@assistant-ui/core/store";
+export { ModelContext as ModelContextClient } from "@openagentui/core/store";
+export { ChainOfThoughtClient } from "@openagentui/core/store";
 
 // Component types
 export type {
@@ -316,13 +316,13 @@ export type {
   DataMessagePartProps,
   ToolCallMessagePartComponent,
   ToolCallMessagePartProps,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 export {
   useVoiceState,
   useVoiceVolume,
   useVoiceControls,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 // Shared surface carried by every distribution (scripts/check-distribution-barrels.mjs)
 export type {
@@ -339,7 +339,7 @@ export type {
   PartState,
   QuoteMessagePartComponent,
   QuoteMessagePartProps,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 export {
   CloudFileAttachmentAdapter,
   convertExternalMessages as unstable_convertExternalMessages,
@@ -357,7 +357,7 @@ export {
   useExternalMessageConverter,
   useExternalStoreRuntime,
   useExternalStoreSharedOptions,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 export type {
   ComposerSendOptions,
   ExternalThreadMessage,
@@ -366,13 +366,13 @@ export type {
   QueueItemMethods,
   RemoteThreadListProps,
   TaskMethods,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 export {
   ExternalThread,
   InMemoryThreadList,
   RemoteThreadList,
   SingleThreadList,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 export type {
   AddToolResultOptions,
   AttachmentStatus,
@@ -440,7 +440,7 @@ export type {
   Unstable_DirectiveSegment,
   Unstable_TriggerItem,
   VoiceSessionState,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 export {
   bindExternalStoreMessage,
   createMessageQueue,
@@ -452,4 +452,4 @@ export {
   toolApprovalAcceptsText,
   defaultDirectiveFormatter,
   unstable_defaultDirectiveFormatter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";

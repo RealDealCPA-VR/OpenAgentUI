@@ -2,7 +2,7 @@ import { openai } from "@ai-sdk/openai";
 import {
   AISDKToolkit,
   type AISDKToolkitToolsOptions,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { streamText, convertToModelMessages, stepCountIs } from "ai";
 import type { UIMessage } from "ai";
 import toolkit from "../../toolkit";

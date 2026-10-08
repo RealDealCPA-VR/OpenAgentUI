@@ -15,7 +15,7 @@ import type {
 import {
   getMessageModality,
   groupUIMessagesByParent,
-} from "@assistant-ui/react-langchain/converter";
+} from "@openagentui/react-langchain/converter";
 import {
   pickExternalStoreSharedOptions,
   createMessageQueue,
@@ -24,24 +24,24 @@ import {
   type CompleteAttachment,
   type ThreadMessage,
   generateId,
-} from "@assistant-ui/core";
-import type { ToolExecutionStatus } from "@assistant-ui/core";
-import type { QueueItemState } from "@assistant-ui/core/store";
+} from "@openagentui/core";
+import type { ToolExecutionStatus } from "@openagentui/core";
+import type { QueueItemState } from "@openagentui/core/store";
 import {
   createAbortableThreadLoad,
   createCloudThreadListAdapterCreateFallback,
   createToolCallCancellationStub,
   getThreadMessageText,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import {
   type DataMessagePartComponent,
   useCloudThreadListAdapter,
   useRemoteThreadListRuntime,
   useExternalMessageConverter,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
-import { useAui } from "@assistant-ui/store";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+} from "@openagentui/core/react";
+import { useAui } from "@openagentui/store";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import {
   convertLangChainMessages,
   createLangGraphMetadataKey,

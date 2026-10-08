@@ -1,10 +1,10 @@
 "use client";
 
 import { useId } from "react";
-import type { SyntaxHighlighterProps } from "@assistant-ui/react-streamdown";
+import type { SyntaxHighlighterProps } from "@openagentui/react-streamdown";
 import { CheckIcon, CopyIcon, DownloadIcon } from "lucide-react";
 import { PreviewCard } from "@base-ui/react/preview-card";
-import { useCopyToClipboard } from "@assistant-ui/ui/hooks/use-copy-to-clipboard";
+import { useCopyToClipboard } from "@openagentui/ui/hooks/use-copy-to-clipboard";
 import { CursorIcon } from "@/components/icons/cursor";
 import { analytics } from "@/lib/analytics";
 import {
@@ -42,12 +42,12 @@ function getDocsAppendix(): string {
   const docsIndexUrl =
     typeof window !== "undefined"
       ? `${window.location.origin}/llms.txt`
-      : "https://www.assistant-ui.com/llms.txt";
+      : "https://openagentui.dev/llms.txt";
 
   return (
     `Before implementing, read ${docsIndexUrl} to discover relevant documentation pages. ` +
-    "Traverse the index and read the specific pages you need (installation, architecture, runtimes, components) so your setup matches current assistant-ui APIs. " +
-    "Use the assistant-ui CLI for scaffolding — do not manually create projects with create-next-app."
+    "Traverse the index and read the specific pages you need (installation, architecture, runtimes, components) so your setup matches current openagentui APIs. " +
+    "Use the openagentui CLI for scaffolding — do not manually create projects with create-next-app."
   );
 }
 

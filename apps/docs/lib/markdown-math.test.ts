@@ -1,7 +1,7 @@
 import {
   escapeCurrencyDollars,
   normalizeMathDelimiters,
-} from "@assistant-ui/react-markdown";
+} from "@openagentui/react-markdown";
 import { describe, expect, it } from "vitest";
 import {
   closeDisplayMathFences,

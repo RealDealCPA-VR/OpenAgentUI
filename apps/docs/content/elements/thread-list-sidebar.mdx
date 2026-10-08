@@ -18,8 +18,8 @@ Thread list sidebar wraps the runtime [Thread list](/elements/thread-list) in a 
 
 ```tsx title="app/layout.tsx"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { ThreadListSidebar } from "@/components/assistant-ui/elements/threadlist-sidebar.aui";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { ThreadListSidebar } from "@/components/openagentui/elements/threadlist-sidebar.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function Layout() {
   return (
@@ -50,7 +50,7 @@ Thread list sidebar has no standalone form: it renders the runtime-only thread l
 
 ```tsx
 <Sidebar {...props}>
-  <SidebarHeader>{/* assistant-ui wordmark, links out */}</SidebarHeader>
+  <SidebarHeader>{/* openagentui wordmark, links out */}</SidebarHeader>
   <SidebarContent>
     <ThreadList />
   </SidebarContent>
@@ -59,7 +59,7 @@ Thread list sidebar has no standalone form: it renders the runtime-only thread l
 </Sidebar>
 ```
 
-The header links out to assistant-ui.com and the footer to its GitHub repository; both are placeholders meant to be replaced with your own branding and support links. The collapse rail renders only when `collapsible` is not `"none"`, following whatever `Sidebar` itself was given.
+The header links out to openagentui.dev and the footer to its GitHub repository; both are placeholders meant to be replaced with your own branding and support links. The collapse rail renders only when `collapsible` is not `"none"`, following whatever `Sidebar` itself was given.
 
 ## Examples
 

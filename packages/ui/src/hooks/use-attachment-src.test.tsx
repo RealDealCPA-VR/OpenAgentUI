@@ -7,7 +7,7 @@ const mockState = vi.hoisted(() => ({
   current: { attachment: { type: "document" } } as any,
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => ({
+vi.mock("@openagentui/react", async (importOriginal) => ({
   ...(await importOriginal<object>()),
   useAuiState: (selector: (s: any) => unknown) => selector(mockState.current),
 }));

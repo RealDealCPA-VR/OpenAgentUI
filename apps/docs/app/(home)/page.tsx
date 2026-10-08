@@ -25,7 +25,7 @@ async function getReactVersion(): Promise<string | null> {
       path.join(
         process.cwd(),
         "node_modules",
-        "@assistant-ui",
+        "@openagentui",
         "react",
         "package.json",
       ),
@@ -51,9 +51,9 @@ const SETUP_SNIPPETS = [
     docs: "/docs/runtimes/ai-sdk/overview",
     changed: [2, 6, 7, 8],
     caption: "Your route runs the model. The transport streams it back.",
-    code: `import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/thread";
+    code: `import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/thread";
 
 export default function App() {
   const runtime = useChatRuntime({
@@ -73,9 +73,9 @@ export default function App() {
     docs: "/docs/runtimes/langgraph/overview",
     changed: [2, 6, 7, 8],
     caption: "Point stream at your graph. Threads and interrupts included.",
-    code: `import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useLangGraphRuntime } from "@assistant-ui/react-langgraph";
-import { Thread } from "@/components/assistant-ui/thread";
+    code: `import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useLangGraphRuntime } from "@openagentui/react-langgraph";
+import { Thread } from "@/components/openagentui/thread";
 
 export default function App() {
   const runtime = useLangGraphRuntime({
@@ -95,9 +95,9 @@ export default function App() {
     docs: "/docs/runtimes/langchain",
     changed: [2, 6, 7, 8],
     caption: "Connects to your deployed assistant by id.",
-    code: `import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useStreamRuntime } from "@assistant-ui/react-langchain";
-import { Thread } from "@/components/assistant-ui/thread";
+    code: `import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useStreamRuntime } from "@openagentui/react-langchain";
+import { Thread } from "@/components/openagentui/thread";
 
 export default function App() {
   const runtime = useStreamRuntime({
@@ -117,9 +117,9 @@ export default function App() {
     docs: "/docs/integrations/frameworks/mastra/overview",
     changed: [2, 6, 7, 8],
     caption: "The same AI SDK client. Your route calls the Mastra agent.",
-    code: `import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime, AssistantChatTransport } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/thread";
+    code: `import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/thread";
 
 export default function App() {
   const runtime = useChatRuntime({
@@ -139,9 +139,9 @@ export default function App() {
     docs: "/docs/runtimes/custom/overview",
     changed: [2, 6, 7, 8],
     caption: "No adapter at all. Your store, your transport, any backend.",
-    code: `import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useExternalStoreRuntime } from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/thread";
+    code: `import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useExternalStoreRuntime } from "@openagentui/react";
+import { Thread } from "@/components/openagentui/thread";
 
 export default function App() {
   const runtime = useExternalStoreRuntime({

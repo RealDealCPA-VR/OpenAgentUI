@@ -1,13 +1,13 @@
 # AI SDK v7 Example
 
-This example demonstrates how to use `@assistant-ui/ai-sdk` with the Vercel AI SDK v7.
+This example demonstrates how to use `@openagentui/ai-sdk` with the Vercel AI SDK v7.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-ai-sdk-v7
+npx openagentui@latest create my-app --example with-ai-sdk-v7
 cd my-app
 ```
 
@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the result.
 ## Key Features
 
 - Uses the new AI SDK v7 with `@ai-sdk/openai`
-- Integrates with `@assistant-ui/react` using the new `useChatRuntime` hook
+- Integrates with `@openagentui/react` using the new `useChatRuntime` hook
 - No RSC support (client-side only)
 - Simplified integration with the `useChatRuntime` hook that wraps AI SDK v7's `useChat`
 - Uses `AssistantChatTransport` to pass system messages and frontend tools to the backend
@@ -45,7 +45,7 @@ By default, `useChatRuntime` uses `AssistantChatTransport` which automatically f
 When customizing the API URL, you must explicitly use `AssistantChatTransport` to keep system/tools forwarding:
 
 ```typescript
-import { AssistantChatTransport } from "@assistant-ui/ai-sdk";
+import { AssistantChatTransport } from "@openagentui/ai-sdk";
 
 const runtime = useChatRuntime({
   transport: new AssistantChatTransport({
@@ -72,5 +72,5 @@ The API route at `/api/chat` uses AI SDK v7 `streamText`, forwards `system` and 
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
-- [AI SDK Integration Guide](https://www.assistant-ui.com/docs/runtimes/ai-sdk)
+- [openagentui Documentation](https://openagentui.dev/docs)
+- [AI SDK Integration Guide](https://openagentui.dev/docs/runtimes/ai-sdk)

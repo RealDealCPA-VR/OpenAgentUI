@@ -3,8 +3,8 @@
 import { act, render, waitFor } from "@testing-library/react";
 import { Suspense, useState, type FC } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { useAui } from "@assistant-ui/store";
-import { ToolResponse } from "assistant-stream";
+import { useAui } from "@openagentui/store";
+import { ToolResponse } from "openagentui-stream";
 import { AssistantRuntimeProvider } from "../../AssistantRuntimeProvider";
 import {
   useAssistantTransportRuntime,
@@ -402,7 +402,7 @@ describe("useAssistantTransportRuntime", () => {
 
     await act(async () => {});
     expect(warn).toHaveBeenCalledWith(
-      "[assistant-ui] Skipped add-message command with no supported parts",
+      "[openagentui] Skipped add-message command with no supported parts",
     );
     expect(fetchMock.requests).toHaveLength(0);
 

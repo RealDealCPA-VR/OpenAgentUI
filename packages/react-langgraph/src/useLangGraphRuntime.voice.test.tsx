@@ -5,9 +5,9 @@ import type {
   AssistantRuntime,
   RealtimeVoiceAdapter,
   RemoteThreadListAdapter,
-} from "@assistant-ui/core";
-import { getThreadMessageText } from "@assistant-ui/core/internal";
-import { AssistantRuntimeProvider } from "@assistant-ui/core/react";
+} from "@openagentui/core";
+import { getThreadMessageText } from "@openagentui/core/internal";
+import { AssistantRuntimeProvider } from "@openagentui/core/react";
 import { useLangGraphRuntime } from "./useLangGraphRuntime";
 import { mockStreamCallbackFactory } from "./testUtils";
 import { settleOutsideAct } from "./tests/settleOutsideAct";

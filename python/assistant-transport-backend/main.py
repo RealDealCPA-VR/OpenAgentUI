@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Assistant Transport Backend - Simple FastAPI + assistant-stream server
+Assistant Transport Backend - Simple FastAPI + openagentui-stream server
 
 This server implements the assistant-transport protocol with static responses.
 """
@@ -17,8 +17,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
-from assistant_stream.serialization import AssistantTransportResponse
-from assistant_stream import RunController, create_run
+from openagentui_stream.serialization import AssistantTransportResponse
+from openagentui_stream import RunController, create_run
 
 # Load environment variables
 load_dotenv()
@@ -92,7 +92,7 @@ app.add_middleware(
 
 @app.post("/assistant")
 async def assistant_endpoint(request: AssistantRequest): 
-    # Create streaming response using assistant-stream
+    # Create streaming response using openagentui-stream
     async def run_callback(controller: RunController):
         """Callback function for the run controller."""
         try:
@@ -142,7 +142,7 @@ async def assistant_endpoint(request: AssistantRequest):
             controller.state["provider"] = "error"
             controller.append_text(f"Error: {str(e)}")
     
-    # Create streaming response using assistant-stream
+    # Create streaming response using openagentui-stream
     stream = create_run(run_callback, state=request.state)
     
     return AssistantTransportResponse(stream)

@@ -18,13 +18,13 @@ A runtime that supports queueing tracks pending sends on `s.composer.queue`; not
 
 `ComposerPrimitive.Queue` maps over the pending items; `QueueItemPrimitive.Text` and `.Remove` read and act on the one currently in scope.
 
-```tsx title="components/assistant-ui/elements/message-queue.tsx"
+```tsx title="components/openagentui/elements/message-queue.tsx"
 "use client";
 
-import { ComposerPrimitive, QueueItemPrimitive, useAuiState } from "@assistant-ui/react";
+import { ComposerPrimitive, QueueItemPrimitive, useAuiState } from "@openagentui/react";
 import { ArrowUpIcon, XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { field, ghostButton, mono } from "@/components/assistant-ui/elements/surfaces";
+import { field, ghostButton, mono } from "@/components/openagentui/elements/surfaces";
 
 export function MessageQueue() {
   const queueLength = useAuiState((s) => s.composer.queue.length);
@@ -93,7 +93,7 @@ Standalone, `MessageQueue` renders what you hand it: the running message's text,
 "use client";
 
 import { useState } from "react";
-import { MessageQueue, type QueuedMessage } from "@/components/assistant-ui/elements/message-queue";
+import { MessageQueue, type QueuedMessage } from "@/components/openagentui/elements/message-queue";
 
 export function Queue() {
   const [queued, setQueued] = useState<QueuedMessage[]>([

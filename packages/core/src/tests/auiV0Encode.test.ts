@@ -396,7 +396,7 @@ describe("auiV0Encode", () => {
         {
           type: "reasoning",
           text: "thinking",
-          providerMetadata: { "assistant-ui": { duration: 3200 } },
+          providerMetadata: { openagentui: { duration: 3200 } },
         },
       ],
       metadata: {
@@ -411,7 +411,7 @@ describe("auiV0Encode", () => {
       {
         type: "reasoning",
         text: "thinking",
-        providerMetadata: { "assistant-ui": { duration: 3200 } },
+        providerMetadata: { openagentui: { duration: 3200 } },
       },
     ]);
   });

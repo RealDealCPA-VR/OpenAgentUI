@@ -1,4 +1,4 @@
-import type { AssistantClient } from "@assistant-ui/store";
+import type { AssistantClient } from "@openagentui/store";
 import type { ThreadListItemMethods } from "../../store/scopes/thread-list-item";
 
 export type KeyedThreadListItem = Pick<

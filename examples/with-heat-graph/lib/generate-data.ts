@@ -1,4 +1,4 @@
-import type { DataPoint } from "heat-graph";
+import type { DataPoint } from "@openagentui/heat-graph";
 
 function seededRandom(seed: number) {
   let s = seed;

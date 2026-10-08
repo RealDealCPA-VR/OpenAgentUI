@@ -9,20 +9,20 @@ An elicitation form is what a connected server shows when it needs structured in
 
 <RuntimeMode>
 
-MCP form elicitation is unstyled primitives, not a toolkit renderer: `@assistant-ui/react-mcp` exposes `McpElicitationPrimitive`, and you build the same look this element has directly from its parts.
+MCP form elicitation is unstyled primitives, not a toolkit renderer: `@openagentui/react-mcp` exposes `McpElicitationPrimitive`, and you build the same look this element has directly from its parts.
 
 <Steps>
   <Step>
 
 ### Compose the form from `McpElicitationPrimitive`
 
-```tsx title="components/assistant-ui/elements/mcp-elicitation-form.tsx"
+```tsx title="components/openagentui/elements/mcp-elicitation-form.tsx"
 "use client";
 
 import { PlugIcon } from "lucide-react";
-import { McpElicitationPrimitive } from "@assistant-ui/react-mcp";
+import { McpElicitationPrimitive } from "@openagentui/react-mcp";
 import { cn } from "@/lib/utils";
-import { field, inkButton, mono, paper } from "@/components/assistant-ui/elements/surfaces";
+import { field, inkButton, mono, paper } from "@/components/openagentui/elements/surfaces";
 
 function fieldKind(schema: unknown): "text" | "toggle" {
   return (schema as { type?: string } | undefined)?.type === "boolean"
@@ -129,10 +129,10 @@ import {
   ElicitationForm,
   type ElicitationField,
   type ElicitationState,
-} from "@/components/assistant-ui/elements/elicitation-form";
+} from "@/components/openagentui/elements/elicitation-form";
 
 const INITIAL_FIELDS: readonly ElicitationField[] = [
-  { name: "repo", label: "Repository", value: "assistant-ui/assistant-ui", kind: "text", required: true },
+  { name: "repo", label: "Repository", value: "openagentui/openagentui", kind: "text", required: true },
   { name: "notify", label: "Notify watchers", value: "true", kind: "toggle" },
 ];
 
@@ -278,7 +278,7 @@ The standalone element only models two settled states. Route both a decline and 
 | `s.mcpServer.pendingElicitations` | `readonly MCPElicitation[]` | Every request currently waiting on this server; read by `Items`. |
 | `aui.mcpServer.answerElicitation(id, response)` | `(id: string, response: MCPElicitationResponse) => readonly { property: string; message: string }[] \| undefined` | What `Accept`, `Decline`, and `Cancel` call; returns validation errors instead of submitting when `response.action === "accept"` and a value is invalid. |
 
-Requires `@assistant-ui/react-mcp` and a connected server whose `elicitation` capability has not been set to `false`. See [User-managed MCP servers](/docs/tools/user-managed-mcp).
+Requires `@openagentui/react-mcp` and a connected server whose `elicitation` capability has not been set to `false`. See [User-managed MCP servers](/docs/tools/user-managed-mcp).
 
 </RuntimeMode>
 

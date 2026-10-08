@@ -55,32 +55,32 @@ export const API_REFERENCE_DIR = path.join(
 export const INTEGRATION_PACKAGES = [
   {
     slug: "ai-sdk",
-    packageName: "@assistant-ui/ai-sdk",
+    packageName: "@openagentui/ai-sdk",
     entry: path.join(REPO_ROOT, "packages/ai-sdk/src/index.ts"),
   },
   {
     slug: "react-data-stream",
-    packageName: "@assistant-ui/react-data-stream",
+    packageName: "@openagentui/react-data-stream",
     entry: path.join(REPO_ROOT, "packages/react-data-stream/src/index.ts"),
   },
   {
     slug: "eve",
-    packageName: "@assistant-ui/eve",
+    packageName: "@openagentui/eve",
     entry: path.join(REPO_ROOT, "packages/eve/src/index.ts"),
   },
   {
-    slug: "assistant-cloud",
-    packageName: "assistant-cloud",
+    slug: "openagentui-cloud",
+    packageName: "openagentui-cloud",
     entry: path.join(REPO_ROOT, "packages/cloud/src/index.ts"),
   },
   {
-    slug: "assistant-cloud-ai-sdk",
-    packageName: "assistant-cloud/ai-sdk",
+    slug: "openagentui-cloud-ai-sdk",
+    packageName: "openagentui-cloud/ai-sdk",
     entry: path.join(REPO_ROOT, "packages/cloud/src/ai-sdk/index.ts"),
   },
   {
-    slug: "assistant-cloud-telemetry",
-    packageName: "assistant-cloud/telemetry",
+    slug: "openagentui-cloud-telemetry",
+    packageName: "openagentui-cloud/telemetry",
     entry: path.join(REPO_ROOT, "packages/cloud/src/telemetry/index.ts"),
   },
 ] as const;

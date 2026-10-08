@@ -12,8 +12,8 @@ const h = vi.hoisted(() => ({
   steer: vi.fn<() => void>(),
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAui: () => ({ queueItem: { remove: h.remove, steer: h.steer } }),

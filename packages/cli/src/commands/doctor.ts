@@ -5,16 +5,16 @@ import chalk from "chalk";
 import { compare, valid } from "semver";
 import { findWorkspaceRoot, resolveRealPath } from "../lib/utils/workspace";
 
-const ASSISTANT_UI_PACKAGE_NAMES = new Set([
-  "assistant-stream",
-  "assistant-cloud",
-  "assistant-ui",
+const OPENAGENTUI_PACKAGE_NAMES = new Set([
+  "openagentui-stream",
+  "openagentui-cloud",
+  "openagentui",
 ]);
 
 function isTrackedPackage(name: string | undefined): boolean {
   if (!name) return false;
-  if (name.startsWith("@assistant-ui/")) return true;
-  return ASSISTANT_UI_PACKAGE_NAMES.has(name);
+  if (name.startsWith("@openagentui/")) return true;
+  return OPENAGENTUI_PACKAGE_NAMES.has(name);
 }
 
 export interface DiscoveredPackage {
@@ -56,7 +56,7 @@ function processPackageDir(
   }
 
   // Only descend into nested node_modules of tracked packages. Transitive
-  // copies of @assistant-ui/* live inside packages that depend on them,
+  // copies of @openagentui/* live inside packages that depend on them,
   // which are themselves tracked. Walking every unrelated package's
   // subtree turns a doctor run on a large repo into thousands of stat
   // calls for no gain.
@@ -108,10 +108,10 @@ function walkNodeModulesAt(
 // only ever reaches the project's direct deps. The store dir name encodes the
 // package, so filtering by a tracked prefix keeps this pass O(tracked entries).
 const TRACKED_PNPM_ENTRY_PREFIXES = [
-  "@assistant-ui+",
-  "assistant-ui@",
-  "assistant-stream@",
-  "assistant-cloud@",
+  "@openagentui+",
+  "openagentui@",
+  "openagentui-stream@",
+  "openagentui-cloud@",
 ];
 
 function isTrackedPnpmEntry(dirName: string): boolean {
@@ -177,7 +177,7 @@ function walkPnpmStore(
   }
 }
 
-// Discover every installation of an assistant-ui-family package reachable
+// Discover every installation of an openagentui-family package reachable
 // from `cwd`. Node resolves packages through ancestor node_modules directories,
 // so inspect each level to include workspace-hoisted installs. Nested installs
 // and pnpm virtual stores are scanned to catch duplicate transitive copies.
@@ -330,20 +330,20 @@ function reportDuplicates(
   lines.push("");
   lines.push(
     chalk.yellow(
-      "Duplicates almost always cause subtle runtime bugs (see https://github.com/assistant-ui/assistant-ui/issues/4101).",
+      "Duplicates almost always cause subtle runtime bugs (see https://github.com/RealDealCPA-VR/OpenAgentUI/issues/4101).",
     ),
   );
   lines.push(
     chalk.yellow(
-      "Fix by aligning all @assistant-ui/* packages to compatible versions — run:",
+      "Fix by aligning all @openagentui/* packages to compatible versions — run:",
     ),
   );
-  lines.push(chalk.cyan("    npx assistant-ui update"));
+  lines.push(chalk.cyan("    npx openagentui update"));
 }
 
 function reportOutdated(outdated: OutdatedPackage[], lines: string[]): void {
   if (outdated.length === 0) {
-    lines.push(chalk.green("✓ All assistant-ui packages are up to date."));
+    lines.push(chalk.green("✓ All openagentui packages are up to date."));
     return;
   }
 
@@ -358,13 +358,13 @@ function reportOutdated(outdated: OutdatedPackage[], lines: string[]): void {
   }
   lines.push("");
   lines.push(chalk.yellow("Run the following to upgrade everything:"));
-  lines.push(chalk.cyan("    npx assistant-ui update"));
+  lines.push(chalk.cyan("    npx openagentui update"));
 }
 
 export const doctor = new Command()
   .name("doctor")
   .description(
-    "Diagnose mismatched or outdated assistant-ui packages (including transitive ones).",
+    "Diagnose mismatched or outdated openagentui packages (including transitive ones).",
   )
   .option(
     "-c, --cwd <cwd>",
@@ -384,7 +384,7 @@ export const doctor = new Command()
     }
 
     console.log("");
-    console.log(chalk.bold("Running assistant-ui doctor..."));
+    console.log(chalk.bold("Running openagentui doctor..."));
     console.log("");
 
     const installed = discoverInstalledPackages(cwd);
@@ -392,7 +392,7 @@ export const doctor = new Command()
     if (installed.length === 0) {
       console.log(
         chalk.yellow(
-          "No assistant-ui packages found in node_modules. Did you run `npm install`?",
+          "No openagentui packages found in node_modules. Did you run `npm install`?",
         ),
       );
       console.log("");

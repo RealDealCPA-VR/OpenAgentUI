@@ -3,7 +3,7 @@
 import {
   TodoList,
   type TodoItem,
-} from "@/components/assistant-ui/elements/todo-list";
+} from "@/components/openagentui/elements/todo-list";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const REVISIONS: readonly (readonly TodoItem[])[] = [

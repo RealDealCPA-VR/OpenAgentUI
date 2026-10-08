@@ -2,7 +2,7 @@
 
 Downloaded source: `npm install`, `npm run build`, then `npm run preview`.
 
-A browser-local task board demonstrates a reusable cursor moving to real controls. The assistant-ui chat uses the shared AI SDK transport with scripted responses. No model requests, backend, or credentials are involved.
+A browser-local task board demonstrates a reusable cursor moving to real controls. The openagentui chat uses the shared AI SDK transport with scripted responses. No model requests, backend, or credentials are involved.
 
 ## Run and build
 

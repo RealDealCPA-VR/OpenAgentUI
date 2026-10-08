@@ -1,11 +1,11 @@
 import { useEffect, useMemo } from "react";
-import { useResource, withKey, resource } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+import { useResource, withKey, resource } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import {
   useAssistantEmit,
   useClientLookup,
   useClientResource,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { useThreadSelectionEvents } from "../clients/thread-selection-events";
 import type { ThreadListRuntime } from "../../runtime/api/thread-list-runtime";
 import type { AssistantRuntime } from "../../runtime/api/assistant-runtime";

@@ -4,13 +4,13 @@ import type {
   MessageModality,
   ThreadAssistantMessage,
   ThreadUserMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   parseDataUrl,
   resolveFilePartSource,
-} from "@assistant-ui/core/internal";
-import type { StreamingTimingAccessors } from "@assistant-ui/core/react";
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+} from "@openagentui/core/internal";
+import type { StreamingTimingAccessors } from "@openagentui/core/react";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 
 /** Known content block types from @langchain/core messages. */
 export type LangChainContentBlock =

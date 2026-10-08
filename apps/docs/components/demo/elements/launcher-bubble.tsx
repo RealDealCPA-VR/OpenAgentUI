@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LauncherBubble } from "@/components/assistant-ui/elements/launcher-bubble";
+import { LauncherBubble } from "@/components/openagentui/elements/launcher-bubble";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const PROMPTS = [
@@ -21,7 +21,7 @@ export function LauncherBubbleDemo() {
     <LauncherBubble
       open={open}
       unread={2}
-      greeting="Need a hand with assistant-ui?"
+      greeting="Need a hand with openagentui?"
       prompts={PROMPTS}
       onPick={() => undefined}
       onStart={() => undefined}

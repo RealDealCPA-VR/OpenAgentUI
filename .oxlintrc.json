@@ -77,7 +77,7 @@
       "excludeFiles": [
         "packages/agent-launcher/**",
         "packages/cli/**",
-        "packages/create-assistant-ui/**",
+        "packages/create-openagentui/**",
         "packages/mcp-docs-server/**",
         "packages/metro/**",
         "packages/next/**",
@@ -93,9 +93,9 @@
         "packages/**/*.server.*",
         "packages/**/src/**/__tests__/**",
         "packages/**/src/**/*.test.*",
-        "packages/assistant-stream/src/resumable/stores/redis-impl.ts",
-        "packages/assistant-stream/src/resumable/stores/redis.ts",
-        "packages/assistant-stream/src/resumable/stores/ioredis.ts"
+        "packages/openagentui-stream/src/resumable/stores/redis-impl.ts",
+        "packages/openagentui-stream/src/resumable/stores/redis.ts",
+        "packages/openagentui-stream/src/resumable/stores/ioredis.ts"
       ],
       "rules": {
         "no-restricted-properties": [
@@ -111,10 +111,10 @@
     {
       "files": [
         "packages/ui/src/components/react/ui/**",
-        "packages/ui/src/components/react/assistant-ui/**",
+        "packages/ui/src/components/react/openagentui/**",
         "packages/ui/src/components/react/icons/**",
         "templates/*/components/ui/**",
-        "templates/*/components/assistant-ui/**",
+        "templates/*/components/openagentui/**",
         "templates/*/components/icons/**"
       ],
       "rules": {

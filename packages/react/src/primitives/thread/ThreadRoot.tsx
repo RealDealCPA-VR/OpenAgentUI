@@ -10,7 +10,7 @@ import {
   useEffect,
   useRef,
 } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { useComposedRefs } from "radix-ui/internal";
 import { ThreadRootElementContext } from "./ThreadRootElementContext";
 

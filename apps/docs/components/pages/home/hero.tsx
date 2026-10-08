@@ -90,7 +90,7 @@ export function Hero({
           style={{ animationDelay: "850ms" }}
         >
           <a
-            href="https://github.com/assistant-ui/assistant-ui"
+            href="https://github.com/RealDealCPA-VR/OpenAgentUI"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground transition-colors"
@@ -99,7 +99,7 @@ export function Hero({
           </a>
           <span className="bg-muted-foreground/20 rounded-capsule hidden size-1 sm:block" />
           <a
-            href="https://www.npmjs.com/package/@assistant-ui/react"
+            href="https://www.npmjs.com/package/@openagentui/react"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground transition-colors"
@@ -108,7 +108,7 @@ export function Hero({
           </a>
           <span className="bg-muted-foreground/20 rounded-capsule hidden size-1 sm:block" />
           <a
-            href="https://www.ycombinator.com/companies/assistant-ui"
+            href="https://www.ycombinator.com/companies/openagentui"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground inline-flex w-full items-center gap-1.5 transition-colors sm:w-auto"

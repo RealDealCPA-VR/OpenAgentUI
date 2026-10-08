@@ -101,7 +101,7 @@ export function CloudLoginInputCard({
           <p className="text-muted-foreground text-base sm:text-sm">
             {returned
               ? "Waiting for your CLI to finish sign-in."
-              : "Approve assistant-ui-cli on the accounts page, then return here."}
+              : "Approve openagentui-cli on the accounts page, then return here."}
           </p>
           <div className="flex flex-col gap-2">
             <span className="font-mono text-lg" aria-label="Sign-in code">

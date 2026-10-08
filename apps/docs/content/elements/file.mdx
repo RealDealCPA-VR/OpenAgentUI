@@ -16,9 +16,9 @@ File renders one file message part. Playable `audio/*` and `video/*` files stay 
 
 Register `File` as the `File` renderer on `MessagePrimitive.Parts`.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { File } from "@/components/assistant-ui/elements/file";
-import { MessagePrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { File } from "@/components/openagentui/elements/file";
+import { MessagePrimitive } from "@openagentui/react";
 
 function AssistantMessage() {
   return (
@@ -29,7 +29,7 @@ function AssistantMessage() {
 }
 ```
 
-The `Thread` element already renders both assistant and user file parts through `File`, so installing `@assistant-ui/thread` gives you this without any of the above.
+The `Thread` element already renders both assistant and user file parts through `File`, so installing `@openagentui/thread` gives you this without any of the above.
 
   </Step>
 </Steps>
@@ -46,7 +46,7 @@ Standalone, `File` is a plain function of one part object: no context, no runtim
 ### Render a file directly
 
 ```tsx title="app/answer.tsx"
-import { File } from "@/components/assistant-ui/elements/file";
+import { File } from "@/components/openagentui/elements/file";
 
 export function Attachment() {
   return (
@@ -115,7 +115,7 @@ The icon row remains for non-media files. `File.Player` routes playable audio an
 `File.Root`, `File.Icon`, `File.Name`, `File.Size`, `File.Download`, and `File.Player` are exported individually for a custom layout:
 
 ```tsx
-import { File } from "@/components/assistant-ui/elements/file";
+import { File } from "@/components/openagentui/elements/file";
 
 export function CustomFileRow() {
   return (

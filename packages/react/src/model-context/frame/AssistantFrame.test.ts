@@ -6,7 +6,7 @@ import {
   AssistantFrameProvider,
   AssistantFrameHost,
   ModelContextRegistry,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import z from "zod";
 
 describe("AssistantFrame Integration", () => {
@@ -99,7 +99,7 @@ describe("AssistantFrame Integration", () => {
     await vi.waitFor(() => {
       expect(iframeWindow.postMessage).toHaveBeenCalledWith(
         expect.objectContaining({
-          channel: "assistant-ui-frame",
+          channel: "openagentui-frame",
           message: expect.objectContaining({
             type: "model-context-request",
           }),

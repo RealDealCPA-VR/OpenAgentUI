@@ -5,7 +5,7 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import { composerCancelDisabled } from "@assistant-ui/core/store/internal";
+import { composerCancelDisabled } from "@openagentui/core/store/internal";
 import { isAttrDisabled } from "./attrDisabled";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";

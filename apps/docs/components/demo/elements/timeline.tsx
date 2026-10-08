@@ -3,7 +3,7 @@
 import {
   Timeline,
   type TimelineEvent,
-} from "@/components/assistant-ui/elements/timeline";
+} from "@/components/openagentui/elements/timeline";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const EVENTS: readonly TimelineEvent[] = [

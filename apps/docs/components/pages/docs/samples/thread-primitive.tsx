@@ -5,7 +5,7 @@ import {
   ComposerPrimitive,
   ThreadPrimitive,
   MessagePrimitive,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { ArrowUpIcon } from "lucide-react";
 import { SampleRuntimeProvider } from "./sample-runtime-provider";
 

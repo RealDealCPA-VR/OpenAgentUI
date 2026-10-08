@@ -1,17 +1,17 @@
 {
-  "name": "@assistant-ui/react-markdown",
+  "name": "@openagentui/react-markdown",
   "version": "0.14.19",
-  "description": "Markdown rendering for assistant-ui",
+  "description": "Markdown rendering for openagentui",
   "keywords": [
     "markdown",
     "react-markdown",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat",
     "rendering"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -70,7 +70,7 @@
     "react-markdown": "^10.1.0"
   },
   "peerDependencies": {
-    "@assistant-ui/react": "^0.15.0",
+    "@openagentui/react": "^0.15.0",
     "@types/react": "*",
     "react": "^18 || ^19"
   },
@@ -80,9 +80,9 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@types/react": "^19.3.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
@@ -92,13 +92,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-markdown"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

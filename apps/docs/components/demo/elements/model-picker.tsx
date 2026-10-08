@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   ModelPicker,
   type PickableModel,
-} from "@/components/assistant-ui/elements/model-picker";
+} from "@/components/openagentui/elements/model-picker";
 
 const MODELS: readonly PickableModel[] = [
   {

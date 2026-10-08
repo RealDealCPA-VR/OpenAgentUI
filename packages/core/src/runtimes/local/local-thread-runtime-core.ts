@@ -204,7 +204,7 @@ export class LocalThreadRuntimeCore
     try {
       await write();
     } catch (error) {
-      console.error("[assistant-ui] local thread history write failed:", error);
+      console.error("[openagentui] local thread history write failed:", error);
       if (generation === this._loadGeneration) {
         this._notifyEventSubscribers("historyWriteError", {
           operation,
@@ -460,7 +460,7 @@ export class LocalThreadRuntimeCore
       // adapter. Reset also invalidates a send still uploading attachments.
       void this.composer.reset().catch((error) => {
         console.error(
-          "[assistant-ui] Composer reset threw after the history scope changed",
+          "[openagentui] Composer reset threw after the history scope changed",
           error,
         );
       });
@@ -477,7 +477,7 @@ export class LocalThreadRuntimeCore
         this.disconnectVoice();
       } catch (error) {
         console.error(
-          "[assistant-ui] Voice cleanup threw after the adapter changed",
+          "[openagentui] Voice cleanup threw after the adapter changed",
           error,
         );
       }
@@ -589,10 +589,7 @@ export class LocalThreadRuntimeCore
       (historyScopeChanged || (!previousHistory && this.messages.length === 0))
     ) {
       void this.__internal_load().catch((error: unknown) => {
-        console.error(
-          "[assistant-ui] local thread history load failed:",
-          error,
-        );
+        console.error("[openagentui] local thread history load failed:", error);
       });
     }
   }
@@ -631,7 +628,7 @@ export class LocalThreadRuntimeCore
       const { repository, droppedIds } = withoutOrphanedMessages(repo);
       if (droppedIds.length > 0) {
         console.warn(
-          "[assistant-ui] Skipped history messages with missing parents:",
+          "[openagentui] Skipped history messages with missing parents:",
           droppedIds,
         );
       }
@@ -640,7 +637,7 @@ export class LocalThreadRuntimeCore
         !repo.messages.some((item) => item.message.id === repo.headId)
       ) {
         console.warn(
-          "[assistant-ui] History head is not among the loaded messages:",
+          "[openagentui] History head is not among the loaded messages:",
           repo.headId,
         );
       }

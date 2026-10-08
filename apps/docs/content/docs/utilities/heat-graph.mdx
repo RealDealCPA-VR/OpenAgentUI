@@ -6,7 +6,7 @@ platforms: ["react"]
 
 import { HeatGraphDemo } from "@/app/(demos)/heat-graph/heat-graph-demo";
 
-`heat-graph` provides headless, Radix-style primitives for building GitHub-style activity heatmap graphs.
+`@openagentui/heat-graph` provides headless, Radix-style primitives for building GitHub-style activity heatmap graphs.
 
 - **Composable**: Radix-style compound components that you arrange yourself
 - **Headless**: ships no styles, so you bring your own CSS or Tailwind
@@ -20,23 +20,23 @@ import { HeatGraphDemo } from "@/app/(demos)/heat-graph/heat-graph-demo";
 <Tabs items={["shadcn", "npm", "pnpm", "yarn"]}>
   <Tab value="shadcn">
     ```sh
-    npx shadcn@latest add @assistant-ui/heat-graph
+    npx shadcn@latest add @openagentui/heat-graph
     ```
-    This installs a pre-styled `HeatGraph` component to `components/assistant-ui/elements/heat-graph.tsx` along with the `heat-graph` package. The `@assistant-ui` namespace resolves through the registry entry configured in [Manual Setup](/docs/installation#manual-setup).
+    This installs a pre-styled `HeatGraph` component to `components/openagentui/elements/heat-graph.tsx` along with the `@openagentui/heat-graph` package. The `@openagentui` namespace resolves through the registry entry configured in [Manual Setup](/docs/installation#manual-setup).
   </Tab>
   <Tab value="npm">
     ```sh
-    npm install heat-graph
+    npm install @openagentui/heat-graph
     ```
   </Tab>
   <Tab value="pnpm">
     ```sh
-    pnpm add heat-graph
+    pnpm add @openagentui/heat-graph
     ```
   </Tab>
   <Tab value="yarn">
     ```sh
-    yarn add heat-graph
+    yarn add @openagentui/heat-graph
     ```
   </Tab>
 </Tabs>
@@ -46,7 +46,7 @@ import { HeatGraphDemo } from "@/app/(demos)/heat-graph/heat-graph-demo";
 ```tsx title="components/activity-graph.tsx"
 "use client";
 
-import * as HeatGraph from "heat-graph";
+import * as HeatGraph from "@openagentui/heat-graph";
 
 const COLORS = ["#ebedf0", "#c6d7f9", "#8fb0f3", "#5888e8", "#2563eb"];
 
@@ -77,7 +77,7 @@ export function ActivityGraph({ data }: { data: HeatGraph.DataPoint[] }) {
 ## Anatomy
 
 ```tsx
-import * as HeatGraph from "heat-graph";
+import * as HeatGraph from "@openagentui/heat-graph";
 
 <HeatGraph.Root data={data} colorScale={colors}>
 

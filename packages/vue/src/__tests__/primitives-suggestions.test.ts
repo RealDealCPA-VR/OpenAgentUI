@@ -1,17 +1,17 @@
 import { describe, expect, it, vi } from "vitest";
 import { createApp, defineComponent, h, nextTick, type Component } from "vue";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig } from "@assistant-ui/store/client";
-import { RuntimeAdapter, Suggestions } from "@assistant-ui/core/store";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig } from "@openagentui/store/client";
+import { RuntimeAdapter, Suggestions } from "@openagentui/core/store";
 import type {
   AppendMessage,
   ExternalStoreAdapter,
   RealtimeVoiceAdapter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   AssistantRuntimeImpl,
   ExternalStoreRuntimeCore,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { AuiProvider } from "../AuiProvider";
 import {
   SuggestionPrimitiveDescription,

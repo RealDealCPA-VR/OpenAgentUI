@@ -2,7 +2,7 @@
 import { act, createElement, version } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 
 (
   globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }
@@ -21,8 +21,8 @@ const mocks = vi.hoisted(() => ({
   state: undefined as unknown,
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/react")>()),
+vi.mock("@openagentui/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/react")>()),
   useAui: () => ({ threadListItem: mocks.threadListItem }),
   useAuiState: (selector: (state: unknown) => unknown) =>
     selector({ threadListItem: mocks.threadListItem }),

@@ -19,9 +19,9 @@ The question is a human tool: the model supplies the options as arguments, the r
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit, useAuiState } from "@assistant-ui/react";
+import { defineToolkit, useAuiState } from "@openagentui/react";
 import { z } from "zod";
-import { OptionList } from "@/components/assistant-ui/elements/option-list";
+import { OptionList } from "@/components/openagentui/elements/option-list";
 
 export const toolkit = defineToolkit({
   ask_user_to_choose: {
@@ -69,8 +69,8 @@ export const toolkit = defineToolkit({
 ```tsx title="app/MyRuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 const config = AuiConfig({ tools: Tools({ toolkit }) });
@@ -105,7 +105,7 @@ Standalone, `onConfirm` receives the pick and a fulfilled confirmation settles i
 "use client";
 
 import { useState } from "react";
-import { OptionList } from "@/components/assistant-ui/elements/option-list";
+import { OptionList } from "@/components/openagentui/elements/option-list";
 
 const OPTIONS = [
   { id: "merge", label: "Merge duplicates" },

@@ -11,8 +11,8 @@ const h = vi.hoisted(() => ({
   setQuote: vi.fn<(quote: undefined) => void>(),
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAui: () => ({ composer: { setQuote: h.setQuote } }),

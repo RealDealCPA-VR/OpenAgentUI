@@ -1,10 +1,10 @@
 import { onDestroy } from "svelte";
-import { flushTapSync } from "@assistant-ui/tap";
+import { flushTapSync } from "@openagentui/tap";
 import {
   actionBarCopyDisabled,
   actionBarEditDisabled,
   actionBarReloadDisabled,
-} from "@assistant-ui/core/store/internal";
+} from "@openagentui/core/store/internal";
 import { getAuiContext, type ScopeTarget } from "../context";
 import { useAuiState } from "../useAuiState";
 

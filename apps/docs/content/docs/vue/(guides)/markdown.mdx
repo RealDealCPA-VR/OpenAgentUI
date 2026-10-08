@@ -33,7 +33,7 @@ Install `markdown-it` and its TypeScript declarations, `@types/markdown-it`, in 
 <script setup lang="ts">
 import { computed } from "vue";
 import MarkdownIt from "markdown-it";
-import { useAuiState } from "@assistant-ui/vue";
+import { useAuiState } from "@openagentui/vue";
 
 const md = new MarkdownIt({ html: false, linkify: true, breaks: true });
 const text = useAuiState((s) =>
@@ -67,7 +67,7 @@ Render this component in the `#text` slot where you want Markdown. The parser ru
 <script setup lang="ts">
 import { computed } from "vue";
 import MarkdownIt from "markdown-it";
-import { useAuiState } from "@assistant-ui/vue";
+import { useAuiState } from "@openagentui/vue";
 
 const md: InstanceType<typeof MarkdownIt> = new MarkdownIt({
   html: false,

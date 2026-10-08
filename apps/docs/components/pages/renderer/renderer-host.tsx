@@ -7,7 +7,7 @@ import {
   ThreadPrimitive,
   Tools,
   unstable_Interactables,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import docsToolkit from "@/lib/docs-toolkit";
 import usageToolkit from "@/lib/usage-toolkit";
 import { RENDERER_ALLOWED_ORIGINS } from "@/lib/renderer";

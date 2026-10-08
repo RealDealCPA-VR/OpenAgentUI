@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import {
   applyA2uiOperations,
   convertSurfaceToUISpec,
-} from "@assistant-ui/react-generative-ui/a2ui";
+} from "@openagentui/react-generative-ui/a2ui";
 import { A2AThreadRuntimeCore } from "./A2AThreadRuntimeCore";
 import type { A2AClient } from "./A2AClient";
 import type {
@@ -16,7 +16,7 @@ import type {
   AppendMessage,
   ExportedMessageRepository,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 // --- Mock client factory ---
 

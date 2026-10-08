@@ -1,8 +1,8 @@
 "use client";
 
-import type { Unsubscribe } from "@assistant-ui/core";
+import type { Unsubscribe } from "@openagentui/core";
 import { useEffect, type RefObject } from "react";
-import { AssistantFrameHost } from "@assistant-ui/core";
+import { AssistantFrameHost } from "@openagentui/core";
 
 type UseAssistantFrameHostOptions = {
   iframeRef: Readonly<RefObject<HTMLIFrameElement | null | undefined>>;
@@ -56,7 +56,7 @@ export const useAssistantFrameHost = ({
       } catch (error) {
         if (cleanupFailed) {
           console.error(
-            "[assistant-ui] AssistantFrameHost unregistration failed.",
+            "[openagentui] AssistantFrameHost unregistration failed.",
             error,
           );
         } else {

@@ -1,1 +1,1 @@
-export { BaseThreadRuntimeCore } from "@assistant-ui/core/internal";
+export { BaseThreadRuntimeCore } from "@openagentui/core/internal";

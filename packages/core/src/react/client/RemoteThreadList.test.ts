@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { flushTapSync, resource, withKey } from "@assistant-ui/tap";
-import { useAui } from "@assistant-ui/store";
+import { flushTapSync, resource, withKey } from "@openagentui/tap";
+import { useAui } from "@openagentui/store";
 import {
   AuiConfig,
   createAssistantClient,
   type AssistantConfigSource,
   useAssistantEmit,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import type { ThreadHistoryAdapter } from "../../adapters/thread-history";
 import { ExternalStoreRuntimeCore } from "../../runtimes/external-store/external-store-runtime-core";
 import type { ExternalStoreAdapter } from "../../runtimes/external-store/external-store-adapter";
@@ -1083,8 +1083,8 @@ describe("RemoteThreadList", () => {
   });
 
   it("keeps a local thread deleted when history cleanup fails", async () => {
-    const threadsKey = "@assistant-ui:threads";
-    const messagesKey = "@assistant-ui:messages:t1";
+    const threadsKey = "@openagentui:threads";
+    const messagesKey = "@openagentui:messages:t1";
     const values = new Map([
       [threadsKey, JSON.stringify([{ remoteId: "t1", status: "regular" }])],
       [messagesKey, JSON.stringify({ messages: [] })],
@@ -2267,7 +2267,7 @@ describe("RemoteThreadList", () => {
         expect(handle.getClient().threads.getState().mainThreadId).toBe("t1");
         expect(onThreadIdChange).toHaveBeenCalledExactlyOnceWith("t1");
         expect(errorSpy).toHaveBeenCalledWith(
-          "[assistant-ui] onThreadIdChange callback threw an error",
+          "[openagentui] onThreadIdChange callback threw an error",
           callbackError,
         );
       });

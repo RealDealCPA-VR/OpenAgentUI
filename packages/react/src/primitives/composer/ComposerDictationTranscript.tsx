@@ -6,7 +6,7 @@ import {
   forwardRef,
   type ComponentPropsWithoutRef,
 } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export namespace ComposerPrimitiveDictationTranscript {
   export type Element = ComponentRef<typeof Primitive.span>;

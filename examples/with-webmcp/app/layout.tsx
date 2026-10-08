@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "WebMCP Example",
   description:
-    "Example exposing assistant-ui frontend tools to a WebMCP-capable browser",
+    "Example exposing openagentui frontend tools to a WebMCP-capable browser",
 };
 
 export default function RootLayout({

@@ -6,7 +6,7 @@ import type {
   ExportedMessageRepository,
   ExportedMessageRepositoryItem,
 } from "../runtime/utils/message-repository";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import type { ThreadMessage } from "../types";
 
 export interface MessageStorageEntry<TPayload> {

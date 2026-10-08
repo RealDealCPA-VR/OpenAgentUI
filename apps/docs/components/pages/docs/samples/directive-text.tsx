@@ -1,8 +1,8 @@
 "use client";
 
 import { WrenchIcon } from "lucide-react";
-import { defaultDirectiveFormatter } from "@assistant-ui/react";
-import { createDirectiveText } from "@/components/assistant-ui/elements/directive-text.aui";
+import { defaultDirectiveFormatter } from "@openagentui/react";
+import { createDirectiveText } from "@/components/openagentui/elements/directive-text.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 const SampleDirectiveText = createDirectiveText(defaultDirectiveFormatter, {

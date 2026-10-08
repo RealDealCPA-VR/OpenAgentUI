@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import {
   useActionBarCopy,
   type UseActionBarCopyOptions,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import {
   Pressable,
   type PressableProps,

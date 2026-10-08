@@ -1,4 +1,4 @@
-import type { AssistantStream, AssistantStreamChunk } from "assistant-stream";
+import type { AssistantStream, AssistantStreamChunk } from "openagentui-stream";
 import type {
   RemoteThreadInitializeResponse,
   RemoteThreadListAdapter,

@@ -30,7 +30,7 @@ describe("hero", () => {
     expect(trigger.tagName).toBe("BUTTON");
     expect(ctaRow().children).toHaveLength(1);
     expect(screen.queryByRole("link", { name: "Read the docs" })).toBeNull();
-    expect(screen.queryByText("npx assistant-ui init")).toBeNull();
+    expect(screen.queryByText("npx openagentui init")).toBeNull();
   });
 
   it("links the call to action to the installation guide without a checkout worker", async () => {

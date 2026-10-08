@@ -1,9 +1,9 @@
 {
-  "name": "@assistant-ui/metro",
+  "name": "@openagentui/metro",
   "version": "0.0.16",
-  "description": "Metro / Expo integration for assistant-ui: the \"use generative\" directive compiler that colocates a tool's schema, server execute, and client render in one file. Works with Expo and bare React Native.",
+  "description": "Metro / Expo integration for openagentui: the \"use generative\" directive compiler that colocates a tool's schema, server execute, and client render in one file. Works with Expo and bare React Native.",
   "keywords": [
-    "assistant-ui",
+    "openagentui",
     "metro",
     "expo",
     "react-native",
@@ -11,7 +11,7 @@
     "use generative",
     "babel-transformer"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "exports": {
     ".": {
@@ -44,8 +44,8 @@
     "@babel/types": "^7.29.7"
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-generative-compiler": "workspace:^",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-generative-compiler": "workspace:^",
     "@types/node": "^26.6.3",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "typescript-7": "npm:typescript@^7.0.2",
@@ -55,13 +55,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/metro"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

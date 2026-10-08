@@ -13,31 +13,31 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$SCRIPT_DIR/.."
-SOURCE_DIR="$ROOT_DIR/packages/ui/src/components/react/assistant-ui/elements"
-VUE_SOURCE_DIR="$ROOT_DIR/packages/ui/src/components/vue/assistant-ui"
+SOURCE_DIR="$ROOT_DIR/packages/ui/src/components/react/openagentui/elements"
+VUE_SOURCE_DIR="$ROOT_DIR/packages/ui/src/components/vue/openagentui"
 UI_BASE_DIR="$ROOT_DIR/packages/ui/src/components/react/ui/base"
 HOOKS_SOURCE_DIR="$ROOT_DIR/packages/ui/src/hooks"
 LIB_SOURCE_DIR="$ROOT_DIR/packages/ui/src/lib"
 TEMPLATES_ROOT="$ROOT_DIR/templates"
 UI_SRC_REL="packages/ui/src"
 
-MINIMAL_DIR="$TEMPLATES_ROOT/minimal/components/assistant-ui/elements"
+MINIMAL_DIR="$TEMPLATES_ROOT/minimal/components/openagentui/elements"
 MINIMAL_UI_DIR="$TEMPLATES_ROOT/minimal/components/ui"
 MINIMAL_HOOKS_DIR="$TEMPLATES_ROOT/minimal/hooks"
 MINIMAL_LIB_DIR="$TEMPLATES_ROOT/minimal/lib"
 CLOUD_HARNESS_DIR="$TEMPLATES_ROOT/cloud-harness"
-NUXT_DIR="$TEMPLATES_ROOT/nuxt/app/components/assistant-ui"
+NUXT_DIR="$TEMPLATES_ROOT/nuxt/app/components/openagentui"
 
 # Templates and examples alias packages/ui via tsconfig and carry no copies,
 # except `minimal` and `templates/nuxt`, which ship their own. Minimal is a
 # Base UI (base-nova) scaffold, so its copies mirror the base install shape:
-# the unmarked file in packages/ui/src/components/react/assistant-ui/elements
-# is already the Base UI source, so minimal's assistant-ui element copies sync
+# the unmarked file in packages/ui/src/components/react/openagentui/elements
+# is already the Base UI source, so minimal's openagentui element copies sync
 # from it directly, and `components/ui` copies sync from the vendored
 # `ui/base` stand-ins. Base sources already use the scaffold import shape.
 # Minimal's `hooks` copies sync from packages/ui/src/hooks, and its `lib`
 # copies from packages/ui/src/lib. The Nuxt template's vue kit copies sync
-# verbatim from packages/ui/src/components/vue/assistant-ui.
+# verbatim from packages/ui/src/components/vue/openagentui.
 OVERRIDES=(
     # minimal intentionally ships a slim thread.aui.tsx without GroupedParts /
     # reasoning / tool-group, since it doesn't bundle those companion files.
@@ -80,7 +80,7 @@ resolve_vue_source() {
 # content strict; --write formats the rendered output with oxfmt before copying.
 RENDER_DIR="$(mktemp -d)"
 trap 'rm -rf "$RENDER_DIR"' EXIT
-mkdir -p "$RENDER_DIR/assistant-ui" "$RENDER_DIR/vue" "$RENDER_DIR/ui" "$RENDER_DIR/hooks" "$RENDER_DIR/lib"
+mkdir -p "$RENDER_DIR/openagentui" "$RENDER_DIR/vue" "$RENDER_DIR/ui" "$RENDER_DIR/hooks" "$RENDER_DIR/lib"
 
 render_source() {
     local src="$1" out="$2"
@@ -89,7 +89,7 @@ render_source() {
 
 rendered_aui() {
     local file="$1"
-    local out="$RENDER_DIR/assistant-ui/$file"
+    local out="$RENDER_DIR/openagentui/$file"
     [[ -f "$out" ]] || render_source "$(resolve_aui_source "$file")" "$out"
     echo "$out"
 }
@@ -309,7 +309,7 @@ if [[ -d "$CLOUD_HARNESS_DIR" ]]; then
             file="$(basename "$min_file")"
             rendered=""
             case "$relative" in
-            components/assistant-ui/elements/*) rendered="$RENDER_DIR/assistant-ui/$file" ;;
+            components/openagentui/elements/*) rendered="$RENDER_DIR/openagentui/$file" ;;
             components/ui/*) rendered="$RENDER_DIR/ui/$file" ;;
             hooks/*) rendered="$RENDER_DIR/hooks/$file" ;;
             lib/*) rendered="$RENDER_DIR/lib/$file" ;;
@@ -329,7 +329,7 @@ fi
 format_rendered
 
 for file in "${aui_candidates[@]}"; do
-    if ! same_normalized "$RENDER_DIR/assistant-ui/$file" "$MINIMAL_DIR/$file"; then
+    if ! same_normalized "$RENDER_DIR/openagentui/$file" "$MINIMAL_DIR/$file"; then
         drift+=("$file")
     fi
 done
@@ -439,7 +439,7 @@ if [[ "$MODE" == "--write" ]]; then
         exit 1
     done
     for file in "${drift[@]}"; do
-        cp "$RENDER_DIR/assistant-ui/$file" "$MINIMAL_DIR/$file"
+        cp "$RENDER_DIR/openagentui/$file" "$MINIMAL_DIR/$file"
         echo "synced minimal/$file"
     done
     for file in "${vue_missing[@]}"; do
@@ -493,24 +493,24 @@ fi
 if [[ ${#drift[@]} -gt 0 ]]; then
     echo "✗ drift detected in ${#drift[@]} minimal file(s) vs packages/ui:"
     for file in "${drift[@]}"; do
-        echo "    templates/minimal/components/assistant-ui/elements/$file"
-        annotate "templates/minimal/components/assistant-ui/elements/$file" "out of sync with the base install shape of packages/ui/src/components/react/assistant-ui/elements/$file; run 'pnpm sync-templates --write' or add an OVERRIDES entry"
+        echo "    templates/minimal/components/openagentui/elements/$file"
+        annotate "templates/minimal/components/openagentui/elements/$file" "out of sync with the base install shape of packages/ui/src/components/react/openagentui/elements/$file; run 'pnpm sync-templates --write' or add an OVERRIDES entry"
     done
 fi
 
 if [[ ${#vue_missing[@]} -gt 0 ]]; then
     echo "✗ ${#vue_missing[@]} Nuxt Vue kit file(s) have no canonical source in packages/ui:"
     for file in "${vue_missing[@]}"; do
-        echo "    templates/nuxt/app/components/assistant-ui/$file"
-        annotate "templates/nuxt/app/components/assistant-ui/$file" "canonical packages/ui/src/components/vue/assistant-ui/$file is gone; run 'pnpm sync-templates --write' to remove the copy or add an OVERRIDES entry"
+        echo "    templates/nuxt/app/components/openagentui/$file"
+        annotate "templates/nuxt/app/components/openagentui/$file" "canonical packages/ui/src/components/vue/openagentui/$file is gone; run 'pnpm sync-templates --write' to remove the copy or add an OVERRIDES entry"
     done
 fi
 
 if [[ ${#vue_drift[@]} -gt 0 ]]; then
     echo "✗ drift detected in ${#vue_drift[@]} Nuxt Vue kit file(s) vs packages/ui:"
     for file in "${vue_drift[@]}"; do
-        echo "    templates/nuxt/app/components/assistant-ui/$file"
-        annotate "templates/nuxt/app/components/assistant-ui/$file" "out of sync with packages/ui/src/components/vue/assistant-ui/$file; run 'pnpm sync-templates --write' or add an OVERRIDES entry"
+        echo "    templates/nuxt/app/components/openagentui/$file"
+        annotate "templates/nuxt/app/components/openagentui/$file" "out of sync with packages/ui/src/components/vue/openagentui/$file; run 'pnpm sync-templates --write' or add an OVERRIDES entry"
     done
 fi
 

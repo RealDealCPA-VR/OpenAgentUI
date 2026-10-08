@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { matchesTriggerItemQuery } from "./matchesTriggerItemQuery";
-import type { Unstable_TriggerItem } from "@assistant-ui/core";
+import type { Unstable_TriggerItem } from "@openagentui/core";
 
 const item = (
   overrides: Partial<Unstable_TriggerItem>,

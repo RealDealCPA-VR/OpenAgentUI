@@ -43,7 +43,7 @@ vi.mock("ai", async (importOriginal) => ({
 import { POST } from "./route";
 
 const request = (overrides?: Record<string, unknown>) =>
-  new Request("https://www.assistant-ui.com/api/playground-chat", {
+  new Request("https://openagentui.dev/api/playground-chat", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({

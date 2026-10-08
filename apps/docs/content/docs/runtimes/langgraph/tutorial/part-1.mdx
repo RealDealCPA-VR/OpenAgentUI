@@ -1,14 +1,14 @@
 ---
 title: "Part 1: Setup frontend"
-description: Create a Next.js project with the LangGraph assistant-ui template.
+description: Create a Next.js project with the LangGraph openagentui template.
 ---
 
 ## Create a new project
 
-Run the following command to create a new Next.js project with the LangGraph assistant-ui template:
+Run the following command to create a new Next.js project with the LangGraph openagentui template:
 
 ```sh
-npx create-assistant-ui@latest -t langchain my-app
+npx create-openagentui@latest -t langchain my-app
 cd my-app
 ```
 
@@ -33,7 +33,7 @@ import { File, Folder, Files } from "@/components/pages/docs/fumadocs/files";
       <File name="agent.ts" />
     </Folder>
     <Folder name="components" defaultOpen>
-      <Folder name="assistant-ui">
+      <Folder name="openagentui">
         <Folder name="elements">
           <File name="thread.aui.tsx" />
         </Folder>
@@ -60,12 +60,12 @@ import { File, Folder, Files } from "@/components/pages/docs/fumadocs/files";
 Create a `.env.local` file in your project with the following variables:
 
 ```sh title="@/.env.local"
-LANGGRAPH_API_URL=https://assistant-ui-stockbroker.vercel.app/api
+LANGGRAPH_API_URL=https://openagentui-stockbroker.vercel.app/api
 NEXT_PUBLIC_LANGGRAPH_ASSISTANT_ID=stockbroker
 ```
 
 This connects the frontend to a LangGraph Cloud endpoint running under  
-`https://assistant-ui-stockbroker.vercel.app/api`.  
+`https://openagentui-stockbroker.vercel.app/api`.  
 This endpoint is running the LangGraph agent defined [in this repository](https://github.com/assistant-ui/assistant-ui-stockbroker/blob/main/backend).
 
 ### Start the server
@@ -84,7 +84,7 @@ You should be able to chat with the assistant and see LLM responses streaming in
 
 ### Streaming
 
-Streaming message support is enabled by default. The template's runtime, `useStreamRuntime` from `@assistant-ui/react-langchain`, delegates stream handling to `useStream` from `@langchain/react`, which accumulates text and tool call chunks as they arrive.
+Streaming message support is enabled by default. The template's runtime, `useStreamRuntime` from `@openagentui/react-langchain`, delegates stream handling to `useStream` from `@langchain/react`, which accumulates text and tool call chunks as they arrive.
 
 ### Markdown support
 

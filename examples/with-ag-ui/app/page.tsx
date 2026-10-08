@@ -7,8 +7,8 @@ import {
   AuiConfig,
   Suggestions,
   Tools,
-} from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { PlusIcon } from "lucide-react";
 
 const toolkit = defineToolkit({

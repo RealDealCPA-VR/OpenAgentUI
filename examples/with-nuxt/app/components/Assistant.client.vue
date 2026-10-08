@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { Suggestions } from "@assistant-ui/core/store";
-import { AISDKThreads } from "@assistant-ui/ai-sdk";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { Suggestions } from "@openagentui/core/store";
+import { AISDKThreads } from "@openagentui/ai-sdk";
 import { MenuIcon } from "@lucide/vue";
 import { nextTick, ref } from "vue";
 

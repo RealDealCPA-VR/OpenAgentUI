@@ -2,7 +2,7 @@
 
 import { act, Activity, version } from "react";
 import { afterAll, afterEach, expect, it, vi } from "vitest";
-import type { AssistantRuntime } from "@assistant-ui/core";
+import type { AssistantRuntime } from "@openagentui/core";
 import { A2AClient } from "./A2AClient";
 import { A2AThreadRuntimeCore } from "./A2AThreadRuntimeCore";
 import type { UseA2ARuntimeOptions } from "./types";

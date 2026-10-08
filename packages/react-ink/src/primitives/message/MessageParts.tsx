@@ -4,7 +4,7 @@ import {
   MessagePrimitiveParts as MessagePrimitivePartsBase,
   MessagePrimitivePartByIndex as MessagePrimitivePartByIndexBase,
   messagePartsDefaultComponents,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import * as MessagePartPrimitive from "../messagePart";
 
 const inkDefaultComponents = {
@@ -61,7 +61,7 @@ const mergeWithInkDefaults = (
 /**
  * Renders the parts of a message with Ink-specific default components.
  *
- * Diverges from `@assistant-ui/react` / `@assistant-ui/react-native` by
+ * Diverges from `@openagentui/react` / `@openagentui/react-native` by
  * injecting a terminal-safe `data.Fallback` when callers pass `data` without
  * one, so unknown data parts render `[data: name]` instead of nothing.
  */

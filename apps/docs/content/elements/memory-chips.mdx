@@ -9,22 +9,22 @@ MemoryChips lists what the assistant now remembers about you: one pill per fact,
 
 <RuntimeMode>
 
-assistant-ui has no built-in memory concept: nothing on a message tracks facts learned about the user. The closest real building block is a tool call, the same way a graded claim or a comparison table would be. Give the model a `remember` tool and collect every call it makes in the current message into the chip list.
+openagentui has no built-in memory concept: nothing on a message tracks facts learned about the user. The closest real building block is a tool call, the same way a graded claim or a comparison table would be. Give the model a `remember` tool and collect every call it makes in the current message into the chip list.
 
 <Steps>
   <Step>
 
 ### Read remember calls off the message
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
-import type { ToolCallMessagePart } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
+import type { ToolCallMessagePart } from "@openagentui/react";
 import {
   MemoryChips,
   type MemoryChip,
-} from "@/components/assistant-ui/elements/memory-chips";
+} from "@/components/openagentui/elements/memory-chips";
 
 type RememberCall = ToolCallMessagePart<
   { text: string; change: "added" | "updated" },
@@ -62,7 +62,7 @@ function MemoryFromMessage() {
 The chip list already renders in the step above, aggregated across every call, so the tool's own `render` has nothing left to show and returns `null`.
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
 
 export const toolkit = defineToolkit({
@@ -104,11 +104,11 @@ import { useState } from "react";
 import {
   MemoryChips,
   type MemoryChip,
-} from "@/components/assistant-ui/elements/memory-chips";
+} from "@/components/openagentui/elements/memory-chips";
 
 const INITIAL: MemoryChip[] = [
   { id: "1", text: "Prefers TypeScript", change: "existing" },
-  { id: "2", text: "Works on assistant-ui", change: "existing" },
+  { id: "2", text: "Works on openagentui", change: "existing" },
 ];
 
 export function Memory() {
@@ -198,7 +198,7 @@ Both lanes take `className` on the root. The header label reads from the shared 
 
 | Selector / field | Type | Description |
 |--------------------|------|-------------|
-| `s.message.content` | `readonly ThreadAssistantMessagePart[]` | Search this for `tool-call` parts whose `toolName` matches your remember tool; assistant-ui has no built-in memory field. |
+| `s.message.content` | `readonly ThreadAssistantMessagePart[]` | Search this for `tool-call` parts whose `toolName` matches your remember tool; openagentui has no built-in memory field. |
 | `ToolCallMessagePart.args` | `TArgs` | The model's arguments for that call, typed by the generic you give `ToolCallMessagePart<TArgs, TResult>`. Partial while the call is still streaming. |
 | `ToolCallMessagePart.toolCallId` | `string` | Stable id for the call; a natural `MemoryChip.id`. |
 

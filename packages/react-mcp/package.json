@@ -1,15 +1,15 @@
 {
-  "name": "@assistant-ui/react-mcp",
+  "name": "@openagentui/react-mcp",
   "version": "0.1.21",
-  "description": "MCP server configuration and connection primitives for @assistant-ui",
+  "description": "MCP server configuration and connection primitives for @openagentui",
   "keywords": [
     "mcp",
     "model-context-protocol",
     "oauth",
-    "assistant-ui",
+    "openagentui",
     "react"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -36,13 +36,13 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "workspace:^",
-    "@assistant-ui/store": "workspace:^",
-    "@assistant-ui/tap": "workspace:^",
+    "@openagentui/core": "workspace:^",
+    "@openagentui/store": "workspace:^",
+    "@openagentui/tap": "workspace:^",
     "@modelcontextprotocol/client": "^2.2.0",
     "@modelcontextprotocol/core": "^2.2.0",
     "@radix-ui/react-primitive": "^2.1.10",
-    "assistant-stream": "workspace:^"
+    "openagentui-stream": "workspace:^"
   },
   "peerDependencies": {
     "@types/react": "*",
@@ -54,8 +54,8 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",
@@ -67,13 +67,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-mcp"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

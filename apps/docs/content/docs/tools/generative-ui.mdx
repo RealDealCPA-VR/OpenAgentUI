@@ -1,16 +1,16 @@
 ---
 title: Generative UI
-description: Let the model compose an interface at runtime from a component vocabulary you ship, using the present tool from @assistant-ui/react-generative-ui.
+description: Let the model compose an interface at runtime from a component vocabulary you ship, using the present tool from @openagentui/react-generative-ui.
 platforms: ["react"]
 ---
 
-With generative UI, you ship a **vocabulary** of components and let the model assemble them, instead of writing one component per tool. The model calls a single `present` tool whose arguments are a JSON tree of component names and props, and assistant-ui renders that tree.
+With generative UI, you ship a **vocabulary** of components and let the model assemble them, instead of writing one component per tool. The model calls a single `present` tool whose arguments are a JSON tree of component names and props, and openagentui renders that tree.
 
 The package ships a default vocabulary of 29 components (cards, facts, tables, charts, forms, controls), so the shortest useful setup registers one tool and writes no components at all.
 
 ## Which generative UI pattern?
 
-assistant-ui uses "generative UI" for more than one thing. Two questions separate them: does the **model** compose the layout or do you bind it ahead of time, and does the UI originate from a **tool call** or from a part your backend emits. Pick the row that matches what you are building:
+openagentui uses "generative UI" for more than one thing. Two questions separate them: does the **model** compose the layout or do you bind it ahead of time, and does the UI originate from a **tool call** or from a part your backend emits. Pick the row that matches what you are building:
 
 | Pattern | API | Best for |
 |---------|-----|----------|
@@ -31,13 +31,13 @@ Browse every component the default vocabulary offers in the [component vocabular
 
 ### Install the package
 
-<InstallCommand npm={["@assistant-ui/react-generative-ui"]} />
+<InstallCommand npm={["@openagentui/react-generative-ui"]} />
 
 The vocabulary renders as unstyled semantic HTML with `data-aui` attributes. Add the styled library to get the shipped look:
 
 <InstallCommand shadcn={["generative-ui"]} />
 
-This merges the vocabulary stylesheet and theme variables into your CSS, which is what the rest of this page assumes, and lands `components/assistant-ui/elements/generative-ui.tsx`. That file exports `styledGenerativeUILibrary`, whose only difference from the default vocabulary is a real markdown renderer; [Styling](#styling) wires it in.
+This merges the vocabulary stylesheet and theme variables into your CSS, which is what the rest of this page assumes, and lands `components/openagentui/elements/generative-ui.tsx`. That file exports `styledGenerativeUILibrary`, whose only difference from the default vocabulary is a real markdown renderer; [Styling](#styling) wires it in.
 
 </Step>
 
@@ -48,14 +48,14 @@ This merges the vocabulary stylesheet and theme variables into your CSS, which i
 The `"use generative"` directive lets one file declare tools that both the browser and your server route can import: the compiler strips the browser-only halves out of the server build and the schemas out of the client build.
 
 ```ts title="next.config.ts"
-import { withAui } from "@assistant-ui/next";
+import { withAui } from "@openagentui/next";
 
 export default withAui({
   /* your Next config */
 });
 ```
 
-Vite and TanStack Start use `aui()` from `@assistant-ui/vite`; Expo and bare React Native use `withAui` from `@assistant-ui/metro`.
+Vite and TanStack Start use `aui()` from `@openagentui/vite`; Expo and bare React Native use `withAui` from `@openagentui/metro`.
 
 </Step>
 
@@ -68,11 +68,11 @@ Vite and TanStack Start use `aui()` from `@assistant-ui/vite`; Expo and bare Rea
 ```tsx title="app/toolkit.tsx"
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import {
   JSONGenerativeUI,
   defaultGenerativeUILibrary,
-} from "@assistant-ui/react-generative-ui";
+} from "@openagentui/react-generative-ui";
 
 const generative = new JSONGenerativeUI({
   library: defaultGenerativeUILibrary,
@@ -98,8 +98,8 @@ import {
   AssistantRuntimeProvider,
   AuiConfig,
   Tools,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import toolkit from "./toolkit";
 
@@ -135,7 +135,7 @@ The route imports the same toolkit module. The compiler resolves that import to 
 
 ```ts title="app/api/chat/route.ts"
 import { openai } from "@ai-sdk/openai";
-import { AISDKToolkit } from "@assistant-ui/ai-sdk";
+import { AISDKToolkit } from "@openagentui/ai-sdk";
 import { convertToModelMessages, stepCountIs, streamText } from "ai";
 import toolkit from "@/app/toolkit";
 
@@ -161,7 +161,7 @@ export async function POST(req: Request) {
 
 </Steps>
 
-Ask for something the vocabulary can express, for example "show me a sales dashboard for the last six months", and the model will answer with a rendered composition. The complete setup runs in [`examples/with-generative-ui`](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-generative-ui).
+Ask for something the vocabulary can express, for example "show me a sales dashboard for the last six months", and the model will answer with a rendered composition. The complete setup runs in [`examples/with-generative-ui`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-generative-ui).
 
 ## What the model emits
 
@@ -207,7 +207,7 @@ import {
   JSONGenerativeUI,
   defaultGenerativeUILibrary,
   defineGenerativeComponents,
-} from "@assistant-ui/react-generative-ui";
+} from "@openagentui/react-generative-ui";
 import { WeatherCard } from "@/components/weather-card";
 
 const generative = new JSONGenerativeUI({
@@ -241,7 +241,7 @@ import {
   JSONGenerativeUI,
   createActionRegistry,
   defaultGenerativeUILibrary,
-} from "@assistant-ui/react-generative-ui";
+} from "@openagentui/react-generative-ui";
 
 const actions = createActionRegistry({
   purchase: async ({ payload }) => {
@@ -353,7 +353,7 @@ To restyle a single component, target its attribute:
 Overriding a component's markup rather than its appearance is a library-level change: spread `defaultGenerativeUILibrary` and replace that one entry through `defineGenerativeComponents`. The default `Markdown` renders its source as plain text, which is why the registry item ships a replacement. Wiring it is the same override:
 
 ```tsx title="app/toolkit.tsx"
-import { styledGenerativeUILibrary } from "@/components/assistant-ui/elements/generative-ui";
+import { styledGenerativeUILibrary } from "@/components/openagentui/elements/generative-ui";
 
 const markdown = defaultGenerativeUILibrary.Markdown!;
 
@@ -384,7 +384,7 @@ Props are a separate question. Each component's zod schema validates what the mo
 
 The tree is plain JSON, so it is not tied to the browser. Four React-free subpaths let a server action, queue worker, or webhook handler consume it without pulling React:
 
-- `@assistant-ui/react-generative-ui/ir` holds the tree types, normalization, and token enums.
-- `@assistant-ui/react-generative-ui/slack` converts the tree into Block Kit and decodes `block_actions` back into `$action`. See [Generative UI on Slack](/docs/tools/generative-ui-slack).
-- `@assistant-ui/react-generative-ui/teams` converts it into an Adaptive Card and decodes the submit payload. See [Generative UI on Microsoft Teams](/docs/tools/generative-ui-teams).
-- `@assistant-ui/react-generative-ui/a2ui` consumes [A2UI surfaces over AG-UI](/docs/tools/a2ui).
+- `@openagentui/react-generative-ui/ir` holds the tree types, normalization, and token enums.
+- `@openagentui/react-generative-ui/slack` converts the tree into Block Kit and decodes `block_actions` back into `$action`. See [Generative UI on Slack](/docs/tools/generative-ui-slack).
+- `@openagentui/react-generative-ui/teams` converts it into an Adaptive Card and decodes the submit payload. See [Generative UI on Microsoft Teams](/docs/tools/generative-ui-teams).
+- `@openagentui/react-generative-ui/a2ui` consumes [A2UI surfaces over AG-UI](/docs/tools/a2ui).

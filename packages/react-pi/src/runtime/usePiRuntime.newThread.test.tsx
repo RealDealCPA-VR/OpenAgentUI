@@ -13,8 +13,8 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   AssistantRuntimeProvider,
   ExportedMessageRepository,
-} from "@assistant-ui/react";
-import type { AssistantRuntime } from "@assistant-ui/react";
+} from "@openagentui/react";
+import type { AssistantRuntime } from "@openagentui/react";
 import type { PiClient, PiThreadSnapshot } from "../types";
 
 const mocks = vi.hoisted(() => ({
@@ -22,8 +22,8 @@ const mocks = vi.hoisted(() => ({
   sendMessage: vi.fn().mockResolvedValue(undefined),
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@assistant-ui/react")>();
+vi.mock("@openagentui/react", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@openagentui/react")>();
   return {
     ...original,
     useExternalStoreRuntime: (

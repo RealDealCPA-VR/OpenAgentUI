@@ -19,8 +19,8 @@ A document like this is a tool call whose result is the document itself: the cal
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { ArtifactCard } from "@/components/assistant-ui/elements/artifact-card";
+import { defineToolkit } from "@openagentui/react";
+import { ArtifactCard } from "@/components/openagentui/elements/artifact-card";
 
 export const toolkit = defineToolkit({
   write_document: {
@@ -45,7 +45,7 @@ export const toolkit = defineToolkit({
 ### Register the toolkit
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
 import { toolkit } from "./toolkit";
 
 const config = AuiConfig({ tools: Tools({ toolkit }) });
@@ -77,7 +77,7 @@ Standalone, the element is a controlled display: you own `generating` and `words
 "use client";
 
 import { useState } from "react";
-import { ArtifactCard } from "@/components/assistant-ui/elements/artifact-card";
+import { ArtifactCard } from "@/components/openagentui/elements/artifact-card";
 
 export function Artifact() {
   const [generating, setGenerating] = useState(true);

@@ -1,17 +1,17 @@
 {
-  "name": "@assistant-ui/react-lexical",
+  "name": "@openagentui/react-lexical",
   "version": "0.2.16",
-  "description": "Lexical-based rich text composer for assistant-ui with @-mention support",
+  "description": "Lexical-based rich text composer for openagentui with @-mention support",
   "keywords": [
     "lexical",
     "rich-text",
     "mention",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -38,9 +38,9 @@
     "test:watch": "vitest"
   },
   "peerDependencies": {
-    "@assistant-ui/react": "^0.15.0",
-    "@assistant-ui/core": "workspace:^",
-    "@assistant-ui/store": "workspace:^",
+    "@openagentui/react": "^0.15.0",
+    "@openagentui/core": "workspace:^",
+    "@openagentui/store": "workspace:^",
     "@lexical/history": ">=0.51.0",
     "@lexical/plain-text": ">=0.51.0",
     "@lexical/react": ">=0.51.0",
@@ -56,12 +56,12 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/core": "workspace:*",
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/store": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-performance": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/core": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/store": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-performance": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@lexical/history": "^0.52.0",
     "@lexical/plain-text": "^0.52.0",
     "@lexical/react": "^0.52.0",
@@ -77,13 +77,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-lexical"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

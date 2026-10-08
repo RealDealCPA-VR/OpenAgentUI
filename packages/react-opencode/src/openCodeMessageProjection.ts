@@ -12,11 +12,11 @@ import {
   ExportedMessageRepository,
   type MessageTiming,
   type ThreadMessage,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   resolveFileMediaType,
   resolveImageMediaType,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import {
   projectOpenCodePermissionApproval,
   projectResolvedOpenCodePermissionApproval,

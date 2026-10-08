@@ -14,7 +14,7 @@ import type {
   TextMessagePart,
 } from "../../types/message";
 import type { ModelContext } from "../../model-context/types";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 
 export type ChatModelRunUpdate = {
   readonly content: readonly ThreadAssistantMessagePart[];

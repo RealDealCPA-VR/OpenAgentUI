@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Text } from "ink";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export type SuggestionTitleProps = ComponentProps<typeof Text> & {
   children?: ReactNode;

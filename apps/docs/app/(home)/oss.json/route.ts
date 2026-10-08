@@ -15,7 +15,7 @@ async function getBody() {
   "use cache";
   cacheLife("max");
   const body = {
-    organization: "assistant-ui",
+    organization: "openagentui",
     categories: OSS_CATEGORIES,
     projects: OSS_PROJECTS.map((project) => ({
       ...project,

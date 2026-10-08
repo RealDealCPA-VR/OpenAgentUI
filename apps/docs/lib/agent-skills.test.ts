@@ -5,7 +5,7 @@ vi.mock("./agent-skills.generated.json", () => ({
     skills: [
       {
         name: "setup",
-        description: "Installs assistant-ui.",
+        description: "Installs openagentui.",
         content: "# Setup",
       },
       { name: "tools", description: "Defines tools.", content: "# Tools" },
@@ -18,7 +18,7 @@ const { getSkill, listSkills } = await import("./agent-skills");
 describe("agent skills loader", () => {
   it("lists every skill by name and description only", () => {
     expect(listSkills()).toEqual([
-      { name: "setup", description: "Installs assistant-ui." },
+      { name: "setup", description: "Installs openagentui." },
       { name: "tools", description: "Defines tools." },
     ]);
   });

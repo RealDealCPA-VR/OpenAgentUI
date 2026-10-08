@@ -15,9 +15,9 @@
   "dependencies": {
     "@ai-sdk/openai": "^4.0.82",
     "@ai-sdk/react": "^4.0.126",
-    "@assistant-ui/ai-sdk": "workspace:*",
-    "@assistant-ui/react-native": "workspace:*",
-    "@assistant-ui/ui": "workspace:*",
+    "@openagentui/ai-sdk": "workspace:*",
+    "@openagentui/react-native": "workspace:*",
+    "@openagentui/ui": "workspace:*",
     "@expo/metro-runtime": "~57.0.16",
     "ai": "^7.0.123",
     "cn": "^0.4.0",
@@ -49,7 +49,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@assistant-ui/metro": "workspace:*",
+    "@openagentui/metro": "workspace:*",
     "@babel/core": "^7.29.7",
     "@react-native/metro-config": "0.86.3",
     "@types/react": "~19.2.18",

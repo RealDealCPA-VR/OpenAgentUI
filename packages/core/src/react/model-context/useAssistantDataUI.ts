@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type { DataMessagePartComponent } from "../types/MessagePartComponentTypes";
 
 /** Props used to register a renderer for `data` message parts. */

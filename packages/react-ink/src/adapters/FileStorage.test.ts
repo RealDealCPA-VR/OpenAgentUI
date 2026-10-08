@@ -40,13 +40,13 @@ describe("FileStorage", () => {
     const dir = await createTempDir();
     const storage = new FileStorage(dir);
 
-    await storage.setItem("@assistant-ui:threads", '{"count":1}');
-    await expect(storage.getItem("@assistant-ui:threads")).resolves.toBe(
+    await storage.setItem("@openagentui:threads", '{"count":1}');
+    await expect(storage.getItem("@openagentui:threads")).resolves.toBe(
       '{"count":1}',
     );
 
-    await storage.setItem("@assistant-ui:threads", '{"count":2}');
-    await expect(storage.getItem("@assistant-ui:threads")).resolves.toBe(
+    await storage.setItem("@openagentui:threads", '{"count":2}');
+    await expect(storage.getItem("@openagentui:threads")).resolves.toBe(
       '{"count":2}',
     );
 
@@ -125,7 +125,7 @@ describe("createFileStorageAdapter", () => {
     const dir = await createTempDir();
     const adapter = createFileStorageAdapter({
       dir,
-      prefix: "@assistant-ui:test:",
+      prefix: "@openagentui:test:",
     });
 
     await expect(adapter.list()).resolves.toEqual({ threads: [] });

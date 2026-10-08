@@ -3,8 +3,8 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import { type FC, useEffect, useReducer } from "react";
 import { describe, expect, it } from "vitest";
-import type { ThreadMessage } from "@assistant-ui/core";
-import { useRemoteThreadListRuntime } from "@assistant-ui/core/react";
+import type { ThreadMessage } from "@openagentui/core";
+import { useRemoteThreadListRuntime } from "@openagentui/core/react";
 import {
   makeAdapter,
   settleOutsideAct,

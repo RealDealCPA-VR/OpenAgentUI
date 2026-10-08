@@ -2,15 +2,15 @@ import { describe, inject, test } from "vitest";
 import { act, createElement, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
-import { useAuiState } from "@assistant-ui/store";
-import type { ThreadMessageLike } from "@assistant-ui/core";
+import { useAuiState } from "@openagentui/store";
+import type { ThreadMessageLike } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
   ThreadPrimitiveUnstable_MessageById,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 (
   globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }

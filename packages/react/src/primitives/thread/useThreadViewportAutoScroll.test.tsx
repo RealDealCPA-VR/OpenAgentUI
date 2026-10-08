@@ -18,7 +18,7 @@ import {
   vi,
 } from "vitest";
 import { useEffect, useState, type FC, type PropsWithChildren } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { AssistantRuntimeProvider } from "../../context";
 import {
   useThreadViewport,

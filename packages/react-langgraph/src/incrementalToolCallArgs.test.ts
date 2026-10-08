@@ -2,9 +2,9 @@ import { expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({ parsePartialJsonObject: vi.fn() }));
 
-vi.mock("assistant-stream/utils", async (importOriginal) => {
+vi.mock("openagentui-stream/utils", async (importOriginal) => {
   const original =
-    await importOriginal<typeof import("assistant-stream/utils")>();
+    await importOriginal<typeof import("openagentui-stream/utils")>();
   mocks.parsePartialJsonObject.mockImplementation(
     original.parsePartialJsonObject,
   );

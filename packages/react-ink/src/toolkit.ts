@@ -3,7 +3,7 @@ import type {
   ToolkitDefinition,
   ProviderToolConfig,
   defineToolkit as CoreDefineToolkit,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 /**
  * Runtime `"use generative"` toolkit helpers for Ink.
@@ -18,7 +18,7 @@ import type {
  * compiler would. The authoring API (and its typed args) is identical to the web.
  */
 
-const MARKER = Symbol.for("@assistant-ui/react-ink.tool-marker");
+const MARKER = Symbol.for("@openagentui/react-ink.tool-marker");
 
 type MarkerKind = "human" | "stub" | "provider";
 
@@ -75,13 +75,13 @@ function assertValid(name: string, tool: Record<string, unknown>): void {
 
   if (tool["type"] === "frontend" && !hasRender && !hasRenderText) {
     throw new Error(
-      `[assistant-ui] tool "${name}": a frontend tool must declare a ` +
+      `[openagentui] tool "${name}": a frontend tool must declare a ` +
         `"render" or "renderText".`,
     );
   }
   if (tool["type"] === "human" && !hasRender) {
     throw new Error(
-      `[assistant-ui] tool "${name}": a human tool must declare a "render" ` +
+      `[openagentui] tool "${name}": a human tool must declare a "render" ` +
         `to collect input.`,
     );
   }
@@ -117,7 +117,7 @@ function defineToolkitRuntime(definition: ToolkitDefinition): Toolkit {
       for (const key of Object.keys(config)) {
         if (key in rest) {
           throw new Error(
-            `[assistant-ui] tool "${name}": providerTool() config key ` +
+            `[openagentui] tool "${name}": providerTool() config key ` +
               `"${key}" collides with a tool property.`,
           );
         }

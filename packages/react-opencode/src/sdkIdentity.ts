@@ -1,7 +1,7 @@
-import type { SdkIdentity } from "assistant-cloud";
+import type { SdkIdentity } from "openagentui-cloud";
 
 export const OPENCODE_SDK: SdkIdentity = {
-  name: "@assistant-ui/react-opencode",
+  name: "@openagentui/react-opencode",
   version:
     typeof __AUI_PACKAGE_VERSION__ === "string"
       ? __AUI_PACKAGE_VERSION__

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createTapRoot, flushTapSync, useResource } from "@assistant-ui/tap";
+import { createTapRoot, flushTapSync, useResource } from "@openagentui/tap";
 import { describe, expect, it, vi } from "vitest";
 import type { Unstable_RecordToolInteractionOptions } from "../../runtime/interfaces/thread-runtime-core";
 import type { ExternalThreadMessage } from "./external-thread";

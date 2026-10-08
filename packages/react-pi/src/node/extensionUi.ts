@@ -30,7 +30,7 @@ export class PiUnsupportedHostUiError extends Error {
 
   constructor(method: string) {
     super(
-      `Pi host-UI method "${method}" is not supported in the assistant-ui node host.`,
+      `Pi host-UI method "${method}" is not supported in the openagentui node host.`,
     );
     this.method = method;
     this.name = "PiUnsupportedHostUiError";
@@ -218,7 +218,7 @@ export const createSupervisorUiBridge = (
     getTheme: () => undefined,
     setTheme: () => ({
       success: false,
-      error: "Themes are not supported in the assistant-ui node host.",
+      error: "Themes are not supported in the openagentui node host.",
     }),
   };
 

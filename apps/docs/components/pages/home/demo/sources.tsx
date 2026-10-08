@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import type { ReactNode } from "react";
 
 function isCited(text: string, url: string): boolean {

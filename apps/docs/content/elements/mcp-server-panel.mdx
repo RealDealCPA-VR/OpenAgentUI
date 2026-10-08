@@ -9,7 +9,7 @@ A compact list of MCP servers, each row collapsed to a name and a status dot unt
 
 <RuntimeMode>
 
-`@assistant-ui/react-mcp` owns MCP connection state. Mount its manager once, then read servers and their tools from it anywhere in the tree.
+`@openagentui/react-mcp` owns MCP connection state. Mount its manager once, then read servers and their tools from it anywhere in the tree.
 
 <Steps>
   <Step>
@@ -19,8 +19,8 @@ A compact list of MCP servers, each row collapsed to a name and a status dot unt
 ```tsx title="app/providers.tsx"
 "use client";
 
-import { AuiConfig, AuiProvider, useAui } from "@assistant-ui/store";
-import { McpManagerResource, type MCPConnector } from "@assistant-ui/react-mcp";
+import { AuiConfig, AuiProvider, useAui } from "@openagentui/store";
+import { McpManagerResource, type MCPConnector } from "@openagentui/react-mcp";
 
 function McpManagerMount({
   connectors,
@@ -46,12 +46,12 @@ Each connector in `connectors` becomes one server the manager connects, tracks, 
 
 ### List servers and their tools
 
-```tsx title="components/assistant-ui/elements/mcp-servers.tsx"
+```tsx title="components/openagentui/elements/mcp-servers.tsx"
 "use client";
 
 import { useState } from "react";
-import { McpManagerPrimitive, McpServerPrimitive } from "@assistant-ui/react-mcp";
-import { useAuiState } from "@assistant-ui/store";
+import { McpManagerPrimitive, McpServerPrimitive } from "@openagentui/react-mcp";
+import { useAuiState } from "@openagentui/store";
 import { PlugIcon } from "lucide-react";
 
 function ServerRow() {
@@ -102,7 +102,7 @@ Standalone, the panel is a controlled list: you own the servers, their status, a
 "use client";
 
 import { useState } from "react";
-import { McpServerPanel, type McpServer } from "@/components/assistant-ui/elements/mcp-server-panel";
+import { McpServerPanel, type McpServer } from "@/components/openagentui/elements/mcp-server-panel";
 
 const servers: McpServer[] = [
   { id: "files", name: "Filesystem", transport: "stdio", status: "connected", tools: ["read_file", "write_file"] },
@@ -156,8 +156,8 @@ The header count only tallies servers whose `status` is `"connected"`. The statu
 `McpServerPrimitive.Status` (and the `s.mcpServer.connectionState` selector behind it) carries six states: `connected`, `connecting`, `authRequired`, `authPending`, `error`, `disconnected`. The panel's own `McpServerStatus` type only has four. Fold the extra two into their nearest dot before handing the value to the panel:
 
 ```tsx
-import type { MCPConnectionState } from "@assistant-ui/react-mcp";
-import type { McpServerStatus } from "@/components/assistant-ui/elements/mcp-server-panel";
+import type { MCPConnectionState } from "@openagentui/react-mcp";
+import type { McpServerStatus } from "@/components/openagentui/elements/mcp-server-panel";
 
 function toPanelStatus(state: MCPConnectionState): McpServerStatus {
   switch (state) {

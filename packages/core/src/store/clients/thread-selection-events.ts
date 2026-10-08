@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useAssistantEmit } from "@assistant-ui/store/client";
+import { useAssistantEmit } from "@openagentui/store/client";
 
 /**
  * Emits `threads.selectionChanged` whenever the main thread selection changes.

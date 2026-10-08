@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 
 const title = "Open source";
 const description =
-  "Every open source project from the assistant-ui organization, with links to its docs, source, and packages.";
+  "Every open source project from the openagentui organization, with links to its docs, source, and packages.";
 
 export const metadata: Metadata = {
   title,
@@ -53,7 +53,7 @@ export default async function OssPage() {
       <header className="max-w-2xl">
         <h1 className={typePage}>Built in the open.</h1>
         <p className={cn(typeDeck, "mt-4 max-w-[52ch]")}>
-          {OSS_PROJECTS.length} projects across the assistant-ui organization,
+          {OSS_PROJECTS.length} projects across the openagentui organization,
           from the chat runtime to the primitives we extracted along the way.
         </p>
       </header>

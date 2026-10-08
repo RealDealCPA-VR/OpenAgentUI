@@ -3,7 +3,7 @@
 import {
   MessageTiming,
   type TimingStat,
-} from "@/components/assistant-ui/elements/message-timing";
+} from "@/components/openagentui/elements/message-timing";
 import { useElapsed, useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const PHASES = [2600, 0] as const;

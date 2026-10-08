@@ -1,26 +1,26 @@
 "use client";
 
 import type { UIMessage } from "@ai-sdk/react";
-import type { AssistantCloud } from "assistant-cloud";
-import type { AssistantRuntime } from "@assistant-ui/core";
+import type { AssistantCloud } from "openagentui-cloud";
+import type { AssistantRuntime } from "@openagentui/core";
 import {
   useCloudThreadListAdapter,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/core/react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+} from "@openagentui/core/react";
+import { useAui, useAuiState } from "@openagentui/store";
 import type { ChatTransport } from "ai";
 import { useMemo } from "react";
 import { AssistantChatTransport } from "../transport/AssistantChatTransport";
 import { useChatThread, type ChatThreadOptions } from "./useChatThread";
 import { useDynamicChatTransport } from "./useDynamicChatTransport";
-import { useHostDestroySignal } from "@assistant-ui/store/internal";
+import { useHostDestroySignal } from "@openagentui/store/internal";
 import { AI_SDK_SDK } from "./sdkIdentity";
 
 export type UseChatRuntimeOptions<UI_MESSAGE extends UIMessage = UIMessage> =
   Omit<ChatThreadOptions<UI_MESSAGE>, "transport"> & {
     /**
      * The transport threads send through. `AssistantChatTransport` instances
-     * are cloned per thread through `__internal_clone()` so their assistant-ui
+     * are cloned per thread through `__internal_clone()` so their openagentui
      * wiring remains isolated. Other transport instances are shared as-is.
      */
     transport?: ChatTransport<UI_MESSAGE> | undefined;

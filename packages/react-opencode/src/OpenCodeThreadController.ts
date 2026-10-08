@@ -1,4 +1,4 @@
-import type { AppendMessage, ThreadUserMessagePart } from "@assistant-ui/react";
+import type { AppendMessage, ThreadUserMessagePart } from "@openagentui/react";
 import type {
   OpencodeClient,
   PermissionRequest,
@@ -30,13 +30,13 @@ import {
   STREAM_RECONNECTED_EVENT_TYPE,
   type OpenCodeEventSource,
 } from "./OpenCodeEventSource";
-import { generateId } from "@assistant-ui/core";
+import { generateId } from "@openagentui/core";
 import {
   nullProtoRecord,
   resolveFileMediaType,
   resolveImageMediaType,
   toMediaWireUrl,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { OPEN_CODE_REQUEST_OPTIONS } from "./openCodeRequestOptions";
 import { serializeOpenCodeParts } from "./serializeUserParts";
 import { getOpenCodeTaskSessionId } from "./openCodeTaskSession";

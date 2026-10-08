@@ -7,19 +7,19 @@ Use the thread list element when an app has more than one conversation. It reads
 
 ## Install the element
 
-Install the thread list with the assistant-ui CLI. It brings in the `icon` wrapper and the `cn` utility that it uses.
+Install the thread list with the openagentui CLI. It brings in the `icon` wrapper and the `cn` utility that it uses.
 
 ```sh
-npx assistant-ui@latest add thread-list
+npx openagentui@latest add thread-list
 ```
 
 The element is a composition of `ThreadListPrimitive` and `ThreadListItemPrimitive`. It renders a new-chat row, a `FlatList` of thread ids, and a pressable item for each thread.
 
-```tsx title="components/assistant-ui/elements/thread-list.aui.tsx"
+```tsx title="components/openagentui/elements/thread-list.aui.tsx"
 import {
   ThreadListItemPrimitive,
   ThreadListPrimitive,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import { Text } from "react-native";
 
 function ThreadListItem() {
@@ -50,13 +50,13 @@ export function ThreadList() {
 
 ## Create a thread-list runtime
 
-`useRemoteThreadListRuntime` is exported from `@assistant-ui/react-native`. It combines a stable adapter (a `RemoteThreadListAdapter`, which owns listing and mutating remote thread metadata) with the hook that creates the runtime for the active thread. [Custom Backend](/docs/react-native/custom-backend) shows the complete adapter shape.
+`useRemoteThreadListRuntime` is exported from `@openagentui/react-native`. It combines a stable adapter (a `RemoteThreadListAdapter`, which owns listing and mutating remote thread metadata) with the hook that creates the runtime for the active thread. [Custom Backend](/docs/react-native/custom-backend) shows the complete adapter shape.
 
 ```tsx title="hooks/use-app-runtime.ts"
 import {
   type AssistantRuntime,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import { myThreadListAdapter } from "@/adapters/my-thread-list-adapter";
 import { useAppThreadRuntime } from "@/hooks/use-app-thread-runtime";
 
@@ -78,10 +78,10 @@ Put the list and the thread below the same `AssistantRuntimeProvider`. The list 
 import {
   AssistantRuntimeProvider,
   type AssistantRuntime,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import { View } from "react-native";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export function ChatScreen({ runtime }: { runtime: AssistantRuntime }) {
   return (

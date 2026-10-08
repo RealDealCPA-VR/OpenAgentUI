@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "assistant-ui × Pi",
-  description: "Pi coding-agent runtime adapter for assistant-ui",
+  title: "openagentui × Pi",
+  description: "Pi coding-agent runtime adapter for openagentui",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -10,18 +10,18 @@ Tool calls arrive in a native thread as message parts. The installed `Thread` el
 Install the timeline element alongside the thread when the fallback should show more than the tool name and status:
 
 ```sh
-npx assistant-ui@latest add elements-tool-timeline
+npx openagentui@latest add elements-tool-timeline
 ```
 
-The fallback receives the whole tool call part. Pass it through the thread's `components` prop. The installed fallback also answers approval gates, interrupts and approval questions, and a replacement takes that job over, so this one renders `ToolFallbackApproval` from the installed fallback while a call waits, and again once its approval settles, when the same component shows a receipt of the decision. Keep the replacement in its own file: `components/assistant-ui/elements/tool-fallback.tsx` is the installed fallback, which the bound task card imports.
+The fallback receives the whole tool call part. Pass it through the thread's `components` prop. The installed fallback also answers approval gates, interrupts and approval questions, and a replacement takes that job over, so this one renders `ToolFallbackApproval` from the installed fallback while a call waits, and again once its approval settles, when the same component shows a receipt of the decision. Keep the replacement in its own file: `components/openagentui/elements/tool-fallback.tsx` is the installed fallback, which the bound task card imports.
 
 ```tsx title="components/timeline-tool-fallback.tsx"
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react-native";
+import type { ToolCallMessagePartComponent } from "@openagentui/react-native";
 import { WrenchIcon } from "lucide-react-native";
 import { useState } from "react";
 import { View } from "react-native";
-import { ToolFallbackApproval } from "@/components/assistant-ui/elements/tool-fallback";
-import { ToolTimeline } from "@/components/assistant-ui/elements/tool-timeline";
+import { ToolFallbackApproval } from "@/components/openagentui/elements/tool-fallback";
+import { ToolTimeline } from "@/components/openagentui/elements/tool-timeline";
 
 export const TimelineToolFallback: ToolCallMessagePartComponent = (part) => {
   const [open, setOpen] = useState(false);
@@ -56,7 +56,7 @@ export const TimelineToolFallback: ToolCallMessagePartComponent = (part) => {
 ```
 
 ```tsx title="app/chat-screen.tsx"
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { TimelineToolFallback } from "@/components/timeline-tool-fallback";
 
 export function ChatScreen() {
@@ -76,9 +76,9 @@ import {
   Tools,
   type AssistantRuntime,
   type ToolCallMessagePartComponent,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import { Text, View } from "react-native";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const RunCommand: ToolCallMessagePartComponent<{ command: string }> = ({
   args,
@@ -121,14 +121,14 @@ The `Tools` resource matches the renderer to `run_command` and the thread render
 Install the approval card when a backend tool can pause for a server-side approval gate:
 
 ```sh
-npx assistant-ui@latest add elements-approval-card
+npx openagentui@latest add elements-approval-card
 ```
 
 An approval renderer receives `approval` and `respondToApproval`. Render the controls only while `approval.approved` is undefined and no `resolution` is recorded, since a cancelled or expired request leaves `approved` unset but can no longer be answered. When the host lists options, offer only the actions that have a matching option and answer with its `optionId`, so the decision keeps the requested scope: a declared option list is a host constraint, and the card never adds an approval path beyond it. Without options, allow once and deny send a boolean that records a one-time decision, and there is no always allow. `respondToApproval` rejects when the runtime could not record the decision; the card stays mounted, so catching the rejection leaves the user free to answer again.
 
-```tsx title="components/assistant-ui/elements/run-command-approval.tsx"
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react-native";
-import { ApprovalCard } from "@/components/assistant-ui/elements/approval-card";
+```tsx title="components/openagentui/elements/run-command-approval.tsx"
+import type { ToolCallMessagePartComponent } from "@openagentui/react-native";
+import { ApprovalCard } from "@/components/openagentui/elements/approval-card";
 
 export const RunCommandApproval: ToolCallMessagePartComponent<{
   command: string;

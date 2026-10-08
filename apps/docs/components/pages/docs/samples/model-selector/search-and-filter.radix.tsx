@@ -11,12 +11,12 @@ import {
   ModelSelectorGroup,
   ModelSelectorItem,
   type ModelOption,
-} from "@/components/assistant-ui/elements/model-selector.radix";
+} from "@/components/openagentui/elements/model-selector.radix";
 import {
   ClaudeLogo,
   GeminiLogo,
   OpenAILogo,
-} from "@/components/assistant-ui/elements/logos";
+} from "@/components/openagentui/elements/logos";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 export function SearchableModelSelector() {

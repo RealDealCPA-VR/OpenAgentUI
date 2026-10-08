@@ -1,8 +1,8 @@
 "use client";
 
-import { AuiIf, ComposerPrimitive } from "@assistant-ui/react";
+import { AuiIf, ComposerPrimitive } from "@openagentui/react";
 import { SampleFrame } from "./sample-frame";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import { MicIcon, Square } from "lucide-react";
 import { VoiceSampleThread } from "./voice-sample-thread";
 

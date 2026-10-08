@@ -16,10 +16,10 @@ Dictation is opt-in, the same way attachments are: without a `DictationAdapter` 
 
 ### Configure a dictation adapter
 
-assistant-ui ships a `WebSpeechDictationAdapter` over the browser's `SpeechRecognition` API; check `.isSupported()` before relying on it, since it is not available in every browser:
+openagentui ships a `WebSpeechDictationAdapter` over the browser's `SpeechRecognition` API; check `.isSupported()` before relying on it, since it is not available in every browser:
 
 ```tsx title="app/chat-provider.tsx"
-import { useLocalRuntime, WebSpeechDictationAdapter } from "@assistant-ui/react";
+import { useLocalRuntime, WebSpeechDictationAdapter } from "@openagentui/react";
 
 const runtime = useLocalRuntime(chatModel, {
   adapters: {
@@ -35,13 +35,13 @@ const runtime = useLocalRuntime(chatModel, {
 
 ### Start, show, and stop
 
-```tsx title="components/assistant-ui/elements/composer-voice.tsx"
+```tsx title="components/openagentui/elements/composer-voice.tsx"
 "use client";
 
-import { AuiIf, ComposerPrimitive } from "@assistant-ui/react";
+import { AuiIf, ComposerPrimitive } from "@openagentui/react";
 import { MicIcon, SquareIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ghostButton, inkButton } from "@/components/assistant-ui/elements/surfaces";
+import { ghostButton, inkButton } from "@/components/openagentui/elements/surfaces";
 
 export function DictationControl() {
   return (
@@ -84,7 +84,7 @@ Standalone, `ComposerVoice` and `ComposerVoiceButton` only render a recording st
 "use client";
 
 import { useEffect, useState } from "react";
-import { ComposerVoice, ComposerVoiceButton, ComposerInput } from "@/components/assistant-ui/elements/composer";
+import { ComposerVoice, ComposerVoiceButton, ComposerInput } from "@/components/openagentui/elements/composer";
 
 export function VoiceInput() {
   const [active, setActive] = useState(false); // from the first tap until the final transcript lands

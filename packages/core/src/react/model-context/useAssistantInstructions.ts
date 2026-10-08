@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type { AssistantInstructionsConfig } from "../..";
 
 export type { AssistantInstructionsConfig };

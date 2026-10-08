@@ -2,7 +2,7 @@
 import { startTransition, Suspense, useLayoutEffect } from "react";
 import { act, render, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { Unstable_TriggerItem } from "@assistant-ui/core";
+import type { Unstable_TriggerItem } from "@openagentui/core";
 import { unstable_useLiveCompletionAdapter } from "./useLiveCompletionAdapter";
 
 const item = (id: string): Unstable_TriggerItem => ({

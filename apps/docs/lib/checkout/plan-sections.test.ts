@@ -12,7 +12,7 @@ const PLAN = `## What I found
 
 ## What I will install
 
-- **The chat:** @assistant-ui/react and @assistant-ui/react-markdown
+- **The chat:** @openagentui/react and @openagentui/react-markdown
 - \`app/api/chat/route.ts\` streaming through the AI SDK
 - \`app/assistant.tsx\` mounting the thread
 
@@ -44,7 +44,7 @@ describe("parsePlan", () => {
     expect(plan.install?.facts).toEqual([
       {
         label: "The chat",
-        value: "@assistant-ui/react and @assistant-ui/react-markdown",
+        value: "@openagentui/react and @openagentui/react-markdown",
       },
     ]);
     expect(plan.install?.items.map((item) => item.text)).toEqual([

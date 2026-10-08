@@ -5,7 +5,7 @@ import {
   MathBlock,
   Sub,
   Sup,
-} from "@/components/assistant-ui/elements/math-block";
+} from "@/components/openagentui/elements/math-block";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const PHASES = [900, 900, 0] as const;

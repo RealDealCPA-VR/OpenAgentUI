@@ -1,21 +1,21 @@
-# `@assistant-ui/vue`
+# `@openagentui/vue`
 
-[![npm version](https://img.shields.io/npm/v/@assistant-ui/vue)](https://www.npmjs.com/package/@assistant-ui/vue)
-[![npm downloads](https://img.shields.io/npm/dm/@assistant-ui/vue)](https://www.npmjs.com/package/@assistant-ui/vue)
-[![GitHub stars](https://img.shields.io/github/stars/assistant-ui/assistant-ui)](https://github.com/assistant-ui/assistant-ui)
-![License](https://img.shields.io/npm/l/@assistant-ui/vue)
+[![npm version](https://img.shields.io/npm/v/@openagentui/vue)](https://www.npmjs.com/package/@openagentui/vue)
+[![npm downloads](https://img.shields.io/npm/dm/@openagentui/vue)](https://www.npmjs.com/package/@openagentui/vue)
+[![GitHub stars](https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI)](https://github.com/RealDealCPA-VR/OpenAgentUI)
+![License](https://img.shields.io/npm/l/@openagentui/vue)
 
-Vue bindings for assistant-ui. A provider, composables, and unstyled primitives for streaming AI chat in Vue and Nuxt, running the same runtime as `@assistant-ui/react`.
+Vue bindings for openagentui. A provider, composables, and unstyled primitives for streaming AI chat in Vue and Nuxt, running the same runtime as `@openagentui/react`.
 
 ## Installation
 
 Requires Vue 3.5 or newer.
 
 ```bash
-npm install @assistant-ui/vue @assistant-ui/ai-sdk ai react
+npm install @openagentui/vue @openagentui/ai-sdk ai react
 ```
 
-`@assistant-ui/ai-sdk` connects the [AI SDK](https://ai-sdk.dev). It runs the AI SDK's chat state on the shared runtime, so it needs `react` installed even though React renders nothing.
+`@openagentui/ai-sdk` connects the [AI SDK](https://ai-sdk.dev). It runs the AI SDK's chat state on the shared runtime, so it needs `react` installed even though React renders nothing.
 
 ## Usage
 
@@ -30,8 +30,8 @@ import {
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
   ThreadPrimitiveViewport,
-} from "@assistant-ui/vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
+} from "@openagentui/vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
 
 const config = AuiConfig({ threads: AISDKChat() });
 </script>
@@ -51,7 +51,7 @@ const config = AuiConfig({ threads: AISDKChat() });
 
 `AISDKChat()` posts to `/api/chat`, a route that returns `streamText(...).toUIMessageStreamResponse()`. Mount the provider client-only, as a `.client.vue` component in Nuxt: Vue's server renderer never disposes effect scopes, so a provider rendered on the server would keep one runtime per request.
 
-Styled components (thread, messages, reasoning, tool calls, thread list) install from the assistant-ui registry; the [quickstart](https://www.assistant-ui.com/docs/vue/quickstart) walks through them.
+Styled components (thread, messages, reasoning, tool calls, thread list) install from the openagentui registry; the [quickstart](https://openagentui.dev/docs/vue/quickstart) walks through them.
 
 ## API
 
@@ -62,15 +62,15 @@ Styled components (thread, messages, reasoning, tool calls, thread list) install
 
 ## Without the AI SDK
 
-To run a runtime that does not need React, such as one mounted with `RuntimeAdapter` from `@assistant-ui/core/store`, alias `react` to `@assistant-ui/tap/standalone-shim` so the shared runtime code resolves without React installed:
+To run a runtime that does not need React, such as one mounted with `RuntimeAdapter` from `@openagentui/core/store`, alias `react` to `@openagentui/tap/standalone-shim` so the shared runtime code resolves without React installed:
 
 ```ts
 // vite.config.ts
 export default defineConfig({
   resolve: {
     alias: {
-      "react/compiler-runtime": "@assistant-ui/tap/standalone-shim/compiler-runtime",
-      react: "@assistant-ui/tap/standalone-shim",
+      "react/compiler-runtime": "@openagentui/tap/standalone-shim/compiler-runtime",
+      react: "@openagentui/tap/standalone-shim",
     },
   },
 });
@@ -78,14 +78,14 @@ export default defineConfig({
 
 ## Documentation
 
-- [Getting Started](https://www.assistant-ui.com/docs/vue)
-- [Quickstart](https://www.assistant-ui.com/docs/vue/quickstart)
-- [Runtimes](https://www.assistant-ui.com/docs/vue/runtimes)
-- [Server rendering](https://www.assistant-ui.com/docs/vue/ssr)
-- [Tool UI](https://www.assistant-ui.com/docs/vue/tool-ui)
+- [Getting Started](https://openagentui.dev/docs/vue)
+- [Quickstart](https://openagentui.dev/docs/vue/quickstart)
+- [Runtimes](https://openagentui.dev/docs/vue/runtimes)
+- [Server rendering](https://openagentui.dev/docs/vue/ssr)
+- [Tool UI](https://openagentui.dev/docs/vue/tool-ui)
 
 ## For other platforms
 
-- Web with React: [`@assistant-ui/react`](https://www.npmjs.com/package/@assistant-ui/react)
-- React Native: [`@assistant-ui/react-native`](https://www.npmjs.com/package/@assistant-ui/react-native)
-- Terminal: [`@assistant-ui/react-ink`](https://www.npmjs.com/package/@assistant-ui/react-ink)
+- Web with React: [`@openagentui/react`](https://www.npmjs.com/package/@openagentui/react)
+- React Native: [`@openagentui/react-native`](https://www.npmjs.com/package/@openagentui/react-native)
+- Terminal: [`@openagentui/react-ink`](https://www.npmjs.com/package/@openagentui/react-ink)

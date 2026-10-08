@@ -6,8 +6,8 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import { AuiConfig, Derived } from "@assistant-ui/store/client";
-import type { PartMethods } from "@assistant-ui/core/store";
+import { AuiConfig, Derived } from "@openagentui/store/client";
+import type { PartMethods } from "@openagentui/core/store";
 import { AuiProvider } from "../AuiProvider";
 import { useAui } from "../useAui";
 import { createLastValidCache, createStaleReporter } from "./lastValidCache";

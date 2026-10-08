@@ -1,4 +1,4 @@
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import type {
   Attachment,
   PendingAttachment,
@@ -138,7 +138,7 @@ export class CloudFileAttachmentAdapter implements AttachmentAdapter {
       const failure = scopeChanged
         ? new Error("Cloud scope changed while uploading the attachment")
         : error;
-      console.error("[assistant-ui] Failed to upload attachment:", failure);
+      console.error("[openagentui] Failed to upload attachment:", failure);
       attachment = {
         ...attachment,
         status: {

@@ -13,7 +13,7 @@ const mocks = vi.hoisted(() => ({
   session: { status: "loading" } as SessionState,
 }));
 
-vi.mock("@assistant-ui/ai-sdk", async (importOriginal) => ({
+vi.mock("@openagentui/ai-sdk", async (importOriginal) => ({
   ...(await importOriginal<object>()),
   useChatRuntime,
   AssistantChatTransport: class {

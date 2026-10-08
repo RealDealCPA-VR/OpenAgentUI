@@ -17,8 +17,8 @@ A task card makes delegated work legible without losing the conversation behind 
 ```tsx title="app/thread.tsx"
 "use client";
 
-import { TaskGroup } from "@/components/assistant-ui/elements/task-card.aui";
-import { Thread, type ThreadComponents } from "@/components/assistant-ui/elements/thread.aui";
+import { TaskGroup } from "@/components/openagentui/elements/task-card.aui";
+import { Thread, type ThreadComponents } from "@/components/openagentui/elements/thread.aui";
 
 const THREAD_COMPONENTS: ThreadComponents = { TaskGroup };
 
@@ -39,8 +39,8 @@ A registered tool UI always takes precedence over the slot. Return the bound `Ta
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { TaskCard } from "@/components/assistant-ui/elements/task-card.aui";
+import { defineToolkit } from "@openagentui/react";
+import { TaskCard } from "@/components/openagentui/elements/task-card.aui";
 
 export const toolkit = defineToolkit({
   delegate: {
@@ -68,7 +68,7 @@ Standalone, `TaskCard` is props only. Give it a label, optional meta tag, state 
 "use client";
 
 import { useState } from "react";
-import { TaskCard } from "@/components/assistant-ui/elements/task-card";
+import { TaskCard } from "@/components/openagentui/elements/task-card";
 
 export function Task() {
   const [open, setOpen] = useState(false);

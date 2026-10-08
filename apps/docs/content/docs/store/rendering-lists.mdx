@@ -13,7 +13,7 @@ Rendering a list of items from store state follows a three-step pattern:
 
 ```tsx
 import { useMemo } from "react";
-import { useAuiState, RenderChildrenWithAccessor } from "@assistant-ui/store";
+import { useAuiState, RenderChildrenWithAccessor } from "@openagentui/store";
 
 const TodoList = ({
   children,
@@ -69,7 +69,7 @@ The `getItem` function is a getter that reads the latest state on demand. Wrap i
 
 ## Built-in primitives
 
-All assistant-ui list primitives (Messages, Parts, Attachments, Suggestions, ThreadListItems, etc.) use this pattern internally. When using the children render function API, you get the lazy accessor behavior automatically:
+All openagentui list primitives (Messages, Parts, Attachments, Suggestions, ThreadListItems, etc.) use this pattern internally. When using the children render function API, you get the lazy accessor behavior automatically:
 
 ```tsx
 <ThreadPrimitive.Messages>

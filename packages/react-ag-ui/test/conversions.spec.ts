@@ -2,16 +2,16 @@
 
 import { describe, it, expect, expectTypeOf } from "vitest";
 import { z } from "zod";
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import { MessageSchema, UserMessageSchema, type Message } from "@ag-ui/client";
 import {
   applyA2uiOperations,
   convertSurfaceToUISpec,
-} from "@assistant-ui/react-generative-ui/a2ui";
+} from "@openagentui/react-generative-ui/a2ui";
 import {
   ExportedMessageRepository,
   type AppendMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   fromAgUiMessages as publicFromAgUiMessages,
   toAgUiMessages as publicToAgUiMessages,

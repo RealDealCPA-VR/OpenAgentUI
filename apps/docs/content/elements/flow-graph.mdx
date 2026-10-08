@@ -16,15 +16,15 @@ With a runtime, a flow graph is usually one tool call whose arguments describe a
 
 ### Lay out the plan from the tool call
 
-```tsx title="components/assistant-ui/elements/plan-graph-tool-ui.tsx"
+```tsx title="components/openagentui/elements/plan-graph-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import {
   FlowGraph,
   type FlowEdge,
   type FlowNode,
-} from "@/components/assistant-ui/elements/flow-graph";
+} from "@/components/openagentui/elements/flow-graph";
 
 type PlanStep = { id: string; label: string; dependsOn?: string[] };
 type PlanArgs = { steps: PlanStep[] };
@@ -66,9 +66,9 @@ export const PlanGraphToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { PlanGraphToolUI } from "@/components/assistant-ui/elements/plan-graph-tool-ui";
+import { PlanGraphToolUI } from "@/components/openagentui/elements/plan-graph-tool-ui";
 
 const step = z.object({
   id: z.string(),
@@ -88,8 +88,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -127,7 +127,7 @@ import {
   FlowGraph,
   type FlowEdge,
   type FlowNode,
-} from "@/components/assistant-ui/elements/flow-graph";
+} from "@/components/openagentui/elements/flow-graph";
 
 const NODES: readonly FlowNode[] = [
   { id: "intake", label: "intake", column: 0, row: 1, state: "done" },

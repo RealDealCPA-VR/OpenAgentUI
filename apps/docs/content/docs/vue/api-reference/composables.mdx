@@ -3,7 +3,7 @@ title: Components and composables
 description: AuiProvider, AuiIf, the scope providers, and the useAui, useAuiState, useAuiEvent, and useScrollLock composables.
 ---
 
-These are the non-primitive exports of `@assistant-ui/vue`. The primitives have their own pages under [Primitives](/docs/vue/primitives), and the re-exported client APIs are on [Assistant client](/docs/vue/api-reference/client).
+These are the non-primitive exports of `@openagentui/vue`. The primitives have their own pages under [Primitives](/docs/vue/primitives), and the re-exported client APIs are on [Assistant client](/docs/vue/api-reference/client).
 
 ## Providers
 
@@ -20,8 +20,8 @@ At the top level, `config` alone creates a client. Under another provider, omitt
 
 ```vue title="app/components/PageSuggestions.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider, useAui } from "@assistant-ui/vue";
-import { Suggestions } from "@assistant-ui/core/store";
+import { AuiConfig, AuiProvider, useAui } from "@openagentui/vue";
+import { Suggestions } from "@openagentui/core/store";
 
 const aui = useAui();
 const config = AuiConfig({
@@ -100,7 +100,7 @@ Returns a computed ref of the selected value. The selector runs on every store u
 
 ```vue title="app/components/RunStatus.vue"
 <script setup lang="ts">
-import { useAuiState } from "@assistant-ui/vue";
+import { useAuiState } from "@openagentui/vue";
 
 const isRunning = useAuiState((s) => s.thread.isRunning);
 const messageCount = useAuiState((s) => s.thread.messages.length);
@@ -144,7 +144,7 @@ The registry `reasoning.vue` and `tool-fallback.vue` call it before opening or c
 ```vue title="app/components/Disclosure.vue"
 <script setup lang="ts">
 import { ref } from "vue";
-import { useScrollLock } from "@assistant-ui/vue";
+import { useScrollLock } from "@openagentui/vue";
 
 const root = ref<HTMLElement | null>(null);
 const open = ref(false);
@@ -171,4 +171,4 @@ const toggle = () => {
 | `ToolUIProps` | The single `tool` prop of a Vue tool UI component. See [Tool UI](/docs/vue/tool-ui#write-a-tool-ui-component). |
 | `DataUIProps<T>` | The single `data` prop of a Vue data renderer. See [Tool UI](/docs/vue/tool-ui#data-parts). |
 
-`AuiConfig`, `Derived`, `createAssistantClient`, and the client, state, and event types are re-exported from `@assistant-ui/store/client`; see [Assistant client](/docs/vue/api-reference/client).
+`AuiConfig`, `Derived`, `createAssistantClient`, and the client, state, and event types are re-exported from `@openagentui/store/client`; see [Assistant client](/docs/vue/api-reference/client).

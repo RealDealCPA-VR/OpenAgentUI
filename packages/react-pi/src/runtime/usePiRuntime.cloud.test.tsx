@@ -3,11 +3,11 @@
 import { act, createElement, version } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import type {
   ExternalStoreAdapter,
   RemoteThreadListAdapter,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import type { PiClient, PiThreadSnapshot } from "../types";
 
 const mocks = vi.hoisted(() => {
@@ -32,8 +32,8 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/react")>()),
+vi.mock("@openagentui/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/react")>()),
   useAui: () => ({
     threadListItem: { ...mocks.threadListItem, initialize: mocks.initialize },
   }),

@@ -1,5 +1,5 @@
 {
-  "extends": ["./tsconfig.json", "@assistant-ui/x-react18/tsconfig.json"],
+  "extends": ["./tsconfig.json", "@openagentui/x-react18/tsconfig.json"],
   "compilerOptions": {
     "types": []
   },

@@ -11,7 +11,7 @@ State lives inside the runtime by default. Multi-thread persistence and shared a
 
 Pick `LocalRuntime` when:
 
-- You want assistant-ui to manage chat state for you.
+- You want openagentui to manage chat state for you.
 - Your backend exposes a function-call shaped API (REST, OpenAI SDK, your own model client).
 - Branching, editing, and regeneration should work without you writing extra code.
 - You want to compose adapters (attachments, speech, feedback, history, suggestions).
@@ -61,17 +61,17 @@ npm init -y
 <PlatformTabs>
 <Tab value="React">
 
-<InstallCommand npm={["@assistant-ui/react"]} />
+<InstallCommand npm={["@openagentui/react"]} />
 
 </Tab>
 <Tab value="React Native">
 
-<InstallCommand expo={["@assistant-ui/react-native"]} />
+<InstallCommand expo={["@openagentui/react-native"]} />
 
 </Tab>
 <Tab value="React Ink">
 
-<InstallCommand npm={["@assistant-ui/react-ink", "ink", "react"]} />
+<InstallCommand npm={["@openagentui/react-ink", "ink", "react"]} />
 
 </Tab>
 </PlatformTabs>
@@ -85,7 +85,7 @@ npm init -y
 <Tab value="React">
 
 ```sh
-npx assistant-ui@latest add thread
+npx openagentui@latest add thread
 ```
 
 </Tab>
@@ -119,7 +119,7 @@ import {
   AssistantRuntimeProvider,
   useLocalRuntime,
   type ChatModelAdapter,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const MyModelAdapter: ChatModelAdapter = {
   async run({ messages, abortSignal }) {
@@ -157,7 +157,7 @@ import {
   AssistantRuntimeProvider,
   useLocalRuntime,
   type ChatModelAdapter,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 
 const MyModelAdapter: ChatModelAdapter = {
   async run({ messages, abortSignal }) {
@@ -195,7 +195,7 @@ import {
   AssistantRuntimeProvider,
   useLocalRuntime,
   type ChatModelAdapter,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 
 const MyModelAdapter: ChatModelAdapter = {
   async run({ messages, abortSignal }) {
@@ -297,7 +297,7 @@ export function App() {
 <Tab value="React">
 
 ```tsx title="app/page.tsx"
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function Page() {
   return <Thread />;
@@ -309,7 +309,7 @@ export default function Page() {
 
 ```tsx title="app/index.tsx"
 import { View } from "react-native";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function Page() {
   return (
@@ -345,7 +345,7 @@ import {
   ChatModelAdapter,
   ThreadMessage,
   type ModelContext,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { OpenAI } from "openai";
 
 const openai = new OpenAI();
@@ -449,7 +449,7 @@ If you build the `content` array fresh from the current chunk each iteration, to
 ```tsx title="app/toolkit.tsx"
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
 
 export default defineToolkit({
@@ -469,7 +469,7 @@ export default defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AuiConfig, Tools } from "@assistant-ui/react";
+import { AuiConfig, Tools } from "@openagentui/react";
 import toolkit from "./toolkit";
 
 function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -601,7 +601,7 @@ A tool call with a pending approval pauses the run, whether or not the tool is l
 
 Once every pending approval on the message is decided and every listed human tool has a result, the runtime invokes your adapter again. Read the decisions from `unstable_getMessage().content`, perform the approved actions, and return the follow-up response. A tool call that carries an approval is owned by the gate: it does not additionally require a result, even when its name is listed in `unstable_humanToolNames`.
 
-If the user sends another message instead of answering, the pause ends there, because a run only resumes from the last message, and deleting that message later does not reopen it. Each open approval records `approval.resolution: "cancelled"` and the paused message settles as `incomplete` with reason `cancelled`; a later answer to that approval is rejected, and a result added to it later is stored without invoking your adapter again. The next run still receives those calls without results, and providers reject a tool call that no result answers, so your adapter must supply one when it converts the history; `toGenericMessages` from `assistant-stream` reports each as not completed.
+If the user sends another message instead of answering, the pause ends there, because a run only resumes from the last message, and deleting that message later does not reopen it. Each open approval records `approval.resolution: "cancelled"` and the paused message settles as `incomplete` with reason `cancelled`; a later answer to that approval is rejected, and a result added to it later is stored without invoking your adapter again. The next run still receives those calls without results, and providers reject a tool call that no result answers, so your adapter must supply one when it converts the history; `toGenericMessages` from `openagentui-stream` reports each as not completed.
 
 ## Resuming a run
 
@@ -610,8 +610,8 @@ If the user sends another message instead of answering, the pause ends there, be
 Unlike `startRun` (which uses the `ChatModelAdapter`), `resumeRun` requires a `stream` parameter; you provide the async generator that produces the response.
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
-import type { ChatModelRunResult } from "@assistant-ui/core";
+import { useAui } from "@openagentui/react";
+import type { ChatModelRunResult } from "@openagentui/core";
 
 const aui = useAui();
 

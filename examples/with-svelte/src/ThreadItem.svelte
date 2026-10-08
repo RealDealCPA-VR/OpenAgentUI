@@ -3,7 +3,7 @@
     threadListItemTrigger,
     useAuiState,
     type ThreadListItem,
-  } from "@assistant-ui/svelte";
+  } from "@openagentui/svelte";
 
   let { item }: { item: ThreadListItem } = $props();
 

@@ -51,7 +51,7 @@ export async function resolveLatestReleaseRef(): Promise<string | undefined> {
   try {
     const authToken = resolveGitHubAuthToken();
     const res = await fetch(
-      "https://api.github.com/repos/assistant-ui/assistant-ui/releases/latest",
+      "https://api.github.com/repos/openagentui/openagentui/releases/latest",
       authToken
         ? { headers: { Authorization: toBearerAuthHeader(authToken) } }
         : undefined,
@@ -80,8 +80,8 @@ export async function downloadProject(
   ref?: string,
 ): Promise<void> {
   const source = ref
-    ? `gh:assistant-ui/assistant-ui/${repoPath}#${ref}`
-    : `gh:assistant-ui/assistant-ui/${repoPath}`;
+    ? `gh:openagentui/openagentui/${repoPath}#${ref}`
+    : `gh:openagentui/openagentui/${repoPath}`;
 
   let destinationCreated = false;
   let stagingDir: string | undefined;
@@ -128,7 +128,7 @@ export async function downloadProject(
     await fs.promises.mkdir(path.dirname(destDir), { recursive: true });
     try {
       stagingDir = await fs.promises.mkdtemp(
-        path.join(path.dirname(destDir), ".assistant-ui-download-"),
+        path.join(path.dirname(destDir), ".openagentui-download-"),
       );
     } catch (error) {
       const code = (error as NodeJS.ErrnoException).code;
@@ -136,7 +136,7 @@ export async function downloadProject(
         throw error;
       }
       stagingDir = await fs.promises.mkdtemp(
-        path.join(os.tmpdir(), ".assistant-ui-download-"),
+        path.join(os.tmpdir(), ".openagentui-download-"),
       );
     }
     process.once("exit", cleanupOnExit);
@@ -259,24 +259,24 @@ export async function transformProject(
       pm,
     );
     if (failure) return { registryInstallFailure: failure };
-    await reconcileAssistantUIImportLayout(projectDir);
+    await reconcileOpenAgentUIImportLayout(projectDir);
   }
   return {};
 }
 
 function resolveRegistryComponents(
   projectDir: string,
-  { assistantUI, shadcnUI }: RequiredComponents,
+  { openAgentUI, shadcnUI }: RequiredComponents,
 ): string[] {
   if (detectRegistryPlatform(projectDir) === "native") {
-    return ["utils", ...shadcnUI, ...assistantUI].map((component) =>
+    return ["utils", ...shadcnUI, ...openAgentUI].map((component) =>
       resolveRegistryItemUrl(component, undefined, "native"),
     );
   }
   return [
-    "@assistant-ui/utils",
+    "@openagentui/utils",
     ...shadcnUI,
-    ...assistantUI.map((component) => `@assistant-ui/${component}`),
+    ...openAgentUI.map((component) => `@openagentui/${component}`),
   ];
 }
 
@@ -284,9 +284,9 @@ function transformPackageJson(projectDir: string): void {
   const pkgPath = path.join(projectDir, "package.json");
   const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
 
-  // Remove @assistant-ui/ui dependency
-  if (pkg.dependencies?.["@assistant-ui/ui"]) {
-    delete pkg.dependencies["@assistant-ui/ui"];
+  // Remove @openagentui/ui dependency
+  if (pkg.dependencies?.["@openagentui/ui"]) {
+    delete pkg.dependencies["@openagentui/ui"];
   }
 
   // Transform workspace dependencies to latest
@@ -302,8 +302,8 @@ function transformPackageJson(projectDir: string): void {
   }
 
   // Remove devDependencies that are workspace-only
-  if (pkg.devDependencies?.["@assistant-ui/x-buildutils"]) {
-    delete pkg.devDependencies["@assistant-ui/x-buildutils"];
+  if (pkg.devDependencies?.["@openagentui/x-buildutils"]) {
+    delete pkg.devDependencies["@openagentui/x-buildutils"];
   }
 
   // Update package name to be unique
@@ -338,13 +338,13 @@ function transformTsConfig(projectDir: string): void {
   // Remove workspace paths
   if (tsconfig.compilerOptions?.paths) {
     const workspaceKeys = new Set([
-      "@/components/assistant-ui/*",
+      "@/components/openagentui/*",
       "@/components/icons/*",
       "@/components/ui/*",
       "@/components/ui/radix/*",
       "@/hooks/*",
       "@/lib/utils",
-      "@assistant-ui/ui/*",
+      "@openagentui/ui/*",
     ]);
     for (const [key, targets] of Object.entries(
       tsconfig.compilerOptions.paths as Record<string, unknown>,
@@ -366,8 +366,8 @@ function transformTsConfig(projectDir: string): void {
     }
   }
 
-  // If extends uses @assistant-ui/x-buildutils, replace with inline config
-  if (tsconfig.extends?.includes("@assistant-ui/x-buildutils")) {
+  // If extends uses @openagentui/x-buildutils, replace with inline config
+  if (tsconfig.extends?.includes("@openagentui/x-buildutils")) {
     const isNext = tsconfig.extends.includes("ts/next");
     delete tsconfig.extends;
 
@@ -420,7 +420,7 @@ function transformCssFiles(projectDir: string): void {
 }
 
 interface RequiredComponents {
-  assistantUI: string[];
+  openAgentUI: string[];
   shadcnUI: string[];
 }
 
@@ -428,7 +428,7 @@ function stripImportExtension(component: string): string {
   return component.replace(/\.[cm]?[tj]sx?$/, "");
 }
 
-const ASSISTANT_UI_OWNED_UI = new Set([
+const OPENAGENTUI_OWNED_UI = new Set([
   "accordion",
   "badge",
   "diff-viewer",
@@ -442,7 +442,7 @@ const ASSISTANT_UI_OWNED_UI = new Set([
 const BARE_ELEMENT_ITEMS = new Set([
   "file",
   "generative-ui",
-  "heat-graph",
+  "@openagentui/heat-graph",
   "image",
   "logos",
   "markdown-text",
@@ -450,7 +450,7 @@ const BARE_ELEMENT_ITEMS = new Set([
   "tooltip-icon-button",
 ]);
 
-function toAssistantUIItem(specifier: string): string | null {
+function toOpenAgentUIItem(specifier: string): string | null {
   let name = stripImportExtension(specifier);
   const inElements = name.startsWith("elements/");
   if (inElements) {
@@ -469,16 +469,16 @@ function toAssistantUIItem(specifier: string): string | null {
 /**
  * Example snapshots are downloaded at a release tag while the shadcn registry
  * is live, so a snapshot may import components at the legacy flat path
- * (`@/components/assistant-ui/<name>`) after the registry has moved the file
- * to `components/assistant-ui/elements/<name>.aui.tsx`. Resolve each legacy
+ * (`@/components/openagentui/<name>`) after the registry has moved the file
+ * to `components/openagentui/elements/<name>.aui.tsx`. Resolve each legacy
  * specifier against the files the registry actually installed and rewrite it
  * only when the legacy path is absent and the elements layout has it.
  */
-export async function reconcileAssistantUIImportLayout(
+export async function reconcileOpenAgentUIImportLayout(
   projectDir: string,
 ): Promise<void> {
   const componentRoots = ["components", "src/components"]
-    .map((dir) => path.join(projectDir, dir, "assistant-ui"))
+    .map((dir) => path.join(projectDir, dir, "openagentui"))
     .filter((dir) => fs.existsSync(dir));
   if (componentRoots.length === 0) return;
 
@@ -524,7 +524,7 @@ export async function reconcileAssistantUIImportLayout(
     cwd: projectDir,
     ignore: LOCAL_PROJECT_ARTIFACT_GLOB_IGNORES,
   })) {
-    if (!content.includes("@/components/assistant-ui/")) continue;
+    if (!content.includes("@/components/openagentui/")) continue;
 
     const replacements: Array<{ start: number; end: number; value: string }> =
       [];
@@ -541,7 +541,7 @@ export async function reconcileAssistantUIImportLayout(
         return;
       }
 
-      const prefix = "@/components/assistant-ui/";
+      const prefix = "@/components/openagentui/";
       if (!source.value.startsWith(prefix)) return;
       const specifier = source.value.slice(prefix.length);
       if (specifier.includes("/")) return;
@@ -556,7 +556,7 @@ export async function reconcileAssistantUIImportLayout(
       replacements.push({
         start: source.start,
         end: source.end,
-        value: `${quote}@/components/assistant-ui/${installed}${quote}`,
+        value: `${quote}@/components/openagentui/${installed}${quote}`,
       });
     };
 
@@ -589,25 +589,25 @@ export async function reconcileAssistantUIImportLayout(
 }
 
 export function scanRequiredComponents(projectDir: string): RequiredComponents {
-  const assistantUIComponents = new Set<string>();
+  const openAgentUIComponents = new Set<string>();
   const shadcnUIComponents = new Set<string>();
 
   for (const { content } of readProjectFiles("**/*.{ts,tsx}", {
     cwd: projectDir,
     ignore: LOCAL_PROJECT_ARTIFACT_GLOB_IGNORES,
   })) {
-    const assistantUIRegex =
-      /from\s+["']@\/components\/assistant-ui\/([^"']+)["']/g;
-    for (const match of content.matchAll(assistantUIRegex)) {
-      const item = toAssistantUIItem(match[1]!);
-      if (item) assistantUIComponents.add(item);
+    const openAgentUIRegex =
+      /from\s+["']@\/components\/openagentui\/([^"']+)["']/g;
+    for (const match of content.matchAll(openAgentUIRegex)) {
+      const item = toOpenAgentUIItem(match[1]!);
+      if (item) openAgentUIComponents.add(item);
     }
 
     const uiRegex = /from\s+["']@\/components\/ui\/([^"']+)["']/g;
     for (const match of content.matchAll(uiRegex)) {
       const name = stripImportExtension(match[1]!);
-      if (ASSISTANT_UI_OWNED_UI.has(name)) {
-        assistantUIComponents.add(name);
+      if (OPENAGENTUI_OWNED_UI.has(name)) {
+        openAgentUIComponents.add(name);
       } else {
         shadcnUIComponents.add(name);
       }
@@ -615,7 +615,7 @@ export function scanRequiredComponents(projectDir: string): RequiredComponents {
   }
 
   return {
-    assistantUI: Array.from(assistantUIComponents),
+    openAgentUI: Array.from(openAgentUIComponents),
     shadcnUI: Array.from(shadcnUIComponents),
   };
 }

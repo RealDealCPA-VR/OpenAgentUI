@@ -1,5 +1,5 @@
 import type { JSONValue } from "ai";
-import type { ToolModelContentPart } from "assistant-stream";
+import type { ToolModelContentPart } from "openagentui-stream";
 
 export const toAISDKContent = (parts: readonly ToolModelContentPart[]) => ({
   type: "content" as const,

@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { AssistantRuntimeProvider } from "@openagentui/react";
 import { useDocsChatRuntime, useSpeechAdapters } from "./chat-runtime";
 
 export function PlaygroundRuntimeProvider({

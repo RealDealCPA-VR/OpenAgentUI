@@ -12,15 +12,15 @@ import type {
   McpAppMetadata,
   TextMessagePart,
   ToolCallMessagePart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type {
   ToolCallMessagePartComponent,
   ToolCallMessagePartProps,
-} from "@assistant-ui/core/react";
-import { useAui } from "@assistant-ui/store";
+} from "@openagentui/core/react";
+import { useAui } from "@openagentui/store";
 import { create, type StoreApi, type UseBoundStore } from "zustand";
 
-import { useResource, resource, type ResourceElement } from "@assistant-ui/tap";
+import { useResource, resource, type ResourceElement } from "@openagentui/tap";
 import { McpAppFrame } from "./app-frame";
 import type {
   McpAppBridgeHandlers,
@@ -31,7 +31,7 @@ import type {
   McpAppsHost,
 } from "./types";
 import { getMcpAppFromToolPart } from "./utils";
-import { isRecord } from "@assistant-ui/core/internal";
+import { isRecord } from "@openagentui/core/internal";
 
 /**
  * Options that apply to a single MCP app. `McpAppRenderer` takes them as

@@ -2,7 +2,7 @@ import { createSubscriber } from "svelte/reactivity";
 import {
   getProxiedAssistantState,
   type AssistantState,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { getAuiContext, type ScopeTarget } from "./context";
 
 /**

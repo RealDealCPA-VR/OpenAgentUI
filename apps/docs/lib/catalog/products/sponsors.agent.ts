@@ -1,5 +1,5 @@
 import "server-only";
-import { ASSISTANT_UI_AGENT_PROMPTS } from "./assistant-ui.agent";
+import { OPENAGENTUI_AGENT_PROMPTS } from "./openagentui.agent";
 
 const ground = (docs: string) =>
   `Read ${docs} before writing code and follow its current install path; never invent package names, versions, or APIs it does not show. Use the project's package manager, detected from its lockfile.`;
@@ -10,14 +10,14 @@ const secrets = (variable: string) =>
 const buildBrief = `Fit the integration to what the user said they are building in their setup instructions. If there is no brief, ask what they want this product to do before wiring it in.`;
 
 export const SPONSOR_AGENT_PROMPTS = new Map<string, string>([
-  ["sponsors/assistant-ui", ASSISTANT_UI_AGENT_PROMPTS.get("assistant-ui")!],
+  ["sponsors/openagentui", OPENAGENTUI_AGENT_PROMPTS.get("openagentui")!],
   [
     "sponsors/mastra",
     `${ground("https://mastra.ai/docs")} ${buildBrief}
 
 1. If the project already has an agent backend, ask before replacing it. Otherwise add Mastra to the existing project as the docs describe; do not scaffold a second app beside it.
 2. Define the agent with the model provider the project already uses. ${secrets("model provider API key")}
-3. If assistant-ui is installed, connect its chat route to the Mastra agent so the thread streams its replies, following https://www.assistant-ui.com/docs/integrations/frameworks/mastra/full-stack.md.
+3. If openagentui is installed, connect its chat route to the Mastra agent so the thread streams its replies, following https://openagentui.dev/docs/integrations/frameworks/mastra/full-stack.md.
 
 Verify: send a message from the app and confirm the Mastra agent answers.`,
   ],

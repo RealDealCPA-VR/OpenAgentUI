@@ -4,7 +4,7 @@ import { ToolErrorCard, ToolStatusCard, ToolTraceCard } from "@/lib/tool-trace";
 import type {
   ToolCallMessagePart,
   ToolCallMessagePartProps,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   BookOpenIcon,
   ExternalLinkIcon,
@@ -23,7 +23,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { type CSSProperties, type ReactNode, useEffect, useState } from "react";
-import { useAui, useAuiState } from "@assistant-ui/react";
+import { useAui, useAuiState } from "@openagentui/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { parseLearnCourseStepResult } from "@/lib/xulux/learn/tool-result";
@@ -512,7 +512,7 @@ function CertificateDialog({
               <Image
                 id="certificate-title"
                 src="/brand/logotype.svg"
-                alt="assistant-ui"
+                alt="openagentui"
                 width={150}
                 height={25}
                 className="mx-auto mt-4 h-8 w-auto sm:h-9"
@@ -746,7 +746,7 @@ function downloadCertificateImage({
     285,
   );
   context.font = "700 58px system-ui, sans-serif";
-  context.fillText("assistant-ui", 800, 370);
+  context.fillText("openagentui", 800, 370);
 
   context.fillStyle = "#475569";
   context.font = "400 25px system-ui, sans-serif";
@@ -790,7 +790,7 @@ function downloadCertificateImage({
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = `assistant-ui-${courseId}-certificate.png`;
+    anchor.download = `openagentui-${courseId}-certificate.png`;
     document.body.append(anchor);
     anchor.click();
     anchor.remove();

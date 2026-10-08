@@ -44,29 +44,29 @@ export const metadata = {
   metadataBase: getMetadataBase(),
   alternates: { canonical: "./" },
   title: {
-    template: "%s · assistant-ui",
-    default: "assistant-ui · The frontend library for AI agents",
+    template: "%s · openagentui",
+    default: "openagentui · The frontend library for AI agents",
   },
   description:
     "Open-source React components and runtimes for building AI chat. Streaming, tools, and persistence in TypeScript.",
   openGraph: {
-    title: "assistant-ui",
+    title: "openagentui",
     description:
       "Open-source React components and runtimes for building AI chat. Streaming, tools, and persistence in TypeScript.",
-    siteName: "assistant-ui",
+    siteName: "openagentui",
     type: "website",
     images: [
       {
         url: "/api/og?variant=home",
         width: 1200,
         height: 630,
-        alt: "assistant-ui",
+        alt: "openagentui",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "assistant-ui",
+    title: "openagentui",
     description:
       "Open-source React components and runtimes for building AI chat. Streaming, tools, and persistence in TypeScript.",
     images: ["/api/og?variant=home"],

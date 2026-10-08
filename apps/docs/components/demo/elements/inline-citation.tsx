@@ -5,11 +5,11 @@ import {
   Citation,
   InlineCitation,
   type Source,
-} from "@/components/assistant-ui/elements/inline-citation";
+} from "@/components/openagentui/elements/inline-citation";
 
 const SOURCES = [
   {
-    domain: "assistant-ui.com",
+    domain: "openagentui.dev",
     title: "Optimistic updates in the runtime",
     snippet:
       "The runtime applies local edits immediately and reconciles them once the server acknowledges the write.",

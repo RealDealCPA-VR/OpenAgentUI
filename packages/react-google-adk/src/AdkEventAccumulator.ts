@@ -1,6 +1,6 @@
-import { generateId } from "@assistant-ui/core";
-import { isRecord } from "@assistant-ui/core/internal";
-import type { MessageStatus } from "@assistant-ui/core";
+import { generateId } from "@openagentui/core";
+import { isRecord } from "@openagentui/core/internal";
+import type { MessageStatus } from "@openagentui/core";
 import type {
   AdkEvent,
   AdkEventPart,
@@ -11,7 +11,7 @@ import type {
   AdkAuthRequest,
   AdkMessageMetadata,
 } from "./types";
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 import { normalizeAdkPart } from "./normalizeAdkPart";
 import { projectAdkToolApprovals } from "./adkToolApproval";
 import { isAdkFunctionError } from "./toAdkFunctionResponse";

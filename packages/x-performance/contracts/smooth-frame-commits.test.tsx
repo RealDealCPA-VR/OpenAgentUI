@@ -9,7 +9,7 @@ import {
   useExternalStoreRuntime,
   type SmoothOptions,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { createRenderCounter } from "../src/render-counter";
 
 (

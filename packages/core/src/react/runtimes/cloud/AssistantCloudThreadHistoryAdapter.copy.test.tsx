@@ -1,18 +1,18 @@
 // @vitest-environment jsdom
 
 import { renderHook, waitFor } from "@testing-library/react";
-import { type AssistantCloud, CloudAPIError } from "assistant-cloud";
+import { type AssistantCloud, CloudAPIError } from "openagentui-cloud";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { ThreadAssistantMessage } from "../../../types/message";
 import { useAssistantCloudThreadHistoryAdapter } from "./AssistantCloudThreadHistoryAdapter";
 import { auiV0Encode } from "./auiV0";
 
 const mocks = vi.hoisted(() => ({
-  aui: undefined as unknown as import("@assistant-ui/store").AssistantClient,
+  aui: undefined as unknown as import("@openagentui/store").AssistantClient,
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => mocks.aui,
 }));
 
@@ -40,7 +40,7 @@ const makeClient = () => {
     thread: { getState: () => ({ isEmpty: false, suggestions: [] }) },
     on: () => () => {},
     subscribe: () => () => {},
-  } as unknown as import("@assistant-ui/store").AssistantClient;
+  } as unknown as import("@openagentui/store").AssistantClient;
   return { live, keyed, item };
 };
 

@@ -2,7 +2,7 @@
 import { act, render, waitFor } from "@testing-library/react";
 import type { FC } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { AuiProvider, useAui } from "@assistant-ui/store";
+import { AuiProvider, useAui } from "@openagentui/store";
 import { DefaultThreadComposerRuntimeCore } from "../runtime/base/default-thread-composer-runtime-core";
 import type { AttachmentAdapter } from "../adapters/attachment";
 import type { ThreadRuntimeCore } from "../runtime/interfaces/thread-runtime-core";

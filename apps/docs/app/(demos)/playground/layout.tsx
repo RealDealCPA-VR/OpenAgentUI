@@ -5,7 +5,7 @@ import { createOgMetadata } from "@/lib/og";
 
 const title = "Playground";
 const description =
-  "Experiment with different configurations and settings using the Assistant UI Playground.";
+  "Experiment with different configurations and settings using the OpenAgentUI Playground.";
 
 export const metadata: Metadata = {
   title,
@@ -21,7 +21,7 @@ export default function PlaygroundLayout({
   return (
     <SubProjectLayout
       name="playground"
-      githubPath="https://github.com/assistant-ui/assistant-ui/tree/main/apps/docs/app/playground"
+      githubPath="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/apps/docs/app/playground"
       fullHeight
       hideFooter
     >

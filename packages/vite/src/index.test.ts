@@ -2,14 +2,14 @@ import { describe, it, expect } from "vitest";
 import { aui } from "./index";
 
 const SRC = `"use generative";
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 export default defineToolkit({
   a: { execute: async () => 1, render: () => null },
 });
 `;
 
 function run(consumer: "client" | "server", code: string, id = "/x/t.tsx") {
-  const plugin = aui().find((p) => p.name === "assistant-ui:use-generative")!;
+  const plugin = aui().find((p) => p.name === "openagentui:use-generative")!;
   const transform = plugin.transform as any;
   const handler =
     typeof transform === "function" ? transform : transform.handler;
@@ -38,7 +38,7 @@ describe("aui vite plugin", () => {
 
   // Vite <6 has no `this.environment`; the plugin falls back to `options.ssr`.
   it("legacy options.ssr fallback: ssr false → client build", () => {
-    const plugin = aui().find((p) => p.name === "assistant-ui:use-generative")!;
+    const plugin = aui().find((p) => p.name === "openagentui:use-generative")!;
     const transform = plugin.transform as any;
     const handler =
       typeof transform === "function" ? transform : transform.handler;
@@ -50,7 +50,7 @@ describe("aui vite plugin", () => {
   });
 
   it("legacy options.ssr fallback: ssr true → server build", () => {
-    const plugin = aui().find((p) => p.name === "assistant-ui:use-generative")!;
+    const plugin = aui().find((p) => p.name === "openagentui:use-generative")!;
     const transform = plugin.transform as any;
     const handler =
       typeof transform === "function" ? transform : transform.handler;

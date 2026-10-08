@@ -5,8 +5,8 @@ import {
   type PressableProps,
   type PressableStateCallbackType,
 } from "react-native";
-import { useAuiState } from "@assistant-ui/store";
-import { useThreadListItemTrigger } from "@assistant-ui/core/react";
+import { useAuiState } from "@openagentui/store";
+import { useThreadListItemTrigger } from "@openagentui/core/react";
 
 export type ThreadListItemTriggerProps = Omit<
   PressableProps,

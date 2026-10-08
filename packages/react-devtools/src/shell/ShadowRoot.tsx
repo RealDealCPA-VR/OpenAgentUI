@@ -4,7 +4,7 @@ import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { panelCss } from "../styles/panel.generated";
 
-const PROPERTY_STYLE_ID = "assistant-ui-devtools-properties";
+const PROPERTY_STYLE_ID = "openagentui-devtools-properties";
 
 /**
  * Tailwind registers typed `@property --tw-*` custom properties. These register

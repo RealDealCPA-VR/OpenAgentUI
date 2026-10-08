@@ -4,11 +4,11 @@ import { describe, expect, it } from "vitest";
 
 const PACKAGES_DIR = path.resolve(__dirname, "../../../packages");
 
-/** Published from other assistant-ui org repos, not from this monorepo. */
+/** Published from other openagentui org repos, not from this monorepo. */
 const EXTERNAL_PACKAGES = [
-  "@assistant-ui/xpm",
-  "@assistant-ui/gorp",
-  "@assistant-ui/local-pdf-adapter",
+  "@openagentui/xpm",
+  "@openagentui/gorp",
+  "@openagentui/local-pdf-adapter",
 ];
 
 /**

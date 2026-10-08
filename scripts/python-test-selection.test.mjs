@@ -20,7 +20,7 @@ const selection = workflow
     /      - name: Select Python suite[\s\S]*?        run: \|\n([\s\S]*?)(?=\n      - name:)/,
   )[1]
   .replace(/^          /gm, "");
-const packages = ["assistant-stream", "assistant-ui-sync-server-api"];
+const packages = ["openagentui-stream", "openagentui-sync-server-api"];
 
 function fixture(t) {
   const root = mkdtempSync(path.join(tmpdir(), "aui-python-selection-"));
@@ -81,18 +81,18 @@ test("shared Python and workflow inputs select both packages", (t) => {
 
 test("cross-package renames select both packages", (t) => {
   const f = fixture(t);
-  rmSync(path.join(f.root, "python/assistant-stream/module.py"));
-  f.write("python/assistant-ui-sync-server-api/moved.py");
+  rmSync(path.join(f.root, "python/openagentui-stream/module.py"));
+  f.write("python/openagentui-sync-server-api/moved.py");
   f.commit();
   for (const pkg of packages) assert.equal(f.selected(pkg), true);
 });
 
 test("deleted files still select their package", (t) => {
   const f = fixture(t);
-  rmSync(path.join(f.root, "python/assistant-stream/module.py"));
+  rmSync(path.join(f.root, "python/openagentui-stream/module.py"));
   f.commit();
-  assert.equal(f.selected("assistant-stream"), true);
-  assert.equal(f.selected("assistant-ui-sync-server-api"), false);
+  assert.equal(f.selected("openagentui-stream"), true);
+  assert.equal(f.selected("openagentui-sync-server-api"), false);
 });
 
 test("missing or zero baselines conservatively run both suites", (t) => {
@@ -113,8 +113,8 @@ test("unrelated files and an empty diff skip both suites", (t) => {
 test("a large mixed diff still selects both packages", (t) => {
   const f = fixture(t);
   for (let i = 0; i < 3500; i++)
-    f.write(`python/assistant-stream/generated/${i}.py`);
-  f.write("python/assistant-ui-sync-server-api/last.py");
+    f.write(`python/openagentui-stream/generated/${i}.py`);
+  f.write("python/openagentui-sync-server-api/last.py");
   f.commit();
   for (const pkg of packages) assert.equal(f.selected(pkg), true);
 });

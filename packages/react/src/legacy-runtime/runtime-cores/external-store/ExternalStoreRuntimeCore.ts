@@ -1,1 +1,1 @@
-export { ExternalStoreRuntimeCore } from "@assistant-ui/core/internal";
+export { ExternalStoreRuntimeCore } from "@openagentui/core/internal";

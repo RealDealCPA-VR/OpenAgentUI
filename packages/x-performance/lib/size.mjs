@@ -13,19 +13,19 @@ import { envStamp, git } from "./suite.mjs";
 
 export const BASE_INSTALL_FILTERS = [
   "--filter=.",
-  "--filter=@assistant-ui/react-devtools...",
+  "--filter=@openagentui/react-devtools...",
 ];
 
 export const SIZE_IGNORE = new Set([
-  "assistant-ui",
-  "create-assistant-ui",
-  "@assistant-ui/x-buildutils",
-  "@assistant-ui/x-generative-compiler",
-  "@assistant-ui/mcp-docs-server",
-  "@assistant-ui/next",
-  "@assistant-ui/metro",
-  "@assistant-ui/vite",
-  "@assistant-ui/agent-launcher",
+  "openagentui",
+  "create-openagentui",
+  "@openagentui/x-buildutils",
+  "@openagentui/x-generative-compiler",
+  "@openagentui/mcp-docs-server",
+  "@openagentui/next",
+  "@openagentui/metro",
+  "@openagentui/vite",
+  "@openagentui/agent-launcher",
 ]);
 
 const REPORT_MARKER = "<!-- aui-size-report -->";

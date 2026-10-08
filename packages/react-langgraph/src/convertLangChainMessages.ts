@@ -7,15 +7,15 @@ import type {
   ThreadAssistantMessage,
   ThreadUserMessage,
   ToolCallMessagePart,
-} from "@assistant-ui/core";
-import type { useExternalMessageConverter } from "@assistant-ui/core/react";
+} from "@openagentui/core";
+import type { useExternalMessageConverter } from "@openagentui/core/react";
 import {
   createExternalMessageMetadataKey,
   parseDataUrl,
   shallowArrayEqual,
   stableStringifyToolArgs,
   trackToolArgsKeyOrder,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import {
   convertLangChainContentBlock,
   getCustomMetadata,
@@ -23,7 +23,7 @@ import {
   normalizeToolCallArgs,
   uiMessageToDataPart,
   withAudioTranscript,
-} from "@assistant-ui/react-langchain/converter";
+} from "@openagentui/react-langchain/converter";
 import type {
   LangChainMessage,
   LangChainToolCall,
@@ -33,7 +33,7 @@ import type {
 import {
   parsePartialJsonObject,
   type ReadonlyJSONObject,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import { getIncrementalToolCallArgs } from "./incrementalToolCallArgs";
 
 export type LangGraphMessageConverterMetadata =
@@ -465,4 +465,4 @@ export const convertLangChainMessages: useExternalMessageConverter.Callback<
   }
 };
 
-export { getMessageContent } from "@assistant-ui/react-langchain/converter";
+export { getMessageContent } from "@openagentui/react-langchain/converter";

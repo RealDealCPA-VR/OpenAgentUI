@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useEffectEvent, useMemo, useRef } from "react";
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import {
   useAssistantContextProvider,
   useConfiguredAui,
   useDestroySignalProvider,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { ThreadListItemClient } from "../../store/internal";
 import type { AssistantRuntime } from "../../runtime/api/assistant-runtime";
 import type { ThreadListRuntimeCore } from "../../runtime/interfaces/thread-list-runtime-core";

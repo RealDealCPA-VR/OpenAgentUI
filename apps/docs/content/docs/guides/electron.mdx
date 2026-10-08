@@ -1,10 +1,10 @@
 ---
 title: Electron
-description: Run assistant-ui in an Electron renderer with a hosted backend or a secure, streaming preload and IPC bridge.
+description: Run openagentui in an Electron renderer with a hosted backend or a secure, streaming preload and IPC bridge.
 platforms: ["react"]
 ---
 
-assistant-ui works in Electron through `@assistant-ui/react`. The renderer is a React DOM environment, so there is no separate `@assistant-ui/electron` package to install. The Electron-specific decision is where model requests run and how the renderer reaches them.
+openagentui works in Electron through `@openagentui/react`. The renderer is a React DOM environment, so there is no separate `@openagentui/electron` package to install. The Electron-specific decision is where model requests run and how the renderer reaches them.
 
 <Callout type="warn">
   Never put a provider API key in renderer code, a `VITE_*` variable, or a preload script. Bundled values are readable by anyone with the app. Keep remote credentials on your backend, or keep local credentials in the main process and provision them with an OS-backed secret store.
@@ -19,14 +19,14 @@ assistant-ui works in Electron through `@assistant-ui/react`. The renderer is a 
 
 ```mermaid
 flowchart LR
-  Renderer["Electron renderer<br/>assistant-ui React"] -->|"absolute HTTPS"| Backend["Hosted chat backend"]
+  Renderer["Electron renderer<br/>openagentui React"] -->|"absolute HTTPS"| Backend["Hosted chat backend"]
   Renderer -->|"window.assistantAI"| Preload["context-isolated preload"]
   Preload -->|"transferred MessagePort"| Main["Electron main process"]
   Backend --> Provider["Model or agent"]
   Main --> Provider
 ```
 
-Do not send an SDK client, assistant-ui runtime, callback, `AbortSignal`, or `File` through IPC. Electron IPC uses structured clone semantics; define a small data-only protocol instead.
+Do not send an SDK client, openagentui runtime, callback, `AbortSignal`, or `File` through IPC. Electron IPC uses structured clone semantics; define a small data-only protocol instead.
 
 ## Pattern 1: hosted backend
 
@@ -34,11 +34,11 @@ This is the smallest integration. Keep your existing AI SDK chat route and point
 
 ```tsx title="renderer/assistant-runtime.tsx"
 import type { ReactNode } from "react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { AssistantRuntimeProvider } from "@openagentui/react";
 import {
   AssistantChatTransport,
   useChatRuntime,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 
 const transport = new AssistantChatTransport({
   api: "https://api.example.com/chat",
@@ -63,7 +63,7 @@ The endpoint must return the AI SDK UI message stream consumed by `AssistantChat
 
 Use this pattern when the Electron main process calls the model or runs a local agent. Keep `contextIsolation: true`, `sandbox: true`, and `nodeIntegration: false` on the `BrowserWindow`. Register `registerAssistantIpc(mainWindow)` after creating the trusted window.
 
-The following example is intentionally text-only. It streams one request over a dedicated `MessagePort`; closing that port propagates assistant-ui's Stop action to an `AbortController` in the main process.
+The following example is intentionally text-only. It streams one request over a dedicated `MessagePort`; closing that port propagates openagentui's Stop action to an `AbortController` in the main process.
 
 ### 1. Define a data-only protocol
 
@@ -241,7 +241,7 @@ export function registerAssistantIpc(mainWindow: BrowserWindow) {
 
 If your app can open more than one trusted assistant window, register a unique channel per window or route requests through one application-level registry. A global `ipcMain.on` listener should not be re-registered under the same channel for every window.
 
-### 4. Adapt IPC to assistant-ui
+### 4. Adapt IPC to openagentui
 
 `ChatModelAdapter` yields complete snapshots, so the renderer accumulates each IPC delta before yielding it. Its cleanup function closes the port on Stop, unmount, or completion.
 
@@ -251,7 +251,7 @@ import {
   AssistantRuntimeProvider,
   useLocalRuntime,
   type ChatModelAdapter,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import type { ChatMessage } from "../shared/assistant-ipc";
 
 const ipcChatModel: ChatModelAdapter = {
@@ -346,7 +346,7 @@ export function ElectronRuntimeProvider({ children }: { children: ReactNode }) {
 }
 ```
 
-Wrap your existing assistant-ui thread with `ElectronRuntimeProvider`. Primitives and installed UI components work exactly as they do in a browser React app.
+Wrap your existing openagentui thread with `ElectronRuntimeProvider`. Primitives and installed UI components work exactly as they do in a browser React app.
 
 ## Extend the protocol deliberately
 
@@ -354,7 +354,7 @@ The local example drops every non-text content part. Add explicit structured-clo
 
 - Attachments: pass bounded `ArrayBuffer` data or an app-owned file reference after validating type, size, and path in the main process. Do not pass browser `File` objects.
 - Tools: define serializable tool-call and tool-result events, and validate every tool invocation in the privileged process. Never expose a generic shell or filesystem IPC method.
-- Reasoning and metadata: add distinct event variants and map them to the corresponding assistant-ui content parts.
+- Reasoning and metadata: add distinct event variants and map them to the corresponding openagentui content parts.
 - Thread persistence: store serializable thread data in the main process or use a remote thread-list adapter; do not try to transfer a runtime object.
 
 ## Packaged-app checklist

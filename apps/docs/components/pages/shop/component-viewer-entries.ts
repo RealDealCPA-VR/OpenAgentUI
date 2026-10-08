@@ -75,7 +75,7 @@ const ids = (text: string) =>
     .map((part) => part.trim())
     .filter(Boolean);
 
-const PRODUCTS = "assistant-ui, cloud";
+const PRODUCTS = "openagentui, cloud";
 const productsControl: Control = {
   kind: "text",
   key: "products",
@@ -154,17 +154,17 @@ const PLAN = `## What I found
 
 ## What I will install
 
-- **The chat:** @assistant-ui/react & @assistant-ui/react-markdown
+- **The chat:** @openagentui/react & @openagentui/react-markdown
 - **The route:** \`app/api/chat/route.ts\` on the AI SDK
 - **The page:** \`app/assistant.tsx\` mounting \`<Thread />\`
 
 ## Steps
 
-1. Install **@assistant-ui/react** and its peer packages.
+1. Install **@openagentui/react** and its peer packages.
 2. Add \`app/api/chat/route.ts\` on the Vercel AI SDK.
 3. Mount \`<Thread />\` on the home page and keep the existing layout.
 
-Nothing changes until you approve. See the [runtime guide](https://www.assistant-ui.com/docs/runtimes/pick-a-runtime).`;
+Nothing changes until you approve. See the [runtime guide](https://openagentui.dev/docs/runtimes/pick-a-runtime).`;
 
 const STEP_FIELDS: Control[] = [
   { kind: "text", key: "title", label: "Title" },
@@ -180,7 +180,7 @@ const STEP_FIELDS: Control[] = [
     kind: "select",
     key: "product",
     label: "Product",
-    options: ["", "assistant-ui", "cloud"],
+    options: ["", "openagentui", "cloud"],
   },
 ];
 const stepBlank: Values = {
@@ -188,13 +188,13 @@ const stepBlank: Values = {
   detail: "app/api/chat/route.ts streams through the AI SDK.",
   status: "pending",
   note: "",
-  product: "assistant-ui",
+  product: "openagentui",
 };
 const DEFAULT_STEPS: Values[] = [
   {
     ...stepBlank,
-    title: "Install @assistant-ui/react",
-    detail: "pnpm add @assistant-ui/react ai @ai-sdk/react",
+    title: "Install @openagentui/react",
+    detail: "pnpm add @openagentui/react ai @ai-sdk/react",
     status: "done",
   },
   { ...stepBlank, status: "active" },
@@ -227,7 +227,7 @@ const stepsOf = (values: Values): Checkout.Step[] =>
 const ACTIVITY: Record<string, (step: Checkout.Step) => string[]> = {
   s0: (step) => [
     "Checked the package manager: pnpm, from pnpm-lock.yaml.",
-    "Ran pnpm add @assistant-ui/react ai @ai-sdk/react.",
+    "Ran pnpm add @openagentui/react ai @ai-sdk/react.",
     `Completed: ${step.title}`,
   ],
   s1: () => [

@@ -41,13 +41,13 @@ const { aui } = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => aui,
 }));
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/core/react")>()),
+vi.mock("@openagentui/core/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/core/react")>()),
   useCloudThreadListAdapter: () => ({}),
   useRemoteThreadListRuntime: ({
     runtimeHook,

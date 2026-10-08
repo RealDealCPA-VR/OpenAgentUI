@@ -1,1 +1,1 @@
-export { DefaultEditComposerRuntimeCore } from "@assistant-ui/core/internal";
+export { DefaultEditComposerRuntimeCore } from "@openagentui/core/internal";

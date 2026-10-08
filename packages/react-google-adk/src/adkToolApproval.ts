@@ -1,9 +1,9 @@
-import { generateId } from "@assistant-ui/core";
+import { generateId } from "@openagentui/core";
 import type {
   RespondToToolApprovalOptions,
   ToolCallMessagePart,
-} from "@assistant-ui/core";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+} from "@openagentui/core";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import type { AdkMessage } from "./types";
 
 export type AdkToolApproval = NonNullable<ToolCallMessagePart["approval"]>;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useAuiState, type PartItem } from "@assistant-ui/svelte";
+  import { useAuiState, type PartItem } from "@openagentui/svelte";
 
   let { item }: { item: PartItem } = $props();
 

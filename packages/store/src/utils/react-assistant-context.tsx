@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useContextProvider } from "@assistant-ui/tap";
+import { useContextProvider } from "@openagentui/tap";
 import type { AssistantClient } from "../types/client";
 import { BaseProxyHandler, handleIntrospectionProp } from "./BaseProxyHandler";
 import { createErrorClientAccessor } from "./client-accessor";

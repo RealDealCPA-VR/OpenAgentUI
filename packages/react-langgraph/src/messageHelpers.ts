@@ -1,9 +1,9 @@
-import { getUIMessageParentId } from "@assistant-ui/react-langchain/converter";
+import { getUIMessageParentId } from "@openagentui/react-langchain/converter";
 import {
   getExternalStoreMessages,
   type ThreadMessage,
-} from "@assistant-ui/core";
-import { scanPendingToolCalls } from "@assistant-ui/core/internal";
+} from "@openagentui/core";
+import { scanPendingToolCalls } from "@openagentui/core/internal";
 import type { LangChainMessage, LangChainToolCall, UIMessage } from "./types";
 
 export type PendingToolCallGroup = {

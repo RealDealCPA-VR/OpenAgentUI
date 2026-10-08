@@ -91,7 +91,7 @@ import {
 import { listTemplates } from "@/lib/xulux/template-service";
 import { GET, POST } from "./route";
 
-const ORIGIN = "https://www.assistant-ui.com";
+const ORIGIN = "https://openagentui.dev";
 const encoder = new TextEncoder();
 
 type JsonRpcResponse = {
@@ -208,7 +208,7 @@ describe("GET /api/mcp", () => {
 
       expect(response.status).toBe(200);
       expect(await response.json()).toMatchObject({
-        name: "assistant-ui-docs",
+        name: "openagentui-docs",
         protocol: "mcp",
       });
     }
@@ -216,7 +216,7 @@ describe("GET /api/mcp", () => {
 });
 
 describe("POST /api/mcp", () => {
-  it("initializes the assistant-ui docs server", async () => {
+  it("initializes the openagentui docs server", async () => {
     const response = await requestMcp("initialize", {
       protocolVersion: "2025-06-18",
       capabilities: {},
@@ -225,7 +225,7 @@ describe("POST /api/mcp", () => {
 
     expect(response.error).toBeUndefined();
     expect(response.result).toMatchObject({
-      serverInfo: { name: "assistant-ui-docs", version: "1.0.0" },
+      serverInfo: { name: "openagentui-docs", version: "1.0.0" },
     });
   });
 
@@ -259,7 +259,7 @@ describe("POST /api/mcp", () => {
       (
         promptsResponse.result as { prompts: Array<{ name: string }> }
       ).prompts.map((prompt) => prompt.name),
-    ).toContain("assistant-ui-template-workflow");
+    ).toContain("openagentui-template-workflow");
   });
 
   it("executes the WebMCP adapter through the route transport", async () => {
@@ -370,14 +370,14 @@ describe("POST /api/mcp", () => {
 
     const response = await requestMcp("tools/call", {
       name: "read_template",
-      arguments: { templateId: "base-assistant-ui" },
+      arguments: { templateId: "base-openagentui" },
     });
     const result = getToolCallResult(response);
     const text = result.content.find((block) => block.type === "text")?.text;
     const payload = JSON.parse(text!) as Record<string, unknown>;
 
     expect(result.isError).toBeFalsy();
-    expect(payload).toMatchObject({ id: "base-assistant-ui" });
+    expect(payload).toMatchObject({ id: "base-openagentui" });
     expect(payload["configRoots"]).toBeDefined();
     expect(payload["rules"]).toBeDefined();
     expect(mocks.fetchTemplateContract).toHaveBeenCalledTimes(1);
@@ -397,7 +397,7 @@ describe("POST /api/mcp", () => {
     const response = await requestMcp("tools/call", {
       name: "preview_template",
       arguments: {
-        templateId: "base-assistant-ui",
+        templateId: "base-openagentui",
         config: { brandTheme: { preset: "assistantDark" } },
       },
     });
@@ -423,7 +423,7 @@ describe("POST /api/mcp", () => {
 
   it("serves the template workflow prompt", async () => {
     const response = await requestMcp("prompts/get", {
-      name: "assistant-ui-template-workflow",
+      name: "openagentui-template-workflow",
     });
 
     expect(response.error).toBeUndefined();
@@ -438,11 +438,11 @@ describe("POST /api/mcp", () => {
 
     await requestMcp("tools/call", {
       name: "read_template",
-      arguments: { templateId: "base-assistant-ui" },
+      arguments: { templateId: "base-openagentui" },
     });
     await requestMcp("tools/call", {
       name: "preview_template",
-      arguments: { templateId: "base-assistant-ui" },
+      arguments: { templateId: "base-openagentui" },
     });
 
     expect(mocks.checkTemplateRateLimit).toHaveBeenCalledTimes(2);
@@ -494,7 +494,7 @@ describe("POST /api/mcp", () => {
 
   it("meters the docs resources that repeat the tool work", async () => {
     await requestMcp("resources/read", {
-      uri: "assistant-ui://navigation",
+      uri: "openagentui://navigation",
     });
     await requestMcp("resources/list", {});
 
@@ -510,13 +510,13 @@ describe("POST /api/mcp", () => {
     );
 
     const denied = await requestMcp("resources/read", {
-      uri: "assistant-ui://docs/getting-started",
+      uri: "openagentui://docs/getting-started",
     });
 
     expect(denied.error?.message).toContain("Docs tool rate limit exceeded");
 
     const allowed = await requestMcp("resources/read", {
-      uri: "assistant-ui://docs/getting-started",
+      uri: "openagentui://docs/getting-started",
     });
 
     expect(allowed.error?.message).toContain("Page not found");
@@ -528,7 +528,7 @@ describe("POST /api/mcp", () => {
 
     await requestMcp("tools/call", {
       name: "read_template",
-      arguments: { templateId: "base-assistant-ui" },
+      arguments: { templateId: "base-openagentui" },
     });
 
     expect(mocks.checkTemplateRateLimit).toHaveBeenCalledTimes(1);
@@ -582,7 +582,7 @@ describe("POST /api/mcp", () => {
     const response = await requestMcp("tools/call", {
       name: "preview_template",
       arguments: {
-        templateId: "base-assistant-ui",
+        templateId: "base-openagentui",
         config: { brandTheme: { preset: "assistantDark" } },
       },
     });
@@ -591,7 +591,7 @@ describe("POST /api/mcp", () => {
 
     expect(result.isError).toBe(true);
     expect(text).toBe(
-      "Template tool rate limit exceeded. Retry in 30s. The assistant-ui docs tools remain available.",
+      "Template tool rate limit exceeded. Retry in 30s. The openagentui docs tools remain available.",
     );
     expect(mocks.fetchPreviewSession).not.toHaveBeenCalled();
   });
@@ -603,14 +603,14 @@ describe("POST /api/mcp", () => {
 
     const response = await requestMcp("tools/call", {
       name: "read_template",
-      arguments: { templateId: "base-assistant-ui" },
+      arguments: { templateId: "base-openagentui" },
     });
     const result = getToolCallResult(response);
     const text = result.content.find((block) => block.type === "text")?.text;
 
     expect(result.isError).toBe(true);
     expect(text).toBe(
-      "Template tools are temporarily unavailable. The assistant-ui docs tools remain available.",
+      "Template tools are temporarily unavailable. The openagentui docs tools remain available.",
     );
     expect(mocks.fetchTemplateContract).not.toHaveBeenCalled();
   });
@@ -619,7 +619,7 @@ describe("POST /api/mcp", () => {
     const response = await requestMcp("tools/call", {
       name: "preview_template",
       arguments: {
-        templateId: "base-assistant-ui",
+        templateId: "base-openagentui",
         config: { banana: {} },
       },
     });

@@ -1,4 +1,4 @@
-import "@assistant-ui/store";
+import "@openagentui/store";
 
 type FooState = { id: string; bar: string };
 type FooMethods = {
@@ -25,7 +25,7 @@ type FooListEvents = {
   "fooList.added": { id: string };
 };
 
-declare module "@assistant-ui/store" {
+declare module "@openagentui/store" {
   interface ScopeRegistry {
     foo: {
       methods: FooMethods;

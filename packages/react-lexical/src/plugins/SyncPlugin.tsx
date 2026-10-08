@@ -20,17 +20,17 @@ import {
   type LexicalEditor,
   type LexicalNode,
 } from "lexical";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type {
   Unstable_DirectiveFormatter,
   Unstable_DirectiveSegment,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
-import { unstable_defaultDirectiveFormatter } from "@assistant-ui/core";
+} from "@openagentui/core";
+import { unstable_defaultDirectiveFormatter } from "@openagentui/core";
 import {
   unstable_useTriggerPopoverRootContextOptional,
   type Unstable_RegisteredTrigger,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   $createDirectiveNodeWithFormatter,
   $isDirectiveNode,

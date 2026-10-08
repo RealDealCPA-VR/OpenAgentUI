@@ -32,4 +32,4 @@ run("node", [
   "--check",
   ...optionArgs("--filter", filters),
 ]);
-run("pnpm", ["--filter", "@assistant-ui/api-surface", "check"]);
+run("pnpm", ["--filter", "@openagentui/api-surface", "check"]);

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   getPartialJsonObjectFieldState,
   getPartialJsonObjectMeta,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import {
   AISDKMessageConverter,
   type AISDKMessageConverterMetadata,

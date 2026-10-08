@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "OpenUI Example",
   description:
-    "Example using @assistant-ui/react with the OpenUI renderer via @openuidev/assistant-ui",
+    "Example using @openagentui/react with the OpenUI renderer via @openuidev/assistant-ui",
 };
 
 export default function RootLayout({

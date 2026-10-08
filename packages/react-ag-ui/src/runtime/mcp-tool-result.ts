@@ -1,5 +1,5 @@
-import { isRecord } from "@assistant-ui/core/internal";
-import { isMcpAppUri } from "@assistant-ui/core";
+import { isRecord } from "@openagentui/core/internal";
+import { isMcpAppUri } from "@openagentui/core";
 
 export type McpToolCallResult = Record<string, unknown> & {
   content: unknown[];

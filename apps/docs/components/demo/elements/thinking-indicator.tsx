@@ -1,6 +1,6 @@
 "use client";
 
-import { ThinkingIndicator } from "@/components/assistant-ui/elements/thinking-indicator";
+import { ThinkingIndicator } from "@/components/openagentui/elements/thinking-indicator";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const STATUSES = [

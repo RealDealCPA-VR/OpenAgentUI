@@ -2,7 +2,7 @@
 
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import type { AssistantRuntime, ChatModelAdapter } from "../../index";
 
 const mocks = vi.hoisted(() => ({

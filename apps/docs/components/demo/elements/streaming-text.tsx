@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import {
   StreamingText,
   type Segment,
-} from "@/components/assistant-ui/elements/streaming-text";
+} from "@/components/openagentui/elements/streaming-text";
 import { useWordStream } from "@/components/demo/hooks/use-demo";
 
 const SEGMENTS: Segment[] = [

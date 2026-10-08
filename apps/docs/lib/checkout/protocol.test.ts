@@ -119,7 +119,7 @@ describe("stepActivity", () => {
         line("l2", "s1", "Created app/api/chat/route.ts"),
         line("l3", "s1", "Completed: Add the route\n\nIt streams."),
         line("l4", "s1", "Looks good", "user"),
-        line("l5", "s2", "Installing @assistant-ui/react"),
+        line("l5", "s2", "Installing @openagentui/react"),
       ],
     });
     expect(stepActivity(installing, "s1").map((entry) => entry.id)).toEqual([

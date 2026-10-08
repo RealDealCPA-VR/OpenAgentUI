@@ -19,7 +19,7 @@ In your `"use generative"` file, give the tool its description, parameters, and 
 ```tsx title="app/task-board-toolkit.tsx"
 "use generative";
 
-import { defineToolkit, stubTool } from "@assistant-ui/react";
+import { defineToolkit, stubTool } from "@openagentui/react";
 import { manageTasksParameters } from "./state";
 
 export default defineToolkit({
@@ -48,7 +48,7 @@ import {
   Tools,
   useAui,
   useAuiToolOverrides,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { useState, type Dispatch, type SetStateAction } from "react";
 import type { Task } from "./state";
 import toolkit from "./task-board-toolkit";
@@ -112,4 +112,4 @@ The override supplies **only** the `execute`; the description, parameters, and `
 
 ## When to use this vs. Interactables
 
-If you mainly want the model to update a piece of component state with a partial-update tool generated for you, [Interactables](/docs/tools/interactables) does that without a `stubTool`. Use dynamic tools when you want full control over the tool's name, schema, executor logic, and return value. The two compose: the [with-interactables example](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-interactables) uses both side by side.
+If you mainly want the model to update a piece of component state with a partial-update tool generated for you, [Interactables](/docs/tools/interactables) does that without a `stubTool`. Use dynamic tools when you want full control over the tool's name, schema, executor logic, and return value. The two compose: the [with-interactables example](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-interactables) uses both side by side.

@@ -1,4 +1,4 @@
-import { useThreadListItemUnarchive } from "@assistant-ui/core/react";
+import { useThreadListItemUnarchive } from "@openagentui/core/react";
 import { Pressable, type PressableProps } from "../internal/Pressable";
 
 export type ThreadListItemUnarchiveProps = Omit<

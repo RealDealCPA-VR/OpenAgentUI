@@ -20,7 +20,7 @@ vi.mock("@/lib/cloud-projects", () => ({
 import { GET } from "./route";
 
 const request = (headers: HeadersInit = { "sec-fetch-site": "same-origin" }) =>
-  new Request("https://www.assistant-ui.com/api/cloud/projects", { headers });
+  new Request("https://openagentui.dev/api/cloud/projects", { headers });
 
 const options = { issuer: "https://accounts.test" };
 

@@ -8,12 +8,12 @@ import {
   AuiProvider,
   useAuiState,
   AuiIf,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import {
   SpanPrimitive,
   SpanResource,
   type SpanData,
-} from "@assistant-ui/react-o11y";
+} from "@openagentui/react-o11y";
 import { ClientOnly } from "./client-only";
 
 function SpanLatency() {

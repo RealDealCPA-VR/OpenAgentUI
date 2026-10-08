@@ -5,13 +5,13 @@ import {
   ElicitationForm,
   type ElicitationField,
   type ElicitationState,
-} from "@/components/assistant-ui/elements/elicitation-form";
+} from "@/components/openagentui/elements/elicitation-form";
 
 const INITIAL_FIELDS: readonly ElicitationField[] = [
   {
     name: "repo",
     label: "Repository",
-    value: "assistant-ui/assistant-ui",
+    value: "openagentui/openagentui",
     kind: "text",
     required: true,
   },

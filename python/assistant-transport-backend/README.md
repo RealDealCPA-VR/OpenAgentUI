@@ -1,13 +1,13 @@
 # Assistant Transport Backend
 
-A simple Python server that demonstrates the assistant-transport protocol using FastAPI and assistant-stream. This backend returns static responses to show how the streaming protocol works with assistant-ui frontend applications.
+A simple Python server that demonstrates the assistant-transport protocol using FastAPI and openagentui-stream. This backend returns static responses to show how the streaming protocol works with openagentui frontend applications.
 
 ## Features
 
 - 🚀 **FastAPI-based** - High-performance async server
-- 📡 **Streaming Responses** - Real-time responses using assistant-stream
-- 🔄 **State Management** - Uses assistant-stream's object-stream state utilities
-- 🔌 **Assistant-Transport Protocol** - Full compatibility with assistant-ui
+- 📡 **Streaming Responses** - Real-time responses using openagentui-stream
+- 🔄 **State Management** - Uses openagentui-stream's object-stream state utilities
+- 🔌 **Assistant-Transport Protocol** - Full compatibility with openagentui
 - 🌐 **CORS Enabled** - Works with any frontend origin
 - 📦 **Simple Setup** - Minimal dependencies
 - 🧪 **Static Responses** - No API keys required, perfect for testing
@@ -88,7 +88,7 @@ Main endpoint that implements the assistant-transport protocol.
 }
 ```
 
-**Response:** Streaming response using assistant-stream format with static responses.
+**Response:** Streaming response using openagentui-stream format with static responses.
 
 ### `GET /health`
 
@@ -130,7 +130,7 @@ python/assistant-transport-backend/
 
 ### Assistant-Stream Integration
 
-The backend uses `assistant_stream.create_run()` to create a streaming controller that:
+The backend uses `openagentui_stream.create_run()` to create a streaming controller that:
 
 1. **Manages State**: Updates conversation state with messages
 2. **Streams Text**: Uses `controller.append_text()` for character-by-character streaming
@@ -201,11 +201,11 @@ curl -X POST http://localhost:8000/assistant \
 
 ## License
 
-This project is part of the assistant-ui monorepo and follows the same MIT licensing terms.
+This project is part of the openagentui monorepo and follows the same MIT licensing terms.
 
 ## Learn More
 
-- [assistant-ui Documentation](https://docs.assistant-ui.com)
-- [Assistant Transport Protocol](https://docs.assistant-ui.com/runtimes/assistant-transport)
-- [assistant-stream Package](https://github.com/assistant-ui/assistant-ui/tree/main/python/assistant-stream)
+- [openagentui Documentation](https://openagentui.dev)
+- [Assistant Transport Protocol](https://openagentui.dev/runtimes/assistant-transport)
+- [openagentui-stream Package](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/python/openagentui-stream)
 - [FastAPI Documentation](https://fastapi.tiangolo.com)

@@ -9,7 +9,7 @@ import { type AssistantToolProps, useAssistantTool } from "./useAssistantTool";
  *
  * @deprecated Use a toolkit with `Tools({ toolkit })` and register it via
  * `AuiConfig({ tools: Tools({ toolkit }) })` on the provider's `config` prop instead. See
- * https://assistant-ui.com/docs/migrations/toolkit-tools.
+ * https://openagentui.dev/docs/migrations/toolkit-tools.
  */
 export type AssistantTool = FC & {
   /** Tool definition registered by this component. */
@@ -26,7 +26,7 @@ export type AssistantTool = FC & {
  *
  * @deprecated Use a toolkit with `Tools({ toolkit })` and register it via
  * `AuiConfig({ tools: Tools({ toolkit }) })` on the provider's `config` prop instead. See
- * https://assistant-ui.com/docs/migrations/toolkit-tools.
+ * https://openagentui.dev/docs/migrations/toolkit-tools.
  */
 export const makeAssistantTool = <
   TArgs extends Record<string, unknown>,

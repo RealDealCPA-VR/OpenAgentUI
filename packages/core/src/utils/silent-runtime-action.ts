@@ -1,5 +1,5 @@
 export const SILENT_RUNTIME_ACTION = Symbol.for(
-  "assistant-ui.silent-runtime-action",
+  "openagentui.silent-runtime-action",
 );
 
 export const isSilentRuntimeAction = (error: unknown): boolean =>

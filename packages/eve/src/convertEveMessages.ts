@@ -16,14 +16,14 @@ import {
   type ToolApprovalDisplay,
   type ToolApprovalOption,
   type ToolCallMessagePart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   httpUrlPattern,
   resolveFileMediaType,
   resolveFilePartSource,
   resolveImageMediaType,
   toMediaWireUrl,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import type {
   EveAuthorizationOutcome,
   EveAuthorizationPart,
@@ -477,7 +477,7 @@ const toUserAttachments = (
 };
 
 /**
- * Converts a single Eve message into an assistant-ui thread message.
+ * Converts a single Eve message into an openagentui thread message.
  */
 export const convertEveMessage = (
   message: EveMessage,
@@ -589,7 +589,7 @@ const getInterruptedTurns = (
 };
 
 /**
- * Converts the full Eve message data object into assistant-ui thread messages.
+ * Converts the full Eve message data object into openagentui thread messages.
  */
 export const convertEveMessages = (
   data: EveMessageData,
@@ -629,7 +629,7 @@ type OutboundPart = AppendMessage["content"][number] & {
 };
 
 /**
- * Converts an assistant-ui append message into the message payload accepted by
+ * Converts an openagentui append message into the message payload accepted by
  * Eve's `send` API.
  */
 export const getEveMessageContent = (
@@ -735,7 +735,7 @@ export const findEveInputRequest = (
 };
 
 /**
- * Converts an assistant-ui tool approval response into an Eve input response.
+ * Converts an openagentui tool approval response into an Eve input response.
  *
  * When `inputRequest` is known, every returned response carries either an
  * option the request declares or a free-form answer. A literal option match

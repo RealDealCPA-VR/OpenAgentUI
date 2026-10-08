@@ -1,6 +1,6 @@
 import type { ModelContextProvider, ModelContext } from "../types";
 import type { Unsubscribe } from "../../types/unsubscribe";
-import { type Tool, toJSONSchema } from "assistant-stream";
+import { type Tool, toJSONSchema } from "openagentui-stream";
 import {
   type FrameMessage,
   FRAME_MESSAGE_CHANNEL,
@@ -115,7 +115,7 @@ export class AssistantFrameProvider {
       case "tool-call":
         void this.handleToolCall(message, event).catch((error: unknown) => {
           console.error(
-            "[assistant-ui] AssistantFrame tool call failed.",
+            "[openagentui] AssistantFrame tool call failed.",
             error,
           );
         });
@@ -178,7 +178,7 @@ export class AssistantFrameProvider {
       if (error !== undefined) throw sendError;
 
       console.error(
-        "[assistant-ui] AssistantFrame tool result could not be sent.",
+        "[openagentui] AssistantFrame tool result could not be sent.",
         sendError,
       );
       this.sendMessage(event, {

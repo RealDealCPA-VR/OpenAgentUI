@@ -16,11 +16,11 @@ A file tree lists everything a run touched: a "N files changed" header with net 
 
 A tool result is naturally a flat list of touched files. Group it into folder headers and indented file rows before handing it to the element:
 
-```tsx title="components/assistant-ui/elements/list-changes-tool-ui.tsx"
+```tsx title="components/openagentui/elements/list-changes-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { FileTree, type FileTreeNode } from "@/components/assistant-ui/elements/file-tree";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { FileTree, type FileTreeNode } from "@/components/openagentui/elements/file-tree";
 
 type ChangedFile = { path: string; additions: number; deletions: number };
 type ListChangesResult = { files: readonly ChangedFile[] };
@@ -75,8 +75,8 @@ export const ListChangesToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
-import { ListChangesToolUI } from "@/components/assistant-ui/elements/list-changes-tool-ui";
+import { defineToolkit } from "@openagentui/react";
+import { ListChangesToolUI } from "@/components/openagentui/elements/list-changes-tool-ui";
 
 export const toolkit = defineToolkit({
   list_changes: {
@@ -87,8 +87,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -117,7 +117,7 @@ export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
 ```tsx title="app/changes.tsx"
 "use client";
 
-import { FileTree, type FileTreeNode } from "@/components/assistant-ui/elements/file-tree";
+import { FileTree, type FileTreeNode } from "@/components/openagentui/elements/file-tree";
 
 const NODES: readonly FileTreeNode[] = [
   { path: "packages/core/src", name: "packages/core/src", depth: 0, kind: "folder" },

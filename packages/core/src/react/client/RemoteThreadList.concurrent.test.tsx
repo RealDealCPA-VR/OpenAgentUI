@@ -2,14 +2,14 @@
 
 import { createRef, startTransition, Suspense, useLayoutEffect } from "react";
 import { act, render, waitFor } from "@testing-library/react";
-import { resource, withKey } from "@assistant-ui/tap";
+import { resource, withKey } from "@openagentui/tap";
 import {
   AuiConfig,
   AuiProvider,
   type AssistantClient,
   useAui,
   useAuiState,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import { describe, expect, it, vi } from "vitest";
 import type { RemoteThreadListAdapter } from "../../runtimes/remote-thread-list/types";
 import { RemoteThreadList } from "./RemoteThreadList";

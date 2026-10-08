@@ -138,7 +138,7 @@ export type CreateAdkApiRouteOptions = {
  *
  * @example Next.js App Router
  * ```ts
- * import { createAdkApiRoute } from '@assistant-ui/react-google-adk/server';
+ * import { createAdkApiRoute } from '@openagentui/react-google-adk/server';
  * import { runner } from './agent';
  * import { requireUser } from './auth';
  *

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import type {
   McpAppResource,
   McpAppsHost,
@@ -104,7 +104,7 @@ async function postToHost(
  * Creates the default HTTP host for MCP App widgets.
  *
  * The host POSTs widget requests to the configured route as `{ method,
- * params }`, using the method names expected by the assistant-ui MCP Apps
+ * params }`, using the method names expected by the openagentui MCP Apps
  * guide.
  */
 const useMcpAppsRemoteHost = (

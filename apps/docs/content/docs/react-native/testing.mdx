@@ -83,7 +83,7 @@ Run the suite with `npm test`. The kit itself uses a named `react-native` projec
 
 Props only elements do not need a runtime provider. Render them with `createRoot`, wrap each update in `act`, and mock the styling and icon modules they import.
 
-```tsx title="components/assistant-ui/elements/message-queue.test.tsx"
+```tsx title="components/openagentui/elements/message-queue.test.tsx"
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -142,20 +142,20 @@ describe("MessageQueue", () => {
 
 ## Test a runtime binding
 
-An `.aui.tsx` element reads state from the assistant-ui store. The kit's `thread.aui.test.tsx` mocks that store because it checks many layout and interaction states without constructing a complete thread runtime.
+An `.aui.tsx` element reads state from the openagentui store. The kit's `thread.aui.test.tsx` mocks that store because it checks many layout and interaction states without constructing a complete thread runtime.
 
 Mount a real runtime when the binding only needs a focused message state. The native primitive tests use `useExternalStoreRuntime`, `AssistantRuntimeProvider`, and the index providers together.
 
-```tsx title="components/assistant-ui/elements/attachment.aui.test.tsx"
+```tsx title="components/openagentui/elements/attachment.aui.test.tsx"
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { ThreadMessageLike } from "@assistant-ui/react-native";
+import type { ThreadMessageLike } from "@openagentui/react-native";
 import {
   AssistantRuntimeProvider,
   MessageByIndexProvider,
   useExternalStoreRuntime,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import { UserMessageAttachments } from "./attachment.aui";
 
 vi.mock("react-native", async (importOriginal) => {
@@ -270,7 +270,7 @@ Use the external store pattern above for focused bindings, and a mocked store wh
 
 `react-native-web` drops `className` from `View`. Use the div based `View` mock from the kit when a test must assert a class or an accessibility attribute on a view.
 
-```tsx title="components/assistant-ui/elements/thread.aui.test.tsx"
+```tsx title="components/openagentui/elements/thread.aui.test.tsx"
 vi.mock("react-native", async (importOriginal) => {
   const actual = await importOriginal<typeof import("react-native")>();
   const React = await import("react");

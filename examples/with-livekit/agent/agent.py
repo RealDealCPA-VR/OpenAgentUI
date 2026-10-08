@@ -1,4 +1,4 @@
-"""LiveKit voice agent for the assistant-ui with-livekit example.
+"""LiveKit voice agent for the openagentui with-livekit example.
 
 Uses OpenAI Realtime API for end-to-end STT -> LLM -> TTS.
 
@@ -37,7 +37,7 @@ async def entrypoint(ctx: JobContext) -> None:
         room=ctx.room,
         agent=Agent(
             instructions=(
-                "You are a helpful voice assistant built with assistant-ui "
+                "You are a helpful voice assistant built with openagentui "
                 "and LiveKit. Keep responses concise and conversational."
             ),
         ),

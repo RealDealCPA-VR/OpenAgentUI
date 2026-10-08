@@ -8,13 +8,13 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
-import { useResources, useTapRoot, withKey } from "@assistant-ui/tap";
-import { useAui } from "@assistant-ui/store";
-import type { Tool } from "assistant-stream";
+import { useResources, useTapRoot, withKey } from "@openagentui/tap";
+import { useAui } from "@openagentui/store";
+import type { Tool } from "openagentui-stream";
 import { getDefaultWebMcpHost, type WebMcpHost } from "./webmcp-host";
 import { defaultWebMcpFilter, toWebMcpInputSchema } from "./convertTools";
 import { WebMcpRegistrationResource } from "./WebMcpRegistrationResource";
-import { shallowEqual } from "@assistant-ui/store/internal";
+import { shallowEqual } from "@openagentui/store/internal";
 import {
   useModelContextSnapshot,
   type ModelContextSnapshotSource,
@@ -112,7 +112,7 @@ const useWebMcpRegistry = ({
       if (warned.has(tool)) continue;
       warned.add(tool);
       console.warn(
-        `[assistant-ui] Skipping WebMCP registration for tool "${name}": filter or schema conversion failed.`,
+        `[openagentui] Skipping WebMCP registration for tool "${name}": filter or schema conversion failed.`,
         error,
       );
     }

@@ -360,14 +360,14 @@ test("runCheck applies the exceptions it is given", () => {
 
 test("the command fails on a workspace whose barrels disagree", () => {
   const root = createFixture({
-    core: "@assistant-ui/core",
-    web: "@assistant-ui/react",
-    native: "@assistant-ui/react-native",
+    core: "@openagentui/core",
+    web: "@openagentui/react",
+    native: "@openagentui/react-native",
   });
   for (const [dir, name] of [
-    ["react-ink", "@assistant-ui/react-ink"],
-    ["store", "@assistant-ui/store"],
-    ["tap", "@assistant-ui/tap"],
+    ["react-ink", "@openagentui/react-ink"],
+    ["store", "@openagentui/store"],
+    ["tap", "@openagentui/tap"],
   ]) {
     const packageDir = path.join(root, "packages", dir);
     mkdirSync(path.join(packageDir, "src"), { recursive: true });
@@ -390,11 +390,11 @@ test("the command fails on a workspace whose barrels disagree", () => {
     assert.equal(result.status, 1, result.stdout + result.stderr);
     assert.match(
       result.stderr,
-      /@assistant-ui\/react-ink\n\s+is missing helper from @assistant-ui\/core, @assistant-ui\/core\/react; exported by @assistant-ui\/react, @assistant-ui\/react-native/,
+      /@openagentui\/react-ink\n\s+is missing helper from @openagentui\/core, @openagentui\/core\/react; exported by @openagentui\/react, @openagentui\/react-native/,
     );
     assert.match(
       result.stderr,
-      /@assistant-ui\/react-native\n(.*\n)*\s+exports only the type of a value that its siblings export Provider/,
+      /@openagentui\/react-native\n(.*\n)*\s+exports only the type of a value that its siblings export Provider/,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });

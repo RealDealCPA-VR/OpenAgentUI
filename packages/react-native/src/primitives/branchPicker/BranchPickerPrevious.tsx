@@ -4,7 +4,7 @@ import {
   type PressableProps,
   type PressableStateCallbackType,
 } from "react-native";
-import { useBranchPickerPrevious } from "@assistant-ui/core/react";
+import { useBranchPickerPrevious } from "@openagentui/core/react";
 
 export type BranchPickerPreviousProps = Omit<
   PressableProps,

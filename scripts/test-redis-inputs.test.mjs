@@ -32,10 +32,10 @@ test("does not start Redis for unrelated tests or consumer builds", () => {
   assert.equal(
     needsRedisTestService({
       tasks: [
-        { package: "@assistant-ui/tap", task: "test" },
-        { package: "@assistant-ui/mcp-docs-server", task: "test:coverage" },
-        { package: "assistant-stream", task: "build" },
-        { package: "@assistant-ui/docs", task: "generate:type-docs" },
+        { package: "@openagentui/tap", task: "test" },
+        { package: "@openagentui/mcp-docs-server", task: "test:coverage" },
+        { package: "openagentui-stream", task: "build" },
+        { package: "@openagentui/docs", task: "generate:type-docs" },
       ],
     }),
     false,
@@ -59,7 +59,7 @@ test("invalid task plans fail instead of silently skipping Redis", () => {
 test("the CLI consumes Turbo JSON", () => {
   const result = spawnSync(process.execPath, [script], {
     input: JSON.stringify({
-      tasks: [{ package: "assistant-stream", task: "test" }],
+      tasks: [{ package: "openagentui-stream", task: "test" }],
     }),
     encoding: "utf8",
   });

@@ -1,4 +1,4 @@
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import { useMemo } from "react";
 import {
   OAuthMetadataSchema,

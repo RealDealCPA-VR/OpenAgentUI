@@ -1,18 +1,18 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import {
   useAssistantClientRef,
   type ClientOutput,
   attachTransformScopes,
-} from "@assistant-ui/store";
-import { useAssistantScopeEffect } from "@assistant-ui/store/client";
+} from "@openagentui/store";
+import { useAssistantScopeEffect } from "@openagentui/store/client";
 import type {
   InteractablesState,
   InteractableRegistration,
   InteractablePersistedState,
   InteractablePersistenceAdapter,
 } from "./scopes";
-import { toJSONSchema } from "assistant-stream";
+import { toJSONSchema } from "openagentui-stream";
 import { ModelContext } from "../../store";
 import {
   buildInteractableModelContext,
@@ -251,7 +251,7 @@ const useInteractables = (): ClientOutput<"interactables"> => {
 /**
  * @deprecated Since 2026-06-14 — migrate to the Unstable / Experimental API.
  * Scheduled for removal on/after 2026-09-14. See
- * {@link https://www.assistant-ui.com/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
+ * {@link https://openagentui.dev/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
  */
 export const Interactables = resource(useInteractables);
 

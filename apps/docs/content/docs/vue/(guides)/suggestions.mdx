@@ -13,10 +13,10 @@ This is an abridged version of the Nuxt example's `Assistant.client.vue`. Its su
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { Suggestions } from "@assistant-ui/core/store";
-import { AISDKThreads } from "@assistant-ui/ai-sdk";
-import Thread from "~/components/assistant-ui/thread.vue";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { Suggestions } from "@openagentui/core/store";
+import { AISDKThreads } from "@openagentui/ai-sdk";
+import Thread from "~/components/openagentui/thread.vue";
 
 const config = AuiConfig({
   threads: AISDKThreads(),
@@ -59,10 +59,10 @@ Pass a `suggestion` adapter under the AI SDK runtime's `adapters` option to gene
 
 ```vue title="app/components/GeneratedAssistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
-import { createSuggestionAdapter } from "@assistant-ui/core";
-import Thread from "~/components/assistant-ui/thread.vue";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
+import { createSuggestionAdapter } from "@openagentui/core";
+import Thread from "~/components/openagentui/thread.vue";
 
 const config = AuiConfig({
   threads: AISDKChat({
@@ -125,4 +125,4 @@ The registry `thread.vue` renders `ThreadPrimitiveSuggestions` in the empty stat
 </AuiIf>
 ```
 
-This is an abridged rendering fragment; import `AuiIf`, `ThreadPrimitiveSuggestions`, `SuggestionPrimitiveTrigger`, and `SuggestionPrimitiveTitle` from `@assistant-ui/vue` in its component. See [Suggestion](/docs/vue/primitives/suggestion) for the parts and click behavior.
+This is an abridged rendering fragment; import `AuiIf`, `ThreadPrimitiveSuggestions`, `SuggestionPrimitiveTrigger`, and `SuggestionPrimitiveTitle` from `@openagentui/vue` in its component. See [Suggestion](/docs/vue/primitives/suggestion) for the parts and click behavior.

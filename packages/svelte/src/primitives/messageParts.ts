@@ -1,9 +1,9 @@
-import type { PartMethods, PartState } from "@assistant-ui/core/store";
+import type { PartMethods, PartState } from "@openagentui/core/store";
 import {
   createLastValidCache,
   createStaleReporter,
   Derived,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { getAuiContext, type AuiContext, type ScopeTarget } from "../context";
 import { useAuiState } from "../useAuiState";
 import { createObservedItem, scheduleExpiry } from "./observedItem";

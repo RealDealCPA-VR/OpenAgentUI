@@ -24,7 +24,7 @@ const inTap = () => peekResourceFiber() !== null;
 
 const throwOutsideTap = (name: string): never => {
   throw new Error(
-    `${name} from @assistant-ui/tap/standalone-shim was called outside a tap resource render. The standalone shim has no React fallback; host this code inside createTapRoot.`,
+    `${name} from @openagentui/tap/standalone-shim was called outside a tap resource render. The standalone shim has no React fallback; host this code inside createTapRoot.`,
   );
 };
 
@@ -108,7 +108,7 @@ export const Fragment = Symbol.for("react.fragment");
 
 const throwNoReact = (name: string): never => {
   throw new Error(
-    `${name} from @assistant-ui/tap/standalone-shim was called without React. The standalone shim only makes react-coupled modules loadable; rendering them requires real React.`,
+    `${name} from @openagentui/tap/standalone-shim was called without React. The standalone shim only makes react-coupled modules loadable; rendering them requires real React.`,
   );
 };
 

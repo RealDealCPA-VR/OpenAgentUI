@@ -2,14 +2,14 @@
 
 import { createRef, Suspense, use, type ReactNode } from "react";
 import { act, cleanup, render, screen } from "@testing-library/react";
-import { resource } from "@assistant-ui/tap";
+import { resource } from "@openagentui/tap";
 import {
   AuiConfig,
   AuiProvider,
   type AssistantClient,
   useAui,
   useAuiState,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   deferred,

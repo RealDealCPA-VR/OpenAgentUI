@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { z } from "zod";
-import { ToolResponse, type Tool } from "assistant-stream";
+import { ToolResponse, type Tool } from "openagentui-stream";
 import {
   defaultWebMcpFilter,
   toMcpContent,

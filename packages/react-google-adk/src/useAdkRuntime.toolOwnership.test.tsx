@@ -6,12 +6,12 @@ import { describe, expect, it, vi } from "vitest";
 import {
   AssistantRuntimeProvider,
   useAssistantTool,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import type {
   AssistantRuntime,
   RemoteThreadListAdapter,
   ToolCallMessagePart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { useAdkRuntime } from "./useAdkRuntime";
 import type { AdkEvent } from "./types";
 import { settleOutsideAct } from "./tests/settleOutsideAct";

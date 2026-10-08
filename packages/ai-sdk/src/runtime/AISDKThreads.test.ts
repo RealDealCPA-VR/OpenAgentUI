@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 
 import { describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig, createAssistantClient } from "@assistant-ui/store/client";
+import type { AssistantCloud } from "openagentui-cloud";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig, createAssistantClient } from "@openagentui/store/client";
 import { AISDKThreads } from "./AISDKThreads";
 import { AssistantChatTransport } from "../transport/AssistantChatTransport";
 import {
@@ -502,7 +502,7 @@ describe("AISDKThreads", () => {
     }
   });
 
-  it("uses assistant-cloud for listing and lifecycle actions", async () => {
+  it("uses openagentui-cloud for listing and lifecycle actions", async () => {
     const cloudThread = (id: string) => ({
       id,
       title: id,

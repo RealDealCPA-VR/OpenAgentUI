@@ -57,7 +57,7 @@ export {
 /**
  * @deprecated Since 2026-06-14 — migrate to the Unstable / Experimental API.
  * Scheduled for removal on/after 2026-09-14. See
- * {@link https://www.assistant-ui.com/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
+ * {@link https://openagentui.dev/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
  */
 export {
   useAssistantInteractable,
@@ -66,7 +66,7 @@ export {
 /**
  * @deprecated Since 2026-06-14 — migrate to the Unstable / Experimental API.
  * Scheduled for removal on/after 2026-09-14. See
- * {@link https://www.assistant-ui.com/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
+ * {@link https://openagentui.dev/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
  */
 export { useInteractableState } from "./interactables-legacy/useInteractableState";
 export {
@@ -101,7 +101,7 @@ export { DataRenderers } from "./client/DataRenderers";
 /**
  * @deprecated Since 2026-06-14 — migrate to the Unstable / Experimental API.
  * Scheduled for removal on/after 2026-09-14. See
- * {@link https://www.assistant-ui.com/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
+ * {@link https://openagentui.dev/docs/tools/interactables#migrating-from-the-previous-api | Interactables migration guide}.
  */
 export { Interactables } from "./interactables-legacy/Interactables";
 export {

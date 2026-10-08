@@ -3,7 +3,7 @@ title: Runtime architecture
 description: How core runtimes, protocol layers, and framework adapters fit together.
 ---
 
-assistant-ui exposes runtime integrations at three layers.
+openagentui exposes runtime integrations at three layers.
 
 ## The three layers
 
@@ -86,7 +86,7 @@ Each upper layer is implemented in terms of a lower one. You can drop down a lay
 
 ## Core runtimes
 
-These own everything assistant-ui considers a runtime: messages, threads, branching, edit and regenerate state, run lifecycle. Every other layer is built on one of them.
+These own everything openagentui considers a runtime: messages, threads, branching, edit and regenerate state, run lifecycle. Every other layer is built on one of them.
 
 **`LocalRuntime`** keeps state inside the runtime itself and exposes a `ChatModelAdapter` interface. You implement a single `run` function (or `async *run` for streaming) and the runtime takes care of branching, editing, regeneration, and history through built-in plumbing.
 
@@ -104,7 +104,7 @@ See [LocalRuntime](/docs/runtimes/custom/local-runtime) and [ExternalStoreRuntim
 
 ## Protocol layers
 
-These wrap a core runtime with a wire-protocol contract so a generic backend can talk to assistant-ui without writing a custom `ChatModelAdapter` each time.
+These wrap a core runtime with a wire-protocol contract so a generic backend can talk to openagentui without writing a custom `ChatModelAdapter` each time.
 
 **`DataStream`** is a message-streaming protocol. Your backend emits a standardized stream of message parts (text deltas, tool calls) and `useDataStreamRuntime` consumes it on top of `LocalRuntime`. It is the closest option to AI SDK style streaming for any backend.
 

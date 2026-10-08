@@ -10,7 +10,7 @@ deriving an agent mode from the request pathname. App Builder and Learn use the
 same request handler and share documentation and repository-source helpers. App
 Builder preserves browser-supplied frontend tools and adds template tools;
 Learn adds `getNextCourseStep` and does not accept frontend tools. Learn source
-tools expose the assistant-ui monorepo as `repo` and the
+tools expose the openagentui monorepo as `repo` and the
 validated selected course stage as `course`. The request sends only `courseId`,
 status, current step, and selected step. The Learn agent decides when Start or
 Continue intent requires the course tool, and later model steps may use docs

@@ -1,5 +1,5 @@
 """
-Simple AG-UI Protocol Agent for testing assistant-ui integration.
+Simple AG-UI Protocol Agent for testing openagentui integration.
 
 Usage:
     pip install fastapi uvicorn openai python-dotenv

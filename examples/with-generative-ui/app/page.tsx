@@ -1,13 +1,13 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   AssistantRuntimeProvider,
   AuiConfig,
   Suggestions,
   Tools,
-} from "@assistant-ui/react";
-import { AssistantChatTransport, useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { AssistantChatTransport, useChatRuntime } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import { ExampleNav } from "@/components/example-nav";
 import toolkit from "./present-toolkit";

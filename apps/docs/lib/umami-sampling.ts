@@ -5,7 +5,7 @@ export const UMAMI_SAMPLE_RATE = 0.01;
 
 const STORAGE_KEY = "aui-umami-sample";
 const WEBSITE_ID = "6f07c001-46a2-411f-9241-4f7f5afb60ee";
-const DOMAINS = "www.assistant-ui.com";
+const DOMAINS = "openagentui.dev";
 
 /**
  * Umami re-reads this key on every send, so writing it stops a tracker that is

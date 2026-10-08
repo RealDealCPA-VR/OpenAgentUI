@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { SSEEventDecoder } from "assistant-stream/utils";
+import { SSEEventDecoder } from "openagentui-stream/utils";
 
 describe("SSE newline-split input volume", () => {
   it.each([1, 128, 4096])(

@@ -5,12 +5,12 @@ export default async function installEdgeLib(): Promise<void> {
   // the AI SDK package specifiers are shared by both AI SDK packages, so
   // installAiSdkLib resolves those by the specifier the file actually imports.
   await installPackageIfNeeded({
-    packageName: "@assistant-ui/ai-sdk",
-    importPatterns: ["@assistant-ui/react-edge"],
+    packageName: "@openagentui/ai-sdk",
+    importPatterns: ["@openagentui/react-edge"],
     promptMessage:
-      "Edge Runtime imports were detected but @assistant-ui/ai-sdk is not installed. Do you want to install it? (Y/n) ",
+      "Edge Runtime imports were detected but @openagentui/ai-sdk is not installed. Do you want to install it? (Y/n) ",
     skipMessage:
-      "@assistant-ui/ai-sdk is already installed. Skipping installation.",
+      "@openagentui/ai-sdk is already installed. Skipping installation.",
     notFoundMessage: "No Edge Runtime imports found; skipping installation.",
   });
 }

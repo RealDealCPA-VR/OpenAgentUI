@@ -261,7 +261,7 @@ describe("createMcpAppBridge", () => {
         },
       ]);
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] MCP App onError callback threw an error",
+        "[openagentui] MCP App onError callback threw an error",
         new Error("error callback failed"),
       );
       consoleError.mockRestore();
@@ -652,7 +652,7 @@ describe("createMcpAppBridge", () => {
 
     expect(onError).toHaveBeenCalledWith(new Error("kaboom"));
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] MCP App onError callback threw an error",
+      "[openagentui] MCP App onError callback threw an error",
       callbackError,
     );
     consoleError.mockRestore();

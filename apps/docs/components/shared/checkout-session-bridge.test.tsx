@@ -66,7 +66,7 @@ const setWire = (state: Checkout.State | undefined) => {
   });
 };
 
-const session = { id: "s2", products: ["assistant-ui"], startedAt: 1 };
+const session = { id: "s2", products: ["openagentui"], startedAt: 1 };
 
 const previous = (): Checkout.State => ({
   ...initialCheckoutState(),
@@ -121,9 +121,9 @@ describe("CheckoutSessionBridge", () => {
       id: "s2",
       products: [
         {
-          slug: "assistant-ui",
+          slug: "openagentui",
           name: expect.any(String),
-          guide: expect.stringContaining("assistant-ui"),
+          guide: expect.stringContaining("openagentui"),
         },
       ],
     });
@@ -134,7 +134,7 @@ describe("CheckoutSessionBridge", () => {
       ...previous(),
       id: "s2",
       status: "waiting",
-      products: [{ slug: "assistant-ui", name: "assistant-ui" }],
+      products: [{ slug: "openagentui", name: "openagentui" }],
     };
     setWire(created);
     expect(wire.create).toHaveBeenCalledOnce();
@@ -148,16 +148,16 @@ describe("CheckoutSessionBridge", () => {
       ...previous(),
       id: "s2",
       status: "planning",
-      inputs: [proposal("p1", "assistant-ui"), proposal("p2", "nope")],
+      inputs: [proposal("p1", "openagentui"), proposal("p2", "nope")],
     };
     render(<CheckoutSessionBridge session={session} onChange={onChange} />);
     expect(wire.addProduct).toHaveBeenCalledOnce();
     expect(wire.addProduct).toHaveBeenCalledWith({
       inputId: "p1",
       product: {
-        slug: "assistant-ui",
-        name: "assistant-ui",
-        guide: `${window.location.origin}/install.md?items=assistant-ui`,
+        slug: "openagentui",
+        name: "openagentui",
+        guide: `${window.location.origin}/install.md?items=openagentui`,
       },
     });
     expect(wire.dismiss).toHaveBeenCalledOnce();
@@ -179,7 +179,7 @@ describe("CheckoutSessionBridge", () => {
       ...previous(),
       id: "s2",
       status: "planning",
-      inputs: [proposal("p1", "assistant-ui")],
+      inputs: [proposal("p1", "openagentui")],
     };
     render(<CheckoutSessionBridge session={session} onChange={vi.fn()} />);
     expect(wire.addProduct).toHaveBeenCalledOnce();
@@ -190,7 +190,7 @@ describe("CheckoutSessionBridge", () => {
     expect(wire.addProduct).toHaveBeenCalledTimes(2);
     expect(mocks.toastError).toHaveBeenCalledOnce();
     expect(mocks.toastError).toHaveBeenCalledWith(
-      "Could not add assistant-ui to this setup. Trying again.",
+      "Could not add openagentui to this setup. Trying again.",
     );
 
     await act(() => Promise.resolve());
@@ -234,7 +234,7 @@ describe("CheckoutSessionBridge", () => {
       ...previous(),
       id: "s2",
       status: "planning",
-      inputs: [proposal("p1", "assistant-ui")],
+      inputs: [proposal("p1", "openagentui")],
     };
     render(<CheckoutSessionBridge session={session} onChange={vi.fn()} />);
     expect(wire.addProduct).toHaveBeenCalledOnce();
@@ -242,7 +242,7 @@ describe("CheckoutSessionBridge", () => {
     await act(() => Promise.resolve());
     setWire({
       ...wire.state!,
-      inputs: [{ ...proposal("p1", "assistant-ui"), status: "answered" }],
+      inputs: [{ ...proposal("p1", "openagentui"), status: "answered" }],
     });
     act(() => vi.advanceTimersByTime(5000));
     expect(wire.addProduct).toHaveBeenCalledOnce();
@@ -254,7 +254,7 @@ describe("CheckoutSessionBridge", () => {
       ...previous(),
       id: "s2",
       status: "cancelled",
-      inputs: [proposal("p1", "assistant-ui")],
+      inputs: [proposal("p1", "openagentui")],
     };
     render(<CheckoutSessionBridge session={session} onChange={vi.fn()} />);
     expect(wire.addProduct).not.toHaveBeenCalled();

@@ -3,8 +3,8 @@
 import { act, render, waitFor } from "@testing-library/react";
 import { useMemo, useState } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { resource } from "@assistant-ui/tap";
-import { AuiProvider, useAui, useAuiEvent } from "@assistant-ui/store";
+import { resource } from "@openagentui/tap";
+import { AuiProvider, useAui, useAuiEvent } from "@openagentui/store";
 import type { AttachmentAdapter } from "../../adapters/attachment";
 import { ExternalThread } from "../../store/clients/external-thread";
 import { InMemoryThreadList } from "./InMemoryThreadList";

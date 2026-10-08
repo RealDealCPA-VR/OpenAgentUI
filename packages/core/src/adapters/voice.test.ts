@@ -426,7 +426,7 @@ describe("createVoiceSession", () => {
     expect(helpers.isDisposed()).toBe(true);
     expect(consoleError).toHaveBeenCalledTimes(4);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Voice session listener threw an error",
+      "[openagentui] Voice session listener threw an error",
       listenerError,
     );
   });

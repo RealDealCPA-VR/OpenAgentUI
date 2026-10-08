@@ -1,21 +1,21 @@
 "use client";
 
 import { SignupForm } from "@/components/SignupForm";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { Form } from "@/components/ui/form";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { useAssistantForm } from "@assistant-ui/react-hook-form";
+import { useAssistantForm } from "@openagentui/react-hook-form";
 import {
   useAssistantInstructions,
   useAui,
   AuiProvider,
   AuiConfig,
   Suggestions,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const SetFormFieldTool = () => {
   return (

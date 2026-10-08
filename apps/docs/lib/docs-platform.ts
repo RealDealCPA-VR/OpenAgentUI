@@ -17,7 +17,7 @@ export function isSurface(value: string): value is Surface {
   return (SURFACES as readonly string[]).includes(value);
 }
 
-export const DOCS_PLATFORM_STORAGE_KEY = "assistant-ui::docs:platform";
+export const DOCS_PLATFORM_STORAGE_KEY = "openagentui::docs:platform";
 export const DOCS_PLATFORM_URL_PARAM = "platform";
 
 export function isVisibleForPlatform(
@@ -44,9 +44,9 @@ export const PLATFORM_ENTRY_PATHS: Record<Platform, string> = {
 };
 
 export const PLATFORM_QUICKSTART_COMMANDS: Record<Surface, string> = {
-  react: "npx assistant-ui@latest create",
-  rn: "npx assistant-ui@latest create --example with-expo",
-  ink: "npx assistant-ui@latest create --ink",
+  react: "npx openagentui@latest create",
+  rn: "npx openagentui@latest create --example with-expo",
+  ink: "npx openagentui@latest create --ink",
 };
 
 // Surfaces whose folders mirror each other's page slugs, so a page can be

@@ -3,9 +3,9 @@
 import { act } from "react";
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { AuiConfig } from "@assistant-ui/store";
-import { resource } from "@assistant-ui/tap";
-import type { ThreadMessage } from "@assistant-ui/core";
+import { AuiConfig } from "@openagentui/store";
+import { resource } from "@openagentui/tap";
+import type { ThreadMessage } from "@openagentui/core";
 import { ThreadPrimitive } from "../index";
 import { MessagePrimitive } from "../index";
 import { CloudRendererHost } from "./CloudRendererHost";
@@ -54,7 +54,7 @@ const send = (
         origin,
         source,
         data: {
-          channel: "assistant-ui/cloud-renderer",
+          channel: "openagentui/cloud-renderer",
           version: 1,
           type: "render",
           messages,
@@ -109,11 +109,11 @@ describe("CloudRendererHost", () => {
     );
     expect(postMessage.mock.calls).toEqual([
       [
-        { channel: "assistant-ui/cloud-renderer", version: 1, type: "ready" },
+        { channel: "openagentui/cloud-renderer", version: 1, type: "ready" },
         dashboard,
       ],
       [
-        { channel: "assistant-ui/cloud-renderer", version: 1, type: "ready" },
+        { channel: "openagentui/cloud-renderer", version: 1, type: "ready" },
         localDashboard,
       ],
     ]);
@@ -167,7 +167,7 @@ describe("CloudRendererHost", () => {
     ).toEqual([
       [
         {
-          channel: "assistant-ui/cloud-renderer",
+          channel: "openagentui/cloud-renderer",
           version: 1,
           type: "size",
           height: 240,
@@ -193,7 +193,7 @@ describe("CloudRendererHost", () => {
     });
     expect(postMessage).toHaveBeenCalledWith(
       {
-        channel: "assistant-ui/cloud-renderer",
+        channel: "openagentui/cloud-renderer",
         version: 1,
         type: "size",
         height: 0,
@@ -254,7 +254,7 @@ describe("CloudRendererHost", () => {
     send([message("first")]);
     expect(postMessage).toHaveBeenCalledWith(
       {
-        channel: "assistant-ui/cloud-renderer",
+        channel: "openagentui/cloud-renderer",
         version: 1,
         type: "error",
         message: "render failed",
@@ -338,7 +338,7 @@ describe("CloudRendererHost", () => {
     );
     expect(postMessage.mock.calls).toEqual([
       [
-        { channel: "assistant-ui/cloud-renderer", version: 1, type: "ready" },
+        { channel: "openagentui/cloud-renderer", version: 1, type: "ready" },
         dashboard,
       ],
     ]);
@@ -353,7 +353,7 @@ describe("CloudRendererHost", () => {
       </CloudRendererHost>,
     );
     expect(postMessage).toHaveBeenCalledWith(
-      { channel: "assistant-ui/cloud-renderer", version: 1, type: "ready" },
+      { channel: "openagentui/cloud-renderer", version: 1, type: "ready" },
       dashboard,
     );
     send([message("normalised")]);

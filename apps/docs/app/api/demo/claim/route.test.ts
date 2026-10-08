@@ -31,7 +31,7 @@ const request = (
   body: BodyInit = JSON.stringify({ refresh_token: "anonymous-refresh" }),
   headers: HeadersInit = {},
 ) =>
-  new Request("https://www.assistant-ui.com/api/demo/claim", {
+  new Request("https://openagentui.dev/api/demo/claim", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -65,7 +65,7 @@ describe("POST /api/demo/claim", () => {
 
   it("rejects requests without fetch metadata or an origin", async () => {
     const response = await POST(
-      new Request("https://www.assistant-ui.com/api/demo/claim", {
+      new Request("https://openagentui.dev/api/demo/claim", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ refresh_token: "anonymous-refresh" }),

@@ -1,8 +1,8 @@
-# @assistant-ui/metro
+# @openagentui/metro
 
-Metro / Expo integration for [assistant-ui](https://www.assistant-ui.com): the
+Metro / Expo integration for [openagentui](https://openagentui.dev): the
 `"use generative"` directive compiler for React Native. It lets you author tools
-with the **same** [`defineToolkit`](https://www.assistant-ui.com/docs/tools/defining-tools)
+with the **same** [`defineToolkit`](https://openagentui.dev/docs/tools/defining-tools)
 API as on the web: one file colocating a tool's schema, its `execute`, and its
 `render`, then compiles them for the device (and any Expo Router server route).
 
@@ -11,7 +11,7 @@ Works with **Expo** and **bare React Native** (both bundle with Metro).
 ## Install
 
 ```sh
-npm install --save-dev @assistant-ui/metro
+npm install --save-dev @openagentui/metro
 ```
 
 ## Setup
@@ -21,7 +21,7 @@ Wrap your Metro config with `withAui`:
 ```js
 // metro.config.js
 const { getDefaultConfig } = require("expo/metro-config");
-const { withAui } = require("@assistant-ui/metro");
+const { withAui } = require("@openagentui/metro");
 
 const config = getDefaultConfig(__dirname);
 
@@ -33,7 +33,7 @@ Bare React Native (without Expo):
 ```js
 // metro.config.js
 const { getDefaultConfig } = require("@react-native/metro-config");
-const { withAui } = require("@assistant-ui/metro");
+const { withAui } = require("@openagentui/metro");
 
 module.exports = withAui(getDefaultConfig(__dirname));
 ```
@@ -41,13 +41,13 @@ module.exports = withAui(getDefaultConfig(__dirname));
 ## Usage
 
 Author a `"use generative"` toolkit exactly like on the web, importing
-`defineToolkit` from `@assistant-ui/react-native`:
+`defineToolkit` from `@openagentui/react-native`:
 
 ```tsx
 // toolkit.tsx
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react-native";
+import { defineToolkit } from "@openagentui/react-native";
 import { z } from "zod";
 import { WeatherCard } from "./WeatherCard";
 
@@ -73,7 +73,7 @@ import {
   AuiConfig,
   Tools,
   useLocalRuntime,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import toolkit from "./toolkit";
 import { modelAdapter } from "./modelAdapter";
 
@@ -98,8 +98,8 @@ existing transformer (Expo's or React Native's).
 The build target follows Metro's environment: the device app gets the **client**
 build (schema + `render` + frontend `execute`), while an Expo Router `+api`
 route (bundled for a server environment) gets the **server** build (schema +
-backend `execute`). This mirrors [`@assistant-ui/next`](https://www.assistant-ui.com/docs/tools/defining-tools)
-and `@assistant-ui/vite`.
+backend `execute`). This mirrors [`@openagentui/next`](https://openagentui.dev/docs/tools/defining-tools)
+and `@openagentui/vite`.
 
-See the [Tools docs](https://www.assistant-ui.com/docs/tools/defining-tools) for
+See the [Tools docs](https://openagentui.dev/docs/tools/defining-tools) for
 the full authoring API.

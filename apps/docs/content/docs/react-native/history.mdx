@@ -40,7 +40,7 @@ import {
   type AppendMessage,
   type ThreadMessageLike,
   useExternalStoreRuntime,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import { useCallback, useState } from "react";
 import { fetchPageBefore, sendMessage, type StoredMessage } from "./chat-api";
 
@@ -107,10 +107,10 @@ A failed page needs a hand: the list asks once per content length, so after `fet
 The thread's `history` prop takes the three facts from the hook and does the rest:
 
 ```tsx title="app/index.tsx"
-import { AssistantRuntimeProvider } from "@assistant-ui/react-native";
+import { AssistantRuntimeProvider } from "@openagentui/react-native";
 import { useEffect } from "react";
 import { AccessibilityInfo, Platform, Pressable, Text } from "react-native";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { useWindowedRuntime } from "@/hooks/use-windowed-runtime";
 
 export default function ChatScreen({ threadId, lastPage, olderExists }) {
@@ -166,7 +166,7 @@ A first window shorter than the screen does not need a gesture: the list reports
 The same edge works on the primitive when the thread element is not the one on screen:
 
 ```tsx title="components/chat-list.tsx"
-import { ThreadPrimitive } from "@assistant-ui/react-native";
+import { ThreadPrimitive } from "@openagentui/react-native";
 import { useEffect } from "react";
 import { AccessibilityInfo, Platform, Text, View } from "react-native";
 

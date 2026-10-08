@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useAuiState } from "@assistant-ui/store";
-import { useShallowSelector } from "@assistant-ui/store/internal";
+import { useAuiState } from "@openagentui/store";
+import { useShallowSelector } from "@openagentui/store/internal";
 
 export type Unstable_MessageStallDetectionOptions = {
   /**

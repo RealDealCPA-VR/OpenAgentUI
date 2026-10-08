@@ -7,16 +7,10 @@ import {
 describe("Expo anonymous session fetch", () => {
   it("only bootstraps the protected browser flow on web", () => {
     expect(
-      shouldUseAnonymousSessionFetch(
-        "https://www.assistant-ui.com/api/chat",
-        "web",
-      ),
+      shouldUseAnonymousSessionFetch("https://openagentui.dev/api/chat", "web"),
     ).toBe(true);
     expect(
-      shouldUseAnonymousSessionFetch(
-        "https://www.assistant-ui.com/api/chat",
-        "ios",
-      ),
+      shouldUseAnonymousSessionFetch("https://openagentui.dev/api/chat", "ios"),
     ).toBe(false);
     expect(shouldUseAnonymousSessionFetch("/api/chat", "web")).toBe(false);
   });
@@ -29,16 +23,16 @@ describe("Expo anonymous session fetch", () => {
       .mockResolvedValueOnce(Response.json({ token: "signed-session" }))
       .mockResolvedValueOnce(new Response("ok"));
     const sessionFetch = createAnonymousSessionFetch(
-      "https://www.assistant-ui.com/api/chat",
+      "https://openagentui.dev/api/chat",
       fetchMock,
     );
 
     const failedResponse = await sessionFetch(
-      "https://www.assistant-ui.com/api/chat",
+      "https://openagentui.dev/api/chat",
       { method: "POST" },
     );
     const recoveredResponse = await sessionFetch(
-      "https://www.assistant-ui.com/api/chat",
+      "https://openagentui.dev/api/chat",
       { method: "POST" },
     );
 
@@ -47,12 +41,12 @@ describe("Expo anonymous session fetch", () => {
     expect(fetchMock).toHaveBeenCalledTimes(4);
     expect(
       new Headers(fetchMock.mock.calls[1]?.[1]?.headers).get(
-        "x-assistant-ui-anonymous-session",
+        "x-openagentui-anonymous-session",
       ),
     ).toBeNull();
     expect(
       new Headers(fetchMock.mock.calls[3]?.[1]?.headers).get(
-        "x-assistant-ui-anonymous-session",
+        "x-openagentui-anonymous-session",
       ),
     ).toBe("signed-session");
   });
@@ -75,7 +69,7 @@ describe("Expo anonymous session fetch", () => {
     expect(fetchMock.mock.calls[0]?.[1]?.credentials).toBe("same-origin");
     expect(
       new Headers(fetchMock.mock.calls[1]?.[1]?.headers).get(
-        "x-assistant-ui-anonymous-session",
+        "x-openagentui-anonymous-session",
       ),
     ).toBeNull();
   });

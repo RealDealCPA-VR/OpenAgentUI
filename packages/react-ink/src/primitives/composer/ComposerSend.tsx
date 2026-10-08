@@ -1,4 +1,4 @@
-import { useComposerSend } from "@assistant-ui/core/react";
+import { useComposerSend } from "@openagentui/core/react";
 import { Pressable, type PressableProps } from "../internal/Pressable";
 
 export type ComposerSendProps = Omit<PressableProps, "onPress" | "children"> & {

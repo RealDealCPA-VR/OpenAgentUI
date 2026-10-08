@@ -8,7 +8,7 @@ import {
   CanvasSplitLine,
   CanvasSplitMessage,
   CanvasSplitThread,
-} from "@/components/assistant-ui/elements/canvas-split";
+} from "@/components/openagentui/elements/canvas-split";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const MESSAGES = [

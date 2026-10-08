@@ -24,8 +24,8 @@ import {
   type LexicalEditor,
 } from "lexical";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createRenderCounter } from "@assistant-ui/x-performance";
-import type { Unstable_DirectiveFormatter } from "@assistant-ui/core";
+import { createRenderCounter } from "@openagentui/x-performance";
+import type { Unstable_DirectiveFormatter } from "@openagentui/core";
 import {
   $createDirectiveNode,
   $isDirectiveNode,
@@ -37,8 +37,8 @@ const mocks = vi.hoisted(() => ({
   aui: undefined as unknown as ReturnType<typeof createAui>,
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAui: () => mocks.aui,

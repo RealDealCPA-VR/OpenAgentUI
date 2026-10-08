@@ -19,7 +19,7 @@ declare module "../augmentations" {
   }
 }
 
-declare module "@assistant-ui/core" {
+declare module "@openagentui/core" {
   namespace Assistant {
     interface Commands {
       coreCommand: { type: "core-command" };

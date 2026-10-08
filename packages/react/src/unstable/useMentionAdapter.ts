@@ -1,15 +1,15 @@
 "use client";
 
 import { useMemo, type FC } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type {
   Unstable_DirectiveFormatter,
   Unstable_TriggerAdapter,
   Unstable_TriggerCategory,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
-import { unstable_defaultDirectiveFormatter } from "@assistant-ui/core";
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+} from "@openagentui/core";
+import { unstable_defaultDirectiveFormatter } from "@openagentui/core";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 import { matchesTriggerItemQuery } from "../primitives/composer/trigger/matchesTriggerItemQuery";
 import {
   shallowEqualRecords,

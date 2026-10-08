@@ -3,7 +3,7 @@ title: Stability
 description: What unstable_ means, when APIs become stable, and how to track changes.
 ---
 
-assistant-ui ships some APIs with an `unstable_` prefix.
+openagentui ships some APIs with an `unstable_` prefix.
 
 ## What `unstable_` means
 
@@ -29,10 +29,10 @@ A non-exhaustive list of `unstable_` exports surfaced in the runtime docs.
 
 | API | Package | Notes |
 | --- | --- | --- |
-| `unstable_createMessageConverter` | `@assistant-ui/react` | Message-format converter used by AssistantTransport and DataStream. |
-| `unstable_humanToolNames` | `@assistant-ui/react` | Tool names that pause the run until a result is added via `addResult`. Only available on LocalRuntime; not supported in DataStream. |
-| `unstable_threadListAdapter` | `@assistant-ui/react-langgraph` | LangGraph thread-list adapter slot on `useLangGraphRuntime`. |
-| `unstable_createLangGraphStream` | `@assistant-ui/react-langgraph` | End-to-end cancellation primitive. |
+| `unstable_createMessageConverter` | `@openagentui/react` | Message-format converter used by AssistantTransport and DataStream. |
+| `unstable_humanToolNames` | `@openagentui/react` | Tool names that pause the run until a result is added via `addResult`. Only available on LocalRuntime; not supported in DataStream. |
+| `unstable_threadListAdapter` | `@openagentui/react-langgraph` | LangGraph thread-list adapter slot on `useLangGraphRuntime`. |
+| `unstable_createLangGraphStream` | `@openagentui/react-langgraph` | End-to-end cancellation primitive. |
 | `unstable_Provider` | Various adapters | React-component face on `RemoteThreadListAdapter`. Must render children synchronously. `useRemoteThreadListRuntime` renders it when present; the `RemoteThreadList` store entry ignores it. |
 | `unstable_useAdapters` | Various adapters | Hook face on `RemoteThreadListAdapter`. The `RemoteThreadList` store entry calls it. `useRemoteThreadListRuntime` synthesizes a `RuntimeAdapterProvider` from it when `unstable_Provider` is omitted. |
 | `unstable_capabilities` | `ExternalStoreRuntime` | Toggle copy and other thread capabilities. |
@@ -45,7 +45,7 @@ Framework adapters list their own unstable surface in the corresponding adapter 
 
 Stabilization usually drops the prefix. If `unstable_foo` becomes stable, the new export is `foo`, the old name is kept as a deprecated alias for at least one minor cycle, and the changelog calls out the change.
 
-Watch the [release notes](https://github.com/assistant-ui/assistant-ui/releases) and the [migration guides](/docs/migrations) for transitions.
+Watch the [release notes](https://github.com/RealDealCPA-VR/OpenAgentUI/releases) and the [migration guides](/docs/migrations) for transitions.
 
 ## Related
 

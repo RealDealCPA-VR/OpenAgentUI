@@ -8,8 +8,8 @@ const { aui } = vi.hoisted(() => ({
   aui: { composer: { setText: () => {} }, on: () => () => {} },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => aui,
   useAuiState: () => false,
 }));

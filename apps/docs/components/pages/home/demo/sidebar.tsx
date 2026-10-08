@@ -1,9 +1,9 @@
 "use client";
 
-import { ThreadListPrimitive, useAui, useAuiState } from "@assistant-ui/react";
+import { ThreadListPrimitive, useAui, useAuiState } from "@openagentui/react";
 import { ChevronDownIcon, PlusIcon } from "lucide-react";
 import { Fragment, useMemo, useState, type ReactNode } from "react";
-import { ThreadListSearch } from "@/components/assistant-ui/elements/thread-list.aui";
+import { ThreadListSearch } from "@/components/openagentui/elements/thread-list.aui";
 import { useDemoThreadListGroups } from "./thread-list-groups";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";

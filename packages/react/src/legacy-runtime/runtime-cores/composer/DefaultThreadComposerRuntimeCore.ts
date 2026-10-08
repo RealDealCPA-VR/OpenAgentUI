@@ -1,1 +1,1 @@
-export { DefaultThreadComposerRuntimeCore } from "@assistant-ui/core/internal";
+export { DefaultThreadComposerRuntimeCore } from "@openagentui/core/internal";

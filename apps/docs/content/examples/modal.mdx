@@ -1,6 +1,6 @@
 ---
 title: Floating Modal Chat
-description: Embeddable AI assistant in a floating button modal. Drop it into any React app for in-product copilots or support chat, built on assistant-ui.
+description: Embeddable AI assistant in a floating button modal. Drop it into any React app for in-product copilots or support chat, built on openagentui.
 ---
 
 ## Overview
@@ -20,7 +20,7 @@ The Modal example shows a floating action button that opens an AI assistant chat
 ## Quick Start
 
 ```bash
-npx assistant-ui add assistant-modal
+npx openagentui add assistant-modal
 ```
 
 ## Code
@@ -28,8 +28,8 @@ npx assistant-ui add assistant-modal
 The registry component builds on `AssistantModalPrimitive`. A minimal version, without the header, the thread list and resizing, looks like this:
 
 ```tsx
-import { AssistantModalPrimitive } from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantModalPrimitive } from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { BotIcon } from "lucide-react";
 
 export const AssistantModal = () => {
@@ -72,4 +72,4 @@ export const AssistantModal = () => {
 
 ## Source
 
-<SourceLink href="https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/docs/samples/assistant-modal.tsx" />
+<SourceLink href="https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/docs/samples/assistant-modal.tsx" />

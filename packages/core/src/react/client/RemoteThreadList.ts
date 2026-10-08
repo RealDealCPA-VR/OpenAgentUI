@@ -6,8 +6,8 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
-import { resource, withKey, type ResourceElement } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+import { resource, withKey, type ResourceElement } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import {
   attachTransformScopes,
   Derived,
@@ -16,7 +16,7 @@ import {
   useClientLookup,
   useClientResource,
   useConfiguredAui,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { isDevelopment } from "../../store/internal";
 import {
   useThreadListItemSelectionEvents,
@@ -576,7 +576,7 @@ const useRemoteThreadList = (
       session.lastNotifiedRemoteId = remoteId;
       if (emit) {
         invokeUserCallback(
-          "assistant-ui",
+          "openagentui",
           "onThreadIdChange",
           session.onThreadIdChange,
           remoteId,
@@ -606,7 +606,7 @@ const useRemoteThreadList = (
       })
       .catch((error: unknown) => {
         if (generation !== session.loadGeneration) return;
-        console.error("[assistant-ui] thread list load failed:", error);
+        console.error("[openagentui] thread list load failed:", error);
         session.loadPromise = undefined;
         store.update({
           ...store.baseValue,
@@ -679,7 +679,7 @@ const useRemoteThreadList = (
     if (adapter.unstable_useAdapters !== undefined) return;
     if (adapter.unstable_Provider === undefined) return;
     console.warn(
-      "[assistant-ui] RemoteThreadList ignores RemoteThreadListAdapter.unstable_Provider. Expose unstable_useAdapters so per-thread history loads on this entry. useRemoteThreadListRuntime still honors unstable_Provider.",
+      "[openagentui] RemoteThreadList ignores RemoteThreadListAdapter.unstable_Provider. Expose unstable_useAdapters so per-thread history loads on this entry. useRemoteThreadListRuntime still honors unstable_Provider.",
     );
   }, [adapter]);
 
@@ -706,7 +706,7 @@ const useRemoteThreadList = (
       })
       .catch((error: unknown) => {
         if (generation !== session.loadGeneration) return;
-        console.error("[assistant-ui] thread list loadMore failed:", error);
+        console.error("[openagentui] thread list loadMore failed:", error);
       })
       .then(() => {
         if (session.loadMorePromise === task) {
@@ -1274,7 +1274,7 @@ const useRemoteThreadList = (
     if (session.lastNotifiedRemoteId === mainRemoteId) return;
     session.lastNotifiedRemoteId = mainRemoteId;
     invokeUserCallback(
-      "assistant-ui",
+      "openagentui",
       "onThreadIdChange",
       onThreadIdChange,
       mainRemoteId,

@@ -1,12 +1,12 @@
 import type {
   ReadonlyJSONObject,
   ReadonlyJSONValue,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import type {
   MessagePartTiming,
   ToolCallTiming,
   ToolModelContentPart,
-} from "assistant-stream";
+} from "openagentui-stream";
 import type { CompleteAttachment } from "./attachment";
 
 export type { MessagePartTiming, ToolCallTiming, ToolModelContentPart };

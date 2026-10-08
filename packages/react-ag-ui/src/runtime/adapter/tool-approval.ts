@@ -1,13 +1,13 @@
 import {
   iterateToolCallParts,
   mapToolCallPartsDeep,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { buildResumeArray } from "@ag-ui/client";
 import type {
   RespondToToolApprovalOptions,
   ThreadAssistantMessagePart,
   ToolCallMessagePart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type { AgUiInterrupt, AgUiResumeEntry } from "../types";
 import {
   readRawResponseSchema,

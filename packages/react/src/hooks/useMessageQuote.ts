@@ -1,8 +1,8 @@
 "use client";
 
-import type { QuoteInfo } from "@assistant-ui/core";
-import { getMessageQuote } from "@assistant-ui/core/react";
-import { useAuiState } from "@assistant-ui/store";
+import type { QuoteInfo } from "@openagentui/core";
+import { getMessageQuote } from "@openagentui/core/react";
+import { useAuiState } from "@openagentui/store";
 
 /**
  * Hook that returns the quote info for the current message, if any.

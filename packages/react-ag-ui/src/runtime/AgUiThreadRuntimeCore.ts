@@ -4,7 +4,7 @@ import {
   generateId,
   fromThreadMessageLike,
   isMcpAppUri,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type {
   AddToolResultOptions,
   AppendMessage,
@@ -20,14 +20,14 @@ import type {
   ThreadMessage,
   ToolCallMessagePart,
   Unstable_ToolInteraction,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   appendToolInteraction,
   createMessageRepositorySession,
   invokeUserCallback,
   iterateToolCallParts,
   mapToolCallPartsDeep,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import type {
   AbstractAgent,
   AgentSubscriber,
@@ -45,7 +45,7 @@ import type {
   AgUiResumeTranscript,
 } from "./types";
 import { AG_UI_METADATA_NAMESPACE, MCP_APPS_ACTIVITY_TYPE } from "./types";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import {
   isPlainObject,
   RunAggregator,

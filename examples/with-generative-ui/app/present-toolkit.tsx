@@ -1,12 +1,12 @@
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import {
   JSONGenerativeUI,
   defaultGenerativeUILibrary,
   defineGenerativeComponents,
-} from "@assistant-ui/react-generative-ui";
-import { styledGenerativeUILibrary } from "@/components/assistant-ui/elements/generative-ui";
+} from "@openagentui/react-generative-ui";
+import { styledGenerativeUILibrary } from "@/components/openagentui/elements/generative-ui";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { z } from "zod";
 

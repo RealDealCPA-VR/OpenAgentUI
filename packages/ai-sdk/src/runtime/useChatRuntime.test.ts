@@ -4,7 +4,7 @@ import type { ChatTransport, UIMessage } from "ai";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { version } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 
 const mocks = vi.hoisted(() => {
   const state = {
@@ -65,14 +65,14 @@ vi.mock("@ai-sdk/react", async (importOriginal) => ({
   },
 }));
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/core/react")>()),
+vi.mock("@openagentui/core/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/core/react")>()),
   useCloudThreadListAdapter: mocks.useCloudThreadListAdapter,
   useRemoteThreadListRuntime: mocks.useRemoteThreadListRuntime,
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: mocks.useAui,
   useAuiState: mocks.useAuiState,
 }));
@@ -661,7 +661,7 @@ describe.skipIf(onReact18)("useChatRuntime", () => {
       clear.mock.invocationCallOrder[0]!,
     );
     expect(warn).toHaveBeenCalledWith(
-      "[assistant-ui] resumable: resume failed",
+      "[openagentui] resumable: resume failed",
       error,
     );
     warn.mockRestore();
@@ -706,7 +706,7 @@ describe.skipIf(onReact18)("useChatRuntime", () => {
     });
     expect(onResumeError).toHaveBeenCalledWith(error);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] resumable: onResumeError callback failed",
+      "[openagentui] resumable: onResumeError callback failed",
       callbackError,
     );
     warn.mockRestore();

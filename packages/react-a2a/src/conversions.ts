@@ -4,12 +4,12 @@ import type {
   MessageStatus,
   ThreadAssistantMessage,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   parseDataUrl,
   resolveFilePartSource,
   resolveImageMediaType,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import type { A2AMessage, A2APart, A2ATaskState } from "./types";
 
 function isImageMediaType(mediaType?: string): boolean {

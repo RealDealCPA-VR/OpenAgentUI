@@ -350,7 +350,7 @@ describe("AssistantFrameHost", () => {
     );
     expect(vi.getTimerCount()).toBe(0);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] AssistantFrameHost tool cancellation could not be sent.",
+      "[openagentui] AssistantFrameHost tool cancellation could not be sent.",
       secondTransportError,
     );
     expect(() => host.dispose()).not.toThrow();

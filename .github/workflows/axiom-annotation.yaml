@@ -11,7 +11,7 @@ jobs:
   annotate:
     # A fork's own main pushes never carry the secret, so without this the job
     # would fail on every one of them.
-    if: github.repository == 'assistant-ui/assistant-ui'
+    if: github.repository == 'openagentui/openagentui'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

@@ -1,18 +1,18 @@
 {
-  "name": "@assistant-ui/ai-sdk",
+  "name": "@openagentui/ai-sdk",
   "version": "0.0.11",
-  "description": "Vercel AI SDK adapter for assistant-ui",
+  "description": "Vercel AI SDK adapter for openagentui",
   "keywords": [
     "ai-sdk",
     "vercel",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat",
     "openai",
     "streaming"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "imports": {
@@ -59,11 +59,11 @@
   "dependencies": {
     "@ai-sdk/mcp": "^2.0.63",
     "@ai-sdk/react": "^4.0.126",
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
-    "@assistant-ui/tap": "^0.9.21",
-    "assistant-cloud": "workspace:^",
-    "assistant-stream": "^0.3.48"
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
+    "@openagentui/tap": "^0.9.21",
+    "openagentui-cloud": "workspace:^",
+    "openagentui-stream": "^0.3.48"
   },
   "peerDependencies": {
     "@types/react": "*",
@@ -79,8 +79,8 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@testing-library/react": "^16.3.3",
     "@types/json-schema": "^7.0.15",
     "@types/react": "^19.3.0",
@@ -95,13 +95,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/ai-sdk"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

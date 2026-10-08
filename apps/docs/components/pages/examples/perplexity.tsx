@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
 import { CloneThreadShell } from "./clone-thread-shell";
 import {
   ActionBarPrimitive,
@@ -12,7 +12,7 @@ import {
   MessagePrimitive,
   ThreadPrimitive,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   ArrowRight,
   AudioLines,

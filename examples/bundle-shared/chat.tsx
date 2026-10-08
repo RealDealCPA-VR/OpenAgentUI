@@ -1,8 +1,8 @@
 import { useMemo, useRef, useCallback } from "react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { AssistantModal } from "@/components/assistant-ui/elements/assistant-modal.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { AssistantModal } from "@/components/openagentui/elements/assistant-modal.aui";
 import { createPreviewTransport } from "./transport";
 
 export type PreviewChatProps = {

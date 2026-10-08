@@ -1,8 +1,8 @@
-import type { AppendMessage, ExternalStoreAdapter } from "@assistant-ui/core";
+import type { AppendMessage, ExternalStoreAdapter } from "@openagentui/core";
 import {
   AssistantRuntimeImpl,
   ExternalStoreRuntimeCore,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 
 export type EchoMessage = {
   id: string;

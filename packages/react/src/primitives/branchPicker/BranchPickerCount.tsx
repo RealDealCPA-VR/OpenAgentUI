@@ -1,7 +1,7 @@
 "use client";
 
 import type { FC } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 const useBranchPickerCount = () => {
   const branchCount = useAuiState((s) => s.message.branchCount);

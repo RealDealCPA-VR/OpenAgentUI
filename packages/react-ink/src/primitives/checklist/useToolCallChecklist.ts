@@ -1,8 +1,8 @@
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import type {
   MessagePartState,
   ToolCallMessagePartStatus,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type { ChecklistItemData, ChecklistItemStatus } from "./types";
 
 const resolveChecklistStatus = (

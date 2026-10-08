@@ -12,7 +12,7 @@ import {
   useAdkAgentInfo,
   useAdkSessionState,
   useAdkSend,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 
 function MyComponent() {
   // Current active agent name and branch path (multi-agent)
@@ -39,7 +39,7 @@ When ADK's `SecurityPlugin` or tool callbacks request user confirmation before e
 import {
   useAdkToolConfirmations,
   useAdkConfirmTool,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 
 function ToolConfirmationUI() {
   const confirmations = useAdkToolConfirmations();
@@ -66,7 +66,7 @@ function ToolConfirmationUI() {
 import {
   useAdkToolConfirmations,
   useAdkConfirmTool,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 import { Pressable, Text, View } from "react-native";
 
 function ToolConfirmationUI() {
@@ -102,7 +102,7 @@ function ToolConfirmationUI() {
 import {
   useAdkToolConfirmations,
   useAdkConfirmTool,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 import { Box, Text, useInput } from "ink";
 
 function ToolConfirmationUI() {
@@ -146,7 +146,7 @@ import {
   useAdkAuthRequests,
   useAdkSubmitAuth,
   type AdkAuthCredential,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 
 const authUriOf = (authConfig: unknown) =>
   (authConfig as { exchangedAuthCredential?: AdkAuthCredential } | undefined)
@@ -184,7 +184,7 @@ import {
   useAdkAuthRequests,
   useAdkSubmitAuth,
   type AdkAuthCredential,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 import { Pressable, Text, View } from "react-native";
 
 const authUriOf = (authConfig: unknown) =>
@@ -228,7 +228,7 @@ import {
   useAdkAuthRequests,
   useAdkSubmitAuth,
   type AdkAuthCredential,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 import { Box, Text, useInput } from "ink";
 
 const authUriOf = (authConfig: unknown) =>
@@ -273,8 +273,8 @@ When an ADK Python 2.0+ Workflow's `RequestInput` node pauses execution to ask t
 <Tab value="React">
 
 ```tsx
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { useAdkSubmitInput } from "@assistant-ui/react-google-adk";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { useAdkSubmitInput } from "@openagentui/react-google-adk";
 
 type RequestInputArgs = {
   interrupt_id?: string;
@@ -315,8 +315,8 @@ export const RequestInputToolUI: ToolCallMessagePartComponent<
 <Tab value="React Native">
 
 ```tsx
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react-native";
-import { useAdkSubmitInput } from "@assistant-ui/react-google-adk";
+import type { ToolCallMessagePartComponent } from "@openagentui/react-native";
+import { useAdkSubmitInput } from "@openagentui/react-google-adk";
 import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 
@@ -354,8 +354,8 @@ export const RequestInputToolUI: ToolCallMessagePartComponent<
 <Tab value="React Ink">
 
 ```tsx
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react-ink";
-import { useAdkSubmitInput } from "@assistant-ui/react-google-adk";
+import type { ToolCallMessagePartComponent } from "@openagentui/react-ink";
+import { useAdkSubmitInput } from "@openagentui/react-google-adk";
 import { useState } from "react";
 import { Box, Text, useInput } from "ink";
 
@@ -408,12 +408,12 @@ import {
   AuiConfig,
   defineToolkit,
   Tools,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   createAdkStream,
   useAdkRuntime,
-} from "@assistant-ui/react-google-adk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/react-google-adk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const toolkit = defineToolkit({
   adk_request_input: {
@@ -444,13 +444,13 @@ import {
   AuiConfig,
   defineToolkit,
   Tools,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import {
   createAdkStream,
   useAdkRuntime,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 import { View } from "react-native";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const API_URL = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000";
 
@@ -485,11 +485,11 @@ import {
   AuiConfig,
   defineToolkit,
   Tools,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import {
   createAdkStream,
   useAdkRuntime,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 import { Box } from "ink";
 import { Thread } from "./components/thread.js";
 
@@ -529,7 +529,7 @@ function App() {
 Track file artifacts created or modified by the agent:
 
 ```ts
-import { useAdkArtifacts } from "@assistant-ui/react-google-adk";
+import { useAdkArtifacts } from "@openagentui/react-google-adk";
 
 function ArtifactList() {
   const artifacts = useAdkArtifacts();
@@ -573,7 +573,7 @@ Detect when an agent requests escalation to a human operator:
 <Tab value="React">
 
 ```tsx
-import { useAdkEscalation } from "@assistant-ui/react-google-adk";
+import { useAdkEscalation } from "@openagentui/react-google-adk";
 
 function EscalationBanner() {
   const escalated = useAdkEscalation();
@@ -586,7 +586,7 @@ function EscalationBanner() {
 <Tab value="React Native">
 
 ```tsx
-import { useAdkEscalation } from "@assistant-ui/react-google-adk";
+import { useAdkEscalation } from "@openagentui/react-google-adk";
 import { Text } from "react-native";
 
 function EscalationBanner() {
@@ -600,7 +600,7 @@ function EscalationBanner() {
 <Tab value="React Ink">
 
 ```tsx
-import { useAdkEscalation } from "@assistant-ui/react-google-adk";
+import { useAdkEscalation } from "@openagentui/react-google-adk";
 import { Text } from "ink";
 
 function EscalationBanner() {
@@ -621,7 +621,7 @@ Track tools that are executing asynchronously and awaiting external input:
 <Tab value="React">
 
 ```tsx
-import { useAdkLongRunningToolIds } from "@assistant-ui/react-google-adk";
+import { useAdkLongRunningToolIds } from "@openagentui/react-google-adk";
 
 function PendingToolsIndicator() {
   const pendingToolIds = useAdkLongRunningToolIds();
@@ -634,7 +634,7 @@ function PendingToolsIndicator() {
 <Tab value="React Native">
 
 ```tsx
-import { useAdkLongRunningToolIds } from "@assistant-ui/react-google-adk";
+import { useAdkLongRunningToolIds } from "@openagentui/react-google-adk";
 import { Text } from "react-native";
 
 function PendingToolsIndicator() {
@@ -648,7 +648,7 @@ function PendingToolsIndicator() {
 <Tab value="React Ink">
 
 ```tsx
-import { useAdkLongRunningToolIds } from "@assistant-ui/react-google-adk";
+import { useAdkLongRunningToolIds } from "@openagentui/react-google-adk";
 import { Text } from "ink";
 
 function PendingToolsIndicator() {
@@ -665,14 +665,14 @@ This hook reports every tool call ADK marked via `long_running_tool_ids`, includ
 
 That same set decides which tool calls the client owns. A registered frontend tool's `execute` runs only for a call ADK marked long-running, because ADK resolves every other call itself and yields the call to the client before its own response. Register a tool the client executes as a `LongRunningFunctionTool` on the agent.
 
-A long-running call is not background work. `@assistant-ui/core` keeps a message `running` after its run ends only while a tool call carries a nested conversation whose trailing assistant message is still running; an ADK long-running call carries no nested conversation, and the run that yielded it has ended. It normally settles on `requires-action` with reason `tool-calls` until the function response is sent; an unresolved confirmation approval instead uses reason `interrupt`. Either state renders the tool UI and keeps `useAdkSubmitInput`, `useAdkConfirmTool`, and `useAdkSubmitAuth` answerable. When a frontend tool is registered for the call, its `execute` puts the thread back into `isRunning` for as long as it runs.
+A long-running call is not background work. `@openagentui/core` keeps a message `running` after its run ends only while a tool call carries a nested conversation whose trailing assistant message is still running; an ADK long-running call carries no nested conversation, and the run that yielded it has ended. It normally settles on `requires-action` with reason `tool-calls` until the function response is sent; an unresolved confirmation approval instead uses reason `interrupt`. Either state renders the tool UI and keeps `useAdkSubmitInput`, `useAdkConfirmTool`, and `useAdkSubmitAuth` answerable. When a frontend tool is registered for the call, its `execute` puts the thread back into `isRunning` for as long as it runs.
 
 ## Per-message metadata
 
 Access grounding, citation, and token usage metadata per message:
 
 ```ts
-import { useAdkMessageMetadata } from "@assistant-ui/react-google-adk";
+import { useAdkMessageMetadata } from "@openagentui/react-google-adk";
 
 function MessageMetadata({ messageId }: { messageId: string }) {
   const metadataMap = useAdkMessageMetadata();
@@ -692,7 +692,7 @@ import {
   useAdkAppState,
   useAdkUserState,
   useAdkTempState,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 
 function StateDebug() {
   const appState = useAdkAppState(); // app:* keys (app-level, shared)
@@ -712,7 +712,7 @@ import {
   toAdkStructuredEvents,
   AdkEventType,
   type AdkStructuredEvent,
-} from "@assistant-ui/react-google-adk";
+} from "@openagentui/react-google-adk";
 
 const structured = toAdkStructuredEvents(event);
 for (const e of structured) {

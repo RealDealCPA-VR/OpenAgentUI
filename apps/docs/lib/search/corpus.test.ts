@@ -63,7 +63,7 @@ const mocks = vi.hoisted(() => {
         "Perplexity Clone",
         "Open-source Perplexity-style chat in React.",
         ["Features"],
-        ["The Perplexity Clone demonstrates how to customize assistant-ui."],
+        ["The Perplexity Clone demonstrates how to customize openagentui."],
       ),
     ],
   };

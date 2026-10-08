@@ -5,9 +5,9 @@ import type {
 } from "../types/client";
 import { handleIntrospectionProp } from "./BaseProxyHandler";
 
-export const CLIENT_ID_SYMBOL = Symbol("assistant-ui.store.clientId");
+export const CLIENT_ID_SYMBOL = Symbol("openagentui.store.clientId");
 
-export const INSTANCE_TAG_SYMBOL = Symbol("assistant-ui.store.instanceTag");
+export const INSTANCE_TAG_SYMBOL = Symbol("openagentui.store.instanceTag");
 
 declare const clientIdBrand: unique symbol;
 

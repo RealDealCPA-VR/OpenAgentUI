@@ -1,4 +1,4 @@
-const DERIVED_HOOK = Symbol("assistant-ui.derived-hook");
+const DERIVED_HOOK = Symbol("openagentui.derived-hook");
 
 type Hook = (...args: any[]) => any;
 type MarkedHook = Hook & { [DERIVED_HOOK]?: true };

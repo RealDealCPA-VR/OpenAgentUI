@@ -3,17 +3,17 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/ai-sdk": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/ai-sdk": "workspace:*",
     "ai": "^7.0.101",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "@assistant-ui/ui": "workspace:*"
+    "@openagentui/ui": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "typescript": "^7.0.2",
     "postcss": "^8.5.28",
     "@tailwindcss/postcss": "^4.3.3",

@@ -76,13 +76,13 @@ describe("agent discovery", () => {
       "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
     );
     expect(index.skills[0]).toMatchObject({
-      name: "assistant-ui-docs",
+      name: "openagentui-docs",
       type: "skill-md",
       url: `${BASE_URL}${AGENT_DISCOVERY_ROUTES.siteSkill}`,
       digest: `sha256:${sha256(SITE_SKILL_DOCUMENT)}`,
     });
     expect(index.skills[1]).toMatchObject({
-      name: "assistant-ui-design",
+      name: "openagentui-design",
       type: "skill-md",
       url: `${BASE_URL}${AGENT_DISCOVERY_ROUTES.design}`,
       digest: `sha256:${sha256(DESIGN_DOCUMENT)}`,
@@ -119,9 +119,9 @@ describe("agent discovery", () => {
   it("refuses a repo skill that shadows a site skill", () => {
     expect(() =>
       buildAgentSkillsIndex([
-        { name: "assistant-ui-docs", description: "x", content: "y" },
+        { name: "openagentui-docs", description: "x", content: "y" },
       ]),
-    ).toThrow("assistant-ui-docs collides");
+    ).toThrow("openagentui-docs collides");
   });
 
   it("wraps a repo skill in agentskills frontmatter", () => {
@@ -145,7 +145,7 @@ describe("agent discovery", () => {
   });
 
   it("serves the design law with its frontmatter, registers, and kit roster", () => {
-    expect(DESIGN_DOCUMENT).toMatch(/^---\nname: assistant-ui-design\n/);
+    expect(DESIGN_DOCUMENT).toMatch(/^---\nname: openagentui-design\n/);
 
     for (const heading of [
       "## The governing metaphor",
@@ -216,7 +216,7 @@ describe("agent discovery", () => {
       },
     ]);
 
-    expect(sitemap).toContain(`# assistant-ui documentation sitemap`);
+    expect(sitemap).toContain(`# openagentui documentation sitemap`);
     expect(sitemap).toContain(
       `- [First](${BASE_URL}/docs/first)\n  Markdown: ${BASE_URL}/docs/first.md\n  Description: Start here.\n\n`,
     );

@@ -1,4 +1,4 @@
-import { DevToolsHooks } from "@assistant-ui/react";
+import { DevToolsHooks } from "@openagentui/react";
 import { projectApi } from "./projectApi";
 import {
   EMPTY_SNAPSHOT,
@@ -46,7 +46,7 @@ export const createInProcessClient = (): DevToolsClient => {
               notify();
             } catch (error) {
               console.error(
-                "[assistant-ui] DevTools listener threw an error",
+                "[openagentui] DevTools listener threw an error",
                 error,
               );
             }

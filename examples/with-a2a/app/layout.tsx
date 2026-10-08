@@ -4,8 +4,8 @@ import { MyRuntimeProvider } from "@/app/MyRuntimeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "assistant-ui + A2A",
-  description: "A2A protocol integration with assistant-ui",
+  title: "openagentui + A2A",
+  description: "A2A protocol integration with openagentui",
 };
 
 export default function RootLayout({

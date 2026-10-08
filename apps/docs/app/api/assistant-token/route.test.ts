@@ -17,7 +17,7 @@ vi.mock("@/lib/account-cloud", () => ({
 import { GET } from "./route";
 
 const request = (headers: HeadersInit = { "sec-fetch-site": "same-origin" }) =>
-  new Request("https://www.assistant-ui.com/api/assistant-token", { headers });
+  new Request("https://openagentui.dev/api/assistant-token", { headers });
 
 afterEach(() => {
   vi.resetAllMocks();

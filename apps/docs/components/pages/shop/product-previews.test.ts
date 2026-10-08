@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { expect, it } from "vitest";
 import { registry } from "../../../../registry/src/registry";
 import { CATALOG_ITEMS } from "../../../lib/catalog";
-import { assistantUi } from "../../../lib/catalog/products/assistant-ui";
+import { assistantUi } from "../../../lib/catalog/products/openagentui";
 
 const source = readFileSync(
   join(process.cwd(), "components/pages/elements/registry.tsx"),
@@ -40,7 +40,7 @@ it("lists in the bundle exactly the elements the thread installs", () => {
     "thread",
     ...(thread?.registryDependencies ?? []).flatMap((dependency) => {
       const name = dependency.match(
-        /^https:\/\/r\.assistant-ui\.com\/(.+)\.json$/,
+        /^https:\/\/r\.openagentui\.com\/(.+)\.json$/,
       )?.[1];
       return name === undefined ? [] : [name];
     }),

@@ -30,15 +30,15 @@ update:
 
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
-  - '@assistant-ui/*'
+  - '@openagentui/*'
   - '@next/*'
   - '@openuidev/assistant-ui'
   - '@typescript/typescript-*'
-  - assistant-cloud
-  - assistant-stream
-  - assistant-ui
+  - openagentui-cloud
+  - openagentui-stream
+  - openagentui
   - aui-auth
-  - create-assistant-ui
+  - create-openagentui
   - eve
   - heat-graph
   - next

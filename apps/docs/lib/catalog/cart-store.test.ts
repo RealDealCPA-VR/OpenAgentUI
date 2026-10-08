@@ -255,8 +255,8 @@ describe("cart store", () => {
 
   it("refuses a product that only installs through its own setup", async () => {
     const store = await loadStore();
-    store.addToCart("assistant-ui");
-    store.mergeIntoCart(["assistant-ui"]);
+    store.addToCart("openagentui");
+    store.mergeIntoCart(["openagentui"]);
     expect(store.getCart()).toEqual([]);
   });
 });

@@ -1,9 +1,9 @@
 "use client";
 
 import { type FC, type PropsWithChildren } from "react";
-import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";
-import { Sources } from "@/components/assistant-ui/elements/sources.aui";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { MarkdownText } from "@/components/openagentui/elements/markdown-text";
+import { Sources } from "@/components/openagentui/elements/sources.aui";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import { Button } from "@/components/ui/button";
 import {
   Reasoning,
@@ -11,13 +11,13 @@ import {
   ReasoningRoot,
   ReasoningText,
   ReasoningTrigger,
-} from "@/components/assistant-ui/elements/reasoning.aui";
-import { ToolFallback } from "@/components/assistant-ui/elements/tool-fallback.aui";
+} from "@/components/openagentui/elements/reasoning.aui";
+import { ToolFallback } from "@/components/openagentui/elements/tool-fallback.aui";
 import {
   ToolGroupContent,
   ToolGroupRoot,
   ToolGroupTrigger,
-} from "@/components/assistant-ui/elements/tool-group.aui";
+} from "@/components/openagentui/elements/tool-group.aui";
 import {
   AuiIf,
   ComposerPrimitive,
@@ -26,7 +26,7 @@ import {
   SuggestionPrimitive,
   ThreadPrimitive,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { ArrowDownIcon, ArrowUpIcon, SquareIcon } from "lucide-react";
 
 export const MyThread: FC = () => {

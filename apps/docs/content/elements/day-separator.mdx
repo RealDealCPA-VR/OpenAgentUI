@@ -16,11 +16,11 @@ Every message carries a real `createdAt` (a `Date`) and `role`, and a thread's f
 
 ### Read the thread's messages
 
-```tsx title="components/assistant-ui/elements/thread-history.tsx"
+```tsx title="components/openagentui/elements/thread-history.tsx"
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
-import { DaySeparator, type DatedMessage } from "@/components/assistant-ui/elements/day-separator";
+import { useAuiState } from "@openagentui/react";
+import { DaySeparator, type DatedMessage } from "@/components/openagentui/elements/day-separator";
 
 const dayFormat = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
 const timeFormat = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" });
@@ -72,7 +72,7 @@ Standalone, DaySeparator takes the whole list at once: you hold the array and ap
 "use client";
 
 import { useState } from "react";
-import { DaySeparator, type DatedMessage } from "@/components/assistant-ui/elements/day-separator";
+import { DaySeparator, type DatedMessage } from "@/components/openagentui/elements/day-separator";
 
 const MESSAGES: DatedMessage[] = [
   { id: "1", day: "Yesterday", time: "16:04", role: "user", text: "Why does the draft survive a reload?" },

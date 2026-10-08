@@ -15,7 +15,7 @@ vi.mock("../../src/lib/run-spawn", async (importOriginal) => ({
   runSpawn: mocks.runSpawn,
 }));
 
-const HOSTED_MCP_URL = "https://www.assistant-ui.com/mcp";
+const HOSTED_MCP_URL = "https://openagentui.dev/mcp";
 
 describe("mcp command", () => {
   let cwd: string;
@@ -29,7 +29,7 @@ describe("mcp command", () => {
   beforeEach(() => {
     cwd = process.cwd();
     tempDir = fs.realpathSync(
-      fs.mkdtempSync(path.join(os.tmpdir(), "assistant-ui-mcp-")),
+      fs.mkdtempSync(path.join(os.tmpdir(), "openagentui-mcp-")),
     );
     process.chdir(tempDir);
 
@@ -78,7 +78,7 @@ describe("mcp command", () => {
     expect(output).toContain("Could not parse Cursor MCP config.");
     expect(output).toContain(`Config path: ${configPath}`);
     expect(output).toContain(
-      "Fix the JSON syntax in that file, then run: assistant-ui mcp --cursor",
+      "Fix the JSON syntax in that file, then run: openagentui mcp --cursor",
     );
     expect(output).toContain("No changes were written.");
     expect(output).not.toContain("SyntaxError");
@@ -92,7 +92,7 @@ describe("mcp command", () => {
 
     expect(config).toEqual({
       mcpServers: {
-        "assistant-ui": { url: HOSTED_MCP_URL },
+        openagentui: { url: HOSTED_MCP_URL },
       },
     });
   });
@@ -110,7 +110,7 @@ describe("mcp command", () => {
 
     expect(config).toEqual({
       mcpServers: {
-        "assistant-ui": { serverUrl: HOSTED_MCP_URL },
+        openagentui: { serverUrl: HOSTED_MCP_URL },
       },
     });
   });
@@ -123,7 +123,7 @@ describe("mcp command", () => {
 
     expect(config).toEqual({
       servers: {
-        "assistant-ui": { type: "http", url: HOSTED_MCP_URL },
+        openagentui: { type: "http", url: HOSTED_MCP_URL },
       },
     });
   });
@@ -155,7 +155,7 @@ describe("mcp command", () => {
       expect(parseJsonc(updated, [], { allowTrailingComma: true })).toEqual({
         servers: {
           other: { type: "http", url: "https://example.com/mcp" },
-          "assistant-ui": { type: "http", url: HOSTED_MCP_URL },
+          openagentui: { type: "http", url: HOSTED_MCP_URL },
         },
         inputs: [],
       });
@@ -183,7 +183,7 @@ describe("mcp command", () => {
     const updated = fs.readFileSync(configPath, "utf-8");
     expect(updated).toContain(
       `\t\t"other": { "command": "custom" }, // Keep this with other
-\t\t"assistant-ui": {
+\t\t"openagentui": {
 \t\t\t"type": "http",`,
     );
     expect(parseJsonc(updated).servers.other).toEqual({ command: "custom" });
@@ -198,7 +198,7 @@ describe("mcp command", () => {
 
     expect(fs.readFileSync(configPath, "utf-8")).toBe(`{
     "servers": {
-        "assistant-ui": {
+        "openagentui": {
             "type": "http",
             "url": "${HOSTED_MCP_URL}"
         }
@@ -207,14 +207,14 @@ describe("mcp command", () => {
 `);
   });
 
-  it("replaces the VS Code assistant-ui entry without rewriting unrelated settings", async () => {
+  it("replaces the VS Code openagentui entry without rewriting unrelated settings", async () => {
     const configPath = path.join(tempDir, ".vscode", "mcp.json");
     fs.mkdirSync(path.dirname(configPath), { recursive: true });
     fs.writeFileSync(
       configPath,
       `{
   "servers": {
-    "assistant-ui": { "command": "npx", "args": ["old-server"] },
+    "openagentui": { "command": "npx", "args": ["old-server"] },
     // Keep this custom server
     "other": { "command": "custom", "args": [] }
   },
@@ -229,7 +229,7 @@ describe("mcp command", () => {
       '// Keep this custom server\n    "other": { "command": "custom", "args": [] }',
     );
     expect(updated).toContain('"inputs": [ ]');
-    expect(parseJsonc(updated).servers["assistant-ui"]).toEqual({
+    expect(parseJsonc(updated).servers["openagentui"]).toEqual({
       type: "http",
       url: HOSTED_MCP_URL,
     });
@@ -251,7 +251,7 @@ describe("mcp command", () => {
     expect(
       parseJsonc(updated, [], { allowTrailingComma: true }).servers,
     ).toEqual({
-      "assistant-ui": { type: "http", url: HOSTED_MCP_URL },
+      openagentui: { type: "http", url: HOSTED_MCP_URL },
     });
     if (content.includes("//"))
       expect(updated).toContain("// Server configuration");
@@ -261,10 +261,10 @@ describe("mcp command", () => {
 
   it.each([
     '"servers": null',
-    '"servers": { "assistant-ui": { "command": "first" }, "assistant-ui": { "command": "last" } }',
-    '"servers": { "assistant-ui": { "command": "shadowed" } }, "servers": { "other": { "command": "custom" } }',
-    '"servers": { "assistant-ui": { "command": "shadowed" } }, "servers": null',
-    '"servers": {}, "servers": { "assistant-ui": { "command": "last" } }',
+    '"servers": { "openagentui": { "command": "first" }, "openagentui": { "command": "last" } }',
+    '"servers": { "openagentui": { "command": "shadowed" } }, "servers": { "other": { "command": "custom" } }',
+    '"servers": { "openagentui": { "command": "shadowed" } }, "servers": null',
+    '"servers": {}, "servers": { "openagentui": { "command": "last" } }',
   ])(
     "updates the effective VS Code server configuration in %s",
     async (servers) => {
@@ -279,7 +279,7 @@ describe("mcp command", () => {
 
       const updated = fs.readFileSync(configPath, "utf-8");
       const config = parseJsonc(updated);
-      expect(config.servers["assistant-ui"]).toEqual({
+      expect(config.servers["openagentui"]).toEqual({
         type: "http",
         url: HOSTED_MCP_URL,
       });
@@ -288,7 +288,7 @@ describe("mcp command", () => {
       }
       if (servers.includes('"shadowed"')) {
         expect(updated).toContain(
-          '"servers": { "assistant-ui": { "command": "shadowed" } }',
+          '"servers": { "openagentui": { "command": "shadowed" } }',
         );
       }
       expect(updated).toContain('// Keep inputs\r\n  "inputs": [ ]');
@@ -332,16 +332,16 @@ describe("mcp command", () => {
     expect(fs.readFileSync(configPath, "utf-8")).toBe(content);
   });
 
-  it("replaces an existing stdio assistant-ui entry wholesale for an http client", async () => {
+  it("replaces an existing stdio openagentui entry wholesale for an http client", async () => {
     const configPath = path.join(tempDir, ".cursor", "mcp.json");
     fs.mkdirSync(path.dirname(configPath), { recursive: true });
     fs.writeFileSync(
       configPath,
       JSON.stringify({
         mcpServers: {
-          "assistant-ui": {
+          openagentui: {
             command: "npx",
-            args: ["-y", "@assistant-ui/mcp-docs-server"],
+            args: ["-y", "@openagentui/mcp-docs-server"],
           },
           "other-server": { command: "foo" },
         },
@@ -355,7 +355,7 @@ describe("mcp command", () => {
 
     expect(config).toEqual({
       mcpServers: {
-        "assistant-ui": { url: HOSTED_MCP_URL },
+        openagentui: { url: HOSTED_MCP_URL },
         "other-server": { command: "foo" },
       },
     });
@@ -373,7 +373,7 @@ describe("mcp command", () => {
         '  "theme": "One Dark",',
         '  "languages": { "TypeScript": { "tab_size": 4 } },',
         '  "context_servers": {',
-        '    "assistant-ui": { "command": { "path": "old", "env": { "CUSTOM": "value" } }, "settings": { "enabled": true } },',
+        '    "openagentui": { "command": { "path": "old", "env": { "CUSTOM": "value" } }, "settings": { "enabled": true } },',
         "    // Keep this custom server",
         '    "other": { "command": { "path": "custom", "args": [] } },',
         "  },",
@@ -386,7 +386,7 @@ describe("mcp command", () => {
 
       const updated = fs.readFileSync(configPath, "utf-8");
       expect(updated).toContain(
-        content.slice(0, content.indexOf('    "assistant-ui"')),
+        content.slice(0, content.indexOf('    "openagentui"')),
       );
       expect(updated).toContain(
         content.slice(content.indexOf("    // Keep this custom server")),
@@ -396,10 +396,10 @@ describe("mcp command", () => {
         theme: "One Dark",
         languages: { TypeScript: { tab_size: 4 } },
         context_servers: {
-          "assistant-ui": {
+          openagentui: {
             command: {
               path: "npx",
-              args: ["-y", "@assistant-ui/mcp-docs-server"],
+              args: ["-y", "@openagentui/mcp-docs-server"],
               env: { CUSTOM: "value" },
             },
             settings: { enabled: true },
@@ -416,8 +416,8 @@ describe("mcp command", () => {
   it.each([
     '{\n  "languages": { "TypeScript": { "tab_size": 4 } },\n  "theme": "One Dark"\n}\n',
     '// Editor preferences\n{ "context_servers": null }\n',
-    '// Editor preferences\n{ "context_servers": {}, "context_servers": { "assistant-ui": { "command": { "path": "old" } } } }\n',
-    '// Editor preferences\n{ "context_servers": { "assistant-ui": {}, "assistant-ui": { "command": { "path": "old" } } } }\n',
+    '// Editor preferences\n{ "context_servers": {}, "context_servers": { "openagentui": { "command": { "path": "old" } } } }\n',
+    '// Editor preferences\n{ "context_servers": { "openagentui": {}, "openagentui": { "command": { "path": "old" } } } }\n',
   ])(
     "updates the effective Zed server without a whole-file rewrite in %j",
     async (content) => {
@@ -430,10 +430,10 @@ describe("mcp command", () => {
 
       const updated = fs.readFileSync(configPath, "utf-8");
       expect(
-        parseJsonc(updated).context_servers["assistant-ui"].command,
+        parseJsonc(updated).context_servers["openagentui"].command,
       ).toEqual({
         path: "npx",
-        args: ["-y", "@assistant-ui/mcp-docs-server"],
+        args: ["-y", "@openagentui/mcp-docs-server"],
       });
       if (content.includes('"languages"')) {
         expect(updated).toContain(
@@ -482,9 +482,9 @@ describe("mcp command", () => {
 
     expect(config).toEqual({
       mcpServers: {
-        "assistant-ui": {
+        openagentui: {
           command: "npx",
-          args: ["-y", "@assistant-ui/mcp-docs-server"],
+          args: ["-y", "@openagentui/mcp-docs-server"],
         },
       },
     });
@@ -500,10 +500,10 @@ describe("mcp command", () => {
     });
 
     expect(mocks.runSpawn.mock.calls).toEqual([
-      ["claude", ["mcp", "remove", "assistant-ui"]],
+      ["claude", ["mcp", "remove", "openagentui"]],
       [
         "claude",
-        ["mcp", "add", "--transport", "http", "assistant-ui", HOSTED_MCP_URL],
+        ["mcp", "add", "--transport", "http", "openagentui", HOSTED_MCP_URL],
       ],
     ]);
   });
@@ -525,7 +525,7 @@ describe("mcp command", () => {
     expect(updated.context_servers.custom).toEqual(
       settings.context_servers.custom,
     );
-    expect(updated.context_servers["assistant-ui"]).toBeDefined();
+    expect(updated.context_servers["openagentui"]).toBeDefined();
     expect(fs.existsSync(path.join(tempDir, ".zed", "settings.json"))).toBe(
       false,
     );
@@ -544,7 +544,7 @@ describe("mcp command", () => {
             : path.join(tempDir, ".config", "zed", "settings.json");
         expect(
           JSON.parse(fs.readFileSync(configPath, "utf-8")).context_servers[
-            "assistant-ui"
+            "openagentui"
           ],
         ).toBeDefined();
       } finally {

@@ -1,6 +1,6 @@
 "use client";
 
-import { createTapRoot, flushTapSync } from "@assistant-ui/tap";
+import { createTapRoot, flushTapSync } from "@openagentui/tap";
 import { useSyncExternalStore } from "react";
 
 import type { AssistantClient, Unsubscribe } from "./types/client";

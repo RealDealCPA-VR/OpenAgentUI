@@ -13,12 +13,12 @@ import type {
 } from "../../index";
 import type { LocalRuntimeOptionsBase } from "../../runtimes/local/local-runtime-options";
 import { AssistantRuntimeImpl, LocalRuntimeCore } from "../../internal";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { useRemoteThreadListRuntime } from "./useRemoteThreadListRuntime";
 import { useCloudThreadListAdapter } from "./cloud/useCloudThreadListAdapter";
 import { useRuntimeAdapters } from "./RuntimeAdapterProvider";
-import type { AssistantCloud } from "assistant-cloud";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+import type { AssistantCloud } from "openagentui-cloud";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 
 const subscribeNever = () => () => {};
 
@@ -102,7 +102,7 @@ const useLocalThreadRuntime = (
 
     historyLoadPromiseRef.current = loadPromise;
     void loadPromise.catch((error: unknown) => {
-      console.error("[assistant-ui] local thread history load failed:", error);
+      console.error("[openagentui] local thread history load failed:", error);
     });
   }, [runtime]);
 

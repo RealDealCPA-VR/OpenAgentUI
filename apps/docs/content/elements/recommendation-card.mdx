@@ -19,9 +19,9 @@ A proposal like this is a human-in-the-loop tool call: the model calls it to ask
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { RecommendationCard } from "@/components/assistant-ui/elements/recommendation-card";
+import { RecommendationCard } from "@/components/openagentui/elements/recommendation-card";
 
 export const toolkit = defineToolkit({
   propose_change: {
@@ -63,8 +63,8 @@ export const toolkit = defineToolkit({
 ```tsx title="app/MyRuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 const config = AuiConfig({ tools: Tools({ toolkit }) });
@@ -100,7 +100,7 @@ import { useState } from "react";
 import {
   RecommendationCard,
   type RecommendationState,
-} from "@/components/assistant-ui/elements/recommendation-card";
+} from "@/components/openagentui/elements/recommendation-card";
 
 export function Recommendation() {
   const [state, setState] = useState<RecommendationState>("idle");

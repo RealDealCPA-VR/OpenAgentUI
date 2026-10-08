@@ -16,9 +16,9 @@ Media player keeps a response's recording or clip in the conversation, with expl
 
 ### Render media file parts
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { File } from "@/components/assistant-ui/elements/file";
-import { MessagePrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { File } from "@/components/openagentui/elements/file";
+import { MessagePrimitive } from "@openagentui/react";
 
 function AssistantMessage() {
   return (
@@ -74,7 +74,7 @@ Use either player directly when the URL is already part of your app state.
 import {
   AudioPlayer,
   VideoPlayer,
-} from "@/components/assistant-ui/elements/media-player";
+} from "@/components/openagentui/elements/media-player";
 
 <AudioPlayer
   src="https://cdn.example.com/briefing.mp3"

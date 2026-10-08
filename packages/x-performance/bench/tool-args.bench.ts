@@ -3,7 +3,7 @@ import {
   AssistantMessageStream,
   unstable_toolResultStream,
   type AssistantStreamChunk,
-} from "assistant-stream";
+} from "openagentui-stream";
 
 const makeChunks = (
   argsText: string,
@@ -71,7 +71,7 @@ const drainActiveReader = async (chunks: AssistantStreamChunk[]) => {
   return Promise.all(reads);
 };
 
-describe("assistant-stream: execute-only tool arguments (16-char deltas)", () => {
+describe("openagentui-stream: execute-only tool arguments (16-char deltas)", () => {
   for (const size of [1000, 5000, 10000]) {
     const chunks = makeChunks(JSON.stringify({ value: "x".repeat(size) }), 16);
     test(`${size} bytes`, async ({ bench }) => {
@@ -95,7 +95,7 @@ describe("assistant-stream: execute-only tool arguments (16-char deltas)", () =>
   }
 });
 
-describe("assistant-stream: accumulator tool arguments (16-char deltas)", () => {
+describe("openagentui-stream: accumulator tool arguments (16-char deltas)", () => {
   for (const size of [1000, 5000, 10000]) {
     const chunks = makeChunks(JSON.stringify({ value: "x".repeat(size) }), 16);
     test(`${size} bytes`, async ({ bench }) => {
@@ -116,7 +116,7 @@ describe("assistant-stream: accumulator tool arguments (16-char deltas)", () => 
   }
 });
 
-describe("assistant-stream: active-reader tool arguments (16-char deltas)", () => {
+describe("openagentui-stream: active-reader tool arguments (16-char deltas)", () => {
   for (const size of [1000, 5000, 10000]) {
     const chunks = makeChunks(JSON.stringify({ value: "x".repeat(size) }), 16);
     test(`${size} bytes`, async ({ bench }) => {
@@ -131,7 +131,7 @@ describe("assistant-stream: active-reader tool arguments (16-char deltas)", () =
   }
 });
 
-describe("assistant-stream: complete accumulated arguments (single delta)", () => {
+describe("openagentui-stream: complete accumulated arguments (single delta)", () => {
   const argsText = JSON.stringify({
     points: Array.from({ length: 10_000 }, (_, index) => index + 0.5),
   });
@@ -155,7 +155,7 @@ describe("assistant-stream: complete accumulated arguments (single delta)", () =
   });
 });
 
-describe("assistant-stream: dense accumulated arguments (16-char deltas)", () => {
+describe("openagentui-stream: dense accumulated arguments (16-char deltas)", () => {
   for (const [shape, size] of [
     ["array", 2_000],
     ["object", 2_000],

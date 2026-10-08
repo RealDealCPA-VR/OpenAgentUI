@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   QuoteReply,
   type QuoteAction,
-} from "@/components/assistant-ui/elements/quote-reply";
+} from "@/components/openagentui/elements/quote-reply";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const ACTIONS: readonly QuoteAction[] = [

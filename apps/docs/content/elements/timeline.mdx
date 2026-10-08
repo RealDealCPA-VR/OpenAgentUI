@@ -9,7 +9,7 @@ A sequence of events on a vertical axis, each dated, joined by a connecting line
 
 <RuntimeMode>
 
-This element has no assistant-ui primitive of its own, so the runtime wiring is a tool renderer rather than a primitive composition. A timeline is usually a lookup against something you track elsewhere, so the events belong on the tool's `result` rather than on its streamed `args`.
+This element has no openagentui primitive of its own, so the runtime wiring is a tool renderer rather than a primitive composition. A timeline is usually a lookup against something you track elsewhere, so the events belong on the tool's `result` rather than on its streamed `args`.
 
 <Steps>
   <Step>
@@ -19,8 +19,8 @@ This element has no assistant-ui primitive of its own, so the runtime wiring is 
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { Timeline } from "@/components/assistant-ui/elements/timeline";
+import { defineToolkit } from "@openagentui/react";
+import { Timeline } from "@/components/openagentui/elements/timeline";
 
 export const toolkit = defineToolkit({
   get_incident_timeline: {
@@ -50,8 +50,8 @@ import {
   AssistantRuntimeProvider,
   AuiConfig,
   Tools,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({
@@ -69,7 +69,7 @@ export function MyRuntimeProvider({
 }
 ```
 
-Once the toolkit is registered, `Thread` and any custom message list built on assistant-ui's message part primitives (`MessagePrimitive.Parts` or `MessagePrimitive.GroupedParts`) render the registered UI automatically wherever the `get_incident_timeline` call appears in the message, so nothing needs to be placed by hand.
+Once the toolkit is registered, `Thread` and any custom message list built on openagentui's message part primitives (`MessagePrimitive.Parts` or `MessagePrimitive.GroupedParts`) render the registered UI automatically wherever the `get_incident_timeline` call appears in the message, so nothing needs to be placed by hand.
 
   </Step>
 </Steps>
@@ -91,7 +91,7 @@ Standalone, the element is a plain display component: it owns no state of its ow
 import {
   Timeline,
   type TimelineEvent,
-} from "@/components/assistant-ui/elements/timeline";
+} from "@/components/openagentui/elements/timeline";
 
 const events: readonly TimelineEvent[] = [
   { id: "1", when: "past", time: "09:02", title: "Issue filed" },

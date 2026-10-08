@@ -91,7 +91,7 @@
   }
 }
 
-/* Animation utilities for assistant-ui */
+/* Animation utilities for openagentui */
 @keyframes fade-in {
   from {
     opacity: 0;

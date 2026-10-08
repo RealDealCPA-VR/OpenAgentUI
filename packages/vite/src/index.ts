@@ -2,7 +2,7 @@ import type { Plugin, TransformResult } from "vite";
 import {
   compileGenerative,
   isGenerativeSource,
-} from "@assistant-ui/x-generative-compiler";
+} from "@openagentui/x-generative-compiler";
 
 export interface AuiOptions {
   /**
@@ -16,7 +16,7 @@ export interface AuiOptions {
 /** Compiles `"use generative"` modules per environment. */
 function generativePlugin(pluginOptions: AuiOptions): Plugin {
   return {
-    name: "assistant-ui:use-generative",
+    name: "openagentui:use-generative",
     enforce: "pre",
     transform(code, id, options) {
       if (!isGenerativeSource(id.split("?")[0]!, code)) return;
@@ -47,14 +47,14 @@ function generativePlugin(pluginOptions: AuiOptions): Plugin {
 }
 
 /**
- * Vite plugin that compiles assistant-ui `"use generative"` modules: files that
+ * Vite plugin that compiles openagentui `"use generative"` modules: files that
  * colocate a tool's schema, server-only `execute`, and client-only `render`.
  *
  * Add it to `vite.config`; `enforce: "pre"` makes it run ahead of
  * `@vitejs/plugin-react`'s JSX transform, so array placement doesn't matter:
  *
  * ```ts
- * import { aui } from "@assistant-ui/vite";
+ * import { aui } from "@openagentui/vite";
  * export default defineConfig({
  *   plugins: [aui(), tanstackStart(), viteReact()],
  * });

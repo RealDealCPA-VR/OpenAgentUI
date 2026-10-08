@@ -1,4 +1,4 @@
 {
-  "extends": "@assistant-ui/x-buildutils/ts/test",
+  "extends": "@openagentui/x-buildutils/ts/test",
   "include": ["src"]
 }

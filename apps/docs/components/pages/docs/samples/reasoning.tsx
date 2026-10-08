@@ -1,15 +1,15 @@
 "use client";
 
-import { AssistantRuntimeProvider, useLocalRuntime } from "@assistant-ui/react";
+import { AssistantRuntimeProvider, useLocalRuntime } from "@openagentui/react";
 import { useCallback } from "react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 import {
   ReasoningRoot,
   ReasoningTrigger,
   ReasoningContent,
   ReasoningText,
-} from "@/components/assistant-ui/elements/reasoning.aui";
+} from "@/components/openagentui/elements/reasoning.aui";
 
 export function ReasoningSample() {
   return (

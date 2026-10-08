@@ -1,6 +1,6 @@
 # with-browser-extension
 
-A Chrome extension that hosts an assistant-ui chat interface in a browser side panel.
+A Chrome extension that hosts an openagentui chat interface in a browser side panel.
 
 Uses `useExternalStoreRuntime` with mock messages to demonstrate the UI without a backend. Swap in your own runtime (Cloud, AI SDK, etc.) for real AI responses.
 

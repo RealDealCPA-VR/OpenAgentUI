@@ -7,7 +7,7 @@ import {
 import { resolveChatModel } from "@/lib/ai/provider";
 import { posthogTelemetry } from "@/lib/ai/telemetry";
 import { isAiPlaygroundEnabled } from "@/lib/feature-flags";
-import { frontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools } from "@openagentui/ai-sdk";
 import { NextResponse } from "next/server";
 import {
   convertToModelMessages,
@@ -18,7 +18,7 @@ import {
 
 export const maxDuration = 30;
 
-const SYSTEM_PROMPT = `You are a UI customization assistant for the assistant-ui playground. Users describe how they want their chat UI to look, and you apply changes by calling the update_config tool.
+const SYSTEM_PROMPT = `You are a UI customization assistant for the openagentui playground. Users describe how they want their chat UI to look, and you apply changes by calling the update_config tool.
 
 ## BuilderConfig Schema
 

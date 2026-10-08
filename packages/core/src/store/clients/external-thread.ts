@@ -1,17 +1,17 @@
 import { useState, useMemo, useEffect, useCallback, useRef } from "react";
-import { resource, withKey } from "@assistant-ui/tap";
+import { resource, withKey } from "@openagentui/tap";
 import { getMessagePartKeys } from "../../utils/getMessagePartKeys";
-import type { ClientElement, ClientOutput } from "@assistant-ui/store";
+import type { ClientElement, ClientOutput } from "@openagentui/store";
 import {
   useAssistantClientDestroySignal,
   useOptionalAssistantClientRef,
-} from "@assistant-ui/store/internal";
+} from "@openagentui/store/internal";
 import {
   useClientLookup,
   attachTransformScopes,
   useClientResource,
   Derived,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 
 import type {
   AppendMessage,
@@ -50,8 +50,8 @@ import type { ComposerSubmission } from "../../runtime/interfaces/composer-runti
 import type { AttachmentAdapter } from "../../adapters/attachment";
 import type { FeedbackAdapter } from "../../adapters/feedback";
 import type { SpeechSynthesisAdapter } from "../../adapters/speech";
-import { ToolResponse } from "assistant-stream";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import { ToolResponse } from "openagentui-stream";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import type { QueueItemState } from "../scopes/queue-item";
 import type { ComposerSendOptions } from "../scopes/composer";
 import { fileMatchesAccept, liftNonTextParts } from "../../adapters/attachment";
@@ -1093,7 +1093,7 @@ const useComposerClientResource = ({
       }
     });
     if (failure) {
-      console.error("[assistant-ui] Failed to send the message", failure.error);
+      console.error("[openagentui] Failed to send the message", failure.error);
       if (entry)
         setInTransit((prev) => prev.filter((candidate) => candidate !== entry));
       returnToDraft(sent);

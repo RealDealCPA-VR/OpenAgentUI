@@ -3,7 +3,7 @@ import {
   AISDKToolkit,
   type FrontendTools,
   unstable_injectInteractableContext as injectInteractableContext,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import {
   convertToModelMessages,
   stepCountIs,

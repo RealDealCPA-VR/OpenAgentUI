@@ -5,7 +5,7 @@ import {
   ThreadListItemPrimitive,
   useAui,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   ArchiveIcon,
   ArchiveRestoreIcon,

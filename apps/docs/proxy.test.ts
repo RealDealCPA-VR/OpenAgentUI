@@ -24,7 +24,7 @@ describe("example bundle preview gate", () => {
     "/example-bundles/data-explorer/source.json",
     "/example-bundles/data-explorer/source.tar.gz",
   ])("hides %s until bundles are enabled", (path) => {
-    const request = new NextRequest(`https://www.assistant-ui.com${path}`);
+    const request = new NextRequest(`https://openagentui.dev${path}`);
     expect(proxy(request).status).toBe(404);
 
     flags.isExampleBundlesEnabled = true;
@@ -33,20 +33,17 @@ describe("example bundle preview gate", () => {
 
   it("preserves the legacy changelog redirect", () => {
     const response = proxy(
-      new NextRequest(
-        "https://www.assistant-ui.com/changelog?pkg=react&page=2",
-      ),
+      new NextRequest("https://openagentui.dev/changelog?pkg=react&page=2"),
     );
     expect(response.status).toBe(308);
     expect(response.headers.get("location")).toBe(
-      "https://www.assistant-ui.com/changelog/react/2",
+      "https://openagentui.dev/changelog/react/2",
     );
   });
 
   it("preserves the retired analytics endpoint", () => {
     expect(
-      proxy(new NextRequest("https://www.assistant-ui.com/umami/api/send"))
-        .status,
+      proxy(new NextRequest("https://openagentui.dev/umami/api/send")).status,
     ).toBe(204);
   });
 });

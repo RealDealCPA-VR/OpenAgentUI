@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 const title = "Pre-made bundles";
 const description =
-  "Complete assistant-ui examples, with interactive previews, source, and the components behind them.";
+  "Complete openagentui examples, with interactive previews, source, and the components behind them.";
 export const metadata: Metadata = {
   title,
   description,

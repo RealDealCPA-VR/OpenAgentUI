@@ -1,4 +1,4 @@
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import type { ToolExecutionStatus } from "../../runtimes/tool-invocations/ToolInvocationTracker";
 import { ThreadMessageConverter } from "../../runtimes/external-store/thread-message-converter";
 import type {

@@ -23,7 +23,7 @@ import { cn } from "@/lib/utils";
 
 const title = "Packages";
 const description =
-  "Every assistant-ui package on npm, grouped by surface area and ranked by weekly downloads.";
+  "Every openagentui package on npm, grouped by surface area and ranked by weekly downloads.";
 
 export const metadata: Metadata = {
   title,

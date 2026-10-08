@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export const HideAndFloatStatus = {
   Hidden: "hidden",

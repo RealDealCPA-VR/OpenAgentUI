@@ -16,8 +16,8 @@ Composer trigger popover is the picker UI behind a character-triggered composer 
 
 Place `ComposerPrimitive.TriggerPopoverRoot` around the composer. Any number of `ComposerTriggerPopover` declarations can live inside, each with its own trigger character, adapter, and behavior.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { ComposerPrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { ComposerPrimitive } from "@openagentui/react";
 
 const Composer = () => (
   <ComposerPrimitive.TriggerPopoverRoot>
@@ -38,8 +38,8 @@ const Composer = () => (
 Pair `ComposerTriggerPopover` with `unstable_useMentionAdapter`, which spreads into an `{ adapter, directive }` bundle. Selecting an item writes a directive into the composer text.
 
 ```tsx
-import { unstable_useMentionAdapter } from "@assistant-ui/react";
-import { ComposerTriggerPopover } from "@/components/assistant-ui/elements/composer-trigger-popover.aui";
+import { unstable_useMentionAdapter } from "@openagentui/react";
+import { ComposerTriggerPopover } from "@/components/openagentui/elements/composer-trigger-popover.aui";
 
 function MentionTrigger() {
   const mention = unstable_useMentionAdapter();
@@ -95,7 +95,7 @@ Use [`unstable_useSlashCommandAdapter`](/docs/guides/slash-commands) to bundle c
 import {
   unstable_useSlashCommandAdapter,
   type Unstable_SlashCommand,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { FileTextIcon, GlobeIcon, SlashIcon } from "lucide-react";
 
 const SLASH_COMMANDS: readonly Unstable_SlashCommand[] = [
@@ -138,7 +138,7 @@ const mentions = unstable_useLiveCompletionAdapter({
 Whitespace closes a trigger query by default. Pass a stable `matcher` when a picker needs different syntax, such as multi-word names; the same matcher governs both the textarea and Lexical composer inputs.
 
 ```tsx
-import type { TriggerMatcher } from "@assistant-ui/react";
+import type { TriggerMatcher } from "@openagentui/react";
 
 const matchMultiWord: TriggerMatcher = (text, triggerChar, cursorPosition) => {
   const upToCursor = text.slice(0, cursorPosition);

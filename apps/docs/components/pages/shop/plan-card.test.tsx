@@ -17,7 +17,7 @@ const PLAN = `## What I found
 
 ## What I will install
 
-- **The chat:** @assistant-ui/react
+- **The chat:** @openagentui/react
 - \`app/api/chat/route.ts\` on the AI SDK
 
 ## Steps
@@ -111,7 +111,7 @@ describe("PlanAccordion", () => {
     );
     expect(found.getAttribute("aria-expanded")).toBe("false");
     expect(screen.getByText("The chat").parentElement?.textContent).toBe(
-      "The chat@assistant-ui/react",
+      "The chat@openagentui/react",
     );
     expect(screen.getByText("app/api/chat/route.ts")).toBeDefined();
   });

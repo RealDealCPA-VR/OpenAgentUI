@@ -1,12 +1,12 @@
 ---
 title: Text-to-Speech for Chat
-description: Read AI chat messages aloud with the Web Speech API or a custom TTS adapter. Speech synthesis for React chat UIs, integrated with assistant-ui.
+description: Read AI chat messages aloud with the Web Speech API or a custom TTS adapter. Speech synthesis for React chat UIs, integrated with openagentui.
 platforms: ["react"]
 ---
 
 import { SpeechSample } from "@/components/pages/docs/samples/speech";
 
-assistant-ui supports text-to-speech via the `SpeechSynthesisAdapter` interface. When a speech adapter is configured, users can trigger playback for any assistant message.
+openagentui supports text-to-speech via the `SpeechSynthesisAdapter` interface. When a speech adapter is configured, users can trigger playback for any assistant message.
 
 Speech is the read-aloud mode: one message at a time, text to audio. For a live duplex conversation, see [Realtime Voice](/docs/guides/voice). For push-to-talk input into the composer, see [Dictation](/docs/guides/dictation).
 
@@ -16,10 +16,10 @@ Speech is the read-aloud mode: one message at a time, text to audio. For a live 
 
 ## SpeechSynthesisAdapter
 
-The adapter has a single method. The type lives in `@assistant-ui/core` and is re-exported from `@assistant-ui/react`:
+The adapter has a single method. The type lives in `@openagentui/core` and is re-exported from `@openagentui/react`:
 
 ```tsx
-import type { SpeechSynthesisAdapter } from "@assistant-ui/react";
+import type { SpeechSynthesisAdapter } from "@openagentui/react";
 
 type SpeechSynthesisAdapter = {
   speak: (text: string) => SpeechSynthesisAdapter.Utterance;
@@ -51,7 +51,7 @@ namespace SpeechSynthesisAdapter {
 The built-in adapter uses the browser's Web Speech API (`SpeechSynthesis` / `SpeechSynthesisUtterance`):
 
 ```tsx
-import { WebSpeechSynthesisAdapter } from "@assistant-ui/react";
+import { WebSpeechSynthesisAdapter } from "@openagentui/react";
 
 const runtime = useChatRuntime({
   adapters: {
@@ -67,7 +67,7 @@ When a speech adapter is provided, `capabilities.speech` is set to `true` automa
 The default action bar does not include a speech button. Add `ActionBarPrimitive.Speak` and `ActionBarPrimitive.StopSpeaking` to your assistant message action bar:
 
 ```tsx
-import { ActionBarPrimitive, AuiIf } from "@assistant-ui/react";
+import { ActionBarPrimitive, AuiIf } from "@openagentui/react";
 import { AudioLinesIcon, StopCircleIcon } from "lucide-react";
 
 const AssistantActionBar = () => {
@@ -96,7 +96,7 @@ const AssistantActionBar = () => {
 Implement `SpeechSynthesisAdapter` to call any external TTS provider. Fetch audio from your API, play it with `HTMLAudioElement`, and drive utterance status through `subscribe`:
 
 ```tsx title="lib/custom-tts-adapter.ts"
-import type { SpeechSynthesisAdapter } from "@assistant-ui/react";
+import type { SpeechSynthesisAdapter } from "@openagentui/react";
 
 export class CustomTTSAdapter implements SpeechSynthesisAdapter {
   constructor(private apiUrl: string) {}

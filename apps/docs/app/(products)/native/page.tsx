@@ -13,9 +13,9 @@ import { cn } from "@/lib/utils";
 
 const ANALYTICS_PAGE = "native" as const;
 
-const INSTALL_COMMAND = "npx assistant-ui@latest create --native my-app";
+const INSTALL_COMMAND = "npx openagentui@latest create --native my-app";
 
-const DEMO_SRC = "https://assistant-ui-expo.vercel.app/";
+const DEMO_SRC = "https://openagentui-expo.vercel.app/";
 
 const PRIMITIVES = [
   "Thread",
@@ -53,10 +53,10 @@ const SNIPPET = `import {
   AssistantRuntimeProvider,
   AuiConfig,
   Tools,
-} from "@assistant-ui/react-native";
-import { Thread } from "@/components/assistant-ui/thread";
+} from "@openagentui/react-native";
+import { Thread } from "@/components/openagentui/thread";
 import { useAppRuntime } from "@/hooks/use-app-runtime";
-import toolkit from "@/components/assistant-ui/tools";
+import toolkit from "@/components/openagentui/tools";
 
 export default function App() {
   const runtime = useAppRuntime();
@@ -183,7 +183,7 @@ function NativeDemo() {
   return (
     <div className="border-foreground/10 overflow-hidden border">
       <div className="border-foreground/10 text-muted-foreground flex h-9 items-center justify-between border-b px-3.5 font-mono text-[11px] tracking-wide">
-        <span>~ assistant-ui · expo</span>
+        <span>~ openagentui · expo</span>
         <span className="flex items-center gap-1.5">
           <LiveDot />
           live
@@ -192,7 +192,7 @@ function NativeDemo() {
       {src ? (
         <iframe
           src={src}
-          title="assistant-ui React Native demo"
+          title="openagentui React Native demo"
           className="aspect-[9/17.5] w-full border-0"
         />
       ) : (

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown, History } from "lucide-react";
-import { useAui, useAuiState } from "@assistant-ui/react";
+import { useAui, useAuiState } from "@openagentui/react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

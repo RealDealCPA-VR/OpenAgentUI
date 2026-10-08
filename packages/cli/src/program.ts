@@ -8,11 +8,10 @@ import { mcp } from "./commands/mcp";
 import { agent } from "./commands/agent";
 import { info } from "./commands/info";
 import { doctor } from "./commands/doctor";
-import { cloud } from "./commands/cloud";
 
 export function buildProgram() {
   return new Command()
-    .name("assistant-ui")
+    .name("openagentui")
     .description("add components and dependencies to your project")
     .addCommand(add)
     .addCommand(create)
@@ -22,7 +21,6 @@ export function buildProgram() {
     .addCommand(upgradeCommand)
     .addCommand(update)
     .addCommand(agent)
-    .addCommand(cloud)
     .addCommand(info)
     .addCommand(doctor);
 }

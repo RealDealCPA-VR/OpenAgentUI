@@ -1,7 +1,7 @@
 /** @vitest-environment jsdom */
 import { render } from "@testing-library/react";
-import type * as CoreReact from "@assistant-ui/core/react";
-import type * as AssistantStore from "@assistant-ui/store";
+import type * as CoreReact from "@openagentui/core/react";
+import type * as AssistantStore from "@openagentui/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { ActionBarPrimitiveFeedbackNegative } from "./ActionBarFeedbackNegative";
 import { ActionBarPrimitiveFeedbackPositive } from "./ActionBarFeedbackPositive";
@@ -18,7 +18,7 @@ const { storeState } = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => {
+vi.mock("@openagentui/core/react", async (importOriginal) => {
   const actual = await importOriginal<typeof CoreReact>();
   return {
     ...actual,
@@ -27,7 +27,7 @@ vi.mock("@assistant-ui/core/react", async (importOriginal) => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
+vi.mock("@openagentui/store", async (importOriginal) => {
   const actual = await importOriginal<typeof AssistantStore>();
   return {
     ...actual,

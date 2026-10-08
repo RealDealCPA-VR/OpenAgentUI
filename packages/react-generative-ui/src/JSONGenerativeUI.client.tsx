@@ -1,5 +1,5 @@
-import type { ToolCallMessagePartProps } from "@assistant-ui/react";
-import { getPartialJsonObjectMeta } from "assistant-stream/utils";
+import type { ToolCallMessagePartProps } from "@openagentui/react";
+import { getPartialJsonObjectMeta } from "openagentui-stream/utils";
 import type { ReactNode } from "react";
 import { A2uiPresentRenderer } from "./a2ui/PresentRenderer";
 import { AnsweredValuesProvider, findAnsweredValues } from "./answeredValues";

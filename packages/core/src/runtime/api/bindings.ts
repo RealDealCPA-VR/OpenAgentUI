@@ -52,6 +52,6 @@ export type ThreadListItemRuntimeState = {
 };
 
 /**
- * @deprecated Use `ThreadListItemRuntimeState`. From `@assistant-ui/react` 0.16, `ThreadListItemState` names the thread list item state read through `useAuiState`.
+ * @deprecated Use `ThreadListItemRuntimeState`. From `@openagentui/react` 0.16, `ThreadListItemState` names the thread list item state read through `useAuiState`.
  */
 export type ThreadListItemState = ThreadListItemRuntimeState;

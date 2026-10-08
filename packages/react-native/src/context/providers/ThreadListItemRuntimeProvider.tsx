@@ -1,1 +1,1 @@
-export { ThreadListItemRuntimeProvider } from "@assistant-ui/core/react";
+export { ThreadListItemRuntimeProvider } from "@openagentui/core/react";

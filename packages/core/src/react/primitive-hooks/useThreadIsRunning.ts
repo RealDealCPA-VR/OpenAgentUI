@@ -1,4 +1,4 @@
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 /**
  * @deprecated Use `useAuiState((s) => s.thread.isRunning)` instead.

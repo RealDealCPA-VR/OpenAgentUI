@@ -1,6 +1,6 @@
 "use client";
 
-import { AuiIf, ThreadPrimitive, useAuiState } from "@assistant-ui/react";
+import { AuiIf, ThreadPrimitive, useAuiState } from "@openagentui/react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ const SUGGESTIONS = [
   },
   {
     label: "Add a thread list",
-    prompt: "How do I add a thread list to an assistant-ui app?",
+    prompt: "How do I add a thread list to an openagentui app?",
   },
   {
     label: "Remember my stack",

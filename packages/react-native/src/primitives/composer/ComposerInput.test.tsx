@@ -12,7 +12,7 @@ const h = vi.hoisted(() => ({
   platform: { os: "web" as "web" | "ios" | "android" },
 }));
 
-vi.mock("@assistant-ui/store", () => {
+vi.mock("@openagentui/store", () => {
   const composer = Object.assign(() => composer, {
     setText: h.setText,
     send: h.sendSpy,
@@ -33,7 +33,7 @@ vi.mock("@assistant-ui/store", () => {
   };
 });
 
-vi.mock("@assistant-ui/tap", () => ({
+vi.mock("@openagentui/tap", () => ({
   flushTapSync: h.flushTapSyncSpy,
 }));
 

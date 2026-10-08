@@ -1,11 +1,11 @@
-# `@assistant-ui/react-ag-ui`
+# `@openagentui/react-ag-ui`
 
-[AG-UI protocol](https://github.com/ag-ui-protocol/ag-ui) integration for `@assistant-ui/react`. Wraps an `@ag-ui/client` agent in an assistant-ui runtime so any AG-UI-compatible backend (CopilotKit, custom Python/Go/TS agents) can drive the standard assistant-ui components.
+[AG-UI protocol](https://github.com/ag-ui-protocol/ag-ui) integration for `@openagentui/react`. Wraps an `@ag-ui/client` agent in an openagentui runtime so any AG-UI-compatible backend (CopilotKit, custom Python/Go/TS agents) can drive the standard openagentui components.
 
 ## Installation
 
 ```bash
-npm install @assistant-ui/react @assistant-ui/react-ag-ui @ag-ui/client
+npm install @openagentui/react @openagentui/react-ag-ui @ag-ui/client
 ```
 
 ## Usage
@@ -14,9 +14,9 @@ npm install @assistant-ui/react @assistant-ui/react-ag-ui @ag-ui/client
 "use client";
 
 import { useMemo } from "react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { AssistantRuntimeProvider } from "@openagentui/react";
 import { HttpAgent } from "@ag-ui/client";
-import { useAgUiRuntime } from "@assistant-ui/react-ag-ui";
+import { useAgUiRuntime } from "@openagentui/react-ag-ui";
 
 export function Provider({ children }: { children: React.ReactNode }) {
   const agent = useMemo(
@@ -51,7 +51,7 @@ Two limitations are worth knowing before you rely on this:
 
 ## See also
 
-- `@assistant-ui/react-a2a` for the A2A v1.0 protocol.
-- `@assistant-ui/react-langgraph` for LangGraph SDK agents.
+- `@openagentui/react-a2a` for the A2A v1.0 protocol.
+- `@openagentui/react-langgraph` for LangGraph SDK agents.
 
-Full API reference, multi-thread setup, and interrupt handling at [assistant-ui.com/docs/runtimes/ag-ui](https://www.assistant-ui.com/docs/runtimes/ag-ui). See [`examples/with-ag-ui`](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-ag-ui) for a complete app.
+Full API reference, multi-thread setup, and interrupt handling at [openagentui.dev/docs/runtimes/ag-ui](https://openagentui.dev/docs/runtimes/ag-ui). See [`examples/with-ag-ui`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-ag-ui) for a complete app.

@@ -20,9 +20,9 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@/components/assistant-ui/*": [
-        "../../packages/ui/src/components/react/assistant-ui/*.base",
-        "../../packages/ui/src/components/react/assistant-ui/*"
+      "@/components/openagentui/*": [
+        "../../packages/ui/src/components/react/openagentui/*.base",
+        "../../packages/ui/src/components/react/openagentui/*"
       ],
       "@/components/icons/*": [
         "../../packages/ui/src/components/react/icons/*"
@@ -36,7 +36,7 @@
       ],
       "@/hooks/*": ["../../packages/ui/src/hooks/*"],
       "@/lib/utils": ["../../packages/ui/src/lib/utils"],
-      "@assistant-ui/ui/*": ["../../packages/ui/src/*"]
+      "@openagentui/ui/*": ["../../packages/ui/src/*"]
     }
   },
   "include": [

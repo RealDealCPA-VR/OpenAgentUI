@@ -1,9 +1,9 @@
-import { flushTapSync } from "@assistant-ui/tap";
+import { flushTapSync } from "@openagentui/tap";
 import {
   composerCancelDisabled,
   composerInputDisabled,
   composerSendDisabled,
-} from "@assistant-ui/core/store/internal";
+} from "@openagentui/core/store/internal";
 import { getAuiContext, type ScopeTarget } from "../context";
 import { useAuiState } from "../useAuiState";
 

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import {
   compileGenerative,
   isGenerativeSource,
-} from "@assistant-ui/x-generative-compiler";
+} from "@openagentui/x-generative-compiler";
 import { BACKENDLESS_ENV, UPSTREAM_TRANSFORMER_ENV } from "./index";
 
 const require = createRequire(import.meta.url);
@@ -44,7 +44,7 @@ function resolveUpstream(): BabelTransformer {
   }
 
   throw new Error(
-    "[@assistant-ui/metro] Could not resolve an upstream Metro babel " +
+    "[@openagentui/metro] Could not resolve an upstream Metro babel " +
       "transformer. Make sure `transformer.babelTransformerPath` is set before " +
       "`withAui(...)` (Expo's `getDefaultConfig` sets it), or install " +
       "`@expo/metro-config` or `@react-native/metro-babel-transformer`.",

@@ -8,7 +8,7 @@ import type {
   ThreadAssistantMessage,
   ThreadHistoryAdapter,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { useAgUiRuntime } from "./useAgUiRuntime";
 
 type Subscriber = {

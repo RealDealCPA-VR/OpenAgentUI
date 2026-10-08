@@ -16,10 +16,10 @@ A refusal is not a separate concept from a normal message: it is an assistant me
 
 ### Detect a content filter stop
 
-```tsx title="components/assistant-ui/elements/guardrail-notice.tsx"
+```tsx title="components/openagentui/elements/guardrail-notice.tsx"
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 function useIsGuardrailStop() {
   return useAuiState((s) => {
@@ -35,8 +35,8 @@ function useIsGuardrailStop() {
 ### Send an alternative back
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
-import { GuardrailNotice } from "@/components/assistant-ui/elements/guardrail-notice";
+import { useAui } from "@openagentui/react";
+import { GuardrailNotice } from "@/components/openagentui/elements/guardrail-notice";
 
 const ALTERNATIVES = ["Explain the defensive side of the same problem"];
 
@@ -76,7 +76,7 @@ Standalone, showing the notice at all, and what it says, is entirely your call.
 ```tsx title="app/answer.tsx"
 "use client";
 
-import { GuardrailNotice } from "@/components/assistant-ui/elements/guardrail-notice";
+import { GuardrailNotice } from "@/components/openagentui/elements/guardrail-notice";
 
 export function RefusalNotice() {
   return (

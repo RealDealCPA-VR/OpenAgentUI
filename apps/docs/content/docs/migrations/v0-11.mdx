@@ -100,13 +100,13 @@ To migrate your codebase automatically, use the migration codemod:
 
 ```sh
 # IMPORTANT: make sure to commit all changes to git / create a backup before running the codemod
-npx assistant-ui@latest upgrade
+npx openagentui@latest upgrade
 ```
 
 Or run the specific migration:
 
 ```sh
-npx assistant-ui@latest codemod v0-11/content-part-to-message-part .
+npx openagentui@latest codemod v0-11/content-part-to-message-part .
 ```
 
 #### Manual Migration Examples
@@ -116,8 +116,8 @@ If you prefer to migrate manually, here are some examples:
 **Imports:**
 
 ```diff
--import { TextContentPart, useContentPart, ToolCallContentPartComponent } from "@assistant-ui/react";
-+import { TextMessagePart, useMessagePart, ToolCallMessagePartComponent } from "@assistant-ui/react";
+-import { TextContentPart, useContentPart, ToolCallContentPartComponent } from "@openagentui/react";
++import { TextMessagePart, useMessagePart, ToolCallMessagePartComponent } from "@openagentui/react";
 ```
 
 **Type annotations:**

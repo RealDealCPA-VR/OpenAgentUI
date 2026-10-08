@@ -12,8 +12,8 @@ import { PartGroupingSample } from "@/components/pages/docs/samples/part-groupin
 
 For adjacent grouping, use `MessagePrimitive.GroupedParts`. To group by `part.type`, the common case, pass `groupPartByType` to map each part type to a group-key path. Adjacent parts that share a group key are coalesced and rendered through the group case.
 
-```tsx title="/components/assistant-ui/elements/thread.aui.tsx"
-import { MessagePrimitive, groupPartByType } from "@assistant-ui/react";
+```tsx title="/components/openagentui/elements/thread.aui.tsx"
+import { MessagePrimitive, groupPartByType } from "@openagentui/react";
 
 const AssistantMessage: FC = () => {
   return (
@@ -66,7 +66,7 @@ Group adjacent content that shares the same parent relationship:
 ```tsx
 import { useState, type PropsWithChildren } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import { MessagePrimitive } from "@assistant-ui/react";
+import { MessagePrimitive } from "@openagentui/react";
 
 function ParentGroup({
   id,
@@ -370,12 +370,12 @@ const priorityStyles = {
 
 ## Integration with Assistant Streams
 
-With the assistant-stream libraries, you can set a parent ID on parts and send custom values in data parts:
+With the openagentui-stream libraries, you can set a parent ID on parts and send custom values in data parts:
 
-### Python (assistant-stream)
+### Python (openagentui-stream)
 
 ```python
-from assistant_stream import create_run
+from openagentui_stream import create_run
 
 async def my_run(controller):
     # Add parts with custom parentId
@@ -390,10 +390,10 @@ async def my_run(controller):
     controller.append_text("High priority finding")
 ```
 
-### TypeScript (assistant-stream)
+### TypeScript (openagentui-stream)
 
 ```typescript
-import { createAssistantStream } from "assistant-stream";
+import { createAssistantStream } from "openagentui-stream";
 
 const stream = createAssistantStream(async (controller) => {
   // Add parts with parentId
@@ -455,7 +455,7 @@ const stream = createAssistantStream(async (controller) => {
 `groupPartByType` builds a `groupBy` from a map of `part.type`, or `tool-call:<name>` for one tool, to a group-key path. Part types missing from the map are left ungrouped. The returned function carries an internal memo fingerprint so the tree survives unrelated re-renders.
 
 ```typescript
-import { groupPartByType } from "@assistant-ui/react";
+import { groupPartByType } from "@openagentui/react";
 
 groupPartByType({
   reasoning: ["group-thought", "group-reasoning"],

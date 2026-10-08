@@ -6,7 +6,7 @@ import {
   type ExternalStoreAdapter,
   type ThreadAssistantMessage,
   type ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
@@ -15,9 +15,9 @@ const mocks = vi.hoisted(() => ({
   threadMessages: [] as ThreadMessage[],
 }));
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => {
+vi.mock("@openagentui/core/react", async (importOriginal) => {
   const original =
-    await importOriginal<typeof import("@assistant-ui/core/react")>();
+    await importOriginal<typeof import("@openagentui/core/react")>();
   return {
     ...original,
     useExternalStoreRuntime: vi.fn((adapter: ExternalStoreAdapter) => {

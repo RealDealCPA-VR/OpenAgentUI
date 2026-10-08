@@ -24,16 +24,16 @@ export const API_CATALOG_CONTENT_TYPE = `application/linkset+json; profile="${AP
 const absoluteUrl = (path: string) => `${BASE_URL}${path}`;
 
 const AGENT_SKILL_DESCRIPTION =
-  "Use assistant-ui documentation to implement and troubleshoot AI chat interfaces across React, Vue, React Native, and terminal applications.";
+  "Use openagentui documentation to implement and troubleshoot AI chat interfaces across React, Vue, React Native, and terminal applications.";
 
 export const SITE_SKILL_DOCUMENT = `---
-name: assistant-ui-docs
+name: openagentui-docs
 description: ${JSON.stringify(AGENT_SKILL_DESCRIPTION)}
 ---
 
-# assistant-ui documentation
+# openagentui documentation
 
-Use this skill when implementing, configuring, migrating, or troubleshooting assistant-ui.
+Use this skill when implementing, configuring, migrating, or troubleshooting openagentui.
 
 ## Start here
 
@@ -50,7 +50,7 @@ Use this skill when implementing, configuring, migrating, or troubleshooting ass
 - Preserve package names, imports, and public API spelling exactly.
 - Use the human-readable page URL when citing documentation to a user.
 - Verify implementation steps with the checks documented on the relevant page.
-- Read ${absoluteUrl(AGENT_DISCOVERY_ROUTES.design)} before drawing, restyling, or extending any assistant-ui surface.
+- Read ${absoluteUrl(AGENT_DISCOVERY_ROUTES.design)} before drawing, restyling, or extending any openagentui surface.
 
 ## Discovery
 
@@ -65,11 +65,11 @@ Use this skill when implementing, configuring, migrating, or troubleshooting ass
 - MCP: ${absoluteUrl("/mcp")}
 `;
 
-export const AGENTS_DOCUMENT = `# Agent instructions for assistant-ui documentation
+export const AGENTS_DOCUMENT = `# Agent instructions for openagentui documentation
 
 Base URL: ${BASE_URL}
 
-Use these instructions when reading assistant-ui documentation or implementing assistant-ui in a project.
+Use these instructions when reading openagentui documentation or implementing openagentui in a project.
 
 ## Retrieval workflow
 
@@ -87,7 +87,7 @@ Use these instructions when reading assistant-ui documentation or implementing a
 - Preserve exact package names, exports, hooks, and component names.
 - Cite the canonical human-readable URL when returning documentation to a user.
 - Do not invent routes or APIs; use the index, sitemap, or MCP navigation when uncertain.
-- Read ${absoluteUrl(AGENT_DISCOVERY_ROUTES.design)} before drawing, restyling, or extending any assistant-ui surface.
+- Read ${absoluteUrl(AGENT_DISCOVERY_ROUTES.design)} before drawing, restyling, or extending any openagentui surface.
 
 ## Public discovery routes
 
@@ -119,7 +119,7 @@ export function buildAgentSkillsIndex(skills: AgentSkill[] = getSkills()) {
     $schema: AGENT_SKILLS_SCHEMA,
     skills: [
       {
-        name: "assistant-ui-docs",
+        name: "openagentui-docs",
         type: "skill-md",
         description: AGENT_SKILL_DESCRIPTION,
         url: absoluteUrl(AGENT_DISCOVERY_ROUTES.siteSkill),
@@ -229,7 +229,7 @@ export function buildMarkdownSitemap(
   sections: Array<{ title: string; pages: SitemapPage[] }>,
 ) {
   const lines = [
-    "# assistant-ui documentation sitemap",
+    "# openagentui documentation sitemap",
     "",
     `Base URL: ${BASE_URL}`,
     "",

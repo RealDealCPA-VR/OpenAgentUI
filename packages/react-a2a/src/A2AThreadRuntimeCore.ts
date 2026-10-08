@@ -1,6 +1,6 @@
 "use client";
 
-import { generateId, fromThreadMessageLike } from "@assistant-ui/core";
+import { generateId, fromThreadMessageLike } from "@openagentui/core";
 import type {
   AppendMessage,
   AssistantRuntime,
@@ -12,17 +12,17 @@ import type {
   ThreadMessage,
   ToolCallMessagePart,
   Unstable_RecordToolInteractionOptions,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   appendToolInteraction,
   createMessageRepositorySession,
   invokeUserCallback,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import {
   applyA2uiOperations,
   surfaceToPresentToolCall,
   type A2uiState,
-} from "@assistant-ui/react-generative-ui/a2ui";
+} from "@openagentui/react-generative-ui/a2ui";
 import type { A2AClient } from "./A2AClient";
 import type {
   A2AArtifact,

@@ -1,5 +1,5 @@
 import { type FC, type ReactNode, memo } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { getMessageQuote } from "../../utils/getMessageQuote";
 import type { QuoteInfo } from "../../../types/quote";
 

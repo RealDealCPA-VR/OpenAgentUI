@@ -2,7 +2,7 @@
 
 import { act, render, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { AuiProvider, useAui, useAuiEvent } from "@assistant-ui/store";
+import { AuiProvider, useAui, useAuiEvent } from "@openagentui/store";
 import { AssistantRuntimeProvider } from "../react/AssistantRuntimeProvider";
 import { useExternalStoreRuntime } from "../react/runtimes/useExternalStoreRuntime";
 import { useLocalRuntime } from "../react/runtimes/useLocalRuntime";
@@ -140,7 +140,7 @@ describe("thread switch events", () => {
       }),
     );
     expect(log).toHaveBeenCalledWith(
-      "[assistant-ui] local thread history write failed:",
+      "[openagentui] local thread history write failed:",
       error,
     );
   });

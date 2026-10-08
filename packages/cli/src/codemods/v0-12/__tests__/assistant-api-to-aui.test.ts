@@ -28,17 +28,17 @@ describe("assistant-api-to-aui", () => {
     "const api = useAui(); { const aui = props.aui; api.thread(); }",
     "function read(aui) { const api = useAui(); return api.thread(); }",
   ])("preserves api when renaming would collide or capture: %s", (source) => {
-    const input = `import { useAui } from "@assistant-ui/react";\n${source}`;
+    const input = `import { useAui } from "@openagentui/react";\n${source}`;
     expect(applyTransform(input)).toBeNull();
   });
 
   it("still migrates the hook when the api local name must be preserved", () => {
     const output =
-      applyTransform(`import { useAssistantApi } from "@assistant-ui/react";
+      applyTransform(`import { useAssistantApi } from "@openagentui/react";
 const aui = props.aui;
 const api = useAssistantApi();
 api.thread();`);
-    expect(output).toContain('import { useAui } from "@assistant-ui/react";');
+    expect(output).toContain('import { useAui } from "@openagentui/react";');
     expect(output).toContain("const api = useAui();");
     expect(output).toContain("api.thread();");
     expect(applyTransform(output!)).toBeNull();
@@ -47,7 +47,7 @@ api.thread();`);
   it("does not let one colliding api binding prevent independent renames", () => {
     const blocked =
       "function blocked(aui) { const api = useAui(); return api.thread(); }";
-    const output = applyTransform(`import { useAui } from "@assistant-ui/react";
+    const output = applyTransform(`import { useAui } from "@openagentui/react";
 ${blocked}
 function safe() { const api = useAui(); return api.thread(); }`);
     expect(output).toContain(blocked);
@@ -62,7 +62,7 @@ function safe() { const api = useAui(); return api.thread(); }`);
     ["useAssistantState", "useAuiState"],
   ])("preserves qualified type members named %s", (oldName, newName) => {
     const output =
-      applyTransform(`import { ${oldName} } from "@assistant-ui/react";
+      applyTransform(`import { ${oldName} } from "@openagentui/react";
 import type { Components } from "./types";
 type Foreign = Components.${oldName};
 type Nested = Components.Nested.${oldName};
@@ -93,7 +93,7 @@ const value = ${oldName};`);
     (kind, operator) => {
       const loop = `for (${kind} api ${operator} api.thread()) { api.thread(); }`;
       const output =
-        applyTransform(`import { useAssistantApi } from "@assistant-ui/react";
+        applyTransform(`import { useAssistantApi } from "@openagentui/react";
 const api = useAssistantApi();
 ${loop}
 api.thread();`);
@@ -120,7 +120,7 @@ api.thread();`;
 { const ${hook} = other; const api = ${hook}(); api.thread(); }
 function hoisted() { const api = ${hook}(); if (ready) { var ${hook} = other; } return api.thread(); }`;
       const output =
-        applyTransform(`import { ${hook} } from "@assistant-ui/react";
+        applyTransform(`import { ${hook} } from "@openagentui/react";
 ${shadowed}
 const api = ${hook}();
 api.thread();`);
@@ -135,7 +135,7 @@ api.thread();`);
     "renames api initialized from an aliased %s import",
     (hook) => {
       const output =
-        applyTransform(`import { ${hook} as useClient } from "@assistant-ui/react";
+        applyTransform(`import { ${hook} as useClient } from "@openagentui/react";
 const api = useClient();
 api.thread();`);
       expect(output).toContain("useAui as useClient");
@@ -146,8 +146,8 @@ api.thread();`);
   );
 
   it.each([
-    'import type { useAssistantApi } from "@assistant-ui/react";',
-    'import { type useAssistantApi } from "@assistant-ui/react";',
+    'import type { useAssistantApi } from "@openagentui/react";',
+    'import { type useAssistantApi } from "@openagentui/react";',
   ])(
     "does not infer an api value from type-only imports: %s",
     (declaration) => {
@@ -168,7 +168,7 @@ api.thread();`);
 
   it("preserves hooks and components imported from another package", () => {
     const input = `import { useAssistantState, AssistantIf } from "./local-hooks";
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 const read = () => useAssistantState();
 const view = <AssistantIf />;`;
     expect(applyTransform(input)).toBeNull();
@@ -181,7 +181,7 @@ const view = <AssistantIf />;`;
     "function local() { if (ready) { var useAssistantState = other; } return useAssistantState(); }",
   ])("preserves a shadowed hook: %s", (unrelated) => {
     const output = applyTransform(
-      `import { useAssistantState } from "@assistant-ui/react";\n${unrelated}\nuseAssistantState();`,
+      `import { useAssistantState } from "@openagentui/react";\n${unrelated}\nuseAssistantState();`,
     );
     expect(output).toContain(unrelated);
     expect(output).toContain("\nuseAuiState();");
@@ -189,7 +189,7 @@ const view = <AssistantIf />;`;
 
   it("preserves hook import aliases", () => {
     const output =
-      applyTransform(`import { useAssistantState as useLocalState } from "@assistant-ui/react";
+      applyTransform(`import { useAssistantState as useLocalState } from "@openagentui/react";
 useLocalState();`);
     expect(output).toContain("useAuiState as useLocalState");
     expect(output).toContain("useLocalState();");
@@ -198,7 +198,7 @@ useLocalState();`);
 
   it("avoids duplicating an existing import of the new local name", () => {
     const output =
-      applyTransform(`import { useAssistantState } from "@assistant-ui/react";
+      applyTransform(`import { useAssistantState } from "@openagentui/react";
 import { useAuiState } from "./other";
 useAssistantState();
 useAuiState();`);
@@ -209,7 +209,7 @@ useAuiState();`);
 
   it("preserves public property and export names", () => {
     const output =
-      applyTransform(`import { useAssistantState } from "@assistant-ui/react";
+      applyTransform(`import { useAssistantState } from "@openagentui/react";
 const value = { useAssistantState };
 obj.useAssistantState();
 const config = { useAssistantState: "unchanged" };
@@ -226,7 +226,7 @@ export { useAssistantState as remote } from "./other";`);
 
   it("does not capture references with an existing new-name binding", () => {
     const output =
-      applyTransform(`import { useAssistantState } from "@assistant-ui/react";
+      applyTransform(`import { useAssistantState } from "@openagentui/react";
 function local(useAuiState) { return useAssistantState(); }`);
     expect(output).toContain("useAuiState as useAssistantState");
     expect(output).toContain(
@@ -236,7 +236,7 @@ function local(useAuiState) { return useAssistantState(); }`);
 
   it("preserves a shadowed JSX component and JSX property names", () => {
     const output =
-      applyTransform(`import { AssistantIf } from "@assistant-ui/react";
+      applyTransform(`import { AssistantIf } from "@openagentui/react";
 const view = <AssistantIf AssistantIf="attribute" />;
 function local(AssistantIf) { return <AssistantIf />; }
 const other = <components.AssistantIf />;`);
@@ -249,13 +249,13 @@ const other = <components.AssistantIf />;`);
 
   it("preserves local names for type-only imports", () => {
     const output =
-      applyTransform(`import type { AssistantProvider } from "@assistant-ui/react";
+      applyTransform(`import type { AssistantProvider } from "@openagentui/react";
 type Provider = typeof AssistantProvider;`);
     expect(output).toContain("AuiProvider as AssistantProvider");
     expect(output).toContain("typeof AssistantProvider");
   });
   it("does not rename references to a hoisted body variable", () => {
-    const input = `import { useAssistantApi } from "@assistant-ui/react";
+    const input = `import { useAssistantApi } from "@openagentui/react";
 const api = useAssistantApi();
 function worker() { if (ready) { var api = other(); } return api.value; }
 api.thread();`;
@@ -268,7 +268,7 @@ api.thread();`;
 
   it("resolves switch discriminants and parameter defaults outside body bindings", () => {
     const output =
-      applyTransform(`import { useAssistantApi } from "@assistant-ui/react";
+      applyTransform(`import { useAssistantApi } from "@openagentui/react";
 const api = useAssistantApi();
 function worker(value = api.thread()) { var api = other(); return api.value; }
 switch (api.kind) { case 1: const api = other(); api.thread(); }`);
@@ -279,7 +279,7 @@ switch (api.kind) { case 1: const api = other(); api.thread(); }`);
   });
   it("should rename useAssistantApi to useAui", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -288,7 +288,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();
@@ -302,7 +302,7 @@ function MyComponent() {
 
   it("should rename useAssistantState to useAuiState", () => {
     const input = `
-import { useAssistantState } from "@assistant-ui/react";
+import { useAssistantState } from "@openagentui/react";
 
 function MyComponent() {
   const isRunning = useAssistantState((s) => s.thread.isRunning);
@@ -311,7 +311,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 function MyComponent() {
   const isRunning = useAuiState((s) => s.thread.isRunning);
@@ -325,7 +325,7 @@ function MyComponent() {
 
   it("should rename useAssistantEvent to useAuiEvent", () => {
     const input = `
-import { useAssistantEvent } from "@assistant-ui/react";
+import { useAssistantEvent } from "@openagentui/react";
 
 function MyComponent() {
   useAssistantEvent("thread.started", () => console.log("started"));
@@ -334,7 +334,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAuiEvent } from "@assistant-ui/react";
+import { useAuiEvent } from "@openagentui/react";
 
 function MyComponent() {
   useAuiEvent("thread.started", () => console.log("started"));
@@ -348,7 +348,7 @@ function MyComponent() {
 
   it("should rename api variable and all its references", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -362,7 +362,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();
@@ -381,7 +381,7 @@ function MyComponent() {
 
   it("should handle multiple hooks in the same file", () => {
     const input = `
-import { useAssistantApi, useAssistantState } from "@assistant-ui/react";
+import { useAssistantApi, useAssistantState } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -398,7 +398,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui, useAuiState } from "@assistant-ui/react";
+import { useAui, useAuiState } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();
@@ -432,7 +432,7 @@ function MyComponent() {
 
   it("should not rename api if it's a property name", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -442,7 +442,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();
@@ -457,7 +457,7 @@ function MyComponent() {
 
   it("should preserve custom variable names that aren't 'api'", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const client = useAssistantApi();
@@ -467,7 +467,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function MyComponent() {
   const client = useAui();
@@ -482,7 +482,7 @@ function MyComponent() {
 
   it("should handle arrow functions", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 const MyComponent = () => {
   const api = useAssistantApi();
@@ -492,7 +492,7 @@ const MyComponent = () => {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 const MyComponent = () => {
   const aui = useAui();
@@ -507,7 +507,7 @@ const MyComponent = () => {
 
   it("should handle nested function calls", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -522,7 +522,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();
@@ -542,7 +542,7 @@ function MyComponent() {
 
   it("should NOT rename api from other libraries", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 import { useApiClient } from "some-other-library";
 
 function MyComponent() {
@@ -554,7 +554,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import { useApiClient } from "some-other-library";
 
 function MyComponent() {
@@ -571,7 +571,7 @@ function MyComponent() {
 
   it("should NOT rename api from regular functions", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function fetchApi() {
   return { get: () => {} };
@@ -586,7 +586,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function fetchApi() {
   return { get: () => {} };
@@ -606,7 +606,7 @@ function MyComponent() {
 
   it("should handle multiple components with different api sources", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function Component1() {
   const api = useAssistantApi();
@@ -620,7 +620,7 @@ function Component2() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function Component1() {
   const aui = useAui();
@@ -639,7 +639,7 @@ function Component2() {
 
   it("should NOT rename api in object destructuring", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent({ api: propApi }) {
   const aui = useAssistantApi();
@@ -649,7 +649,7 @@ function MyComponent({ api: propApi }) {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function MyComponent({ api: propApi }) {
   const aui = useAui();
@@ -664,7 +664,7 @@ function MyComponent({ api: propApi }) {
 
   it("should handle scope correctly with nested functions", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function OuterComponent() {
   const api = useAssistantApi();
@@ -679,7 +679,7 @@ function OuterComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function OuterComponent() {
   const aui = useAui();
@@ -699,7 +699,7 @@ function OuterComponent() {
 
   it("should NOT rename api that shadows useAui api", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -714,7 +714,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();
@@ -734,7 +734,7 @@ function MyComponent() {
 
   it("should rename AssistantIf to AuiIf in imports and JSX", () => {
     const input = `
-import { AssistantIf } from "@assistant-ui/react";
+import { AssistantIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -746,7 +746,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { AuiIf } from "@assistant-ui/react";
+import { AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return (
@@ -763,7 +763,7 @@ function MyComponent() {
 
   it("should rename AssistantProvider to AuiProvider in imports and JSX", () => {
     const input = `
-import { AssistantProvider } from "@assistant-ui/react";
+import { AssistantProvider } from "@openagentui/react";
 
 function App() {
   return (
@@ -775,7 +775,7 @@ function App() {
 `;
 
     const expected = `
-import { AuiProvider } from "@assistant-ui/react";
+import { AuiProvider } from "@openagentui/react";
 
 function App() {
   return (
@@ -792,7 +792,7 @@ function App() {
 
   it("should rename both components and hooks in the same file", () => {
     const input = `
-import { useAssistantApi, AssistantIf, AssistantProvider } from "@assistant-ui/react";
+import { useAssistantApi, AssistantIf, AssistantProvider } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -808,7 +808,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { useAui, AuiIf, AuiProvider } from "@assistant-ui/react";
+import { useAui, AuiIf, AuiProvider } from "@openagentui/react";
 
 function MyComponent() {
   const aui = useAui();
@@ -829,7 +829,7 @@ function MyComponent() {
 
   it("should handle self-closing JSX components", () => {
     const input = `
-import { AssistantIf } from "@assistant-ui/react";
+import { AssistantIf } from "@openagentui/react";
 
 function MyComponent() {
   return <AssistantIf condition={(s) => s.thread.isRunning} />;
@@ -837,7 +837,7 @@ function MyComponent() {
 `;
 
     const expected = `
-import { AuiIf } from "@assistant-ui/react";
+import { AuiIf } from "@openagentui/react";
 
 function MyComponent() {
   return <AuiIf condition={(s) => s.thread.isRunning} />;
@@ -852,7 +852,7 @@ function MyComponent() {
 describe("api bindings unrelated to useAssistantApi", () => {
   it("does not rename a destructured api from another source", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -873,7 +873,7 @@ function loadData() {
 
   it("does not rename a function parameter named api", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -892,7 +892,7 @@ function callRemote(api: RemoteApi) {
 
   it("expands shorthand object properties instead of renaming the key", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -908,7 +908,7 @@ function MyComponent() {
 describe("JSX and export positions", () => {
   it("does not rename JSX member properties or intrinsic tags", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -930,7 +930,7 @@ function MyComponent() {
 
   it("preserves the public name of a re-exported api", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 const api = useAssistantApi();
 
@@ -946,7 +946,7 @@ export { api };
 describe("aliased and source-bearing exports", () => {
   it("preserves aliased public names", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 const api = useAssistantApi();
 
@@ -961,7 +961,7 @@ export { api as clientApi };
 
   it("leaves source-bearing re-exports untouched", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 const api = useAssistantApi();
 void api.thread();
@@ -976,7 +976,7 @@ export { api } from "./other-module";
 
   it("leaves type-only api exports untouched", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 const api = useAssistantApi();
 void api.thread();
@@ -996,7 +996,7 @@ export { type api as ApiType };
 describe("block-scoped shadowing", () => {
   it("does not rename a block-scoped api inside the same function", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -1025,7 +1025,7 @@ function MyComponent() {
 describe("binding positions beyond plain declarations", () => {
   it("does not rename method parameters named api", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -1053,7 +1053,7 @@ function MyComponent() {
 
   it("does not rename constructor parameter properties named api", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -1075,7 +1075,7 @@ function MyComponent() {
 
   it("treats function and class declarations named api as shadows", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 const api = useAssistantApi();
 void api.thread();
@@ -1101,7 +1101,7 @@ function other() {
 
   it("recognizes for-initializer and switch-case declarations", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -1130,7 +1130,7 @@ function MyComponent() {
 
   it("handles export const api declarations", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 export const api = useAssistantApi();
 
@@ -1148,7 +1148,7 @@ export function helper() {
 describe("keys and type-only declarations", () => {
   it("does not rename method or class-member keys named api", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -1177,7 +1177,7 @@ function MyComponent() {
 
   it("does not treat type-only declarations as value shadows", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();
@@ -1200,7 +1200,7 @@ function MyComponent() {
 describe("named expressions", () => {
   it("does not rename the self-reference of a named function expression", () => {
     const input = `
-import { useAssistantApi } from "@assistant-ui/react";
+import { useAssistantApi } from "@openagentui/react";
 
 function MyComponent() {
   const api = useAssistantApi();

@@ -35,7 +35,7 @@ const pages = [
   {
     url: "/docs/installation",
     title: "Installation",
-    description: "Install assistant-ui",
+    description: "Install openagentui",
     headings: [],
   },
   {

@@ -50,7 +50,7 @@ export const ApplyForm = ({ roleTitle }: ApplyFormProps) => {
 
       const body = bodyLines.join("\n");
 
-      const mailto = `mailto:careers@assistant-ui.com?subject=${encodeURIComponent(
+      const mailto = `mailto:careers@openagentui.dev?subject=${encodeURIComponent(
         `Application: ${roleTitle}`,
       )}&body=${encodeURIComponent(body)}`;
 
@@ -129,7 +129,7 @@ export const ApplyForm = ({ roleTitle }: ApplyFormProps) => {
               size="sm"
               onClick={async () => {
                 try {
-                  const text = `To: careers@assistant-ui.com
+                  const text = `To: careers@openagentui.dev
 Subject: Application: ${roleTitle}
 
 ${composedBody}`;
@@ -155,7 +155,7 @@ ${composedBody}`;
           <p className="text-muted-foreground text-[11px]">
             Or email{" "}
             <span className="text-foreground font-medium">
-              careers@assistant-ui.com
+              careers@openagentui.dev
             </span>{" "}
             with the subject &quot;Application: {roleTitle}&quot;.
           </p>

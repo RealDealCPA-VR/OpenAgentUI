@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       packages:
-        description: "turbo filter arguments, e.g. --filter=@assistant-ui/react (default: every package with React 18 scripts)"
+        description: "turbo filter arguments, e.g. --filter=@openagentui/react (default: every package with React 18 scripts)"
         required: false
         default: ""
 

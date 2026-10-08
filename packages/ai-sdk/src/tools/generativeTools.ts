@@ -7,12 +7,12 @@ import {
   type Tool,
   type McpServerConfig,
   type ToolModelOutputFunction,
-} from "assistant-stream";
+} from "openagentui-stream";
 import type {
   McpToolkitToolConfig,
   Toolkit,
   ToolkitDefinition,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { frontendTools, type FrontendTools } from "./frontendTools";
 import {
   toAISDKContent,
@@ -31,7 +31,7 @@ const humanNotSupported = (): never => {
   );
 };
 
-// AI SDK leaves `abortSignal` optional; assistant-ui's execute requires one.
+// AI SDK leaves `abortSignal` optional; openagentui's execute requires one.
 const neverAbort = new AbortController().signal;
 
 type MCPConnectionTimeoutPhase = "connecting" | "listing tools";

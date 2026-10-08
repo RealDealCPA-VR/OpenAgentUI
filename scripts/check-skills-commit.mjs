@@ -9,7 +9,7 @@ export const SKILLS_COMMIT_PINS = [
   {
     file: "packages/cli/src/lib/agent-skill.ts",
     pattern: /^export const SKILLS_COMMIT = "([0-9a-f]{40})";$/m,
-    describes: "the commit `assistant-ui agent` fetches",
+    describes: "the commit `openagentui agent` fetches",
   },
   {
     file: "apps/docs/scripts/generate-agent-skills.mts",
@@ -18,7 +18,7 @@ export const SKILLS_COMMIT_PINS = [
   },
   {
     file: "apps/docs/lib/agent-skills.generated.json",
-    pattern: /"source": "assistant-ui\/skills@([0-9a-f]{40})"/,
+    pattern: /"source": "openagentui\/skills@([0-9a-f]{40})"/,
     describes: "the commit the committed snapshot was generated from",
     regenerateWith: "pnpm -C apps/docs generate:agent-skills",
   },
@@ -60,7 +60,7 @@ export function runCheck(root = repoRoot) {
   }
 
   if (mismatched.length > 0) {
-    console.error("The assistant-ui/skills commit is pinned inconsistently:\n");
+    console.error("The openagentui/skills commit is pinned inconsistently:\n");
     for (const pin of pins) {
       console.error(`  ${pin.commit}  ${pin.file} (${pin.describes})`);
     }
@@ -79,7 +79,7 @@ export function runCheck(root = repoRoot) {
   if (missing.length > 0 || mismatched.length > 0) return false;
 
   console.log(
-    `The assistant-ui/skills commit is pinned consistently across ${pins.length} files. (${pins[0].commit})`,
+    `The openagentui/skills commit is pinned consistently across ${pins.length} files. (${pins[0].commit})`,
   );
   return true;
 }

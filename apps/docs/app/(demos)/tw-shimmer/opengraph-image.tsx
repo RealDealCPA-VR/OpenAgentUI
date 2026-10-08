@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { loadOgFonts, OG_FONT_SANS } from "@/lib/og-fonts";
 import { OG_SIZE, OgTemplate } from "@/lib/og-template";
 
-export const alt = "tw-shimmer";
+export const alt = "@openagentui/tw-shimmer";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
@@ -20,7 +20,7 @@ export default async function Image() {
     <OgTemplate subtleBranding>
       <img
         src={shimmerTextSrc}
-        alt="tw-shimmer"
+        alt="@openagentui/tw-shimmer"
         height={100}
         style={{ objectFit: "contain", marginBottom: 20 }}
       />

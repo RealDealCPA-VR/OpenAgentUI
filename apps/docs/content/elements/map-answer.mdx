@@ -9,22 +9,22 @@ MapAnswer lays location results on a schematic grid: pins you can select, an opt
 
 <RuntimeMode>
 
-assistant-ui has no map or geocoding concept, and MapAnswer draws no real tiles or projection: `x` and `y` are plain 0 to 100 percentages that place a pin on the grid, not latitude and longitude. Whatever looks places up is responsible for turning real coordinates into that percentage layout before the result reaches this component.
+openagentui has no map or geocoding concept, and MapAnswer draws no real tiles or projection: `x` and `y` are plain 0 to 100 percentages that place a pin on the grid, not latitude and longitude. Whatever looks places up is responsible for turning real coordinates into that percentage layout before the result reaches this component.
 
 <Steps>
   <Step>
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/find-places-tool-ui.tsx"
+```tsx title="components/openagentui/elements/find-places-tool-ui.tsx"
 "use client";
 
 import { useState } from "react";
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import {
   MapAnswer,
   type MapPin,
-} from "@/components/assistant-ui/elements/map-answer";
+} from "@/components/openagentui/elements/map-answer";
 
 type FindPlacesResult = {
   pins: MapPin[];
@@ -57,9 +57,9 @@ export const FindPlacesToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { FindPlacesToolUI } from "@/components/assistant-ui/elements/find-places-tool-ui";
+import { FindPlacesToolUI } from "@/components/openagentui/elements/find-places-tool-ui";
 
 export const toolkit = defineToolkit({
   find_places: {
@@ -95,7 +95,7 @@ import { useState } from "react";
 import {
   MapAnswer,
   type MapPin,
-} from "@/components/assistant-ui/elements/map-answer";
+} from "@/components/openagentui/elements/map-answer";
 
 const PINS: MapPin[] = [
   { id: "a", label: "Ferry Building", detail: "0.4 mi", x: 28, y: 62 },

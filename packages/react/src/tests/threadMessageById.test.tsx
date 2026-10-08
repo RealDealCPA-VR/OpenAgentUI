@@ -3,7 +3,7 @@
 import { act, render, screen } from "@testing-library/react";
 import { useState, type FC, type PropsWithChildren } from "react";
 import { describe, expect, it } from "vitest";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import {
   AssistantRuntimeProvider,
   useExternalStoreRuntime,

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { cleanup, render, screen } from "@testing-library/react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { afterEach, describe, expect, expectTypeOf, it } from "vitest";
 import type { ThreadMessage } from "../../../types/message";
 import { AssistantRuntimeProvider } from "../../AssistantRuntimeProvider";

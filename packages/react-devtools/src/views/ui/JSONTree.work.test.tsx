@@ -1,5 +1,5 @@
 import { renderToStaticMarkup } from "react-dom/server";
-import { createRenderCounter } from "@assistant-ui/x-performance";
+import { createRenderCounter } from "@openagentui/x-performance";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { JSONTree } from "./JSONTree";
 

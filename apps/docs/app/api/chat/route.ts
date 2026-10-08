@@ -2,8 +2,8 @@ import { getDistinctId } from "@/lib/posthog-server";
 import {
   injectQuoteContext,
   unstable_injectInteractableContext as injectInteractableContext,
-} from "@assistant-ui/ai-sdk";
-import { withAssistantCloudTraceMetadata } from "assistant-cloud/telemetry";
+} from "@openagentui/ai-sdk";
+import { withAssistantCloudTraceMetadata } from "openagentui-cloud/telemetry";
 import { checkPublicAssistantRateLimit } from "@/lib/rate-limit";
 import {
   PUBLIC_ASSISTANT_CROSS_ORIGINS,
@@ -18,7 +18,7 @@ import {
 import { resolveChatModel } from "@/lib/ai/provider";
 import { createSearchDocsTool } from "@/lib/ai/search-docs";
 import { posthogTelemetry } from "@/lib/ai/telemetry";
-import { AISDKToolkit } from "@assistant-ui/ai-sdk";
+import { AISDKToolkit } from "@openagentui/ai-sdk";
 import docsToolkit from "@/lib/docs-toolkit";
 import {
   convertToModelMessages,
@@ -34,7 +34,7 @@ export const maxDuration = 300;
 const aiToolkit = new AISDKToolkit({ toolkit: docsToolkit });
 
 const SEARCH_DOCS_SYSTEM_INSTRUCTION =
-  "When the user asks about assistant-ui (its APIs, components, runtimes, setup, or documentation), call search_docs before answering and answer from its results. Cite the pages you used inline as markdown links with their titles. Never cite a page search_docs did not return.";
+  "When the user asks about openagentui (its APIs, components, runtimes, setup, or documentation), call search_docs before answering and answer from its results. Cite the pages you used inline as markdown links with their titles. Never cite a page search_docs did not return.";
 
 function corsHeaders(req: Request) {
   const origin = req.headers.get("origin") ?? "";
@@ -43,7 +43,7 @@ function corsHeaders(req: Request) {
     "Access-Control-Allow-Origin": origin,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers":
-      "Content-Type, User-Agent, X-Assistant-UI-Anonymous-Session",
+      "Content-Type, User-Agent, X-OpenAgentUI-Anonymous-Session",
     Vary: "Origin",
   };
 }
@@ -178,7 +178,7 @@ export async function POST(req: Request) {
         writer.merge(
           result.toUIMessageStream({
             sendReasoning: true,
-            // Sends traceId, usage, and modelId for assistant-cloud telemetry reports.
+            // Sends traceId, usage, and modelId for openagentui-cloud telemetry reports.
             messageMetadata: withAssistantCloudTraceMetadata(({ part }) => {
               if (part.type === "finish-step") {
                 return {

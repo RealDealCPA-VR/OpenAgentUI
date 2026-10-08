@@ -12,11 +12,11 @@ Create an `ExternalStoreAdapter` with the current messages, running state, a mes
 The complete runtime below is lifted from `examples/with-vue/src/runtime.ts`. It keeps one current thread and publishes each mutation through `sync()`.
 
 ```ts title="app/runtime/echo.ts"
-import type { AppendMessage, ExternalStoreAdapter } from "@assistant-ui/core";
+import type { AppendMessage, ExternalStoreAdapter } from "@openagentui/core";
 import {
   AssistantRuntimeImpl,
   ExternalStoreRuntimeCore,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 
 type EchoMessage = {
   id: string;
@@ -192,8 +192,8 @@ import {
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
   ThreadPrimitiveViewport,
-} from "@assistant-ui/vue";
-import { RuntimeAdapter } from "@assistant-ui/core/store";
+} from "@openagentui/vue";
+import { RuntimeAdapter } from "@openagentui/core/store";
 import { createEchoRuntime } from "~/runtime/echo";
 
 const config = AuiConfig({ threads: RuntimeAdapter(createEchoRuntime()) });
@@ -236,7 +236,7 @@ The example's `adapters.threadList` publishes the selected `threadId` and a `thr
 
 ## Run without React
 
-The shared runtime imports React hook names. In the Vue Vite example, these exact aliases resolve them through `@assistant-ui/tap/standalone-shim`, so React does not need to be installed. This is the example's complete Vite config with its project plugins:
+The shared runtime imports React hook names. In the Vue Vite example, these exact aliases resolve them through `@openagentui/tap/standalone-shim`, so React does not need to be installed. This is the example's complete Vite config with its project plugins:
 
 ```ts title="vite.config.ts"
 import { defineConfig } from "vite";
@@ -249,12 +249,12 @@ export default defineConfig({
     alias: [
       {
         find: /^react\/compiler-runtime$/,
-        replacement: "@assistant-ui/tap/standalone-shim/compiler-runtime",
+        replacement: "@openagentui/tap/standalone-shim/compiler-runtime",
       },
-      { find: /^react$/, replacement: "@assistant-ui/tap/standalone-shim" },
+      { find: /^react$/, replacement: "@openagentui/tap/standalone-shim" },
     ],
   },
 });
 ```
 
-`AssistantRuntimeImpl` and `ExternalStoreRuntimeCore` come from `@assistant-ui/core/internal`. This advanced entry can change faster than the public entries, so pin the package versions when building on it.
+`AssistantRuntimeImpl` and `ExternalStoreRuntimeCore` come from `@openagentui/core/internal`. This advanced entry can change faster than the public entries, so pin the package versions when building on it.

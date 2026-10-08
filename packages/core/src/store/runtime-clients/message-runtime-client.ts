@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useResource, withKey, resource } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+import { useResource, withKey, resource } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import {
   useAssistantEmit,
   useClientLookup,
   useClientResource,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import type { MessageRuntime } from "../../runtime/api/message-runtime";
 import { useSubscribable } from "./useSubscribable";
 import { liveRef } from "./liveRef";

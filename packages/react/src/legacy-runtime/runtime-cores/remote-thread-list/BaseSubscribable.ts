@@ -1,1 +1,1 @@
-export { BaseSubscribable } from "@assistant-ui/core/internal";
+export { BaseSubscribable } from "@openagentui/core/internal";

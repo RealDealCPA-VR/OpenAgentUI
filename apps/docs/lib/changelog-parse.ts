@@ -100,7 +100,7 @@ export function parseRelease(markdown: string): ParsedRelease {
           if (m) {
             hash = {
               value: m[1]!.slice(0, 7),
-              url: `https://github.com/assistant-ui/assistant-ui/commit/${m[1]!}`,
+              url: `https://github.com/RealDealCPA-VR/OpenAgentUI/commit/${m[1]!}`,
             };
             line = removeMatch(line, m);
           }

@@ -10,7 +10,7 @@ import {
   useLayoutEffect,
   useMemo,
 } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { useManagedRef } from "../../utils/hooks/useManagedRef";
 import { useThreadViewportAutoScroll } from "./useThreadViewportAutoScroll";
 import { ThreadPrimitiveViewportProvider } from "../../context/providers/ThreadViewportProvider";

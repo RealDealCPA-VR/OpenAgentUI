@@ -25,7 +25,7 @@ describe("repo skill route", () => {
     });
     expect(`sha256:${sha256(body)}`).toBe(entry?.digest);
     expect(body).toMatch(/^---\nname: tools\ndescription: "/);
-    expect(body).toContain('\nlicense: "MIT"\n---\n\n# assistant-ui Tools');
+    expect(body).toContain('\nlicense: "MIT"\n---\n\n# openagentui Tools');
   });
 
   it("serves the digested bytes for every indexed repo skill", async () => {

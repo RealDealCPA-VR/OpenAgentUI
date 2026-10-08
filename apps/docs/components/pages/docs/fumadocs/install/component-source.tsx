@@ -116,14 +116,14 @@ async function readLocalShadcnComponent(
 }
 
 function parseRegistryDependency(dep: string): {
-  source: "assistant-ui" | "shadcn";
+  source: "openagentui" | "shadcn";
   name: string;
 } {
-  if (dep.startsWith("https://r.assistant-ui.com/")) {
+  if (dep.startsWith("https://r.openagentui.dev/")) {
     return {
-      source: "assistant-ui",
+      source: "openagentui",
       name: dep
-        .replace("https://r.assistant-ui.com/", "")
+        .replace("https://r.openagentui.dev/", "")
         .replace(/^base\//, "")
         .replace(".json", ""),
     };
@@ -195,11 +195,11 @@ export async function resolveAllComponents(
     shadcn: { files: [], dependencies: [] },
   };
 
-  async function resolveAssistantUI(
+  async function resolveOpenAgentUI(
     name: string,
     isMain: boolean,
   ): Promise<void> {
-    const key = `assistant-ui:${name}`;
+    const key = `openagentui:${name}`;
     if (visited.has(key)) return;
     visited.add(key);
 
@@ -234,8 +234,8 @@ export async function resolveAllComponents(
     if (item.registryDependencies) {
       for (const dep of item.registryDependencies) {
         const parsed = parseRegistryDependency(dep);
-        if (parsed.source === "assistant-ui") {
-          await resolveAssistantUI(parsed.name, false);
+        if (parsed.source === "openagentui") {
+          await resolveOpenAgentUI(parsed.name, false);
         } else {
           await resolveShadcn(parsed.name);
         }
@@ -267,7 +267,7 @@ export async function resolveAllComponents(
   }
 
   for (const component of components) {
-    await resolveAssistantUI(component, true);
+    await resolveOpenAgentUI(component, true);
   }
 
   const ignoredDeps = new Set(["clsx", "tailwind-merge", "lucide-react"]);

@@ -184,9 +184,7 @@ export const DevToolsPanel = ({
         {ctx && activePlugin ? (
           <activePlugin.Component {...ctx} />
         ) : (
-          <CenteredMessage>
-            Waiting for assistant-ui instance...
-          </CenteredMessage>
+          <CenteredMessage>Waiting for openagentui instance...</CenteredMessage>
         )}
       </section>
     </div>

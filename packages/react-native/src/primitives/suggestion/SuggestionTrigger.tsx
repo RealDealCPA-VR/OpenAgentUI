@@ -1,6 +1,6 @@
 import { Pressable, type PressableProps } from "react-native";
-import { useAuiState } from "@assistant-ui/store";
-import { useSuggestionTrigger } from "@assistant-ui/core/react";
+import { useAuiState } from "@openagentui/store";
+import { useSuggestionTrigger } from "@openagentui/core/react";
 
 export type SuggestionTriggerProps = Omit<
   PressableProps,

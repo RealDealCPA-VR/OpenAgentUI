@@ -9,11 +9,11 @@ import {
   type SourceMessagePartProps,
   type ToolCallMessagePartProps,
   useAuiState,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { type ComponentType, type ReactNode } from "react";
 import { FileTextIcon } from "lucide-react";
-import { Reasoning } from "@/components/assistant-ui/elements/reasoning.aui";
-import { Sources } from "@/components/assistant-ui/elements/sources.aui";
+import { Reasoning } from "@/components/openagentui/elements/reasoning.aui";
+import { Sources } from "@/components/openagentui/elements/sources.aui";
 import {
   TraceLine,
   formatDuration,

@@ -1,17 +1,17 @@
-import { isRecord } from "@assistant-ui/core/internal";
+import { isRecord } from "@openagentui/core/internal";
 import {
   generateId,
   getExternalStoreMessages,
   type AppendMessage,
   type ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   createToolCallCancellationStub,
   parseDataUrl,
   resolveFilePartSource,
   resolveImageMediaType,
   scanPendingToolCalls,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import type { AdkMessage } from "./types";
 
 /** Exported for unit tests. */

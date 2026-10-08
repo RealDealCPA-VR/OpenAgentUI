@@ -9,7 +9,7 @@ A chat panel is the smallest complete slice of a thread: a scrollable message li
 
 <RuntimeMode>
 
-assistant-ui's `Thread` element already ships a complete version of this composition, wired end to end from viewport to composer. Build it from these pieces yourself only when you want a smaller, custom shell instead of the full `Thread`.
+openagentui's `Thread` element already ships a complete version of this composition, wired end to end from viewport to composer. Build it from these pieces yourself only when you want a smaller, custom shell instead of the full `Thread`.
 
 <Steps>
   <Step>
@@ -18,10 +18,10 @@ assistant-ui's `Thread` element already ships a complete version of this composi
 
 `ThreadPrimitive.Viewport` takes over scrolling from `ChatPanelMessages`; pass it as the `asChild` target so the panel keeps `ChatPanelMessages`'s look while the viewport owns the behavior:
 
-```tsx title="components/assistant-ui/elements/live-chat-panel.tsx"
+```tsx title="components/openagentui/elements/live-chat-panel.tsx"
 "use client";
 
-import { ThreadPrimitive, MessagePrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive, MessagePrimitive } from "@openagentui/react";
 import { ChatPanel, ChatPanelMessages, ChatPanelUserMessage, ChatPanelAssistantMessage } from "./chat-panel";
 
 export function LiveChatPanel() {
@@ -57,7 +57,7 @@ export function LiveChatPanel() {
 ### Add a composer and a running state
 
 ```tsx
-import { AuiIf, ComposerPrimitive } from "@assistant-ui/react";
+import { AuiIf, ComposerPrimitive } from "@openagentui/react";
 import { ChatPanelComposer, ChatPanelTyping } from "./chat-panel";
 
 <AuiIf condition={(s) => s.thread.isRunning}>
@@ -96,7 +96,7 @@ import {
   ChatPanelAssistantMessage,
   ChatPanelTyping,
   ChatPanelComposer,
-} from "@/components/assistant-ui/elements/chat-panel";
+} from "@/components/openagentui/elements/chat-panel";
 
 export function Panel() {
   return (

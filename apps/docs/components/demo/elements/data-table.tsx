@@ -4,7 +4,7 @@ import {
   DataTable,
   type DataTableColumn,
   type DataTableRow,
-} from "@/components/assistant-ui/elements/data-table";
+} from "@/components/openagentui/elements/data-table";
 
 const COLUMNS = [
   { key: "name", label: "Model", priority: "primary", width: "34%" },

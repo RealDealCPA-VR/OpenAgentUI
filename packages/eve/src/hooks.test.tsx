@@ -7,15 +7,15 @@ const { extrasRef } = vi.hoisted(() => ({
   extrasRef: { current: undefined as unknown },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: (() => ({
     thread: { getState: () => ({ extras: extrasRef.current }) },
-  })) as unknown as typeof import("@assistant-ui/store").useAui,
+  })) as unknown as typeof import("@openagentui/store").useAui,
   useAuiState: ((selector: (s: unknown) => unknown) =>
     selector({
       thread: { extras: extrasRef.current },
-    })) as typeof import("@assistant-ui/store").useAuiState,
+    })) as typeof import("@openagentui/store").useAuiState,
 }));
 
 import { eveExtras, type EveRuntimeExtras } from "./eveExtras";

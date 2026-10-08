@@ -5,7 +5,7 @@ import {
   type ActionButtonProps,
   createActionButton,
 } from "../../utils/createActionButton";
-import { useBranchPickerNext as useBranchPickerNextBehavior } from "@assistant-ui/core/react";
+import { useBranchPickerNext as useBranchPickerNextBehavior } from "@openagentui/core/react";
 
 const useBranchPickerNext = () => {
   const { disabled, next } = useBranchPickerNextBehavior();

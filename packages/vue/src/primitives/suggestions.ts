@@ -7,14 +7,14 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import { AuiConfig, Derived } from "@assistant-ui/store/client";
-import { flushTapSync } from "@assistant-ui/tap";
-import type { SuggestionMethods } from "@assistant-ui/core/store";
-import { getSuggestionKeys } from "@assistant-ui/core/internal";
+import { AuiConfig, Derived } from "@openagentui/store/client";
+import { flushTapSync } from "@openagentui/tap";
+import type { SuggestionMethods } from "@openagentui/core/store";
+import { getSuggestionKeys } from "@openagentui/core/internal";
 import {
   suggestionSendMode,
   suggestionTriggerDisabled,
-} from "@assistant-ui/core/store/internal";
+} from "@openagentui/core/store/internal";
 import { AuiProvider } from "../AuiProvider";
 import { isAttrDisabled } from "./attrDisabled";
 import { createLastValidCache, createStaleReporter } from "./lastValidCache";

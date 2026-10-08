@@ -1,6 +1,6 @@
 "use client";
 
-import { useAui, useAuiState } from "@assistant-ui/react";
+import { useAui, useAuiState } from "@openagentui/react";
 import { Menu } from "@base-ui/react/menu";
 import {
   Maximize2Icon,
@@ -166,7 +166,7 @@ export function DemoShell({
           aria-hidden
           className="bg-foreground/80 block size-4 [mask-image:url(/favicon/icon.svg)] [mask-size:contain] [mask-position:center] [mask-repeat:no-repeat]"
         />
-        <span className="text-[13px] font-medium">assistant-ui</span>
+        <span className="text-[13px] font-medium">openagentui</span>
         <button
           type="button"
           onClick={() => setSidebarCollapsed(true)}

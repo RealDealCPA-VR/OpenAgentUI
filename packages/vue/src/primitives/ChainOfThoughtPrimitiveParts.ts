@@ -6,9 +6,9 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import type { PartMethods, PartState } from "@assistant-ui/core/store";
-import { getMessagePartKeys } from "@assistant-ui/core/internal";
-import { AuiConfig, Derived } from "@assistant-ui/store/client";
+import type { PartMethods, PartState } from "@openagentui/core/store";
+import { getMessagePartKeys } from "@openagentui/core/internal";
+import { AuiConfig, Derived } from "@openagentui/store/client";
 import { AuiProvider } from "../AuiProvider";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";

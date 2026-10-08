@@ -16,13 +16,13 @@ export type TemplateListMeta = {
 };
 
 export const TEMPLATE_LIST_META: Record<string, TemplateListMeta> = {
-  "base-assistant-ui": {
-    name: "Configurable Base Assistant UI",
+  "base-openagentui": {
+    name: "Configurable Base OpenAgentUI",
     summary:
-      "A hosted configurable version of the assistant-ui Base demo with the same full-page chat shell, thread list, composer, model picker, mic input, suggestions, slash commands, and no-key demo flows.",
+      "A hosted configurable version of the openagentui Base demo with the same full-page chat shell, thread list, composer, model picker, mic input, suggestions, slash commands, and no-key demo flows.",
     assistantPlacement: "full-page chat shell",
     features: [
-      "assistant-ui Base demo layout with sidebar thread list and centered composer",
+      "openagentui Base demo layout with sidebar thread list and centered composer",
       "Composer actions including attachments, model picker, send, and mic input",
       "LocalStorage thread persistence with Assistant Cloud fallback when configured in source",
       "Controlled suggestion groups and slash commands",
@@ -44,7 +44,7 @@ export const TEMPLATE_LIST_META: Record<string, TemplateListMeta> = {
     assistantPlacement: "sidebar (desktop) / modal (mobile)",
     features: [
       "ContentShell layout: header, left nav, article area, right assistant sidebar",
-      "assistant-ui Thread in sidebar on desktop, AssistantModal on mobile",
+      "openagentui Thread in sidebar on desktop, AssistantModal on mobile",
       "Three built-in tools: searchDocs (sourceResults card), openPage (pagePreview card), generateCodeSnippet (codeSnippet card)",
       "Deterministic demo flows: scripted tool sequences run without an API key",
       "Suggested prompt chips wired to demo flows",
@@ -63,7 +63,7 @@ export const TEMPLATE_LIST_META: Record<string, TemplateListMeta> = {
     features: [
       "DashboardShell layout: nav, alert banner, configurable panel tree",
       "Panel components: Overview, MetricGrid + MetricCard, TwoColumnRow, StatusList, ActivityFeed",
-      "assistant-ui AssistantModal as a floating trigger button",
+      "openagentui AssistantModal as a floating trigger button",
       "Two built-in tools: analyzeIssue (analysis card), createSupportSummary (summary card)",
       "Deterministic demo flows keyed by scenarioId (sync_failure, auth_error)",
       "File attachment support (mock) in demo flows",
@@ -90,7 +90,7 @@ export function fixedDemoListMeta(
         features: [
           "Expo / React Native mobile chat UI",
           "Drawer navigation and thread management",
-          "Streaming assistant responses through assistant-ui runtime",
+          "Streaming assistant responses through openagentui runtime",
           "Native mobile UI primitives, with hosted web preview for inspection",
         ],
         customizable: [],
@@ -109,7 +109,7 @@ export function fixedDemoListMeta(
 }
 
 export const CONFIG_ROOTS_SCHEMAS: Record<string, Record<string, unknown>> = {
-  "base-assistant-ui": {
+  "base-openagentui": {
     brandTheme: {
       description:
         "Controls the Base chat visual theme. Use a preset first, then optional 6-digit hex overrides for key surfaces.",
@@ -153,7 +153,7 @@ export const CONFIG_ROOTS_SCHEMAS: Record<string, Record<string, unknown>> = {
       schema: {
         appName: {
           type: "string",
-          default: "assistant-ui",
+          default: "openagentui",
           description: "Visible app name in the sidebar.",
         },
         welcome: {
@@ -817,7 +817,7 @@ export type TemplateToolsMeta = {
 };
 
 export const TOOLS_META: Record<string, TemplateToolsMeta> = {
-  "base-assistant-ui": {
+  "base-openagentui": {
     builtIn: [
       {
         id: "getWeather",
@@ -895,7 +895,7 @@ export const TOOLS_META: Record<string, TemplateToolsMeta> = {
       {
         type: "generic",
         description:
-          "Fallback assistant-ui tool card rendering configured tool input and output as structured data.",
+          "Fallback openagentui tool card rendering configured tool input and output as structured data.",
         requiredOutputShape: "any JSON-serializable value",
       },
     ],
@@ -1130,7 +1130,7 @@ export const TOOLS_META: Record<string, TemplateToolsMeta> = {
 };
 
 export const RULES: Record<string, string[]> = {
-  "base-assistant-ui": [
+  "base-openagentui": [
     "Top-level config should use only assistant and brandTheme.",
     "brandTheme color overrides must be 6-digit hex colors such as #14b8a6.",
     "assistant.suggestionGroups[].icon must be one of weather, code, write, analyze, brainstorm, search, document, or help.",

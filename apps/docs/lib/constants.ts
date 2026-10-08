@@ -1,7 +1,7 @@
 import { checkoutEnabled } from "./checkout/config";
 import { isAiPlaygroundEnabled } from "./feature-flags";
 
-export const BASE_URL = "https://www.assistant-ui.com";
+export const BASE_URL = "https://openagentui.dev";
 export const CLOUD_URL = "https://cloud.assistant-ui.com";
 export const STATUS_URL = "https://status.assistant-ui.com";
 
@@ -19,11 +19,11 @@ export const PLATFORM_LABELS: Record<Platform, string> = {
   ink: "React Ink",
   vue: "Vue",
   tap: "Tap",
-  cloud: "assistant-cloud",
+  cloud: "openagentui-cloud",
 };
 
 export type Product = {
-  /** Route segment for internal products (e.g. "tw-shimmer", "native"). Omit for external. */
+  /** Route segment for internal products (e.g. "@openagentui/tw-shimmer", "native"). Omit for external. */
   slug?: string;
   label: string;
   href: string;
@@ -84,7 +84,7 @@ export const SUB_PROJECTS: (Product & { slug: string })[] = [
           slug: "learn",
           label: "Learn",
           href: "/learn",
-          description: "Guided assistant-ui courses",
+          description: "Guided openagentui courses",
           external: false,
         },
       ]
@@ -302,7 +302,7 @@ export const NAV_ITEMS: NavItem[] = [
           {
             label: "Showcase",
             href: "/showcase",
-            description: "Apps built with assistant-ui",
+            description: "Apps built with openagentui",
             external: false,
             glyph: "showcase",
           },

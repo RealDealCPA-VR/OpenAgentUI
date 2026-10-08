@@ -1,5 +1,5 @@
-import type { Tool, toJSONSchema } from "assistant-stream";
-import { getPartialJsonObjectMeta } from "assistant-stream/utils";
+import type { Tool, toJSONSchema } from "openagentui-stream";
+import { getPartialJsonObjectMeta } from "openagentui-stream/utils";
 import { overlayPartialPath } from "../../model-context/interactable-composer-metadata";
 import type { InteractableDefinition } from "./scopes";
 

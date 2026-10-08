@@ -6,9 +6,9 @@ platforms: ["react"]
 
 import { DevToolsSample, DevToolsModalSample } from "@/components/pages/docs/samples/devtools";
 
-The assistant-ui DevTools let you inspect assistant-ui state, context, and events without resorting to `console.log`. They show how data flows to the runtime layer.
+The openagentui DevTools let you inspect openagentui state, context, and events without resorting to `console.log`. They show how data flows to the runtime layer.
 
-Try it below. The chat on top is a live assistant-ui app, and the panel underneath is the real DevTools inspecting it. Send a message, trigger a tool call, and switch between the Thread, Context, and Activity tabs.
+Try it below. The chat on top is a live openagentui app, and the panel underneath is the real DevTools inspecting it. Send a message, trigger a tool call, and switch between the Thread, Context, and Activity tabs.
 
 <DevToolsSample />
 
@@ -21,7 +21,7 @@ Try it below. The chat on top is a live assistant-ui app, and the panel undernea
 
 ### Install the DevTools package
 
-<InstallCommand npm={["@assistant-ui/react-devtools"]} />
+<InstallCommand npm={["@openagentui/react-devtools"]} />
 
   </Step>
   <Step>
@@ -29,15 +29,15 @@ Try it below. The chat on top is a live assistant-ui app, and the panel undernea
 ### Mount the DevTools modal
 
 ```tsx
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { DevToolsModal } from "@assistant-ui/react-devtools";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { DevToolsModal } from "@openagentui/react-devtools";
 
 export function AssistantApp() {
   const runtime = /* your runtime setup */;
   return (
     <AssistantRuntimeProvider runtime={runtime}>
       <DevToolsModal />
-      {/* ...your assistant-ui... */}
+      {/* ...your openagentui... */}
     </AssistantRuntimeProvider>
   );
 }
@@ -62,7 +62,7 @@ Try it here: click the launcher in the lower-right corner of the frame, then use
 The panel is extensible. Pass extra inspector tabs to `DevToolsModal` with `plugins`; each plugin renders from the inspected instance's projected data (`state`, `logs`, `modelContext`, `scopes`).
 
 ```tsx
-import { createDevToolsPlugin, DevToolsModal } from "@assistant-ui/react-devtools";
+import { createDevToolsPlugin, DevToolsModal } from "@openagentui/react-devtools";
 
 const stateTab = createDevToolsPlugin({
   id: "my-state",
@@ -74,7 +74,7 @@ export function AssistantApp() {
   return (
     <AssistantRuntimeProvider runtime={runtime}>
       <DevToolsModal plugins={[stateTab]} />
-      {/* ...your assistant-ui... */}
+      {/* ...your openagentui... */}
     </AssistantRuntimeProvider>
   );
 }

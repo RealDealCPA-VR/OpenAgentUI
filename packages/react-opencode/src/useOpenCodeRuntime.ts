@@ -8,16 +8,16 @@ import {
   useCloudThreadListAdapter,
   useExternalStoreRuntime,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import type {
   AppendMessage,
   AssistantRuntime,
   ExternalStoreAdapter,
   ThreadMessage,
   ThreadMessageLike,
-} from "@assistant-ui/react";
-import { invokeUserCallback } from "@assistant-ui/core/internal";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+} from "@openagentui/react";
+import { invokeUserCallback } from "@openagentui/core/internal";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import { createOpencodeClient } from "@opencode-ai/sdk/v2/client";
 import { useEffectEvent, useMemo, useRef, useState } from "react";
 import type {

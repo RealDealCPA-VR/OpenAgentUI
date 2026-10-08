@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { decodeServerIdFromState } from "../auth/createOAuthProvider";
 import { invokeMcpCallback } from "../utils/invokeMcpCallback";
 
@@ -79,7 +79,7 @@ export function useMcpOAuthCallback(
         if (state) serverId = decodeServerIdFromState(state);
         if (!state) throw new Error('missing "state" parameter');
         if (!serverId) {
-          throw new Error("state was not created by assistant-ui MCP");
+          throw new Error("state was not created by openagentui MCP");
         }
         if (superseded()) return;
         setResult({ status: "running", serverId, error: null });

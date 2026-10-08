@@ -4,7 +4,7 @@ The npm packages and their private tooling; the root AGENTS.md still applies.
 
 ## Rules
 
-- Build every published package with `aui-build` (`@assistant-ui/x-buildutils`), never a per-package config, tsup, unbuild, swc, or the tsc CLI.
+- Build every published package with `aui-build` (`@openagentui/x-buildutils`), never a per-package config, tsup, unbuild, swc, or the tsc CLI.
 - Keep every exports map types-first (`"types"` before `"default"`) and ESM with `type: module` and `sideEffects: false`, unless the package's consumer requires CommonJS or side effects.
 - Read the package version as `__AUI_PACKAGE_VERSION__` behind a `typeof` guard with a `"0.0.0"` fallback, because vitest and unbundled runs leave it undefined.
 - Declare a runtime the host already owns as an optional peer of the subpath that needs it, never a dependency.
@@ -15,7 +15,7 @@ The npm packages and their private tooling; the root AGENTS.md still applies.
 
 ### Adapters
 
-- Build a framework adapter on `useExternalStoreRuntime`, or `useLocalRuntime` with a `ChatModelAdapter`, wrapped in `useRemoteThreadListRuntime` for threads, and expose its state with `createRuntimeExtras` from `@assistant-ui/core/internal`; `@assistant-ui/react-langchain` is the reference shape.
+- Build a framework adapter on `useExternalStoreRuntime`, or `useLocalRuntime` with a `ChatModelAdapter`, wrapped in `useRemoteThreadListRuntime` for threads, and expose its state with `createRuntimeExtras` from `@openagentui/core/internal`; `@openagentui/react-langchain` is the reference shape.
 - Let the provider decide the core primitive, whether a thin wrapper, accumulator, or controller, the transport, HITL richness, and thread-list depth.
 - Split an adapter into `use<Name>Runtime.ts` (orchestration only), `<name>Extras.ts`, `hooks.ts`, a pure two-way `convertMessages.ts`, and `types.ts`, plus a `<Name>ThreadController.ts` with a pure `reduce<Name>ThreadState` when it owns thread state.
 - Colocate tests for the converter in both directions and the reducer or controller, and give each accessor hook its own `.test.tsx`.

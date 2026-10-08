@@ -22,7 +22,7 @@ const getQuoteText = (metadata: unknown): string | undefined => {
  * @example
  * ```ts
  * import { convertToModelMessages, streamText } from "ai";
- * import { injectQuoteContext } from "@assistant-ui/ai-sdk";
+ * import { injectQuoteContext } from "@openagentui/ai-sdk";
  *
  * export async function POST(req: Request) {
  *   const { messages } = await req.json();

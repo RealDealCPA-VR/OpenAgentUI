@@ -19,8 +19,8 @@ There's no built-in "computer use" tool. This is a `computer` tool you define yo
 ```tsx title="app/computer-toolkit.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { defineToolkit } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { defineToolkit } from "@openagentui/react";
 import { MousePointer2Icon } from "lucide-react";
 import { z } from "zod";
 
@@ -50,8 +50,8 @@ const toolkit = defineToolkit({
 
 ### Group consecutive actions into one screen
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { MessagePrimitive } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { MessagePrimitive } from "@openagentui/react";
 
 function AssistantMessage() {
   return (
@@ -95,7 +95,7 @@ Standalone, the element is a controlled component: you own the step list, which 
 "use client";
 
 import { useState } from "react";
-import { ComputerUse, type ComputerStep } from "@/components/assistant-ui/elements/computer-use";
+import { ComputerUse, type ComputerStep } from "@/components/openagentui/elements/computer-use";
 
 const steps: ComputerStep[] = [
   { id: "1", action: "click", target: "Sign in", x: 62, y: 24 },

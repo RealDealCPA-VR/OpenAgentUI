@@ -1,20 +1,20 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { computed, createApp, defineComponent, h, nextTick } from "vue";
-import { AuiConfig } from "@assistant-ui/store/client";
+import { AuiConfig } from "@openagentui/store/client";
 import {
   ChainOfThoughtClient,
   RuntimeAdapter,
   type ChainOfThoughtPart,
   type PartState,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 import type {
   ExternalStoreAdapter,
   ThreadMessageLike,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   AssistantRuntimeImpl,
   ExternalStoreRuntimeCore,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { AuiProvider } from "../AuiProvider";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";

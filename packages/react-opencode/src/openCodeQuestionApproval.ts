@@ -1,5 +1,5 @@
-import type { ToolCallMessagePart } from "@assistant-ui/react";
-import type { ToolApprovalAnswer } from "@assistant-ui/core";
+import type { ToolCallMessagePart } from "@openagentui/react";
+import type { ToolApprovalAnswer } from "@openagentui/core";
 import type { OpenCodeQuestionRequest, QuestionAnswer } from "./types";
 
 type ToolCallApproval = NonNullable<ToolCallMessagePart["approval"]>;

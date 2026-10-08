@@ -116,7 +116,7 @@ describe("brand assets", () => {
 
   it("ships exactly one current copy of each SVG and matching transparent PNG", async () => {
     const archive = await readFile(
-      new URL("public/assistant-ui-brand.zip", assetRoot),
+      new URL("public/openagentui-brand.zip", assetRoot),
     );
     const rebuilt = unzipSync(await buildBrandKit());
     const files = unzipSync(archive);

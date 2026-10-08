@@ -131,7 +131,7 @@ export class DefaultEditComposerRuntimeCore extends BaseComposerRuntimeCore {
     if (this._ended) return;
     this._ended = true;
     void this.reset().catch((error: unknown) => {
-      console.error("[assistant-ui] Failed to clear cancelled edit", error);
+      console.error("[openagentui] Failed to clear cancelled edit", error);
     });
     this.endEditCallback();
     this._notifySubscribers();

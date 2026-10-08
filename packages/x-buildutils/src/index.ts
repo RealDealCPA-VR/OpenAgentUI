@@ -21,17 +21,17 @@ if (isDev && pkg.scripts?.start) onSuccess = pkg.scripts.start;
 // specifiers only, so "react/jsx-runtime" and "react-dom" stay untouched.
 // Reactless packages get the standalone-shim, whose graph never imports react.
 const dependsOnTap = ["dependencies", "peerDependencies"].some(
-  (field) => pkg[field]?.["@assistant-ui/tap"],
+  (field) => pkg[field]?.["@openagentui/tap"],
 );
 const dependsOnReact = ["dependencies", "peerDependencies"].some(
   (field) => pkg[field]?.react,
 );
-const isTapPackage = pkg.name === "@assistant-ui/tap";
+const isTapPackage = pkg.name === "@openagentui/tap";
 const remapReactToShim = dependsOnTap || isTapPackage;
 const isReactless = dependsOnTap && !dependsOnReact;
 const shimBase = isReactless
-  ? "@assistant-ui/tap/standalone-shim"
-  : "@assistant-ui/tap/react-shim";
+  ? "@openagentui/tap/standalone-shim"
+  : "@openagentui/tap/react-shim";
 const packageImportExternals = Object.keys(pkg.imports ?? {});
 const allowedImports = declaredImports(pkg);
 
@@ -65,7 +65,7 @@ const assertDeclaredTypeReferences = () => {
 // bundled in, so an ESM-only workspace dependency can ride inside the CJS
 // artifact. Dual-format maps are rejected: every runtime target of a subpath
 // must agree on the format.
-const SELF_NAME = "@assistant-ui/x-buildutils";
+const SELF_NAME = "@openagentui/x-buildutils";
 
 const collectRuntimeTargets = (value: unknown): string[] => {
   if (typeof value === "string") return [value];

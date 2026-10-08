@@ -1,11 +1,11 @@
-# `@assistant-ui/react-data-stream`
+# `@openagentui/react-data-stream`
 
-Data Stream protocol integration for `@assistant-ui/react`. Connects an assistant-ui runtime to any backend that speaks the AI SDK data-stream or UI-message-stream wire format.
+Data Stream protocol integration for `@openagentui/react`. Connects an openagentui runtime to any backend that speaks the AI SDK data-stream or UI-message-stream wire format.
 
 ## Installation
 
 ```bash
-npm install @assistant-ui/react @assistant-ui/react-data-stream
+npm install @openagentui/react @openagentui/react-data-stream
 ```
 
 ## Usage
@@ -13,8 +13,8 @@ npm install @assistant-ui/react @assistant-ui/react-data-stream
 ```tsx
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useDataStreamRuntime } from "@assistant-ui/react-data-stream";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useDataStreamRuntime } from "@openagentui/react-data-stream";
 
 export function Provider({ children }: { children: React.ReactNode }) {
   const runtime = useDataStreamRuntime({ api: "/api/chat" });
@@ -36,7 +36,7 @@ preserve or expose the response marker.
 
 ## See also
 
-- `@assistant-ui/ai-sdk` for direct Vercel AI SDK integration with frontend tool forwarding.
-- `useCloudRuntime` (also exported from this package) to run an Assistant Cloud assistant, with thread persistence backed by `assistant-cloud`.
+- `@openagentui/ai-sdk` for direct Vercel AI SDK integration with frontend tool forwarding.
+- `useCloudRuntime` (also exported from this package) to run an Assistant Cloud assistant, with thread persistence backed by `openagentui-cloud`.
 
-Full API reference at [assistant-ui.com/docs/api-reference/integrations/react-data-stream](https://www.assistant-ui.com/docs/api-reference/integrations/react-data-stream).
+Full API reference at [openagentui.dev/docs/api-reference/integrations/react-data-stream](https://openagentui.dev/docs/api-reference/integrations/react-data-stream).

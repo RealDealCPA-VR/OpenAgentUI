@@ -41,7 +41,7 @@ export const accounts =
     ? createAccountsAuth<DocsSessionData>({
         issuer,
         clientId,
-        cookieName: "assistant-ui.www_session",
+        cookieName: "openagentui.www_session",
         cache: { secret: encryptionKey },
         store,
         // The account row renders the name and the avatar, so a profile edited

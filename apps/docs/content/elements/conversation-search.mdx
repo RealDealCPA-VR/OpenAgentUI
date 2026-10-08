@@ -16,15 +16,15 @@ There is no search primitive in the runtime; a thread only exposes its messages.
 
 ### Collect matches from the thread
 
-```tsx title="components/assistant-ui/elements/thread-search-bar.tsx"
+```tsx title="components/openagentui/elements/thread-search-bar.tsx"
 "use client";
 
 import { useMemo, useState } from "react";
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import {
   ConversationSearch,
   type SearchHit,
-} from "@/components/assistant-ui/elements/conversation-search";
+} from "@/components/openagentui/elements/conversation-search";
 
 const CONTEXT = 24;
 
@@ -108,7 +108,7 @@ import { useMemo, useState } from "react";
 import {
   ConversationSearch,
   type SearchHit,
-} from "@/components/assistant-ui/elements/conversation-search";
+} from "@/components/openagentui/elements/conversation-search";
 
 const lines = [
   "The migration touches three tables.",

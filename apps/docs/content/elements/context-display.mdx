@@ -47,8 +47,8 @@ Without this step there is no usage to read, and the preset renders nothing, nei
 
 Pick `Ring`, `Bar`, or `Text` and pass your model's `modelContextWindow`. Each preset fetches usage internally through `useThreadTokenUsage()` and restarts its running total whenever the active thread's id changes.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { ContextDisplay } from "@/components/assistant-ui/elements/context-display.aui";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { ContextDisplay } from "@/components/openagentui/elements/context-display.aui";
 
 function ThreadFooter() {
   return (
@@ -76,7 +76,7 @@ Standalone, every preset and the composable `Root` take a `usage` object as a pr
 ### Pass usage as a prop
 
 ```tsx title="app/usage-badge.tsx"
-import { ContextDisplayBar } from "@/components/assistant-ui/elements/context-display";
+import { ContextDisplayBar } from "@/components/openagentui/elements/context-display";
 
 export function UsageBadge() {
   return (

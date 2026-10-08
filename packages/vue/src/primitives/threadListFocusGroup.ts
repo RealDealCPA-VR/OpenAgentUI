@@ -16,11 +16,11 @@ type ThreadListItemFocus = {
 };
 
 const threadListCollectionKey: InjectionKey<ThreadListCollection> = Symbol(
-  "assistant-ui.vue.thread-list-collection",
+  "openagentui.vue.thread-list-collection",
 );
 
 const threadListItemFocusKey: InjectionKey<ThreadListItemFocus> = Symbol(
-  "assistant-ui.vue.thread-list-item-focus",
+  "openagentui.vue.thread-list-item-focus",
 );
 
 export const provideThreadListCollection = () => {

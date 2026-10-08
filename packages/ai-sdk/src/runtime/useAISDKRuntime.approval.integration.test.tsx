@@ -8,13 +8,13 @@ import {
   type UIMessage,
   type UIMessageChunk,
 } from "ai";
-import { ToolResponse } from "assistant-stream";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig, createAssistantClient } from "@assistant-ui/store/client";
+import { ToolResponse } from "openagentui-stream";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig, createAssistantClient } from "@openagentui/store/client";
 import type {
   ThreadHistoryAdapter,
   ThreadRuntimeCore,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { describe, expect, it, onTestFinished, vi } from "vitest";
 import { version } from "react";
 import { useAISDKRuntime } from "./useAISDKRuntime";
@@ -28,8 +28,8 @@ const historyState = vi.hoisted(() => ({
   remoteId: undefined as string | undefined,
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...original,
     useAui: (...args: Parameters<typeof original.useAui>) =>

@@ -48,10 +48,10 @@ See the [cloud persistence guide](/docs/cloud/langgraph) for setup details.
 
 ## Custom thread list
 
-To surface pre-existing LangGraph `thread_id`s in the thread picker without running assistant-cloud, pass a `RemoteThreadListAdapter` via `unstable_threadListAdapter`. A common implementation backs `list()` with `client.threads.search()` and `initialize()` with `client.threads.create()`.
+To surface pre-existing LangGraph `thread_id`s in the thread picker without running openagentui-cloud, pass a `RemoteThreadListAdapter` via `unstable_threadListAdapter`. A common implementation backs `list()` with `client.threads.search()` and `initialize()` with `client.threads.create()`.
 
 ```ts
-import type { RemoteThreadListAdapter } from "@assistant-ui/react";
+import type { RemoteThreadListAdapter } from "@openagentui/react";
 import { Client } from "@langchain/langgraph-sdk";
 
 const client = new Client({
@@ -91,7 +91,7 @@ const runtime = useLangGraphRuntime({
 });
 ```
 
-Setting `remoteId === externalId` keeps the ids assistant-ui stores aligned with the LangGraph thread ids your `load` and `stream` callbacks receive. See [threads](/docs/runtimes/concepts/threads) for the full adapter contract.
+Setting `remoteId === externalId` keeps the ids openagentui stores aligned with the LangGraph thread ids your `load` and `stream` callbacks receive. See [threads](/docs/runtimes/concepts/threads) for the full adapter contract.
 
 <Callout type="info">
 When `unstable_threadListAdapter` is provided, the `cloud`, `create`, and `delete` options are ignored; the adapter owns the full thread-list lifecycle.

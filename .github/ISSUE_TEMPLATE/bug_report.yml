@@ -1,5 +1,5 @@
 name: Bug report
-description: Report an issue to help us improve assistant-ui
+description: Report an issue to help us improve openagentui
 labels: ["bug"]
 
 body:
@@ -16,7 +16,7 @@ body:
   - type: textarea
     attributes:
       label: Environment info
-      description: Run `npx assistant-ui info` in your project and paste the output here.
+      description: Run `npx openagentui info` in your project and paste the output here.
       placeholder: |
         Environment:
           OS:               macOS 15.3 (arm64)
@@ -25,7 +25,7 @@ body:
           Framework:        Next.js 15.3.1
 
         Packages:
-          @assistant-ui/react          0.12.15
+          @openagentui/react          0.12.15
           ...
     validations:
       required: true
@@ -37,9 +37,9 @@ body:
       options:
         - Runtime / Core
         - Thread Management
-        - Streaming (assistant-stream)
+        - Streaming (openagentui-stream)
         - Attachments / Files
-        - Cloud (assistant-cloud)
+        - Cloud (openagentui-cloud)
         - React / UI Components
         - React Native
         - Store / Tap

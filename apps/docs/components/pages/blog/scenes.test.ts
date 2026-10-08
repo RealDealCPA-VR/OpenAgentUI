@@ -23,7 +23,7 @@ describe("blog glyph scenes", () => {
     expect(whisper).toHaveLength(30);
     expect(live[14]!.slice(30, 35)).toBe("hello");
     expect(base[14]!.slice(30, 35)).toBe("hello");
-    expect(whisper[22]!.slice(17, 38)).toBe("npx assistant-ui init");
+    expect(whisper[22]!.slice(17, 38)).toBe("npx openagentui init");
   });
 
   it("generates a valid deterministic fallback for unknown slugs", () => {

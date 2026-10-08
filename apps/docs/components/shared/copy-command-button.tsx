@@ -13,7 +13,7 @@ import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { SETUP_PROMPT } from "./setup-prompt";
 
 export function CopyCommandButton({
-  command = "npx assistant-ui init",
+  command = "npx openagentui init",
   analyticsContext,
   withPromptOption = false,
 }: {

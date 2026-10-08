@@ -24,8 +24,8 @@ describe("config utilities", () => {
       expect(hasConfig(testDir)).toBe(false);
     });
 
-    it("should return true when assistant-ui.json exists", () => {
-      const configPath = path.join(testDir, "assistant-ui.json");
+    it("should return true when openagentui.json exists", () => {
+      const configPath = path.join(testDir, "openagentui.json");
       fs.writeFileSync(configPath, "{}");
 
       expect(hasConfig(testDir)).toBe(true);
@@ -44,24 +44,24 @@ describe("config utilities", () => {
       expect(getConfig(testDir)).toBeNull();
     });
 
-    it("should read assistant-ui.json config", () => {
+    it("should read openagentui.json config", () => {
       const config = {
         style: "default",
         tailwind: { config: "tailwind.config.ts" },
       };
-      const configPath = path.join(testDir, "assistant-ui.json");
+      const configPath = path.join(testDir, "openagentui.json");
       fs.writeFileSync(configPath, JSON.stringify(config));
 
       const result = getConfig(testDir);
       expect(result).toEqual(config);
     });
 
-    it("should prioritize assistant-ui.json over components.json", () => {
-      const assistantConfig = { style: "assistant-ui" };
+    it("should prioritize openagentui.json over components.json", () => {
+      const assistantConfig = { style: "openagentui" };
       const componentsConfig = { style: "components" };
 
       fs.writeFileSync(
-        path.join(testDir, "assistant-ui.json"),
+        path.join(testDir, "openagentui.json"),
         JSON.stringify(assistantConfig),
       );
       fs.writeFileSync(
@@ -74,7 +74,7 @@ describe("config utilities", () => {
     });
 
     it("should return null on invalid JSON", () => {
-      const configPath = path.join(testDir, "assistant-ui.json");
+      const configPath = path.join(testDir, "openagentui.json");
       fs.writeFileSync(configPath, "invalid json");
 
       const result = getConfig(testDir);
@@ -83,7 +83,7 @@ describe("config utilities", () => {
   });
 
   describe("saveConfig", () => {
-    it("should create assistant-ui.json with config", () => {
+    it("should create openagentui.json with config", () => {
       const config = {
         style: "default",
         aliases: {
@@ -93,7 +93,7 @@ describe("config utilities", () => {
 
       saveConfig(config, testDir);
 
-      const configPath = path.join(testDir, "assistant-ui.json");
+      const configPath = path.join(testDir, "openagentui.json");
       expect(fs.existsSync(configPath)).toBe(true);
 
       const saved = JSON.parse(fs.readFileSync(configPath, "utf8"));
@@ -104,7 +104,7 @@ describe("config utilities", () => {
       const config = { style: "default" };
       saveConfig(config, testDir);
 
-      const configPath = path.join(testDir, "assistant-ui.json");
+      const configPath = path.join(testDir, "openagentui.json");
       const content = fs.readFileSync(configPath, "utf8");
 
       // Should be formatted with 2 spaces

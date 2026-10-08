@@ -87,7 +87,7 @@ export const XULUX_SUGGESTION_GROUPS = [
         id: "new-app-chatgpt-style",
         label: "ChatGPT style",
         prompt:
-          "Build me a ChatGPT-style chat app with assistant-ui — empty state, composer, and message layout.",
+          "Build me a ChatGPT-style chat app with openagentui — empty state, composer, and message layout.",
         replay: {
           preview: chatGptPreview,
           text:
@@ -96,7 +96,7 @@ export const XULUX_SUGGESTION_GROUPS = [
               title: chatGptPreview.title,
               downloadUrl: chatGptPreview.downloadUrl,
               prompt:
-                "Use the ChatGPT Style Assistant as the starting point for an assistant-ui app. Preserve its empty state, composer, tool menu, message layouts, attachments, branch controls, voice input, and tool fallback UI while adapting the branding and assistant behavior to my product.",
+                "Use the ChatGPT Style Assistant as the starting point for an openagentui app. Preserve its empty state, composer, tool menu, message layouts, attachments, branch controls, voice input, and tool fallback UI while adapting the branding and assistant behavior to my product.",
             }),
         },
       },
@@ -152,7 +152,7 @@ export const XULUX_SUGGESTION_GROUPS = [
               title: chatGptPreview.title,
               downloadUrl: chatGptPreview.downloadUrl,
               prompt:
-                "Open the ChatGPT Style Assistant demo and use it as the starting point for a React assistant-ui app. Preserve the ChatGPT-inspired empty state, composer, tool menu, message layouts, attachments, branch controls, voice input, and tool fallback UI while adapting the copy and branding.",
+                "Open the ChatGPT Style Assistant demo and use it as the starting point for a React openagentui app. Preserve the ChatGPT-inspired empty state, composer, tool menu, message layouts, attachments, branch controls, voice input, and tool fallback UI while adapting the copy and branding.",
             }),
         },
       },
@@ -169,7 +169,7 @@ export const XULUX_SUGGESTION_GROUPS = [
               title: claudePreview.title,
               downloadUrl: claudePreview.downloadUrl,
               prompt:
-                "Open the Claude Style Assistant demo and use it as the starting point for a React assistant-ui app. Preserve its serif typography, warm styling, compact composer, file controls, message actions, and branch controls while adapting the copy and branding.",
+                "Open the Claude Style Assistant demo and use it as the starting point for a React openagentui app. Preserve its serif typography, warm styling, compact composer, file controls, message actions, and branch controls while adapting the copy and branding.",
             }),
         },
       },
@@ -186,7 +186,7 @@ export const XULUX_SUGGESTION_GROUPS = [
               title: grokPreview.title,
               downloadUrl: grokPreview.downloadUrl,
               prompt:
-                "Open the Grok Style Assistant demo and use it as the starting point for a React assistant-ui app. Preserve its minimal dark styling, centered empty state, compact controls, message actions, and branch controls while adapting the copy and branding.",
+                "Open the Grok Style Assistant demo and use it as the starting point for a React openagentui app. Preserve its minimal dark styling, centered empty state, compact controls, message actions, and branch controls while adapting the copy and branding.",
             }),
         },
       },
@@ -198,22 +198,22 @@ export const XULUX_SUGGESTION_GROUPS = [
       {
         id: "learn-thread-component",
         label: "Thread component",
-        prompt: "How do I set up the assistant-ui Thread component?",
+        prompt: "How do I set up the openagentui Thread component?",
         replay: {
-          text: `Here’s the quickest way to set up the assistant-ui \`Thread\` component.
+          text: `Here’s the quickest way to set up the openagentui \`Thread\` component.
 
 ## 1. Install the component
 
 Use the shadcn registry:
 
 \`\`\`bash
-npx shadcn@latest add https://r.assistant-ui.com/thread.json
+npx shadcn@latest add https://r.openagentui.dev/thread.json
 \`\`\`
 
 ## 2. Render it inside your runtime provider
 
 \`\`\`tsx
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function Chat() {
   return (
@@ -232,9 +232,9 @@ You can customize tool rendering through the component’s \`components\` prop i
       {
         id: "learn-ai-sdk-runtime",
         label: "AI SDK runtime",
-        prompt: "How do I connect assistant-ui to the Vercel AI SDK?",
+        prompt: "How do I connect openagentui to the Vercel AI SDK?",
         replay: {
-          text: `Use \`useChatRuntime\` from \`@assistant-ui/ai-sdk\` on the client and return a UI message stream from your chat route.
+          text: `Use \`useChatRuntime\` from \`@openagentui/ai-sdk\` on the client and return a UI message stream from your chat route.
 
 ## Server route
 
@@ -259,9 +259,9 @@ export async function POST(req: Request) {
 \`\`\`tsx
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function Chat() {
   const runtime = useChatRuntime({ api: "/api/chat" });
@@ -274,20 +274,20 @@ export default function Chat() {
 }
 \`\`\`
 
-The runtime connects assistant-ui’s thread primitives to the AI SDK transport, streaming state, tool calls, and message lifecycle.`,
+The runtime connects openagentui’s thread primitives to the AI SDK transport, streaming state, tool calls, and message lifecycle.`,
         },
       },
       {
         id: "learn-tool-ui",
         label: "tool UI",
-        prompt: "How do I render custom tool UIs in assistant-ui?",
+        prompt: "How do I render custom tool UIs in openagentui?",
         replay: {
-          text: `Register a tool renderer and let assistant-ui render it inside the message parts.
+          text: `Register a tool renderer and let openagentui render it inside the message parts.
 
 \`\`\`tsx
 "use generative";
 
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
 
 export default defineToolkit({
@@ -334,10 +334,10 @@ For a tool executed by your backend, register the same tool name with \`type: "b
 "use client";
 
 import { useMemo } from "react";
-import { AssistantCloud, AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
+import { AssistantCloud, AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
 
 export default function ChatPage() {
   const cloud = useMemo(
@@ -377,10 +377,10 @@ Set \`NEXT_PUBLIC_ASSISTANT_BASE_URL\` to your project’s frontend API URL. Ass
 "use client";
 
 import { useMemo } from "react";
-import { AssistantCloud, AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
+import { AssistantCloud, AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
 
 export default function ChatPage() {
   const cloud = useMemo(
@@ -424,7 +424,7 @@ The first message creates a Cloud thread, completed messages are persisted as th
 4. Use your organization or project membership to decide which workspace the user can access.
 
 \`\`\`tsx
-import { AssistantCloud } from "@assistant-ui/react";
+import { AssistantCloud } from "@openagentui/react";
 
 const cloud = new AssistantCloud({
   baseUrl: process.env.NEXT_PUBLIC_ASSISTANT_BASE_URL!,

@@ -39,7 +39,7 @@ The block opens while a reasoning part is running and collapses when reasoning s
 ```vue title="app/components/ReasoningPart.vue"
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useAuiState } from "@assistant-ui/vue";
+import { useAuiState } from "@openagentui/vue";
 
 const text = useAuiState((s) =>
   s.part.type === "reasoning" ? s.part.text : "",

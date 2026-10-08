@@ -1,4 +1,7 @@
-import { type AssistantStream, createAssistantStream } from "assistant-stream";
+import {
+  type AssistantStream,
+  createAssistantStream,
+} from "openagentui-stream";
 import {
   type FC,
   type PropsWithChildren,
@@ -7,7 +10,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type {
   MessageModality,
   RemoteThreadInitializeResponse,
@@ -672,7 +675,7 @@ const createHistoryProvider = (
 export const createLocalStorageAdapter = (
   options: LocalStorageAdapterOptions,
 ): RemoteThreadListAdapter => {
-  const { storage, prefix = "@assistant-ui:", titleGenerator } = options;
+  const { storage, prefix = "@openagentui:", titleGenerator } = options;
 
   const threadsKey = `${prefix}threads`;
   const messagesKey = (threadId: string) => `${prefix}messages:${threadId}`;
@@ -801,7 +804,7 @@ export const createLocalStorageAdapter = (
           // Metadata deletion is committed; retain stale markers for cleanup
           // retry without rolling the client back to a deleted thread.
           console.warn(
-            "[assistant-ui] Thread deletion committed, but local history cleanup failed:",
+            "[openagentui] Thread deletion committed, but local history cleanup failed:",
             error,
           );
         }

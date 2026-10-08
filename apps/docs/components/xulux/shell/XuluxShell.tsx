@@ -23,7 +23,7 @@ function useIsSmallScreen(): boolean {
     () => false,
   );
 }
-import { useAui, useAuiState, type ThreadMessage } from "@assistant-ui/react";
+import { useAui, useAuiState, type ThreadMessage } from "@openagentui/react";
 import { useAssistantPanel } from "@/components/pages/docs/assistant/context";
 import { Button } from "@/components/ui/button";
 import { analytics } from "@/lib/analytics";
@@ -78,7 +78,7 @@ import type {
   LearnCourseStartSource,
 } from "@/lib/xulux/learn/types";
 
-const ASSISTANT_UI_REPO_URL = "https://github.com/assistant-ui/assistant-ui";
+const OPENAGENTUI_REPO_URL = "https://github.com/RealDealCPA-VR/OpenAgentUI";
 
 type XuluxViewMode = "landing" | "chat" | "preview";
 type PromptStart = {
@@ -722,7 +722,7 @@ function getTemplateSourceUrl(
 ): string | undefined {
   if (!template.sourcePath) return template.docsUrl;
   if (/^https?:\/\//i.test(template.sourcePath)) return template.sourcePath;
-  return `${ASSISTANT_UI_REPO_URL}/tree/main/${template.sourcePath}`;
+  return `${OPENAGENTUI_REPO_URL}/tree/main/${template.sourcePath}`;
 }
 
 function getLatestUserTextFromMessages(

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import type { ThreadAssistantMessagePart } from "@assistant-ui/core";
+import type { ThreadAssistantMessagePart } from "@openagentui/core";
 import { fromAgUiMessages } from "./conversions";
 import {
   buildToolApprovalResume,

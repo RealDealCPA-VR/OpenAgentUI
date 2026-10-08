@@ -1,13 +1,13 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { EveAuthorization } from "@/components/eve-authorization";
 import {
   AssistantRuntimeProvider,
   AuiConfig,
   Suggestions,
-} from "@assistant-ui/react";
-import { useEveAgentRuntime } from "@assistant-ui/eve";
+} from "@openagentui/react";
+import { useEveAgentRuntime } from "@openagentui/eve";
 
 export default function Home() {
   const runtime = useEveAgentRuntime();

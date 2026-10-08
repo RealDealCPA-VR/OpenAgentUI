@@ -14,7 +14,7 @@ import { CardLLM, CardsLLM } from "@/components/pages/docs/fumadocs/card";
 import { InstallCommandLLM } from "@/components/pages/docs/fumadocs/install/install-command";
 import { ParametersTableLLM } from "@/components/pages/docs/parameters-table";
 import { PrimitivesTypeTableLLM } from "@/components/pages/docs/primitives-type-table";
-import { FlowLLM } from "@/components/assistant-ui/elements/flow";
+import { FlowLLM } from "@/components/openagentui/elements/flow";
 import { TapTutorialSlideshowLLM } from "@/components/pages/docs/tap/tutorial-slideshow.llm";
 import {
   QuickLinksLLM,

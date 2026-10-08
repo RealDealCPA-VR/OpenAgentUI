@@ -1,7 +1,7 @@
-import type { ToolModelContentPart } from "assistant-stream";
-import type { AssistantCloud } from "assistant-cloud";
+import type { ToolModelContentPart } from "openagentui-stream";
+import type { AssistantCloud } from "openagentui-cloud";
 import type { ThreadMessage } from "../../../types/message";
-import type { ReadonlyJSONValue } from "assistant-stream/utils";
+import type { ReadonlyJSONValue } from "openagentui-stream/utils";
 import type { AttachmentAdapter } from "../../../adapters/attachment";
 import type { ThreadHistoryAdapter } from "../../../adapters/thread-history";
 import type {

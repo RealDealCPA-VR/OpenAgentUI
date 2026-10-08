@@ -1,6 +1,6 @@
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import { useTheme } from "next-themes";
 import { useId } from "react";
 import { TraceLine } from "@/components/shared/trace-line";

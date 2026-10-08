@@ -1,4 +1,4 @@
-import "@assistant-ui/store";
+import "@openagentui/store";
 
 export type SpanItemState = {
   id: string;
@@ -30,7 +30,7 @@ type SpanMeta = {
   query: { index: number } | { key: string };
 };
 
-declare module "@assistant-ui/store" {
+declare module "@openagentui/store" {
   interface ScopeRegistry {
     span: {
       methods: SpanMethods;

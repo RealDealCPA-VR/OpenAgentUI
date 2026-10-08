@@ -8,8 +8,8 @@ const h = vi.hoisted(() => ({
   message: { metadata: { custom: {} } as { custom: Record<string, unknown> } },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+vi.mock("@openagentui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/store")>();
   return {
     ...actual,
     useAuiState: <T,>(selector: (state: typeof h) => T) => selector(h),

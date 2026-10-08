@@ -1,6 +1,6 @@
 ---
 title: Assistant Context API
-description: Read and update assistant state to build custom React components in your chat UI — composable context API for thread, message, and runtime data via assistant-ui.
+description: Read and update assistant state to build custom React components in your chat UI — composable context API for thread, message, and runtime data via openagentui.
 platforms: ["react"]
 ---
 
@@ -15,7 +15,7 @@ The Context API provides:
 - **Event listening** - React to user interactions and system events
 - **Scope-aware design** - Components resolve their context (message, thread, etc.) from where they render
 
-All assistant-ui primitives are built on it. When the built-in components don't meet your needs, use the Context API to build custom components with the same capabilities.
+All openagentui primitives are built on it. When the built-in components don't meet your needs, use the Context API to build custom components with the same capabilities.
 
 The Context API is backed by the runtime you provide to `<AssistantRuntimeProvider>`. The runtime is the store that holds assistant state, handles actions, and dispatches events.
 
@@ -23,7 +23,7 @@ The Context API is backed by the runtime you provide to `<AssistantRuntimeProvid
 
 ### Scopes and Hierarchy
 
-assistant-ui organizes state into **scopes**. Each scope corresponds to a part of the chat interface and exposes the state and actions for that part.
+openagentui organizes state into **scopes**. Each scope corresponds to a part of the chat interface and exposes the state and actions for that part.
 
 ```
 🗂️  ThreadList (threads) - Manages the list of conversations
@@ -79,7 +79,7 @@ The Context API separates four concerns:
 Read state and re-render when the selected value changes. This hook works like Zustand's selector pattern: you provide a function that extracts the data you need, and your component re-renders only when that data changes.
 
 ```tsx
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 // Basic usage - extract a single property
 const role = useAuiState((s) => s.message.role); // "user" | "assistant"
@@ -125,7 +125,7 @@ const content = useAuiState((s) => s.message.content);
 Access the API instance for imperative operations and actions. Unlike `useAuiState`, this hook does not subscribe to state updates. The client's identity changes only on structural changes (a scope resolving to a different instance), so it suits event handlers and imperative operations.
 
 ```tsx
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 
 function CustomMessageActions() {
   const aui = useAui();
@@ -253,7 +253,7 @@ aui.tools.getState();
 Subscribe to events. The subscription is removed on unmount. Use this hook to run side effects on user interactions and system events, such as analytics tracking.
 
 ```tsx
-import { useAuiEvent } from "@assistant-ui/react";
+import { useAuiEvent } from "@openagentui/react";
 
 // Listen to current scope events (most common)
 useAuiEvent("composer.send", (event) => {

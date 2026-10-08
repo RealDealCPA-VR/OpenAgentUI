@@ -5,7 +5,7 @@ import {
   ThreadListItemPrimitiveTrigger,
   ThreadListPrimitiveItems,
   ThreadListPrimitiveNew,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 import { PlusIcon } from "@lucide/vue";
 
 const props = defineProps<{ open: boolean }>();

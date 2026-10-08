@@ -4,7 +4,7 @@ import { useLayoutEffect, useMemo, useRef } from "react";
 import type {
   Unstable_TriggerAdapter,
   Unstable_TriggerItem,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type { Unstable_IconComponent } from "./useMentionAdapter";
 import { matchesTriggerItemQuery } from "../primitives/composer/trigger/matchesTriggerItemQuery";
 

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import type { ChatModelRunResult } from "@assistant-ui/core";
+import type { ChatModelRunResult } from "@openagentui/core";
 import { RunAggregator } from "./run-aggregator";
 import type { AgUiEvent } from "../types";
 

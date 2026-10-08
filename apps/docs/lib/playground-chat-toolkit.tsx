@@ -1,6 +1,6 @@
 "use client";
 
-import type { Toolkit } from "@assistant-ui/react";
+import type { Toolkit } from "@openagentui/react";
 import { Settings2 } from "lucide-react";
 import { z } from "zod";
 

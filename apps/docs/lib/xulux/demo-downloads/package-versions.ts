@@ -10,21 +10,20 @@ type PackageJson = {
 export type PackageJsonReader = (snapshotKey: string) => Promise<PackageJson>;
 
 const WORKSPACE_PACKAGE_JSON: Record<string, string> = {
-  "@assistant-ui/ai-sdk": "packages/ai-sdk/package.json",
-  "@assistant-ui/react": "packages/react/package.json",
-  "@assistant-ui/react-ink": "packages/react-ink/package.json",
-  "@assistant-ui/react-ink-markdown":
-    "packages/react-ink-markdown/package.json",
-  "@assistant-ui/react-lexical": "packages/react-lexical/package.json",
-  "@assistant-ui/react-markdown": "packages/react-markdown/package.json",
+  "@openagentui/ai-sdk": "packages/ai-sdk/package.json",
+  "@openagentui/react": "packages/react/package.json",
+  "@openagentui/react-ink": "packages/react-ink/package.json",
+  "@openagentui/react-ink-markdown": "packages/react-ink-markdown/package.json",
+  "@openagentui/react-lexical": "packages/react-lexical/package.json",
+  "@openagentui/react-markdown": "packages/react-markdown/package.json",
 };
 
 export const DEMO_DEPENDENCIES = [
   "@ai-sdk/openai",
-  "@assistant-ui/ai-sdk",
-  "@assistant-ui/react",
-  "@assistant-ui/react-lexical",
-  "@assistant-ui/react-markdown",
+  "@openagentui/ai-sdk",
+  "@openagentui/react",
+  "@openagentui/react-lexical",
+  "@openagentui/react-markdown",
   "@base-ui/react",
   "ai",
   "class-variance-authority",

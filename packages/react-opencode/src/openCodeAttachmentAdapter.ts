@@ -3,8 +3,8 @@ import {
   type AttachmentAdapter,
   type CompleteAttachment,
   type PendingAttachment,
-} from "@assistant-ui/react";
-import { getFileDataURL } from "@assistant-ui/core/internal";
+} from "@openagentui/react";
+import { getFileDataURL } from "@openagentui/core/internal";
 
 // Mirrors ACCEPTED_FILE_TYPES in OpenCode's app (packages/app/src/constants/file-picker.ts),
 // including the extension entries that make source files pickable despite their
@@ -154,7 +154,7 @@ export type OpenCodeAttachmentAdapterOptions = {
 };
 
 /**
- * Converts browser files into standard assistant-ui attachments that preserve
+ * Converts browser files into standard openagentui attachments that preserve
  * OpenCode's native file semantics. The MIME type is normalized the same way
  * OpenCode's own clients do (exact image types and PDF pass through, text-like
  * inputs become `text/plain`, unreadable binaries are rejected), the filename

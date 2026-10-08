@@ -8,11 +8,11 @@ import {
   ThreadPrimitive,
   useExternalStoreRuntime,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   MarkdownTextPrimitive,
   unstable_memoizeMarkdownComponents as memoizeMarkdownComponents,
-} from "@assistant-ui/react-markdown";
+} from "@openagentui/react-markdown";
 
 (
   globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }

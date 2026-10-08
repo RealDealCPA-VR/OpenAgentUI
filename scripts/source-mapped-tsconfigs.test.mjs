@@ -11,7 +11,7 @@ const repoRoot = path.resolve(import.meta.dirname, "..");
 // tsconfig that reads one entry point from src and another from dist ends up
 // with an augmented and an unaugmented `AssistantClient` in the same program.
 const AUGMENTED_PACKAGES = ["core", "store"];
-const SOURCE_WILDCARD = "@assistant-ui/*";
+const SOURCE_WILDCARD = "@openagentui/*";
 
 const readJson = (file) =>
   JSON.parse(readFileSync(path.join(repoRoot, file), "utf8"));

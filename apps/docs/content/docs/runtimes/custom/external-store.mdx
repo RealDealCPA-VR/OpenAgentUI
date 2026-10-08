@@ -3,7 +3,7 @@ title: ExternalStoreRuntime
 description: Bring your own redux, zustand, or state manager.
 ---
 
-`ExternalStoreRuntime` bridges your existing state management with assistant-ui. You provide messages and callbacks; the runtime renders whatever you give it. UI features turn on based on which callbacks are present.
+`ExternalStoreRuntime` bridges your existing state management with openagentui. You provide messages and callbacks; the runtime renders whatever you give it. UI features turn on based on which callbacks are present.
 
 ## When to use it
 
@@ -11,7 +11,7 @@ Pick `ExternalStoreRuntime` when:
 
 - You already keep messages in redux, zustand, tanstack-query, or another store, and want to keep them there.
 - You want full control over message state, persistence, and synchronization.
-- You have a custom message format and need automatic conversion to assistant-ui's format.
+- You have a custom message format and need automatic conversion to openagentui's format.
 
 If you do not have an existing store, use [`LocalRuntime`](/docs/runtimes/custom/local-runtime) instead; it is lower-friction.
 
@@ -21,7 +21,7 @@ If you do not have an existing store, use [`LocalRuntime`](/docs/runtimes/custom
   llm={`graph TD
     A[Your state] -->|messages| B[ExternalStoreAdapter]
     B --> C[ExternalStoreRuntime]
-    C --> D[assistant-ui components]
+    C --> D[openagentui components]
     D -->|user actions| B
     B -->|state updates| A`}
 >
@@ -51,12 +51,12 @@ If you do not have an existing store, use [`LocalRuntime`](/docs/runtimes/custom
       <Flow.Arrow direction="down" length={36} />
       <Flow.Node>ExternalStoreRuntime</Flow.Node>
       <Flow.Arrow direction="down" length={36} />
-      <Flow.Node flowId="components">assistant-ui components</Flow.Node>
+      <Flow.Node flowId="components">openagentui components</Flow.Node>
     </Flow.Column>
   </Flow.Canvas>
 </Flow.Root>
 
-You own the state, and the adapter translates between your format and assistant-ui's. UI features are capability-based: providing `setMessages` turns on branching, and providing `onEdit` turns on editing.
+You own the state, and the adapter translates between your format and openagentui's. UI features are capability-based: providing `setMessages` turns on branching, and providing `onEdit` turns on editing.
 
 ## Quickstart
 
@@ -65,7 +65,7 @@ You own the state, and the adapter translates between your format and assistant-
 
 ### Install
 
-<InstallCommand npm={["@assistant-ui/react"]} />
+<InstallCommand npm={["@openagentui/react"]} />
 
 </Step>
 <Step>
@@ -81,7 +81,7 @@ import {
   ThreadMessageLike,
   AppendMessage,
   AssistantRuntimeProvider,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 type MyMessage = {
   id: string;
@@ -152,7 +152,7 @@ export function MyRuntimeProvider({
 ### Use in your app
 
 ```tsx title="app/page.tsx"
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { MyRuntimeProvider } from "./MyRuntimeProvider";
 
 export default function Page() {
@@ -193,7 +193,7 @@ const runtime = useExternalStoreRuntime({
 For performance optimization or when you need to merge adjacent assistant messages:
 
 ```tsx
-import { useExternalMessageConverter } from "@assistant-ui/react";
+import { useExternalMessageConverter } from "@openagentui/react";
 
 const convertedMessages = useExternalMessageConverter({
   callback: (message: MyMessage): ThreadMessageLike => ({
@@ -339,7 +339,7 @@ The linear `messages` array assumes each message's parent is the previous one. F
 import {
   ExportedMessageRepository,
   useExternalStoreRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 const backendMessages = [
   { id: "user-1", role: "user", content: "Hello", parentId: null },
@@ -377,7 +377,7 @@ The exported shape round-trips through `thread.import()` directly, so the same v
 
 ### Persisting branch selection
 
-If you store the full branch tree outside assistant-ui, persist the selected branch head too and pass it back as `messageRepository.headId`. `setMessages` still performs the branch switch; `unstable_onBranchChange` is an additional signal that fires after an explicit `switchToBranch` action, such as a BranchPicker click.
+If you store the full branch tree outside openagentui, persist the selected branch head too and pass it back as `messageRepository.headId`. `setMessages` still performs the branch switch; `unstable_onBranchChange` is an additional signal that fires after an explicit `switchToBranch` action, such as a BranchPicker click.
 
 ```tsx
 const runtime = useExternalStoreRuntime({
@@ -462,7 +462,7 @@ A hand-rolled adapter must implement the same contract: `items` and `steerItems`
 
 ```tsx
 import { useEffect, useRef, useState } from "react";
-import { createMessageQueue, useExternalStoreRuntime } from "@assistant-ui/react";
+import { createMessageQueue, useExternalStoreRuntime } from "@openagentui/react";
 
 const [queue] = useState(() => createMessageQueue({ run: onNew }));
 
@@ -532,14 +532,14 @@ The runtime surfaces them as `thread.hasEarlier`, `thread.isLoadingEarlier` and 
 ## Integration examples
 
 <Callout type="info">
-**Real-world example:** the [Claude Managed Agents guide](/docs/runtimes/claude-managed-agents) maps Anthropic-hosted agent sessions onto this runtime, with Anthropic's official [quickstart](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/assistant-ui) as the runnable reference.
+**Real-world example:** the [Claude Managed Agents guide](/docs/runtimes/claude-managed-agents) maps Anthropic-hosted agent sessions onto this runtime, with Anthropic's official [quickstart](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/openagentui) as the runnable reference.
 </Callout>
 
 ### Redux
 
 ```tsx title="app/chatSlice.ts"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ThreadMessageLike } from "@assistant-ui/react";
+import { ThreadMessageLike } from "@openagentui/react";
 
 const chatSlice = createSlice({
   name: "chat",
@@ -562,7 +562,7 @@ export const { setMessages, addMessage, setIsRunning } = chatSlice.actions;
 
 ```tsx title="app/ReduxRuntimeProvider.tsx"
 import { useSelector, useDispatch } from "react-redux";
-import { useExternalStoreRuntime, AssistantRuntimeProvider } from "@assistant-ui/react";
+import { useExternalStoreRuntime, AssistantRuntimeProvider } from "@openagentui/react";
 
 export function ReduxRuntimeProvider({ children }) {
   const messages = useSelector((s: RootState) => s.chat.messages);
@@ -609,7 +609,7 @@ export function ReduxRuntimeProvider({ children }) {
 ```tsx title="app/chatStore.ts"
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { ThreadMessageLike } from "@assistant-ui/react";
+import { ThreadMessageLike } from "@openagentui/react";
 
 interface ChatState {
   messages: ThreadMessageLike[];
@@ -632,7 +632,7 @@ export const useChatStore = create<ChatState>()(
 
 ```tsx title="app/ZustandRuntimeProvider.tsx"
 import { useShallow } from "zustand/shallow";
-import { useExternalStoreRuntime, AssistantRuntimeProvider } from "@assistant-ui/react";
+import { useExternalStoreRuntime, AssistantRuntimeProvider } from "@openagentui/react";
 
 export function ZustandRuntimeProvider({ children }) {
   const { messages, isRunning, addMessage, setMessages, setIsRunning } =
@@ -681,7 +681,7 @@ export function ZustandRuntimeProvider({ children }) {
 
 ```tsx
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useExternalStoreRuntime } from "@assistant-ui/react";
+import { useExternalStoreRuntime } from "@openagentui/react";
 
 const messageKeys = {
   all: ["messages"] as const,
@@ -752,10 +752,10 @@ export function TanStackQueryRuntimeProvider({ children }) {
 
 ### `getExternalStoreMessages`
 
-Retrieve your original message format from any assistant-ui state:
+Retrieve your original message format from any openagentui state:
 
 ```tsx
-import { getExternalStoreMessages, useAuiState } from "@assistant-ui/react";
+import { getExternalStoreMessages, useAuiState } from "@openagentui/react";
 
 function MyComponent() {
   const originalMessages = useAuiState((s) => getExternalStoreMessages(s.message));
@@ -764,7 +764,7 @@ function MyComponent() {
 ```
 
 <Callout type="warn">
-`getExternalStoreMessages` may return multiple messages for a single UI message; assistant-ui merges adjacent assistant and tool messages for display.
+`getExternalStoreMessages` may return multiple messages for a single UI message; openagentui merges adjacent assistant and tool messages for display.
 </Callout>
 
 ### `bindExternalStoreMessage`
@@ -775,7 +775,7 @@ Attach your original message to a `ThreadMessage` you constructed manually (outs
 import {
   bindExternalStoreMessage,
   getExternalStoreMessages,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 bindExternalStoreMessage(threadMessage, originalMessage);
 const original = getExternalStoreMessages(threadMessage);
@@ -974,7 +974,7 @@ useExternalStoreRuntime({
       name: "convertMessage",
       type: "(message: T, index: number) => ThreadMessageLike",
       description:
-        "Convert your message format to assistant-ui format. Not needed if using ThreadMessage type.",
+        "Convert your message format to openagentui format. Not needed if using ThreadMessage type.",
     },
     {
       name: "adapters",

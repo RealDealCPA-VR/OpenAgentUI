@@ -7,7 +7,7 @@ import {
   renderHook,
   waitFor,
 } from "@testing-library/react";
-import type { ModelContext } from "@assistant-ui/core";
+import type { ModelContext } from "@openagentui/core";
 import type { FormEvent, ReactNode } from "react";
 import type { Resolver, ResolverResult } from "react-hook-form";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -26,8 +26,8 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => mocks.aui,
 }));
 

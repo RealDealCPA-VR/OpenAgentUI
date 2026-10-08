@@ -2,13 +2,13 @@
 
 import { describe, expect, it, onTestFinished, vi } from "vitest";
 import { renderHook } from "@testing-library/react";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import type { PendingAttachment } from "../../../types/attachment";
 import { createCloudThreadListAdapter } from "./createCloudThreadListAdapter";
 import { CORE_SDK } from "./sdkIdentity";
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => ({
     threads: {
       getState: () => ({ mainThreadId: "local-1", threadItems: [] }),
@@ -137,7 +137,7 @@ describe("createCloudThreadListAdapter", () => {
 
   it("registers core and the calling integration identities", () => {
     const cloud = makeCloud();
-    const sdk = { name: "@assistant-ui/ai-sdk", version: "0.0.5" };
+    const sdk = { name: "@openagentui/ai-sdk", version: "0.0.5" };
 
     createCloudThreadListAdapter({ cloud, sdk });
 

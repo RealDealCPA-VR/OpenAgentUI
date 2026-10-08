@@ -2,9 +2,9 @@ import type {
   MessagePartState,
   TextMessagePart,
   ReasoningMessagePart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { useMemo } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import { MarkdownText, type MarkdownTextProps } from "./MarkdownText";
 
 type MarkdownTextPrimitiveProps = Omit<MarkdownTextProps, "text"> & {

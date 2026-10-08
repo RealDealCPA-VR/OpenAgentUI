@@ -3,7 +3,7 @@ import {
   AssistantMessageStream,
   createAssistantStream,
   type AssistantStreamChunk,
-} from "assistant-stream";
+} from "openagentui-stream";
 
 const makeChunks = (deltas: number, chars: number): AssistantStreamChunk[] => {
   const text = "x".repeat(chars);
@@ -47,7 +47,7 @@ const drainRawEnqueue = async (chunks: AssistantStreamChunk[]) => {
   while (!(await reader.read()).done);
 };
 
-describe("assistant-stream: stream + accumulator per-delta cost (16-char deltas)", () => {
+describe("openagentui-stream: stream + accumulator per-delta cost (16-char deltas)", () => {
   for (const n of [100, 1000, 4000]) {
     const chunks = makeChunks(n, 16);
     test(`${n} deltas`, async ({ bench }) => {
@@ -58,7 +58,7 @@ describe("assistant-stream: stream + accumulator per-delta cost (16-char deltas)
   }
 });
 
-describe("assistant-stream: stream round trip baseline, no accumulator", () => {
+describe("openagentui-stream: stream round trip baseline, no accumulator", () => {
   for (const n of [100, 1000, 4000]) {
     const chunks = makeChunks(n, 16);
     test(`${n} deltas`, async ({ bench }) => {
@@ -69,7 +69,7 @@ describe("assistant-stream: stream round trip baseline, no accumulator", () => {
   }
 });
 
-describe("assistant-stream: raw controller enqueue overhead", () => {
+describe("openagentui-stream: raw controller enqueue overhead", () => {
   const chunks = makeChunks(9_998, 1);
 
   test("10,000 controller.enqueue calls", async ({ bench }) => {
@@ -85,7 +85,7 @@ describe("assistant-stream: raw controller enqueue overhead", () => {
   });
 });
 
-describe("assistant-stream: same 4000-char text, chunk size A/B", () => {
+describe("openagentui-stream: same 4000-char text, chunk size A/B", () => {
   const cases = [
     ["4000 deltas × 1 char (per-token)", makeChunks(4000, 1)],
     ["250 deltas × 16 chars", makeChunks(250, 16)],

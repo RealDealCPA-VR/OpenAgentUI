@@ -1,8 +1,8 @@
 "use client";
 
-import { ActionBarPrimitive, AuiIf } from "@assistant-ui/react";
+import { ActionBarPrimitive, AuiIf } from "@openagentui/react";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import { AudioLinesIcon, StopCircleIcon } from "lucide-react";
 import { VoiceSampleThread } from "./voice-sample-thread";
 

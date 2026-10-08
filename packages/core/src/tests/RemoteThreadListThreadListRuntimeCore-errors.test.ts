@@ -55,7 +55,7 @@ describe("RemoteThreadListThreadListRuntimeCore errors", () => {
     await new Promise((resolve) => setTimeout(resolve));
 
     expect(error).toHaveBeenCalledWith(
-      "[assistant-ui] thread list switch failed:",
+      "[openagentui] thread list switch failed:",
       fetchError,
     );
     error.mockRestore();
@@ -87,7 +87,7 @@ describe("RemoteThreadListThreadListRuntimeCore errors", () => {
     await new Promise((resolve) => setTimeout(resolve));
 
     expect(error).toHaveBeenCalledWith(
-      "[assistant-ui] thread list switch failed:",
+      "[openagentui] thread list switch failed:",
       fetchError,
     );
     expect(core.mainThreadId).toBe(mainThreadId);

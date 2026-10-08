@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import { TextMessagePartProvider } from "@assistant-ui/react";
+import { TextMessagePartProvider } from "@openagentui/react";
 import { type ComponentType, type ReactNode, useState } from "react";
 import { defaultRehypePlugins } from "streamdown";
 import type { Element as HastElement, Root, RootContent } from "hast";
@@ -27,8 +27,8 @@ const smoothStatus = vi.hoisted(() => ({
   value: undefined as { type: "incomplete"; reason: "cancelled" } | undefined,
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@assistant-ui/react")>();
+vi.mock("@openagentui/react", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@openagentui/react")>();
   return {
     ...original,
     useSmooth: (...args: Parameters<typeof original.useSmooth>) => {

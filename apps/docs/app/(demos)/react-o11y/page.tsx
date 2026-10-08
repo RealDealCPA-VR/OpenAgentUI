@@ -15,7 +15,7 @@ import {
 
 const ANALYTICS_PAGE = "react-o11y" as const;
 
-const INSTALL_COMMAND = "npm install @assistant-ui/react-o11y";
+const INSTALL_COMMAND = "npm install @openagentui/react-o11y";
 
 const PRIMITIVES = [
   "SpanResource",
@@ -70,7 +70,7 @@ const FEATURES = [
   {
     title: "Reactive",
     description:
-      "Built on the assistant-ui store. Push new spans and the UI updates live; running spans animate as they stream.",
+      "Built on the openagentui store. Push new spans and the UI updates live; running spans animate as they stream.",
   },
   {
     title: "Style by status and type",
@@ -91,7 +91,7 @@ export default function ReactO11yPage() {
         <h1 className={typePage}>The anatomy of a run.</h1>
         <p className={cn(typeDeck, "mt-4 max-w-[52ch]")}>
           Headless, Radix-style primitives for agent traces, sub-agent trees,
-          and run timelines: collapsible waterfalls on the assistant-ui store.
+          and run timelines: collapsible waterfalls on the openagentui store.
           Unstyled and fully reactive.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
@@ -179,7 +179,7 @@ export default function ReactO11yPage() {
         <p className="text-muted-foreground text-sm">
           Built on{" "}
           <a href="/oss" className="text-foreground font-medium">
-            @assistant-ui/store
+            @openagentui/store
           </a>{" "}
           the reactive core the whole library shares.
         </p>

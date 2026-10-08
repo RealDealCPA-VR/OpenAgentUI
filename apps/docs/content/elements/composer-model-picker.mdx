@@ -3,7 +3,7 @@ title: "Models"
 description: "The model lives in the composer rail, one tap away with context at a glance."
 ---
 
-A small pill in the composer's action row names the active model and opens a short list to switch it, without leaving the message being written. With a runtime the choice is registered into assistant-ui's model context system so it reaches the next request; standalone you hold the selection as state.
+A small pill in the composer's action row names the active model and opens a short list to switch it, without leaving the message being written. With a runtime the choice is registered into openagentui's model context system so it reaches the next request; standalone you hold the selection as state.
 
 ## Getting started
 
@@ -17,7 +17,7 @@ There is no dedicated primitive for a model trigger, because "the active model" 
 ### Read the active model
 
 ```tsx
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 const modelName = useAuiState((s) => s.modelContext.modelName);
 ```
@@ -29,12 +29,12 @@ const modelName = useAuiState((s) => s.modelContext.modelName);
 
 ### Register a change
 
-```tsx title="components/assistant-ui/elements/composer-model-trigger.tsx"
+```tsx title="components/openagentui/elements/composer-model-trigger.tsx"
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAui, useAuiState } from "@assistant-ui/react";
-import { ComposerModelTrigger, ComposerMenu, ComposerModelItem } from "@/components/assistant-ui/elements/composer";
+import { useAui, useAuiState } from "@openagentui/react";
+import { ComposerModelTrigger, ComposerMenu, ComposerModelItem } from "@/components/openagentui/elements/composer";
 
 const models = [
   { name: "Fast", meta: "$0.25/M" },
@@ -93,7 +93,7 @@ Standalone, the trigger and menu are fully controlled: you hold which model is s
 "use client";
 
 import { useState } from "react";
-import { ComposerModelTrigger, ComposerMenu, ComposerModelItem, type ComposerModel } from "@/components/assistant-ui/elements/composer";
+import { ComposerModelTrigger, ComposerMenu, ComposerModelItem, type ComposerModel } from "@/components/openagentui/elements/composer";
 
 const models: ComposerModel[] = [
   { name: "Fast", meta: "$0.25/M" },

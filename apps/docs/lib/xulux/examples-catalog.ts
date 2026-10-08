@@ -25,7 +25,7 @@ const CATEGORIES: XuluxTemplateCategory[] = [
   {
     id: "mobile",
     name: "Mobile",
-    description: "React Native and mobile-first assistant-ui examples.",
+    description: "React Native and mobile-first openagentui examples.",
   },
 ];
 
@@ -153,7 +153,7 @@ function sourcePathFromGithubLink(
   githubLink: string | undefined,
 ): string | undefined {
   if (!githubLink) return undefined;
-  const marker = "/assistant-ui/assistant-ui/";
+  const marker = "/openagentui/openagentui/";
   const index = githubLink.indexOf(marker);
   if (index === -1) return githubLink;
   const repoPath = githubLink.slice(index + marker.length);
@@ -206,7 +206,7 @@ export function getXuluxExamplesCatalog(): XuluxTemplateCatalog {
       featured: index < 6,
       tech: TECH_BY_SLUG[slug] ?? {
         framework: "React",
-        runtime: "assistant-ui",
+        runtime: "openagentui",
         frontendPattern: "Example",
       },
       env: [],

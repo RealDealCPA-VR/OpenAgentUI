@@ -26,7 +26,7 @@ import { c as _c } from "../../react-shim/compiler-runtime";
 const SENTINEL = Symbol.for("react.memo_cache_sentinel");
 const onReact18 = React.version.startsWith("18.");
 
-describe("@assistant-ui/tap/react-shim", () => {
+describe("@openagentui/tap/react-shim", () => {
   afterEach(() => {
     vi.restoreAllMocks();
     cleanupAllResources();

@@ -1,11 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
 import { createApp, defineComponent, h, nextTick } from "vue";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig } from "@assistant-ui/store/client";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig } from "@openagentui/store/client";
 import {
   ChainOfThoughtClient,
   type ChainOfThoughtPart,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 import { AuiProvider } from "../AuiProvider";
 import { useAuiState } from "../useAuiState";
 import { ChainOfThoughtPrimitiveAccordionTrigger } from "./ChainOfThoughtPrimitiveAccordionTrigger";

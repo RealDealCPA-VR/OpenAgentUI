@@ -3,4 +3,4 @@
 export {
   ThreadListItemByIndexProvider,
   ThreadListItemRuntimeProvider,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";

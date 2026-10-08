@@ -1,21 +1,21 @@
 "use client";
 
 import type { InputContent, RunAgentParameters } from "@ag-ui/client";
-import { generateId } from "@assistant-ui/core";
+import { generateId } from "@openagentui/core";
 import type {
   ThreadMessageLike as CoreThreadMessageLike,
   PartProviderMetadata,
   ReasoningMessagePart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   getAutoStatus,
   parseDataUrl,
   resolveFilePartSource,
   resolveImageMediaType,
   walkToolCallTree,
-} from "@assistant-ui/core/internal";
-import { type Tool, toToolsJSONSchema } from "assistant-stream";
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+} from "@openagentui/core/internal";
+import { type Tool, toToolsJSONSchema } from "openagentui-stream";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 import {
   AG_UI_METADATA_NAMESPACE,
   A2UI_SURFACE_ACTIVITY_TYPE,
@@ -28,7 +28,7 @@ import {
   surfaceToPresentToolCall,
   type A2uiState,
   type A2uiSurfaceState,
-} from "@assistant-ui/react-generative-ui/a2ui";
+} from "@openagentui/react-generative-ui/a2ui";
 import type { AgUiInterrupt } from "../types";
 import { projectAgUiToolApprovals } from "./tool-approval";
 import {

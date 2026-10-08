@@ -7,7 +7,7 @@ const h = vi.hoisted(() => ({
   suggestion: { title: "" as string | undefined },
 }));
 
-vi.mock("@assistant-ui/store", () => ({
+vi.mock("@openagentui/store", () => ({
   useAuiState: <T,>(selector: (s: { suggestion: typeof h.suggestion }) => T) =>
     selector({ suggestion: h.suggestion }),
 }));

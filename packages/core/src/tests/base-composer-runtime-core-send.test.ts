@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import { CloudFileAttachmentAdapter } from "../react/runtimes/cloud/CloudFileAttachmentAdapter";
 import { DefaultThreadComposerRuntimeCore } from "../runtime/base/default-thread-composer-runtime-core";
 import type { AttachmentAdapter } from "../adapters/attachment";
@@ -91,7 +91,7 @@ describe("BaseComposerRuntimeCore.send restore-on-failure", () => {
     expect(composer.quote).toEqual({ text: "quoted", messageId: "m-1" });
     expect(append).not.toHaveBeenCalled();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Failed to send attachments",
+      "[openagentui] Failed to send attachments",
       expect.objectContaining({ message: "upload failed" }),
     );
   });
@@ -1282,7 +1282,7 @@ describe("BaseComposerRuntimeCore send event listener isolation", () => {
     expect(append).toHaveBeenCalledTimes(1);
     expect(laterListener).toHaveBeenCalledOnce();
     expect(consoleError).toHaveBeenCalledWith(
-      '[assistant-ui] Composer runtime "send" listener threw an error',
+      '[openagentui] Composer runtime "send" listener threw an error',
       listenerError,
     );
   });
@@ -1307,7 +1307,7 @@ describe("BaseComposerRuntimeCore send event listener isolation", () => {
     expect(laterListener).toHaveBeenCalledOnce();
     await vi.waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        '[assistant-ui] Composer runtime "send" listener threw an error',
+        '[openagentui] Composer runtime "send" listener threw an error',
         listenerError,
       );
     });

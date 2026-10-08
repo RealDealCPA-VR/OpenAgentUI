@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "assistant-ui with Assistant Transport",
+  title: "openagentui with Assistant Transport",
   description:
-    "An example of using assistant-ui with the assistant-transport runtime",
+    "An example of using openagentui with the assistant-transport runtime",
 };
 
 export default function RootLayout({

@@ -15,8 +15,8 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
     title: "Claude Managed Agents",
     image: "/screenshot/claude-managed-agents.png",
     tag: "Developer Tools",
-    link: "https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/assistant-ui",
-    description: "Managed agent sessions rendered with assistant-ui.",
+    link: "https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/openagentui",
+    description: "Managed agent sessions rendered with openagentui.",
     openSource: true,
   },
   {
@@ -33,7 +33,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
     image: "/screenshot/inconvo.png",
     tag: "Developer Tools",
     link: "https://inconvo.com/",
-    repositoryLink: "https://github.com/ten-dev/inconvo-assistant-ui-example",
+    repositoryLink: "https://github.com/ten-dev/inconvo-openagentui-example",
     description: "Build AI agents that answer questions from your databases.",
   },
   {
@@ -53,7 +53,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
     link: "https://hermes-agent.nousresearch.com",
     repositoryLink: "https://github.com/NousResearch/hermes-agent",
     description:
-      "The self-improving agent from Nous Research. Desktop UI built with assistant-ui.",
+      "The self-improving agent from Nous Research. Desktop UI built with openagentui.",
     openSource: true,
   },
   {
@@ -78,8 +78,8 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
     title: "LangGraph Stockbroker",
     image: "/screenshot/stockbroker.png",
     tag: "Developer Tools",
-    link: "https://assistant-ui-stockbroker.vercel.app/",
-    announcementLink: "https://blog.langchain.dev/assistant-ui/",
+    link: "https://openagentui-stockbroker.vercel.app/",
+    announcementLink: "https://blog.langchain.dev/openagentui/",
     repositoryLink: "https://github.com/assistant-ui/assistant-ui-stockbroker",
     description: "AI assistant for researching public company financials.",
     openSource: true,

@@ -1,4 +1,4 @@
-import "@assistant-ui/store";
+import "@openagentui/store";
 
 export type MCPAuthConfig =
   | { type: "none" }
@@ -134,7 +134,7 @@ export type MCPManagerMethods = {
   removeServer: (id: string) => Promise<void>;
 };
 
-declare module "@assistant-ui/store" {
+declare module "@openagentui/store" {
   interface ScopeRegistry {
     mcp: {
       methods: MCPManagerMethods;

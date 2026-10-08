@@ -1,4 +1,4 @@
-import { isRecord } from "@assistant-ui/core/internal";
+import { isRecord } from "@openagentui/core/internal";
 import type { AdkEvent } from "./types";
 
 const invalidField = (

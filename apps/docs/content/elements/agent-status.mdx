@@ -17,7 +17,7 @@ A rounded pill with a state dot, a label that crossfades when it changes, an ela
 ```tsx title="app/status.tsx"
 "use client";
 
-import { AgentStatus } from "@/components/assistant-ui/elements/agent-status.aui";
+import { AgentStatus } from "@/components/openagentui/elements/agent-status.aui";
 
 export function HeaderStatus() {
   return <AgentStatus />;
@@ -34,7 +34,7 @@ Both bound components read the thread through the nearest `AssistantRuntimeProvi
 ```tsx title="app/status.tsx"
 "use client";
 
-import { TaskTray } from "@/components/assistant-ui/elements/agent-status.aui";
+import { TaskTray } from "@/components/openagentui/elements/agent-status.aui";
 
 export function HeaderTasks() {
   return <TaskTray />;
@@ -51,8 +51,8 @@ export function HeaderTasks() {
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { AgentStatus } from "@/components/assistant-ui/elements/agent-status";
+import { defineToolkit } from "@openagentui/react";
+import { AgentStatus } from "@/components/openagentui/elements/agent-status";
 
 export const toolkit = defineToolkit({
   report_status: {
@@ -97,7 +97,7 @@ import { useState } from "react";
 import {
   AgentStatus,
   type AgentState,
-} from "@/components/assistant-ui/elements/agent-status";
+} from "@/components/openagentui/elements/agent-status";
 
 export function Status() {
   const [state, setState] = useState<AgentState>("working");

@@ -56,8 +56,8 @@ const mocks = vi.hoisted(() => ({
   repository: undefined as unknown,
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/react")>()),
+vi.mock("@openagentui/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/react")>()),
   useAui: () => ({ threadListItem: { initialize: vi.fn() } }),
   useAuiState: (selector: (state: unknown) => unknown) =>
     selector({
@@ -97,7 +97,7 @@ vi.mock("./ThreadController", async (importOriginal) => ({
   },
 }));
 
-import { ExportedMessageRepository } from "@assistant-ui/react";
+import { ExportedMessageRepository } from "@openagentui/react";
 import { createPiThreadState } from "./threadState";
 import { usePiRuntime } from "./usePiRuntime";
 

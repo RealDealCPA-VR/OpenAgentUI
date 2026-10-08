@@ -8,7 +8,7 @@ export const EXAMPLES = {
   "with-expo": {
     matrix: {
       example: "with-expo",
-      "chat-endpoint-url": "https://www.assistant-ui.com/api/chat",
+      "chat-endpoint-url": "https://openagentui.dev/api/chat",
     },
     // The kit is consumed through tsconfig paths, not a package dependency.
     extraInputs: ["packages/ui"],

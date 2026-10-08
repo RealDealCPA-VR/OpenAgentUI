@@ -1,5 +1,5 @@
-import type { MessageStatus } from "@assistant-ui/core";
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+import type { MessageStatus } from "@openagentui/core";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 
 // ── ADK Event wire types (lightweight, no @google/adk dependency) ──
 
@@ -207,7 +207,7 @@ export type AdkRunConfig = {
 export type AdkSendMessageConfig = {
   /**
    * ADK RunConfig. Typed as `unknown` for compatibility with
-   * assistant-ui core's RunConfig type. Use `AdkRunConfig` when
+   * openagentui core's RunConfig type. Use `AdkRunConfig` when
    * constructing configs manually for type safety.
    */
   runConfig?: unknown;

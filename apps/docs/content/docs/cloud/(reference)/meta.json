@@ -1,7 +1,0 @@
-{
-  "title": "Reference",
-  "description": "The client, the stored formats and every limit.",
-  "icon": "BookOpen",
-  "root": true,
-  "pages": ["sdk", "formats", "limits"]
-}

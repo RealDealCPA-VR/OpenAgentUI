@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type { ToolCallMessagePartComponent } from "../types/MessagePartComponentTypes";
 
 /**
@@ -7,7 +7,7 @@ import type { ToolCallMessagePartComponent } from "../types/MessagePartComponent
  *
  * @deprecated Put `render`/`renderText` on the matching toolkit entry, or use
  * `MessagePrimitive.Parts` inline tool render overrides for per-message UI.
- * See https://assistant-ui.com/docs/migrations/toolkit-tools.
+ * See https://openagentui.dev/docs/migrations/toolkit-tools.
  */
 export type AssistantToolUIProps<TArgs, TResult> = {
   /** Name of the tool whose calls should use this renderer. */
@@ -32,7 +32,7 @@ export type AssistantToolUIProps<TArgs, TResult> = {
  *
  * @deprecated Put `render`/`renderText` on the matching toolkit entry, or use
  * `MessagePrimitive.Parts` inline tool render overrides for per-message UI.
- * See https://assistant-ui.com/docs/migrations/toolkit-tools.
+ * See https://openagentui.dev/docs/migrations/toolkit-tools.
  */
 export const useAssistantToolUI = (
   tool: AssistantToolUIProps<any, any> | null,

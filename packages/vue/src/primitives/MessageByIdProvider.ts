@@ -10,8 +10,8 @@ import {
   AuiConfig,
   Derived,
   type AssistantClient,
-} from "@assistant-ui/store/client";
-import type { ComposerMethods, MessageMethods } from "@assistant-ui/core/store";
+} from "@openagentui/store/client";
+import type { ComposerMethods, MessageMethods } from "@openagentui/core/store";
 import { AuiProvider } from "../AuiProvider";
 import { useAui } from "../useAui";
 import { createLastValidCache, createStaleReporter } from "./lastValidCache";

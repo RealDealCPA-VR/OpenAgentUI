@@ -10,10 +10,10 @@ import type {
   ExportedMessageRepository,
   RespondToToolApprovalOptions,
   Unstable_ToolInteractionLog,
-} from "@assistant-ui/core";
-import { getExternalStoreMessages } from "@assistant-ui/core";
-import { MessageRepository } from "@assistant-ui/core/internal";
-import { useAui } from "@assistant-ui/store";
+} from "@openagentui/core";
+import { getExternalStoreMessages } from "@openagentui/core";
+import { MessageRepository } from "@openagentui/core/internal";
+import { useAui } from "@openagentui/store";
 import {
   useRef,
   useEffect,

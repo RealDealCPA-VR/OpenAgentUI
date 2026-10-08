@@ -6,9 +6,9 @@ import {
   ComposerPrimitive,
   useExternalStoreRuntime,
   type ThreadMessageLike,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { ArrowUpIcon } from "lucide-react";
-import { ThreadFollowupSuggestions } from "@/components/assistant-ui/elements/follow-up-suggestions.aui";
+import { ThreadFollowupSuggestions } from "@/components/openagentui/elements/follow-up-suggestions.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 type DemoMessage = {

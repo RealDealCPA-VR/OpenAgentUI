@@ -1,24 +1,24 @@
-# `safe-content-frame`
+# `@openagentui/safe-content-frame`
 
 [![npm version](https://img.shields.io/npm/v/safe-content-frame)](https://www.npmjs.com/package/safe-content-frame)
 [![npm downloads](https://img.shields.io/npm/dm/safe-content-frame)](https://www.npmjs.com/package/safe-content-frame)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/safe-content-frame)](https://bundlephobia.com/package/safe-content-frame)
-[![GitHub stars](https://img.shields.io/github/stars/assistant-ui/assistant-ui)](https://github.com/assistant-ui/assistant-ui)
+[![GitHub stars](https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI)](https://github.com/RealDealCPA-VR/OpenAgentUI)
 
 Render untrusted HTML, PDF, or arbitrary `Blob` content inside a sandboxed iframe whose origin is hashed per-content. The frame is hosted on `scf.auiusercontent.com`, a separate eTLD+1 from your app, so model-generated scripts cannot reach `document.cookie`, `localStorage`, or the parent window even if `allow-scripts` is set.
 
-`safe-content-frame` is framework-agnostic vanilla JS. There is no React or DOM-framework dependency.
+`@openagentui/safe-content-frame` is framework-agnostic vanilla JS. There is no React or DOM-framework dependency.
 
 ## Installation
 
 ```bash
-npm install safe-content-frame
+npm install @openagentui/safe-content-frame
 ```
 
 ## Usage
 
 ```ts
-import { SafeContentFrame } from "safe-content-frame";
+import { SafeContentFrame } from "@openagentui/safe-content-frame";
 
 const frame = new SafeContentFrame("my-app");
 
@@ -64,7 +64,7 @@ Each renderer returns a `RenderedFrame`:
 
 ## Sub-paths
 
-- `safe-content-frame`: the main `SafeContentFrame` class above.
-- `safe-content-frame/shadow_dom`: shadow-DOM rendering variant for embedding inside a custom element.
+- `@openagentui/safe-content-frame`: the main `SafeContentFrame` class above.
+- `@openagentui/safe-content-frame/shadow_dom`: shadow-DOM rendering variant for embedding inside a custom element.
 
-See the [docs page](https://www.assistant-ui.com/safe-content-frame) for the threat model and a live demo.
+See the [docs page](https://openagentui.dev/safe-content-frame) for the threat model and a live demo.

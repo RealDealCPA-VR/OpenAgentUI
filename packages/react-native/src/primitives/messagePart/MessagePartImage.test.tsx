@@ -1,13 +1,13 @@
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { ThreadMessageLike } from "@assistant-ui/core";
+import type { ThreadMessageLike } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   MessageByIndexProvider,
   PartByIndexProvider,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { MessagePartPrimitiveImage } from "./MessagePartImage";
 
 vi.mock("react-native", async (importOriginal) => {

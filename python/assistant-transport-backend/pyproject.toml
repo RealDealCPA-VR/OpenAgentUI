@@ -7,7 +7,7 @@ name = "assistant-transport-backend"
 version = "0.1.0"
 description = "A simple server implementing the assistant-transport protocol with static responses"
 authors = [
-    { name = "assistant-ui Team", email = "team@assistant-ui.com" }
+    { name = "openagentui Team", email = "team@openagentui.dev" }
 ]
 readme = "README.md"
 license = "MIT"
@@ -23,7 +23,7 @@ classifiers = [
 dependencies = [
     "fastapi>=0.100.0",
     "uvicorn[standard]>=0.20.0",
-    "assistant-stream>=0.0.28",
+    "openagentui-stream>=0.0.28",
     "pydantic>=2.0.0",
     "python-dotenv>=1.0.0",
 ]
@@ -41,9 +41,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/assistant-ui/assistant-ui"
-Issues = "https://github.com/assistant-ui/assistant-ui/issues"
-Documentation = "https://docs.assistant-ui.com"
+Homepage = "https://github.com/RealDealCPA-VR/OpenAgentUI"
+Issues = "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
+Documentation = "https://openagentui.dev"
 
 [project.scripts]
 assistant-transport-backend = "main:main"

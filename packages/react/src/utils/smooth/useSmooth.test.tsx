@@ -6,10 +6,10 @@ import type {
   MessagePartState,
   ReasoningMessagePart,
   TextMessagePart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 const part = {};
-vi.mock("@assistant-ui/store", () => ({
+vi.mock("@openagentui/store", () => ({
   useAui: () => ({ part }),
   useAuiState: (selector: () => unknown) => selector(),
 }));

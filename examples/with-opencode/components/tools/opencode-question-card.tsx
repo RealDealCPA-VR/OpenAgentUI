@@ -5,7 +5,7 @@ import {
   type OpenCodeQuestionRequest,
   type QuestionAnswer,
   useOpenCodeRuntimeExtras,
-} from "@assistant-ui/react-opencode";
+} from "@openagentui/react-opencode";
 import {
   AlertCircleIcon,
   CheckCircle2Icon,

@@ -339,7 +339,7 @@ describe("RemoteThreadListHookInstanceManager.__internal_restartThreadRuntime", 
     expect(second.disconnect).toHaveBeenCalledOnce();
     expect(internalsOf(manager).instances.size).toBe(0);
     expect(consoleError).toHaveBeenCalledExactlyOnceWith(
-      "[assistant-ui] Thread runtime cleanup threw while stopping a thread",
+      "[openagentui] Thread runtime cleanup threw while stopping a thread",
       error,
     );
   });

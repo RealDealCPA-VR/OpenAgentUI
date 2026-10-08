@@ -1,5 +1,5 @@
 import { type FC, type ReactNode, useCallback, useMemo, useState } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import type { MCPElicitation } from "../../mcp-scope";
 import { ElicitationContext } from "./context";
 import { initialElicitationDraft } from "./initialElicitationDraft";

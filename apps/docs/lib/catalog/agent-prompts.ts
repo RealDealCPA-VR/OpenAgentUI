@@ -1,7 +1,7 @@
 import "server-only";
 
 import { AGENT_TOOLS_AGENT_PROMPTS } from "./products/agent-tools.agent";
-import { ASSISTANT_UI_AGENT_PROMPTS } from "./products/assistant-ui.agent";
+import { OPENAGENTUI_AGENT_PROMPTS } from "./products/openagentui.agent";
 import { CLOUD_AGENT_PROMPTS } from "./products/cloud.agent";
 import { ELEMENT_AGENT_PROMPTS } from "./products/elements.agent";
 import { GUIDE_AGENT_PROMPTS } from "./products/guides.agent";
@@ -12,7 +12,7 @@ import { SPONSOR_AGENT_PROMPTS } from "./products/sponsors.agent";
 
 const agentPrompts = new Map<string, string>([
   ...REACT_APP_AGENT_PROMPTS,
-  ...ASSISTANT_UI_AGENT_PROMPTS,
+  ...OPENAGENTUI_AGENT_PROMPTS,
   ...CLOUD_AGENT_PROMPTS,
   ...STATEWIRE_AGENT_PROMPTS,
   ...HARNESS_SDK_AGENT_PROMPTS,

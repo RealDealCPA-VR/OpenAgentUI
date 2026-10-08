@@ -3,7 +3,7 @@
 import {
   AgentStatus,
   type StatusStep,
-} from "@/components/assistant-ui/elements/agent-status";
+} from "@/components/openagentui/elements/agent-status";
 import {
   formatSeconds,
   useElapsed,

@@ -14,8 +14,8 @@ import { create, type UseBoundStore } from "zustand";
 import type {
   MessagePartStatus,
   ToolCallMessagePartStatus,
-} from "@assistant-ui/core";
-import { useAui } from "@assistant-ui/store";
+} from "@openagentui/core";
+import { useAui } from "@openagentui/store";
 import { createContextStoreHook } from "../../context/react/utils/createContextStoreHook";
 
 type SmoothContextValue = {

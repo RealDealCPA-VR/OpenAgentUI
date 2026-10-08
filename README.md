@@ -1,38 +1,38 @@
-<a href="https://www.assistant-ui.com">
+<a href="https://openagentui.dev">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header-dark.png" />
     <source media="(prefers-color-scheme: light)" srcset=".github/assets/header-light.png" />
-    <img src=".github/assets/header-light.png" alt="assistant-ui: the frontend library for AI agents" width="100%" />
+    <img src=".github/assets/header-light.png" alt="openagentui: the frontend library for AI agents" width="100%" />
   </picture>
 </a>
 
 <p align="center">
-  <a href="https://www.assistant-ui.com">Product</a> ·
-  <a href="https://www.assistant-ui.com/docs">Documentation</a> ·
-  <a href="https://www.assistant-ui.com/examples">Examples</a> ·
+  <a href="https://openagentui.dev">Product</a> ·
+  <a href="https://openagentui.dev/docs">Documentation</a> ·
+  <a href="https://openagentui.dev/examples">Examples</a> ·
   <a href="https://discord.gg/S9dwgCNEFs">Discord</a> ·
-  <a href="https://cal.com/simon-farshid/assistant-ui">Contact Sales</a>
+  <a href="https://cal.com/simon-farshid/openagentui">Contact Sales</a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@assistant-ui/react"><img src="https://img.shields.io/npm/v/@assistant-ui/react" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/@assistant-ui/react"><img src="https://img.shields.io/npm/dm/@assistant-ui/react" alt="npm downloads"></a>
-  <a href="https://deepwiki.com/assistant-ui/assistant-ui"><img src="https://img.shields.io/badge/Ask-DeepWiki-1f6feb" alt="Ask DeepWiki"></a>
+  <a href="https://www.npmjs.com/package/@openagentui/react"><img src="https://img.shields.io/npm/v/@openagentui/react" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@openagentui/react"><img src="https://img.shields.io/npm/dm/@openagentui/react" alt="npm downloads"></a>
+  <a href="https://deepwiki.com/openagentui/openagentui"><img src="https://img.shields.io/badge/Ask-DeepWiki-1f6feb" alt="Ask DeepWiki"></a>
   <a href="https://app.workweave.ai/reports/repository/org_GhSIrtWo37b5B3Mv0At3wQ1Q/722184017"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapp.workweave.ai%2Fapi%2Frepository%2Fbadge%2Forg_GhSIrtWo37b5B3Mv0At3wQ1Q%2F722184017&amp;cacheSeconds=3600" alt="Weave Badge"></a>
-  <img src="https://img.shields.io/github/license/assistant-ui/assistant-ui" alt="GitHub License">
-  <a href="https://github.com/assistant-ui/assistant-ui"><img src="https://img.shields.io/github/stars/assistant-ui/assistant-ui" alt="GitHub stars"></a>
+  <img src="https://img.shields.io/github/license/openagentui/openagentui" alt="GitHub License">
+  <a href="https://github.com/RealDealCPA-VR/OpenAgentUI"><img src="https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI" alt="GitHub stars"></a>
   <img src="https://img.shields.io/badge/Backed_by-Y_Combinator-orange" alt="Backed by Y Combinator">
 </p>
 
 ## The UX of ChatGPT in your React app 💬🚀
 
-**assistant-ui** is an open-source TypeScript/React library to build production-grade AI chat experiences fast.
+**openagentui** is an open-source TypeScript/React library to build production-grade AI chat experiences fast.
 
-<a href="https://www.assistant-ui.com">
+<a href="https://openagentui.dev">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/demo.webp" />
     <source media="(prefers-color-scheme: light)" srcset=".github/assets/demo-light.webp" />
-    <img src=".github/assets/demo-light.webp" alt="An assistant-ui chat: a hotel search tool call, a streamed reply, an approval card that the user allows, and follow-up suggestions" width="100%" />
+    <img src=".github/assets/demo-light.webp" alt="An openagentui chat: a hotel search tool call, a streamed reply, an approval card that the user allows, and follow-up suggestions" width="100%" />
   </picture>
 </a>
 
@@ -41,20 +41,20 @@
 The fastest path is the CLI, which scaffolds a Next.js app or adds the styled components to an existing project:
 
 ```bash
-npx assistant-ui@latest create   # new project
-npx assistant-ui@latest init     # add to existing project
+npx openagentui@latest create   # new project
+npx openagentui@latest init     # add to existing project
 ```
 
 Or install the packages directly:
 
 ```bash
-npm install @assistant-ui/react @assistant-ui/ai-sdk ai
+npm install @openagentui/react @openagentui/ai-sdk ai
 ```
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cli-init.webp" />
   <source media="(prefers-color-scheme: light)" srcset=".github/assets/cli-init-light.webp" />
-  <img src=".github/assets/cli-init-light.webp" alt="Running npx assistant-ui@latest init in a terminal" width="100%" />
+  <img src=".github/assets/cli-init-light.webp" alt="Running npx openagentui@latest init in a terminal" width="100%" />
 </picture>
 
 ## Usage
@@ -62,9 +62,9 @@ npm install @assistant-ui/react @assistant-ui/ai-sdk ai
 ```tsx
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export function Chat() {
   const runtime = useChatRuntime();
@@ -88,19 +88,19 @@ export function Chat() {
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/generative-ui.png" />
   <source media="(prefers-color-scheme: light)" srcset=".github/assets/generative-ui-light.png" />
-  <img src=".github/assets/generative-ui-light.png" alt="A get_weather tool call rendered as a weather card inside an assistant-ui chat" width="100%" />
+  <img src=".github/assets/generative-ui-light.png" alt="A get_weather tool call rendered as a weather card inside an openagentui chat" width="100%" />
 </picture>
 
 ## Backends
 
 | Integration                            | Package                                                          |
 | -------------------------------------- | ---------------------------------------------------------------- |
-| Vercel AI SDK                          | `@assistant-ui/ai-sdk`                                           |
-| LangGraph / LangChain                  | `@assistant-ui/react-langgraph`, `@assistant-ui/react-langchain` |
-| AG-UI / A2A protocols                  | `@assistant-ui/react-ag-ui`, `@assistant-ui/react-a2a`           |
-| Google ADK / OpenCode                  | `@assistant-ui/react-google-adk`, `@assistant-ui/react-opencode` |
-| Custom data-stream backend             | `@assistant-ui/react-data-stream`                                |
-| Managed thread history, telemetry, and file storage | `assistant-cloud`                                       |
+| Vercel AI SDK                          | `@openagentui/ai-sdk`                                           |
+| LangGraph / LangChain                  | `@openagentui/react-langgraph`, `@openagentui/react-langchain` |
+| AG-UI / A2A protocols                  | `@openagentui/react-ag-ui`, `@openagentui/react-a2a`           |
+| Google ADK / OpenCode                  | `@openagentui/react-google-adk`, `@openagentui/react-opencode` |
+| Custom data-stream backend             | `@openagentui/react-data-stream`                                |
+| Managed thread history, telemetry, and file storage | `openagentui-cloud`                                       |
 
 Broad model support out of the box (OpenAI, Anthropic, Google Gemini, Mistral, Perplexity, AWS Bedrock, Azure, Fireworks, Ollama) plus community providers via the AI SDK, and easy extension to any custom HTTP backend.
 
@@ -117,18 +117,18 @@ Instead of a single monolithic chat component, you compose primitives and bring 
 ## Used in production by
 
 <p align="center">
-  <a href="https://mastra.ai/?ref=assistant-ui"><img src=".github/assets/logos/Mastra.svg" height="24" alt="Mastra"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://langchain.com/?ref=assistant-ui"><img src=".github/assets/logos/LangChain.svg" height="24" alt="LangChain"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://athenaintelligence.ai/?ref=assistant-ui"><img src=".github/assets/logos/Athena-Intelligence.svg" height="24" alt="Athena Intelligence"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://browser-use.com/?ref=assistant-ui"><img src=".github/assets/logos/Browser-Use.svg" height="24" alt="Browser Use"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://stack-ai.com/?ref=assistant-ui"><img src=".github/assets/logos/Stack.svg" height="24" alt="Stack"></a>
+  <a href="https://mastra.ai/?ref=openagentui"><img src=".github/assets/logos/Mastra.svg" height="24" alt="Mastra"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://langchain.com/?ref=openagentui"><img src=".github/assets/logos/LangChain.svg" height="24" alt="LangChain"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://athenaintelligence.ai/?ref=openagentui"><img src=".github/assets/logos/Athena-Intelligence.svg" height="24" alt="Athena Intelligence"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://browser-use.com/?ref=openagentui"><img src=".github/assets/logos/Browser-Use.svg" height="24" alt="Browser Use"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://stack-ai.com/?ref=openagentui"><img src=".github/assets/logos/Stack.svg" height="24" alt="Stack"></a>
   <br /><br />
-  <a href="https://inconvo.com/?ref=assistant-ui"><img src=".github/assets/logos/Inconvo.svg" height="24" alt="Inconvo"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://iterable.com/?ref=assistant-ui"><img src=".github/assets/logos/Iterable.svg" height="24" alt="Iterable"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://helicone.ai/?ref=assistant-ui"><img src=".github/assets/logos/helicone.svg" height="24" alt="Helicone"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://getgram.ai/?ref=assistant-ui"><img src=".github/assets/logos/gram.svg" height="24" alt="Gram"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://coreviz.io/?ref=assistant-ui"><img src=".github/assets/logos/Coreviz.svg" height="24" alt="Coreviz"></a>
+  <a href="https://inconvo.com/?ref=openagentui"><img src=".github/assets/logos/Inconvo.svg" height="24" alt="Inconvo"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://iterable.com/?ref=openagentui"><img src=".github/assets/logos/Iterable.svg" height="24" alt="Iterable"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://helicone.ai/?ref=openagentui"><img src=".github/assets/logos/helicone.svg" height="24" alt="Helicone"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://getgram.ai/?ref=openagentui"><img src=".github/assets/logos/gram.svg" height="24" alt="Gram"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://coreviz.io/?ref=openagentui"><img src=".github/assets/logos/Coreviz.svg" height="24" alt="Coreviz"></a>
 </p>
 
 <p align="center"><sub>…and many more.</sub></p>
 
-<a href="https://www.assistant-ui.com/traction">
+<a href="https://openagentui.dev/traction">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://www.assistant-ui.com/traction-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="https://www.assistant-ui.com/traction.png" />
-    <img src="https://www.assistant-ui.com/traction.png" alt="Chart of assistant-ui's traction" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://openagentui.dev/traction-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="https://openagentui.dev/traction.png" />
+    <img src="https://openagentui.dev/traction.png" alt="Chart of openagentui's traction" width="100%" />
   </picture>
 </a>
 
@@ -151,10 +151,10 @@ Instead of a single monolithic chat component, you compose primitives and bring 
 
 ## Community & Support
 
-- [Examples](https://www.assistant-ui.com/examples)
-- [Documentation](https://www.assistant-ui.com/docs/)
+- [Examples](https://openagentui.dev/examples)
+- [Documentation](https://openagentui.dev/docs/)
 - [Discord](https://discord.com/invite/S9dwgCNEFs)
-- [Book a sales call](https://cal.com/simon-farshid/assistant-ui)
+- [Book a sales call](https://cal.com/simon-farshid/openagentui)
 
 ## License
 

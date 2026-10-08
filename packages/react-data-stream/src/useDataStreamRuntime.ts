@@ -1,11 +1,11 @@
 "use client";
 
-import type { AssistantRuntime, ThreadMessage } from "@assistant-ui/core";
+import type { AssistantRuntime, ThreadMessage } from "@openagentui/core";
 import {
   splitLocalRuntimeOptions,
   useLocalRuntime,
   type LocalRuntimeOptions,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { DataStreamRuntimeAdapter } from "./DataStreamRuntimeAdapter";
 import type { DataStreamProtocol } from "./protocol";
 

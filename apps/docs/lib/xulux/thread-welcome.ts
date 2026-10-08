@@ -22,7 +22,7 @@ const DEFAULT_WELCOME: XuluxThreadWelcome = {
     {
       label: "ChatGPT style app",
       prompt:
-        "Build me a ChatGPT-style chat app with assistant-ui — empty state, composer, and message layout.",
+        "Build me a ChatGPT-style chat app with openagentui — empty state, composer, and message layout.",
     },
     {
       label: "docs assistant",

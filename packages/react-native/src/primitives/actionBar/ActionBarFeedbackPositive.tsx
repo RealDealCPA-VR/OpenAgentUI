@@ -5,7 +5,7 @@ import {
   type PressableProps,
   type PressableStateCallbackType,
 } from "react-native";
-import { useActionBarFeedbackPositive } from "@assistant-ui/core/react";
+import { useActionBarFeedbackPositive } from "@openagentui/core/react";
 
 export type ActionBarFeedbackPositiveProps = Omit<
   PressableProps,

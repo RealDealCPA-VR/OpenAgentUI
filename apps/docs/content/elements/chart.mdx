@@ -16,11 +16,11 @@ A chart's series usually comes from the same tool call that produces its headlin
 
 ### Render the tool call
 
-```tsx title="components/assistant-ui/elements/plot-metric-tool-ui.tsx"
+```tsx title="components/openagentui/elements/plot-metric-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { Chart } from "@/components/assistant-ui/elements/chart";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { Chart } from "@/components/openagentui/elements/chart";
 
 type PlotMetricArgs = { label: string; points: number[] };
 type PlotMetricResult = { value: string; delta?: string };
@@ -49,9 +49,9 @@ export const PlotMetricToolUI: ToolCallMessagePartComponent<
 ### Register the tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { PlotMetricToolUI } from "@/components/assistant-ui/elements/plot-metric-tool-ui";
+import { PlotMetricToolUI } from "@/components/openagentui/elements/plot-metric-tool-ui";
 
 export const toolkit = defineToolkit({
   plot_metric: {
@@ -65,8 +65,8 @@ export const toolkit = defineToolkit({
 ```
 
 ```tsx title="app/MyRuntimeProvider.tsx"
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({ children }: { children: React.ReactNode }) {
@@ -100,7 +100,7 @@ Standalone, `points` is the full series and `visibleCount` is how much of it to 
 "use client";
 
 import { useState } from "react";
-import { Chart } from "@/components/assistant-ui/elements/chart";
+import { Chart } from "@/components/openagentui/elements/chart";
 
 const POINTS = [18, 22, 19, 31, 28, 42, 38, 51, 47, 63, 58, 71, 69, 84, 92];
 

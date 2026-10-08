@@ -1,5 +1,5 @@
 {
   "title": "Observability",
-  "description": "Observability integration guides for logging, tracing, monitoring, and evaluating LLM calls in assistant-ui apps.",
-  "pages": ["assistant-cloud", "langfuse", "langsmith"]
+  "description": "Observability integration guides for logging, tracing, monitoring, and evaluating LLM calls in openagentui apps.",
+  "pages": ["openagentui-cloud", "langfuse", "langsmith"]
 }

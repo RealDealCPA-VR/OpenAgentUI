@@ -44,7 +44,7 @@ const heading = () => screen.getByRole("heading", { level: 1 }).textContent;
 describe("checkout connect sequence", () => {
   it("renders each step in work bounded by the stream events", async () => {
     mock.transport = createMockTransport<Checkout.State | undefined>(undefined);
-    const session = startCheckout(["assistant-ui"])!;
+    const session = startCheckout(["openagentui"])!;
     acknowledgeSetupIntro();
     let commits = 0;
     render(
@@ -62,7 +62,7 @@ describe("checkout connect sequence", () => {
       id: session.id,
       status: "waiting",
       createdAt: 1,
-      products: [{ slug: "assistant-ui", name: "assistant-ui" }],
+      products: [{ slug: "openagentui", name: "openagentui" }],
     };
     await act(() => mock.transport.setState(waiting));
     await waitFor(() => expect(heading()).toBe("Connect your coding agent"));

@@ -9,7 +9,7 @@ import {
   resource,
   withKey,
   type ResourceElement,
-} from "@assistant-ui/tap";
+} from "@openagentui/tap";
 import {
   useMemo,
   useEffect,

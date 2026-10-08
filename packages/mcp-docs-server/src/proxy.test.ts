@@ -314,7 +314,7 @@ describe("runProxy", () => {
         const webResponse =
           webRequest.method === "GET"
             ? Response.json({
-                name: "assistant-ui",
+                name: "openagentui",
                 transport: "streamable-http",
               })
             : await transport.handleRequest(webRequest);

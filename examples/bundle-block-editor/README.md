@@ -1,6 +1,6 @@
 # Collaborative block editor bundle
 
-A standalone React app combining a real Lexical rich-text document with assistant-ui and the AI SDK chat runtime. Build it through the shared bundle builder, independently of the documentation app.
+A standalone React app combining a real Lexical rich-text document with openagentui and the AI SDK chat runtime. Build it through the shared bundle builder, independently of the documentation app.
 
 Downloaded source: `npm install`, `npm run build`, then `npm run preview`.
 
@@ -23,7 +23,7 @@ The history plugin is seeded with the initialized draft so the first accepted su
 ## Components and packages
 
 - `LexicalComposer`, `RichTextPlugin`, `ContentEditable`, and `HistoryPlugin` own document editing and history.
-- The shared `PreviewChat` composes assistant-ui thread, messages, composer, and suggestions with `@assistant-ui/ai-sdk`.
+- The shared `PreviewChat` composes openagentui thread, messages, composer, and suggestions with `@openagentui/ai-sdk`.
 - No documentation-module import, backend, account, or secret is required.
 
 Detail-page links supported by the current content inventory: `/docs/primitives/thread`, `/docs/primitives/composer`, `/docs/primitives/suggestion`, and `/docs/runtimes/ai-sdk/v7`.

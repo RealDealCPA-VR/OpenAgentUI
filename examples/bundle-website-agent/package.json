@@ -10,8 +10,8 @@
     "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=html --coverage.reporter=json-summary"
   },
   "dependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/ai-sdk": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/ai-sdk": "workspace:*",
     "ai": "^7.0.101",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

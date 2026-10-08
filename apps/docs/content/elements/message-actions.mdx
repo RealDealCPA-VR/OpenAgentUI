@@ -16,10 +16,10 @@ The action row under an assistant reply: copy, thumbs up or down, regenerate, an
 
 ### Compose the row
 
-```tsx title="components/assistant-ui/elements/message-actions.tsx"
+```tsx title="components/openagentui/elements/message-actions.tsx"
 "use client";
 
-import { ActionBarPrimitive, AuiIf } from "@assistant-ui/react";
+import { ActionBarPrimitive, AuiIf } from "@openagentui/react";
 import {
   CheckIcon,
   CopyIcon,
@@ -28,7 +28,7 @@ import {
   ThumbsUpIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ghostButton } from "@/components/assistant-ui/elements/surfaces";
+import { ghostButton } from "@/components/openagentui/elements/surfaces";
 
 export function MessageActions() {
   const buttonClassName = cn(ghostButton, "size-7");
@@ -67,7 +67,7 @@ export function MessageActions() {
 `ActionBarMorePrimitive` is a Radix dropdown menu scoped to the same message; `ActionBarPrimitive.ExportMarkdown` is a ready-made item for it.
 
 ```tsx
-import { ActionBarMorePrimitive, ActionBarPrimitive } from "@assistant-ui/react";
+import { ActionBarMorePrimitive, ActionBarPrimitive } from "@openagentui/react";
 import { DownloadIcon, EllipsisIcon } from "lucide-react";
 
 <ActionBarMorePrimitive.Root>
@@ -104,14 +104,14 @@ Standalone, `MessageActions` is fully controlled: five callbacks and the pieces 
 Install the copy hook from the registry:
 
 ```sh
-npx shadcn@latest add "@assistant-ui/use-copy-to-clipboard"
+npx shadcn@latest add "@openagentui/use-copy-to-clipboard"
 ```
 
 ```tsx title="app/reply.tsx"
 "use client";
 
 import { useState } from "react";
-import { MessageActions, type Reaction } from "@/components/assistant-ui/elements/message-actions";
+import { MessageActions, type Reaction } from "@/components/openagentui/elements/message-actions";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 export function Reply() {

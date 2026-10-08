@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { createTapRoot, useResource } from "@assistant-ui/tap";
-import type { Tool } from "assistant-stream";
+import { createTapRoot, useResource } from "@openagentui/tap";
+import type { Tool } from "openagentui-stream";
 import { ModelContext } from "./model-context-client";
 import type {
   ModelContext as ModelContextValue,

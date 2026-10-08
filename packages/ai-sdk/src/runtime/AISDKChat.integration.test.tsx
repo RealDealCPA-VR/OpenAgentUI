@@ -1,9 +1,9 @@
-import { flushTapSync } from "@assistant-ui/tap";
+import { flushTapSync } from "@openagentui/tap";
 // @vitest-environment jsdom
 
 import { StrictMode, useLayoutEffect, type ReactNode } from "react";
 import { act, render, waitFor } from "@testing-library/react";
-import { AuiConfig, AuiProvider, useAui } from "@assistant-ui/store";
+import { AuiConfig, AuiProvider, useAui } from "@openagentui/store";
 import type { ChatTransport, UIMessage } from "ai";
 import { describe, expect, it, vi } from "vitest";
 import { AISDKChat } from "./AISDKChat";

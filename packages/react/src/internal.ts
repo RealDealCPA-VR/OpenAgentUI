@@ -1,10 +1,10 @@
-// Re-export from @assistant-ui/core
+// Re-export from @openagentui/core
 export type {
   ThreadRuntimeCore,
   ThreadListRuntimeCore,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
-// Re-export from @assistant-ui/core/internal
+// Re-export from @openagentui/core/internal
 export {
   DefaultThreadComposerRuntimeCore,
   CompositeContextProvider,
@@ -13,15 +13,15 @@ export {
   AssistantRuntimeImpl,
   ThreadRuntimeImpl,
   getAutoStatus,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 export type {
   ThreadRuntimeCoreBinding,
   ThreadListItemRuntimeBinding,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 
 // React-specific (stay in react)
 export { splitLocalRuntimeOptions } from "./legacy-runtime/runtime-cores/local/LocalRuntimeOptions";
-export type { ToolExecutionStatus } from "@assistant-ui/core";
+export type { ToolExecutionStatus } from "@openagentui/core";
 
 export { useSmooth } from "./utils/smooth/useSmooth";
 export {

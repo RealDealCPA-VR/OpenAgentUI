@@ -10,14 +10,14 @@ import type {
   ChatModelAdapter,
   ThreadMessageLike,
   ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   ThreadListItemRuntimeProvider,
   useExternalStoreRuntime,
   useLocalRuntime,
-} from "@assistant-ui/core/react";
-import { useAuiState } from "@assistant-ui/store";
+} from "@openagentui/core/react";
+import { useAuiState } from "@openagentui/store";
 import {
   ThreadPrimitiveMessageByIndex,
   ThreadPrimitiveMessages,

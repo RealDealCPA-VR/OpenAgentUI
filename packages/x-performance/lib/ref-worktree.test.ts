@@ -84,7 +84,7 @@ describe("ensureRefWorktree", () => {
           "install",
           "--frozen-lockfile",
           "--filter=.",
-          "--filter=@assistant-ui/react-devtools...",
+          "--filter=@openagentui/react-devtools...",
           ...Object.keys(REF_PACKAGE_DIRS).map((name) => `--filter=${name}...`),
         ],
         cwd: realpathSync(wt),

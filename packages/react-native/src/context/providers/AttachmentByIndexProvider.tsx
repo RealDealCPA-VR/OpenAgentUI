@@ -1,4 +1,4 @@
 export {
   MessageAttachmentByIndexProvider,
   ComposerAttachmentByIndexProvider,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";

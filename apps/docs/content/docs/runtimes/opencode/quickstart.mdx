@@ -13,8 +13,8 @@ This page sets up a working chat against a local OpenCode server in three steps.
 ```tsx title="app/MyRuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useOpenCodeRuntime } from "@assistant-ui/react-opencode";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useOpenCodeRuntime } from "@openagentui/react-opencode";
 
 export function MyRuntimeProvider({
   children,
@@ -41,7 +41,7 @@ export function MyRuntimeProvider({
 ### Render the Thread
 
 ```tsx title="app/page.tsx"
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { MyRuntimeProvider } from "./MyRuntimeProvider";
 
 export default function Page() {
@@ -82,7 +82,7 @@ const runtime = useOpenCodeRuntime({
 If you need a pre-configured `OpencodeClient` (e.g. for auth headers), pass it directly:
 
 ```tsx
-import { createOpencodeClient } from "@assistant-ui/react-opencode";
+import { createOpencodeClient } from "@openagentui/react-opencode";
 
 const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",

@@ -5,7 +5,7 @@ import { Text, View } from "react-native";
 import {
   defineToolkit,
   type ToolCallMessagePartProps,
-} from "@assistant-ui/react-native";
+} from "@openagentui/react-native";
 import { z } from "zod";
 
 // Open-Meteo API adapters (free, no API key needed)

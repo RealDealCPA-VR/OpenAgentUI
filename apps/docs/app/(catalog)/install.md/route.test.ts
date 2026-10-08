@@ -30,7 +30,7 @@ describe("install guide route", () => {
     expect(response.status).toBe(200);
     const markdown = await response.text();
     expect(markdown).toContain("## 1. Statewire");
-    expect(markdown).toContain("https://www.assistant-ui.com/statewire.md");
+    expect(markdown).toContain("https://openagentui.dev/statewire.md");
     expect(markdown).toContain("/downloads/statewire-tic-tac-toe.zip");
   });
 
@@ -39,9 +39,9 @@ describe("install guide route", () => {
     expect(response.status).toBe(200);
     const markdown = await response.text();
     expect(markdown).toContain("## 1. harness-sdk");
-    expect(markdown).toContain("https://www.assistant-ui.com/harness-sdk.md");
+    expect(markdown).toContain("https://openagentui.dev/harness-sdk.md");
     expect(markdown).toContain(
-      "/downloads/assistant-ui-cloud-harness-b9d8b56ad.tgz",
+      "/downloads/openagentui-cloud-harness-b9d8b56ad.tgz",
     );
     expect(markdown).toContain("server-only .env.local");
     expect(markdown).toContain(

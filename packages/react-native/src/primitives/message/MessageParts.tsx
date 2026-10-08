@@ -5,7 +5,7 @@ import {
   MessagePartComponent as MessagePartComponentBase,
   MessagePrimitivePartByIndex as MessagePrimitivePartByIndexBase,
   messagePartsDefaultComponents,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { MessagePartPrimitiveImage } from "../messagePart/MessagePartImage";
 
 // React Native derives no intrinsic size from a remote or data URI, so an

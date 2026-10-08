@@ -7,8 +7,8 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import { AuiConfig, Derived } from "@assistant-ui/store/client";
-import type { ThreadListItemMethods } from "@assistant-ui/core/store";
+import { AuiConfig, Derived } from "@openagentui/store/client";
+import type { ThreadListItemMethods } from "@openagentui/core/store";
 import { AuiProvider } from "../AuiProvider";
 import { isAttrDisabled } from "./attrDisabled";
 import { createLastValidCache, createStaleReporter } from "./lastValidCache";

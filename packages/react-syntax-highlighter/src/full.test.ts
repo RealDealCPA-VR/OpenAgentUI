@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import * as full from "./full";
 import * as fullImpl from "./react-syntax-highlighter-full";
 
-describe("@assistant-ui/react-syntax-highlighter/full", () => {
+describe("@openagentui/react-syntax-highlighter/full", () => {
   it("exports only the full makers", () => {
     expect(Object.keys(full).sort()).toEqual([
       "makePrismAsyncSyntaxHighlighter",

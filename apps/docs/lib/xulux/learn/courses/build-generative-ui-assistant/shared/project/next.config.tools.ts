@@ -1,3 +1,3 @@
-import { withAui } from "@assistant-ui/next";
+import { withAui } from "@openagentui/next";
 
 export default withAui({});

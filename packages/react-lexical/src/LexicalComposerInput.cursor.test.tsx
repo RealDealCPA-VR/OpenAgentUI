@@ -35,14 +35,14 @@ const { setCursorPosition, registry, aui } = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => aui,
   useAuiState: () => false,
 }));
 
-vi.mock("@assistant-ui/react", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@assistant-ui/react")>();
+vi.mock("@openagentui/react", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@openagentui/react")>();
   return {
     ...actual,
     INTERNAL: {

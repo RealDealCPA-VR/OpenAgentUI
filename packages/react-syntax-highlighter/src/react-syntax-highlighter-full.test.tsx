@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import type { ComponentPropsWithoutRef, FC } from "react";
-import type { SyntaxHighlighterProps } from "@assistant-ui/react-markdown";
+import type { SyntaxHighlighterProps } from "@openagentui/react-markdown";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   makePrismAsyncSyntaxHighlighter,

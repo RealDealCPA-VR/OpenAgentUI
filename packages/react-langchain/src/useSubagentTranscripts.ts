@@ -7,14 +7,14 @@ import {
   type StreamingTimingState,
   type ThreadMessage,
   type ToolCallTiming,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   convertExternalMessages,
   createExternalMessageConversionCache,
   type ExternalMessageConversionCache,
   type useExternalMessageConverter,
-} from "@assistant-ui/core/react";
-import { useReplaySafeEffect } from "@assistant-ui/store/internal";
+} from "@openagentui/core/react";
+import { useReplaySafeEffect } from "@openagentui/store/internal";
 import { STREAM_CONTROLLER, type AnyStream } from "@langchain/react";
 import type { BaseMessage } from "@langchain/core/messages";
 import { channelProjection, type Event } from "@langchain/langgraph-sdk/stream";

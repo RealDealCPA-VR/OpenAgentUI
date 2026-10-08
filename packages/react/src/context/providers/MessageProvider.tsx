@@ -1,11 +1,11 @@
 "use client";
 
 import type { FC, PropsWithChildren } from "react";
-import { useAui, AuiConfig, AuiProvider } from "@assistant-ui/store";
+import { useAui, AuiConfig, AuiProvider } from "@openagentui/store";
 import {
   type ThreadMessageClientProps,
   ThreadMessageClient,
-} from "@assistant-ui/core/store";
+} from "@openagentui/core/store";
 
 export const MessageProvider: FC<
   PropsWithChildren<ThreadMessageClientProps>

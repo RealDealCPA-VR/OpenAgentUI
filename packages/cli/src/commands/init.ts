@@ -42,7 +42,7 @@ export function isNonInteractiveShell(
 
 export const init = new Command()
   .name("init")
-  .description("initialize assistant-ui in an existing project")
+  .description("initialize openagentui in an existing project")
   .argument("[project-directory]", "directory for the new project")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-o, --overwrite", "overwrite existing files.", false)
@@ -54,7 +54,7 @@ export const init = new Command()
   .addOption(
     new Option(
       "-p, --preset <name-or-url>",
-      "preset name or URL (forwarded to 'assistant-ui create')",
+      "preset name or URL (forwarded to 'openagentui create')",
     ).hideHelp(),
   )
   .option("--use-npm", "explicitly use npm")
@@ -73,7 +73,7 @@ export const init = new Command()
 
     if (!presetUrl && fs.existsSync(componentsConfigPath)) {
       logger.warn("Project is already initialized.");
-      logger.info("Use 'assistant-ui add' to add more components.");
+      logger.info("Use 'openagentui add' to add more components.");
       return;
     }
 
@@ -98,15 +98,15 @@ export const init = new Command()
       return;
     }
 
-    logger.info("Initializing assistant-ui in existing project...");
+    logger.info("Initializing openagentui in existing project...");
     logger.break();
 
     if (!opts.yes && isNonInteractiveShell()) {
       logger.error(
         [
-          "Detected a non-interactive shell, but 'assistant-ui init' needs interactive prompts by default.",
+          "Detected a non-interactive shell, but 'openagentui init' needs interactive prompts by default.",
           "To run this in CI/agent mode, re-run with '--yes' so shadcn initialization and component install run non-interactively.",
-          "Example: assistant-ui init --yes",
+          "Example: openagentui init --yes",
         ].join("\n"),
       );
       process.exit(1);
@@ -132,7 +132,7 @@ export const init = new Command()
 
       logger.break();
       logger.success("Project initialized successfully!");
-      logger.info("You can now add more components with 'assistant-ui add'");
+      logger.info("You can now add more components with 'openagentui add'");
     } catch (error) {
       if (error instanceof SpawnSignalError) throw error;
       if (error instanceof SpawnExitError) {

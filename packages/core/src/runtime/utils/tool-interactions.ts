@@ -1,7 +1,7 @@
 import type {
   ReadonlyJSONObject,
   ReadonlyJSONValue,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import type {
   Unstable_ToolInteraction,
   Unstable_ToolInteractionInput,

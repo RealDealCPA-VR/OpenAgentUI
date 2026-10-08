@@ -6,7 +6,7 @@ import {
   type RealtimeVoiceAdapter,
   type ThreadHistoryAdapter,
   type ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type { UIMessage } from "ai";
 import { describe, expect, it, vi } from "vitest";
 

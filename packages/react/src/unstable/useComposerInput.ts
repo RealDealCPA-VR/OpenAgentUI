@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback } from "react";
-import { useAui } from "@assistant-ui/store";
-import { flushTapSync } from "@assistant-ui/tap";
-import { useComposerSend } from "@assistant-ui/core/react";
-import type { ComposerSendOptions } from "@assistant-ui/core/store";
+import { useAui } from "@openagentui/store";
+import { flushTapSync } from "@openagentui/tap";
+import { useComposerSend } from "@openagentui/core/react";
+import type { ComposerSendOptions } from "@openagentui/core/store";
 import {
   type TriggerPopoverAriaProps,
   useComposerInputDisabled,

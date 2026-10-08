@@ -9,7 +9,7 @@ The structured shape for a single labeled object, the answer most tool results r
 
 <RuntimeMode>
 
-This element has no assistant-ui primitive of its own, so the runtime wiring is a tool renderer rather than a primitive composition. Unlike a piece the model authors freely, a spec sheet is usually a lookup, so the rows belong on the tool's `result` rather than on its streamed `args`.
+This element has no openagentui primitive of its own, so the runtime wiring is a tool renderer rather than a primitive composition. Unlike a piece the model authors freely, a spec sheet is usually a lookup, so the rows belong on the tool's `result` rather than on its streamed `args`.
 
 <Steps>
   <Step>
@@ -19,8 +19,8 @@ This element has no assistant-ui primitive of its own, so the runtime wiring is 
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { SpecSheet } from "@/components/assistant-ui/elements/spec-sheet";
+import { defineToolkit } from "@openagentui/react";
+import { SpecSheet } from "@/components/openagentui/elements/spec-sheet";
 
 export const toolkit = defineToolkit({
   get_model_card: {
@@ -52,8 +52,8 @@ import {
   AssistantRuntimeProvider,
   AuiConfig,
   Tools,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { toolkit } from "./toolkit";
 
 export function MyRuntimeProvider({
@@ -71,7 +71,7 @@ export function MyRuntimeProvider({
 }
 ```
 
-Once the toolkit is registered, `Thread` and any custom message list built on assistant-ui's message part primitives (`MessagePrimitive.Parts` or `MessagePrimitive.GroupedParts`) render the registered UI automatically wherever the `get_model_card` call appears in the message, so nothing needs to be placed by hand.
+Once the toolkit is registered, `Thread` and any custom message list built on openagentui's message part primitives (`MessagePrimitive.Parts` or `MessagePrimitive.GroupedParts`) render the registered UI automatically wherever the `get_model_card` call appears in the message, so nothing needs to be placed by hand.
 
   </Step>
 </Steps>
@@ -93,7 +93,7 @@ Standalone, the element is a plain display component: it owns no state of its ow
 import {
   SpecSheet,
   type SpecRow,
-} from "@/components/assistant-ui/elements/spec-sheet";
+} from "@/components/openagentui/elements/spec-sheet";
 
 const rows: readonly SpecRow[] = [
   { label: "context", value: "1,000,000 tokens" },

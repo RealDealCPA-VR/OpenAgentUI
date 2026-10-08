@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from assistant_stream import create_run, RunController
-from assistant_stream.serialization import DataStreamResponse
+from openagentui_stream import create_run, RunController
+from openagentui_stream.serialization import DataStreamResponse
 
 import asyncio
 

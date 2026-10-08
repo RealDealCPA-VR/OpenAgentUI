@@ -1,5 +1,5 @@
 {
   "title": "Frameworks",
-  "description": "Framework integration guides for running assistant backends and agent frameworks with assistant-ui.",
+  "description": "Framework integration guides for running assistant backends and agent frameworks with openagentui.",
   "pages": ["ai-sdk", "cloudflare-agents", "mastra"]
 }

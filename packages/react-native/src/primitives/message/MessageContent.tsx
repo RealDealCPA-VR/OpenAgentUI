@@ -4,16 +4,16 @@ import type {
   ThreadUserMessagePart,
   ThreadAssistantMessagePart,
   MessagePartState,
-} from "@assistant-ui/core";
-import { useAui, useAuiState } from "@assistant-ui/store";
+} from "@openagentui/core";
+import { useAui, useAuiState } from "@openagentui/store";
 import type {
   ToolCallMessagePartProps,
   DataMessagePartProps,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import {
   getMessagePartKeys,
   resolveToolRender,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 
 type MessageContentPart = ThreadUserMessagePart | ThreadAssistantMessagePart;
 type MessageContentStatePart = MessagePartState;

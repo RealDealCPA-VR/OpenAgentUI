@@ -7,7 +7,7 @@ on:
       - examples/with-expo/**
       - package.json
       - packages/ai-sdk/**
-      - packages/assistant-stream/**
+      - packages/openagentui-stream/**
       - packages/cloud/**
       - packages/core/**
       - packages/metro/**
@@ -28,7 +28,7 @@ on:
       - examples/with-expo/**
       - package.json
       - packages/ai-sdk/**
-      - packages/assistant-stream/**
+      - packages/openagentui-stream/**
       - packages/cloud/**
       - packages/core/**
       - packages/metro/**
@@ -73,10 +73,10 @@ jobs:
           install: false
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --filter . --filter="@assistant-ui/react-devtools..." --filter="with-expo..."
+        run: pnpm install --frozen-lockfile --filter . --filter="@openagentui/react-devtools..." --filter="with-expo..."
 
       - name: Build workspace packages
-        run: pnpm turbo build --filter=@assistant-ui/react-native --filter=@assistant-ui/ai-sdk --filter=@assistant-ui/metro
+        run: pnpm turbo build --filter=@openagentui/react-native --filter=@openagentui/ai-sdk --filter=@openagentui/metro
 
       - name: Bundle Expo for ${{ matrix.platform }}
         working-directory: examples/with-expo

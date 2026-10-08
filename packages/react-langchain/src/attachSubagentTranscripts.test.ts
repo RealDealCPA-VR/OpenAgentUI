@@ -2,7 +2,7 @@ import {
   bindExternalStoreMessage,
   getExternalStoreMessages,
   type ThreadMessage,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import { describe, expect, it } from "vitest";
 import {
   attachSubagentTranscripts,

@@ -1,8 +1,8 @@
 "use client";
 
 import { Fragment, type FC, type ReactNode, useMemo } from "react";
-import { useAuiState } from "@assistant-ui/store";
-import { useShallowSelector } from "@assistant-ui/store/internal";
+import { useAuiState } from "@openagentui/store";
+import { useShallowSelector } from "@openagentui/store/internal";
 import type { PartState } from "../../../store/scopes/part";
 import type {
   MessagePartStatus,
@@ -115,7 +115,7 @@ export namespace MessagePrimitiveGroupedParts {
      *
      * @example
      * ```tsx
-     * import { groupPartByType } from "@assistant-ui/react";
+     * import { groupPartByType } from "@openagentui/react";
      *
      * <MessagePrimitive.GroupedParts
      *   groupBy={groupPartByType({

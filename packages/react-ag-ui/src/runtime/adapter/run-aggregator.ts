@@ -10,13 +10,13 @@ import {
   type ThreadMessage,
   type ToolCallMessagePart,
   type ToolModelContentPart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   applyA2uiOperations,
   surfaceToPresentToolCall,
   type A2uiState,
   type A2uiSurfaceState,
-} from "@assistant-ui/react-generative-ui/a2ui";
+} from "@openagentui/react-generative-ui/a2ui";
 import jsonpatch, { type Operation } from "fast-json-patch";
 import { readMcpAppResourceUri } from "../mcp-tool-result";
 import { projectAgUiToolApprovals } from "./tool-approval";
@@ -183,7 +183,7 @@ export type RunAggregatorOptions = {
 };
 
 /**
- * Collects AG-UI events into assistant-ui run snapshots that can be yielded from a ChatModelAdapter.
+ * Collects AG-UI events into openagentui run snapshots that can be yielded from a ChatModelAdapter.
  *
  * The aggregator keeps a single assistant message worth of parts. Each incoming event updates the parts and
  * emits a fresh snapshot through the provided `emit` callback. `CUSTOM` events

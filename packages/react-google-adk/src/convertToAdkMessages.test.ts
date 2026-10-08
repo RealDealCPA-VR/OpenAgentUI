@@ -5,7 +5,7 @@ import {
   getPendingToolCalls,
 } from "./convertToAdkMessages";
 import { convertAdkMessage } from "./convertAdkMessages";
-import type { AppendMessage } from "@assistant-ui/core";
+import type { AppendMessage } from "@openagentui/core";
 import type { AdkMessage } from "./types";
 import { contentToParts } from "./contentToParts";
 

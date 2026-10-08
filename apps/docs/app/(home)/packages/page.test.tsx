@@ -78,13 +78,13 @@ describe("PackagesPage", () => {
       flagshipWeekly: 900,
       totalWeekly: null,
       perPackage: {
-        "@assistant-ui/react": {
+        "@openagentui/react": {
           weekly: 900,
           series: [],
           monthly: 0,
           prevMonthly: 0,
         },
-        "@assistant-ui/core": {
+        "@openagentui/core": {
           weekly: 100,
           series: [],
           monthly: 0,
@@ -104,13 +104,13 @@ describe("PackagesPage", () => {
 
   it("totals concentration from the ranked weekly downloads after a complete read", async () => {
     const perPackage = {
-      "@assistant-ui/react": {
+      "@openagentui/react": {
         weekly: 900,
         series: [],
         monthly: 0,
         prevMonthly: 0,
       },
-      "@assistant-ui/core": {
+      "@openagentui/core": {
         weekly: 100,
         series: [],
         monthly: 0,

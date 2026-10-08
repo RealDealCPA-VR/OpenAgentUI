@@ -1,9 +1,9 @@
 "use client";
 
-import { type ModelContext, tool } from "@assistant-ui/core";
-import type {} from "@assistant-ui/core/store";
-import { type ToolCallMessagePartComponent } from "@assistant-ui/core/react";
-import { useAui } from "@assistant-ui/store";
+import { type ModelContext, tool } from "@openagentui/core";
+import type {} from "@openagentui/core/store";
+import { type ToolCallMessagePartComponent } from "@openagentui/core/react";
+import { useAui } from "@openagentui/store";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   type Field,

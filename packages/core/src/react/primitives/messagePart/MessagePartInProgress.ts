@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export namespace MessagePartPrimitiveInProgress {
   export type Props = PropsWithChildren;

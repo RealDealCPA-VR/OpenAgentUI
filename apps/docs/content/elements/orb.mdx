@@ -17,7 +17,7 @@ A voice session needs a `RealtimeVoiceAdapter` on the runtime before any of this
 ### Configure a voice adapter
 
 ```tsx
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 
 const runtime = useChatRuntime({
   adapters: {
@@ -32,12 +32,12 @@ const runtime = useChatRuntime({
 ### Render the orb and control bar
 
 ```tsx title="app/page.tsx"
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   VoiceControl,
   VoiceOrb,
-} from "@/components/assistant-ui/elements/voice.aui";
-import { AuiIf } from "@assistant-ui/react";
+} from "@/components/openagentui/elements/voice.aui";
+import { AuiIf } from "@openagentui/react";
 
 export default function Chat() {
   return (
@@ -79,7 +79,7 @@ import { useState } from "react";
 import {
   VoiceOrb,
   type VoiceOrbState,
-} from "@/components/assistant-ui/elements/voice";
+} from "@/components/openagentui/elements/voice";
 
 export function Call() {
   const [state, setState] = useState<VoiceOrbState>("idle");
@@ -145,7 +145,7 @@ It still needs a runtime ancestor: the override only replaces the derived `state
 <StandaloneMode>
 
 ```tsx
-import { VoiceOrb } from "@/components/assistant-ui/elements/voice";
+import { VoiceOrb } from "@/components/openagentui/elements/voice";
 
 {(["idle", "connecting", "listening", "speaking", "muted"] as const).map(
   (state) => (

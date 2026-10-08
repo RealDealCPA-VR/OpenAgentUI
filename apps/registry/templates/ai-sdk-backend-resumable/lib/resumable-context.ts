@@ -1,7 +1,7 @@
 import {
   createInMemoryResumableStreamStore,
   createResumableStreamContext,
-} from "assistant-stream/resumable";
+} from "openagentui-stream/resumable";
 import { after } from "next/server";
 
 const store = createInMemoryResumableStreamStore();

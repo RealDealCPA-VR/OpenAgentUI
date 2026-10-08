@@ -48,7 +48,7 @@ export default {
   },
   resolve: {
     alias: {
-      "@assistant-ui/ui": resolve(__dirname, "../../packages/ui/src"),
+      "@openagentui/ui": resolve(__dirname, "../../packages/ui/src"),
       "server-only": resolve(__dirname, "./test/server-only"),
       // Keep in step with the tsconfig paths: packages/ui ships stock shadcn
       // sidebars importing this bare alias, and it resolves outside this app.
@@ -68,13 +68,13 @@ export default {
         __dirname,
         "../../packages/ui/src/components/react/ui/base",
       ),
-      "@/components/assistant-ui/markdown-text": resolve(
+      "@/components/openagentui/markdown-text": resolve(
         __dirname,
-        "./components/assistant-ui/markdown-text",
+        "./components/openagentui/markdown-text",
       ),
-      "@/components/assistant-ui": resolve(
+      "@/components/openagentui": resolve(
         __dirname,
-        "../../packages/ui/src/components/react/assistant-ui",
+        "../../packages/ui/src/components/react/openagentui",
       ),
       "@/components/icons/discord": resolve(
         __dirname,

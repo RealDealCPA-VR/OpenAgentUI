@@ -1,9 +1,9 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.1/schema.json",
   "changelog": [
-    "@assistant-ui/x-changelog",
+    "@openagentui/x-changelog",
     {
-      "repo": "assistant-ui/assistant-ui"
+      "repo": "openagentui/openagentui"
     }
   ],
   "access": "public",

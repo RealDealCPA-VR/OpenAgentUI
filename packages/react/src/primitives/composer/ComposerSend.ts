@@ -6,7 +6,7 @@ import {
   type ActionButtonProps,
   createActionButton,
 } from "../../utils/createActionButton";
-import { useComposerSend as useComposerSendBehavior } from "@assistant-ui/core/react";
+import { useComposerSend as useComposerSendBehavior } from "@openagentui/core/react";
 
 export const useComposerSend = () => {
   const { disabled, send } = useComposerSendBehavior();

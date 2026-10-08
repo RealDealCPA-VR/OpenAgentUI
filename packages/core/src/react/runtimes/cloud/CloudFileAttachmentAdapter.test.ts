@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
+import type { AssistantCloud } from "openagentui-cloud";
 import type { PendingAttachment } from "../../../types/attachment";
 import {
   CloudFileAttachmentAdapter,
@@ -129,7 +129,7 @@ describe("CloudFileAttachmentAdapter", () => {
       message: "Failed to upload file: 403 Forbidden",
     });
     expect(errorSpy).toHaveBeenCalledWith(
-      "[assistant-ui] Failed to upload attachment:",
+      "[openagentui] Failed to upload attachment:",
       expect.objectContaining({
         message: "Failed to upload file: 403 Forbidden",
       }),
@@ -153,7 +153,7 @@ describe("CloudFileAttachmentAdapter", () => {
       message: "network down",
     });
     expect(errorSpy).toHaveBeenCalledWith(
-      "[assistant-ui] Failed to upload attachment:",
+      "[openagentui] Failed to upload attachment:",
       uploadError,
     );
     await expect(adapter.send(yields.at(-1)!)).rejects.toThrow(
@@ -383,7 +383,7 @@ describe("CloudFileAttachmentAdapter", () => {
       }),
     });
     expect(errorSpy).toHaveBeenCalledWith(
-      "[assistant-ui] Failed to upload attachment:",
+      "[openagentui] Failed to upload attachment:",
       expect.objectContaining({
         message: "Cloud scope changed while uploading the attachment",
       }),

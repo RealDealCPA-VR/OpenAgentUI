@@ -3,12 +3,12 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { validateUIMessages } from "ai";
-import { ToolResponse } from "assistant-stream";
+import { ToolResponse } from "openagentui-stream";
 import type { UIMessage } from "@ai-sdk/react";
 import {
   createSuggestionAdapter,
   type MessageFormatRepository,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 // Mock only the sibling module that requires AUI store context (not available
 // in isolation). Every other dependency — useExternalStoreRuntime,

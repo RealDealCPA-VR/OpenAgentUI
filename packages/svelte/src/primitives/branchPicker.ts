@@ -1,7 +1,7 @@
 import {
   branchPickerNextDisabled,
   branchPickerPreviousDisabled,
-} from "@assistant-ui/core/store/internal";
+} from "@openagentui/core/store/internal";
 import { getAuiContext, type ScopeTarget } from "../context";
 import { useAuiState } from "../useAuiState";
 

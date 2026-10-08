@@ -5,7 +5,7 @@ import {
   type RefAttributes,
 } from "react";
 import { Text, type TextProps } from "react-native";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export namespace MessagePartPrimitiveText {
   export type Element = ComponentRef<typeof Text>;

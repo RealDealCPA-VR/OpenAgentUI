@@ -119,7 +119,7 @@ export function createDocsTools({ routeUrl }: { routeUrl: string }) {
               type: "folder",
               name: "examples",
               description:
-                "Examples of app types users can build with assistant-ui, showing instructions, recommended patterns, and UI structure.",
+                "Examples of app types users can build with openagentui, showing instructions, recommended patterns, and UI structure.",
             },
           ];
         }

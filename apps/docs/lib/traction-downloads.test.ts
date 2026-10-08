@@ -125,7 +125,7 @@ describe("fetchNpmDownloads", () => {
   it("counts a package npm has no downloads for as zero in the ecosystem total", async () => {
     getDownloadsRange.mockImplementation((name, start, end) =>
       Promise.resolve(
-        name === FLAGSHIP_PACKAGE || name === "@assistant-ui/react-markdown"
+        name === FLAGSHIP_PACKAGE || name === "@openagentui/react-markdown"
           ? rangeRows(start, end)
           : [],
       ),

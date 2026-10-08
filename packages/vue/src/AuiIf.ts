@@ -4,7 +4,7 @@ import {
   type SlotsType,
   type VNodeChild,
 } from "vue";
-import type { AssistantState } from "@assistant-ui/store/client";
+import type { AssistantState } from "@openagentui/store/client";
 import { useAuiState } from "./useAuiState";
 
 /**

@@ -74,7 +74,7 @@ test("matches an upstream error across the versioned paths and lines of React 18
 
 test("treats declarations in workspace dependencies outside the package as upstream", () => {
   const { own, upstream } = splitDiagnostics(
-    "../assistant-stream/dist/core/AssistantStream.d.ts(10,31): error TS2304: Cannot find name 'ReadableStream'.\n",
+    "../openagentui-stream/dist/core/AssistantStream.d.ts(10,31): error TS2304: Cannot find name 'ReadableStream'.\n",
   );
   assert.equal(own.length, 0);
   assert.equal(upstream.length, 1);

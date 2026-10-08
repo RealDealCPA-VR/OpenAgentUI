@@ -3,7 +3,7 @@
 import { act, render, waitFor } from "@testing-library/react";
 import { useLayoutEffect, useState } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import type { ThreadHistoryAdapter } from "../../adapters/thread-history";
 import type { AssistantRuntime } from "../../runtime/api/assistant-runtime";
 import type { ChatModelAdapter } from "../../runtime/utils/chat-model-adapter";

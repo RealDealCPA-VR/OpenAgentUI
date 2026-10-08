@@ -9,7 +9,7 @@ A ring button that sits in the composer's rail. Hovering or focusing it opens a 
 
 <RuntimeMode>
 
-With a runtime, assistant-ui does not track a system, tools, and messages split on its own. What it does track is per-turn usage: a `ChatModelAdapter` can report `inputTokens` and `outputTokens` for each generation step, and the thread carries that on every assistant message.
+With a runtime, openagentui does not track a system, tools, and messages split on its own. What it does track is per-turn usage: a `ChatModelAdapter` can report `inputTokens` and `outputTokens` for each generation step, and the thread carries that on every assistant message.
 
 <Steps>
   <Step>
@@ -18,10 +18,10 @@ With a runtime, assistant-ui does not track a system, tools, and messages split 
 
 Reduce every message's steps into a single count. Steps without a `usage` object (a provider that does not report it, or a message still streaming) contribute nothing.
 
-```tsx title="components/assistant-ui/elements/composer-context-rail.tsx"
+```tsx title="components/openagentui/elements/composer-context-rail.tsx"
 "use client";
 
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 
 function useThreadTokensUsed(): number {
   return useAuiState((s) =>
@@ -50,7 +50,7 @@ function useThreadTokensUsed(): number {
 `ComposerContext` expects a category breakdown, and the runtime does not meter tokens by category. Your system prompt and tool schemas cost roughly the same fixed amount on every turn, so treat those as constants you already know; the number that grows is the conversation, and that is the one measured figure above. The values are read as thousands (the ring appends `k` without dividing), and the total is the active model's context window, which you already picked and the thread state does not expose.
 
 ```tsx
-import { ComposerContext } from "@/components/assistant-ui/elements/composer";
+import { ComposerContext } from "@/components/openagentui/elements/composer";
 
 const SYSTEM_PROMPT_TOKENS = 1;
 const TOOL_SCHEMA_TOKENS = 3;
@@ -92,7 +92,7 @@ The three category values and the total are read as thousands: `system: 12` read
 ```tsx title="app/composer-rail.tsx"
 "use client";
 
-import { ComposerContext } from "@/components/assistant-ui/elements/composer";
+import { ComposerContext } from "@/components/openagentui/elements/composer";
 
 export function ComposerRail() {
   return (

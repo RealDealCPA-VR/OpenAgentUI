@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 const useThreadMessageIds = (): readonly string[] => {
   const messages = useAuiState((s) => s.thread.messages);

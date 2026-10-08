@@ -14,7 +14,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
     description: "Floating button that opens an AI assistant chat box.",
     link: "/examples/modal",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/docs/samples/assistant-modal.tsx",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/docs/samples/assistant-modal.tsx",
   },
   {
     title: "Form Filling Co-Pilot",
@@ -22,7 +22,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
     description: "AssistantSidebar copilot which fills forms for the user.",
     link: "/examples/form-demo",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/blob/main/examples/with-react-hook-form/app/page.tsx",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/examples/with-react-hook-form/app/page.tsx",
   },
   {
     title: "ChatGPT Clone",
@@ -30,7 +30,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
     description: "Customized colors and styles for a ChatGPT look and feel.",
     link: "/examples/chatgpt",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/examples/chatgpt.tsx",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/examples/chatgpt.tsx",
   },
   {
     title: "Claude Clone",
@@ -38,7 +38,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
     description: "Customized colors and styles for a Claude look and feel.",
     link: "/examples/claude",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/examples/claude.tsx",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/examples/claude.tsx",
   },
   {
     title: "Gemini Clone",
@@ -46,7 +46,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
     description: "Customized colors and styles for a Gemini look and feel.",
     link: "/examples/gemini",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/examples/gemini.tsx",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/examples/gemini.tsx",
   },
   {
     title: "Grok Clone",
@@ -54,7 +54,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
     description: "Customized colors and styles for a Grok look and feel.",
     link: "/examples/grok",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/examples/grok.tsx",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/examples/grok.tsx",
   },
   {
     title: "Perplexity Clone",
@@ -62,7 +62,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
     description: "Customized colors and styles for a Perplexity look and feel.",
     link: "/examples/perplexity",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/examples/perplexity.tsx",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/examples/perplexity.tsx",
   },
   {
     title: "AI SDK",
@@ -70,7 +70,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
     description: "Chat persistence with AI SDK.",
     link: "/examples/ai-sdk",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/examples/base.tsx",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/blob/main/apps/docs/components/pages/examples/base.tsx",
   },
   {
     title: "Mem0 - ChatGPT with memory",
@@ -79,7 +79,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
       "A personalized AI chat app powered by Mem0 that remembers your preferences, facts, and memories.",
     link: "/examples/mem0",
     githubLink:
-      "https://github.com/mem0ai/mem0/blob/main/examples/mem0-demo/components/assistant-ui/thread.tsx",
+      "https://github.com/mem0ai/mem0/blob/main/examples/mem0-demo/components/openagentui/thread.tsx",
   },
   {
     title: "LangGraph Stockbroker",
@@ -95,7 +95,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
       "Open Source Claude Artifacts. You can ask the bot to generate websites.",
     link: "/examples/artifacts",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-artifacts",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-artifacts",
   },
   {
     title: "Expo (React Native)",
@@ -104,7 +104,7 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
       "Native iOS & Android chat app with drawer navigation and thread management.",
     link: "/examples/expo",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-expo",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-expo",
   },
   {
     title: "Generative UI",
@@ -113,14 +113,14 @@ const INTERNAL_EXAMPLES: ExampleItem[] = [
       "The model composes cards, facts, and charts at runtime through the present tool.",
     link: "/examples/generative-ui",
     githubLink:
-      "https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-generative-ui",
+      "https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-generative-ui",
   },
   {
     title: "Interactables",
     image: "/screenshot/examples/interactables.png",
     description:
       "Task board and sticky notes with AI-driven state updates and localStorage persistence.",
-    link: "https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-interactables",
+    link: "https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-interactables",
     external: true,
   },
 ];
@@ -130,7 +130,7 @@ const COMMUNITY_EXAMPLES: ExampleItem[] = [
     title: "Mastra UI Dojo",
     image: "/screenshot/examples/mastra-ui-dojo.png",
     description:
-      "Mastra integrated with AI SDK, Assistant UI, and CopilotKit — compare side-by-side.",
+      "Mastra integrated with AI SDK, OpenAgentUI, and CopilotKit — compare side-by-side.",
     link: "https://github.com/mastra-ai/ui-dojo",
     external: true,
   },
@@ -145,8 +145,8 @@ const COMMUNITY_EXAMPLES: ExampleItem[] = [
     title: "FastAPI + LangGraph",
     image: "/screenshot/examples/fastapi-langgraph.png",
     description:
-      "Integration of a FastAPI + LangGraph server with assistant-ui.",
-    link: "https://github.com/Yonom/assistant-ui-langgraph-fastapi",
+      "Integration of a FastAPI + LangGraph server with openagentui.",
+    link: "https://github.com/Yonom/openagentui-langgraph-fastapi",
     external: true,
   },
 ];

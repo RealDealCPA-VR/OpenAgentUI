@@ -12,8 +12,8 @@
     "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=html --coverage.reporter=json-summary"
   },
   "dependencies": {
-    "@assistant-ui/react-ink": "workspace:*",
-    "@assistant-ui/react-ink-markdown": "workspace:*",
+    "@openagentui/react-ink": "workspace:*",
+    "@openagentui/react-ink-markdown": "workspace:*",
     "ink": "^7.1.1",
     "react": "^19.3.0"
   },

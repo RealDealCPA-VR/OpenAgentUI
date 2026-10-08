@@ -1,6 +1,6 @@
 ---
 title: LangGraph Stockbroker Demo
-description: Human-in-the-loop AI stockbroker built on LangGraph and assistant-ui. Interrupt handling, tool approval, and an interactive React chat UI.
+description: Human-in-the-loop AI stockbroker built on LangGraph and openagentui. Interrupt handling, tool approval, and an interactive React chat UI.
 ---
 
 ## Overview
@@ -32,12 +32,12 @@ flowchart LR
 
 ## Integration
 
-Uses `@assistant-ui/react-langgraph` for LangGraph integration:
+Uses `@openagentui/react-langgraph` for LangGraph integration:
 
 ```tsx
-import { useLangGraphRuntime } from "@assistant-ui/react-langgraph";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { useLangGraphRuntime } from "@openagentui/react-langgraph";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import { Client } from "@langchain/langgraph-sdk";
 
 const langGraphClient = new Client({

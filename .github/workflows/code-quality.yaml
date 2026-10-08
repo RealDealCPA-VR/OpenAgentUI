@@ -131,7 +131,7 @@ jobs:
           install: false
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --filter . --filter @assistant-ui/x-buildutils --ignore-scripts
+        run: pnpm install --frozen-lockfile --filter . --filter @openagentui/x-buildutils --ignore-scripts
 
       - name: Run oxlint + oxfmt
         run: pnpm lint
@@ -249,10 +249,10 @@ jobs:
             mapfile -t filters < <(jq -r 'if length == 0 then "--filter=./packages/*..." else .[] | "--filter=\(.)..." end' <<< "$plan")
             pnpm install --frozen-lockfile \
               --filter="." \
-              --filter="@assistant-ui/api-surface" \
-              --filter="@assistant-ui/react-devtools..." \
-              --filter="@assistant-ui/x-buildutils..." \
-              --filter="@assistant-ui/x-performance" \
+              --filter="@openagentui/api-surface" \
+              --filter="@openagentui/react-devtools..." \
+              --filter="@openagentui/x-buildutils..." \
+              --filter="@openagentui/x-performance" \
               "${filters[@]}" \
               --filter="!./apps/*" \
               --filter="!./examples/*" \
@@ -406,11 +406,11 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             # PR: Build apps and templates affected by changes compared to base branch
-            pnpm turbo build --filter="...[origin/${{ github.base_ref }}]" --filter="!./packages/*" --filter="!./api-surface" --filter="!@assistant-ui/docs" --filter="!./examples/*"
+            pnpm turbo build --filter="...[origin/${{ github.base_ref }}]" --filter="!./packages/*" --filter="!./api-surface" --filter="!@openagentui/docs" --filter="!./examples/*"
             pnpm turbo build --filter="{./examples/*}[origin/${{ github.base_ref }}]"
           else
             # Push to main: Build apps and templates affected by the last commit
-            pnpm turbo build --filter="...[HEAD^1]" --filter="!./packages/*" --filter="!./api-surface" --filter="!@assistant-ui/docs" --filter="!./examples/*"
+            pnpm turbo build --filter="...[HEAD^1]" --filter="!./packages/*" --filter="!./api-surface" --filter="!@openagentui/docs" --filter="!./examples/*"
             pnpm turbo build --filter="{./examples/*}[HEAD^1]"
           fi
 
@@ -461,7 +461,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.api_ref.outputs.run == 'true'
-        run: pnpm install --frozen-lockfile --filter . --filter="@assistant-ui/docs..." --filter="@assistant-ui/eve..."
+        run: pnpm install --frozen-lockfile --filter . --filter="@openagentui/docs..." --filter="@openagentui/eve..."
 
       - name: Generate API reference (strict)
         if: steps.api_ref.outputs.run == 'true'
@@ -516,7 +516,7 @@ jobs:
             pnpm-workspace.yaml \
             turbo.json \
             packages/x-buildutils; then
-            pnpm install --frozen-lockfile --filter . --filter="@assistant-ui/react-devtools..." --filter="@assistant-ui/ai-sdk..." --filter="@assistant-ui/core..." --filter="@assistant-ui/store..." --filter="...[$BASE]..." --filter="!@assistant-ui/api-surface"
+            pnpm install --frozen-lockfile --filter . --filter="@openagentui/react-devtools..." --filter="@openagentui/ai-sdk..." --filter="@openagentui/core..." --filter="@openagentui/store..." --filter="...[$BASE]..." --filter="!@openagentui/api-surface"
           else
             pnpm install --frozen-lockfile
           fi
@@ -650,7 +650,7 @@ jobs:
             pnpm-workspace.yaml \
             turbo.json \
             packages/x-buildutils; then
-            pnpm install --frozen-lockfile --filter . --filter="@assistant-ui/react-devtools..." --filter="...[$BASE]..." --filter="!@assistant-ui/api-surface"
+            pnpm install --frozen-lockfile --filter . --filter="@openagentui/react-devtools..." --filter="...[$BASE]..." --filter="!@openagentui/api-surface"
           else
             pnpm install --frozen-lockfile
           fi

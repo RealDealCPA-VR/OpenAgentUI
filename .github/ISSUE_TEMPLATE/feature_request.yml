@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest an improvement or new capability for assistant-ui
+description: Suggest an improvement or new capability for openagentui
 labels: ["enhancement"]
 
 body:
@@ -22,9 +22,9 @@ body:
       options:
         - Runtime / Core
         - Thread Management
-        - Streaming (assistant-stream)
+        - Streaming (openagentui-stream)
         - Attachments / Files
-        - Cloud (assistant-cloud)
+        - Cloud (openagentui-cloud)
         - React / UI Components
         - React Native
         - Store / Tap

@@ -508,7 +508,7 @@ describe("BaseThreadRuntimeCore speech lifecycle", () => {
     expect(thread.speech).toBeUndefined();
     expect(laterSubscriber).toHaveBeenCalledOnce();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Speech rollback notification threw",
+      "[openagentui] Speech rollback notification threw",
       notificationError,
     );
   });
@@ -576,7 +576,7 @@ describe("BaseThreadRuntimeCore speech lifecycle", () => {
     expect(thread.speech).toBeUndefined();
     expect(subscriber).toHaveBeenCalledOnce();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Speech rollback cleanup threw",
+      "[openagentui] Speech rollback cleanup threw",
       cleanupError,
     );
   });
@@ -662,11 +662,11 @@ describe("BaseThreadRuntimeCore subscriptions", () => {
     await vi.waitFor(() => {
       expect(consoleError).toHaveBeenCalledTimes(2);
       expect(consoleError).toHaveBeenCalledWith(
-        '[assistant-ui] Thread runtime "initialize" listener threw an error',
+        '[openagentui] Thread runtime "initialize" listener threw an error',
         syncError,
       );
       expect(consoleError).toHaveBeenCalledWith(
-        '[assistant-ui] Thread runtime "initialize" listener threw an error',
+        '[openagentui] Thread runtime "initialize" listener threw an error',
         asyncError,
       );
     });
@@ -693,14 +693,14 @@ describe("BaseThreadRuntimeCore subscriptions", () => {
     expect(laterListener).toHaveBeenCalledOnce();
     expect(consoleError).toHaveBeenNthCalledWith(
       1,
-      '[assistant-ui] Thread runtime "modelContextUpdate" listener threw an error',
+      '[openagentui] Thread runtime "modelContextUpdate" listener threw an error',
       listenerError,
     );
     expect(() => unregister()).not.toThrow();
     expect(laterListener).toHaveBeenCalledTimes(2);
     expect(consoleError).toHaveBeenNthCalledWith(
       2,
-      '[assistant-ui] Thread runtime "modelContextUpdate" listener threw an error',
+      '[openagentui] Thread runtime "modelContextUpdate" listener threw an error',
       listenerError,
     );
   });
@@ -723,7 +723,7 @@ describe("BaseThreadRuntimeCore subscriptions", () => {
 
     await vi.waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        '[assistant-ui] Thread runtime "modelContextUpdate" listener threw an error',
+        '[openagentui] Thread runtime "modelContextUpdate" listener threw an error',
         listenerError,
       );
     });
@@ -812,7 +812,7 @@ describe("BaseThreadRuntimeCore voice volume subscriptions", () => {
     expect(() => runtime.connectVoice()).not.toThrow();
     expect(voice.adapter.connect).toHaveBeenCalledTimes(2);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Voice cleanup threw before reconnect",
+      "[openagentui] Voice cleanup threw before reconnect",
       cleanupError,
     );
   });
@@ -1012,7 +1012,7 @@ describe("BaseThreadRuntimeCore voice volume subscriptions", () => {
     expect(voice.session.disconnect).not.toHaveBeenCalled();
     expect(runtime.voice).toBeUndefined();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Detached voice setup cleanup threw",
+      "[openagentui] Detached voice setup cleanup threw",
       cleanupError,
     );
   });
@@ -1142,7 +1142,7 @@ describe("BaseThreadRuntimeCore voice volume subscriptions", () => {
     expect(laterListener).toHaveBeenCalledOnce();
     expect(runtime.getVoiceVolume()).toBe(0.5);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Voice volume listener threw an error",
+      "[openagentui] Voice volume listener threw an error",
       listenerError,
     );
   });
@@ -1168,7 +1168,7 @@ describe("BaseThreadRuntimeCore voice volume subscriptions", () => {
     expect(runtime.voice).toBeUndefined();
     expect(voice.session.disconnect).toHaveBeenCalledOnce();
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Voice volume listener threw an error",
+      "[openagentui] Voice volume listener threw an error",
       listenerError,
     );
   });
@@ -1193,7 +1193,7 @@ describe("BaseThreadRuntimeCore voice volume subscriptions", () => {
     await vi.waitFor(() => {
       expect(laterListener).toHaveBeenCalledOnce();
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Voice volume listener threw an error",
+        "[openagentui] Voice volume listener threw an error",
         listenerError,
       );
     });
@@ -2537,7 +2537,7 @@ describe("BaseThreadRuntimeCore voice transcripts", () => {
     });
     await vi.waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Voice message commit failed",
+        "[openagentui] Voice message commit failed",
         historyError,
       );
     });

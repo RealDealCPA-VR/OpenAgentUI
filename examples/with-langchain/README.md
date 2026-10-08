@@ -1,8 +1,8 @@
 # LangChain `useStream` Example
 
-Demonstrates `@assistant-ui/react-langchain`, which wraps `useStream` from `@langchain/react` and exposes it as an assistant-ui runtime.
+Demonstrates `@openagentui/react-langchain`, which wraps `useStream` from `@langchain/react` and exposes it as an openagentui runtime.
 
-> assistant-ui also ships `@assistant-ui/react-langgraph`, which integrates with `@langchain/langgraph-sdk` directly and currently has a broader feature set. Pick the adapter that matches your upstream choice. See [the comparison](https://www.assistant-ui.com/docs/runtimes/langchain#comparison-with-react-langgraph).
+> openagentui also ships `@openagentui/react-langgraph`, which integrates with `@langchain/langgraph-sdk` directly and currently has a broader feature set. Pick the adapter that matches your upstream choice. See [the comparison](https://openagentui.dev/docs/runtimes/langchain#comparison-with-react-langgraph).
 
 ## Quick Start
 
@@ -42,6 +42,6 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
-- [LangChain useStream Integration](https://www.assistant-ui.com/docs/runtimes/langchain)
-- [react-langgraph vs react-langchain](https://www.assistant-ui.com/docs/runtimes/langchain#comparison-with-react-langgraph)
+- [openagentui Documentation](https://openagentui.dev/docs)
+- [LangChain useStream Integration](https://openagentui.dev/docs/runtimes/langchain)
+- [react-langgraph vs react-langchain](https://openagentui.dev/docs/runtimes/langchain#comparison-with-react-langgraph)

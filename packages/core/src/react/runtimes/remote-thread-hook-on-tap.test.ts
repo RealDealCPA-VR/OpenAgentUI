@@ -4,7 +4,7 @@ import {
   resource,
   useResources,
   withKey,
-} from "@assistant-ui/tap";
+} from "@openagentui/tap";
 import { useExternalStoreRuntime } from "./useExternalStoreRuntime";
 import type { AssistantRuntime } from "../../runtime/api/assistant-runtime";
 import type { ThreadMessage } from "../../types/message";

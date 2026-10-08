@@ -4,7 +4,7 @@ This stage gives the assistant a deterministic weather capability and deliberate
 
 Explain the toolkit contract: `geocode_location` resolves a supported city to coordinates, then `get_weather` returns its structured forecast. Descriptions help the model choose the tools, schemas constrain their arguments, and executors return fixed fixture data so every learner sees repeatable results without depending on an external service.
 
-The toolkit uses assistant-ui’s generative-tool syntax, so `next.config.ts` wraps the Next.js configuration with `withAui` to compile it.
+The toolkit uses openagentui’s generative-tool syntax, so `next.config.ts` wraps the Next.js configuration with `withAui` to compile it.
 
 The chat route exposes the toolkit to the AI SDK model, while the thread deliberately renders returned tool calls through its generic fallback. The model chooses the capability; application code performs the lookup.
 

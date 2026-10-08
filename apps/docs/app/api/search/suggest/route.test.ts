@@ -26,7 +26,7 @@ afterEach(() => {
 });
 const request = (query: string, scope = "All") =>
   new Request(
-    `https://www.assistant-ui.com/api/search/suggest?${new URLSearchParams({ query, scope })}`,
+    `https://openagentui.dev/api/search/suggest?${new URLSearchParams({ query, scope })}`,
   );
 
 it("validates query length and the scope before doing paid work", async () => {

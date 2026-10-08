@@ -119,7 +119,7 @@ describe("ThreadRuntime.append when the send rejects", () => {
     await settle(onNew);
 
     expect(consoleError).toHaveBeenCalledExactlyOnceWith(
-      "[assistant-ui] Message append failed",
+      "[openagentui] Message append failed",
       error,
     );
   });

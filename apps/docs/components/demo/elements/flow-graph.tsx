@@ -4,7 +4,7 @@ import {
   FlowGraph,
   type FlowEdge,
   type FlowNode,
-} from "@/components/assistant-ui/elements/flow-graph";
+} from "@/components/openagentui/elements/flow-graph";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const NODES: readonly FlowNode[] = [

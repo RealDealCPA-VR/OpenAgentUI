@@ -1,4 +1,4 @@
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 
 type ProviderToolDefinition<TArgs extends Record<string, unknown>> = Extract<
   Tool<TArgs, unknown>,
@@ -22,7 +22,7 @@ export type ProviderToolConfig<
  */
 export function providerTool(_config: ProviderToolConfig): never {
   throw new Error(
-    "[assistant-ui] providerTool() has no runtime implementation — it marks a " +
+    "[openagentui] providerTool() has no runtime implementation — it marks a " +
       "provider-executed tool and is stripped at build time by the " +
       "use-generative compiler. Reaching it means this module was not compiled " +
       '(e.g. providerTool() used outside a "use generative" file).',

@@ -253,7 +253,7 @@ export class MessageRepository {
       ) {
         if (current.current.id === child.current.id) {
           throw new Error(
-            "MessageRepository(performOp/relink): A message with the same id already exists in the parent tree. This error occurs if the same message id is found multiple times. This is likely an internal bug in assistant-ui.",
+            "MessageRepository(performOp/relink): A message with the same id already exists in the parent tree. This error occurs if the same message id is found multiple times. This is likely an internal bug in openagentui.",
           );
         }
       }
@@ -269,7 +269,7 @@ export class MessageRepository {
         const fallback = fallbackId ? this.messages.get(fallbackId) : null;
         if (fallback === undefined) {
           throw new Error(
-            "MessageRepository(performOp/cut): Fallback sibling message not found. This is likely an internal bug in assistant-ui.",
+            "MessageRepository(performOp/cut): Fallback sibling message not found. This is likely an internal bug in openagentui.",
           );
         }
         parentOrRoot.next = fallback;
@@ -328,7 +328,7 @@ export class MessageRepository {
     const headMessage = this.messages.get(headId);
     if (!headMessage) {
       throw new Error(
-        "MessageRepository(getMessages): Head message not found. This is likely an internal bug in assistant-ui.",
+        "MessageRepository(getMessages): Head message not found. This is likely an internal bug in openagentui.",
       );
     }
 
@@ -348,7 +348,7 @@ export class MessageRepository {
     const prev = parentId ? this.messages.get(parentId) : null;
     if (prev === undefined)
       throw new Error(
-        "MessageRepository(addOrUpdateMessage): Parent message not found. This is likely an internal bug in assistant-ui.",
+        "MessageRepository(addOrUpdateMessage): Parent message not found. This is likely an internal bug in openagentui.",
       );
 
     if (existingItem) {
@@ -380,7 +380,7 @@ export class MessageRepository {
     const message = this.messages.get(messageId);
     if (!message)
       throw new Error(
-        "MessageRepository(updateMessage): Message not found. This is likely an internal bug in assistant-ui.",
+        "MessageRepository(updateMessage): Message not found. This is likely an internal bug in openagentui.",
       );
 
     return {
@@ -395,7 +395,7 @@ export class MessageRepository {
 
     if (!message)
       throw new Error(
-        "MessageRepository(deleteMessage): Message not found. This is likely an internal bug in assistant-ui.",
+        "MessageRepository(deleteMessage): Message not found. This is likely an internal bug in openagentui.",
       );
 
     const replacement =
@@ -406,13 +406,13 @@ export class MessageRepository {
           : this.messages.get(replacementId);
     if (replacement === undefined)
       throw new Error(
-        "MessageRepository(deleteMessage): Replacement not found. This is likely an internal bug in assistant-ui.",
+        "MessageRepository(deleteMessage): Replacement not found. This is likely an internal bug in openagentui.",
       );
 
     for (let current = replacement; current; current = current.prev) {
       if (current === message)
         throw new Error(
-          "MessageRepository(deleteMessage): Replacement is the deleted message or one of its descendants. This is likely an internal bug in assistant-ui.",
+          "MessageRepository(deleteMessage): Replacement is the deleted message or one of its descendants. This is likely an internal bug in openagentui.",
         );
     }
 
@@ -420,7 +420,7 @@ export class MessageRepository {
       const childMessage = this.messages.get(child);
       if (!childMessage)
         throw new Error(
-          "MessageRepository(deleteMessage): Child message not found. This is likely an internal bug in assistant-ui.",
+          "MessageRepository(deleteMessage): Child message not found. This is likely an internal bug in openagentui.",
         );
       this.performOp(replacement, childMessage, "relink");
     }
@@ -443,7 +443,7 @@ export class MessageRepository {
     const message = this.messages.get(messageId);
     if (!message)
       throw new Error(
-        "MessageRepository(getBranches): Message not found. This is likely an internal bug in assistant-ui.",
+        "MessageRepository(getBranches): Message not found. This is likely an internal bug in openagentui.",
       );
 
     const { children } = message.prev ?? this.root;
@@ -493,7 +493,7 @@ export class MessageRepository {
     const message = this.messages.get(messageId);
     if (!message)
       throw new Error(
-        "MessageRepository(switchToBranch): Branch not found. This is likely an internal bug in assistant-ui.",
+        "MessageRepository(switchToBranch): Branch not found. This is likely an internal bug in openagentui.",
       );
 
     const previousHead = this.head;
@@ -515,7 +515,7 @@ export class MessageRepository {
     const message = this.messages.get(messageId);
     if (!message)
       throw new Error(
-        "MessageRepository(resetHead): Branch not found. This is likely an internal bug in assistant-ui.",
+        "MessageRepository(resetHead): Branch not found. This is likely an internal bug in openagentui.",
       );
 
     const previousHead = this.head;

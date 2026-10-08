@@ -7,7 +7,7 @@ import {
   type ActionButtonProps,
   createActionButton,
 } from "../../utils/createActionButton";
-import { useThreadListItemTrigger as useThreadListItemTriggerBehavior } from "@assistant-ui/core/react";
+import { useThreadListItemTrigger as useThreadListItemTriggerBehavior } from "@openagentui/core/react";
 import {
   ThreadListCollection,
   useThreadListItemFocus,

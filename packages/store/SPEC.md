@@ -1,4 +1,4 @@
-# @assistant-ui/store Specification
+# @openagentui/store Specification
 
 React integration for tap. Type-safe client-based state via module augmentation.
 
@@ -6,7 +6,7 @@ React integration for tap. Type-safe client-based state via module augmentation.
 
 ### ScopeRegistry
 ```typescript
-declare module "@assistant-ui/store" {
+declare module "@openagentui/store" {
   interface ScopeRegistry {
     name: {
       methods: MethodsType; // must include getState(): StateType

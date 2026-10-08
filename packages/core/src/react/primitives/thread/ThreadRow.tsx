@@ -1,6 +1,6 @@
 import { type FC, type ReactNode, memo } from "react";
-import { RenderChildrenWithAccessor, useAuiState } from "@assistant-ui/store";
-import { useShallowSelector } from "@assistant-ui/store/internal";
+import { RenderChildrenWithAccessor, useAuiState } from "@openagentui/store";
+import { useShallowSelector } from "@openagentui/store/internal";
 import type { MessageState } from "../../../store";
 import { MessageByIdProvider } from "../../providers/MessageByIdProvider";
 import type { GroupNode } from "../../utils/groupParts";

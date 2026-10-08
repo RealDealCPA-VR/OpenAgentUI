@@ -22,7 +22,7 @@ import {
   SquareTerminal,
   Loader2,
 } from "lucide-react";
-import { ThreadListPrimitive } from "@assistant-ui/react";
+import { ThreadListPrimitive } from "@openagentui/react";
 import { BuilderControls } from "@/components/pages/playground/builder-controls";
 import { BuilderPreview } from "@/components/pages/playground/builder-preview";
 import { BuilderCodeOutput } from "@/components/pages/playground/builder-code-output";

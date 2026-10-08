@@ -3,9 +3,9 @@ import { vi } from "vitest";
 import {
   AssistantRuntimeImpl,
   ExternalStoreRuntimeCore,
-} from "@assistant-ui/core/internal";
-import { resource } from "@assistant-ui/tap";
-import { useAssistantEmit } from "@assistant-ui/store/client";
+} from "@openagentui/core/internal";
+import { resource } from "@openagentui/tap";
+import { useAssistantEmit } from "@openagentui/store/client";
 
 export type AnyClient = Record<string, any>;
 

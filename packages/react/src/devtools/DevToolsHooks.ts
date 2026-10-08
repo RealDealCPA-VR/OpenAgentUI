@@ -1,6 +1,6 @@
-import type { Unsubscribe } from "@assistant-ui/core";
-import { notifyEventListeners } from "@assistant-ui/core/internal";
-import type { AssistantClient } from "@assistant-ui/store";
+import type { Unsubscribe } from "@openagentui/core";
+import { notifyEventListeners } from "@openagentui/core/internal";
+import type { AssistantClient } from "@openagentui/store";
 
 export interface EventLog {
   time: Date;
@@ -21,7 +21,7 @@ interface DevToolsHook {
 
 declare global {
   interface Window {
-    __ASSISTANT_UI_DEVTOOLS_HOOK__?: DevToolsHook;
+    __OPENAGENTUI_DEVTOOLS_HOOK__?: DevToolsHook;
   }
 }
 
@@ -43,14 +43,14 @@ const getHook = (): DevToolsHook => {
     return cachedHook;
   }
 
-  const existingHook = window.__ASSISTANT_UI_DEVTOOLS_HOOK__;
+  const existingHook = window.__OPENAGENTUI_DEVTOOLS_HOOK__;
   if (existingHook) {
     cachedHook = existingHook;
     return existingHook;
   }
 
   const newHook = createHook();
-  window.__ASSISTANT_UI_DEVTOOLS_HOOK__ = newHook;
+  window.__OPENAGENTUI_DEVTOOLS_HOOK__ = newHook;
   cachedHook = newHook;
   return newHook;
 };

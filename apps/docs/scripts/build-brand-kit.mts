@@ -44,7 +44,7 @@ if (
   resolve(process.argv[1]) === fileURLToPath(import.meta.url)
 ) {
   await writeFile(
-    new URL("assistant-ui-brand.zip", publicRoot),
+    new URL("openagentui-brand.zip", publicRoot),
     await buildBrandKit(),
   );
 }

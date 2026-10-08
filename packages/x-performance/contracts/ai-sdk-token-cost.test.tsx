@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from "vitest";
 import { act, createElement, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 import {
   AssistantRuntimeProvider,
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
-} from "@assistant-ui/core/react";
-import { useAISDKRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/core/react";
+import { useAISDKRuntime } from "@openagentui/ai-sdk";
 import { createRenderCounter } from "../src/render-counter";
 
 (

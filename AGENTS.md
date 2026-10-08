@@ -1,4 +1,4 @@
-# assistant-ui
+# openagentui
 
 Composable runtime and UI primitives for AI chat in React, Vue, React Native, and the terminal; the README carries the rest.
 
@@ -29,7 +29,7 @@ Composable runtime and UI primitives for AI chat in React, Vue, React Native, an
 ### Packages
 
 - Never remove or rename a shipped export of a published package, because npm consumers the repository cannot see break; re-point a moved export to its new file, and ship a behavior change as its own PR.
-- Put framework-agnostic runtime code in `@assistant-ui/core` (React-coupled code in its `./react` subpath) and platform runtimes in the `react`, `react-native`, and `react-ink` distributions; new runtime code goes in `packages/core/src/react`, not the `packages/react/src/legacy-runtime/` it is replacing.
+- Put framework-agnostic runtime code in `@openagentui/core` (React-coupled code in its `./react` subpath) and platform runtimes in the `react`, `react-native`, and `react-ink` distributions; new runtime code goes in `packages/core/src/react`, not the `packages/react/src/legacy-runtime/` it is replacing.
 - Use caret ranges for dependency specifiers, except in `examples/with-expo/package.json`, which `expo install --fix` manages, and the exact-pinned Learn course projects under `apps/docs/lib/xulux/learn/courses/`.
 
 ### Upstream majors

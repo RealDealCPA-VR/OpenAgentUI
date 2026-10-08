@@ -1,24 +1,24 @@
 ---
 title: Installation
-description: "Add @assistant-ui/vue to an existing Vue or Nuxt app, with or without the AI SDK."
+description: "Add @openagentui/vue to an existing Vue or Nuxt app, with or without the AI SDK."
 ---
 
 Add the Vue binding to an existing app, then choose a runtime for its messages. For a new Nuxt chat app, follow the [quickstart](/docs/vue/quickstart).
 
 ## Requirements
 
-`@assistant-ui/vue` requires Vue 3.5 or newer and the `@types/react` peer package. Mount `AuiProvider` only in the browser; Nuxt apps need a `.client.vue` boundary.
+`@openagentui/vue` requires Vue 3.5 or newer and the `@types/react` peer package. Mount `AuiProvider` only in the browser; Nuxt apps need a `.client.vue` boundary.
 
 ## Install the packages
 
 For an AI SDK chat with an OpenAI model:
 
 ```sh
-pnpm add @assistant-ui/vue @assistant-ui/ai-sdk ai @ai-sdk/openai react
+pnpm add @openagentui/vue @openagentui/ai-sdk ai @ai-sdk/openai react
 pnpm add -D @types/react
 ```
 
-`@assistant-ui/ai-sdk` runs AI SDK chat state through React hooks in the shared runtime, so it needs `react` even though Vue renders the UI. `@types/react` is a required peer of `@assistant-ui/vue`.
+`@openagentui/ai-sdk` runs AI SDK chat state through React hooks in the shared runtime, so it needs `react` even though Vue renders the UI. `@types/react` is a required peer of `@openagentui/vue`.
 
 ## Nuxt
 
@@ -38,8 +38,8 @@ import {
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
   ThreadPrimitiveViewport,
-} from "@assistant-ui/vue";
-import { AISDKChat, AssistantChatTransport } from "@assistant-ui/ai-sdk";
+} from "@openagentui/vue";
+import { AISDKChat, AssistantChatTransport } from "@openagentui/ai-sdk";
 
 const config = AuiConfig({
   threads: AISDKChat({
@@ -67,10 +67,10 @@ Replace the example URL with your chat server's endpoint, and allow the app's or
 
 ## Without the AI SDK
 
-For a runtime supplied through `RuntimeAdapter` from `@assistant-ui/core/store`, install `@assistant-ui/core` and `@assistant-ui/tap` alongside the Vue binding. Alias the shared runtime's `react` imports to the standalone shim so this path can run without React:
+For a runtime supplied through `RuntimeAdapter` from `@openagentui/core/store`, install `@openagentui/core` and `@openagentui/tap` alongside the Vue binding. Alias the shared runtime's `react` imports to the standalone shim so this path can run without React:
 
 ```sh
-pnpm add @assistant-ui/vue @assistant-ui/core @assistant-ui/tap
+pnpm add @openagentui/vue @openagentui/core @openagentui/tap
 pnpm add -D @types/react
 ```
 
@@ -84,9 +84,9 @@ export default defineConfig({
     alias: [
       {
         find: /^react\/compiler-runtime$/,
-        replacement: "@assistant-ui/tap/standalone-shim/compiler-runtime",
+        replacement: "@openagentui/tap/standalone-shim/compiler-runtime",
       },
-      { find: /^react$/, replacement: "@assistant-ui/tap/standalone-shim" },
+      { find: /^react$/, replacement: "@openagentui/tap/standalone-shim" },
     ],
   },
 });
@@ -100,4 +100,4 @@ Install the registry thread and thread list through [Styled components](/docs/vu
 
 ## TypeScript
 
-`@assistant-ui/vue` ships its types with the package. Use `vue-tsc --noEmit` to check `.vue` files as well as TypeScript files.
+`@openagentui/vue` ships its types with the package. Use `vue-tsc --noEmit` to check `.vue` files as well as TypeScript files.

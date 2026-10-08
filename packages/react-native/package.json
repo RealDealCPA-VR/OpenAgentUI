@@ -1,7 +1,7 @@
 {
-  "name": "@assistant-ui/react-native",
+  "name": "@openagentui/react-native",
   "version": "0.1.46",
-  "description": "React Native bindings for assistant-ui",
+  "description": "React Native bindings for openagentui",
   "keywords": [
     "assistant",
     "ai",
@@ -9,7 +9,7 @@
     "react-native",
     "mobile"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -40,11 +40,11 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
-    "@assistant-ui/tap": "^0.9.21",
-    "assistant-cloud": "workspace:^",
-    "assistant-stream": "^0.3.48"
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
+    "@openagentui/tap": "^0.9.21",
+    "openagentui-cloud": "workspace:^",
+    "openagentui-stream": "^0.3.48"
   },
   "peerDependencies": {
     "@types/react": "*",
@@ -57,8 +57,8 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@babel/core": "^7.29.7",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -73,13 +73,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-native"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

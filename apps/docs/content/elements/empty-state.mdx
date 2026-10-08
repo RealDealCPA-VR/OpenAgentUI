@@ -9,17 +9,17 @@ An empty state is the first screen a thread shows: nothing sent yet, a greeting,
 
 <RuntimeMode>
 
-An assistant-ui thread starts empty until the first message lands, and `s.thread.isEmpty` tracks exactly that.
+An openagentui thread starts empty until the first message lands, and `s.thread.isEmpty` tracks exactly that.
 
 <Steps>
   <Step>
 
 ### Show it while the thread is empty
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
-import { AuiIf } from "@assistant-ui/react";
+import { AuiIf } from "@openagentui/react";
 import { EmptyState, EmptyStateGreeting } from "./empty-state";
 
 function Welcome() {
@@ -42,7 +42,7 @@ function Welcome() {
 ### Turn suggestions into real prompts
 
 ```tsx
-import { useAuiState, ThreadPrimitive } from "@assistant-ui/react";
+import { useAuiState, ThreadPrimitive } from "@openagentui/react";
 import { EmptyStateSuggestions, EmptyStateSuggestion } from "./empty-state";
 
 function Suggestions() {
@@ -86,7 +86,7 @@ import {
   EmptyStateSuggestions,
   EmptyStateSuggestion,
   EmptyStateComposer,
-} from "@/components/assistant-ui/elements/empty-state";
+} from "@/components/openagentui/elements/empty-state";
 
 const STARTERS = ["Summarize this doc", "Draft a reply", "Explain this error"];
 

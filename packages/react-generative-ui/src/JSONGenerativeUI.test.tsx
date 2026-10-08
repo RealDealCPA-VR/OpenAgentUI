@@ -7,7 +7,7 @@ import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { renderToStaticMarkup } from "react-dom/server";
 import { z } from "zod";
-import { parsePartialJsonObject } from "assistant-stream/utils";
+import { parsePartialJsonObject } from "openagentui-stream/utils";
 import { JSONGenerativeUI as ClientGenUI } from "./JSONGenerativeUI.client";
 import { JSONGenerativeUI as ServerGenUI } from "./JSONGenerativeUI.server";
 import { defineGenerativeComponents } from "./defineGenerativeComponents";

@@ -3,7 +3,7 @@
 import {
   type ToolCallMessagePartProps,
   useAssistantInstructions,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { useMemo, type ReactNode } from "react";
 import { TraceLine } from "@/components/shared/trace-line";
 import {

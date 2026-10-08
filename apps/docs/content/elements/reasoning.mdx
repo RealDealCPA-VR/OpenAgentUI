@@ -16,14 +16,14 @@ A runtime streams `reasoning` message parts alongside the rest of a message. Con
 
 ### Group reasoning parts and compose the disclosure
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { MessagePrimitive, groupPartByType } from "@assistant-ui/react";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { MessagePrimitive, groupPartByType } from "@openagentui/react";
 import {
   ReasoningContent,
   ReasoningRoot,
   ReasoningText,
   ReasoningTrigger,
-} from "@/components/assistant-ui/elements/reasoning.aui";
+} from "@/components/openagentui/elements/reasoning.aui";
 
 <MessagePrimitive.GroupedParts
   groupBy={groupPartByType({ reasoning: ["group-reasoning"] })}
@@ -43,7 +43,7 @@ import {
 </MessagePrimitive.GroupedParts>
 ```
 
-`groupBy` decides which consecutive part types fold into one group; `children` is already the rendered parts for that range, so `ReasoningText` only has to lay them out. The kit's `ReasoningGroup` export targets an older `components.ReasoningGroup` prop on `MessagePrimitive.Parts`; `MessagePrimitive.GroupedParts` above is what `Thread` itself uses, so prefer it. The `Thread` element already ships this composition, so installing `@assistant-ui/thread` gives you the reasoning trace with none of the above (see [Thread](/elements/thread)).
+`groupBy` decides which consecutive part types fold into one group; `children` is already the rendered parts for that range, so `ReasoningText` only has to lay them out. The kit's `ReasoningGroup` export targets an older `components.ReasoningGroup` prop on `MessagePrimitive.Parts`; `MessagePrimitive.GroupedParts` above is what `Thread` itself uses, so prefer it. The `Thread` element already ships this composition, so installing `@openagentui/thread` gives you the reasoning trace with none of the above (see [Thread](/elements/thread)).
 
   </Step>
   <Step>
@@ -81,7 +81,7 @@ import {
   ReasoningRoot,
   ReasoningText,
   ReasoningTrigger,
-} from "@/components/assistant-ui/elements/reasoning";
+} from "@/components/openagentui/elements/reasoning";
 
 export function Trace({
   text,
@@ -252,22 +252,22 @@ All other `CollapsibleTrigger` props are forwarded.
 The Static variant in the rail is a second design for the same disclosure: `ReasoningPanel` renders an ordered list of titled steps with a shimmering "Thinking" trigger that settles into a resting summary, instead of one continuous markdown trace. It is a single props-driven component with no runtime dependency:
 
 ```sh
-npx shadcn@latest add "@assistant-ui/elements-reasoning-panel"
+npx shadcn@latest add "@openagentui/elements-reasoning-panel"
 ```
 
 <RuntimeMode>
 
 Wire it by mapping a message's `"reasoning"` parts into steps. `s.message.parts` is the store's own array, so selecting it directly is cheap; deriving steps still needs `useMemo`, since mapping to a fresh array on every call would re-render the panel on every store update.
 
-```tsx title="components/assistant-ui/elements/reasoning-panel.tsx"
+```tsx title="components/openagentui/elements/reasoning-panel.tsx"
 "use client";
 
 import { useMemo, useState } from "react";
-import { useAuiState } from "@assistant-ui/react";
+import { useAuiState } from "@openagentui/react";
 import {
   ReasoningPanel,
   type ReasoningStep,
-} from "@/components/assistant-ui/elements/reasoning-panel";
+} from "@/components/openagentui/elements/reasoning-panel";
 
 function AssistantReasoning() {
   const parts = useAuiState((s) => s.message.parts);
@@ -334,7 +334,7 @@ import { useState } from "react";
 import {
   ReasoningPanel,
   type ReasoningStep,
-} from "@/components/assistant-ui/elements/reasoning-panel";
+} from "@/components/openagentui/elements/reasoning-panel";
 
 const STEPS: ReasoningStep[] = [
   { title: "Reading the request", body: "Working out what changed and why." },

@@ -1,9 +1,9 @@
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useStreamRuntime } from "@assistant-ui/react-langchain";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useStreamRuntime } from "@openagentui/react-langchain";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export function Assistant() {
   const apiUrl =

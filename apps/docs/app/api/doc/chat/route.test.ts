@@ -48,7 +48,7 @@ describe("POST /api/doc/chat access boundary", () => {
     );
 
     const response = await POST(
-      new Request("https://www.assistant-ui.com/api/doc/chat", {
+      new Request("https://openagentui.dev/api/doc/chat", {
         method: "POST",
       }),
     );
@@ -66,7 +66,7 @@ describe("POST /api/doc/chat access boundary", () => {
     mocks.checkRateLimit.mockResolvedValue(null);
 
     const response = await POST(
-      new Request("https://www.assistant-ui.com/api/doc/chat", {
+      new Request("https://openagentui.dev/api/doc/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ messages: [] }),
@@ -89,7 +89,7 @@ describe("POST /api/doc/chat access boundary", () => {
     mocks.checkRateLimit.mockResolvedValue(null);
 
     const response = await POST(
-      new Request("https://www.assistant-ui.com/api/doc/chat", {
+      new Request("https://openagentui.dev/api/doc/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -123,7 +123,7 @@ describe("POST /api/doc/chat access boundary", () => {
     mocks.checkRateLimit.mockResolvedValue(null);
 
     const response = await POST(
-      new Request("https://www.assistant-ui.com/api/doc/chat", {
+      new Request("https://openagentui.dev/api/doc/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -153,7 +153,7 @@ describe("POST /api/doc/chat access boundary", () => {
     mocks.checkRateLimit.mockResolvedValue(null);
 
     await POST(
-      new Request("https://www.assistant-ui.com/api/doc/chat", {
+      new Request("https://openagentui.dev/api/doc/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({

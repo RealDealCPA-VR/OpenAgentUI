@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
-import { type Unstable_InteractableToolRenderProps as InteractableToolRenderProps } from "@assistant-ui/react";
+import { type Unstable_InteractableToolRenderProps as InteractableToolRenderProps } from "@openagentui/react";
 import {
   CheckIcon,
   CopyIcon,

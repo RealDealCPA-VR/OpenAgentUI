@@ -4,9 +4,9 @@ description: Persist an in-flight LLM response on the server so the client can r
 platforms: ["react"]
 ---
 
-`assistant-stream/resumable` lets you continue a streaming LLM response across client reconnects. The server keeps writing to a store while the original request is in flight; if the browser reloads or loses its connection, a follow-up request replays the persisted bytes plus any new ones until the producer finalizes.
+`openagentui-stream/resumable` lets you continue a streaming LLM response across client reconnects. The server keeps writing to a store while the original request is in flight; if the browser reloads or loses its connection, a follow-up request replays the persisted bytes plus any new ones until the producer finalizes.
 
-It works with any encoder that already ships in `assistant-stream` (the AI SDK UI message stream, the data stream protocol, the assistant transport SSE format, or your own), because persistence happens at the byte level after encoding.
+It works with any encoder that already ships in `openagentui-stream` (the AI SDK UI message stream, the data stream protocol, the assistant transport SSE format, or your own), because persistence happens at the byte level after encoding.
 
 <AgentSetup product="guides/resumable-streams" />
 
@@ -24,7 +24,7 @@ Construct a `ResumableStreamContext` once per process and reuse it across reques
 import {
   createInMemoryResumableStreamStore,
   createResumableStreamContext,
-} from "assistant-stream/resumable";
+} from "openagentui-stream/resumable";
 
 const store = createInMemoryResumableStreamStore();
 export const resumableContext = createResumableStreamContext({ store });
@@ -34,7 +34,7 @@ In your chat route, wrap the response body in `ctx.run(streamId, makeStream)`. T
 
 ```ts title="/app/api/chat/route.ts"
 import { streamText } from "ai";
-import { RESUMABLE_STREAM_ID_HEADER } from "assistant-stream/resumable";
+import { RESUMABLE_STREAM_ID_HEADER } from "openagentui-stream/resumable";
 import { resumableContext } from "@/lib/resumable-context";
 
 export async function POST(req: Request) {
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
 A separate GET endpoint replays the persisted bytes for reconnecting clients. `ctx.resume(streamId)` returns `null` when no stream exists; use `ctx.requireResume(streamId)` if you prefer to surface a `ResumableStreamError` with code `"missing"` instead.
 
 ```ts title="/app/api/chat/resume/[streamId]/route.ts"
-import { RESUMABLE_STREAM_ID_HEADER } from "assistant-stream/resumable";
+import { RESUMABLE_STREAM_ID_HEADER } from "openagentui-stream/resumable";
 import { resumableContext } from "@/lib/resumable-context";
 
 export async function GET(
@@ -86,19 +86,19 @@ The context has two more methods: `ctx.status(streamId)` returns `"streaming" | 
 
 ## Client side: native integration
 
-`@assistant-ui/ai-sdk` ships a `resumable` option on `AssistantChatTransport`. It captures the stream id from the response header, redirects `chat.resumeStream()` reconnects to your resume route, and clears the stored id when the response finishes naturally. Pair it with `useChatRuntime`, which fires `chat.resumeStream()` whenever its resumable storage reports a pending id, including ids discovered after mount.
+`@openagentui/ai-sdk` ships a `resumable` option on `AssistantChatTransport`. It captures the stream id from the response header, redirects `chat.resumeStream()` reconnects to your resume route, and clears the stored id when the response finishes naturally. Pair it with `useChatRuntime`, which fires `chat.resumeStream()` whenever its resumable storage reports a pending id, including ids discovered after mount.
 
 ```tsx title="/app/page.tsx"
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { AssistantRuntimeProvider } from "@openagentui/react";
 import {
   AssistantChatTransport,
   createResumableSessionStorage,
   useChatRuntime,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { useMemo } from "react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const storage = createResumableSessionStorage();
 
@@ -156,15 +156,15 @@ import {
   useAui,
   useCloudThreadListAdapter,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   AssistantChatTransport,
   createResumableSessionStorage,
   useChatRuntime,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { useMemo } from "react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
 
 const cloud = new AssistantCloud({
   baseUrl: process.env.NEXT_PUBLIC_ASSISTANT_BASE_URL!,
@@ -216,24 +216,24 @@ Key by `remoteId ?? id` under a recognizable prefix, read lazily. A brand-new th
 
 The core package ships `createInMemoryResumableStreamStore` for development and tests. State lives in a process-local `Map`, so it does not survive a server restart. Useful options include `defaultTtlMs`, `maxChunkBytes`, `maxEntriesPerStream`, `maxStreams`, and `gcIntervalMs` for periodic eviction.
 
-For production, use one of the optional Redis adapters via the `assistant-stream/resumable/redis` (node-redis v5) or `assistant-stream/resumable/ioredis` sub-paths. Both adapters store chunk values as binary and accept the same `keyPrefix`, `defaultTtlMs`, `pollIntervalMs`, and `maxChunkBytes` options. Cluster routing works because each stream's keys share a `{streamId}` hash tag. In the bundled adapters, appends, finalization, and deletion run as server-side scripts that compare the stream's metadata before they write, so a stale producer cannot change a stream that was reacquired under the same id. The endpoint must allow `EVALSHA` and `EVAL`; a Redis-compatible service with scripting disabled needs a custom `ResumableStreamStore` instead.
+For production, use one of the optional Redis adapters via the `openagentui-stream/resumable/redis` (node-redis v5) or `openagentui-stream/resumable/ioredis` sub-paths. Both adapters store chunk values as binary and accept the same `keyPrefix`, `defaultTtlMs`, `pollIntervalMs`, and `maxChunkBytes` options. Cluster routing works because each stream's keys share a `{streamId}` hash tag. In the bundled adapters, appends, finalization, and deletion run as server-side scripts that compare the stream's metadata before they write, so a stale producer cannot change a stream that was reacquired under the same id. The endpoint must allow `EVALSHA` and `EVAL`; a Redis-compatible service with scripting disabled needs a custom `ResumableStreamStore` instead.
 
 ```ts title="/lib/resumable-context.ts"
 import {
   createResumableStreamContext,
   type ResumableStreamStore,
-} from "assistant-stream/resumable";
+} from "openagentui-stream/resumable";
 
 async function createStore(): Promise<ResumableStreamStore> {
   if (!process.env.REDIS_URL) {
     const { createInMemoryResumableStreamStore } = await import(
-      "assistant-stream/resumable"
+      "openagentui-stream/resumable"
     );
     return createInMemoryResumableStreamStore();
   }
   const { createClient } = await import("redis");
   const { createRedisResumableStreamStore } = await import(
-    "assistant-stream/resumable/redis"
+    "openagentui-stream/resumable/redis"
   );
   const client = createClient({ url: process.env.REDIS_URL });
   await client.connect();
@@ -256,7 +256,7 @@ For Postgres, Cloudflare Durable Objects, Upstash REST, or any other backend, im
 
 For the full treatment of authorization, multi-tenant key prefixes, observability hooks, resource limits, and incident response, see [Resumable Stream Deployment](/docs/guides/resumable-stream-deployment).
 
-`assistant-stream/resumable` exports `ResumableStreamError` with codes `"missing" | "exists" | "finalized" | "invalid-id"`. Catch it in the resume route to tell a missing stream apart from other failures.
+`openagentui-stream/resumable` exports `ResumableStreamError` with codes `"missing" | "exists" | "finalized" | "invalid-id"`. Catch it in the resume route to tell a missing stream apart from other failures.
 
 ## Helpers for `AssistantStreamController` callbacks
 
@@ -266,7 +266,7 @@ If you produce streams via `createAssistantStream` rather than the AI SDK, the p
 import {
   createResumableAssistantStreamResponse,
   createResumeAssistantStreamResponse,
-} from "assistant-stream/resumable";
+} from "openagentui-stream/resumable";
 import { resumableContext } from "@/lib/resumable-context";
 
 // POST handler
@@ -289,10 +289,10 @@ Both helpers default to the data-stream encoder; pass `encoder: () => new Assist
 
 ## Example app
 
-[`examples/with-resumable-stream`](https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-resumable-stream) is a runnable Next.js app that uses the `resumable` transport option with `useChatRuntime`. It falls back to a built-in mock when `OPENAI_API_KEY` is unset, and switches the store from in-memory to Redis when `REDIS_URL` is set.
+[`examples/with-resumable-stream`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-resumable-stream) is a runnable Next.js app that uses the `resumable` transport option with `useChatRuntime`. It falls back to a built-in mock when `OPENAI_API_KEY` is unset, and switches the store from in-memory to Redis when `REDIS_URL` is set.
 
 ```sh
-npx assistant-ui create my-app -e with-resumable-stream
+npx openagentui create my-app -e with-resumable-stream
 ```
 
 To drop the resumable chat and resume routes into an existing project (in-memory store only; upgrade via [Storage choices](#storage-choices)):

@@ -3,8 +3,8 @@ import { readFileSync } from "node:fs";
 import { expect, it } from "vitest";
 
 it.each([
-  "assistant-ui-cloud-harness-b9d8b56ad.json",
-  "assistant-ui-wizard-login-ea9aae48e.json",
+  "openagentui-cloud-harness-b9d8b56ad.json",
+  "openagentui-wizard-login-ea9aae48e.json",
 ])("serves the CLI preview recorded in %s", (filename) => {
   const downloads = new URL("../../public/downloads/", import.meta.url);
   const manifest = JSON.parse(

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { act, cleanup, render } from "@testing-library/react";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { DataRenderers } from "./DataRenderers";
 

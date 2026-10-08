@@ -2,7 +2,7 @@ import { nextTick } from "vue";
 import {
   createLastValidCache as createNeutralLastValidCache,
   createStaleReporter,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 
 const scheduleExpiry = (callback: () => void) => void nextTick(callback);
 

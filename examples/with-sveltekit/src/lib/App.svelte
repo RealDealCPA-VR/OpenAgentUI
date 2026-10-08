@@ -9,7 +9,7 @@
     threadScrollToBottom,
     threadViewport,
     useAuiState,
-  } from "@assistant-ui/svelte";
+  } from "@openagentui/svelte";
   import {
     ArrowDownIcon,
     ArrowUpIcon,

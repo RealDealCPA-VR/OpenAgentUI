@@ -1,6 +1,6 @@
 "use client";
 
-import { ComposerPrimitive } from "@assistant-ui/react";
+import { ComposerPrimitive } from "@openagentui/react";
 import { ArrowUpIcon } from "lucide-react";
 import { SampleRuntimeProvider } from "./sample-runtime-provider";
 

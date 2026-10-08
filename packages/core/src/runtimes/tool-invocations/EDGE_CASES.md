@@ -325,7 +325,7 @@ without adding one; a restart is an execution boundary in the same sense
 keep the tracker dead with a visible error to avoid restart loops.
 
 ### F.5. Reset followed by same-id reuse
-The assistant-stream pipeline assigns each streamed tool part an opaque
+The openagentui-stream pipeline assigns each streamed tool part an opaque
 execution identity. Human-input callbacks, lifecycle callbacks, result chunks,
 and pending execution cleanup are accepted only when that identity is still
 current for the `toolCallId`. A late callback from before `reset()` is therefore

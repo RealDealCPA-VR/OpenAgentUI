@@ -10,7 +10,7 @@ export const AGENT_DISCOVERY_ROUTES = {
   apiCatalog: "/.well-known/api-catalog",
   skillsIndex: "/.well-known/agent-skills/index.json",
   skillsRoot: "/.well-known/agent-skills",
-  siteSkill: "/.well-known/agent-skills/assistant-ui-docs/SKILL.md",
+  siteSkill: "/.well-known/agent-skills/openagentui-docs/SKILL.md",
   sitemap: "/sitemap.md",
   sitemapWellKnown: "/.well-known/sitemap.md",
 } as const;

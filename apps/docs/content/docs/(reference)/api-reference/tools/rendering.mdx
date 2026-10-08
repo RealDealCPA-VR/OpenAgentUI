@@ -1,6 +1,6 @@
 ---
 title: Tool Rendering
-description: Register React renderers for assistant-ui tool calls, tool results, and model data parts.
+description: Register React renderers for openagentui tool calls, tool results, and model data parts.
 ---
 
 import { DataRenderers, McpAppRenderer, McpAppsRemoteHost, getMcpAppFromToolPart, useAssistantDataUI, useAssistantToolUI } from "@/generated/typeDocs";
@@ -24,7 +24,7 @@ Returns MCP app metadata for a tool-call part that points at a `ui://`
 resource.
 
 Returns `undefined` when the part has no MCP app metadata or the metadata
-does not reference an assistant-ui MCP app resource.
+does not reference an openagentui MCP app resource.
 
 <ParametersTable {...getMcpAppFromToolPart} />
 
@@ -75,7 +75,7 @@ const toolApprovalAcceptsText: (approval: { readonly display?: ToolApprovalDispl
 <Callout type="warn">
 <strong>Deprecated.</strong> Put `render`/`renderText` on the matching toolkit entry, or use
 `MessagePrimitive.Parts` inline tool render overrides for per-message UI.
-See https://assistant-ui.com/docs/migrations/toolkit-tools.
+See https://openagentui.dev/docs/migrations/toolkit-tools.
 </Callout>
 
 Creates a React component that registers a tool-call renderer when rendered.
@@ -105,7 +105,7 @@ const makeAssistantToolUI: <TArgs, TResult>(tool: AssistantToolUIProps<TArgs, TR
 <Callout type="warn">
 <strong>Deprecated.</strong> Put `render`/`renderText` on the matching toolkit entry, or use
 `MessagePrimitive.Parts` inline tool render overrides for per-message UI.
-See https://assistant-ui.com/docs/migrations/toolkit-tools.
+See https://openagentui.dev/docs/migrations/toolkit-tools.
 </Callout>
 
 Registers a tool-call renderer while the component is mounted.

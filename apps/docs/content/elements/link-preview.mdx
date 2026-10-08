@@ -16,9 +16,9 @@ A backend tool can return the URL metadata it resolved. Its renderer waits for t
 
 ### Render a tool result
 
-```tsx title="components/assistant-ui/elements/preview-link-tool-ui.tsx"
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
-import { LinkPreview } from "@/components/assistant-ui/elements/link-preview";
+```tsx title="components/openagentui/elements/preview-link-tool-ui.tsx"
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
+import { LinkPreview } from "@/components/openagentui/elements/link-preview";
 
 type PreviewLinkResult = {
   href: string;
@@ -40,8 +40,8 @@ export const PreviewLinkToolUI: ToolCallMessagePartComponent<
 ### Register the backend tool
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
-import { PreviewLinkToolUI } from "@/components/assistant-ui/elements/preview-link-tool-ui";
+import { defineToolkit } from "@openagentui/react";
+import { PreviewLinkToolUI } from "@/components/openagentui/elements/preview-link-tool-ui";
 
 export const toolkit = defineToolkit({
   preview_link: {
@@ -68,7 +68,7 @@ Pass resolved metadata from your own fetcher or CMS. `href` is required, and the
 ### Render a resolved URL
 
 ```tsx title="app/related-link.tsx"
-import { LinkPreview } from "@/components/assistant-ui/elements/link-preview";
+import { LinkPreview } from "@/components/openagentui/elements/link-preview";
 
 export function RelatedLink() {
   return (

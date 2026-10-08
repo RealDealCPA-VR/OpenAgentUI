@@ -16,15 +16,15 @@ None of the panel's values live in the runtime by default; you hold them as comp
 
 ### Register the panel's values as model context
 
-```tsx title="components/assistant-ui/elements/model-settings.tsx"
+```tsx title="components/openagentui/elements/model-settings.tsx"
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import {
   SettingsPanel,
   type SettingToggle,
-} from "@/components/assistant-ui/elements/settings-panel";
+} from "@/components/openagentui/elements/settings-panel";
 
 const MODELS = ["gpt-5.6-luna", "gpt-5.6-terra"];
 
@@ -93,7 +93,7 @@ import { useState } from "react";
 import {
   SettingsPanel,
   type SettingToggle,
-} from "@/components/assistant-ui/elements/settings-panel";
+} from "@/components/openagentui/elements/settings-panel";
 
 export function Settings() {
   const [model, setModel] = useState("balanced");

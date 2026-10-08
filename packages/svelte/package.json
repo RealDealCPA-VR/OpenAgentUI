@@ -1,16 +1,16 @@
 {
-  "name": "@assistant-ui/svelte",
+  "name": "@openagentui/svelte",
   "version": "0.0.0",
   "private": true,
-  "description": "Svelte bindings for assistant-ui",
+  "description": "Svelte bindings for openagentui",
   "keywords": [
     "svelte",
-    "assistant-ui",
+    "openagentui",
     "store",
     "tap",
     "state-management"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -35,15 +35,15 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "^0.3.24",
-    "@assistant-ui/store": "^0.3.17",
-    "@assistant-ui/tap": "^0.9.21"
+    "@openagentui/core": "^0.3.24",
+    "@openagentui/store": "^0.3.17",
+    "@openagentui/tap": "^0.9.21"
   },
   "peerDependencies": {
     "svelte": "^5.29.0"
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
@@ -51,13 +51,13 @@
     "svelte": "^5.57.1",
     "vitest": "^5.0.3"
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/svelte"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

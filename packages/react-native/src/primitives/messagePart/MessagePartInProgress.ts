@@ -1,1 +1,1 @@
-export { MessagePartPrimitiveInProgress } from "@assistant-ui/core/react";
+export { MessagePartPrimitiveInProgress } from "@openagentui/core/react";

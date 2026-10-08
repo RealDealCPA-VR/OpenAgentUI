@@ -5,14 +5,14 @@ import { AssistantMessageGui } from "@/components/assistant-message-gui";
 import {
   Thread,
   type ThreadComponents,
-} from "@/components/assistant-ui/elements/thread.aui";
+} from "@/components/openagentui/elements/thread.aui";
 import {
   AssistantRuntimeProvider,
   AuiConfig,
   Suggestions,
   useAssistantInstructions,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import { renderGuiChatInstructions } from "@/lib/render-gui-tool";
 

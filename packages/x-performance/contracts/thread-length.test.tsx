@@ -1,14 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { act, createElement, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { useAuiState } from "@assistant-ui/store";
-import type { ThreadMessageLike } from "@assistant-ui/core";
+import { useAuiState } from "@openagentui/store";
+import type { ThreadMessageLike } from "@openagentui/core";
 import {
   AssistantRuntimeProvider,
   MessagePrimitiveParts,
   ThreadPrimitiveMessages,
   useExternalStoreRuntime,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 import { createRenderCounter } from "../src/render-counter";
 
 (

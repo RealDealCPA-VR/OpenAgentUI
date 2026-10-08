@@ -1,6 +1,6 @@
 ---
 title: Cloud persistence
-description: Store threads, messages, titles, and attachments in assistant-cloud with AISDKThreads.
+description: Store threads, messages, titles, and attachments in openagentui-cloud with AISDKThreads.
 ---
 
 Pass an `AssistantCloud` client to `AISDKThreads` to keep conversations across reloads. The cloud supplies the thread list and the runtime stores each thread's AI SDK messages. Without `cloud`, `AISDKThreads` keeps its list in memory. See [Thread list](/docs/vue/thread-list) for the list controls.
@@ -11,21 +11,21 @@ Create a project and copy its **Frontend API URL** from **Settings › General**
 
 ## Connect AISDKThreads
 
-Add `assistant-cloud` to an app that already runs the [AI SDK runtime](/docs/vue/ai-sdk):
+Add `openagentui-cloud` to an app that already runs the [AI SDK runtime](/docs/vue/ai-sdk):
 
 ```sh
-pnpm add assistant-cloud
+pnpm add openagentui-cloud
 ```
 
 Use the project's Frontend API URL as `baseUrl`. This client uses an anonymous browser session:
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKThreads } from "@assistant-ui/ai-sdk";
-import { AssistantCloud } from "assistant-cloud";
-import Thread from "~/components/assistant-ui/thread.vue";
-import ThreadList from "~/components/assistant-ui/thread-list.vue";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKThreads } from "@openagentui/ai-sdk";
+import { AssistantCloud } from "openagentui-cloud";
+import Thread from "~/components/openagentui/thread.vue";
+import ThreadList from "~/components/openagentui/thread-list.vue";
 
 const cloud = new AssistantCloud({
   baseUrl: "https://proj-<id>.assistant-api.com",
@@ -55,16 +55,16 @@ For signed in users, configure an [auth provider](/docs/cloud/auth-providers) an
 
 ```vue title="app/components/SignedInAssistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKThreads } from "@assistant-ui/ai-sdk";
-import { AssistantCloud } from "assistant-cloud";
-import Thread from "~/components/assistant-ui/thread.vue";
-import ThreadList from "~/components/assistant-ui/thread-list.vue";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKThreads } from "@openagentui/ai-sdk";
+import { AssistantCloud } from "openagentui-cloud";
+import Thread from "~/components/openagentui/thread.vue";
+import ThreadList from "~/components/openagentui/thread-list.vue";
 
 const cloud = new AssistantCloud({
   baseUrl: "https://proj-<id>.assistant-api.com",
   authToken: async () => {
-    const response = await fetch("/api/assistant-ui-token", { method: "POST" });
+    const response = await fetch("/api/openagentui-token", { method: "POST" });
     if (!response.ok) throw new Error("Could not get a cloud token");
     return response.text();
   },
@@ -108,11 +108,11 @@ With `cloud`, `AISDKThreads` keeps every visited thread mounted. A response can 
 ```vue title="app/components/UrlAssistant.client.vue"
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from "vue";
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKThreads } from "@assistant-ui/ai-sdk";
-import { AssistantCloud } from "assistant-cloud";
-import Thread from "~/components/assistant-ui/thread.vue";
-import ThreadList from "~/components/assistant-ui/thread-list.vue";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKThreads } from "@openagentui/ai-sdk";
+import { AssistantCloud } from "openagentui-cloud";
+import Thread from "~/components/openagentui/thread.vue";
+import ThreadList from "~/components/openagentui/thread-list.vue";
 
 const cloud = new AssistantCloud({
   baseUrl: "https://proj-<id>.assistant-api.com",

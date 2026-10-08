@@ -9,7 +9,7 @@ Typing `/` at the start of the draft opens a floating menu of commands above the
 
 <RuntimeMode>
 
-assistant-ui's composer has stable primitives and types for character-activated popovers: a character like `/` opens a scoped popover with its own search, keyboard navigation, and selection, without touching the rest of the input. The `unstable_useSlashCommandAdapter` helper and trigger popover context hooks remain unstable.
+openagentui's composer has stable primitives and types for character-activated popovers: a character like `/` opens a scoped popover with its own search, keyboard navigation, and selection, without touching the rest of the input. The `unstable_useSlashCommandAdapter` helper and trigger popover context hooks remain unstable.
 
 <Steps>
   <Step>
@@ -18,10 +18,10 @@ assistant-ui's composer has stable primitives and types for character-activated 
 
 `unstable_useSlashCommandAdapter` bundles a command list into the `{ adapter, action }` pair the trigger needs. Each command's `execute` stays in the hook's closure, so it never has to be serializable:
 
-```tsx title="components/assistant-ui/elements/composer-commands.tsx"
+```tsx title="components/openagentui/elements/composer-commands.tsx"
 "use client";
 
-import { unstable_useSlashCommandAdapter } from "@assistant-ui/react";
+import { unstable_useSlashCommandAdapter } from "@openagentui/react";
 
 export function useComposerCommands() {
   return unstable_useSlashCommandAdapter({
@@ -38,12 +38,12 @@ export function useComposerCommands() {
 
 ### Open the popover on `/`
 
-```tsx title="components/assistant-ui/elements/composer-bar.tsx"
+```tsx title="components/openagentui/elements/composer-bar.tsx"
 "use client";
 
-import { ComposerPrimitive } from "@assistant-ui/react";
+import { ComposerPrimitive } from "@openagentui/react";
 import { cn } from "@/lib/utils";
-import { floating } from "@/components/assistant-ui/elements/surfaces";
+import { floating } from "@/components/openagentui/elements/surfaces";
 import { useComposerCommands } from "./composer-commands";
 
 export function ComposerBar() {
@@ -82,7 +82,7 @@ export function ComposerBar() {
 }
 ```
 
-`TriggerPopoverRoot` wraps the whole bar, not only the input; `TriggerPopover` and `ComposerPrimitive.Root` sit side by side inside it. The `.Action` behavior fires `onExecute` at the moment a command is picked; `removeOnExecute` defaults to `false`, which replaces the typed `/query` with the command's directive text as an audit trail; pass `removeOnExecute: true` to the adapter to strip the trigger text instead. `TriggerPopoverItem` sets `data-highlighted` on whichever row keyboard navigation has reached, so the active tint is a plain `data-[highlighted]:` class rather than state you track. assistant-ui ships this whole composition pre-built: installing [Composer trigger popover](/elements/composer-trigger-popover) gives you the categories, search-empty, and loading states without assembling them by hand.
+`TriggerPopoverRoot` wraps the whole bar, not only the input; `TriggerPopover` and `ComposerPrimitive.Root` sit side by side inside it. The `.Action` behavior fires `onExecute` at the moment a command is picked; `removeOnExecute` defaults to `false`, which replaces the typed `/query` with the command's directive text as an audit trail; pass `removeOnExecute: true` to the adapter to strip the trigger text instead. `TriggerPopoverItem` sets `data-highlighted` on whichever row keyboard navigation has reached, so the active tint is a plain `data-[highlighted]:` class rather than state you track. openagentui ships this whole composition pre-built: installing [Composer trigger popover](/elements/composer-trigger-popover) gives you the categories, search-empty, and loading states without assembling them by hand.
 
   </Step>
 </Steps>
@@ -102,7 +102,7 @@ Standalone, nothing detects the `/` for you. `useSlashMatches` filters a command
 "use client";
 
 import { useState } from "react";
-import { useSlashMatches, ComposerMenu, ComposerCommandItem, type ComposerCommand } from "@/components/assistant-ui/elements/composer";
+import { useSlashMatches, ComposerMenu, ComposerCommandItem, type ComposerCommand } from "@/components/openagentui/elements/composer";
 import { FileTextIcon, LanguagesIcon } from "lucide-react";
 
 const commands: ComposerCommand[] = [

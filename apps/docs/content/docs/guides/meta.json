@@ -1,6 +1,6 @@
 {
   "title": "Guides",
-  "description": "Practical patterns for building features with assistant-ui",
+  "description": "Practical patterns for building features with openagentui",
   "icon": "Lightbulb",
   "root": true,
   "platforms": ["react"],

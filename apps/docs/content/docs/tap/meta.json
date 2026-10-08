@@ -1,6 +1,6 @@
 {
   "title": "Tap",
-  "description": "Hooks for reactive resources: @assistant-ui/tap runs React hooks as headless resources.",
+  "description": "Hooks for reactive resources: @openagentui/tap runs React hooks as headless resources.",
   "icon": "Droplet",
   "root": true,
   "platforms": ["tap"],

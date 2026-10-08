@@ -1,4 +1,4 @@
-This is the [assistant-ui](https://github.com/assistant-ui/assistant-ui) starter project for LangGraph. It ships a minimal Claude-backed agent (`backend/agent.ts`) plus a Next.js chat UI that streams from it.
+This is the [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project for LangGraph. It ships a minimal Claude-backed agent (`backend/agent.ts`) plus a Next.js chat UI that streams from it.
 
 ## Getting Started
 
@@ -39,7 +39,7 @@ backend/agent.ts    LangGraph graph exported as `graph`
 langgraph.json      LangGraph CLI config (graph id, node version, env file)
 ```
 
-`app/assistant.tsx` builds the runtime with `useStreamRuntime({ assistantId, apiUrl })` from `@assistant-ui/react-langchain`, which wraps `useStream` from `@langchain/react`.
+`app/assistant.tsx` builds the runtime with `useStreamRuntime({ assistantId, apiUrl })` from `@openagentui/react-langchain`, which wraps `useStream` from `@langchain/react`.
 
 ## Deployment security
 

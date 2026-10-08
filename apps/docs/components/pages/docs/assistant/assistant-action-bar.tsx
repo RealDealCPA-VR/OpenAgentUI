@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { ActionBarPrimitive, AuiIf } from "@assistant-ui/react";
-import { useAui, useAuiState } from "@assistant-ui/store";
+import { ActionBarPrimitive, AuiIf } from "@openagentui/react";
+import { useAui, useAuiState } from "@openagentui/store";
 import {
   ThumbsUpIcon,
   ThumbsDownIcon,

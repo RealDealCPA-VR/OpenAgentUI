@@ -2,7 +2,7 @@ import {
   resolveFileMediaType,
   resolveImageMediaType,
   toMediaWireUrl,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import type { Part, ThreadUserMessagePart } from "./types";
 
 /**

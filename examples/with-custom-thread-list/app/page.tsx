@@ -1,6 +1,6 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   AuiConfig,
   AuiProvider,
@@ -8,7 +8,7 @@ import {
   ThreadListItemPrimitive,
   ThreadListPrimitive,
   useAui,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 
 function ThreadList() {
   return (

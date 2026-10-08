@@ -2,7 +2,7 @@
 
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, onTestFinished, vi } from "vitest";
-import { bindExternalStoreMessage } from "@assistant-ui/core";
+import { bindExternalStoreMessage } from "@openagentui/core";
 import type {
   AssistantRuntime,
   MessageFormatAdapter,
@@ -12,7 +12,7 @@ import type {
   ThreadMessage,
   RespondToToolApprovalOptions,
   Unstable_ToolInteractionLog,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
 const mocks = vi.hoisted(() => ({
   remoteId: undefined as string | undefined,
@@ -35,11 +35,11 @@ const auiClient = {
   },
 };
 
-vi.mock("@assistant-ui/store", () => ({
+vi.mock("@openagentui/store", () => ({
   useAui: () => auiClient,
 }));
 
-import { MessageRepository } from "@assistant-ui/core/internal";
+import { MessageRepository } from "@openagentui/core/internal";
 import {
   toExportedMessageRepository,
   useExternalHistory,

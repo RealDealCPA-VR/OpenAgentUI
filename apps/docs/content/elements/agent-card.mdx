@@ -9,7 +9,7 @@ An agent card is the identity a remote agent presents before you talk to it: a n
 
 <RuntimeMode>
 
-`@assistant-ui/react-a2a` fetches the remote agent's card as part of connecting to it, and exposes it through a read-only hook.
+`@openagentui/react-a2a` fetches the remote agent's card as part of connecting to it, and exposes it through a read-only hook.
 
 <Steps>
   <Step>
@@ -19,8 +19,8 @@ An agent card is the identity a remote agent presents before you talk to it: a n
 ```tsx title="app/A2AProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useA2ARuntime } from "@assistant-ui/react-a2a";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useA2ARuntime } from "@openagentui/react-a2a";
 
 export function A2AProvider({ children }: { children: React.ReactNode }) {
   const runtime = useA2ARuntime({ baseUrl: "https://weather-agent.example.com" });
@@ -37,11 +37,11 @@ export function A2AProvider({ children }: { children: React.ReactNode }) {
 
 ### Render the discovered card
 
-```tsx title="components/assistant-ui/elements/connected-agent-card.tsx"
+```tsx title="components/openagentui/elements/connected-agent-card.tsx"
 "use client";
 
-import { useA2AAgentCard } from "@assistant-ui/react-a2a";
-import { AgentCard } from "@/components/assistant-ui/elements/agent-card";
+import { useA2AAgentCard } from "@openagentui/react-a2a";
+import { AgentCard } from "@/components/openagentui/elements/agent-card";
 
 export function ConnectedAgentCard() {
   const agentCard = useA2AAgentCard();
@@ -82,7 +82,7 @@ Standalone, every field is a prop; nothing is fetched for you.
 ### Render a card from data you hold
 
 ```tsx title="app/agents/[id]/page.tsx"
-import { AgentCard } from "@/components/assistant-ui/elements/agent-card";
+import { AgentCard } from "@/components/openagentui/elements/agent-card";
 
 export default function AgentPage() {
   return (
@@ -158,7 +158,7 @@ A common standalone case is a directory of agents you maintain yourself, not an 
 "use client";
 
 import { useEffect, useState } from "react";
-import { AgentCard } from "@/components/assistant-ui/elements/agent-card";
+import { AgentCard } from "@/components/openagentui/elements/agent-card";
 
 export function AgentDirectoryCard({ id }: { id: string }) {
   const [agent, setAgent] = useState<AgentRecord | null>(null);

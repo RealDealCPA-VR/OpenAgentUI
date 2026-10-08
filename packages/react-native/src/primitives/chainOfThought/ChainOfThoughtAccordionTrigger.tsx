@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Pressable, type PressableProps } from "react-native";
-import { useAuiState, useAui } from "@assistant-ui/store";
+import { useAuiState, useAui } from "@openagentui/store";
 
 export type ChainOfThoughtAccordionTriggerProps = Omit<
   PressableProps,

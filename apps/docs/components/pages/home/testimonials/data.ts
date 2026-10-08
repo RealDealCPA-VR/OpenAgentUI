@@ -30,7 +30,7 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: profileLangChain,
     username: "@LangChainAI",
     message:
-      "Build stateful conversational AI agents with LangGraph and assistant-ui.",
+      "Build stateful conversational AI agents with LangGraph and openagentui.",
     url: "https://x.com/LangChainAI/status/1833896540542558217",
   },
   {
@@ -38,14 +38,14 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: profileDaniel,
     username: "@js_craft_hq",
     message:
-      "A huge shoutout to @simonfarshid for the cool stuff he makes at assistant-ui",
+      "A huge shoutout to @simonfarshid for the cool stuff he makes at openagentui",
     url: "https://x.com/js_craft_hq/status/1833911916487458887",
   },
   {
     platform: "X",
     avatar: profileAdamSilverman,
     username: "@adamsilverman",
-    message: "assistant-ui powered by LangGraph! It is awesome.",
+    message: "openagentui powered by LangGraph! It is awesome.",
     url: "https://x.com/adamsilverman/status/1834671925076914687",
   },
   {
@@ -53,7 +53,7 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: profileHarrisonChase,
     username: "@hwchase17",
     message:
-      "Pleasure to work with Simon… bring streaming, gen UI, and human-in-the-loop with LangGraph Cloud + assistant-ui.",
+      "Pleasure to work with Simon… bring streaming, gen UI, and human-in-the-loop with LangGraph Cloud + openagentui.",
     url: "https://x.com/hwchase17/status/1833897209747964191",
   },
   {
@@ -61,7 +61,7 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: profileNeon,
     username: "@neondatabase",
     message:
-      "Conversations and streaming AI output are powered by @assistantui. It renders the chat interface and stores threads in Assistant UI Cloud so sessions persist across refreshes and context builds over time.",
+      "Conversations and streaming AI output are powered by @assistantui. It renders the chat interface and stores threads in OpenAgentUI Cloud so sessions persist across refreshes and context builds over time.",
     url: "https://x.com/neondatabase/status/1983609810798178829",
   },
   {
@@ -77,14 +77,14 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: profileVirat,
     username: "@virattt",
     message:
-      "My favorite financial assistant is assistant-ui… fully open source… powerful starter tools… integrates with LangSmith and LangGraph.",
+      "My favorite financial assistant is openagentui… fully open source… powerful starter tools… integrates with LangSmith and LangGraph.",
     url: "https://x.com/virattt/status/1841957600201736586",
   },
   {
     platform: "X",
     avatar: profileAdrian,
     username: "@hungrytrtl",
-    message: "assistant-ui… Could save days of UI work.",
+    message: "openagentui… Could save days of UI work.",
     url: "https://x.com/hungrytrtl/status/1856389748321071478",
   },
   {
@@ -100,14 +100,14 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: profileHowardGil,
     username: "@HowardBGil",
     message:
-      "Stop building chat interfaces yourself… Just install assistant-ui and you’re done.",
+      "Stop building chat interfaces yourself… Just install openagentui and you’re done.",
     url: "https://x.com/HowardBGil/status/1833947697872863547",
   },
   {
     platform: "X",
     avatar: profileAlex,
     username: "@replyingaleks",
-    message: "assistant-ui goated 🐐🐐",
+    message: "openagentui goated 🐐🐐",
     url: "https://x.com/replyingaleks/status/1833938146586939645",
   },
   {
@@ -123,7 +123,7 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: profileVoltagent,
     username: "@voltagent_dev",
     message:
-      "We just added Assistant UI support to VoltAgent. Streaming, tools, memory all work out of the box.",
+      "We just added OpenAgentUI support to VoltAgent. Streaming, tools, memory all work out of the box.",
     url: "https://x.com/voltagent_dev/status/2000718877508940013",
   },
 ];

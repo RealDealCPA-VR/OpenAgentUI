@@ -14,12 +14,12 @@ declare function useAuiEvent<TEvent extends AssistantEventName>(
 ): void;
 ```
 
-`AssistantEventName`, `AssistantEventSelector`, and `AssistantEventCallback` are exported by `@assistant-ui/vue`. The callback receives the selected event's payload. For `event: "*"`, it receives `{ event, payload }` instead.
+`AssistantEventName`, `AssistantEventSelector`, and `AssistantEventCallback` are exported by `@openagentui/vue`. The callback receives the selected event's payload. For `event: "*"`, it receives `{ event, payload }` instead.
 
 ```vue title="app/components/ThreadEventStatus.vue"
 <script setup lang="ts">
 import { ref } from "vue";
-import { useAuiEvent } from "@assistant-ui/vue";
+import { useAuiEvent } from "@openagentui/vue";
 
 const selectedThreadId = ref("");
 const lastErrorMessageId = ref("");

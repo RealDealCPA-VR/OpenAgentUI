@@ -1,6 +1,6 @@
 import { defineComponent, h, mergeProps, type SlotsType } from "vue";
-import { flushTapSync } from "@assistant-ui/tap";
-import { composerInputDisabled } from "@assistant-ui/core/store/internal";
+import { flushTapSync } from "@openagentui/tap";
+import { composerInputDisabled } from "@openagentui/core/store/internal";
 import { isAttrDisabled } from "./attrDisabled";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";

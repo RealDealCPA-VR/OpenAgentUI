@@ -34,18 +34,18 @@ const MCP_TOOLKIT_WRAPPER = "defineMcpToolkit";
 /** The required wrapper around a generative-UI library (stripped at build time). */
 const COMPONENTS_WRAPPER = "defineGenerativeComponents";
 /** The core package whose metadata declares supported compiler versions. */
-const CORE_PACKAGE = "@assistant-ui/core";
+const CORE_PACKAGE = "@openagentui/core";
 /** This package, checked against core's compatibility range. */
-const COMPILER_PACKAGE = "@assistant-ui/x-generative-compiler";
+const COMPILER_PACKAGE = "@openagentui/x-generative-compiler";
 /** Packages that re-export core's generative markers. */
 const DISTRIBUTION_PACKAGES = [
   CORE_PACKAGE,
-  "@assistant-ui/react",
-  "@assistant-ui/react-native",
-  "@assistant-ui/react-ink",
+  "@openagentui/react",
+  "@openagentui/react-native",
+  "@openagentui/react-ink",
 ] as const;
 /** Package that exports the generative UI runtime split by export condition. */
-const GENERATIVE_UI_PACKAGE = "@assistant-ui/react-generative-ui";
+const GENERATIVE_UI_PACKAGE = "@openagentui/react-generative-ui";
 /**
  * The class whose instances expose split-by-condition tools (`present()`,
  * `promptUser()`). A toolkit entry that calls a method on one of these passes
@@ -104,7 +104,7 @@ export interface CompileResult {
 export class GenerativeCompileError extends Error {
   constructor(message: string, filename?: string) {
     super(
-      `[assistant-ui/use-generative]${filename ? ` ${filename}:` : ""} ${message}`,
+      `[openagentui/use-generative]${filename ? ` ${filename}:` : ""} ${message}`,
     );
     this.name = "GenerativeCompileError";
   }
@@ -385,8 +385,8 @@ const checkedCorePackageJsonPaths = new Set<string>();
 
 // This compiler's own version, inlined from package.json at build time. Read via
 // an import (not by walking the filesystem at runtime) so the literal survives
-// being bundled into a host package like `@assistant-ui/metro`, where no
-// standalone `@assistant-ui/x-generative-compiler` sits on disk to walk up to.
+// being bundled into a host package like `@openagentui/metro`, where no
+// standalone `@openagentui/x-generative-compiler` sits on disk to walk up to.
 const COMPILER_VERSION = pkgJson.version;
 
 function ensureCompilerCompatibleWithCore(
@@ -426,8 +426,8 @@ function ensureCompilerCompatibleWithCore(
     throw new GenerativeCompileError(
       `${CORE_PACKAGE}@${corePackageJson.version ?? "unknown"} requires ` +
         `${COMPILER_PACKAGE} ${range}, but the current compiler is ` +
-        `${COMPILER_VERSION}. Update @assistant-ui/next, @assistant-ui/vite, ` +
-        "or @assistant-ui/metro so their compiler satisfies the core package's " +
+        `${COMPILER_VERSION}. Update @openagentui/next, @openagentui/vite, ` +
+        "or @openagentui/metro so their compiler satisfies the core package's " +
         "optionalDevDependencies range.",
       filename,
     );
@@ -589,7 +589,7 @@ function ensureDefaultExport(ast: t.File, filename: string | undefined): void {
   if (!unwrapToToolkitCall(def.declaration)) {
     throw new GenerativeCompileError(
       `the default export must be ${TOOLKIT_WRAPPER}({ ... }) or ` +
-        `${MCP_TOOLKIT_WRAPPER}({ ... }) (imported from "@assistant-ui/react"); ` +
+        `${MCP_TOOLKIT_WRAPPER}({ ... }) (imported from "@openagentui/react"); ` +
         "wrapping is required so a backend `execute` can't be authored in a way " +
         "that reaches the client",
       filename,
@@ -1582,7 +1582,7 @@ function compileToolkit(
         throw new GenerativeCompileError(
           `${typedToolSubject("external", toolName)} must declare a ` +
             "`render` or `renderText` " +
-            "(assistant-ui only renders calls for tools defined elsewhere)",
+            "(openagentui only renders calls for tools defined elsewhere)",
           filename,
         );
       }
@@ -1829,7 +1829,7 @@ function typedToolSubject(type: string, toolName: string | undefined): string {
 function stripExternalToolMetadata(object: t.ObjectExpression): void {
   // Mirror BackendTool's forbidden metadata fields: execute is stripped by the
   // main routing loop, while streamCall is also removed because there is no
-  // assistant-ui executor to stream from.
+  // openagentui executor to stream from.
   removeMember(object, "description");
   removeMember(object, "parameters");
   removeMember(object, "disabled");

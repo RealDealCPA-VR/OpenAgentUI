@@ -1,6 +1,6 @@
 # with-resumable-stream
 
-Demonstrates `assistant-stream/resumable`: persist an in-flight LLM response on the server so the client can reload or lose its connection mid-stream and pick up where it left off.
+Demonstrates `openagentui-stream/resumable`: persist an in-flight LLM response on the server so the client can reload or lose its connection mid-stream and pick up where it left off.
 
 ## How it works
 
@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000), send a prompt, then reload 
 
 ## Client integration
 
-The browser side is wired through two helpers from `@assistant-ui/ai-sdk`:
+The browser side is wired through two helpers from `@openagentui/ai-sdk`:
 
 - `createResumableSessionStorage()` returns a small `sessionStorage`-backed storage object for the pending stream id. Pass `{ key }` to namespace per route. Use `localStorage` instead if you want a stream that survives full browser restarts (and accept the cross-tab race that comes with it).
 - `AssistantChatTransport` accepts a `resumable` option. When set, the transport captures the `x-resumable-stream-id` response header, watches the SSE body for the `finish` event so the stored id is cleared on natural completion (cancellation leaves it intact), and redirects `chat.resumeStream()` reconnects to the configured `resumeApi`.
@@ -43,7 +43,7 @@ The `ResumableStreamContext` returned by `createResumableStreamContext` exposes:
 
 ## Storage
 
-By default the example uses `createInMemoryResumableStreamStore` from `assistant-stream/resumable`. The store is memoized on `globalThis` via `Symbol.for`, so it survives Next.js hot reload but not full server restart. Default TTL is 24h; configure with `defaultTtlMs` if you want shorter eviction.
+By default the example uses `createInMemoryResumableStreamStore` from `openagentui-stream/resumable`. The store is memoized on `globalThis` via `Symbol.for`, so it survives Next.js hot reload but not full server restart. Default TTL is 24h; configure with `defaultTtlMs` if you want shorter eviction.
 
 To use Redis instead, set `REDIS_URL` in `.env.local`:
 
@@ -52,7 +52,7 @@ REDIS_URL=redis://localhost:6379
 OPENAI_API_KEY=your-api-key-here
 ```
 
-The example will use the `assistant-stream/resumable/redis` adapter automatically. With Redis, resumable state survives server restarts (until the per-stream TTL expires; default 24h).
+The example will use the `openagentui-stream/resumable/redis` adapter automatically. With Redis, resumable state survives server restarts (until the per-stream TTL expires; default 24h).
 
 You can run a local Redis quickly with Docker:
 
@@ -77,5 +77,5 @@ docker run -d --name redis -p 6379:6379 redis:7-alpine
 
 ## Related documentation
 
-- [assistant-ui documentation](https://www.assistant-ui.com/docs)
+- [openagentui documentation](https://openagentui.dev/docs)
 - [AI SDK reconnect API](https://sdk.vercel.ai/docs)

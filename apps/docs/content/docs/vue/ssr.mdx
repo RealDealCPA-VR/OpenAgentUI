@@ -9,9 +9,9 @@ An assistant runtime owns a client tree and reactive scopes. If it renders on th
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKChat } from "@assistant-ui/ai-sdk";
-import Thread from "~/components/assistant-ui/thread.vue";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKChat } from "@openagentui/ai-sdk";
+import Thread from "~/components/openagentui/thread.vue";
 
 const config = AuiConfig({
   threads: AISDKChat(),

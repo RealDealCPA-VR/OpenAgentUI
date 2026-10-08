@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   AssistantRuntimeProvider,
   AuiProvider,
@@ -10,8 +10,8 @@ import {
   Suggestions,
   useAui,
   unstable_useInteractable,
-} from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
+} from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import {
   CheckCircle2Icon,

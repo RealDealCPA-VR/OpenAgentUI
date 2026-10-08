@@ -1,5 +1,5 @@
 import type { Unsubscribe } from "../types/unsubscribe";
-import type { Tool } from "assistant-stream";
+import type { Tool } from "openagentui-stream";
 import { nullProtoRecord } from "../utils/record";
 
 export type LanguageModelV1CallSettings = {

@@ -14,7 +14,7 @@ import {
   unstable_useInteractableVersions,
   useAuiState,
   type Unstable_InteractableToolRenderProps,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   ArrowLeftIcon,
   CheckIcon,

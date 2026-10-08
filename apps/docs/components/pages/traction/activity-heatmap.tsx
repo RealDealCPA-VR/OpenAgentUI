@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import * as HeatGraph from "heat-graph";
+import * as HeatGraph from "@openagentui/heat-graph";
 import type { ActivityPoint } from "@/lib/traction";
 
 const COMMIT_COLORS = [

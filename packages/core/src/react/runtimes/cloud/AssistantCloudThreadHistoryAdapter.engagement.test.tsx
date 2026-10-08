@@ -2,10 +2,10 @@
 
 import { act, render, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { flushTapSync, withKey } from "@assistant-ui/tap";
-import { useAui, type AssistantClient } from "@assistant-ui/store";
-import { AuiConfig, createAssistantClient } from "@assistant-ui/store/client";
-import type { AssistantCloud, AssistantCloudEvent } from "assistant-cloud";
+import { flushTapSync, withKey } from "@openagentui/tap";
+import { useAui, type AssistantClient } from "@openagentui/store";
+import { AuiConfig, createAssistantClient } from "@openagentui/store/client";
+import type { AssistantCloud, AssistantCloudEvent } from "openagentui-cloud";
 import { AssistantRuntimeProvider } from "../../AssistantRuntimeProvider";
 import { RemoteThreadList } from "../../client/RemoteThreadList";
 import { ThreadClient } from "../../../store/runtime-clients/thread-runtime-client";

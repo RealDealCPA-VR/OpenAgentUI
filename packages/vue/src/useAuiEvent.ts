@@ -1,5 +1,5 @@
 import { onScopeDispose } from "vue";
-import { isDevelopment } from "@assistant-ui/core/store/internal";
+import { isDevelopment } from "@openagentui/core/store/internal";
 import {
   normalizeEventSelector,
   type AssistantClient,
@@ -7,7 +7,7 @@ import {
   type AssistantEventName,
   type AssistantEventSelector,
   type Unsubscribe,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { useAuiContext } from "./context";
 
 /**

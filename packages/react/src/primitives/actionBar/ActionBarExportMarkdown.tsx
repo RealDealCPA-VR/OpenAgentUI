@@ -4,7 +4,7 @@ import { forwardRef, useCallback } from "react";
 import type { ActionButtonProps } from "../../utils/createActionButton";
 import { composeEventHandlers } from "radix-ui/internal";
 import { Primitive } from "../../utils/Primitive";
-import { useAuiState, useAui } from "@assistant-ui/store";
+import { useAuiState, useAui } from "@openagentui/store";
 
 const useActionBarExportMarkdown = ({
   filename,
@@ -66,7 +66,7 @@ export const ActionBarPrimitiveExportMarkdown = forwardRef<
       disabled={disabled || !callback}
       onClick={composeEventHandlers(onClick, () => {
         void callback?.().catch((error: unknown) => {
-          console.error("[assistant-ui] markdown export failed:", error);
+          console.error("[openagentui] markdown export failed:", error);
         });
       })}
     />

@@ -7,14 +7,14 @@ import {
 import { StdioServerTransport } from "@modelcontextprotocol/server/stdio";
 import { type Readable, type Writable, finished } from "node:stream";
 
-const DEFAULT_URL = "https://www.assistant-ui.com/mcp";
+const DEFAULT_URL = "https://openagentui.dev/mcp";
 
 const logError = (message: string, error: unknown) => {
-  console.error(`assistant-ui MCP proxy: ${message}`, error);
+  console.error(`openagentui MCP proxy: ${message}`, error);
 };
 
 export async function runProxy({
-  url = new URL(process.env.ASSISTANT_UI_MCP_URL ?? DEFAULT_URL),
+  url = new URL(process.env.OPENAGENTUI_MCP_URL ?? DEFAULT_URL),
   stdin = process.stdin,
   stdout = process.stdout,
 }: {

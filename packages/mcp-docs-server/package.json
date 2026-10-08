@@ -1,16 +1,16 @@
 {
-  "name": "@assistant-ui/mcp-docs-server",
+  "name": "@openagentui/mcp-docs-server",
   "version": "0.3.3",
-  "description": "Stdio proxy for the hosted assistant-ui documentation MCP server",
+  "description": "Stdio proxy for the hosted openagentui documentation MCP server",
   "keywords": [
     "mcp",
     "model-context-protocol",
-    "assistant-ui",
+    "openagentui",
     "documentation",
     "ai",
     "claude"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -22,7 +22,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "assistant-ui-mcp": "./dist/stdio.js"
+    "openagentui-mcp": "./dist/stdio.js"
   },
   "files": [
     "dist",
@@ -43,7 +43,7 @@
     "@modelcontextprotocol/server": "^2.2.0"
   },
   "devDependencies": {
-    "@assistant-ui/x-buildutils": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
     "@modelcontextprotocol/core": "^2.2.0",
     "@types/node": "^26.6.3",
     "tsx": "^4.23.15",
@@ -53,13 +53,13 @@
     "access": "public",
     "provenance": true
   },
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/mcp-docs-server"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   }
 }

@@ -3,7 +3,7 @@ import { GenerativeUIStyle } from "@/components/generative-ui-style";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "assistant-ui Generative UI Example",
+  title: "openagentui Generative UI Example",
   description:
     "Example showcasing model-composed interfaces with the present tool and a custom component vocabulary",
 };

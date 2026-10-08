@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { AssistantClient } from "@assistant-ui/store";
-import type { Unsubscribe } from "@assistant-ui/core";
+import type { AssistantClient } from "@openagentui/store";
+import type { Unsubscribe } from "@openagentui/core";
 
 /**
  * Where a snapshot comes from and what counts as a change to it. Declared once

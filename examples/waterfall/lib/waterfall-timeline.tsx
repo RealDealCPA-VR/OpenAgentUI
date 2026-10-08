@@ -9,8 +9,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { useAuiState } from "@assistant-ui/store";
-import { SpanPrimitive, type SpanState } from "@assistant-ui/react-o11y";
+import { useAuiState } from "@openagentui/store";
+import { SpanPrimitive, type SpanState } from "@openagentui/react-o11y";
 import { WaterfallRow } from "./waterfall-row";
 
 const LABEL_WIDTH = 200;

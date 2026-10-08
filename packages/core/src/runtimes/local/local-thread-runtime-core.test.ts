@@ -224,7 +224,7 @@ describe("LocalThreadRuntimeCore events", () => {
     expect(laterListener).toHaveBeenCalledOnce();
     expect(thread.messages.at(-1)?.status?.type).toBe("complete");
     expect(consoleError).toHaveBeenCalledWith(
-      '[assistant-ui] Thread runtime "runEnd" listener threw an error',
+      '[openagentui] Thread runtime "runEnd" listener threw an error',
       listenerError,
     );
   });
@@ -252,7 +252,7 @@ describe("LocalThreadRuntimeCore events", () => {
     expect(thread.messages.at(-1)?.status?.type).toBe("complete");
     await vi.waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        '[assistant-ui] Thread runtime "runEnd" listener threw an error',
+        '[openagentui] Thread runtime "runEnd" listener threw an error',
         listenerError,
       );
     });
@@ -3352,7 +3352,7 @@ describe("LocalThreadRuntimeCore tool approval persistence", () => {
     ]);
     expect(warn).toHaveBeenCalledTimes(1);
     expect(warn).toHaveBeenCalledWith(
-      "[assistant-ui] Skipped history messages with missing parents:",
+      "[openagentui] Skipped history messages with missing parents:",
       ["orphan"],
     );
   });
@@ -3391,7 +3391,7 @@ describe("LocalThreadRuntimeCore tool approval persistence", () => {
     expect(thread.messages.map((m) => m.id)).toEqual(["root", "leaf"]);
     expect(warn).toHaveBeenCalledTimes(1);
     expect(warn).toHaveBeenCalledWith(
-      "[assistant-ui] History head is not among the loaded messages:",
+      "[openagentui] History head is not among the loaded messages:",
       "never-stored",
     );
   });
@@ -3745,7 +3745,7 @@ describe("LocalThreadRuntimeCore tool approval persistence", () => {
     ).rejects.toBe(error);
 
     expect(log).toHaveBeenCalledExactlyOnceWith(
-      "[assistant-ui] local thread history write failed:",
+      "[openagentui] local thread history write failed:",
       error,
     );
   });
@@ -7271,7 +7271,7 @@ describe("LocalThreadRuntimeCore runs", () => {
     await flush();
 
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] local thread history load failed:",
+      "[openagentui] local thread history load failed:",
       error,
     );
   });

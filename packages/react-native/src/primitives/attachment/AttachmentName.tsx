@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { Text, type TextProps } from "react-native";
-import { useAuiState } from "@assistant-ui/store";
+import { useAuiState } from "@openagentui/store";
 
 export type AttachmentNameProps = TextProps;
 

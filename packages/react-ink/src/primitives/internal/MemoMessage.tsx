@@ -1,7 +1,7 @@
 import { type ReactNode, memo } from "react";
-import type { ThreadMessage } from "@assistant-ui/core";
-import { RenderChildrenWithAccessor } from "@assistant-ui/store";
-import { MessageByIndexProvider } from "@assistant-ui/core/react";
+import type { ThreadMessage } from "@openagentui/core";
+import { RenderChildrenWithAccessor } from "@openagentui/store";
+import { MessageByIndexProvider } from "@openagentui/core/react";
 
 type MemoMessageProps = {
   index: number;

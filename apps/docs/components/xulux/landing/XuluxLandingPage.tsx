@@ -28,7 +28,7 @@ type Props = {
 
 export function XuluxLandingPage({
   headline = "What do you want to build?",
-  placeholder = "Describe what you want to build with assistant-ui...",
+  placeholder = "Describe what you want to build with openagentui...",
   onStartChat,
   onSelectTemplate,
 }: Props) {

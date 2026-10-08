@@ -273,7 +273,7 @@ export function SidebarContent({ tree }: { tree?: PageTree.Root }) {
       </nav>
       <div className="border-border/50 flex shrink-0 items-center gap-1 border-t px-3 py-2">
         <a
-          href="https://github.com/assistant-ui/assistant-ui"
+          href="https://github.com/RealDealCPA-VR/OpenAgentUI"
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:bg-accent/30 hover:text-foreground dark:hover:bg-accent/40 flex size-8 items-center justify-center rounded-md transition-colors"

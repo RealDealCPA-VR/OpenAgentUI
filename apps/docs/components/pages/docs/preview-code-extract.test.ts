@@ -162,11 +162,11 @@ describe("cleanupImports", () => {
     expect(
       cleanupImports([
         'import { Button } from "@/components/ui/button.radix";',
-        'import { ModelSelectorRoot } from "@/components/assistant-ui/elements/model-selector.radix";',
+        'import { ModelSelectorRoot } from "@/components/openagentui/elements/model-selector.radix";',
       ]),
     ).toEqual([
       'import { Button } from "@/components/ui/button";',
-      'import { ModelSelectorRoot } from "@/components/assistant-ui/elements/model-selector";',
+      'import { ModelSelectorRoot } from "@/components/openagentui/elements/model-selector";',
     ]);
   });
 });

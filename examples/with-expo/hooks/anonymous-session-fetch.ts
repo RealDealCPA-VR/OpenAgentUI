@@ -1,5 +1,5 @@
 // Mirrored inline in examples/with-react-ink-web/app/ink-app.tsx; keep in sync.
-const ANONYMOUS_SESSION_HEADER = "x-assistant-ui-anonymous-session";
+const ANONYMOUS_SESSION_HEADER = "x-openagentui-anonymous-session";
 
 export function shouldUseAnonymousSessionFetch(
   chatApi: string,

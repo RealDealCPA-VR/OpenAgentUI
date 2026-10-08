@@ -17,8 +17,8 @@ MCP config dialog lists every app-defined connector and user-added custom server
 `McpManagerResource` is the entry point: mount it once at the root of your app, with the connectors you want available to every user.
 
 ```tsx title="app/assistant.tsx"
-import { AuiConfig, AuiProvider, useAui } from "@assistant-ui/react";
-import { McpManagerResource } from "@assistant-ui/react-mcp";
+import { AuiConfig, AuiProvider, useAui } from "@openagentui/react";
+import { McpManagerResource } from "@openagentui/react-mcp";
 
 export function McpProviders({ children }: { children: React.ReactNode }) {
   const aui = useAui();
@@ -44,8 +44,8 @@ export function McpProviders({ children }: { children: React.ReactNode }) {
 
 `McpConfigDialog` renders anywhere inside the provider. With no `children`, it renders its own outlined trigger button; pass an element as `children` to use your own trigger instead.
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
-import { McpConfigDialog } from "@/components/assistant-ui/elements/mcp-config.aui";
+```tsx title="components/openagentui/elements/thread.aui.tsx"
+import { McpConfigDialog } from "@/components/openagentui/elements/mcp-config.aui";
 
 <McpConfigDialog />
 ```
@@ -103,7 +103,7 @@ Pass any element as `children` and it becomes the dialog's trigger in place of t
 Compose `McpServerPrimitive.Root` directly for a sidebar or settings page that shows one server without the rest of the dialog's chrome.
 
 ```tsx
-import { McpServerByIdProvider, McpServerPrimitive } from "@assistant-ui/react-mcp";
+import { McpServerByIdProvider, McpServerPrimitive } from "@openagentui/react-mcp";
 
 <McpServerByIdProvider id="linear">
   <McpServerPrimitive.Root>

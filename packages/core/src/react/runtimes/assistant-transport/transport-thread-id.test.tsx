@@ -3,8 +3,8 @@
 import { act, render, waitFor } from "@testing-library/react";
 import { useState, type FC } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AssistantCloud } from "assistant-cloud";
-import { useAui } from "@assistant-ui/store";
+import type { AssistantCloud } from "openagentui-cloud";
+import { useAui } from "@openagentui/store";
 import { AssistantRuntimeProvider } from "../../AssistantRuntimeProvider";
 import type { AssistantRuntime } from "../../../runtime/api/assistant-runtime";
 import type { RemoteThreadListAdapter } from "../../../runtimes/remote-thread-list/types";

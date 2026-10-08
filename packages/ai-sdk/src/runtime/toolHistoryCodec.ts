@@ -2,8 +2,8 @@ import type {
   RespondToToolApprovalOptions,
   ThreadMessage,
   Unstable_ToolInteractionLog,
-} from "@assistant-ui/core";
-import { isRecord, readToolInteractionLog } from "@assistant-ui/core/internal";
+} from "@openagentui/core";
+import { isRecord, readToolInteractionLog } from "@openagentui/core/internal";
 import { normalizeToolApprovalAnswers } from "../converters/toolApprovalAnswers";
 
 const TOOL_ARTIFACTS_METADATA_KEY = "__aui_toolArtifacts";

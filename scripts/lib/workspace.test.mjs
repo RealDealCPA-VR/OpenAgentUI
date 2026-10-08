@@ -14,13 +14,13 @@ import {
 
 test("API surface filenames match scoped and unscoped package names", () => {
   assert.equal(
-    apiSurfaceFileName("@assistant-ui/react"),
-    "assistant-ui__react.ts",
+    apiSurfaceFileName("@openagentui/react"),
+    "openagentui__react.ts",
   );
-  assert.equal(apiSurfaceFileName("assistant-ui"), "assistant-ui.ts");
+  assert.equal(apiSurfaceFileName("openagentui"), "openagentui.ts");
   assert.equal(
-    apiSurfaceFileName("create-assistant-ui"),
-    "create-assistant-ui.ts",
+    apiSurfaceFileName("create-openagentui"),
+    "create-openagentui.ts",
   );
 });
 

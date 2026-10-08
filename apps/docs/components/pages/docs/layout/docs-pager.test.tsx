@@ -42,14 +42,14 @@ describe("DocsPager", () => {
         name: /View as Markdown/,
       });
       expect(markdownAction.getAttribute("href")).toBe(
-        `https://www.assistant-ui.com${expectedUrl}`,
+        `https://openagentui.dev${expectedUrl}`,
       );
       const claudeAction = screen.getByRole("menuitem", {
         name: /Open in Claude/,
       });
       const claudeUrl = new URL(claudeAction.getAttribute("href")!);
       expect(claudeUrl.searchParams.get("q")).toBe(
-        `Read https://www.assistant-ui.com${expectedUrl} (the assistant-ui documentation page "Example") so I can ask questions about it.`,
+        `Read https://openagentui.dev${expectedUrl} (the openagentui documentation page "Example") so I can ask questions about it.`,
       );
       expect(screen.getAllByRole("menuitem")).toHaveLength(5);
       expect(

@@ -5,15 +5,15 @@ import { defineConfig } from "vitest/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const newYorkTests = ["src/components/vue/assistant-ui/thread-list.test.ts"];
+const newYorkTests = ["src/components/vue/openagentui/thread-list.test.ts"];
 
 const web = {
   plugins: [vue()],
   resolve: {
     alias: {
-      "@/components/assistant-ui": resolve(
+      "@/components/openagentui": resolve(
         __dirname,
-        "src/components/react/assistant-ui",
+        "src/components/react/openagentui",
       ),
       "@/components/ui/radix": resolve(
         __dirname,
@@ -82,9 +82,9 @@ export default defineConfig({
               __dirname,
               "node_modules/react-native-svg/lib/module/ReactNativeSVG.web.js",
             ),
-            "@/components/assistant-ui": resolve(
+            "@/components/openagentui": resolve(
               __dirname,
-              "src/components/react-native/assistant-ui",
+              "src/components/react-native/openagentui",
             ),
             "@/components/ui": resolve(
               __dirname,

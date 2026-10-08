@@ -1,6 +1,6 @@
 ---
 title: Toolkits
-description: Define model-facing tools and compose them into named toolkits registered with an assistant-ui runtime scope.
+description: Define model-facing tools and compose them into named toolkits registered with an openagentui runtime scope.
 ---
 
 import { ToolDefinition, Tools, defineMcpToolkit, defineToolkit, providerTool, tool } from "@/generated/typeDocs";
@@ -109,7 +109,7 @@ used for plain frontend/backend/human toolkit objects.
 Marks a generative toolkit entry as an externally executed backend tool.
 
 Use this when another system (for example a backend route or LangGraph node)
-already defines and executes the tool, but assistant-ui should render its
+already defines and executes the tool, but openagentui should render its
 tool calls. The use-generative compiler omits `execute: externalTool()`
 entries from the server build and keeps a `type: "backend"` renderer on the
 client build.
@@ -128,7 +128,7 @@ confirm: { execute: humanTool(), render: (props) => <Confirm {...props} /> }
 ```
 
 Unlike [defineToolkit](/docs/api-reference/tools/toolkits#definetoolkit), it has **no runtime implementation**: a
-`"use generative"` compiler (e.g. `@assistant-ui/next` or `@assistant-ui/vite`)
+`"use generative"` compiler (e.g. `@openagentui/next` or `@openagentui/vite`)
 detects `execute: humanTool()`, drops it, and stamps the tool `type: "human"`.
 Reaching it at runtime means the module wasn't compiled (used outside a
 `"use generative"` file), so it throws.

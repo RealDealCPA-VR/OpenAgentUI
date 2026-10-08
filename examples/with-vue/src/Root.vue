@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { RuntimeAdapter, Suggestions } from "@assistant-ui/core/store";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { RuntimeAdapter, Suggestions } from "@openagentui/core/store";
 import App from "./App.vue";
 import { createEchoRuntime } from "./runtime";
 

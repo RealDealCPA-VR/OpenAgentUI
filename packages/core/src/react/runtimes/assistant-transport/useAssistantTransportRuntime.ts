@@ -5,7 +5,7 @@ import {
   type ReadonlyJSONObject,
   type ReadonlyJSONValue,
   asAsyncIterableStream,
-} from "assistant-stream/utils";
+} from "openagentui-stream/utils";
 import { useExternalStoreRuntime } from "../useExternalStoreRuntime";
 import type { AssistantRuntime } from "../../../runtime/api/assistant-runtime";
 import type { AddToolResultOptions } from "../../../runtime/interfaces/thread-runtime-core";
@@ -16,7 +16,7 @@ import {
   AssistantTransportDecoder,
   unstable_createInitialMessage as createInitialMessage,
   toToolsJSONSchema,
-} from "assistant-stream";
+} from "openagentui-stream";
 import type {
   AssistantTransportOptions,
   AddMessageCommand,
@@ -36,7 +36,7 @@ import { useConvertedState } from "./useConvertedState";
 import type { ToolExecutionStatus } from "../../../runtimes/tool-invocations/ToolInvocationTracker";
 import { createRequestHeaders } from "../../../runtimes/assistant-transport/utils";
 import { useRemoteThreadListRuntime } from "../useRemoteThreadListRuntime";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 import type { UserExternalState } from "../../../types/augmentations";
 import { useCloudThreadListAdapter } from "../cloud/useCloudThreadListAdapter";
 import { generateId } from "../../../utils/id";
@@ -161,7 +161,7 @@ const useAssistantTransportThreadRuntime = <T>(
     const command = convertAppendMessageToCommand(message);
     if (!command) {
       console.warn(
-        "[assistant-ui] Skipped add-message command with no supported parts",
+        "[openagentui] Skipped add-message command with no supported parts",
       );
       return;
     }

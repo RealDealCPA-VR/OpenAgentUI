@@ -25,17 +25,17 @@ function groupPackages(packages: string[]): PackageGroup[] {
 
   for (const pkg of packages) {
     if (
-      pkg === "@assistant-ui/react" ||
-      pkg === "@assistant-ui/core" ||
-      pkg === "@assistant-ui/store" ||
-      pkg === "@assistant-ui/tap" ||
-      pkg === "@assistant-ui/styles" ||
-      pkg === "@assistant-ui/ui" ||
-      pkg === "assistant-stream" ||
-      pkg === "assistant-ui"
+      pkg === "@openagentui/react" ||
+      pkg === "@openagentui/core" ||
+      pkg === "@openagentui/store" ||
+      pkg === "@openagentui/tap" ||
+      pkg === "@openagentui/styles" ||
+      pkg === "@openagentui/ui" ||
+      pkg === "openagentui-stream" ||
+      pkg === "openagentui"
     ) {
       core.push(pkg);
-    } else if (pkg.startsWith("@assistant-ui/react-")) {
+    } else if (pkg.startsWith("@openagentui/react-")) {
       integrations.push(pkg);
     } else {
       other.push(pkg);

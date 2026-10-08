@@ -3,7 +3,7 @@ title: AI SDK
 description: Stream from an AI SDK route with AISDKChat or AISDKThreads, and configure the transport, callbacks, and adapters.
 ---
 
-`@assistant-ui/ai-sdk` runs AI SDK chat state inside the assistant client. Install `react` even in a Vue app because the runtime uses React hooks to host that state internally; Vue renders through `@assistant-ui/vue`. The [quickstart](/docs/vue/quickstart) covers installation and the first chat.
+`@openagentui/ai-sdk` runs AI SDK chat state inside the assistant client. Install `react` even in a Vue app because the runtime uses React hooks to host that state internally; Vue renders through `@openagentui/vue`. The [quickstart](/docs/vue/quickstart) covers installation and the first chat.
 
 ## The server route
 
@@ -11,7 +11,7 @@ The default transport posts to `/api/chat`. This Nitro route reads the UI messag
 
 ```ts title="server/api/chat.post.ts"
 import { openai } from "@ai-sdk/openai";
-import { frontendTools, type FrontendTools } from "@assistant-ui/ai-sdk";
+import { frontendTools, type FrontendTools } from "@openagentui/ai-sdk";
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
 
 export default defineEventHandler(async (event) => {
@@ -36,7 +36,7 @@ Tools the server owns go in the same `tools` map with their own `execute`; see [
 
 ## AISDKChat
 
-`AISDKChat()` creates a single thread backed by an AI SDK `Chat`. Pass it as `threads: AISDKChat(options)` in `AuiConfig`. These options come from AI SDK `ChatInit` and the assistant-ui thread adapter:
+`AISDKChat()` creates a single thread backed by an AI SDK `Chat`. Pass it as `threads: AISDKChat(options)` in `AuiConfig`. These options come from AI SDK `ChatInit` and the openagentui thread adapter:
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
@@ -57,7 +57,7 @@ Tools the server owns go in the same `tools` map with their own `execute`; see [
 | `isDisabled` | `boolean` | `false` | Disables the thread and its composer input. |
 | `isSendDisabled` | `boolean` | `false` | Blocks sends while leaving the input usable. |
 | `unstable_capabilities` | `{ copy?: boolean }` | None | Overrides the copy capability. |
-| `toCreateMessage` | Callback | Runtime conversion | Converts a new assistant-ui message to an AI SDK UI message. |
+| `toCreateMessage` | Callback | Runtime conversion | Converts a new openagentui message to an AI SDK UI message. |
 | `onResume` | Callback | None | Handles `resumeRun` through a custom replay channel. |
 | `onResumeToolCall` | Callback | None | Handles resume for a tool call outside the in-process tracker. |
 | `onRespondToToolApproval` | Callback | AI SDK response | Routes tool approval answers through a host. |
@@ -76,9 +76,9 @@ Set `api` on `AssistantChatTransport` for another Nitro route. Its AI SDK transp
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
-import { AuiConfig, AuiProvider } from "@assistant-ui/vue";
-import { AISDKChat, AssistantChatTransport } from "@assistant-ui/ai-sdk";
-import Thread from "~/components/assistant-ui/thread.vue";
+import { AuiConfig, AuiProvider } from "@openagentui/vue";
+import { AISDKChat, AssistantChatTransport } from "@openagentui/ai-sdk";
+import Thread from "~/components/openagentui/thread.vue";
 
 const config = AuiConfig({
   threads: AISDKChat({
@@ -129,8 +129,8 @@ Each thread captures its chat construction options when created, including its t
 ```vue title="app/components/TokenUsage.vue"
 <script setup lang="ts">
 import { computed } from "vue";
-import { getThreadMessageTokenUsage } from "@assistant-ui/ai-sdk";
-import { useAuiState } from "@assistant-ui/vue";
+import { getThreadMessageTokenUsage } from "@openagentui/ai-sdk";
+import { useAuiState } from "@openagentui/vue";
 
 const messages = useAuiState((s) => s.thread.messages);
 const usage = computed(() => {

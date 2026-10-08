@@ -10,7 +10,7 @@ import {
 
 type ThemeClasses = ReturnType<typeof generateThemeClasses>;
 
-const REGISTRY_BASE_URL = "https://r.assistant-ui.com";
+const REGISTRY_BASE_URL = "https://r.openagentui.dev";
 
 export function determineRegistryDependencies(config: BuilderConfig): string[] {
   const { components } = config;
@@ -44,17 +44,17 @@ export function generateRegistryJson(config: BuilderConfig) {
   const threadCode = generateThreadCode(config);
 
   return {
-    name: "assistant-ui-thread",
+    name: "openagentui-thread",
     type: "registry:block",
     dependencies: [
-      "@assistant-ui/react",
+      "@openagentui/react",
       "lucide-react",
-      ...(config.components.markdown ? ["@assistant-ui/react-markdown"] : []),
+      ...(config.components.markdown ? ["@openagentui/react-markdown"] : []),
     ],
     registryDependencies,
     files: [
       {
-        path: "components/assistant-ui/elements/thread.aui.tsx",
+        path: "components/openagentui/elements/thread.aui.tsx",
         content: threadCode,
         type: "registry:component",
       },
@@ -84,9 +84,9 @@ function generateThreadCode(config: BuilderConfig): string {
     `  MessagePrimitive,`,
     `  ThreadPrimitive,`,
     `  useAuiState,`,
-    `} from "@assistant-ui/react";`,
+    `} from "@openagentui/react";`,
     components.markdown && components.typingIndicator === "dot"
-      ? `import "@assistant-ui/react-markdown/styles/dot.css";`
+      ? `import "@openagentui/react-markdown/styles/dot.css";`
       : null,
   ]
     .filter(Boolean)
@@ -94,25 +94,25 @@ function generateThreadCode(config: BuilderConfig): string {
 
   const internalImports = [
     `import { Button } from "@/components/ui/button";`,
-    `import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";`,
+    `import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";`,
     components.markdown
-      ? `import { MarkdownText } from "@/components/assistant-ui/elements/markdown-text";`
+      ? `import { MarkdownText } from "@/components/openagentui/elements/markdown-text";`
       : null,
     components.markdown
-      ? `import { ToolFallback } from "@/components/assistant-ui/elements/tool-fallback.aui";`
+      ? `import { ToolFallback } from "@/components/openagentui/elements/tool-fallback.aui";`
       : null,
     components.attachments
       ? `import {
   ComposerAddAttachment,
   ComposerAttachments,
   UserMessageAttachments,
-} from "@/components/assistant-ui/elements/attachment.aui";`
+} from "@/components/openagentui/elements/attachment.aui";`
       : null,
     components.reasoning
-      ? `import { Reasoning, ReasoningRoot, ReasoningTrigger, ReasoningContent, ReasoningText } from "@/components/assistant-ui/elements/reasoning.aui";`
+      ? `import { Reasoning, ReasoningRoot, ReasoningTrigger, ReasoningContent, ReasoningText } from "@/components/openagentui/elements/reasoning.aui";`
       : null,
     components.sources
-      ? `import { Sources } from "@/components/assistant-ui/elements/sources.aui";`
+      ? `import { Sources } from "@/components/openagentui/elements/sources.aui";`
       : null,
     `import { cn } from "@/lib/utils";`,
   ]

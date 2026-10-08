@@ -12,8 +12,8 @@
     "allowImportingTsExtensions": true,
     "types": ["chrome", "node"],
     "paths": {
-      "@/components/assistant-ui/*": [
-        "../../packages/ui/src/components/react/assistant-ui/*"
+      "@/components/openagentui/*": [
+        "../../packages/ui/src/components/react/openagentui/*"
       ],
       "@/components/ui/*": [
         "../../packages/ui/src/components/react/ui/base/*",

@@ -1,5 +1,5 @@
 import type { Channel } from "@langchain/react";
-import { isJSONValueEqual } from "@assistant-ui/core/internal";
+import { isJSONValueEqual } from "@openagentui/core/internal";
 import type { RemoveUIMessage, UIMessage } from "./types";
 
 /** Channels the generative-UI fold reads, at the root and per subagent. */

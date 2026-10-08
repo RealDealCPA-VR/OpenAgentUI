@@ -1,0 +1,55 @@
+{
+  "name": "create-openagentui",
+  "version": "0.0.84",
+  "description": "Create openagentui apps with one command",
+  "keywords": [
+    "cli",
+    "create",
+    "scaffold",
+    "openagentui",
+    "ai",
+    "chat",
+    "react",
+    "nextjs"
+  ],
+  "author": "OpenAgentUI contributors",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-openagentui": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "aui-build",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=html --coverage.reporter=json-summary",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "openagentui": "workspace:^",
+    "cross-spawn": "^7.0.6"
+  },
+  "devDependencies": {
+    "@openagentui/x-buildutils": "workspace:*",
+    "@types/cross-spawn": "^6.0.6",
+    "vitest": "^5.0.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "homepage": "https://openagentui.dev/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
+    "directory": "packages/create-openagentui"
+  },
+  "bugs": {
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
+  }
+}

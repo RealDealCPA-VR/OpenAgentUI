@@ -10,7 +10,7 @@ Version 0.14 finishes deprecation cycles started in v0.11 and v0.12, and replace
 The codemod that ships with the CLI handles the v0.12 hook renames (`useAssistantApi` → `useAui`, etc.) which are also removed in v0.14:
 
 ```bash
-npx assistant-ui@latest upgrade
+npx openagentui@latest upgrade
 ```
 
 The other removals listed below are simple renames you can apply with find-and-replace.
@@ -98,15 +98,15 @@ const [original] = getExternalStoreMessages<MyMessage>(threadMessage);
 
 ## Assistant Transport Helpers
 
-`toAISDKTools` and `getEnabledTools` (re-exported from `@assistant-ui/react`) have been removed. Both wrapped functionality that's now exposed directly by `assistant-stream`:
+`toAISDKTools` and `getEnabledTools` (re-exported from `@openagentui/react`) have been removed. Both wrapped functionality that's now exposed directly by `openagentui-stream`:
 
 ```ts
 // Before
-import { toAISDKTools } from "@assistant-ui/react";
+import { toAISDKTools } from "@openagentui/react";
 const schemas = toAISDKTools(tools);
 
 // After
-import { toToolsJSONSchema } from "assistant-stream";
+import { toToolsJSONSchema } from "openagentui-stream";
 const schemas = toToolsJSONSchema(tools);
 ```
 
@@ -293,5 +293,5 @@ You'll continue to see deprecation warnings on these; expect removal in a future
 
 ## Getting Help
 
-- File issues at https://github.com/assistant-ui/assistant-ui/issues
+- File issues at https://github.com/RealDealCPA-VR/OpenAgentUI/issues
 - See the [deprecation policy](/docs/migrations/deprecation-policy) for the support window

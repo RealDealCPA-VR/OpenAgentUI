@@ -11,19 +11,19 @@ import {
   ref,
   type Component,
 } from "vue";
-import { flushTapSync } from "@assistant-ui/tap";
-import { AuiConfig } from "@assistant-ui/store/client";
-import { RuntimeAdapter } from "@assistant-ui/core/store";
+import { flushTapSync } from "@openagentui/tap";
+import { AuiConfig } from "@openagentui/store/client";
+import { RuntimeAdapter } from "@openagentui/core/store";
 import type {
   AttachmentAdapter,
   ExternalStoreAdapter,
   PendingAttachment,
   ThreadMessageLike,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import {
   AssistantRuntimeImpl,
   ExternalStoreRuntimeCore,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";
 import { AuiProvider } from "../AuiProvider";
 import { useAui } from "../useAui";
 import { useAuiState } from "../useAuiState";

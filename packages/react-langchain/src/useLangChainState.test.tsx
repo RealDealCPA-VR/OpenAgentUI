@@ -12,7 +12,7 @@ const { mockUseAuiState } = vi.hoisted(() => ({
   mockUseAuiState: vi.fn(),
 }));
 
-vi.mock(import("@assistant-ui/store"), async (importOriginal) => {
+vi.mock(import("@openagentui/store"), async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...actual,

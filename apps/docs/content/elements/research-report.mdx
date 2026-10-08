@@ -9,21 +9,21 @@ ResearchReport is a live outline: a heading list that tracks pending, writing, a
 
 <RuntimeMode>
 
-assistant-ui streams a tool call's arguments as partial JSON while the model writes them, so the report can be the argument itself and render before the call finishes. Ask the model for the report as structured `args` and read them live.
+openagentui streams a tool call's arguments as partial JSON while the model writes them, so the report can be the argument itself and render before the call finishes. Ask the model for the report as structured `args` and read them live.
 
 <Steps>
   <Step>
 
 ### Render the live args
 
-```tsx title="components/assistant-ui/elements/write-report-tool-ui.tsx"
+```tsx title="components/openagentui/elements/write-report-tool-ui.tsx"
 "use client";
 
-import type { ToolCallMessagePartComponent } from "@assistant-ui/react";
+import type { ToolCallMessagePartComponent } from "@openagentui/react";
 import {
   ResearchReport,
   type ReportSection,
-} from "@/components/assistant-ui/elements/research-report";
+} from "@/components/openagentui/elements/research-report";
 
 type WriteReportArgs = {
   title: string;
@@ -53,9 +53,9 @@ export const WriteReportToolUI: ToolCallMessagePartComponent<
 This tool has nothing to execute: the report is the argument, not something fetched afterward. Give the schema the same shape as `ReportSection` so the model's own output already carries `state`.
 
 ```tsx title="app/toolkit.ts"
-import { defineToolkit } from "@assistant-ui/react";
+import { defineToolkit } from "@openagentui/react";
 import { z } from "zod";
-import { WriteReportToolUI } from "@/components/assistant-ui/elements/write-report-tool-ui";
+import { WriteReportToolUI } from "@/components/openagentui/elements/write-report-tool-ui";
 
 const section = z.object({
   id: z.string(),
@@ -103,7 +103,7 @@ import { useState } from "react";
 import {
   ResearchReport,
   type ReportSection,
-} from "@/components/assistant-ui/elements/research-report";
+} from "@/components/openagentui/elements/research-report";
 
 const INITIAL: ReportSection[] = [
   {
@@ -172,14 +172,14 @@ The header's `done` count is computed by filtering `sections` for `state === "do
 
 ## Examples
 
-### Section state comes from the model, not from assistant-ui
+### Section state comes from the model, not from openagentui
 
 <RuntimeMode>
 
-`state` is plain data the model writes as part of `sections`; assistant-ui does not infer pending, writing, or done from streaming progress on its own. If you do not want to rely on the model's own report, `useToolArgsStatus` returns the call's `status`, which you can use to force every section to `"done"` once the call completes, whatever the model wrote for individual entries.
+`state` is plain data the model writes as part of `sections`; openagentui does not infer pending, writing, or done from streaming progress on its own. If you do not want to rely on the model's own report, `useToolArgsStatus` returns the call's `status`, which you can use to force every section to `"done"` once the call completes, whatever the model wrote for individual entries.
 
 ```tsx
-import { useToolArgsStatus } from "@assistant-ui/react";
+import { useToolArgsStatus } from "@openagentui/react";
 
 function useIsReportSettled() {
   const { status } = useToolArgsStatus<WriteReportArgs>();

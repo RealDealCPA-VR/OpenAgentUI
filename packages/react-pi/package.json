@@ -1,27 +1,27 @@
 {
-  "name": "@assistant-ui/react-pi",
+  "name": "@openagentui/react-pi",
   "version": "0.0.28",
-  "description": "Pi coding-agent runtime adapter for assistant-ui",
+  "description": "Pi coding-agent runtime adapter for openagentui",
   "keywords": [
     "pi",
     "pi-coding-agent",
-    "assistant-ui",
+    "openagentui",
     "react",
     "ai",
     "chat",
     "agents",
     "coding-agent"
   ],
-  "author": "AgentbaseAI Inc.",
+  "author": "OpenAgentUI contributors",
   "license": "MIT",
-  "homepage": "https://www.assistant-ui.com/",
+  "homepage": "https://openagentui.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assistant-ui/assistant-ui.git",
+    "url": "git+https://github.com/RealDealCPA-VR/OpenAgentUI.git",
     "directory": "packages/react-pi"
   },
   "bugs": {
-    "url": "https://github.com/assistant-ui/assistant-ui/issues"
+    "url": "https://github.com/RealDealCPA-VR/OpenAgentUI/issues"
   },
   "publishConfig": {
     "access": "public",
@@ -56,14 +56,14 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@assistant-ui/core": "workspace:^",
-    "@assistant-ui/store": "^0.3.17",
+    "@openagentui/core": "workspace:^",
+    "@openagentui/store": "^0.3.17",
     "@standard-schema/spec": "^1.1.0",
-    "assistant-cloud": "*",
-    "assistant-stream": "^0.3.48"
+    "openagentui-cloud": "*",
+    "openagentui-stream": "^0.3.48"
   },
   "peerDependencies": {
-    "@assistant-ui/react": "^0.15.22",
+    "@openagentui/react": "^0.15.22",
     "@earendil-works/pi-coding-agent": ">=0.80.8",
     "@types/react": "*",
     "react": "^18 || ^19"
@@ -77,9 +77,9 @@
     }
   },
   "devDependencies": {
-    "@assistant-ui/react": "workspace:*",
-    "@assistant-ui/x-buildutils": "workspace:*",
-    "@assistant-ui/x-react18": "workspace:*",
+    "@openagentui/react": "workspace:*",
+    "@openagentui/x-buildutils": "workspace:*",
+    "@openagentui/x-react18": "workspace:*",
     "@earendil-works/pi-coding-agent": "^1.0.0",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",

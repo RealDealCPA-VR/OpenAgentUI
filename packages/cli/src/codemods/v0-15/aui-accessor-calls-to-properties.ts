@@ -33,7 +33,7 @@ const auiAccessorCallsToProperties = createTransformer(
     const hookBindings = new Set<any>();
     const hookNames = new Set(AUI_HOOKS);
     root.find(j.ImportDeclaration).forEach((path) => {
-      if (!String(path.value.source.value).startsWith("@assistant-ui/")) return;
+      if (!String(path.value.source.value).startsWith("@openagentui/")) return;
       for (const specifier of path.value.specifiers ?? []) {
         if (
           j.ImportSpecifier.check(specifier) &&

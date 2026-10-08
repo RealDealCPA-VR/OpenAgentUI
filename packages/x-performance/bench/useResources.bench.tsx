@@ -5,7 +5,7 @@
  *   - one child dispatches its own state (only that child is dirty)
  *   - the parent rebuilds the elements array (new identity, same items)
  *
- *   pnpm turbo run build --filter=@assistant-ui/tap
+ *   pnpm turbo run build --filter=@openagentui/tap
  *   pnpm exec vitest bench --run bench/useResources.bench.tsx
  */
 /* oxlint-disable react/rules-of-hooks -- fixed-count hook loops, benchmark only */
@@ -13,7 +13,7 @@ import { describe, inject, test } from "vitest";
 import { createElement, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
-import { resource, useResources, withKey } from "@assistant-ui/tap";
+import { resource, useResources, withKey } from "@openagentui/tap";
 
 (globalThis as any).IS_REACT_ACT_ENVIRONMENT = false;
 

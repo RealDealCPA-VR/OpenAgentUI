@@ -4,7 +4,7 @@ import {
   type PressableProps,
   type PressableStateCallbackType,
 } from "react-native";
-import { useActionBarReload } from "@assistant-ui/core/react";
+import { useActionBarReload } from "@openagentui/core/react";
 
 export type ActionBarReloadProps = Omit<
   PressableProps,

@@ -19,8 +19,8 @@ A search tool renders through that tool's own toolkit entry: the model's argumen
 ```tsx title="app/toolkit.tsx"
 "use generative";
 
-import { defineToolkit, externalTool } from "@assistant-ui/react";
-import { WebSearch } from "@/components/assistant-ui/elements/web-search";
+import { defineToolkit, externalTool } from "@openagentui/react";
+import { WebSearch } from "@/components/openagentui/elements/web-search";
 
 export default defineToolkit({
   web_search: {
@@ -48,9 +48,9 @@ export default defineToolkit({
 ```tsx title="app/MyRuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import toolkit from "./toolkit";
 
 export function App() {
@@ -88,10 +88,10 @@ import { useState } from "react";
 import {
   WebSearch,
   type WebSearchResult,
-} from "@/components/assistant-ui/elements/web-search";
+} from "@/components/openagentui/elements/web-search";
 
 const RESULTS: readonly WebSearchResult[] = [
-  { title: "Persisting composer state across threads", domain: "assistant-ui.com" },
+  { title: "Persisting composer state across threads", domain: "openagentui.dev" },
   { title: "Draft autosave patterns in chat UIs", domain: "patterns.dev" },
 ];
 
@@ -101,7 +101,7 @@ export function Search() {
 
   return (
     <WebSearch
-      query="assistant-ui draft persistence"
+      query="openagentui draft persistence"
       results={RESULTS}
       visibleResults={visibleResults}
       searching={searching}
@@ -155,11 +155,11 @@ useEffect(() => {
 `args.query` is a partial parse while the model is still writing the tool call. `useToolArgsStatus` reports which argument fields are still streaming, so the pill can hold a placeholder instead of a half-typed string:
 
 ```tsx
-import { useToolArgsStatus, type ToolCallMessagePartProps } from "@assistant-ui/react";
+import { useToolArgsStatus, type ToolCallMessagePartProps } from "@openagentui/react";
 import {
   WebSearch,
   type WebSearchResult,
-} from "@/components/assistant-ui/elements/web-search";
+} from "@/components/openagentui/elements/web-search";
 
 type SearchArgs = { query: string };
 type SearchResult = { results: WebSearchResult[] };

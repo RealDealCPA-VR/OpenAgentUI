@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Agents
-description: Connect Cloudflare's stateful agent framework to a React chat UI with assistant-ui through the AI SDK runtime, keeping its WebSocket transport, server-side persistence, and tool calling.
+description: Connect Cloudflare's stateful agent framework to a React chat UI with openagentui through the AI SDK runtime, keeping its WebSocket transport, server-side persistence, and tool calling.
 platforms: ["react"]
 ---
 
@@ -10,14 +10,14 @@ import { VercelIcon } from "@/components/icons/vercel";
 [Cloudflare Agents](https://developers.cloudflare.com/agents/) is Cloudflare's framework for stateful AI agents that run on Durable Objects at the edge. Each agent owns its own SQLite-backed message history, exposes a WebSocket channel for low-latency streaming, and can call tools (server-side or client-side).
 
 <Callout type="info">
-This is an integration guide, not a runtime adapter. assistant-ui does not ship a `@assistant-ui/react-cloudflare-agents` package. `@cloudflare/ai-chat`'s `useAgentChat` returns a structural extension of the AI SDK's `useChat`, so the existing [AI SDK runtime](/docs/runtimes/ai-sdk/v7) consumes it directly.
+This is an integration guide, not a runtime adapter. openagentui does not ship a `@openagentui/react-cloudflare-agents` package. `@cloudflare/ai-chat`'s `useAgentChat` returns a structural extension of the AI SDK's `useChat`, so the existing [AI SDK runtime](/docs/runtimes/ai-sdk/v7) consumes it directly.
 </Callout>
 
 ## Architecture
 
 Cloudflare Agents handles the server half: a Durable Object subclasses `AIChatAgent` from `@cloudflare/ai-chat`, owns the message history, and streams responses back over a WebSocket. `@cloudflare/ai-chat/react`'s `useAgentChat` hook wraps that WebSocket and exposes the same `messages`, `sendMessage`, `regenerate`, `status`, `stop`, `setMessages`, `addToolOutput` surface that the AI SDK's `useChat` does, plus a few Cloudflare-specific extras (`clearHistory`, `isServerStreaming`, `isToolContinuation`).
 
-assistant-ui handles the client half. `useAISDKRuntime` from [`@assistant-ui/ai-sdk`](/docs/runtimes/ai-sdk/v7) reads exactly those AI SDK methods off whatever you pass in, so feeding it `useAgentChat`'s return value yields a runtime with streaming, tool calling, edit, reload, history import and export, attachments, and suggestions.
+openagentui handles the client half. `useAISDKRuntime` from [`@openagentui/ai-sdk`](/docs/runtimes/ai-sdk/v7) reads exactly those AI SDK methods off whatever you pass in, so feeding it `useAgentChat`'s return value yields a runtime with streaming, tool calling, edit, reload, history import and export, attachments, and suggestions.
 
 Shared adapters (attachments, speech, feedback, history) work the same way as described in [adapters](/docs/runtimes/concepts/adapters). Multi-thread support needs a [custom thread list](/docs/runtimes/concepts/threads) wired around `useAISDKRuntime`; [AssistantCloud](/docs/cloud) integrates via `useChatRuntime` (which constructs its own `useChat` internally) and is not compatible with the `useAgentChat` wiring shown here.
 
@@ -29,7 +29,7 @@ Shared adapters (attachments, speech, feedback, history) work the same way as de
 
 ## Setup
 
-The setup has two halves. Steps 1 to 4 happen in the **Worker** project (Cloudflare side); steps 5 to 7 happen in a **separate assistant-ui frontend**. You'll have two dev processes running by the end: `wrangler dev` for the Worker, and your frontend's dev server.
+The setup has two halves. Steps 1 to 4 happen in the **Worker** project (Cloudflare side); steps 5 to 7 happen in a **separate openagentui frontend**. You'll have two dev processes running by the end: `wrangler dev` for the Worker, and your frontend's dev server.
 
 <Steps>
 
@@ -163,16 +163,16 @@ The Worker boots on `http://localhost:8787`. Leave it running.
 
 <Step>
 
-### Initialize the assistant-ui frontend
+### Initialize the openagentui frontend
 
 In a different directory:
 
 ```sh title="New project"
-npx assistant-ui@latest create
+npx openagentui@latest create
 ```
 
 ```sh title="Existing project"
-npx assistant-ui@latest init
+npx openagentui@latest init
 ```
 
 This creates a default chat page and a local API route at `app/api/chat/route.ts`. You won't use the local route, since the agent runs on the Worker; delete it once the next step is wired.
@@ -198,9 +198,9 @@ In the frontend project:
 
 import { useAgent } from "agents/react";
 import { useAgentChat } from "@cloudflare/ai-chat/react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useAISDKRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useAISDKRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export const Assistant = () => {
   const agent = useAgent({
@@ -251,7 +251,7 @@ Destructure these alongside `chat` and pass them into your UI directly; they don
 
 ### `setMessages` round-trips through the Durable Object
 
-`useAgentChat` overrides `setMessages` to broadcast the new list over the WebSocket so the Durable Object's SQLite history stays in sync. As a result, assistant-ui's `onImport`, `onEdit`, `onReload`, and pending-tool cancellation paths all persist server-side. Each mutation costs one extra WebSocket round-trip, which can race if the connection is lagging, so treat the history as eventually consistent.
+`useAgentChat` overrides `setMessages` to broadcast the new list over the WebSocket so the Durable Object's SQLite history stays in sync. As a result, openagentui's `onImport`, `onEdit`, `onReload`, and pending-tool cancellation paths all persist server-side. Each mutation costs one extra WebSocket round-trip, which can race if the connection is lagging, so treat the history as eventually consistent.
 
 ### Authenticate the Worker before going to production
 

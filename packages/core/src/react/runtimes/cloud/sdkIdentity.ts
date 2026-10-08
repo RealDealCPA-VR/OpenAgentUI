@@ -1,7 +1,7 @@
-import type { SdkIdentity } from "assistant-cloud";
+import type { SdkIdentity } from "openagentui-cloud";
 
 export const CORE_SDK: SdkIdentity = {
-  name: "@assistant-ui/core",
+  name: "@openagentui/core",
   version:
     typeof __AUI_PACKAGE_VERSION__ === "string"
       ? __AUI_PACKAGE_VERSION__

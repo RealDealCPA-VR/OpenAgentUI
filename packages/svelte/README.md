@@ -1,8 +1,8 @@
-# @assistant-ui/svelte
+# @openagentui/svelte
 
-Svelte bindings for assistant-ui. Private and incomplete while the Svelte line is under development.
+Svelte bindings for openagentui. Private and incomplete while the Svelte line is under development.
 
-The package is plain TypeScript over `@assistant-ui/store/client` and Svelte's runtime APIs; it ships no compiled Svelte components. Svelte apps alias `react` to tap's standalone shim so the store chain loads without React:
+The package is plain TypeScript over `@openagentui/store/client` and Svelte's runtime APIs; it ships no compiled Svelte components. Svelte apps alias `react` to tap's standalone shim so the store chain loads without React:
 
 ```ts
 // vite.config.ts
@@ -11,9 +11,9 @@ export default defineConfig({
     alias: [
       {
         find: /^react\/compiler-runtime$/,
-        replacement: "@assistant-ui/tap/standalone-shim/compiler-runtime",
+        replacement: "@openagentui/tap/standalone-shim/compiler-runtime",
       },
-      { find: /^react$/, replacement: "@assistant-ui/tap/standalone-shim" },
+      { find: /^react$/, replacement: "@openagentui/tap/standalone-shim" },
     ],
   },
 });
@@ -23,8 +23,8 @@ export default defineConfig({
 
 ```svelte
 <script lang="ts">
-  import { provideAui, useAuiState } from "@assistant-ui/svelte";
-  import { AuiConfig } from "@assistant-ui/store/client";
+  import { provideAui, useAuiState } from "@openagentui/svelte";
+  import { AuiConfig } from "@openagentui/store/client";
 
   const aui = provideAui(() => AuiConfig({ ... }));
   const isRunning = useAuiState((s) => s.thread.isRunning);

@@ -1,7 +1,7 @@
 import {
   generativeUiThemeVars,
   generativeUiVocabularyCss,
-} from "@assistant-ui/ui/lib/generative-ui-vocabulary-css.ts";
+} from "@openagentui/ui/lib/generative-ui-vocabulary-css.ts";
 import type { RegistryItem } from "./schema";
 
 const collapsibleStateCss = {
@@ -66,19 +66,19 @@ const createElementRegistryItem = (
   files: [
     {
       type: "registry:component",
-      path: `components/assistant-ui/elements/${entry.file}`,
-      sourcePath: `../../packages/ui/src/components/react/assistant-ui/elements/${entry.file}`,
+      path: `components/openagentui/elements/${entry.file}`,
+      sourcePath: `../../packages/ui/src/components/react/openagentui/elements/${entry.file}`,
     },
   ],
   registryDependencies: [
     ...(entry.usesSurfaces === false
       ? []
-      : ["https://r.assistant-ui.com/elements-surfaces.json"]),
+      : ["https://r.openagentui.dev/elements-surfaces.json"]),
     ...(entry.usesElements ?? []).map(
-      (slug) => `https://r.assistant-ui.com/elements-${slug}.json`,
+      (slug) => `https://r.openagentui.dev/elements-${slug}.json`,
     ),
     ...(entry.usesHooks ?? []).map(
-      (name) => `https://r.assistant-ui.com/${name}.json`,
+      (name) => `https://r.openagentui.dev/${name}.json`,
     ),
     ...(entry.usesCollapsible ? ["collapsible"] : []),
     ...(entry.usesUi ?? []),
@@ -97,14 +97,14 @@ const elementsRegistryItems: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/surfaces.tsx",
+        path: "components/openagentui/elements/surfaces.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/surfaces.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/surfaces.tsx",
       },
     ],
-    dependencies: ["tw-shimmer"],
+    dependencies: ["@openagentui/tw-shimmer"],
     css: {
-      '@import "tw-shimmer"': {},
+      '@import "@openagentui/tw-shimmer"': {},
     },
   },
   {
@@ -116,9 +116,9 @@ const elementsRegistryItems: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/utils/range.ts",
+        path: "components/openagentui/utils/range.ts",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/utils/range.ts",
+          "../../packages/ui/src/components/react/openagentui/utils/range.ts",
       },
     ],
   },
@@ -131,9 +131,9 @@ const elementsRegistryItems: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/utils/href.ts",
+        path: "components/openagentui/utils/href.ts",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/utils/href.ts",
+          "../../packages/ui/src/components/react/openagentui/utils/href.ts",
       },
     ],
   },
@@ -146,12 +146,12 @@ const elementsRegistryItems: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/utils/task.ts",
+        path: "components/openagentui/utils/task.ts",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/utils/task.ts",
+          "../../packages/ui/src/components/react/openagentui/utils/task.ts",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
   },
   createElementRegistryItem({
     slug: "loading-state",
@@ -673,7 +673,7 @@ const elementsRegistryItems: RegistryItem[] = [
     description:
       "A half-year of runs as a calendar of cells, dense where the work was.",
     file: "activity-graph.tsx",
-    dependencies: ["heat-graph"],
+    dependencies: ["@openagentui/heat-graph"],
   }),
   createElementRegistryItem({
     slug: "tool-group",
@@ -993,7 +993,7 @@ export const registry: RegistryItem[] = [
     type: "registry:lib",
     title: "Utils",
     description:
-      "The cn class name helper that every assistant-ui component imports from @/lib/utils.",
+      "The cn class name helper that every openagentui component imports from @/lib/utils.",
     files: [
       {
         type: "registry:lib",
@@ -1042,14 +1042,14 @@ export const registry: RegistryItem[] = [
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/ai-sdk-backend.json",
-      "https://r.assistant-ui.com/thread.json",
+      "https://r.openagentui.dev/ai-sdk-backend.json",
+      "https://r.openagentui.dev/thread.json",
     ],
     registryDependencyUsageExemptions: {
-      "https://r.assistant-ui.com/ai-sdk-backend.json":
+      "https://r.openagentui.dev/ai-sdk-backend.json":
         "Installs the API route used by the page without importing it into the client bundle.",
     },
-    dependencies: ["@assistant-ui/ai-sdk"],
+    dependencies: ["@openagentui/ai-sdk"],
     meta: {
       importSpecifier: "Assistant",
       moduleSpecifier: "@/app/assistant",
@@ -1069,7 +1069,7 @@ export const registry: RegistryItem[] = [
         target: "app/api/chat/route.ts",
       },
     ],
-    dependencies: ["ai", "@ai-sdk/openai", "@assistant-ui/ai-sdk"],
+    dependencies: ["ai", "@ai-sdk/openai", "@openagentui/ai-sdk"],
   },
   {
     name: "ai-sdk-backend-resumable",
@@ -1102,8 +1102,8 @@ export const registry: RegistryItem[] = [
     dependencies: [
       "ai",
       "@ai-sdk/openai",
-      "@assistant-ui/ai-sdk",
-      "assistant-stream",
+      "@openagentui/ai-sdk",
+      "openagentui-stream",
       "next",
     ],
   },
@@ -1112,7 +1112,7 @@ export const registry: RegistryItem[] = [
     type: "registry:item",
     title: "Eve Chat",
     description:
-      "Chat page for an Eve agent, rendering the session through an assistant-ui thread.",
+      "Chat page for an Eve agent, rendering the session through an openagentui thread.",
     files: [
       {
         type: "registry:file",
@@ -1121,9 +1121,9 @@ export const registry: RegistryItem[] = [
         target: "app/page.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/eve"],
-    bundledRegistryDependencies: ["https://r.assistant-ui.com/thread.json"],
-    docs: "Eve installs registry files without touching CSS, so add the reasoning and collapsible styles to app/globals.css, and replace the default auth policy in agent/channels/eve.ts before deploying: https://www.assistant-ui.com/docs/runtimes/eve/quickstart",
+    dependencies: ["@openagentui/eve"],
+    bundledRegistryDependencies: ["https://r.openagentui.dev/thread.json"],
+    docs: "Eve installs registry files without touching CSS, so add the reasoning and collapsible styles to app/globals.css, and replace the default auth policy in agent/channels/eve.ts before deploying: https://openagentui.dev/docs/runtimes/eve/quickstart",
     meta: {
       eve: {
         requires: ">=0.27.6",
@@ -1139,24 +1139,24 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/thread.aui.tsx",
+        path: "components/openagentui/elements/thread.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/thread.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/thread.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react", "lucide-react"],
+    dependencies: ["@openagentui/react", "lucide-react"],
     registryDependencies: [
       "button",
       "skeleton",
-      "https://r.assistant-ui.com/attachment.json",
-      "https://r.assistant-ui.com/file.json",
-      "https://r.assistant-ui.com/follow-up-suggestions.json",
-      "https://r.assistant-ui.com/image.json",
-      "https://r.assistant-ui.com/markdown-text.json",
-      "https://r.assistant-ui.com/reasoning.json",
-      "https://r.assistant-ui.com/tooltip-icon-button.json",
-      "https://r.assistant-ui.com/tool-fallback.json",
-      "https://r.assistant-ui.com/tool-group.json",
+      "https://r.openagentui.dev/attachment.json",
+      "https://r.openagentui.dev/file.json",
+      "https://r.openagentui.dev/follow-up-suggestions.json",
+      "https://r.openagentui.dev/image.json",
+      "https://r.openagentui.dev/markdown-text.json",
+      "https://r.openagentui.dev/reasoning.json",
+      "https://r.openagentui.dev/tooltip-icon-button.json",
+      "https://r.openagentui.dev/tool-fallback.json",
+      "https://r.openagentui.dev/tool-group.json",
     ],
   },
   {
@@ -1168,9 +1168,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/voice.tsx",
+        path: "components/openagentui/elements/voice.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/voice.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/voice.tsx",
       },
     ],
     registryDependencies: [],
@@ -1184,14 +1184,14 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/context-display.tsx",
+        path: "components/openagentui/elements/context-display.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/context-display.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/context-display.tsx",
       },
     ],
     registryDependencies: [
       "tooltip",
-      "https://r.assistant-ui.com/elements-context-usage.json",
+      "https://r.openagentui.dev/elements-context-usage.json",
     ],
   },
   {
@@ -1203,9 +1203,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/utils/context-usage.ts",
+        path: "components/openagentui/utils/context-usage.ts",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/utils/context-usage.ts",
+          "../../packages/ui/src/components/react/openagentui/utils/context-usage.ts",
       },
     ],
   },
@@ -1218,16 +1218,16 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/voice.aui.tsx",
+        path: "components/openagentui/elements/voice.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/voice.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/voice.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react", "lucide-react"],
+    dependencies: ["@openagentui/react", "lucide-react"],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-voice.json",
+      "https://r.openagentui.dev/elements-voice.json",
       "button",
-      "https://r.assistant-ui.com/tooltip-icon-button.json",
+      "https://r.openagentui.dev/tooltip-icon-button.json",
     ],
   },
   {
@@ -1239,14 +1239,14 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/voice-conversation.aui.tsx",
+        path: "components/openagentui/elements/voice-conversation.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/voice-conversation.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/voice-conversation.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-voice-conversation.json",
+      "https://r.openagentui.dev/elements-voice-conversation.json",
     ],
   },
   {
@@ -1258,17 +1258,17 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/task-card.aui.tsx",
+        path: "components/openagentui/elements/task-card.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/task-card.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/task-card.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-task-card.json",
-      "https://r.assistant-ui.com/elements-task.json",
-      "https://r.assistant-ui.com/markdown-text.json",
-      "https://r.assistant-ui.com/tool-fallback.json",
+      "https://r.openagentui.dev/elements-task-card.json",
+      "https://r.openagentui.dev/elements-task.json",
+      "https://r.openagentui.dev/markdown-text.json",
+      "https://r.openagentui.dev/tool-fallback.json",
     ],
   },
   {
@@ -1280,16 +1280,16 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/agent-status.aui.tsx",
+        path: "components/openagentui/elements/agent-status.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/agent-status.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/agent-status.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-agent-status.json",
-      "https://r.assistant-ui.com/elements-task-card.json",
-      "https://r.assistant-ui.com/elements-task.json",
+      "https://r.openagentui.dev/elements-agent-status.json",
+      "https://r.openagentui.dev/elements-task-card.json",
+      "https://r.openagentui.dev/elements-task.json",
       "popover",
     ],
   },
@@ -1315,18 +1315,18 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/markdown-text.tsx",
+        path: "components/openagentui/elements/markdown-text.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/markdown-text.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/markdown-text.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/tooltip-icon-button.json",
-      "https://r.assistant-ui.com/use-copy-to-clipboard.json",
+      "https://r.openagentui.dev/tooltip-icon-button.json",
+      "https://r.openagentui.dev/use-copy-to-clipboard.json",
     ],
     dependencies: [
-      "@assistant-ui/react",
-      "@assistant-ui/react-markdown",
+      "@openagentui/react",
+      "@openagentui/react-markdown",
       "lucide-react",
       "remark-gfm",
     ],
@@ -1340,16 +1340,16 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/reasoning.aui.tsx",
+        path: "components/openagentui/elements/reasoning.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/reasoning.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/reasoning.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-reasoning.json",
-      "https://r.assistant-ui.com/markdown-text.json",
+      "https://r.openagentui.dev/elements-reasoning.json",
+      "https://r.openagentui.dev/markdown-text.json",
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
   },
   {
     name: "conversation-map",
@@ -1360,15 +1360,15 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/conversation-map.aui.tsx",
+        path: "components/openagentui/elements/conversation-map.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/conversation-map.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/conversation-map.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-conversation-map.json",
+      "https://r.openagentui.dev/elements-conversation-map.json",
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
   },
   {
     name: "elements-reasoning",
@@ -1379,15 +1379,19 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/reasoning.tsx",
+        path: "components/openagentui/elements/reasoning.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/reasoning.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/reasoning.tsx",
       },
     ],
     registryDependencies: ["collapsible"],
-    dependencies: ["lucide-react", "class-variance-authority", "tw-shimmer"],
+    dependencies: [
+      "lucide-react",
+      "class-variance-authority",
+      "@openagentui/tw-shimmer",
+    ],
     css: {
-      '@import "tw-shimmer"': {},
+      '@import "@openagentui/tw-shimmer"': {},
       ...collapsibleStateCss,
     },
   },
@@ -1400,12 +1404,12 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/message-timing.aui.tsx",
+        path: "components/openagentui/elements/message-timing.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/message-timing.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/message-timing.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
     registryDependencies: ["tooltip"],
   },
   {
@@ -1417,14 +1421,14 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/context-display.aui.tsx",
+        path: "components/openagentui/elements/context-display.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/context-display.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/context-display.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react", "@assistant-ui/ai-sdk"],
+    dependencies: ["@openagentui/react", "@openagentui/ai-sdk"],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-context-display.json",
+      "https://r.openagentui.dev/elements-context-display.json",
     ],
   },
   {
@@ -1436,13 +1440,13 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/thread-list.aui.tsx",
+        path: "components/openagentui/elements/thread-list.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/thread-list.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/thread-list.aui.tsx",
       },
     ],
     registryDependencies: ["button", "input", "skeleton"],
-    dependencies: ["@assistant-ui/react", "lucide-react"],
+    dependencies: ["@openagentui/react", "lucide-react"],
   },
   {
     name: "mcp-config",
@@ -1453,13 +1457,13 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/mcp-config.aui.tsx",
+        path: "components/openagentui/elements/mcp-config.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/mcp-config.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/mcp-config.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/badge.json",
+      "https://r.openagentui.dev/badge.json",
       "button",
       "dialog",
       "label",
@@ -1467,8 +1471,8 @@ export const registry: RegistryItem[] = [
     ],
     radixRegistryDependencies: ["input"],
     dependencies: [
-      "@assistant-ui/react-mcp",
-      "@assistant-ui/store",
+      "@openagentui/react-mcp",
+      "@openagentui/store",
       "lucide-react",
     ],
   },
@@ -1484,7 +1488,7 @@ export const registry: RegistryItem[] = [
         sourcePath: "../../packages/ui/src/hooks/use-attachment-src.ts",
       },
     ],
-    dependencies: ["@assistant-ui/react", "zustand"],
+    dependencies: ["@openagentui/react", "zustand"],
   },
   {
     name: "attachment",
@@ -1495,19 +1499,19 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/attachment.aui.tsx",
+        path: "components/openagentui/elements/attachment.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/attachment.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/attachment.aui.tsx",
       },
     ],
     registryDependencies: [
       "dialog",
       "tooltip",
       "avatar",
-      "https://r.assistant-ui.com/tooltip-icon-button.json",
-      "https://r.assistant-ui.com/use-attachment-src.json",
+      "https://r.openagentui.dev/tooltip-icon-button.json",
+      "https://r.openagentui.dev/use-attachment-src.json",
     ],
-    dependencies: ["@assistant-ui/react", "lucide-react"],
+    dependencies: ["@openagentui/react", "lucide-react"],
   },
   {
     name: "follow-up-suggestions",
@@ -1518,13 +1522,13 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/follow-up-suggestions.aui.tsx",
+        path: "components/openagentui/elements/follow-up-suggestions.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/follow-up-suggestions.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/follow-up-suggestions.aui.tsx",
       },
     ],
     registryDependencies: [],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
   },
   {
     name: "tooltip-icon-button",
@@ -1535,9 +1539,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/tooltip-icon-button.tsx",
+        path: "components/openagentui/elements/tooltip-icon-button.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/tooltip-icon-button.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/tooltip-icon-button.tsx",
       },
     ],
     radixDependencies: ["radix-ui"],
@@ -1551,14 +1555,14 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/syntax-highlighter.tsx",
+        path: "components/openagentui/elements/syntax-highlighter.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/syntax-highlighter.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/syntax-highlighter.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react-syntax-highlighter",
-      "@assistant-ui/react-markdown",
+      "@openagentui/react-syntax-highlighter",
+      "@openagentui/react-markdown",
       "react-syntax-highlighter",
       "@types/react-syntax-highlighter",
     ],
@@ -1571,9 +1575,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/utils/modal-size.ts",
+        path: "components/openagentui/utils/modal-size.ts",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/utils/modal-size.ts",
+          "../../packages/ui/src/components/react/openagentui/utils/modal-size.ts",
       },
     ],
   },
@@ -1586,17 +1590,17 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/assistant-modal.aui.tsx",
+        path: "components/openagentui/elements/assistant-modal.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/assistant-modal.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/assistant-modal.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react", "lucide-react"],
+    dependencies: ["@openagentui/react", "lucide-react"],
     registryDependencies: [
-      "https://r.assistant-ui.com/thread.json",
-      "https://r.assistant-ui.com/thread-list.json",
-      "https://r.assistant-ui.com/tooltip-icon-button.json",
-      "https://r.assistant-ui.com/elements-modal-size.json",
+      "https://r.openagentui.dev/thread.json",
+      "https://r.openagentui.dev/thread-list.json",
+      "https://r.openagentui.dev/tooltip-icon-button.json",
+      "https://r.openagentui.dev/elements-modal-size.json",
     ],
     baseDependencies: ["@base-ui/react"],
   },
@@ -1609,15 +1613,15 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/assistant-sidebar.aui.tsx",
+        path: "components/openagentui/elements/assistant-sidebar.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/assistant-sidebar.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/assistant-sidebar.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
     registryDependencies: [
       "resizable",
-      "https://r.assistant-ui.com/thread.json",
+      "https://r.openagentui.dev/thread.json",
     ],
   },
   {
@@ -1628,15 +1632,19 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/tool-fallback.aui.tsx",
+        path: "components/openagentui/elements/tool-fallback.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/tool-fallback.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/tool-fallback.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react", "lucide-react", "tw-shimmer"],
+    dependencies: [
+      "@openagentui/react",
+      "lucide-react",
+      "@openagentui/tw-shimmer",
+    ],
     registryDependencies: ["button", "collapsible", "textarea"],
     css: {
-      '@import "tw-shimmer"': {},
+      '@import "@openagentui/tw-shimmer"': {},
       ...collapsibleStateCss,
     },
   },
@@ -1648,20 +1656,20 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/tool-group.aui.tsx",
+        path: "components/openagentui/elements/tool-group.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/tool-group.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/tool-group.aui.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react",
+      "@openagentui/react",
       "lucide-react",
       "class-variance-authority",
-      "tw-shimmer",
+      "@openagentui/tw-shimmer",
     ],
     registryDependencies: ["collapsible"],
     css: {
-      '@import "tw-shimmer"': {},
+      '@import "@openagentui/tw-shimmer"': {},
       ...collapsibleStateCss,
     },
   },
@@ -1673,18 +1681,18 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/shiki-highlighter.aui.tsx",
+        path: "components/openagentui/elements/shiki-highlighter.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/shiki-highlighter.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/shiki-highlighter.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-shiki-highlighter.json",
+      "https://r.openagentui.dev/elements-shiki-highlighter.json",
     ],
     dependencies: [
       "react-shiki",
-      "@assistant-ui/react",
-      "@assistant-ui/react-markdown",
+      "@openagentui/react",
+      "@openagentui/react-markdown",
     ],
   },
   {
@@ -1696,9 +1704,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/shiki-highlighter.tsx",
+        path: "components/openagentui/elements/shiki-highlighter.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/shiki-highlighter.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/shiki-highlighter.tsx",
       },
     ],
     dependencies: ["react-shiki"],
@@ -1712,15 +1720,15 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/mermaid-diagram.aui.tsx",
+        path: "components/openagentui/elements/mermaid-diagram.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/mermaid-diagram.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/mermaid-diagram.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-mermaid-diagram.json",
+      "https://r.openagentui.dev/elements-mermaid-diagram.json",
     ],
-    dependencies: ["@assistant-ui/react", "@assistant-ui/react-markdown"],
+    dependencies: ["@openagentui/react", "@openagentui/react-markdown"],
   },
   {
     name: "elements-mermaid-diagram",
@@ -1731,9 +1739,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/mermaid-diagram.tsx",
+        path: "components/openagentui/elements/mermaid-diagram.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/mermaid-diagram.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/mermaid-diagram.tsx",
       },
     ],
     dependencies: ["beautiful-mermaid", "lucide-react"],
@@ -1754,12 +1762,12 @@ export const registry: RegistryItem[] = [
     dependencies: [
       "diff",
       "parse-diff",
-      "@assistant-ui/react-markdown",
+      "@openagentui/react-markdown",
       "class-variance-authority",
       "lucide-react",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/use-copy-to-clipboard.json",
+      "https://r.openagentui.dev/use-copy-to-clipboard.json",
     ],
   },
   {
@@ -1770,9 +1778,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/threadlist-sidebar.aui.tsx",
+        path: "components/openagentui/elements/threadlist-sidebar.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/threadlist-sidebar.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/threadlist-sidebar.aui.tsx",
       },
       {
         type: "registry:component",
@@ -1783,7 +1791,7 @@ export const registry: RegistryItem[] = [
     dependencies: ["lucide-react"],
     registryDependencies: [
       "sidebar",
-      "https://r.assistant-ui.com/thread-list.json",
+      "https://r.openagentui.dev/thread-list.json",
     ],
   },
   {
@@ -1795,12 +1803,12 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/quote.aui.tsx",
+        path: "components/openagentui/elements/quote.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/quote.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/quote.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react", "lucide-react"],
+    dependencies: ["@openagentui/react", "lucide-react"],
     registryDependencies: [],
   },
   {
@@ -1812,15 +1820,15 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/sources.aui.tsx",
+        path: "components/openagentui/elements/sources.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/sources.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/sources.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react", "lucide-react"],
+    dependencies: ["@openagentui/react", "lucide-react"],
     registryDependencies: [
-      "https://r.assistant-ui.com/badge.json",
-      "https://r.assistant-ui.com/elements-href.json",
+      "https://r.openagentui.dev/badge.json",
+      "https://r.openagentui.dev/elements-href.json",
     ],
   },
   {
@@ -1832,17 +1840,17 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/image.tsx",
+        path: "components/openagentui/elements/image.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/image.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/image.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react",
+      "@openagentui/react",
       "lucide-react",
       "class-variance-authority",
     ],
-    registryDependencies: ["https://r.assistant-ui.com/elements-href.json"],
+    registryDependencies: ["https://r.openagentui.dev/elements-href.json"],
   },
   {
     name: "file",
@@ -1853,18 +1861,18 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/file.tsx",
+        path: "components/openagentui/elements/file.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/file.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/file.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react",
+      "@openagentui/react",
       "lucide-react",
       "class-variance-authority",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-media-player.json",
+      "https://r.openagentui.dev/elements-media-player.json",
     ],
   },
   {
@@ -1876,14 +1884,14 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/model-selector.aui.tsx",
+        path: "components/openagentui/elements/model-selector.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/model-selector.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/model-selector.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-model-selector.json",
+      "https://r.openagentui.dev/elements-model-selector.json",
     ],
   },
   {
@@ -1895,9 +1903,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/model-selector.tsx",
+        path: "components/openagentui/elements/model-selector.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/model-selector.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/model-selector.tsx",
       },
     ],
     dependencies: ["lucide-react", "class-variance-authority"],
@@ -1906,7 +1914,7 @@ export const registry: RegistryItem[] = [
     registryDependencies: [
       "command",
       "popover",
-      "https://r.assistant-ui.com/elements-model-selection.json",
+      "https://r.openagentui.dev/elements-model-selection.json",
     ],
   },
   {
@@ -1918,9 +1926,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/utils/model-selection.ts",
+        path: "components/openagentui/utils/model-selection.ts",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/utils/model-selection.ts",
+          "../../packages/ui/src/components/react/openagentui/utils/model-selection.ts",
       },
     ],
   },
@@ -1932,9 +1940,9 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/logos.tsx",
+        path: "components/openagentui/elements/logos.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/logos.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/logos.tsx",
       },
     ],
     dependencies: [],
@@ -2062,19 +2070,19 @@ export const registry: RegistryItem[] = [
     registryDependencies: [],
   },
   {
-    name: "heat-graph",
+    name: "@openagentui/heat-graph",
     type: "registry:component",
     title: "Heat Graph",
     description: "Activity heat map with month and weekday labels.",
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/heat-graph.tsx",
+        path: "components/openagentui/elements/heat-graph.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/heat-graph.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/heat-graph.tsx",
       },
     ],
-    dependencies: ["heat-graph"],
+    dependencies: ["@openagentui/heat-graph"],
     registryDependencies: [],
   },
   {
@@ -2086,12 +2094,12 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/composer-trigger-popover.aui.tsx",
+        path: "components/openagentui/elements/composer-trigger-popover.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/composer-trigger-popover.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/composer-trigger-popover.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react", "lucide-react"],
+    dependencies: ["@openagentui/react", "lucide-react"],
     registryDependencies: [],
   },
   {
@@ -2102,14 +2110,14 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/directive-text.aui.tsx",
+        path: "components/openagentui/elements/directive-text.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/directive-text.aui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/directive-text.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react"],
+    dependencies: ["@openagentui/react"],
     registryDependencies: [
-      "https://r.assistant-ui.com/elements-directive-text.json",
+      "https://r.openagentui.dev/elements-directive-text.json",
     ],
   },
   {
@@ -2121,12 +2129,12 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/directive-text.tsx",
+        path: "components/openagentui/elements/directive-text.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/directive-text.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/directive-text.tsx",
       },
     ],
-    registryDependencies: ["https://r.assistant-ui.com/badge.json"],
+    registryDependencies: ["https://r.openagentui.dev/badge.json"],
   },
   {
     name: "generative-ui-style",
@@ -2144,21 +2152,21 @@ export const registry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/generative-ui.tsx",
+        path: "components/openagentui/elements/generative-ui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react/assistant-ui/elements/generative-ui.tsx",
+          "../../packages/ui/src/components/react/openagentui/elements/generative-ui.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react-generative-ui",
+      "@openagentui/react-generative-ui",
       "react-markdown",
       "remark-gfm",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/generative-ui-style.json",
+      "https://r.openagentui.dev/generative-ui-style.json",
     ],
     registryDependencyUsageExemptions: {
-      "https://r.assistant-ui.com/generative-ui-style.json":
+      "https://r.openagentui.dev/generative-ui-style.json":
         "Installs CSS variables and vocabulary rules consumed through class names.",
     },
   },
@@ -2186,21 +2194,21 @@ const createNativeElementRegistryItem = (
   files: [
     {
       type: "registry:component",
-      path: `components/assistant-ui/elements/${entry.file}`,
-      sourcePath: `../../packages/ui/src/components/react-native/assistant-ui/elements/${entry.file}`,
+      path: `components/openagentui/elements/${entry.file}`,
+      sourcePath: `../../packages/ui/src/components/react-native/openagentui/elements/${entry.file}`,
     },
   ],
   registryDependencies: [
     ...(entry.usesSurfaces === false
       ? []
-      : ["https://r.assistant-ui.com/native/elements-surfaces.json"]),
+      : ["https://r.openagentui.dev/native/elements-surfaces.json"]),
     ...(entry.usesElements ?? []).map(
-      (slug) => `https://r.assistant-ui.com/native/elements-${slug}.json`,
+      (slug) => `https://r.openagentui.dev/native/elements-${slug}.json`,
     ),
-    ...(entry.usesIcon ? ["https://r.assistant-ui.com/native/icon.json"] : []),
+    ...(entry.usesIcon ? ["https://r.openagentui.dev/native/icon.json"] : []),
     ...(entry.usesUtils === false
       ? []
-      : ["https://r.assistant-ui.com/utils.json"]),
+      : ["https://r.openagentui.dev/utils.json"]),
   ],
   dependencies: [...(entry.dependencies ?? []), "uniwind"],
 });
@@ -2215,30 +2223,30 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/thread.aui.tsx",
+        path: "components/openagentui/elements/thread.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/thread.aui.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/thread.aui.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react-native",
+      "@openagentui/react-native",
       "expo-clipboard",
       "lucide-react-native",
       "react-native-safe-area-context",
       "uniwind",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/attachment.json",
-      "https://r.assistant-ui.com/native/file.json",
-      "https://r.assistant-ui.com/native/image.json",
-      "https://r.assistant-ui.com/native/elements-icon-button.json",
-      "https://r.assistant-ui.com/native/reasoning.json",
-      "https://r.assistant-ui.com/native/elements-surfaces.json",
-      "https://r.assistant-ui.com/native/elements-typing-indicator.json",
-      "https://r.assistant-ui.com/native/icon.json",
-      "https://r.assistant-ui.com/native/markdown-text.json",
-      "https://r.assistant-ui.com/native/elements-tool-fallback.json",
-      "https://r.assistant-ui.com/utils.json",
+      "https://r.openagentui.dev/native/attachment.json",
+      "https://r.openagentui.dev/native/file.json",
+      "https://r.openagentui.dev/native/image.json",
+      "https://r.openagentui.dev/native/elements-icon-button.json",
+      "https://r.openagentui.dev/native/reasoning.json",
+      "https://r.openagentui.dev/native/elements-surfaces.json",
+      "https://r.openagentui.dev/native/elements-typing-indicator.json",
+      "https://r.openagentui.dev/native/icon.json",
+      "https://r.openagentui.dev/native/markdown-text.json",
+      "https://r.openagentui.dev/native/elements-tool-fallback.json",
+      "https://r.openagentui.dev/utils.json",
     ],
   },
   {
@@ -2250,13 +2258,13 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/markdown-text.tsx",
+        path: "components/openagentui/elements/markdown-text.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/markdown-text.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/markdown-text.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react-native",
+      "@openagentui/react-native",
       "expo-clipboard",
       "lucide-react-native",
       "react-native-marked",
@@ -2264,8 +2272,8 @@ export const nativeRegistry: RegistryItem[] = [
       "uniwind",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-surfaces.json",
-      "https://r.assistant-ui.com/native/icon.json",
+      "https://r.openagentui.dev/native/elements-surfaces.json",
+      "https://r.openagentui.dev/native/icon.json",
     ],
   },
   {
@@ -2277,15 +2285,15 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/reasoning.aui.tsx",
+        path: "components/openagentui/elements/reasoning.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/reasoning.aui.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/reasoning.aui.tsx",
       },
     ],
-    dependencies: ["@assistant-ui/react-native", "uniwind"],
+    dependencies: ["@openagentui/react-native", "uniwind"],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-reasoning.json",
-      "https://r.assistant-ui.com/native/markdown-text.json",
+      "https://r.openagentui.dev/native/elements-reasoning.json",
+      "https://r.openagentui.dev/native/markdown-text.json",
     ],
   },
   {
@@ -2297,21 +2305,21 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/attachment.aui.tsx",
+        path: "components/openagentui/elements/attachment.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/attachment.aui.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/attachment.aui.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react-native",
+      "@openagentui/react-native",
       "expo-image-manipulator",
       "expo-image-picker",
       "lucide-react-native",
       "uniwind",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-icon-button.json",
-      "https://r.assistant-ui.com/native/icon.json",
+      "https://r.openagentui.dev/native/elements-icon-button.json",
+      "https://r.openagentui.dev/native/icon.json",
     ],
   },
   {
@@ -2323,19 +2331,19 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/thread-list.aui.tsx",
+        path: "components/openagentui/elements/thread-list.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/thread-list.aui.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/thread-list.aui.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react-native",
+      "@openagentui/react-native",
       "lucide-react-native",
       "uniwind",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/icon.json",
-      "https://r.assistant-ui.com/utils.json",
+      "https://r.openagentui.dev/native/icon.json",
+      "https://r.openagentui.dev/utils.json",
     ],
   },
   {
@@ -2351,7 +2359,7 @@ export const nativeRegistry: RegistryItem[] = [
       },
     ],
     dependencies: ["lucide-react-native", "react-native-svg", "uniwind"],
-    registryDependencies: ["https://r.assistant-ui.com/utils.json"],
+    registryDependencies: ["https://r.openagentui.dev/utils.json"],
   },
   {
     name: "elements-surfaces",
@@ -2362,13 +2370,13 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/surfaces.tsx",
+        path: "components/openagentui/elements/surfaces.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/surfaces.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/surfaces.tsx",
       },
     ],
     dependencies: ["uniwind"],
-    registryDependencies: ["https://r.assistant-ui.com/utils.json"],
+    registryDependencies: ["https://r.openagentui.dev/utils.json"],
   },
   {
     name: "elements-range",
@@ -2379,9 +2387,9 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/utils/range.ts",
+        path: "components/openagentui/utils/range.ts",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/utils/range.ts",
+          "../../packages/ui/src/components/react-native/openagentui/utils/range.ts",
       },
     ],
   },
@@ -2394,12 +2402,12 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/utils/task.ts",
+        path: "components/openagentui/utils/task.ts",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/utils/task.ts",
+          "../../packages/ui/src/components/react-native/openagentui/utils/task.ts",
       },
     ],
-    dependencies: ["@assistant-ui/react-native"],
+    dependencies: ["@openagentui/react-native"],
   },
   createNativeElementRegistryItem({
     slug: "icon-button",
@@ -2457,7 +2465,7 @@ export const nativeRegistry: RegistryItem[] = [
     title: "Tool fallback",
     description: "Default renderer for tool calls that have no dedicated UI.",
     file: "tool-fallback.tsx",
-    dependencies: ["@assistant-ui/react-native", "lucide-react-native"],
+    dependencies: ["@openagentui/react-native", "lucide-react-native"],
     usesElements: ["task"],
     usesIcon: true,
   }),
@@ -2470,20 +2478,20 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/file.tsx",
+        path: "components/openagentui/elements/file.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/file.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/file.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react-native",
+      "@openagentui/react-native",
       "lucide-react-native",
       "uniwind",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-icon-button.json",
-      "https://r.assistant-ui.com/native/icon.json",
-      "https://r.assistant-ui.com/utils.json",
+      "https://r.openagentui.dev/native/elements-icon-button.json",
+      "https://r.openagentui.dev/native/icon.json",
+      "https://r.openagentui.dev/utils.json",
     ],
   },
   {
@@ -2495,22 +2503,22 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/image.tsx",
+        path: "components/openagentui/elements/image.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/image.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/image.tsx",
       },
     ],
     dependencies: [
-      "@assistant-ui/react-native",
+      "@openagentui/react-native",
       "lucide-react-native",
       "react-native-safe-area-context",
       "uniwind",
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-surfaces.json",
-      "https://r.assistant-ui.com/native/elements-icon-button.json",
-      "https://r.assistant-ui.com/native/icon.json",
-      "https://r.assistant-ui.com/utils.json",
+      "https://r.openagentui.dev/native/elements-surfaces.json",
+      "https://r.openagentui.dev/native/elements-icon-button.json",
+      "https://r.openagentui.dev/native/icon.json",
+      "https://r.openagentui.dev/utils.json",
     ],
   },
   createNativeElementRegistryItem({
@@ -2576,17 +2584,17 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/conversation-map.aui.tsx",
+        path: "components/openagentui/elements/conversation-map.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/conversation-map.aui.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/conversation-map.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-conversation-map.json",
-      "https://r.assistant-ui.com/native/thread.json",
-      "https://r.assistant-ui.com/utils.json",
+      "https://r.openagentui.dev/native/elements-conversation-map.json",
+      "https://r.openagentui.dev/native/thread.json",
+      "https://r.openagentui.dev/utils.json",
     ],
-    dependencies: ["@assistant-ui/react-native", "uniwind"],
+    dependencies: ["@openagentui/react-native", "uniwind"],
   },
   {
     name: "voice-conversation",
@@ -2597,15 +2605,15 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/voice-conversation.aui.tsx",
+        path: "components/openagentui/elements/voice-conversation.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/voice-conversation.aui.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/voice-conversation.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-voice-conversation.json",
+      "https://r.openagentui.dev/native/elements-voice-conversation.json",
     ],
-    dependencies: ["@assistant-ui/react-native", "uniwind"],
+    dependencies: ["@openagentui/react-native", "uniwind"],
   },
   {
     name: "task-card",
@@ -2616,20 +2624,20 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/task-card.aui.tsx",
+        path: "components/openagentui/elements/task-card.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/task-card.aui.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/task-card.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-task-card.json",
-      "https://r.assistant-ui.com/native/elements-task.json",
-      "https://r.assistant-ui.com/native/elements-surfaces.json",
-      "https://r.assistant-ui.com/native/elements-tool-fallback.json",
-      "https://r.assistant-ui.com/native/markdown-text.json",
-      "https://r.assistant-ui.com/utils.json",
+      "https://r.openagentui.dev/native/elements-task-card.json",
+      "https://r.openagentui.dev/native/elements-task.json",
+      "https://r.openagentui.dev/native/elements-surfaces.json",
+      "https://r.openagentui.dev/native/elements-tool-fallback.json",
+      "https://r.openagentui.dev/native/markdown-text.json",
+      "https://r.openagentui.dev/utils.json",
     ],
-    dependencies: ["@assistant-ui/react-native", "uniwind"],
+    dependencies: ["@openagentui/react-native", "uniwind"],
   },
   {
     name: "agent-status",
@@ -2640,21 +2648,21 @@ export const nativeRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/elements/agent-status.aui.tsx",
+        path: "components/openagentui/elements/agent-status.aui.tsx",
         sourcePath:
-          "../../packages/ui/src/components/react-native/assistant-ui/elements/agent-status.aui.tsx",
+          "../../packages/ui/src/components/react-native/openagentui/elements/agent-status.aui.tsx",
       },
     ],
     registryDependencies: [
-      "https://r.assistant-ui.com/native/elements-agent-status.json",
-      "https://r.assistant-ui.com/native/elements-task-card.json",
-      "https://r.assistant-ui.com/native/elements-task.json",
-      "https://r.assistant-ui.com/native/elements-surfaces.json",
-      "https://r.assistant-ui.com/native/icon.json",
-      "https://r.assistant-ui.com/utils.json",
+      "https://r.openagentui.dev/native/elements-agent-status.json",
+      "https://r.openagentui.dev/native/elements-task-card.json",
+      "https://r.openagentui.dev/native/elements-task.json",
+      "https://r.openagentui.dev/native/elements-surfaces.json",
+      "https://r.openagentui.dev/native/icon.json",
+      "https://r.openagentui.dev/utils.json",
     ],
     dependencies: [
-      "@assistant-ui/react-native",
+      "@openagentui/react-native",
       "lucide-react-native",
       "react-native-safe-area-context",
       "uniwind",
@@ -2672,12 +2680,12 @@ export const vueRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/thread-list.vue",
+        path: "components/openagentui/thread-list.vue",
         sourcePath:
-          "../../packages/ui/src/components/vue/assistant-ui/thread-list.vue",
+          "../../packages/ui/src/components/vue/openagentui/thread-list.vue",
       },
     ],
-    dependencies: ["@assistant-ui/vue", "reka-ui", "@lucide/vue"],
+    dependencies: ["@openagentui/vue", "reka-ui", "@lucide/vue"],
   },
   {
     name: "thread",
@@ -2688,38 +2696,38 @@ export const vueRegistry: RegistryItem[] = [
     files: [
       {
         type: "registry:component",
-        path: "components/assistant-ui/thread.vue",
+        path: "components/openagentui/thread.vue",
         sourcePath:
-          "../../packages/ui/src/components/vue/assistant-ui/thread.vue",
+          "../../packages/ui/src/components/vue/openagentui/thread.vue",
       },
       {
         type: "registry:component",
-        path: "components/assistant-ui/message.vue",
+        path: "components/openagentui/message.vue",
         sourcePath:
-          "../../packages/ui/src/components/vue/assistant-ui/message.vue",
+          "../../packages/ui/src/components/vue/openagentui/message.vue",
       },
       {
         type: "registry:component",
-        path: "components/assistant-ui/markdown-text.vue",
+        path: "components/openagentui/markdown-text.vue",
         sourcePath:
-          "../../packages/ui/src/components/vue/assistant-ui/markdown-text.vue",
+          "../../packages/ui/src/components/vue/openagentui/markdown-text.vue",
       },
       {
         type: "registry:component",
-        path: "components/assistant-ui/reasoning.vue",
+        path: "components/openagentui/reasoning.vue",
         sourcePath:
-          "../../packages/ui/src/components/vue/assistant-ui/reasoning.vue",
+          "../../packages/ui/src/components/vue/openagentui/reasoning.vue",
       },
       {
         type: "registry:component",
-        path: "components/assistant-ui/tool-fallback.vue",
+        path: "components/openagentui/tool-fallback.vue",
         sourcePath:
-          "../../packages/ui/src/components/vue/assistant-ui/tool-fallback.vue",
+          "../../packages/ui/src/components/vue/openagentui/tool-fallback.vue",
       },
     ],
     dependencies: [
-      "@assistant-ui/core",
-      "@assistant-ui/vue",
+      "@openagentui/core",
+      "@openagentui/vue",
       "@lucide/vue",
       "markdown-it",
       "reka-ui",

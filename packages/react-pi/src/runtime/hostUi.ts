@@ -23,7 +23,7 @@
 import type {
   RespondToToolApprovalOptions,
   ToolCallMessagePart,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import type { PiHostUiRequest, PiHostUiResponse } from "../types";
 
 export interface SplitHostUiRequests {

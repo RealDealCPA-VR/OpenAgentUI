@@ -1,10 +1,10 @@
 // The prompt copied by the "Copy prompt" button in the homepage hero.
 // Paste into any AI coding agent (Claude Code, Cursor, Windsurf, Codex, etc.)
-// to scaffold and wire up assistant-ui inside the user's project.
+// to scaffold and wire up openagentui inside the user's project.
 
 export const SETUP_PROMPT = `Step 1: Read the docs
 
-Read https://assistant-ui.com/llms-full.txt — the full reference in one
+Read https://openagentui.dev/llms-full.txt — the full reference in one
 file. Append ".md" to any docs URL for raw markdown
 (e.g. /docs/installation.md).
 
@@ -19,13 +19,13 @@ Step 3: Create or integrate
 You are in a non-interactive agent shell — do NOT omit the flags below.
 
 If (a) fresh project:
-Run: npx assistant-ui@latest create <app-name> -t <template>
+Run: npx openagentui@latest create <app-name> -t <template>
 
 Templates: default (unsure), minimal, cloud, cloud-clerk, langgraph, mcp.
 For custom backends without a template, swap -t for -e:
 AG-UI → \`-e with-ag-ui\`, Google ADK → \`-e with-google-adk\`,
 Assistant Transport → \`-e with-assistant-transport\`.
-A2A: use \`-t minimal\`, then install @assistant-ui/react-a2a manually.
+A2A: use \`-t minimal\`, then install @openagentui/react-a2a manually.
 <app-name> and -t/-e are required.
 
 If (b) existing project:
@@ -36,19 +36,19 @@ scaffolds app/assistant.tsx + app/api/chat/route.ts).
   Prefer starting fresh with \`create <name> -e with-react-router\` /
   \`with-tanstack\` / \`with-expo\` and migrating code in. In-place only
   if you must: set components.json registries to
-  \`"@assistant-ui": "https://r.assistant-ui.com/styles/{style}/{name}.json"\`
+  \`"@openagentui": "https://r.openagentui.dev/styles/{style}/{name}.json"\`
   (base- styles get Base UI components; others get Radix; plain
-  \`https://r.assistant-ui.com/{name}.json\` is the Radix-only fallback),
-  then \`npx shadcn@latest add @assistant-ui/thread\`, install the provider
+  \`https://r.openagentui.dev/{name}.json\` is the Radix-only fallback),
+  then \`npx shadcn@latest add @openagentui/thread\`, install the provider
   SDK, and wire your own server for the chat endpoint (Vite/Expo do not
   bundle one). See /docs/installation.md Manual Setup.
 - Next.js App Router → confirm package manager, Tailwind (v3 or v4), and
   env var location, then run:
 
-  npx assistant-ui@latest init --yes
+  npx openagentui@latest init --yes
 
 --yes is required. init scaffolds:
-- components/assistant-ui/elements/thread.aui.tsx (Thread UI)
+- components/openagentui/elements/thread.aui.tsx (Thread UI)
 - app/assistant.tsx (exports <Assistant />, already wraps Thread in
   AssistantRuntimeProvider with runtime + transport)
 - app/api/chat/route.ts (OpenAI backend)
@@ -62,7 +62,7 @@ After create OR init:
   provider's @ai-sdk/* package.
 - Render <Assistant /> (from \`@/app/assistant\`) in the root page.
   Do NOT rebuild the provider — assistant.tsx already does it.
-- More components: \`npx assistant-ui@latest add <name>\`
+- More components: \`npx openagentui@latest add <name>\`
   (thread-list, assistant-modal, attachment, …).
 
 Step 4: Verify

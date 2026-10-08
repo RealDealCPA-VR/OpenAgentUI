@@ -5,15 +5,15 @@ import {
   AuiProvider,
   AuiConfig,
   Suggestions,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import {
   useA2ATask,
   useA2AArtifacts,
   useA2AAgentCard,
   type A2ATaskState,
   type A2APart,
-} from "@assistant-ui/react-a2a";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/react-a2a";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 const STATE_CONFIG: Record<
   string,

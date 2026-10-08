@@ -1,11 +1,11 @@
 ---
 title: Expo React Native AI Chat
-description: Native iOS and Android AI chat app with Expo. Drawer navigation, thread persistence, and the assistant-ui React Native components for mobile.
+description: Native iOS and Android AI chat app with Expo. Drawer navigation, thread persistence, and the openagentui React Native components for mobile.
 ---
 
 ## Overview
 
-A React Native chat application built with Expo and `@assistant-ui/react-native`. It demonstrates drawer-based thread management, streaming OpenAI responses, and a native UI with dark mode support.
+A React Native chat application built with Expo and `@openagentui/react-native`. It demonstrates drawer-based thread management, streaming OpenAI responses, and a native UI with dark mode support.
 
 ## Features
 
@@ -20,8 +20,8 @@ A React Native chat application built with Expo and `@assistant-ui/react-native`
 
 ```bash
 # Clone the repo
-git clone https://github.com/assistant-ui/assistant-ui.git
-cd assistant-ui
+git clone https://github.com/RealDealCPA-VR/OpenAgentUI.git
+cd openagentui
 
 # Install dependencies
 pnpm install
@@ -37,14 +37,14 @@ pnpm --filter with-expo start
 
 ### Runtime Setup
 
-The runtime uses `useChatRuntime` from `@assistant-ui/ai-sdk` with an `AssistantChatTransport` that connects to a chat API endpoint:
+The runtime uses `useChatRuntime` from `@openagentui/ai-sdk` with an `AssistantChatTransport` that connects to a chat API endpoint:
 
 ```tsx title="hooks/use-app-runtime.ts"
 import { useMemo } from "react";
 import {
   useChatRuntime,
   AssistantChatTransport,
-} from "@assistant-ui/ai-sdk";
+} from "@openagentui/ai-sdk";
 import { lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import { Platform } from "react-native";
 import {
@@ -96,8 +96,8 @@ import {
   Tools,
   useAui,
   useAuiEvent,
-} from "@assistant-ui/react-native";
-import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
+} from "@openagentui/react-native";
+import { ThreadList } from "@/components/openagentui/elements/thread-list.aui";
 import { Icon } from "@/components/ui/icon";
 import toolkit from "@/components/tools";
 import { useAppRuntime } from "@/hooks/use-app-runtime";
@@ -167,7 +167,7 @@ export default function RootLayout() {
 ```
 
 ```tsx title="app/index.tsx"
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export default function ChatPage() {
   return <Thread />;
@@ -186,4 +186,4 @@ export default function ChatPage() {
 
 ## Source
 
-<SourceLink href="https://github.com/assistant-ui/assistant-ui/tree/main/examples/with-expo" />
+<SourceLink href="https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-expo" />

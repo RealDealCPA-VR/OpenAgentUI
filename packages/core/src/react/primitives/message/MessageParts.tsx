@@ -10,7 +10,7 @@ import {
   RenderChildrenWithAccessor,
   useAuiState,
   useAui,
-} from "@assistant-ui/store";
+} from "@openagentui/store";
 import type { PartState } from "../../../store/scopes/part";
 import { PartByIndexProvider } from "../../providers/PartByIndexProvider";
 import { TextMessagePartProvider } from "../../providers/TextMessagePartProvider";
@@ -38,7 +38,7 @@ import {
   type GenerativeUIMessagePart,
 } from "../../../types/message";
 import type { DataRenderersState } from "../../types/scopes/dataRenderers";
-import { useShallowSelector } from "@assistant-ui/store/internal";
+import { useShallowSelector } from "@openagentui/store/internal";
 import { resolveToolRender } from "../../../utils/resolveToolRender";
 import { getMessagePartKeys } from "../../../utils/getMessagePartKeys";
 
@@ -303,7 +303,7 @@ export namespace MessagePrimitiveParts {
     /**
      * @deprecated Use `<MessagePrimitive.GroupedParts>` with a `groupBy`
      * that returns `["group-thought", ...]` for reasoning and tool-call
-     * parts. See `@assistant-ui/ui` for a worked example.
+     * parts. See `@openagentui/ui` for a worked example.
      */
     ChainOfThought: ComponentType;
 

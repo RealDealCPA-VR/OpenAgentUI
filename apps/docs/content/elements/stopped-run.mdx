@@ -16,12 +16,12 @@ A cancelled message settles into `status.type === "incomplete"` with `status.rea
 
 ### Detect a cancelled message and wire its actions
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
 import { useMemo } from "react";
-import { useAui, useAuiState } from "@assistant-ui/react";
-import { StoppedRun } from "@/components/assistant-ui/elements/stopped-run";
+import { useAui, useAuiState } from "@openagentui/react";
+import { StoppedRun } from "@/components/openagentui/elements/stopped-run";
 
 function CancelledNotice() {
   const aui = useAui();
@@ -55,7 +55,7 @@ function CancelledNotice() {
 
 ### Understand what Continue really does
 
-`reload()` starts a new run for the same turn; it does not resume the exact cut-off text, since assistant-ui has no built-in prefix-continuation primitive. A backend that supports literal continuation needs the partial text itself, for example passed through `reload`'s `runConfig.custom` and read back inside your `ChatModelAdapter`.
+`reload()` starts a new run for the same turn; it does not resume the exact cut-off text, since openagentui has no built-in prefix-continuation primitive. A backend that supports literal continuation needs the partial text itself, for example passed through `reload`'s `runConfig.custom` and read back inside your `ChatModelAdapter`.
 
   </Step>
 </Steps>
@@ -75,7 +75,7 @@ Standalone, StoppedRun is presentational: you decide what counts as stopped and 
 "use client";
 
 import { useState } from "react";
-import { StoppedRun } from "@/components/assistant-ui/elements/stopped-run";
+import { StoppedRun } from "@/components/openagentui/elements/stopped-run";
 
 export function Answer() {
   const [words, setWords] = useState<string[]>([]);

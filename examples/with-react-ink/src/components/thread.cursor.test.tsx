@@ -7,7 +7,7 @@ import {
   useAui,
   useLocalRuntime,
   useRemoteThreadListRuntime,
-} from "@assistant-ui/react-ink";
+} from "@openagentui/react-ink";
 import { Thread } from "./thread";
 import { ThreadShell } from "./thread-shell";
 

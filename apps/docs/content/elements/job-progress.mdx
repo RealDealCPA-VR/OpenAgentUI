@@ -9,7 +9,7 @@ Job progress keeps a long-running task legible while it runs, then keeps the fin
 
 <RuntimeMode>
 
-This element has no assistant-ui primitive of its own, so render it from a tool. The loading branch starts from the stage information available to the renderer. When the tool resolves, pass its final status as `outcome` so the card becomes a receipt rather than inferring success from a stage count.
+This element has no openagentui primitive of its own, so render it from a tool. The loading branch starts from the stage information available to the renderer. When the tool resolves, pass its final status as `outcome` so the card becomes a receipt rather than inferring success from a stage count.
 
 <Steps>
   <Step>
@@ -19,8 +19,8 @@ This element has no assistant-ui primitive of its own, so render it from a tool.
 ```tsx title="app/toolkit.tsx"
 "use client";
 
-import { defineToolkit } from "@assistant-ui/react";
-import { JobProgress } from "@/components/assistant-ui/elements/job-progress";
+import { defineToolkit } from "@openagentui/react";
+import { JobProgress } from "@/components/openagentui/elements/job-progress";
 
 export const toolkit = defineToolkit({
   run_ci_job: {
@@ -86,7 +86,7 @@ Standalone, the element is controlled. Your job runner owns the stage update and
 import {
   JobProgress,
   type JobStage,
-} from "@/components/assistant-ui/elements/job-progress";
+} from "@/components/openagentui/elements/job-progress";
 
 const stages: readonly JobStage[] = [
   { name: "clone", weight: 1, description: "Fetching the branch" },

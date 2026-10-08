@@ -3,7 +3,7 @@
 import { Suspense, type ReactNode } from "react";
 import { render, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { Unstable_TriggerItem } from "@assistant-ui/core";
+import type { Unstable_TriggerItem } from "@openagentui/core";
 import type { TriggerBehavior } from "./triggerSelectionResource";
 
 const mocks = vi.hoisted(() => ({ register: vi.fn() }));

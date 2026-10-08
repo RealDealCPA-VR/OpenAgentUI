@@ -1,6 +1,6 @@
 "use client";
 
-import { Sources } from "@/components/assistant-ui/elements/sources.aui";
+import { Sources } from "@/components/openagentui/elements/sources.aui";
 import { SampleFrame } from "@/components/pages/docs/samples/sample-frame";
 
 export function SourcesFaviconFallback() {

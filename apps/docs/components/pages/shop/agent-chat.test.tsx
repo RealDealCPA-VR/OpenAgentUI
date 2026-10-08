@@ -16,7 +16,7 @@ afterEach(cleanup);
 
 const checkout = (): CheckoutContextValue => ({
   state: initialCheckoutState(),
-  session: { id: "test", products: ["assistant-ui"], startedAt: 1 },
+  session: { id: "test", products: ["openagentui"], startedAt: 1 },
   url: "https://checkout.example.test/session",
   degraded: false,
   agentPresent: false,

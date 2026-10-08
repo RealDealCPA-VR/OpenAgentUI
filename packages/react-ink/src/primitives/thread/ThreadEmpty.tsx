@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { AuiIf } from "@assistant-ui/store";
+import { AuiIf } from "@openagentui/store";
 
 export type ThreadEmptyProps = {
   children: ReactNode;

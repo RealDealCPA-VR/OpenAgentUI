@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { Platform, TextInput, type TextInputProps } from "react-native";
-import { useAui, useAuiState } from "@assistant-ui/store";
-import { flushTapSync } from "@assistant-ui/tap";
+import { useAui, useAuiState } from "@openagentui/store";
+import { flushTapSync } from "@openagentui/tap";
 
 type TextInputInstance = React.ComponentRef<typeof TextInput>;
 type TextInputKeyPressEvent = Parameters<

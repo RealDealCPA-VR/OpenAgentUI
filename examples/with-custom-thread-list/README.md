@@ -1,13 +1,13 @@
 # Custom Thread List
 
-This example demonstrates how to implement a custom thread list for managing multiple conversations with assistant-ui.
+This example demonstrates how to implement a custom thread list for managing multiple conversations with openagentui.
 
 ## Quick Start
 
 ### Using CLI (Recommended)
 
 ```bash
-npx assistant-ui@latest create my-app --example with-custom-thread-list
+npx openagentui@latest create my-app --example with-custom-thread-list
 cd my-app
 ```
 
@@ -34,5 +34,5 @@ npm run dev
 
 ## Related Documentation
 
-- [assistant-ui Documentation](https://www.assistant-ui.com/docs)
-- [Thread List Guide](https://www.assistant-ui.com/docs/ui/thread-list)
+- [openagentui Documentation](https://openagentui.dev/docs)
+- [Thread List Guide](https://openagentui.dev/docs/ui/thread-list)

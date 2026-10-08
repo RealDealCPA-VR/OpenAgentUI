@@ -47,12 +47,12 @@ Other activity snapshot types become data parts named `agui-activity/<type>`. Re
 
 If your backend exposes the persisted AG-UI messages of a conversation (for
 example a `GET /agents/state` endpoint), use `fromAgUiMessages` to convert them
-to assistant-ui messages and return them from the history adapter so the thread
+to openagentui messages and return them from the history adapter so the thread
 is restored on page load:
 
 ```tsx
-import { fromAgUiMessages } from "@assistant-ui/react-ag-ui";
-import { ExportedMessageRepository } from "@assistant-ui/react";
+import { fromAgUiMessages } from "@openagentui/react-ag-ui";
+import { ExportedMessageRepository } from "@openagentui/react";
 
 const runtime = useAgUiRuntime({
   agent,
@@ -132,7 +132,7 @@ Interrupts are restored when your backend persists them on the assistant message
 `toAgUiMessages` is the converter the runtime uses to build `runAgent` input. Use it when you own the transport, for example an AG-UI WebSocket, and need the same conversion from `onNew`'s `AppendMessage`:
 
 ```tsx
-import { toAgUiMessages } from "@assistant-ui/react-ag-ui";
+import { toAgUiMessages } from "@openagentui/react-ag-ui";
 
 const [agUiMessage] = toAgUiMessages([message]);
 ```
@@ -272,11 +272,11 @@ Two limitations apply:
 
 ### Compared to LangChain
 
-`@assistant-ui/react-langchain` exposes subagents both ways: `useLangChainSubagents()` returns a namespace-keyed discovery map, and each `task` call's transcript rides on `ToolCallMessagePart.messages` (see [subagent and subgraph views](/docs/runtimes/langchain#subagent-and-subgraph-views)). This runtime nests the messages directly and offers no discovery hook, because AG-UI carries the join as an explicit `parentToolCallId` on the lifecycle event rather than as a namespace to resolve, so there is no discovery step to expose.
+`@openagentui/react-langchain` exposes subagents both ways: `useLangChainSubagents()` returns a namespace-keyed discovery map, and each `task` call's transcript rides on `ToolCallMessagePart.messages` (see [subagent and subgraph views](/docs/runtimes/langchain#subagent-and-subgraph-views)). This runtime nests the messages directly and offers no discovery hook, because AG-UI carries the join as an explicit `parentToolCallId` on the lifecycle event rather than as a namespace to resolve, so there is no discovery step to expose.
 
 ## Supported events
 
-The runtime parses the AG-UI event stream and maps each event type to assistant-ui state.
+The runtime parses the AG-UI event stream and maps each event type to openagentui state.
 
 | Event | Effect |
 | --- | --- |
@@ -310,7 +310,7 @@ The runtime parses the AG-UI event stream and maps each event type to assistant-
 Render them by registering a per-name renderer; parts without a registered renderer are not displayed, unless a `Data` fallback component is registered, in which case the fallback receives every custom event name, including the framework plumbing listed below.
 
 ```tsx
-import { useAssistantDataUI } from "@assistant-ui/react";
+import { useAssistantDataUI } from "@openagentui/react";
 
 useAssistantDataUI({
   name: "sources",
@@ -318,7 +318,7 @@ useAssistantDataUI({
 });
 ```
 
-Data parts stay in the assistant-ui message but are not sent back to the agent, since the AG-UI assistant record has no field for them. History adapters, including the assistant-cloud one, persist them as part of the message JSON. Framework integrations emit their own plumbing over this channel (`on_interrupt`, `PredictState`, `Exit`, `hook_error`, `state_update_error`, `system:*`, `MultiAgentHandoff`), and those names surface as data parts like any other, so only register renderers for names your backend owns.
+Data parts stay in the openagentui message but are not sent back to the agent, since the AG-UI assistant record has no field for them. History adapters, including the openagentui-cloud one, persist them as part of the message JSON. Framework integrations emit their own plumbing over this channel (`on_interrupt`, `PredictState`, `Exit`, `hook_error`, `state_update_error`, `system:*`, `MultiAgentHandoff`), and those names surface as data parts like any other, so only register renderers for names your backend owns.
 
 ## Feature support
 

@@ -16,10 +16,10 @@ A composer stages files the same way it stages text: `aui.composer.addAttachment
 
 ### Configure an attachment adapter
 
-Attachments are opt-in: without an adapter, `s.thread.capabilities.attachments` is `false` and `AddAttachment`, paste, and drop all no-op. assistant-ui ships adapters for the common cases:
+Attachments are opt-in: without an adapter, `s.thread.capabilities.attachments` is `false` and `AddAttachment`, paste, and drop all no-op. openagentui ships adapters for the common cases:
 
 ```tsx title="app/chat-provider.tsx"
-import { useLocalRuntime, CompositeAttachmentAdapter, SimpleImageAttachmentAdapter, SimpleTextAttachmentAdapter } from "@assistant-ui/react";
+import { useLocalRuntime, CompositeAttachmentAdapter, SimpleImageAttachmentAdapter, SimpleTextAttachmentAdapter } from "@openagentui/react";
 
 const runtime = useLocalRuntime(chatModel, {
   adapters: {
@@ -36,13 +36,13 @@ const runtime = useLocalRuntime(chatModel, {
 
 ### Add and list attachments
 
-```tsx title="components/assistant-ui/elements/composer-attachments.tsx"
+```tsx title="components/openagentui/elements/composer-attachments.tsx"
 "use client";
 
-import { ComposerPrimitive, AttachmentPrimitive } from "@assistant-ui/react";
+import { ComposerPrimitive, AttachmentPrimitive } from "@openagentui/react";
 import { PlusIcon, XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { field, ghostButton } from "@/components/assistant-ui/elements/surfaces";
+import { field, ghostButton } from "@/components/openagentui/elements/surfaces";
 
 export function ComposerAttachmentsRow() {
   return (
@@ -107,7 +107,7 @@ Standalone, a chip is a pure function of a `ComposerAttachment` object: nothing 
 "use client";
 
 import { useState } from "react";
-import { ComposerAttachments, ComposerAttachmentChip, type ComposerAttachment } from "@/components/assistant-ui/elements/composer";
+import { ComposerAttachments, ComposerAttachmentChip, type ComposerAttachment } from "@/components/openagentui/elements/composer";
 
 export function ChatBox() {
   const [attachments, setAttachments] = useState<ComposerAttachment[]>([]);

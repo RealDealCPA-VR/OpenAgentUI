@@ -1,4 +1,4 @@
-import { SSEEventDecoder } from "assistant-stream/utils";
+import { SSEEventDecoder } from "openagentui-stream/utils";
 import { contentToParts } from "./contentToParts";
 import { parseAdkEventValue } from "./parseAdkEvent";
 import { raceWithAbortSignal } from "./raceWithAbortSignal";

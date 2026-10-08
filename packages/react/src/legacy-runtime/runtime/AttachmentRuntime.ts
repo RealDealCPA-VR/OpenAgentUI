@@ -1,7 +1,7 @@
-export type { AttachmentState, AttachmentRuntime } from "@assistant-ui/core";
+export type { AttachmentState, AttachmentRuntime } from "@openagentui/core";
 export {
   AttachmentRuntimeImpl,
   ThreadComposerAttachmentRuntimeImpl,
   EditComposerAttachmentRuntimeImpl,
   MessageAttachmentRuntimeImpl,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";

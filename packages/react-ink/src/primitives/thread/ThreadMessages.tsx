@@ -6,8 +6,8 @@ import {
   useMemo,
 } from "react";
 import { Box, Static } from "ink";
-import type { ThreadMessage } from "@assistant-ui/core";
-import { useAuiState } from "@assistant-ui/store";
+import type { ThreadMessage } from "@openagentui/core";
+import { useAuiState } from "@openagentui/store";
 import { MemoMessage } from "../internal/MemoMessage";
 
 type MessageComponents =

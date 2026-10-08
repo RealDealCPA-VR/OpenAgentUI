@@ -2,7 +2,7 @@
 import type { MouseEvent, ReactNode } from "react";
 import { fireEvent, render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type * as StoreModule from "@assistant-ui/store";
+import type * as StoreModule from "@openagentui/store";
 import { ThreadPrimitiveRoot } from "../thread/ThreadRoot";
 import { SelectionToolbarPrimitiveRoot } from "./SelectionToolbarRoot";
 
@@ -16,7 +16,7 @@ const h = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
+vi.mock("@openagentui/store", async (importOriginal) => ({
   ...(await importOriginal<typeof StoreModule>()),
   useAui: () => h.aui,
 }));

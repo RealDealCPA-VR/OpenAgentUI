@@ -1,6 +1,6 @@
-# assistant-ui + Eve
+# openagentui + Eve
 
-This is an [assistant-ui](https://github.com/assistant-ui/assistant-ui) starter project powered by [Eve](https://eve.dev/).
+This is an [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project powered by [Eve](https://eve.dev/).
 
 ## Getting Started
 

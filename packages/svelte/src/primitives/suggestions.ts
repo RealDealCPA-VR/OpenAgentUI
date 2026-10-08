@@ -1,8 +1,8 @@
-import { flushTapSync } from "@assistant-ui/tap";
+import { flushTapSync } from "@openagentui/tap";
 import {
   suggestionSendMode,
   suggestionTriggerDisabled,
-} from "@assistant-ui/core/store/internal";
+} from "@openagentui/core/store/internal";
 import { getAuiContext } from "../context";
 import { useAuiState } from "../useAuiState";
 

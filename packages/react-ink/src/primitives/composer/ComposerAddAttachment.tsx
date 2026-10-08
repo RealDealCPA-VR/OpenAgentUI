@@ -1,4 +1,4 @@
-import { useComposerAddAttachment } from "@assistant-ui/core/react";
+import { useComposerAddAttachment } from "@openagentui/core/react";
 import { Pressable, type PressableProps } from "../internal/Pressable";
 
 export type ComposerAddAttachmentProps = Omit<

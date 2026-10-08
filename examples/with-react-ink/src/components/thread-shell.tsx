@@ -1,6 +1,6 @@
 import { Activity, useEffect, useRef, useState, type ReactNode } from "react";
 import { Box, Text, useInput, useStdout } from "ink";
-import { TextInput, useAui, useAuiState } from "@assistant-ui/react-ink";
+import { TextInput, useAui, useAuiState } from "@openagentui/react-ink";
 
 type Mode = "chat" | "threads" | "search" | "rename" | "delete" | "help";
 

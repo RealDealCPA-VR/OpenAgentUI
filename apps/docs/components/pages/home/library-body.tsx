@@ -12,7 +12,7 @@ import { typeDeck, typePackage, typeSection } from "@/components/shared/type";
 import { analytics } from "@/lib/analytics";
 import Link from "next/link";
 
-const CONTACT_SALES_URL = "https://cal.com/simon-farshid/assistant-ui";
+const CONTACT_SALES_URL = "https://cal.com/simon-farshid/openagentui";
 
 const HOME_QUOTE_USERNAMES = [
   "@LangChainAI",
@@ -41,7 +41,7 @@ export function LibraryBody({
       >
         <div className="flex max-w-[40rem] flex-col gap-3">
           <h2 id="what-you-install-heading" className={typePackage}>
-            @assistant-ui/react
+            @openagentui/react
           </h2>
           <p className={typeDeck}>
             The runtime owns the thread, the stream, and the tools.
@@ -88,9 +88,9 @@ export function LibraryBody({
         <div className="bg-foreground/[0.025] dark:bg-foreground/[0.04] rounded-document flex min-w-0 flex-col gap-7 px-6 py-8 md:px-10 md:py-10">
           <div className="flex flex-wrap items-center gap-3">
             <p className="font-mono text-[1.125rem] tracking-[-0.01em] break-all [font-variant-ligatures:none] md:text-[1.375rem]">
-              npx assistant-ui init
+              npx openagentui init
             </p>
-            <CopyButton text="npx assistant-ui init" />
+            <CopyButton text="npx openagentui init" />
           </div>
           <div className="flex flex-wrap items-center gap-4">
             <Button
@@ -119,7 +119,7 @@ export function LibraryBody({
             </a>
           </div>
           <p className="text-muted-foreground font-mono text-[11px] tracking-wide">
-            @assistant-ui/react
+            @openagentui/react
             {reactVersion && <span>@{reactVersion}</span>} · MIT License
           </p>
         </div>

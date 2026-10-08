@@ -6,9 +6,9 @@ import {
   type AssistantEventName,
   type AssistantEventSelector,
   type Unsubscribe,
-} from "@assistant-ui/store/client";
+} from "@openagentui/store/client";
 import { getAuiContext } from "./context";
-import { isDevelopment } from "@assistant-ui/core/store/internal";
+import { isDevelopment } from "@openagentui/core/store/internal";
 
 /**
  * Subscribes to an assistant event for the lifetime of the current

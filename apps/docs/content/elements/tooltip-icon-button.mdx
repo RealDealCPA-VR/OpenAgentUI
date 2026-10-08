@@ -16,12 +16,12 @@ Every action button across the runtime-connected kit elements, thread, voice, at
 
 ### Compose it with a primitive
 
-```tsx title="components/assistant-ui/elements/thread.aui.tsx"
+```tsx title="components/openagentui/elements/thread.aui.tsx"
 "use client";
 
-import { ThreadPrimitive } from "@assistant-ui/react";
+import { ThreadPrimitive } from "@openagentui/react";
 import { ArrowDownIcon } from "lucide-react";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 
 function ScrollToBottom() {
   return (
@@ -41,7 +41,7 @@ The primitive supplies the click handler and the disabled state: `ScrollToBottom
 
 ### Install a kit element for it pre-wired
 
-`@assistant-ui/thread` alone wires up scroll-to-bottom, send, voice dictation start and stop, copy, refresh, edit, and branch previous and next, all as `TooltipIconButton`s. `@assistant-ui/voice`, `@assistant-ui/attachment`, and `@assistant-ui/assistant-modal` each add a few more of their own. None of that composition lives in this file, so you rarely reach for `TooltipIconButton` directly once those are installed.
+`@openagentui/thread` alone wires up scroll-to-bottom, send, voice dictation start and stop, copy, refresh, edit, and branch previous and next, all as `TooltipIconButton`s. `@openagentui/voice`, `@openagentui/attachment`, and `@openagentui/assistant-modal` each add a few more of their own. None of that composition lives in this file, so you rarely reach for `TooltipIconButton` directly once those are installed.
 
   </Step>
 </Steps>
@@ -62,7 +62,7 @@ Standalone, there's no primitive to compose it with, so you own the click handle
 
 import { useState } from "react";
 import { SparklesIcon } from "lucide-react";
-import { TooltipIconButton } from "@/components/assistant-ui/elements/tooltip-icon-button";
+import { TooltipIconButton } from "@/components/openagentui/elements/tooltip-icon-button";
 
 export function GenerateButton() {
   const [busy, setBusy] = useState(false);

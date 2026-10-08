@@ -29,7 +29,7 @@ afterEach(() => {
 describe("anonymous session route", () => {
   it("rejects a direct curl-style request", async () => {
     const response = await GET(
-      new Request("https://www.assistant-ui.com/api/anonymous-session"),
+      new Request("https://openagentui.dev/api/anonymous-session"),
     );
 
     expect(response.status).toBe(403);
@@ -41,7 +41,7 @@ describe("anonymous session route", () => {
     mocks.checkIssuance.mockResolvedValue(null);
 
     const response = await GET(
-      new Request("https://www.assistant-ui.com/api/anonymous-session", {
+      new Request("https://openagentui.dev/api/anonymous-session", {
         headers: browserHeaders,
       }),
     );
@@ -64,7 +64,7 @@ describe("anonymous session route", () => {
     const token = createAnonymousSessionToken({ secret });
 
     const response = await GET(
-      new Request("https://www.assistant-ui.com/api/anonymous-session", {
+      new Request("https://openagentui.dev/api/anonymous-session", {
         headers: {
           ...browserHeaders,
           cookie: `${ANONYMOUS_SESSION_COOKIE}=${token}`,
@@ -82,9 +82,9 @@ describe("anonymous session route", () => {
     mocks.checkIssuance.mockResolvedValue(null);
 
     const response = await GET(
-      new Request("https://www.assistant-ui.com/api/anonymous-session", {
+      new Request("https://openagentui.dev/api/anonymous-session", {
         headers: {
-          origin: "https://assistant-ui-ink.vercel.app",
+          origin: "https://openagentui-ink.vercel.app",
           "sec-fetch-mode": "cors",
           "sec-fetch-site": "cross-site",
         },
@@ -97,7 +97,7 @@ describe("anonymous session route", () => {
       verifyAnonymousSessionToken({ token: body.token, secret }),
     ).not.toBeNull();
     expect(response.headers.get("access-control-allow-origin")).toBe(
-      "https://assistant-ui-ink.vercel.app",
+      "https://openagentui-ink.vercel.app",
     );
     expect(response.headers.get("set-cookie")).toBeNull();
   });
@@ -107,7 +107,7 @@ describe("anonymous session route", () => {
     vi.stubEnv("AUI_ANONYMOUS_SESSION_SECRET", "");
 
     const response = await GET(
-      new Request("https://www.assistant-ui.com/api/anonymous-session", {
+      new Request("https://openagentui.dev/api/anonymous-session", {
         headers: browserHeaders,
       }),
     );
@@ -117,18 +117,18 @@ describe("anonymous session route", () => {
 
   it("returns CORS headers only to supported clients", () => {
     const allowed = OPTIONS(
-      new Request("https://www.assistant-ui.com/api/anonymous-session", {
-        headers: { origin: "https://assistant-ui-ink.vercel.app" },
+      new Request("https://openagentui.dev/api/anonymous-session", {
+        headers: { origin: "https://openagentui-ink.vercel.app" },
       }),
     );
     const untrusted = OPTIONS(
-      new Request("https://www.assistant-ui.com/api/anonymous-session", {
+      new Request("https://openagentui.dev/api/anonymous-session", {
         headers: { origin: "https://attacker.example" },
       }),
     );
 
     expect(allowed.headers.get("access-control-allow-origin")).toBe(
-      "https://assistant-ui-ink.vercel.app",
+      "https://openagentui-ink.vercel.app",
     );
     expect(untrusted.headers.get("access-control-allow-origin")).toBeNull();
   });

@@ -1,11 +1,11 @@
-# `@assistant-ui/ai-sdk`
+# `@openagentui/ai-sdk`
 
-[Vercel AI SDK](https://sdk.vercel.ai) integration for `@assistant-ui/react`. Wraps the AI SDK chat in an assistant-ui runtime and forwards system messages and frontend tools through `AssistantChatTransport`. Each release line targets the AI SDK major pinned in its dependencies.
+[Vercel AI SDK](https://sdk.vercel.ai) integration for `@openagentui/react`. Wraps the AI SDK chat in an openagentui runtime and forwards system messages and frontend tools through `AssistantChatTransport`. Each release line targets the AI SDK major pinned in its dependencies.
 
 ## Installation
 
 ```bash
-npm install @assistant-ui/react @assistant-ui/ai-sdk ai
+npm install @openagentui/react @openagentui/ai-sdk ai
 ```
 
 ## Usage
@@ -13,9 +13,9 @@ npm install @assistant-ui/react @assistant-ui/ai-sdk ai
 ```tsx
 "use client";
 
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export function Chat() {
   const runtime = useChatRuntime();
@@ -29,4 +29,4 @@ export function Chat() {
 
 `useChatRuntime` defaults to `AssistantChatTransport`, which forwards frontend system messages and tool definitions to your backend. To customize the API URL, the cache, or other transport settings, pass a configured `AssistantChatTransport` to keep that forwarding behavior; pass `DefaultChatTransport` to opt out.
 
-Full reference at [assistant-ui.com/docs/runtimes/ai-sdk](https://www.assistant-ui.com/docs/runtimes/ai-sdk).
+Full reference at [openagentui.dev/docs/runtimes/ai-sdk](https://openagentui.dev/docs/runtimes/ai-sdk).

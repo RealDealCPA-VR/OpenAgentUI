@@ -1,12 +1,12 @@
 "use client";
 
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import {
   useAui,
   AuiProvider,
   AuiConfig,
   Suggestions,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { MyRuntimeProvider } from "./MyRuntimeProvider";
 
 function ThreadWithSuggestions() {

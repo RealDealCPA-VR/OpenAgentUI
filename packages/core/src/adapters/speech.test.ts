@@ -122,7 +122,7 @@ describe("WebSpeechSynthesisAdapter", () => {
     await Promise.resolve();
 
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Speech synthesis listener threw an error",
+      "[openagentui] Speech synthesis listener threw an error",
       listenerError,
     );
     expect(lateListener).toHaveBeenCalledOnce();
@@ -166,7 +166,7 @@ describe("WebSpeechSynthesisAdapter", () => {
       error: undefined,
     });
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Speech synthesis listener threw an error",
+      "[openagentui] Speech synthesis listener threw an error",
       listenerError,
     );
   });
@@ -489,7 +489,7 @@ describe("WebSpeechDictationAdapter", () => {
     });
     expect(consoleError).toHaveBeenCalledTimes(3);
     expect(consoleError).toHaveBeenCalledWith(
-      "[assistant-ui] Dictation listener threw an error",
+      "[openagentui] Dictation listener threw an error",
       listenerError,
     );
   });
@@ -527,7 +527,7 @@ describe("WebSpeechDictationAdapter", () => {
     });
     await vi.waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Dictation listener threw an error",
+        "[openagentui] Dictation listener threw an error",
         listenerError,
       );
     });

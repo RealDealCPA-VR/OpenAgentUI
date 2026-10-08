@@ -11,7 +11,7 @@ Two paths to a running chat against a LangGraph Cloud server. The template is fa
 <Tab value="React">
 
 ```sh
-npx create-assistant-ui@latest -t langchain my-app
+npx create-openagentui@latest -t langchain my-app
 cd my-app
 ```
 
@@ -30,7 +30,7 @@ npm run dev:frontend
 
 `npm run dev` also starts the template's bundled agent with `langgraphjs dev`, which needs `ANTHROPIC_API_KEY`.
 
-The template connects to LangGraph through `useStreamRuntime` from [`@assistant-ui/react-langchain`](/docs/runtimes/langchain); continue on that page to add features. To use `useLangGraphRuntime`, follow the manual setup below.
+The template connects to LangGraph through `useStreamRuntime` from [`@openagentui/react-langchain`](/docs/runtimes/langchain); continue on that page to add features. To use `useLangGraphRuntime`, follow the manual setup below.
 
 </Tab>
 <Tab value="React Native">
@@ -55,17 +55,17 @@ There is not an Ink LangGraph template yet. Use the manual setup below in a Node
 <PlatformTabs>
 <Tab value="React">
 
-<InstallCommand npm={["@assistant-ui/react", "@assistant-ui/react-langgraph", "@langchain/langgraph-sdk"]} />
+<InstallCommand npm={["@openagentui/react", "@openagentui/react-langgraph", "@langchain/langgraph-sdk"]} />
 
 </Tab>
 <Tab value="React Native">
 
-<InstallCommand expo={["@assistant-ui/react-native", "@assistant-ui/react-langgraph", "@langchain/langgraph-sdk"]} />
+<InstallCommand expo={["@openagentui/react-native", "@openagentui/react-langgraph", "@langchain/langgraph-sdk"]} />
 
 </Tab>
 <Tab value="React Ink">
 
-<InstallCommand npm={["@assistant-ui/react-ink", "@assistant-ui/react-langgraph", "@langchain/langgraph-sdk", "ink", "react"]} />
+<InstallCommand npm={["@openagentui/react-ink", "@openagentui/react-langgraph", "@langchain/langgraph-sdk", "ink", "react"]} />
 
 </Tab>
 </PlatformTabs>
@@ -131,13 +131,13 @@ export const createClient = () => {
 "use client";
 
 import { useMemo } from "react";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
+import { AssistantRuntimeProvider } from "@openagentui/react";
 import {
   unstable_createLangGraphStream,
   useLangGraphRuntime,
   type LangChainMessage,
-} from "@assistant-ui/react-langgraph";
+} from "@openagentui/react-langgraph";
 
 import { createClient } from "@/lib/chatApi";
 
@@ -185,13 +185,13 @@ export function MyAssistant() {
 
 ```tsx title="components/MyAssistant.tsx"
 import { useMemo } from "react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react-native";
+import { AssistantRuntimeProvider } from "@openagentui/react-native";
 import {
   unstable_createLangGraphStream,
   useLangGraphRuntime,
   type LangChainMessage,
-} from "@assistant-ui/react-langgraph";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+} from "@openagentui/react-langgraph";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 import { createClient } from "@/lib/chatApi";
 
@@ -239,12 +239,12 @@ export function MyAssistant() {
 
 ```tsx title="components/MyAssistant.tsx"
 import { useMemo } from "react";
-import { AssistantRuntimeProvider } from "@assistant-ui/react-ink";
+import { AssistantRuntimeProvider } from "@openagentui/react-ink";
 import {
   unstable_createLangGraphStream,
   useLangGraphRuntime,
   type LangChainMessage,
-} from "@assistant-ui/react-langgraph";
+} from "@openagentui/react-langgraph";
 import { Thread } from "./thread.js";
 
 import { createClient } from "../lib/chatApi.js";

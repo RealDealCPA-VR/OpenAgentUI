@@ -15,7 +15,7 @@ const plan = (extraEnv) => {
       "build",
       "test",
       "--filter=./packages/*",
-      "--filter=@assistant-ui/docs",
+      "--filter=@openagentui/docs",
       "--filter=with-resumable-stream",
       "--dry=json",
     ],
@@ -46,8 +46,8 @@ test("Redis configuration does not change the selected tasks", () => {
 });
 
 for (const id of [
-  "assistant-stream#test",
-  "@assistant-ui/docs#test",
+  "openagentui-stream#test",
+  "@openagentui/docs#test",
   "with-resumable-stream#build",
 ]) {
   test(`${id} retains Redis cache invalidation and environment access`, () => {

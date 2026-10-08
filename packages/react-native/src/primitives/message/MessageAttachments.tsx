@@ -1,7 +1,7 @@
 import {
   MessagePrimitiveAttachments,
   MessagePrimitiveAttachmentByIndex,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";
 
 export type MessageAttachmentsProps = MessagePrimitiveAttachments.Props;
 

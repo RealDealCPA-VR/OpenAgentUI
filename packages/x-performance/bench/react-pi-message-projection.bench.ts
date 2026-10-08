@@ -5,7 +5,7 @@ import {
   type PiClient,
   type PiClientEvent,
   type PiThreadSnapshot,
-} from "@assistant-ui/react-pi";
+} from "@openagentui/react-pi";
 import { test, inject, describe } from "vitest";
 
 const assistantMessage = (

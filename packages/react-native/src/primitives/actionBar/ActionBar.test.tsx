@@ -30,9 +30,9 @@ const h = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => {
+vi.mock("@openagentui/core/react", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@assistant-ui/core/react")>();
+    await importOriginal<typeof import("@openagentui/core/react")>();
   return {
     ...actual,
     useActionBarCopy: () => ({

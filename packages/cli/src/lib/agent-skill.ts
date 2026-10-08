@@ -4,9 +4,9 @@ import path from "node:path";
 import { withStagedDownload } from "./utils/download";
 import { dlxCommand, type PackageManagerName } from "./utils/package-manager";
 
-export const SKILLS_PACKAGE = "assistant-ui/skills";
+export const SKILLS_PACKAGE = "openagentui/skills";
 export const SKILLS_COMMIT = "139674dc888ee076982b6726e8e6f5d0fe0b5f67";
-export const SKILLS_PLUGIN_SOURCE = `gh:${SKILLS_PACKAGE}/assistant-ui#${SKILLS_COMMIT}`;
+export const SKILLS_PLUGIN_SOURCE = `gh:${SKILLS_PACKAGE}/openagentui#${SKILLS_COMMIT}`;
 
 export function resolveSkillsInstall(params: {
   skills?: boolean;
@@ -36,7 +36,7 @@ export function buildSkillsAddCommand(
 export function skillsPluginDir(): string {
   const cacheHome =
     process.env.XDG_CACHE_HOME || path.join(os.homedir(), ".cache");
-  return path.join(cacheHome, "assistant-ui", "skills", SKILLS_COMMIT);
+  return path.join(cacheHome, "openagentui", "skills", SKILLS_COMMIT);
 }
 
 export async function ensureSkillsPlugin(): Promise<string> {
@@ -73,7 +73,7 @@ export async function ensureSkillsPlugin(): Promise<string> {
     async (download) => {
       await download.catch((error: unknown) => {
         throw new Error(
-          "Could not fetch the assistant-ui skills from GitHub. Check your network, or set GITHUB_TOKEN if you are rate limited.",
+          "Could not fetch the openagentui skills from GitHub. Check your network, or set GITHUB_TOKEN if you are rate limited.",
           { cause: error },
         );
       });

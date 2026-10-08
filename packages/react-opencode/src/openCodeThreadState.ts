@@ -10,7 +10,7 @@ import type {
   PendingUserMessage,
   ThreadUserMessagePart,
 } from "./types";
-import { nullProtoRecord } from "@assistant-ui/core/internal";
+import { nullProtoRecord } from "@openagentui/core/internal";
 import { serializeOpenCodeParts } from "./serializeUserParts";
 
 const PENDING_MATCH_WINDOW_MS = 2 * 60 * 1000;

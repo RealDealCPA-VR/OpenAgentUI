@@ -95,7 +95,7 @@ describe("useEveAgentRuntime status forwarding", () => {
       expect(callback).toHaveBeenCalledWith(value);
       await waitFor(() => {
         expect(consoleError).toHaveBeenCalledWith(
-          `[assistant-ui/eve] ${callbackName} callback threw an error`,
+          `[openagentui/eve] ${callbackName} callback threw an error`,
           callbackError,
         );
       });

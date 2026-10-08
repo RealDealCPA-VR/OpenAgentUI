@@ -6,16 +6,16 @@ export const cloud: CatalogProduct = {
   purchase: "cart",
   name: "Assistant Cloud",
   tagline:
-    "Persistence, thread history, and titles for an existing assistant-ui app.",
+    "Persistence, thread history, and titles for an existing openagentui app.",
   description:
     "A hosted backend that saves conversations as they stream, lists them in a thread list, and titles them automatically. Your model and chat route stay where they are; the cloud sits beside them.",
   kind: "service",
-  audience: "existing assistant-ui apps",
+  audience: "existing openagentui apps",
   license: "Free tier",
   oss: false,
   glyph: "cloud",
   docs: "/docs/cloud/quickstart",
-  packages: ["assistant-cloud"],
+  packages: ["openagentui-cloud"],
   includes: [
     "Thread persistence that saves during streaming",
     "A ThreadList component with rename, archive, and delete",
@@ -23,7 +23,7 @@ export const cloud: CatalogProduct = {
     "Anonymous sessions, with auth providers when you need identity",
   ],
   requires: [
-    "An assistant-ui app on the AI SDK, LangGraph, or another runtime",
+    "An openagentui app on the AI SDK, LangGraph, or another runtime",
     "A project at cloud.assistant-ui.com",
   ],
   preview: "thread-list",
@@ -43,7 +43,7 @@ export const cloud: CatalogProduct = {
       title: "Add the thread list",
       detail:
         "Install the ThreadList component next to your Thread and render both inside the existing AssistantRuntimeProvider.",
-      command: "npx assistant-ui@latest add thread-list",
+      command: "npx openagentui@latest add thread-list",
     },
   ],
 };

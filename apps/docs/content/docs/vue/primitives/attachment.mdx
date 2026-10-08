@@ -13,7 +13,7 @@ import {
   AttachmentPrimitiveRoot,
   AttachmentPrimitiveThumb,
   ComposerPrimitiveAttachments,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 </script>
 
 <template>
@@ -38,7 +38,7 @@ import {
   AttachmentPrimitiveRoot,
   AttachmentPrimitiveThumb,
   MessagePrimitiveAttachments,
-} from "@assistant-ui/vue";
+} from "@openagentui/vue";
 </script>
 
 <template>
@@ -75,7 +75,7 @@ Read the current item with `useAuiState((s) => s.attachment)`. Its fields includ
 ```vue title="app/components/ImageAttachmentPreview.vue"
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { AttachmentPrimitiveName, useAuiState } from "@assistant-ui/vue";
+import { AttachmentPrimitiveName, useAuiState } from "@openagentui/vue";
 
 const type = useAuiState((s) => s.attachment.type);
 const file = useAuiState((s) => s.attachment.file);

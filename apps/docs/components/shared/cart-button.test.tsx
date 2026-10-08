@@ -60,7 +60,7 @@ describe("cart button", () => {
   });
 
   it("says a product waits for the next setup before the running one has connected", async () => {
-    startCheckout(["assistant-ui"]);
+    startCheckout(["openagentui"]);
     expect((await add()).textContent).toBe("Added to next setup");
     expect(screen.getByText("In next setup")).toBeTruthy();
   });

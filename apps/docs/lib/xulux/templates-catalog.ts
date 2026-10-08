@@ -11,9 +11,9 @@ import {
 const DOCS_BASE_URL = "https://0d9e27d14127c0eeadfc34b424cc7ed0.preview.bl.run";
 const SUPPORT_BASE_URL =
   "https://8fd186ab9f30417b876d717f734067a9.preview.bl.run";
-const BASE_ASSISTANT_UI_URL =
+const BASE_OPENAGENTUI_URL =
   "https://71e34324f44b97fed5523a6a9857f14b.preview.bl.run";
-const REACT_NATIVE_PREVIEW_URL = "https://assistant-ui-expo.vercel.app/";
+const REACT_NATIVE_PREVIEW_URL = "https://openagentui-expo.vercel.app/";
 
 const CATEGORIES: XuluxTemplateCategory[] = [
   DEMO_DOWNLOAD_CATEGORY,
@@ -21,7 +21,7 @@ const CATEGORIES: XuluxTemplateCategory[] = [
     id: "base",
     name: "Base Chat Templates",
     description:
-      "assistant-ui Base chat templates with thread history, composer, suggestions, and AI SDK runtime.",
+      "openagentui Base chat templates with thread history, composer, suggestions, and AI SDK runtime.",
   },
   {
     id: "docs",
@@ -222,7 +222,7 @@ function docsVersionCards(): XuluxTemplate[] {
       },
       tech: {
         framework: "Next.js",
-        runtime: "assistant-ui + AI SDK",
+        runtime: "openagentui + AI SDK",
         frontendPattern: "Docs assistant",
       },
       env: [],
@@ -295,7 +295,7 @@ function supportVersionCards(): XuluxTemplate[] {
       },
       tech: {
         framework: "Next.js",
-        runtime: "assistant-ui + AI SDK",
+        runtime: "openagentui + AI SDK",
         frontendPattern: "Support modal + dashboard",
       },
       env: [],
@@ -324,7 +324,7 @@ function demoCards(): XuluxTemplate[] {
     featured: demo.featured,
     tech: demo.tech ?? {
       framework: "Next.js",
-      runtime: "assistant-ui + AI SDK",
+      runtime: "openagentui + AI SDK",
       frontendPattern: "Fixed demo",
     },
     env:
@@ -346,35 +346,35 @@ function demoCards(): XuluxTemplate[] {
 function baseAssistantCards(): XuluxTemplate[] {
   return [
     {
-      id: "base-assistant-ui",
-      templateId: "base-assistant-ui",
-      title: "Configurable Base Assistant UI",
+      id: "base-openagentui",
+      templateId: "base-openagentui",
+      title: "Configurable Base OpenAgentUI",
       description:
-        "The assistant-ui Base demo as a hosted configurable chat template with threads, composer, mic input, suggestions, slash commands, local/cloud persistence fallback, and no-key demo flows.",
+        "The openagentui Base demo as a hosted configurable chat template with threads, composer, mic input, suggestions, slash commands, local/cloud persistence fallback, and no-key demo flows.",
       categoryId: "base",
       categoryName: "Base Chat Templates",
-      tags: ["assistant-ui", "Base", "Chat", "AI SDK", "Customizable"],
+      tags: ["openagentui", "Base", "Chat", "AI SDK", "Customizable"],
       prompt:
-        "Spin up the configurable assistant-ui Base chat app with thread history, suggestions, slash commands, model picker, mic input, and AI SDK runtime.",
+        "Spin up the configurable openagentui Base chat app with thread history, suggestions, slash commands, model picker, mic input, and AI SDK runtime.",
       gradient: "from-teal-500/40 via-cyan-500/30 to-zinc-400/20",
       kind: "template",
       previewStatus: "live",
-      previewUrl: BASE_ASSISTANT_UI_URL,
-      downloadUrl: joinUrl(BASE_ASSISTANT_UI_URL, "/api/download"),
-      sandboxBaseUrl: BASE_ASSISTANT_UI_URL,
+      previewUrl: BASE_OPENAGENTUI_URL,
+      downloadUrl: joinUrl(BASE_OPENAGENTUI_URL, "/api/download"),
+      sandboxBaseUrl: BASE_OPENAGENTUI_URL,
       sourcePath:
-        "docsAgentVersion/xuluxVersion2Agent/generated-templates/base-assistant-ui",
+        "docsAgentVersion/xuluxVersion2Agent/generated-templates/base-openagentui",
       docsUrl: "/demos/base",
       featured: true,
       intent: {
         goodFor: [
           "General chat assistants",
-          "assistant-ui Base starters",
+          "openagentui Base starters",
           "Configurable no-key demos",
         ],
         notFor: ["Docs article shells", "Support dashboard workflows"],
         exampleUserRequests: [
-          "Build me a branded assistant-ui Base chat app.",
+          "Build me a branded openagentui Base chat app.",
           "Customize the welcome message, suggestions, theme, and demo flows.",
           "Create a downloadable starter from the Base assistant template.",
         ],
@@ -397,7 +397,7 @@ function baseAssistantCards(): XuluxTemplate[] {
       },
       tech: {
         framework: "Next.js",
-        runtime: "assistant-ui + AI SDK",
+        runtime: "openagentui + AI SDK",
         frontendPattern: "Base demo shell",
       },
       env: [],
@@ -412,10 +412,10 @@ function platformPreviewCards(): XuluxTemplate[] {
       id: "expo-react-native",
       title: "Expo React Native Assistant",
       description:
-        "A mobile AI chat app built with Expo and assistant-ui React Native primitives, with drawer navigation, thread management, streaming responses, and native mobile UI.",
+        "A mobile AI chat app built with Expo and openagentui React Native primitives, with drawer navigation, thread management, streaming responses, and native mobile UI.",
       categoryId: DEMO_DOWNLOAD_CATEGORY.id,
       categoryName: DEMO_DOWNLOAD_CATEGORY.name,
-      tags: ["assistant-ui", "React Native", "Expo", "mobile", "chat"],
+      tags: ["openagentui", "React Native", "Expo", "mobile", "chat"],
       prompt:
         "Open the Expo React Native assistant demo and give me setup notes.",
       gradient: "from-sky-500/35 via-blue-400/25 to-zinc-300/20",
@@ -437,7 +437,7 @@ function platformPreviewCards(): XuluxTemplate[] {
         exampleUserRequests: [
           "Build me a React Native assistant app.",
           "Show me the Expo mobile chat starter.",
-          "I want an assistant-ui app for iOS and Android.",
+          "I want an openagentui app for iOS and Android.",
         ],
       },
       tech: {

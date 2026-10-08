@@ -3,4 +3,4 @@
 export {
   ComposerPrimitiveAttachments,
   ComposerPrimitiveAttachmentByIndex,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";

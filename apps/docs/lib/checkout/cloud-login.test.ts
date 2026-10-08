@@ -10,7 +10,7 @@ const attempt = "4787798b-d33b-4329-b3d7-ad87ba1687fd";
 const input = (): Checkout.Input => ({
   id: "q1",
   kind: "text",
-  preset: "assistant-ui-cli-login",
+  preset: "openagentui-cli-login",
   phase: "planning",
   prompt: "Sign in",
   optional: false,

@@ -3,7 +3,7 @@ title: Clerk
 description: Gate the chat route and scope thread persistence to the signed-in user with Clerk.
 ---
 
-[Clerk](https://clerk.com/) is a hosted auth platform that integrates with Next.js through `@clerk/nextjs`. This page covers using it with assistant-ui *without* AssistantCloud: middleware-based route gating, server-side `auth()` checks, and per-user scoping on a custom thread list.
+[Clerk](https://clerk.com/) is a hosted auth platform that integrates with Next.js through `@clerk/nextjs`. This page covers using it with openagentui *without* AssistantCloud: middleware-based route gating, server-side `auth()` checks, and per-user scoping on a custom thread list.
 
 If you use AssistantCloud, see [cloud authorization](/docs/cloud/authorization) instead. Cloud handles the Clerk JWT exchange for you and gives you workspace-scoped threads with no DB code.
 
@@ -107,7 +107,7 @@ The first render of `<MyProvider>` may run before Clerk resolves the user on the
 ```tsx title="app/components/ReloadOnAuth.tsx"
 "use client";
 
-import { useAui } from "@assistant-ui/react";
+import { useAui } from "@openagentui/react";
 import { useUser } from "@clerk/nextjs";
 import { useEffect } from "react";
 

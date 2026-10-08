@@ -26,10 +26,10 @@ import {
   KEY_TAB_COMMAND,
 } from "lexical";
 import { mergeRegister } from "@lexical/utils";
-import { useAui, useAuiState } from "@assistant-ui/store";
-import type { Unstable_DirectiveFormatter } from "@assistant-ui/core";
-import { unstable_defaultDirectiveFormatter } from "@assistant-ui/core";
-import { INTERNAL } from "@assistant-ui/react";
+import { useAui, useAuiState } from "@openagentui/store";
+import type { Unstable_DirectiveFormatter } from "@openagentui/core";
+import { unstable_defaultDirectiveFormatter } from "@openagentui/core";
+import { INTERNAL } from "@openagentui/react";
 import {
   DirectiveNode,
   DirectiveChipProvider,
@@ -41,7 +41,7 @@ import type { DirectivePluginProps } from "./plugins/DirectivePlugin";
 import { $getCollapsedRuntimeOffset } from "./runtimeOffset";
 
 const composerExtension = defineExtension({
-  name: "@assistant-ui/react-lexical",
+  name: "@openagentui/react-lexical",
   namespace: "aui-lexical-composer",
   nodes: [DirectiveNode],
   dependencies: [

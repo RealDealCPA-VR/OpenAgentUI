@@ -8,7 +8,7 @@ export const notifyEventListeners = <T>(
 ) => {
   const reportError = (error: unknown) => {
     console.error(
-      `[assistant-ui] ${errorContext} listener threw an error`,
+      `[openagentui] ${errorContext} listener threw an error`,
       error,
     );
   };

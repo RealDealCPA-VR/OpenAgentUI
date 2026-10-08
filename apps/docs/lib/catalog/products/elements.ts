@@ -11,7 +11,7 @@ export const ELEMENT_PRODUCTS: readonly CatalogItem[] = ELEMENT_INDEX.map(
     slug: elementProductSlug(slug),
     name: title,
     tagline: runtimeWired
-      ? "Element, wired to the assistant-ui runtime."
+      ? "Element, wired to the openagentui runtime."
       : "Element, props-only.",
     href: `/elements/${slug}`,
     purchase: "cart",

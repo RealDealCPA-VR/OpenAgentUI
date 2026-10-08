@@ -1,6 +1,6 @@
 /**
  * Pure projection of the canonical Pi transcript (`PiAgentMessage[]`) into
- * assistant-ui's `ThreadMessageLike[]` / `ExportedMessageRepository`.
+ * openagentui's `ThreadMessageLike[]` / `ExportedMessageRepository`.
  *
  * Design:
  * - Each Pi *turn* is one assistant message (text/thinking/toolCall parts). A
@@ -24,13 +24,13 @@
  * Browser-safe; imports no `@earendil-works/*` packages.
  */
 
-import { ExportedMessageRepository } from "@assistant-ui/react";
-import { isParsableUrl, parseDataUrl } from "@assistant-ui/core/internal";
+import { ExportedMessageRepository } from "@openagentui/react";
+import { isParsableUrl, parseDataUrl } from "@openagentui/core/internal";
 import type {
   ThreadMessageLike,
   ToolCallMessagePart,
   ToolModelContentPart,
-} from "@assistant-ui/react";
+} from "@openagentui/react";
 import { approvalForRequest, splitHostUiRequests } from "./hostUi";
 import type { PiThreadState } from "./threadState";
 import type {

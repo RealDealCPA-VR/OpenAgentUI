@@ -1,5 +1,5 @@
 import { Pressable, type PressableProps } from "react-native";
-import { useThreadListItemUnarchive } from "@assistant-ui/core/react";
+import { useThreadListItemUnarchive } from "@openagentui/core/react";
 
 export type ThreadListItemUnarchiveProps = Omit<
   PressableProps,

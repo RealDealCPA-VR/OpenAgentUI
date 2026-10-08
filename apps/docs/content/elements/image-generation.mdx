@@ -19,8 +19,8 @@ An image tool renders through that tool's own toolkit entry: the model's prompt 
 ```tsx title="app/toolkit.tsx"
 "use generative";
 
-import { defineToolkit, externalTool } from "@assistant-ui/react";
-import { ImageGeneration } from "@/components/assistant-ui/elements/image-generation";
+import { defineToolkit, externalTool } from "@openagentui/react";
+import { ImageGeneration } from "@/components/openagentui/elements/image-generation";
 
 export default defineToolkit({
   generate_image: {
@@ -45,9 +45,9 @@ export default defineToolkit({
 ```tsx title="app/MyRuntimeProvider.tsx"
 "use client";
 
-import { AssistantRuntimeProvider, AuiConfig, Tools } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/ai-sdk";
-import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { AssistantRuntimeProvider, AuiConfig, Tools } from "@openagentui/react";
+import { useChatRuntime } from "@openagentui/ai-sdk";
+import { Thread } from "@/components/openagentui/elements/thread.aui";
 import toolkit from "./toolkit";
 
 export function App() {
@@ -82,7 +82,7 @@ Standalone, `ImageGeneration` is fully controlled: you hold the prompt and wheth
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ImageGeneration } from "@/components/assistant-ui/elements/image-generation";
+import { ImageGeneration } from "@/components/openagentui/elements/image-generation";
 
 export function Generation() {
   const prompt = "A calm mountain lake at dawn";

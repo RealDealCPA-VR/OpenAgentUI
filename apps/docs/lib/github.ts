@@ -1,7 +1,7 @@
 import "server-only";
 import { withTimeout } from "./with-timeout";
 
-const REPO = "assistant-ui/assistant-ui";
+const REPO = "openagentui/openagentui";
 const API_BASE = `https://api.github.com/repos/${REPO}`;
 const HTML_BASE = `https://github.com/${REPO}`;
 
@@ -10,7 +10,7 @@ export const REVALIDATE = {
   COOL: 21_600,
 } as const;
 
-const USER_AGENT = "assistant-ui-docs";
+const USER_AGENT = "openagentui-docs";
 
 function ghHeaders(extra?: HeadersInit): HeadersInit {
   const h: Record<string, string> = {
@@ -438,7 +438,7 @@ export async function getDependents(
   try {
     const res = await withTimeout(
       fetch(`${HTML_BASE}/network/dependents`, {
-        headers: { "User-Agent": "Mozilla/5.0 (assistant-ui-traction)" },
+        headers: { "User-Agent": "Mozilla/5.0 (openagentui-traction)" },
         ...cacheInit(revalidate),
       }),
     );

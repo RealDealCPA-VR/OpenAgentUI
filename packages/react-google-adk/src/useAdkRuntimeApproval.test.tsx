@@ -6,7 +6,7 @@ import type {
   RespondToToolApprovalOptions,
   ThreadMessage,
   ToolCallMessagePart,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 import type { AdkMessage, AdkSendMessageConfig } from "./types";
 
 const mocks = vi.hoisted(() => {
@@ -29,8 +29,8 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/core/react", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/core/react")>()),
+vi.mock("@openagentui/core/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/core/react")>()),
   useCloudThreadListAdapter: () => ({}),
   useExternalStoreRuntime: (adapter: unknown) => {
     mocks.adapters.push(adapter);
@@ -40,8 +40,8 @@ vi.mock("@assistant-ui/core/react", async (importOriginal) => ({
     options.runtimeHook(),
 }));
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => ({
     threadListItem: mocks.threadListItem,
   }),

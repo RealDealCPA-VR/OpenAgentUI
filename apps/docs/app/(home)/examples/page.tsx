@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 const title = "Examples";
 const description =
-  "Production-ready examples of AI chat in React. ChatGPT clones, copilots, generative UI, artifacts, and more, all built with assistant-ui.";
+  "Production-ready examples of AI chat in React. ChatGPT clones, copilots, generative UI, artifacts, and more, all built with openagentui.";
 
 export const metadata: Metadata = {
   title,

@@ -1,6 +1,6 @@
 {
   "title": "Runtimes",
-  "description": "Runtime state and actions exposed through useAui and useAuiState, covering AssistantRuntime, ThreadRuntime, ThreadListRuntime, ComposerRuntime, MessageRuntime, and attachment APIs for controlling assistant-ui chat.",
+  "description": "Runtime state and actions exposed through useAui and useAuiState, covering AssistantRuntime, ThreadRuntime, ThreadListRuntime, ComposerRuntime, MessageRuntime, and attachment APIs for controlling openagentui chat.",
   "pages": [
     "index",
     "assistant-runtime",

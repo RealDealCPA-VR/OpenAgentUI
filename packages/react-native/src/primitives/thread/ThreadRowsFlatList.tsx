@@ -5,8 +5,8 @@ import {
   ThreadPrimitiveRow,
   type ThreadRow,
   type ThreadRowsOptions,
-} from "@assistant-ui/core/react";
-import { useAuiState } from "@assistant-ui/store";
+} from "@openagentui/core/react";
+import { useAuiState } from "@openagentui/store";
 import {
   type FlatListHistory,
   getFlatListPagingProps,

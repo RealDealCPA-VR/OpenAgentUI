@@ -1,4 +1,4 @@
 export {
   useLocalRuntime,
   type LocalRuntimeOptions,
-} from "@assistant-ui/core/react";
+} from "@openagentui/core/react";

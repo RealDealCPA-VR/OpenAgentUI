@@ -3,7 +3,7 @@
 import {
   FileTree,
   type FileTreeNode,
-} from "@/components/assistant-ui/elements/file-tree";
+} from "@/components/openagentui/elements/file-tree";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const NODES: readonly FileTreeNode[] = [

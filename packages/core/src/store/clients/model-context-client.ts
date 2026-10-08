@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import { resource } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+import { resource } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import { CompositeContextProvider } from "../../utils/composite-context-provider";
 import type { ModelContextState } from "../scopes/model-context";
-import { shallowEqual } from "@assistant-ui/store/internal";
+import { shallowEqual } from "@openagentui/store/internal";
 
 const EMPTY_TOOL_NAMES: readonly string[] = [];
 

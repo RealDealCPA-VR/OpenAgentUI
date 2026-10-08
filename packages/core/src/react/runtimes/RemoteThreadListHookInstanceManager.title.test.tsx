@@ -351,7 +351,7 @@ describe("RemoteThreadListHookInstanceManager title generation", () => {
 
     await waitFor(() => {
       expect(consoleError).toHaveBeenCalledWith(
-        "[assistant-ui] Thread title generation failed",
+        "[openagentui] Thread title generation failed",
         error,
       );
     });

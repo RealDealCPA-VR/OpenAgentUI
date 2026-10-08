@@ -174,7 +174,7 @@ export function SubProjectLayout({
                 href="/"
                 className="hover:text-foreground transition-colors"
               >
-                assistant-ui
+                openagentui
               </Link>
             </p>
             <LegalLinks />

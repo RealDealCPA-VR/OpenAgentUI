@@ -1,7 +1,7 @@
 "use client";
 
 import { type ComponentProps, useId, useMemo, useState } from "react";
-import type { SyntaxHighlighterProps } from "@assistant-ui/react-markdown";
+import type { SyntaxHighlighterProps } from "@openagentui/react-markdown";
 import { cva, type VariantProps } from "class-variance-authority";
 import { diffLines } from "diff";
 import { CheckIcon, CopyIcon } from "lucide-react";

@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 
 /**
  * Gets relevant source files from an explicit file or directory target.
- * Directory scans only include files containing "assistant-ui".
+ * Directory scans only include files containing "openagentui".
  */
 export function getRelevantFiles(source: string): string[] {
   const target = path.resolve(source);
@@ -33,7 +33,7 @@ export function getRelevantFiles(source: string): string[] {
       "**/*.bundle.js",
     ],
   })) {
-    if (content.includes("assistant-ui")) relevantFiles.push(fullPath);
+    if (content.includes("openagentui")) relevantFiles.push(fullPath);
   }
   return relevantFiles;
 }

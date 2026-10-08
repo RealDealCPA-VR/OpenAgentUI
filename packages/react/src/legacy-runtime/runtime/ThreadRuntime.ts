@@ -4,11 +4,11 @@ export type {
   CreateAppendMessage,
   ThreadState,
   ThreadRuntime,
-} from "@assistant-ui/core";
+} from "@openagentui/core";
 
-export { getThreadState, ThreadRuntimeImpl } from "@assistant-ui/core/internal";
+export { getThreadState, ThreadRuntimeImpl } from "@openagentui/core/internal";
 
 export type {
   ThreadRuntimeCoreBinding,
   ThreadListItemRuntimeBinding,
-} from "@assistant-ui/core/internal";
+} from "@openagentui/core/internal";

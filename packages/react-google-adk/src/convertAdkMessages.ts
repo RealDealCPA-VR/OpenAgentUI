@@ -1,7 +1,7 @@
 "use client";
 
-import type { ToolCallMessagePart } from "@assistant-ui/core";
-import type { useExternalMessageConverter } from "@assistant-ui/core/react";
+import type { ToolCallMessagePart } from "@openagentui/core";
+import type { useExternalMessageConverter } from "@openagentui/core/react";
 import {
   ADK_REQUEST_CONFIRMATION,
   type AdkToolApproval,

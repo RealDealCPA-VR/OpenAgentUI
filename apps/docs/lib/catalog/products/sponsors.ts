@@ -1,5 +1,5 @@
 import type { CatalogItem } from "../types";
-import { assistantUi } from "./assistant-ui";
+import { assistantUi } from "./openagentui";
 
 type Sponsor = Pick<
   CatalogItem,
@@ -15,7 +15,7 @@ const sponsor = (entry: Sponsor): CatalogItem => ({
 
 /** The main installer as a cart product, so it can join a setup alongside the sponsors. */
 export const sponsorAssistantUi: CatalogItem = {
-  slug: "sponsors/assistant-ui",
+  slug: "sponsors/openagentui",
   name: assistantUi.name,
   tagline: assistantUi.tagline,
   href: "/",

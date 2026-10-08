@@ -745,7 +745,7 @@ describe("resolveProjectDirectoryGuidance", () => {
 
 describe("resolvePresetUrl", () => {
   it("passes through full https URLs unchanged", () => {
-    const url = "https://www.assistant-ui.com/playground/init?preset=chatgpt";
+    const url = "https://openagentui.dev/playground/init?preset=chatgpt";
     expect(resolvePresetUrl(url)).toBe(url);
   });
 
@@ -756,13 +756,13 @@ describe("resolvePresetUrl", () => {
 
   it("expands a bare preset name to the playground URL", () => {
     expect(resolvePresetUrl("chatgpt")).toBe(
-      "https://www.assistant-ui.com/playground/init?preset=chatgpt",
+      "https://openagentui.dev/playground/init?preset=chatgpt",
     );
   });
 
   it("encodes special characters in preset names", () => {
     expect(resolvePresetUrl("my preset")).toBe(
-      "https://www.assistant-ui.com/playground/init?preset=my%20preset",
+      "https://openagentui.dev/playground/init?preset=my%20preset",
     );
   });
 });

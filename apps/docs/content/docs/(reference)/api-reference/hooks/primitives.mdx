@@ -1,6 +1,6 @@
 ---
 title: Primitive Hooks
-description: Primitive hooks for reading scoped assistant-ui runtime state, viewport behavior, timing, and message part data inside React components.
+description: Primitive hooks for reading scoped openagentui runtime state, viewport behavior, timing, and message part data inside React components.
 ---
 
 import { unstable_useComposerInput, unstable_useMessageStallDetection, useCloudThreadListAdapter, useMessagePartData, useScrollLock, useThreadViewportAutoScroll } from "@/generated/typeDocs";
@@ -234,7 +234,7 @@ const part = useAuiState((s) =>
 );
 ```
 
-See the [migration guide](https://assistant-ui.com/docs/migrations/v0-12).
+See the [migration guide](https://openagentui.dev/docs/migrations/v0-12).
 
 <ParametersTable {...useMessagePartData} />
 
@@ -254,7 +254,7 @@ const file = useAuiState((s) => {
 });
 ```
 
-See the [migration guide](https://assistant-ui.com/docs/migrations/v0-12).
+See the [migration guide](https://openagentui.dev/docs/migrations/v0-12).
 
 ```ts
 const useMessagePartFile: () => FileMessagePart & { readonly status: MessagePartStatus | ToolCallMessagePartStatus; };
@@ -276,7 +276,7 @@ const image = useAuiState((s) => {
 });
 ```
 
-See the [migration guide](https://assistant-ui.com/docs/migrations/v0-12).
+See the [migration guide](https://openagentui.dev/docs/migrations/v0-12).
 
 ```ts
 const useMessagePartImage: () => ImageMessagePart & { readonly status: MessagePartStatus | ToolCallMessagePartStatus; };
@@ -298,7 +298,7 @@ const reasoning = useAuiState((s) => {
 });
 ```
 
-See the [migration guide](https://assistant-ui.com/docs/migrations/v0-12).
+See the [migration guide](https://openagentui.dev/docs/migrations/v0-12).
 
 ```ts
 const useMessagePartReasoning: () => ReasoningMessagePart & { readonly status: MessagePartStatus | ToolCallMessagePartStatus; };
@@ -320,7 +320,7 @@ const source = useAuiState((s) => {
 });
 ```
 
-See the [migration guide](https://assistant-ui.com/docs/migrations/v0-12).
+See the [migration guide](https://openagentui.dev/docs/migrations/v0-12).
 
 ```ts
 const useMessagePartSource: () => ({ readonly type: "source"; readonly sourceType: "url"; readonly id: string; readonly url: string; readonly title?: string; readonly providerMetadata?: SourceProviderMetadata; readonly parentId?: string; } & { readonly status: MessagePartStatus | ToolCallMessagePartStatus; }) | ({ readonly type: "source"; readonly sourceType: "document"; readonly id: string; readonly url?: undefined; readonly title: string; readonly mediaType: string; readonly filename?: string; readonly providerMetadata?: SourceProviderMetadata; readonly parentId?: string; } & { readonly status: MessagePartStatus | ToolCallMessagePartStatus; });
@@ -342,7 +342,7 @@ const text = useAuiState((s) => {
 });
 ```
 
-See the [migration guide](https://assistant-ui.com/docs/migrations/v0-12).
+See the [migration guide](https://openagentui.dev/docs/migrations/v0-12).
 
 ```ts
 const useMessagePartText: () => (TextMessagePart & { readonly status: MessagePartStatus | ToolCallMessagePartStatus; }) | (ReasoningMessagePart & { readonly status: MessagePartStatus | ToolCallMessagePartStatus; });

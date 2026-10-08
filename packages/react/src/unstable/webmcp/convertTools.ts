@@ -3,8 +3,8 @@ import {
   toJSONSchema,
   type Tool,
   type ToolModelContentPart,
-} from "assistant-stream";
-import { generateId } from "@assistant-ui/core/internal";
+} from "openagentui-stream";
+import { generateId } from "@openagentui/core/internal";
 import type {
   WebMcpCallToolResult,
   WebMcpContent,
@@ -92,7 +92,7 @@ export const toMcpContent = async (
       return { content: parts.map(mapModelContentPart) };
     } catch (e) {
       console.warn(
-        "[assistant-ui] toModelOutput threw; falling back to default projection.",
+        "[openagentui] toModelOutput threw; falling back to default projection.",
         e,
       );
     }
@@ -112,7 +112,7 @@ const isStandardSchema = (schema: unknown): schema is StandardSchemaLike =>
   "~standard" in schema &&
   (schema as StandardSchemaLike)["~standard"].version === 1;
 
-const TOOL_ABORTED = Symbol("assistant-ui.webmcp-tool-aborted");
+const TOOL_ABORTED = Symbol("openagentui.webmcp-tool-aborted");
 
 const isThenable = <T>(value: T | PromiseLike<T>): value is PromiseLike<T> =>
   typeof (value as PromiseLike<T> | null | undefined)?.then === "function";
@@ -132,7 +132,7 @@ const raceWithAbort = async <T>(
   });
 
   try {
-    // Unlike assistant-stream's helper, cancellation wins when validation aborts and rejects synchronously.
+    // Unlike openagentui-stream's helper, cancellation wins when validation aborts and rejects synchronously.
     return await Promise.race([abortPromise, value]);
   } finally {
     abortSignal.removeEventListener("abort", onAbort);

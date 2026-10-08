@@ -1,8 +1,8 @@
-import type { ReadonlyJSONObject } from "assistant-stream/utils";
+import type { ReadonlyJSONObject } from "openagentui-stream/utils";
 
 /**
  * Format adapter shape — structurally identical to the MessageFormatAdapter
- * in @assistant-ui/react, but defined here to avoid cross-package type moves.
+ * in @openagentui/react, but defined here to avoid cross-package type moves.
  * TypeScript's structural typing ensures these are interchangeable.
  */
 export type MessageFormatAdapter<TMessage, TStorageFormat> = {

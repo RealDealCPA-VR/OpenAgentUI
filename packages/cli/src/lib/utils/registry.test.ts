@@ -13,7 +13,7 @@ describe("getComponentsJsonStyle", () => {
   let cwd: string;
 
   beforeEach(() => {
-    cwd = fs.mkdtempSync(path.join(os.tmpdir(), "assistant-ui-cli-"));
+    cwd = fs.mkdtempSync(path.join(os.tmpdir(), "openagentui-cli-"));
   });
 
   afterEach(() => {
@@ -29,9 +29,9 @@ describe("getComponentsJsonStyle", () => {
     expect(getComponentsJsonStyle(cwd)).toBe("base-nova");
   });
 
-  it("ignores a stale assistant-ui.json", () => {
+  it("ignores a stale openagentui.json", () => {
     fs.writeFileSync(
-      path.join(cwd, "assistant-ui.json"),
+      path.join(cwd, "openagentui.json"),
       JSON.stringify({ style: "new-york" }),
     );
     fs.writeFileSync(
@@ -66,7 +66,7 @@ describe("detectRegistryPlatform", () => {
   let cwd: string;
 
   beforeEach(() => {
-    cwd = fs.mkdtempSync(path.join(os.tmpdir(), "assistant-ui-cli-"));
+    cwd = fs.mkdtempSync(path.join(os.tmpdir(), "openagentui-cli-"));
   });
 
   afterEach(() => {
@@ -108,19 +108,19 @@ describe("detectRegistryPlatform", () => {
 describe("resolveQuickStartRegistryUrl", () => {
   it("uses the base quick start for base styles", () => {
     expect(resolveQuickStartRegistryUrl("base-nova")).toBe(
-      "https://r.assistant-ui.com/base/chat/b/ai-sdk-quick-start/json",
+      "https://r.openagentui.dev/base/chat/b/ai-sdk-quick-start/json",
     );
   });
 
   it("uses the radix quick start for radix styles", () => {
     expect(resolveQuickStartRegistryUrl("radix-nova")).toBe(
-      "https://r.assistant-ui.com/chat/b/ai-sdk-quick-start/json",
+      "https://r.openagentui.dev/chat/b/ai-sdk-quick-start/json",
     );
   });
 
   it("uses the base quick start without a style", () => {
     expect(resolveQuickStartRegistryUrl()).toBe(
-      "https://r.assistant-ui.com/base/chat/b/ai-sdk-quick-start/json",
+      "https://r.openagentui.dev/base/chat/b/ai-sdk-quick-start/json",
     );
   });
 });
@@ -128,37 +128,37 @@ describe("resolveQuickStartRegistryUrl", () => {
 describe("resolveRegistryItemUrl", () => {
   it("uses the style scoped URL for base styles", () => {
     expect(resolveRegistryItemUrl("thread", "base-nova")).toBe(
-      "https://r.assistant-ui.com/styles/base-nova/thread.json",
+      "https://r.openagentui.dev/styles/base-nova/thread.json",
     );
   });
 
   it("uses the plain URL for non-base styles", () => {
     expect(resolveRegistryItemUrl("thread", "nova")).toBe(
-      "https://r.assistant-ui.com/thread.json",
+      "https://r.openagentui.dev/thread.json",
     );
   });
 
   it("uses the base URL without a style", () => {
     expect(resolveRegistryItemUrl("thread")).toBe(
-      "https://r.assistant-ui.com/base/thread.json",
+      "https://r.openagentui.dev/base/thread.json",
     );
   });
 
   it("keeps the style inside a single path segment", () => {
     expect(resolveRegistryItemUrl("thread", "base-nova?preview=1")).toBe(
-      "https://r.assistant-ui.com/styles/base-nova%3Fpreview%3D1/thread.json",
+      "https://r.openagentui.dev/styles/base-nova%3Fpreview%3D1/thread.json",
     );
   });
 
   it("uses the native URL regardless of style", () => {
     expect(resolveRegistryItemUrl("thread", "base-nova", "native")).toBe(
-      "https://r.assistant-ui.com/native/thread.json",
+      "https://r.openagentui.dev/native/thread.json",
     );
   });
 
   it("keeps shared items at the root URL on native", () => {
     expect(resolveRegistryItemUrl("utils", undefined, "native")).toBe(
-      "https://r.assistant-ui.com/utils.json",
+      "https://r.openagentui.dev/utils.json",
     );
   });
 });

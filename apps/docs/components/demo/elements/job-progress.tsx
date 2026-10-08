@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   JobProgress,
   type JobStage,
-} from "@/components/assistant-ui/elements/job-progress";
+} from "@/components/openagentui/elements/job-progress";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
 const STAGES: readonly JobStage[] = [

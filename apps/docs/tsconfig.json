@@ -1,5 +1,5 @@
 {
-  "extends": "@assistant-ui/x-buildutils/ts/next",
+  "extends": "@openagentui/x-buildutils/ts/next",
   "compilerOptions": {
     "paths": {
       "@/components/ui/*": [
@@ -10,8 +10,8 @@
         "../../packages/ui/src/components/react/ui/radix/*"
       ],
       "@/lib/utils": ["../../packages/ui/src/lib/utils"],
-      "@/components/assistant-ui/elements/markdown-text": [
-        "./components/assistant-ui/elements/markdown-text"
+      "@/components/openagentui/elements/markdown-text": [
+        "./components/openagentui/elements/markdown-text"
       ],
       "@/hooks/use-mobile": ["../../packages/ui/src/hooks/use-mobile"],
       "@/hooks/use-copy-to-clipboard": [
@@ -20,8 +20,8 @@
       "@/hooks/use-attachment-src": [
         "../../packages/ui/src/hooks/use-attachment-src"
       ],
-      "@/components/assistant-ui/*": [
-        "../../packages/ui/src/components/react/assistant-ui/*"
+      "@/components/openagentui/*": [
+        "../../packages/ui/src/components/react/openagentui/*"
       ],
       "@/components/demo/elements/*": ["./components/demo/elements/*"],
       "@/components/icons/*": [
@@ -29,23 +29,27 @@
         "../../packages/ui/src/components/react/icons/*"
       ],
       "@/*": ["./*"],
-      "@assistant-ui/ui/*": ["../../packages/ui/src/*"],
+      "@openagentui/ui/*": ["../../packages/ui/src/*"],
       "fumadocs-mdx:collections/*": ["./.source/*"],
-      "@assistant-ui/react-generative-ui/*": [
+      "@openagentui/react-generative-ui/*": [
         "../../packages/react-generative-ui/src/*"
       ],
-      "@assistant-ui/store/client": ["../../packages/store/src/client"],
-      "@assistant-ui/store/internal": ["../../packages/store/src/internal"],
-      "@assistant-ui/*": ["../../packages/*/src"],
-      "@assistant-ui/core/*": ["../../packages/core/src/*"],
-      "@assistant-ui/react/*": ["../../packages/react/src/*"],
-      "@assistant-ui/tap/*": ["../../packages/tap/src/*"],
-      "assistant-stream": ["../../packages/assistant-stream/src"],
-      "assistant-stream/*": ["../../packages/assistant-stream/src/*"],
-      "assistant-cloud": ["../../packages/cloud/src"],
-      "assistant-cloud/*": ["../../packages/cloud/src/*"],
-      "safe-content-frame": ["../../packages/safe-content-frame/src"],
-      "safe-content-frame/*": ["../../packages/safe-content-frame/src/*"]
+      "@openagentui/store/client": ["../../packages/store/src/client"],
+      "@openagentui/store/internal": ["../../packages/store/src/internal"],
+      "@openagentui/*": ["../../packages/*/src"],
+      "@openagentui/core/*": ["../../packages/core/src/*"],
+      "@openagentui/react/*": ["../../packages/react/src/*"],
+      "@openagentui/tap/*": ["../../packages/tap/src/*"],
+      "openagentui-stream": ["../../packages/openagentui-stream/src"],
+      "openagentui-stream/*": ["../../packages/openagentui-stream/src/*"],
+      "openagentui-cloud": ["../../packages/cloud/src"],
+      "openagentui-cloud/*": ["../../packages/cloud/src/*"],
+      "@openagentui/safe-content-frame": [
+        "../../packages/safe-content-frame/src"
+      ],
+      "@openagentui/safe-content-frame/*": [
+        "../../packages/safe-content-frame/src/*"
+      ]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

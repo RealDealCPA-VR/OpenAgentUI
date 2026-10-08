@@ -1,12 +1,12 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
-const REPO = "assistant-ui/skills";
+const REPO = "openagentui/skills";
 // The published skills are reviewed content, so the source is a commit this
 // repo chose rather than whatever the upstream branch holds at build time.
 // Bump it by PR and regenerate the snapshot in the same change.
 const COMMIT = "139674dc888ee076982b6726e8e6f5d0fe0b5f67";
-const SKILLS_DIR = "assistant-ui/skills";
+const SKILLS_DIR = "openagentui/skills";
 const API_BASE = `https://api.github.com/repos/${REPO}`;
 const rawSkillUrl = (commit: string, name: string) =>
   `https://raw.githubusercontent.com/${REPO}/${commit}/${SKILLS_DIR}/${name}/SKILL.md`;
@@ -28,7 +28,7 @@ function githubHeaders(): Record<string, string> {
   const headers: Record<string, string> = {
     Accept: "application/vnd.github+json",
     "X-GitHub-Api-Version": "2022-11-28",
-    "User-Agent": "assistant-ui-docs",
+    "User-Agent": "openagentui-docs",
   };
   if (process.env.GITHUB_TOKEN) {
     headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;

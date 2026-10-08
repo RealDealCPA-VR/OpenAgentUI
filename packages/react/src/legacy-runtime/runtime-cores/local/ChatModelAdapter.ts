@@ -4,4 +4,4 @@ export type {
   CoreChatModelRunResult,
   ChatModelRunOptions,
   ChatModelAdapter,
-} from "@assistant-ui/core";
+} from "@openagentui/core";

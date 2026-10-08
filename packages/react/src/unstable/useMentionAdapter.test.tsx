@@ -6,8 +6,8 @@ import {
   flushTapSync,
   resource,
   useResource,
-} from "@assistant-ui/tap";
-import type { Unstable_TriggerAdapter } from "@assistant-ui/core";
+} from "@openagentui/tap";
+import type { Unstable_TriggerAdapter } from "@openagentui/core";
 import { useState } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { TriggerNavigationResource } from "../primitives/composer/trigger/triggerNavigationResource";
@@ -47,8 +47,8 @@ const runtime = vi.hoisted(() => {
   };
 });
 
-vi.mock("@assistant-ui/store", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@assistant-ui/store")>()),
+vi.mock("@openagentui/store", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@openagentui/store")>()),
   useAui: () => runtime.client,
 }));
 

@@ -10,7 +10,7 @@ import {
 } from "react";
 import { act, cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { flushTapSync, resource, withKey } from "@assistant-ui/tap";
+import { flushTapSync, resource, withKey } from "@openagentui/tap";
 import { AuiProvider } from "../AuiProvider";
 import { AuiConfig } from "../AuiConfig";
 import { useAui } from "../useAui";

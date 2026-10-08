@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { resource } from "@assistant-ui/tap";
-import type { ClientOutput } from "@assistant-ui/store";
+import { resource } from "@openagentui/tap";
+import type { ClientOutput } from "@openagentui/store";
 import type { ComposerState } from "../scopes/composer";
 
 const useNoOpComposerClient = ({

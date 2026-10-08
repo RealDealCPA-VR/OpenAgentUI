@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { useAuiState } from "@assistant-ui/store";
-import { useThreadListItemTrigger } from "@assistant-ui/core/react";
+import { useAuiState } from "@openagentui/store";
+import { useThreadListItemTrigger } from "@openagentui/core/react";
 import {
   Pressable,
   type PressableProps,

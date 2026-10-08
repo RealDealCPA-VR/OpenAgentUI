@@ -21,7 +21,7 @@ import {
 
 type InstallCommandProps =
   | {
-      /** Shadcn registry components to install (will be prefixed with @assistant-ui/) */
+      /** Shadcn registry components to install (will be prefixed with @openagentui/) */
       shadcn: string[];
       /** Show manual setup instructions for React, Tailwind, shadcn/ui */
       manualSetupInstructions?: boolean;
@@ -66,10 +66,10 @@ export async function InstallCommand(props: InstallCommandProps) {
 
   const components = props.shadcn;
   const radixUrls = components.map(
-    (c) => `https://r.assistant-ui.com/${c}.json`,
+    (c) => `https://r.openagentui.dev/${c}.json`,
   );
   const baseUrls = components.map(
-    (c) => `https://r.assistant-ui.com/base/${c}.json`,
+    (c) => `https://r.openagentui.dev/base/${c}.json`,
   );
 
   const [radixResolved, baseResolved] = await Promise.all([
@@ -81,19 +81,19 @@ export async function InstallCommand(props: InstallCommandProps) {
     <>
       {props.manualSetupInstructions && <SetupInstructions />}
       <FileGroup title="Main Component" group={resolved.main} />
-      <FileGroup title="assistant-ui dependencies" group={resolved.auiDeps} />
+      <FileGroup title="openagentui dependencies" group={resolved.auiDeps} />
       <FileGroup title="shadcn/ui dependencies" group={resolved.shadcn} />
     </>
   );
 
-  const namespaced = components.map((c) => `@assistant-ui/${c}`);
+  const namespaced = components.map((c) => `@openagentui/${c}`);
 
   return (
     <Tabs items={["CLI", "Manual"]}>
       <Tab>
         <ShadcnInstallTabs urls={namespaced} />
         <p className="text-muted-foreground mt-3 text-sm">
-          The <code>@assistant-ui</code> namespace resolves the Radix or Base UI
+          The <code>@openagentui</code> namespace resolves the Radix or Base UI
           flavor from your project&apos;s style through the{" "}
           <a href="/docs/base-ui" className="underline underline-offset-2">
             style-aware registry
@@ -116,7 +116,7 @@ export async function InstallCommand(props: InstallCommandProps) {
   );
 }
 
-const REPO = "assistant-ui/assistant-ui";
+const REPO = "openagentui/openagentui";
 const GITHUB_BLOB = `https://github.com/${REPO}/blob/main`;
 
 const CommandBlock = ({ command }: { command: string }) => (
@@ -142,11 +142,11 @@ export const InstallCommandLLM = async (
   }
 
   const flavor = ctx?.flavor ?? "base";
-  const namespaced = props.shadcn.map((c) => `@assistant-ui/${c}`);
+  const namespaced = props.shadcn.map((c) => `@openagentui/${c}`);
   const urls = props.shadcn.map((c) =>
     flavor === "base"
-      ? `https://r.assistant-ui.com/base/${c}.json`
-      : `https://r.assistant-ui.com/${c}.json`,
+      ? `https://r.openagentui.dev/base/${c}.json`
+      : `https://r.openagentui.dev/${c}.json`,
   );
   const resolved = await resolveAllComponents(props.shadcn, flavor);
   const files: ResolvedFile[] = [
@@ -169,8 +169,8 @@ export const InstallCommandLLM = async (
     <>
       <p>
         With the style-aware registry configured in components.json
-        (&quot;@assistant-ui&quot;:
-        &quot;https://r.assistant-ui.com/styles/&#123;style&#125;/&#123;name&#125;.json&quot;),
+        (&quot;@openagentui&quot;:
+        &quot;https://r.openagentui.dev/styles/&#123;style&#125;/&#123;name&#125;.json&quot;),
         the flavor resolves from the project style automatically:
       </p>
       <CommandBlock command={`npx shadcn@latest add ${namespaced.join(" ")}`} />

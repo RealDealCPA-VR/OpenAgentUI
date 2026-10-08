@@ -495,7 +495,7 @@ describe("MessageRuntimeImpl.reload when the runtime rejects", () => {
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     expect(consoleError).toHaveBeenCalledExactlyOnceWith(
-      "[assistant-ui] Message reload failed",
+      "[openagentui] Message reload failed",
       error,
     );
   });

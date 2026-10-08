@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Pressable, type PressableProps } from "react-native";
-import { useAui } from "@assistant-ui/store";
+import { useAui } from "@openagentui/store";
 
 export type QueueItemRemoveProps = Omit<
   PressableProps,

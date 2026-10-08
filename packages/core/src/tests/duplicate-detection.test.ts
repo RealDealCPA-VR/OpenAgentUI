@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { checkDuplicateCore } from "../internal/duplicate-detection";
 
-const KEY = Symbol.for("@assistant-ui/core.loaded");
+const KEY = Symbol.for("@openagentui/core.loaded");
 
 function reset(): void {
   delete (globalThis as unknown as Record<symbol, unknown>)[KEY];
@@ -29,6 +29,6 @@ describe("checkDuplicateCore", () => {
     checkDuplicateCore();
     checkDuplicateCore();
     expect(warn).toHaveBeenCalledTimes(1);
-    expect(warn.mock.calls[0]![0]).toMatch(/npx assistant-ui doctor/);
+    expect(warn.mock.calls[0]![0]).toMatch(/npx openagentui doctor/);
   });
 });
