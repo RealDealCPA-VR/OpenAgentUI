@@ -84,7 +84,7 @@ export default function NotFound() {
             <div className="bg-muted flex size-8 shrink-0 items-center justify-center rounded-full">
               <Image
                 src="/favicon/icon.svg"
-                alt="openagentui"
+                alt="OpenAgentUI"
                 width={16}
                 height={16}
                 className="dark:hue-rotate-180 dark:invert"

@@ -2070,7 +2070,7 @@ export const registry: RegistryItem[] = [
     registryDependencies: [],
   },
   {
-    name: "@openagentui/heat-graph",
+    name: "heat-graph",
     type: "registry:component",
     title: "Heat Graph",
     description: "Activity heat map with month and weekday labels.",

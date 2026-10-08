@@ -442,7 +442,7 @@ const OPENAGENTUI_OWNED_UI = new Set([
 const BARE_ELEMENT_ITEMS = new Set([
   "file",
   "generative-ui",
-  "@openagentui/heat-graph",
+  "heat-graph",
   "image",
   "logos",
   "markdown-text",

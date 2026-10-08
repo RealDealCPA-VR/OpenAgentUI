@@ -527,7 +527,7 @@ for command in request.commands:
 ## Resuming from a sync server
 
 <Callout type="info">
-The sync server is currently part of the enterprise plan; contact us for details.
+OpenAgentUI does not ship a sync server. Resuming needs a backend that keeps active runs addressable, such as your own server built on the pattern below.
 </Callout>
 
 When a user refreshes the page or reconnects, the backend may still be generating. `resumeRun` reconnects to an active stream.

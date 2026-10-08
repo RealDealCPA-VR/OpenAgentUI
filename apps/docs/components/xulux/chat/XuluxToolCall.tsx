@@ -512,9 +512,9 @@ function CertificateDialog({
               <Image
                 id="certificate-title"
                 src="/brand/logotype.svg"
-                alt="openagentui"
-                width={150}
-                height={25}
+                alt="OpenAgentUI"
+                width={136}
+                height={24}
                 className="mx-auto mt-4 h-8 w-auto sm:h-9"
               />
               <p className="mt-6 text-sm text-slate-600">

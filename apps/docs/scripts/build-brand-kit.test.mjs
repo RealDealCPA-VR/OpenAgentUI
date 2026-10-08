@@ -9,7 +9,7 @@ import { buildBrandKit } from "./build-brand-kit.mts";
 const assetRoot = new URL("../", import.meta.url);
 const assets = [
   ["public/favicon/icon.svg", 24, 24],
-  ["public/brand/logotype.svg", 172, 24],
+  ["public/brand/logotype.svg", 136, 24],
   ["app/icon0.svg", 24, 24],
 ];
 
@@ -29,7 +29,7 @@ describe("brand assets", () => {
       expect(document.querySelectorAll("svg")).toHaveLength(1);
       expect(
         document.querySelector(
-          "mask, clipPath, image, use, [stroke], [stroke-width]",
+          "mask, clipPath, image, use, text, [stroke], [stroke-width]",
         ),
       ).toBeNull();
       expect(
@@ -57,10 +57,11 @@ describe("brand assets", () => {
         path.getAttribute("d"),
       ),
     );
+    // The logotype starts with the mark's outlines, then the outlined wordmark.
     expect(
       Array.from(logotype.querySelectorAll("path"), (path) =>
         path.getAttribute("d"),
-      ),
+      ).slice(0, mark.querySelectorAll("path").length),
     ).toEqual(
       Array.from(mark.querySelectorAll("path"), (path) =>
         path.getAttribute("d"),

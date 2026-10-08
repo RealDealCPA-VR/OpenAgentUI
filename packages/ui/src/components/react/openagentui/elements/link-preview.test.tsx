@@ -54,7 +54,7 @@ describe("LinkPreview", () => {
     expect(
       container.querySelector('[data-slot="link-preview-site-initial"]')
         ?.textContent,
-    ).toBe("A");
+    ).toBe("O");
   });
 
   it("marks its compact layout", () => {
