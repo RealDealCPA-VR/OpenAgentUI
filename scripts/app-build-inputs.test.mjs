@@ -36,12 +36,6 @@ test("detects app build inputs", () => {
     "scripts/app-build-inputs.test.mjs",
     "apps/docs/content/docs/index.mdx",
     "scripts/lib/script-options.mjs",
-    "scripts/build-example-bundle.mjs",
-    "scripts/run-example-bundles.mjs",
-    "scripts/example-bundles.json",
-    "scripts/package-example-bundles.mjs",
-    "scripts/prepare-example-bundles.mjs",
-    "scripts/example-bundles.test.mjs",
   ]) {
     assert.equal(hasAppBuildInputs([file]), true, file);
   }
@@ -112,7 +106,6 @@ test("the workflow gates dependency-backed app build steps", () => {
     "Setup pnpm and node.js",
     "Install dependencies",
     "Build apps",
-    "Verify standalone example bundle contracts",
   ]) {
     assert.match(
       step(name),

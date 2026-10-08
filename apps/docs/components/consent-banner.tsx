@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   CONSENT_REOPEN_EVENT,
@@ -13,10 +12,15 @@ import {
   type ConsentChoice,
 } from "@/lib/consent";
 
+// PostHog is the only cookie-setting analytics, and it only loads with a key,
+// so a deployment without one has nothing to ask consent for.
+const analyticsConfigured = !!process.env.NEXT_PUBLIC_POSTHOG_API_KEY;
+
 export function ConsentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!analyticsConfigured) return;
     const reopen = () => setVisible(true);
     window.addEventListener(CONSENT_REOPEN_EVENT, reopen);
     const unsubscribe = subscribeToConsent(() => setVisible(false));
@@ -51,14 +55,7 @@ export function ConsentBanner() {
       className="bg-background fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 rounded-xl border p-4 shadow-lg"
     >
       <p className="text-muted-foreground text-sm">
-        We use analytics cookies to understand how our docs are used. See our{" "}
-        <Link
-          href="/privacy-policy"
-          className="text-foreground underline underline-offset-4"
-        >
-          Privacy Policy
-        </Link>
-        .
+        We use analytics cookies to understand how our docs are used.
       </p>
       <div className="mt-3 flex justify-end gap-2">
         <Button variant="outline" size="sm" onClick={() => choose("denied")}>

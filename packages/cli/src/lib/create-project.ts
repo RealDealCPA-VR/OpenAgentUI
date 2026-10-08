@@ -51,7 +51,7 @@ export async function resolveLatestReleaseRef(): Promise<string | undefined> {
   try {
     const authToken = resolveGitHubAuthToken();
     const res = await fetch(
-      "https://api.github.com/repos/openagentui/openagentui/releases/latest",
+      "https://api.github.com/repos/RealDealCPA-VR/OpenAgentUI/releases/latest",
       authToken
         ? { headers: { Authorization: toBearerAuthHeader(authToken) } }
         : undefined,
@@ -80,8 +80,8 @@ export async function downloadProject(
   ref?: string,
 ): Promise<void> {
   const source = ref
-    ? `gh:openagentui/openagentui/${repoPath}#${ref}`
-    : `gh:openagentui/openagentui/${repoPath}`;
+    ? `gh:RealDealCPA-VR/OpenAgentUI/${repoPath}#${ref}`
+    : `gh:RealDealCPA-VR/OpenAgentUI/${repoPath}`;
 
   let destinationCreated = false;
   let stagingDir: string | undefined;

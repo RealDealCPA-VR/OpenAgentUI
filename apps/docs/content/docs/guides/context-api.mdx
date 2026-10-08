@@ -15,7 +15,7 @@ The Context API provides:
 - **Event listening** - React to user interactions and system events
 - **Scope-aware design** - Components resolve their context (message, thread, etc.) from where they render
 
-All openagentui primitives are built on it. When the built-in components don't meet your needs, use the Context API to build custom components with the same capabilities.
+All OpenAgentUI primitives are built on it. When the built-in components don't meet your needs, use the Context API to build custom components with the same capabilities.
 
 The Context API is backed by the runtime you provide to `<AssistantRuntimeProvider>`. The runtime is the store that holds assistant state, handles actions, and dispatches events.
 
@@ -23,7 +23,7 @@ The Context API is backed by the runtime you provide to `<AssistantRuntimeProvid
 
 ### Scopes and Hierarchy
 
-openagentui organizes state into **scopes**. Each scope corresponds to a part of the chat interface and exposes the state and actions for that part.
+OpenAgentUI organizes state into **scopes**. Each scope corresponds to a part of the chat interface and exposes the state and actions for that part.
 
 ```
 🗂️  ThreadList (threads) - Manages the list of conversations

@@ -1,6 +1,6 @@
 # AG-UI Protocol Integration
 
-This example demonstrates how to integrate openagentui with the AG-UI protocol for connecting to AG-UI compatible agents.
+This example demonstrates how to integrate OpenAgentUI with the AG-UI protocol for connecting to AG-UI compatible agents.
 
 ## Quick Start
 
@@ -62,5 +62,5 @@ The included `server/agent.py` provides:
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [AG-UI Protocol](https://docs.ag-ui.com)

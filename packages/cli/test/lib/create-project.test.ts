@@ -124,7 +124,7 @@ describe("resolveLatestReleaseRef", () => {
 
     expect(await resolveLatestReleaseRef()).toBe("@openagentui/react@0.12.15");
     expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.github.com/repos/openagentui/openagentui/releases/latest",
+      "https://api.github.com/repos/RealDealCPA-VR/OpenAgentUI/releases/latest",
       { headers: { Authorization: "Bearer ghs_test-token" } },
     );
   });
@@ -144,7 +144,7 @@ describe("downloadProject", () => {
     await downloadProject("templates/default", destDir, "v1.0.0");
 
     expect(downloadTemplate).toHaveBeenCalledWith(
-      "gh:openagentui/openagentui/templates/default#v1.0.0",
+      "gh:RealDealCPA-VR/OpenAgentUI/templates/default#v1.0.0",
       expect.objectContaining({
         dir: expect.stringContaining(".openagentui-download-"),
         force: true,
@@ -159,7 +159,7 @@ describe("downloadProject", () => {
     await downloadProject("examples/with-tanstack", destDir);
 
     expect(downloadTemplate).toHaveBeenCalledWith(
-      "gh:openagentui/openagentui/examples/with-tanstack",
+      "gh:RealDealCPA-VR/OpenAgentUI/examples/with-tanstack",
       expect.objectContaining({
         dir: expect.stringContaining(".openagentui-download-"),
         force: true,
@@ -178,7 +178,7 @@ describe("downloadProject", () => {
     );
 
     expect(downloadTemplate).toHaveBeenCalledWith(
-      "gh:openagentui/openagentui/templates/default#v1.0.0",
+      "gh:RealDealCPA-VR/OpenAgentUI/templates/default#v1.0.0",
       expect.objectContaining({ auth: "ghs_test-token" }),
     );
   });
@@ -359,7 +359,7 @@ describe("scaffoldProject", () => {
     });
 
     expect(downloadTemplate).toHaveBeenCalledWith(
-      "gh:openagentui/openagentui/templates/default#v1.0.0",
+      "gh:RealDealCPA-VR/OpenAgentUI/templates/default#v1.0.0",
       expect.objectContaining({
         dir: expect.stringContaining(".openagentui-download-"),
         force: true,

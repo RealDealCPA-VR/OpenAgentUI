@@ -263,7 +263,7 @@ const languageModelMessages = toLanguageModelMessages(messages, {
 
 `toLanguageModelMessages` internally uses `toGenericMessages` with AI-SDK-specific transformations. For new integrations prefer `toGenericMessages` directly.
 
-## Assistant Cloud integration
+## Assistant-Cloud-compatible backends
 
 ```tsx
 import { useCloudRuntime } from "@openagentui/react-data-stream";
@@ -274,7 +274,7 @@ const runtime = useCloudRuntime({
 });
 ```
 
-`useCloudRuntime` runs an [Assistant Cloud assistant](/docs/cloud/assistants) on the active thread. It accepts the same options as `useDataStreamRuntime` apart from `api`, `protocol`, `headers`, and `body`, which the assistant supplies.
+`useCloudRuntime` runs an assistant configured on an Assistant-Cloud-compatible backend (see the [`AssistantCloud` client](/docs/api-reference/integrations/openagentui-cloud)) on the active thread. It accepts the same options as `useDataStreamRuntime` apart from `api`, `protocol`, `headers`, and `body`, which the assistant supplies.
 
 ## LocalRuntimeOptions
 

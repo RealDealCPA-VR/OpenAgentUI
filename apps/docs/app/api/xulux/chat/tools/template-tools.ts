@@ -151,8 +151,8 @@ export function createTemplateTools() {
               ],
             },
             fixedDemoNote: entry.downloadUrl
-              ? "This is a fixed openagentui demo. It supports preview and download, but not template config."
-              : "This is a fixed openagentui demo. It supports preview, but download is not wired for this platform yet.",
+              ? "This is a fixed OpenAgentUI demo. It supports preview and download, but not template config."
+              : "This is a fixed OpenAgentUI demo. It supports preview, but download is not wired for this platform yet.",
           };
         }
 

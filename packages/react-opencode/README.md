@@ -1,6 +1,6 @@
 # `@openagentui/react-opencode`
 
-[OpenCode](https://opencode.ai) runtime adapter for `@openagentui/react`. Maps OpenCode activity onto the standard openagentui message primitives so an OpenCode session can drive a Thread UI.
+[OpenCode](https://opencode.ai) runtime adapter for `@openagentui/react`. Maps OpenCode activity onto the standard OpenAgentUI message primitives so an OpenCode session can drive a Thread UI.
 
 > [!NOTE]
 > This integration is experimental. APIs may change between minor versions.

@@ -106,13 +106,13 @@ describe("getPlatformSwitchHref", () => {
     );
   });
 
-  it("enters Assistant Cloud through its own root", async () => {
+  it("enters Vue through its own root", async () => {
     const getPlatformSwitchHref = await load();
-    expect(getPlatformSwitchHref("/docs/ink", "cloud")).toBe("/docs/cloud");
-    expect(getPlatformSwitchHref("/docs/cloud", "react")).toBe(
+    expect(getPlatformSwitchHref("/docs/ink", "vue")).toBe("/docs/vue");
+    expect(getPlatformSwitchHref("/docs/vue", "react")).toBe(
       "/docs/installation",
     );
-    expect(getPlatformSwitchHref("/docs/cloud/ai-sdk", "rn")).toBeNull();
+    expect(getPlatformSwitchHref("/docs/vue/ai-sdk", "rn")).toBeNull();
   });
 
   it("treats a library like Tap as a peer of the installation pages", async () => {

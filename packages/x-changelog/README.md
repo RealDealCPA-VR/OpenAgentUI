@@ -15,7 +15,7 @@ Wired into the root `.changeset/config.json`:
 {
   "changelog": [
     "@openagentui/x-changelog",
-    { "repo": "openagentui/openagentui" }
+    { "repo": "RealDealCPA-VR/OpenAgentUI" }
   ]
 }
 ```

@@ -1,6 +1,6 @@
-# openagentui + Eve
+# OpenAgentUI + Eve
 
-This is an [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project powered by [Eve](https://eve.dev/).
+This is an [OpenAgentUI](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project powered by [Eve](https://eve.dev/).
 
 ## Getting Started
 

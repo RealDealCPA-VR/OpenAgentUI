@@ -21,7 +21,7 @@ const CATEGORIES: XuluxTemplateCategory[] = [
     id: "base",
     name: "Base Chat Templates",
     description:
-      "openagentui Base chat templates with thread history, composer, suggestions, and AI SDK runtime.",
+      "OpenAgentUI Base chat templates with thread history, composer, suggestions, and AI SDK runtime.",
   },
   {
     id: "docs",
@@ -222,7 +222,7 @@ function docsVersionCards(): XuluxTemplate[] {
       },
       tech: {
         framework: "Next.js",
-        runtime: "openagentui + AI SDK",
+        runtime: "OpenAgentUI + AI SDK",
         frontendPattern: "Docs assistant",
       },
       env: [],
@@ -295,7 +295,7 @@ function supportVersionCards(): XuluxTemplate[] {
       },
       tech: {
         framework: "Next.js",
-        runtime: "openagentui + AI SDK",
+        runtime: "OpenAgentUI + AI SDK",
         frontendPattern: "Support modal + dashboard",
       },
       env: [],
@@ -324,7 +324,7 @@ function demoCards(): XuluxTemplate[] {
     featured: demo.featured,
     tech: demo.tech ?? {
       framework: "Next.js",
-      runtime: "openagentui + AI SDK",
+      runtime: "OpenAgentUI + AI SDK",
       frontendPattern: "Fixed demo",
     },
     env:
@@ -350,12 +350,12 @@ function baseAssistantCards(): XuluxTemplate[] {
       templateId: "base-openagentui",
       title: "Configurable Base OpenAgentUI",
       description:
-        "The openagentui Base demo as a hosted configurable chat template with threads, composer, mic input, suggestions, slash commands, local/cloud persistence fallback, and no-key demo flows.",
+        "The OpenAgentUI Base demo as a hosted configurable chat template with threads, composer, mic input, suggestions, slash commands, local/cloud persistence fallback, and no-key demo flows.",
       categoryId: "base",
       categoryName: "Base Chat Templates",
       tags: ["openagentui", "Base", "Chat", "AI SDK", "Customizable"],
       prompt:
-        "Spin up the configurable openagentui Base chat app with thread history, suggestions, slash commands, model picker, mic input, and AI SDK runtime.",
+        "Spin up the configurable OpenAgentUI Base chat app with thread history, suggestions, slash commands, model picker, mic input, and AI SDK runtime.",
       gradient: "from-teal-500/40 via-cyan-500/30 to-zinc-400/20",
       kind: "template",
       previewStatus: "live",
@@ -369,12 +369,12 @@ function baseAssistantCards(): XuluxTemplate[] {
       intent: {
         goodFor: [
           "General chat assistants",
-          "openagentui Base starters",
+          "OpenAgentUI Base starters",
           "Configurable no-key demos",
         ],
         notFor: ["Docs article shells", "Support dashboard workflows"],
         exampleUserRequests: [
-          "Build me a branded openagentui Base chat app.",
+          "Build me a branded OpenAgentUI Base chat app.",
           "Customize the welcome message, suggestions, theme, and demo flows.",
           "Create a downloadable starter from the Base assistant template.",
         ],
@@ -397,7 +397,7 @@ function baseAssistantCards(): XuluxTemplate[] {
       },
       tech: {
         framework: "Next.js",
-        runtime: "openagentui + AI SDK",
+        runtime: "OpenAgentUI + AI SDK",
         frontendPattern: "Base demo shell",
       },
       env: [],
@@ -412,7 +412,7 @@ function platformPreviewCards(): XuluxTemplate[] {
       id: "expo-react-native",
       title: "Expo React Native Assistant",
       description:
-        "A mobile AI chat app built with Expo and openagentui React Native primitives, with drawer navigation, thread management, streaming responses, and native mobile UI.",
+        "A mobile AI chat app built with Expo and OpenAgentUI React Native primitives, with drawer navigation, thread management, streaming responses, and native mobile UI.",
       categoryId: DEMO_DOWNLOAD_CATEGORY.id,
       categoryName: DEMO_DOWNLOAD_CATEGORY.name,
       tags: ["openagentui", "React Native", "Expo", "mobile", "chat"],
@@ -437,7 +437,7 @@ function platformPreviewCards(): XuluxTemplate[] {
         exampleUserRequests: [
           "Build me a React Native assistant app.",
           "Show me the Expo mobile chat starter.",
-          "I want an openagentui app for iOS and Android.",
+          "I want an OpenAgentUI app for iOS and Android.",
         ],
       },
       tech: {

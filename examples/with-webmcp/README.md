@@ -1,6 +1,6 @@
 # with-webmcp
 
-Exposes an app's frontend tools to a WebMCP-capable browser with `unstable_useWebMcpProvider`, while the same tools stay callable from the openagentui chat thread.
+Exposes an app's frontend tools to a WebMCP-capable browser with `unstable_useWebMcpProvider`, while the same tools stay callable from the OpenAgentUI chat thread.
 
 The page holds a small task list and a `"use generative"` toolkit with three frontend tools:
 

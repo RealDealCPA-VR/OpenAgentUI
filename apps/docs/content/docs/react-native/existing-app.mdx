@@ -7,7 +7,7 @@ The [installation guide](/docs/react-native) starts from a scaffold. This page i
 
 ## What stays yours
 
-The elements only read the openagentui store: they render through the [primitives](/docs/react-native/primitives) and `useAuiState`, and they never import a runtime. Whatever mounts `AssistantRuntimeProvider` today keeps doing so, whether that is `useExternalStoreRuntime` over your own message list, the AI SDK runtime, or a custom adapter. Your session list, navigation, theme object and the screens you already built are untouched; the thread element replaces one screen's message list and composer, and the standalone elements (approval card, agent status, tool timeline, error state, stopped run, typing indicator) drop into any view with plain props.
+The elements only read the OpenAgentUI store: they render through the [primitives](/docs/react-native/primitives) and `useAuiState`, and they never import a runtime. Whatever mounts `AssistantRuntimeProvider` today keeps doing so, whether that is `useExternalStoreRuntime` over your own message list, the AI SDK runtime, or a custom adapter. Your session list, navigation, theme object and the screens you already built are untouched; the thread element replaces one screen's message list and composer, and the standalone elements (approval card, agent status, tool timeline, error state, stopped run, typing indicator) drop into any view with plain props.
 
 The elements also read `thread.capabilities`: when your runtime has no reload or edit, those controls render disabled, and the branch picker only appears once a message has more than one branch, so a runtime that only implements `onNew` gets a working thread.
 

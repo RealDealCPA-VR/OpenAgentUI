@@ -1,11 +1,10 @@
 ---
 title: Model Context Protocol (MCP)
-description: Connect MCP servers as a tool catalog in your openagentui app.
+description: Connect MCP servers as a tool catalog in your OpenAgentUI app.
 ---
 
-[MCP](https://modelcontextprotocol.io/) is an open protocol for exposing tools, resources, and prompts to LLMs. One MCP server can publish many tools (file system, GitHub, Slack, your own service) and any MCP-aware client can use them. The AI SDK has a built-in MCP client; this page is the wiring guide for plugging it into an openagentui app.
+[MCP](https://modelcontextprotocol.io/) is an open protocol for exposing tools, resources, and prompts to LLMs. One MCP server can publish many tools (file system, GitHub, Slack, your own service) and any MCP-aware client can use them. The AI SDK has a built-in MCP client; this page is the wiring guide for plugging it into an OpenAgentUI app.
 
-<AgentSetup product="guides/mcp" />
 
 ## How it works
 
@@ -266,7 +265,7 @@ If two servers expose tools with the same name, the later spread wins. Rename or
 
 ### Render results in the UI
 
-Tool calls flow through the existing openagentui tool-call rendering. With no
+Tool calls flow through the existing OpenAgentUI tool-call rendering. With no
 setup, the bundled `<ToolFallback>` component renders the call name, arguments,
 and result. To customize the appearance for a specific tool in a generative
 toolkit, add an `externalTool()` renderer whose key matches the MCP tool name:
@@ -449,7 +448,7 @@ Start the app and trigger a tool call (e.g., ask the assistant to do something t
 
 - **Server-side only.** The MCP client uses Node APIs (sockets, optionally child processes). Never instantiate it in client code.
 - **Per-request lifecycle.** A fresh client per request keeps connection state simple. For high-throughput servers, pool clients yourself with care: the AI SDK's `tools()` call assumes the connection is alive when `streamText` runs.
-- **Sampling.** If your MCP server uses `sampling/createMessage` (lets the server ask the LLM mid-call), openagentui-cloud users can use [`wrapSamplingHandler`](/docs/cloud/traces) and [`createSamplingCollector`](/docs/cloud/traces) for observability. This is independent of the wiring above.
+- **Sampling.** If your MCP server uses `sampling/createMessage` (lets the server ask the LLM mid-call), `openagentui-cloud` users can use [`wrapSamplingHandler`](/docs/api-reference/integrations/openagentui-cloud#wrapsamplinghandler) and [`createSamplingCollector`](/docs/api-reference/integrations/openagentui-cloud#createsamplingcollector) for observability. This is independent of the wiring above.
 - **Transport choice.** HTTP for any networked server. SSE only if the server doesn't speak HTTP. stdio is for local development against an MCP server in your monorepo.
 
 ## Related

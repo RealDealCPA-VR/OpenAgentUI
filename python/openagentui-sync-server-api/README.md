@@ -1,6 +1,6 @@
-# openagentui Sync Server API
+# OpenAgentUI Sync Server API
 
-A Python client library for interacting with openagentui sync server backends, providing the same API structure as the JavaScript/TypeScript `useChatRuntime`.
+A Python client library for interacting with OpenAgentUI sync server backends, providing the same API structure as the JavaScript/TypeScript `useChatRuntime`.
 
 ## Installation
 
@@ -119,7 +119,7 @@ chat_task.cancel()
 
 ### Message Types
 
-The package supports various message types matching the openagentui format:
+The package supports various message types matching the OpenAgentUI format:
 
 ```python
 from openagentui.types import Message
@@ -180,7 +180,7 @@ tool_message: Message = {
 
 ### `AssistantClient`
 
-Main client for interacting with openagentui backends.
+Main client for interacting with OpenAgentUI backends.
 
 **Constructor:**
 
@@ -216,7 +216,7 @@ The package includes TypedDict definitions for all message types and configurati
 
 ## Development
 
-This package is part of the openagentui monorepo. To contribute:
+This package is part of the OpenAgentUI monorepo. To contribute:
 
 1. Clone the main repository
 2. Navigate to `python/openagentui`

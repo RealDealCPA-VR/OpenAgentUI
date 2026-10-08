@@ -93,12 +93,12 @@ const SESSION_LINES: {
       </>
     ),
   },
-  { text: "model: openagentui · 2 messages · streaming", dim: true },
+  { text: "model: OpenAgentUI · 2 messages · streaming", dim: true },
   { text: " " },
   {
     text: (
       <>
-        <span className="opacity-45">&gt; </span>what is openagentui?
+        <span className="opacity-45">&gt; </span>what is OpenAgentUI?
       </>
     ),
   },

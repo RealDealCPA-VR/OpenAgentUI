@@ -3,7 +3,7 @@ title: Custom thread persistence
 description: Persist threads and messages to your own database with RemoteThreadListAdapter and ThreadHistoryAdapter.
 ---
 
-When [AssistantCloud](/docs/cloud) doesn't fit (self-hosting, compliance, threads alongside existing app data), back the multi-thread runtime with your own database. This page is the worked example: schema, route handlers, and adapter wiring with Postgres + Drizzle. The shape is identical for any SQL or document store.
+To persist threads in your own database (self-hosting, compliance, threads alongside existing app data), back the multi-thread runtime with custom adapters. This is the recommended default for OpenAgentUI apps. This page is the worked example: schema, route handlers, and adapter wiring with Postgres + Drizzle. The shape is identical for any SQL or document store.
 
 For the high-level adapter contract, see [threads](/docs/runtimes/concepts/threads). This page focuses on the storage layer and how `withFormat` round-trips AI SDK messages.
 
@@ -780,8 +780,8 @@ Send a message in a fresh thread. Check the database:
     href="/docs/runtimes/concepts/adapters"
   />
   <Card
-    title="AssistantCloud"
-    description="The managed alternative if you don't need to own the data."
-    href="/docs/cloud"
+    title="openagentui-cloud client"
+    description="The AssistantCloud client, if you run or choose an Assistant-Cloud-compatible backend."
+    href="/docs/api-reference/integrations/openagentui-cloud"
   />
 </Cards>

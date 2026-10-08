@@ -18,7 +18,7 @@ import {
 
 export const maxDuration = 30;
 
-const SYSTEM_PROMPT = `You are a UI customization assistant for the openagentui playground. Users describe how they want their chat UI to look, and you apply changes by calling the update_config tool.
+const SYSTEM_PROMPT = `You are a UI customization assistant for the OpenAgentUI playground. Users describe how they want their chat UI to look, and you apply changes by calling the update_config tool.
 
 ## BuilderConfig Schema
 

@@ -1,6 +1,6 @@
 # with-a2a
 
-An example of using [openagentui](https://openagentui.dev/) with the [A2A (Agent-to-Agent) protocol](https://github.com/a2aproject/A2A).
+An example of using [OpenAgentUI](https://openagentui.dev/) with the [A2A (Agent-to-Agent) protocol](https://github.com/a2aproject/A2A).
 
 ## Getting Started
 

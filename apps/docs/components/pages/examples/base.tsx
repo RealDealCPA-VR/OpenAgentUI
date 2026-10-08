@@ -103,7 +103,7 @@ const Logo: FC<{ collapsed?: boolean }> = ({ collapsed = false }) => {
         className="size-5 shrink-0 dark:hue-rotate-180 dark:invert"
       />
       {!collapsed && (
-        <span className="text-foreground/90 truncate">openagentui</span>
+        <span className="text-foreground/90 truncate">OpenAgentUI</span>
       )}
     </div>
   );

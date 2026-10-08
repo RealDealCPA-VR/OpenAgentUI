@@ -3,13 +3,13 @@ title: openagentui-cloud/telemetry
 description: OpenTelemetry exporter, span processor and stream metadata helpers that send a server's GenAI spans to Assistant Cloud and hand the trace id to the browser.
 ---
 
-import { assistantCloudTelemetry_assistantCloudTraceExportOptions, assistantCloudTelemetry_createAssistantCloudSpanProcessor, assistantCloudTelemetry_createAssistantCloudTraceExporter, assistantCloudTelemetry_isAssistantCloudSpan, assistantCloudTelemetry_withAssistantCloudTraceMetadata } from "@/generated/integrationTypeDocs";
+import { openagentuiCloudTelemetry_assistantCloudTraceExportOptions, openagentuiCloudTelemetry_createAssistantCloudSpanProcessor, openagentuiCloudTelemetry_createAssistantCloudTraceExporter, openagentuiCloudTelemetry_isAssistantCloudSpan, openagentuiCloudTelemetry_withAssistantCloudTraceMetadata } from "@/generated/integrationTypeDocs";
 
 {/* AUTO-GENERATED PAGE by scripts/generate-api-reference.mts */}
 {/* Do not edit manually. */}
 
 {/* api-manual:start */}
-`@opentelemetry/api`, `@opentelemetry/sdk-trace-base` and `@opentelemetry/exporter-trace-otlp-http` are optional peers needed only by this entry. The exporter posts OTLP/HTTP JSON to `POST /v1/traces` on `https://backend.assistant-api.com` with the project's API key, so it runs on the server only; the setup and the receiver's rules are on [Traces](/docs/cloud/traces).
+`@opentelemetry/api`, `@opentelemetry/sdk-trace-base` and `@opentelemetry/exporter-trace-otlp-http` are optional peers needed only by this entry. The exporter posts OTLP/HTTP JSON to `POST /v1/traces` on the configured Assistant-Cloud-compatible backend (the upstream default is `https://backend.assistant-api.com`) with the project's API key, so it runs on the server only.
 {/* api-manual:end */}
 
 {/* api-reference:start */}
@@ -20,7 +20,7 @@ import { assistantCloudTelemetry_assistantCloudTraceExportOptions, assistantClou
 
 ### assistantCloudTraceExportOptions
 
-<ParametersTable {...assistantCloudTelemetry_assistantCloudTraceExportOptions} />
+<ParametersTable {...openagentuiCloudTelemetry_assistantCloudTraceExportOptions} />
 
 ### assistantCloudTraceMetadata
 
@@ -30,17 +30,17 @@ function assistantCloudTraceMetadata(): { traceId?: string };
 
 ### createAssistantCloudSpanProcessor
 
-<ParametersTable {...assistantCloudTelemetry_createAssistantCloudSpanProcessor} />
+<ParametersTable {...openagentuiCloudTelemetry_createAssistantCloudSpanProcessor} />
 
 ### createAssistantCloudTraceExporter
 
-<ParametersTable {...assistantCloudTelemetry_createAssistantCloudTraceExporter} />
+<ParametersTable {...openagentuiCloudTelemetry_createAssistantCloudTraceExporter} />
 
 ### isAssistantCloudSpan
 
-<ParametersTable {...assistantCloudTelemetry_isAssistantCloudSpan} />
+<ParametersTable {...openagentuiCloudTelemetry_isAssistantCloudSpan} />
 
 ### withAssistantCloudTraceMetadata
 
-<ParametersTable {...assistantCloudTelemetry_withAssistantCloudTraceMetadata} />
+<ParametersTable {...openagentuiCloudTelemetry_withAssistantCloudTraceMetadata} />
 {/* api-reference:end */}

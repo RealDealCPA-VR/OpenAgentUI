@@ -5,7 +5,7 @@ description: TypeScript-first auth with database-owned sessions; gate the chat r
 
 [better-auth](https://www.better-auth.com/) is a TypeScript-first auth library that owns the session, the user table, and the cookie story end to end. It pairs naturally with openagentui's [custom thread persistence](/docs/integrations/persistence/custom-adapter): the same database holds users and threads, and `session.user.id` flows directly into your where clauses.
 
-This page covers the non-cloud path. AssistantCloud users should see [cloud authorization](/docs/cloud/authorization) for the JWT-exchange pattern.
+This page covers the self-managed path. If you use the `AssistantCloud` client against an Assistant-Cloud-compatible backend, see the [`AssistantCloud` authentication modes](/docs/api-reference/integrations/openagentui-cloud#the-client) for the token pattern.
 
 ## How it works
 
@@ -165,7 +165,7 @@ Sign in. Check:
 - **Cookie-based, same-origin.** Browser fetches automatically include the session cookie. If you split the API onto a different host, set `credentials: "include"` and configure CORS on the API.
 - **Database alignment.** If you use Drizzle and put both better-auth's user schema and your threads schema in the same database, foreign keys keep deletes consistent. better-auth's CLI generates the user schema; add your `threads` table referencing `user.id`.
 - **Edge runtime.** `auth.api.getSession` works in both Node and Edge runtimes when better-auth is configured for an edge-compatible adapter.
-- **Cloud users.** [AssistantCloud's auth-provider integrations](/docs/cloud/auth-providers) cover Clerk, Auth0, Supabase, and Firebase via JWT exchange. To pair Cloud with better-auth, use the [backend-server token approach](/docs/cloud/auth-providers#mint-a-token-on-your-server): resolve `session.user.id` server-side, mint an Assistant Cloud token with that id as the `userId`, and return it from a token endpoint.
+- **`AssistantCloud` users.** To pair an Assistant-Cloud-compatible backend with better-auth, mint the token on your server: resolve `session.user.id` server-side, create a user token for that id with a server-side `AssistantCloud` client (`{ apiKey, userId, workspaceId }` and `auth.tokens.create()`, see the [client reference](/docs/api-reference/integrations/openagentui-cloud#the-client)), and return it from a token endpoint that the browser client's `authToken` callback calls.
 
 ## Related
 

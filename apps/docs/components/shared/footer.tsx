@@ -1,11 +1,9 @@
 import type { FC, ReactNode } from "react";
 import Link from "next/link";
-import { DiscordIcon } from "@/components/icons/discord";
 import { GitHubIcon } from "@/components/icons/github";
 import { LegalLinks } from "@/components/shared/legal-links";
-import { StatusBadge } from "@/components/shared/status-badge";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
-import { checkoutEnabled } from "@/lib/checkout/config";
+import { DISCUSSIONS_URL, ISSUES_URL, REPO_URL } from "@/lib/constants";
 
 type FooterLinkItem = {
   label: string;
@@ -23,11 +21,12 @@ const FOOTER_LINKS: Record<string, FooterLinkItem[]> = {
     { label: "React", href: "/docs" },
     { label: "React Native", href: "/native" },
     { label: "Ink", href: "/ink" },
+    { label: "Vue", href: "/docs/vue" },
   ],
   Extend: [
-    ...(checkoutEnabled ? [{ label: "Components", href: "/components" }] : []),
     { label: "Elements", href: "/elements" },
     { label: "Design", href: "/design" },
+    { label: "Examples", href: "/examples" },
   ],
   Primitives: [
     { label: "tw-shimmer", href: "/tw-shimmer" },
@@ -36,17 +35,19 @@ const FOOTER_LINKS: Record<string, FooterLinkItem[]> = {
     { label: "react-o11y", href: "/react-o11y" },
   ],
   Resources: [
-    { label: "Examples", href: "/examples" },
-    { label: "Showcase", href: "/showcase" },
     { label: "Open source", href: "/oss" },
     { label: "Packages", href: "/packages" },
+    { label: "llms.txt", href: "/llms.txt" },
   ],
-  Company: [
-    { label: "Blog", href: "/blog" },
-    { label: "Careers", href: "/careers" },
-    { label: "Brand", href: "/brand" },
-    { label: "Traction", href: "/traction" },
-    { label: "Pricing", href: "/pricing" },
+  Community: [
+    { label: "GitHub", href: REPO_URL, external: true },
+    { label: "Discussions", href: DISCUSSIONS_URL, external: true },
+    { label: "Issues", href: ISSUES_URL, external: true },
+    {
+      label: "Contributing",
+      href: `${REPO_URL}/blob/main/CONTRIBUTING.md`,
+      external: true,
+    },
   ],
 };
 
@@ -75,45 +76,17 @@ export function Footer(): React.ReactElement {
 
         <div className="text-muted-foreground flex flex-col gap-3 border-t pt-6 text-sm sm:flex-row sm:items-center sm:justify-between">
           <LegalLinks />
-          <div className="flex flex-wrap items-center gap-4">
-            <StatusBadge />
-            <div className="flex flex-wrap items-center gap-1.5">
-              <a
-                href="https://x.com/assistantui"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground flex size-7 items-center justify-center transition-colors"
-                aria-label="X (Twitter)"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="size-4"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              <a
-                href="https://github.com/RealDealCPA-VR/OpenAgentUI"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground flex size-7 items-center justify-center transition-colors"
-                aria-label="GitHub"
-              >
-                <GitHubIcon className="size-4" />
-              </a>
-              <a
-                href="https://discord.gg/S9dwgCNEFs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground flex size-7 items-center justify-center transition-colors"
-                aria-label="Discord"
-              >
-                <DiscordIcon className="size-4" />
-              </a>
-              <ThemeToggle className="hover:text-foreground" />
-            </div>
+          <div className="flex flex-wrap items-center gap-1.5">
+            <a
+              href={REPO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground flex size-7 items-center justify-center transition-colors"
+              aria-label="GitHub"
+            >
+              <GitHubIcon className="size-4" />
+            </a>
+            <ThemeToggle className="hover:text-foreground" />
           </div>
         </div>
       </div>

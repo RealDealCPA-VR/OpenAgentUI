@@ -7,7 +7,7 @@ name = "openagentui-sync-server-api"
 version = "0.1.1"
 description = "Python client for openagentui sync server API"
 authors = [
-  { name="openagentui Team", email="team@openagentui.dev" },
+  { name = "OpenAgentUI contributors" },
 ]
 readme = "README.md"
 requires-python = ">=3.10"

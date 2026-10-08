@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { BASE_URL } from "@/lib/constants";
 import { GenerativeUIStyle } from "@/components/generative-ui-style";
 import { galleryStagingCss } from "@/components/gallery/gallery-staging";
-import { umamiBootstrapScript } from "@/lib/umami-sampling";
 import { AnalyticsGate } from "@/components/analytics-gate";
 import { ConsentBanner } from "@/components/consent-banner";
 import { OutsideRenderer } from "@/components/outside-renderer";
@@ -44,29 +43,29 @@ export const metadata = {
   metadataBase: getMetadataBase(),
   alternates: { canonical: "./" },
   title: {
-    template: "%s · openagentui",
-    default: "openagentui · The frontend library for AI agents",
+    template: "%s · OpenAgentUI",
+    default: "OpenAgentUI · Open-source UI for AI agents",
   },
   description:
     "Open-source React components and runtimes for building AI chat. Streaming, tools, and persistence in TypeScript.",
   openGraph: {
-    title: "openagentui",
+    title: "OpenAgentUI",
     description:
       "Open-source React components and runtimes for building AI chat. Streaming, tools, and persistence in TypeScript.",
-    siteName: "openagentui",
+    siteName: "OpenAgentUI",
     type: "website",
     images: [
       {
         url: "/api/og?variant=home",
         width: 1200,
         height: 630,
-        alt: "openagentui",
+        alt: "OpenAgentUI",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "openagentui",
+    title: "OpenAgentUI",
     description:
       "Open-source React components and runtimes for building AI chat. Streaming, tools, and persistence in TypeScript.",
     images: ["/api/og?variant=home"],
@@ -79,7 +78,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       <head>
         <GenerativeUIStyle />
         <style>{galleryStagingCss}</style>
-        <script dangerouslySetInnerHTML={{ __html: umamiBootstrapScript }} />
       </head>
       <body
         className={cn(

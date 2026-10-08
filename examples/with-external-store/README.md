@@ -1,6 +1,6 @@
 # External Store Integration
 
-This example demonstrates how to use openagentui with an external message store using `useExternalStoreRuntime`.
+This example demonstrates how to use OpenAgentUI with an external message store using `useExternalStoreRuntime`.
 
 ## Quick Start
 
@@ -34,5 +34,5 @@ npm run dev
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [External Store Runtime Guide](https://openagentui.dev/docs/runtimes/custom/external-store)

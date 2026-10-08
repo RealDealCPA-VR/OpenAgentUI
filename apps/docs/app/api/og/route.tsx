@@ -1,6 +1,9 @@
 import { ImageResponse } from "next/og";
 import type { ImageResponseOptions, NextRequest } from "next/server";
 import { loadOgFonts, OG_FONT_MONO, OG_FONT_SANS } from "@/lib/og-fonts";
+import { BASE_URL } from "@/lib/constants";
+
+const SITE_HOST = new URL(BASE_URL).host;
 
 const size = {
   width: 1200,
@@ -87,7 +90,7 @@ export async function GET(request: NextRequest) {
             letterSpacing: "-0.02em",
           }}
         >
-          openagentui
+          OpenAgentUI
         </span>
       </div>
       <div
@@ -163,7 +166,7 @@ export async function GET(request: NextRequest) {
               letterSpacing: "-0.01em",
             }}
           >
-            openagentui
+            OpenAgentUI
           </span>
         </div>
         <span
@@ -174,7 +177,7 @@ export async function GET(request: NextRequest) {
             fontFamily: fontMono,
           }}
         >
-          openagentui.dev
+          {SITE_HOST}
         </span>
       </div>
 

@@ -12,7 +12,7 @@ export function TerminalDemo() {
   return (
     <div className="border-foreground/10 overflow-hidden border">
       <div className="border-foreground/10 text-muted-foreground flex h-9 items-center justify-between border-b px-3.5 font-mono text-[11px] tracking-wide">
-        <span>~ openagentui · ink</span>
+        <span>~ OpenAgentUI · ink</span>
         <span className="flex items-center gap-1.5">
           <LiveDot />
           live
@@ -22,7 +22,7 @@ export function TerminalDemo() {
         <iframe
           src={src}
           className="h-[480px] w-full border-0"
-          title="openagentui ink live demo"
+          title="OpenAgentUI ink live demo"
           allow="clipboard-read; clipboard-write"
         />
       ) : (

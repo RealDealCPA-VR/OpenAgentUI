@@ -1,13 +1,13 @@
 ---
 title: Cloud persistence
-description: Store threads, messages, titles, and attachments in openagentui-cloud with AISDKThreads.
+description: Store threads, messages, titles, and attachments in an Assistant-Cloud-compatible backend with AISDKThreads and the openagentui-cloud client.
 ---
 
-Pass an `AssistantCloud` client to `AISDKThreads` to keep conversations across reloads. The cloud supplies the thread list and the runtime stores each thread's AI SDK messages. Without `cloud`, `AISDKThreads` keeps its list in memory. See [Thread list](/docs/vue/thread-list) for the list controls.
+Pass an `AssistantCloud` client to `AISDKThreads` to keep conversations across reloads. The client talks to an Assistant-Cloud-compatible backend that you host or choose; OpenAgentUI does not operate one. The backend supplies the thread list and the runtime stores each thread's AI SDK messages. Without `cloud`, `AISDKThreads` keeps its list in memory. See [Thread list](/docs/vue/thread-list) for the list controls.
 
-## Create a project
+## Prepare a backend
 
-Create a project and copy its **Frontend API URL** from **Settings › General**, as shown in the [cloud quickstart](/docs/cloud/quickstart). For the anonymous example below, enable [anonymous sessions](/docs/cloud/anonymous-sessions). Before serving the app from a restricted browser origin, configure [allowed origins](/docs/cloud/allowed-origins). The chat route still needs to return an AI SDK UI message stream; see the [AI SDK runtime](/docs/vue/ai-sdk).
+You need the base URL of a backend that implements the Assistant Cloud HTTP API. For the anonymous example below, the backend must accept anonymous sessions, and it must allow your app's browser origin. The client's options are listed in the [`openagentui-cloud` reference](/docs/api-reference/integrations/openagentui-cloud). The chat route still needs to return an AI SDK UI message stream; see the [AI SDK runtime](/docs/vue/ai-sdk).
 
 ## Connect AISDKThreads
 
@@ -17,7 +17,7 @@ Add `openagentui-cloud` to an app that already runs the [AI SDK runtime](/docs/v
 pnpm add openagentui-cloud
 ```
 
-Use the project's Frontend API URL as `baseUrl`. This client uses an anonymous browser session:
+Use the backend's base URL as `baseUrl`. This client uses an anonymous browser session:
 
 ```vue title="app/components/Assistant.client.vue"
 <script setup lang="ts">
@@ -28,7 +28,7 @@ import Thread from "~/components/openagentui/thread.vue";
 import ThreadList from "~/components/openagentui/thread-list.vue";
 
 const cloud = new AssistantCloud({
-  baseUrl: "https://proj-<id>.assistant-api.com",
+  baseUrl: "https://your-cloud-backend.example.com",
   anonymous: true,
 });
 
@@ -47,11 +47,11 @@ const config = AuiConfig({
 </template>
 ```
 
-The `Thread` and `ThreadList` imports refer to the [styled components](/docs/vue/components). Keep the `AssistantCloud` instance stable while this provider is mounted. `AssistantCloud` also sends telemetry, such as [run reports](/docs/cloud/run-reports), unless you pass `telemetry: false`.
+The `Thread` and `ThreadList` imports refer to the [styled components](/docs/vue/components). Keep the `AssistantCloud` instance stable while this provider is mounted. `AssistantCloud` also sends telemetry, such as run reports, to the backend unless you pass `telemetry: false`.
 
 ## Sign users in
 
-For signed in users, configure an [auth provider](/docs/cloud/auth-providers) and return its token from your own server. `authToken` may return `null` when the user is signed out. Replace the anonymous client with this one; the rest of the provider can stay as above:
+For signed in users, return a token the backend accepts from your own server. `authToken` may return `null` when the user is signed out. Replace the anonymous client with this one; the rest of the provider can stay as above:
 
 ```vue title="app/components/SignedInAssistant.client.vue"
 <script setup lang="ts">
@@ -62,7 +62,7 @@ import Thread from "~/components/openagentui/thread.vue";
 import ThreadList from "~/components/openagentui/thread-list.vue";
 
 const cloud = new AssistantCloud({
-  baseUrl: "https://proj-<id>.assistant-api.com",
+  baseUrl: "https://your-cloud-backend.example.com",
   authToken: async () => {
     const response = await fetch("/api/openagentui-token", { method: "POST" });
     if (!response.ok) throw new Error("Could not get a cloud token");
@@ -85,7 +85,7 @@ const config = AuiConfig({
 </template>
 ```
 
-The endpoint must authenticate the user and return a token accepted by the cloud project. The [auth provider guide](/docs/cloud/auth-providers) covers provider JWTs and server minted cloud tokens.
+The endpoint must authenticate the user and return a token accepted by the backend, for example one minted server side with `auth.tokens.create()` (see the [client reference](/docs/api-reference/integrations/openagentui-cloud#the-client)).
 
 ## What is stored
 
@@ -115,7 +115,7 @@ import Thread from "~/components/openagentui/thread.vue";
 import ThreadList from "~/components/openagentui/thread-list.vue";
 
 const cloud = new AssistantCloud({
-  baseUrl: "https://proj-<id>.assistant-api.com",
+  baseUrl: "https://your-cloud-backend.example.com",
   anonymous: true,
 });
 

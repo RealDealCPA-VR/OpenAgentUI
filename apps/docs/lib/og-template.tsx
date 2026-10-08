@@ -1,4 +1,7 @@
 import type { ReactNode } from "react";
+import { BASE_URL } from "@/lib/constants";
+
+const SITE_HOST = new URL(BASE_URL).host;
 
 export const OG_SIZE = {
   width: 1200,
@@ -81,7 +84,7 @@ export function OgHeader({
             letterSpacing: "-0.01em",
           }}
         >
-          openagentui
+          OpenAgentUI
         </span>
       </div>
       <span
@@ -92,7 +95,7 @@ export function OgHeader({
           fontFamily: fontMono,
         }}
       >
-        openagentui.dev
+        {SITE_HOST}
       </span>
     </div>
   );

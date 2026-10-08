@@ -24,7 +24,7 @@ import { GET } from "./route";
 const user = {
   id: "user_1",
   name: "Harry Yep",
-  email: "harry@openagentui.dev",
+  email: "harry@example.com",
   image: null,
 };
 

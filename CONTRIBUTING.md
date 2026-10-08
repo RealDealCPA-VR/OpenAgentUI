@@ -1,6 +1,6 @@
 ## CONTRIBUTING
 
-A big welcome and thank you for considering contributing to openagentui! It’s people like you that make it a reality for users in our community.
+A big welcome and thank you for considering contributing to OpenAgentUI! It’s people like you that make it a reality for users in our community.
 
 You can contribute by opening an issue, or by making a pull request. [Opening a pull request](#opening-a-pull-request) says when to open an issue first.
 
@@ -94,7 +94,7 @@ This will detect which packages changed and prompt you to select type (major, mi
 
 **Almost always `patch`** — even for new features and new exports. Here's why:
 
-Most openagentui packages are at `0.x` versions (e.g. `0.12.15`). In semver, the caret range `^` behaves differently for `0.x` than for `1.x+`:
+Most OpenAgentUI packages are at `0.x` versions (e.g. `0.12.15`). In semver, the caret range `^` behaves differently for `0.x` than for `1.x+`:
 
 | Range | Allows | Example |
 |-------|--------|---------|

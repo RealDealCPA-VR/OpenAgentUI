@@ -74,9 +74,10 @@ it("type-checks generated registry threads against the docs kit", () => {
       }),
     );
 
+    // bin/tsc is a node script; run it through node so Windows can spawn it.
     const result = spawnSync(
-      tsc,
-      ["--noEmit", "-p", join(scratchDir, "tsconfig.json")],
+      process.execPath,
+      [tsc, "--noEmit", "-p", join(scratchDir, "tsconfig.json")],
       {
         cwd: docsDir,
         encoding: "utf8",

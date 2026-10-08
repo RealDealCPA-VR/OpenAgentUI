@@ -1,11 +1,11 @@
 ---
 title: Claude Managed Agents
-description: Connect Anthropic's Managed Agents sessions to openagentui with the external store runtime, folding the session event log into messages, rendering approval gates, and using sessions as the thread list.
+description: Connect Anthropic's Managed Agents sessions to OpenAgentUI with the external store runtime, folding the session event log into messages, rendering approval gates, and using sessions as the thread list.
 ---
 
 [Claude Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview) is Anthropic's hosted agent platform: Anthropic runs the agent loop and provisions a sandboxed container per session, and your client drives the session over an event stream. A session holds the entire conversation server-side as a durable event log, streams every step (text, tool calls, approval stops, status) as typed events, and accepts user messages and tool confirmations back.
 
-That shape maps onto two openagentui hooks, with no adapter package in between:
+That shape maps onto two OpenAgentUI hooks, with no adapter package in between:
 
 - [`useExternalStoreRuntime`](/docs/runtimes/custom/external-store) renders messages you derive from the session's event log. The log is the only source of messages, so replaying a stored session and tailing a live one run through the same pure function and produce the same result.
 - [`useRemoteThreadListRuntime`](/docs/api-reference/hooks/runtimes#useremotethreadlistruntime) turns the session list into the thread sidebar. A thread is a session, so the app keeps no conversations table.
@@ -20,7 +20,7 @@ Managed Agents is a beta API (`managed-agents-2026-04-01`; the SDK sets the head
 
 Everything the session emits arrives as a typed event. The integration is one pure fold from the event array to openagentui's message model:
 
-| Managed Agents event | openagentui |
+| Managed Agents event | OpenAgentUI |
 | --- | --- |
 | `user.message` | A user message |
 | `agent.message` | Assistant text (buffered, authoritative) |
@@ -66,7 +66,7 @@ The sidebar is a `RemoteThreadListAdapter` over the Managed Agents session API. 
 | Adapter method | Managed Agents call |
 | --- | --- |
 | `list` | `sessions.list()`, filtered to the sessions this app created (a `metadata` tag) |
-| `initialize` | `sessions.create()`, invoked by openagentui on the first message of a new chat |
+| `initialize` | `sessions.create()`, invoked by OpenAgentUI on the first message of a new chat |
 | `rename` | `sessions.update({ title })` |
 | `archive` | `sessions.archive()` |
 | `unarchive` | Throws. Managed Agents sessions cannot be unarchived, and switching to an archived thread auto-unarchives by default, so do not render archived sessions as switchable (the quickstart's ownership gate rejects archived ids outright) |
@@ -84,7 +84,7 @@ Managed Agents supports per-tool [permission policies](https://platform.claude.c
 { "type": "session.status_idle", "stop_reason": { "type": "requires_action", "event_ids": ["sevt_..."] } }
 ```
 
-The fold stamps an approval onto that tool part and sets the message status to `requires-action`, which is what openagentui needs to render Allow and Deny on the tool card. The click flows back through `onRespondToToolApproval` as a `user.tool_confirmation` event:
+The fold stamps an approval onto that tool part and sets the message status to `requires-action`, which is what OpenAgentUI needs to render Allow and Deny on the tool card. The click flows back through `onRespondToToolApproval` as a `user.tool_confirmation` event:
 
 ```json
 { "type": "user.tool_confirmation", "tool_use_id": "sevt_...", "result": "deny", "deny_message": "Not on this box." }

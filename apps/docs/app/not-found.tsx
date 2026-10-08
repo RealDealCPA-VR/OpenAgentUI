@@ -91,7 +91,7 @@ export default function NotFound() {
               />
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-muted-foreground text-xs">openagentui</span>
+              <span className="text-muted-foreground text-xs">OpenAgentUI</span>
               <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3">
                 <p className="text-sm font-medium">
                   {displayedTitle}

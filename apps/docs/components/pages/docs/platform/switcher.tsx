@@ -7,7 +7,6 @@ import { Menu as MenuPrimitive } from "@base-ui/react/menu";
 import {
   Check,
   ChevronDown,
-  Cloud,
   Droplet,
   Monitor,
   PanelsTopLeft,
@@ -39,10 +38,9 @@ const PLATFORM_ICONS: Record<Platform, typeof Monitor> = {
   ink: Terminal,
   vue: PanelsTopLeft,
   tap: Droplet,
-  cloud: Cloud,
 };
 
-const LIBRARIES: readonly Platform[] = ["tap", "cloud"];
+const LIBRARIES: readonly Platform[] = ["tap"];
 const BINDINGS = PLATFORMS.filter((p) => !LIBRARIES.includes(p));
 
 function getVisiblePlatformSwitchHref(

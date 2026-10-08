@@ -3,17 +3,17 @@ title: openagentui-cloud
 description: The openagentui-cloud client for threads, messages, runs, events, scores and files, with the reporters, persistence and run report helpers an integration is built from.
 ---
 
-import { assistantCloud_AssistantCloud, assistantCloud_AssistantCloudEvents, assistantCloud_AssistantCloudScores, assistantCloud_CloudAPIError, assistantCloud_CloudEngagementReporter, assistantCloud_CloudMessagePersistence, assistantCloud_CloudResponseError, assistantCloud_CloudRunReporter, assistantCloud_createRunReport, assistantCloud_createRunTelemetryToolCall, assistantCloud_deriveRunOutcome, assistantCloud_describeRunError, assistantCloud_extractRunTelemetryModelId, assistantCloud_generateThreadTitle, assistantCloud_normalizeRunTelemetryUsage, assistantCloud_truncateRunTelemetryText, assistantCloud_wrapSamplingHandler } from "@/generated/integrationTypeDocs";
+import { openagentuiCloud_AssistantCloud, openagentuiCloud_AssistantCloudEvents, openagentuiCloud_AssistantCloudScores, openagentuiCloud_CloudAPIError, openagentuiCloud_CloudEngagementReporter, openagentuiCloud_CloudMessagePersistence, openagentuiCloud_CloudResponseError, openagentuiCloud_CloudRunReporter, openagentuiCloud_createRunReport, openagentuiCloud_createRunTelemetryToolCall, openagentuiCloud_deriveRunOutcome, openagentuiCloud_describeRunError, openagentuiCloud_extractRunTelemetryModelId, openagentuiCloud_generateThreadTitle, openagentuiCloud_normalizeRunTelemetryUsage, openagentuiCloud_truncateRunTelemetryText, openagentuiCloud_wrapSamplingHandler } from "@/generated/integrationTypeDocs";
 
 {/* AUTO-GENERATED PAGE by scripts/generate-api-reference.mts */}
 {/* Do not edit manually. */}
 
 {/* api-manual:start */}
-`openagentui-cloud` is the client the openagentui runtimes drive and the building blocks an integration of your own is made of. It runs in the browser, in React Native, in Node and on the edge, and its only dependency is `openagentui-stream`. `@openagentui/react` re-exports `AssistantCloud` and `readAnonymousRefreshToken`. The guides are under [Assistant Cloud](/docs/cloud); the wire protocol is the [REST API](/docs/cloud/api).
+`openagentui-cloud` is the client the OpenAgentUI runtimes drive and the building blocks an integration of your own is made of. It runs in the browser, in React Native, in Node and on the edge, and its only dependency is `openagentui-stream`. `@openagentui/react` re-exports `AssistantCloud` and `readAnonymousRefreshToken`. It talks to any backend that implements the upstream-compatible Assistant Cloud HTTP API, one you host yourself or a third-party service you choose; OpenAgentUI does not operate a hosted backend. For persistence without such a backend, see the [custom persistence adapter](/docs/integrations/persistence/custom-adapter).
 
 ## The client
 
-`new AssistantCloud(config)` takes one of the three [authentication modes](/docs/cloud/authorization), `{ baseUrl, anonymous: true }`, `{ baseUrl, authToken }` or, on a server only, `{ apiKey, userId, workspaceId }`, and an optional `telemetry` configuration: `enabled`, `events`, `environment`, `release`, `tags` and `beforeReport`, with `telemetry: false` as shorthand for off. Its members are one sub client per resource:
+`new AssistantCloud(config)` takes one of the three authentication modes, `{ baseUrl, anonymous: true }`, `{ baseUrl, authToken }` or, on a server only, `{ apiKey, userId, workspaceId }`, and an optional `telemetry` configuration: `enabled`, `events`, `environment`, `release`, `tags` and `beforeReport`, with `telemetry: false` as shorthand for off. Its members are one sub client per resource:
 
 | Member | Calls |
 |---|---|
@@ -43,19 +43,19 @@ Every call returns a promise and throws `CloudAPIError` on a non 2xx response, w
 
 ### AssistantCloud
 
-<ParametersTable {...assistantCloud_AssistantCloud} />
+<ParametersTable {...openagentuiCloud_AssistantCloud} />
 
 ### AssistantCloudEvents
 
-<ParametersTable {...assistantCloud_AssistantCloudEvents} />
+<ParametersTable {...openagentuiCloud_AssistantCloudEvents} />
 
 ### AssistantCloudScores
 
-<ParametersTable {...assistantCloud_AssistantCloudScores} />
+<ParametersTable {...openagentuiCloud_AssistantCloudScores} />
 
 ### CloudAPIError
 
-<ParametersTable {...assistantCloud_CloudAPIError} />
+<ParametersTable {...openagentuiCloud_CloudAPIError} />
 
 ### CloudEngagementReporter
 
@@ -67,7 +67,7 @@ rest is kept for the 256 most recently touched threads, so a long session
 does not grow it without bound. Delivery goes through the cloud's event
 buffer, so a disabled telemetry setting drops everything here as well.
 
-<ParametersTable {...assistantCloud_CloudEngagementReporter} />
+<ParametersTable {...openagentuiCloud_CloudEngagementReporter} />
 
 ### CloudMessagePersistence
 
@@ -75,11 +75,11 @@ Appends, updates and loads cloud messages while mapping local ids to cloud
 ids and chaining parent_id. A parent that is still being created is awaited,
 so concurrent appends land under the right parent.
 
-<ParametersTable {...assistantCloud_CloudMessagePersistence} />
+<ParametersTable {...openagentuiCloud_CloudMessagePersistence} />
 
 ### CloudResponseError
 
-<ParametersTable {...assistantCloud_CloudResponseError} />
+<ParametersTable {...openagentuiCloud_CloudResponseError} />
 
 ### CloudRunReporter
 
@@ -89,7 +89,7 @@ the `beforeReport` hook applied last, and a failed send that never surfaces.
 A keyed report is deduplicated while in flight and after an attempt. A
 rate-limited attempt releases the key so a later observation can try again.
 
-<ParametersTable {...assistantCloud_CloudRunReporter} />
+<ParametersTable {...openagentuiCloud_CloudRunReporter} />
 
 ### createFormattedPersistence
 
@@ -103,7 +103,7 @@ const createFormattedPersistence: <TMessage, TStorageFormat>(persistence: { appe
 
 ### createRunReport
 
-<ParametersTable {...assistantCloud_createRunReport} />
+<ParametersTable {...openagentuiCloud_createRunReport} />
 
 ### createRunTelemetryToolCall
 
@@ -111,7 +111,7 @@ Serializes one tool call into the shape the runs endpoint accepts. An `mcp`
 source has its result summarized, because MCP content blocks carry inline
 base64 image and audio payloads that would otherwise dominate the report.
 
-<ParametersTable {...assistantCloud_createRunTelemetryToolCall} />
+<ParametersTable {...openagentuiCloud_createRunTelemetryToolCall} />
 
 ### createSamplingCollector
 
@@ -134,14 +134,14 @@ function createSamplingCollector(): { collect: (data: SamplingCallData) => numbe
 Maps a finish event to the report status and outcome. `fallbackStatus`
 applies when the event carries neither a finish reason nor a failure flag.
 
-<ParametersTable {...assistantCloud_deriveRunOutcome} />
+<ParametersTable {...openagentuiCloud_deriveRunOutcome} />
 
 ### describeRunError
 
 Reads the message and code the runs endpoint stores for a failed run. The
 code is the error's `code` when it has one, else its class name.
 
-<ParametersTable {...assistantCloud_describeRunError} />
+<ParametersTable {...openagentuiCloud_describeRunError} />
 
 ### extractRunTelemetryModelId
 
@@ -151,11 +151,11 @@ that a `messageMetadata` callback copies off the AI SDK's finish-step part.
 The AI SDK puts no model ID on a UI message part, so message metadata is the
 only channel one arrives on.
 
-<ParametersTable {...assistantCloud_extractRunTelemetryModelId} />
+<ParametersTable {...openagentuiCloud_extractRunTelemetryModelId} />
 
 ### generateThreadTitle
 
-<ParametersTable {...assistantCloud_generateThreadTitle} />
+<ParametersTable {...openagentuiCloud_generateThreadTitle} />
 
 ### normalizeRunTelemetryUsage
 
@@ -164,7 +164,7 @@ SDK has used: the current top-level ones, the legacy prompt/completion pair,
 and the v7 token detail objects. Returns undefined when no count is present,
 so callers can tell an empty usage object from a zeroed one.
 
-<ParametersTable {...assistantCloud_normalizeRunTelemetryUsage} />
+<ParametersTable {...openagentuiCloud_normalizeRunTelemetryUsage} />
 
 ### readAnonymousRefreshToken
 
@@ -179,7 +179,7 @@ const readAnonymousRefreshToken: (baseUrl: string) => string | null;
 Clamps a string to the size the runs endpoint accepts for a single span
 field.
 
-<ParametersTable {...assistantCloud_truncateRunTelemetryText} />
+<ParametersTable {...openagentuiCloud_truncateRunTelemetryText} />
 
 ### wrapSamplingHandler
 
@@ -195,5 +195,5 @@ const wrapped = wrapSamplingHandler(
 // After tool execution, `samplingCalls` contains metrics for all nested LLM calls
 ```
 
-<ParametersTable {...assistantCloud_wrapSamplingHandler} />
+<ParametersTable {...openagentuiCloud_wrapSamplingHandler} />
 {/* api-reference:end */}

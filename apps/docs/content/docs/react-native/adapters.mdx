@@ -9,9 +9,9 @@ Adapters customize runtime behavior. They can be passed as options to `useLocalR
 
 By default, `useLocalRuntime` stores threads and messages in memory only, so they are lost when the app restarts. To persist data, use one of these approaches:
 
-### Assistant Cloud
+### Assistant-Cloud-compatible backend
 
-The simplest way to add persistence. Pass a `cloud` option to `useLocalRuntime`:
+If you run or choose a backend that implements the Assistant Cloud HTTP API, pass an `AssistantCloud` client as the `cloud` option to `useLocalRuntime`:
 
 ```tsx
 import { useLocalRuntime } from "@openagentui/react-native";
@@ -25,7 +25,7 @@ const cloud = new AssistantCloud({
 const runtime = useLocalRuntime(chatModel, { cloud });
 ```
 
-Set `EXPO_PUBLIC_ASSISTANT_BASE_URL` in `.env` as the [Cloud quickstart](/docs/cloud/quickstart) describes.
+Set `EXPO_PUBLIC_ASSISTANT_BASE_URL` in `.env` to your backend's base URL. See the [`openagentui-cloud` reference](/docs/api-reference/integrations/openagentui-cloud) for the client options.
 
 This gives you multi-thread support with server-side persistence, cross-device sync, and automatic title generation.
 

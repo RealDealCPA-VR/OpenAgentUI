@@ -16,7 +16,7 @@ A composer stages files the same way it stages text: `aui.composer.addAttachment
 
 ### Configure an attachment adapter
 
-Attachments are opt-in: without an adapter, `s.thread.capabilities.attachments` is `false` and `AddAttachment`, paste, and drop all no-op. openagentui ships adapters for the common cases:
+Attachments are opt-in: without an adapter, `s.thread.capabilities.attachments` is `false` and `AddAttachment`, paste, and drop all no-op. OpenAgentUI ships adapters for the common cases:
 
 ```tsx title="app/chat-provider.tsx"
 import { useLocalRuntime, CompositeAttachmentAdapter, SimpleImageAttachmentAdapter, SimpleTextAttachmentAdapter } from "@openagentui/react";

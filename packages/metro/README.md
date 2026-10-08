@@ -1,6 +1,6 @@
 # @openagentui/metro
 
-Metro / Expo integration for [openagentui](https://openagentui.dev): the
+Metro / Expo integration for [OpenAgentUI](https://openagentui.dev): the
 `"use generative"` directive compiler for React Native. It lets you author tools
 with the **same** [`defineToolkit`](https://openagentui.dev/docs/tools/defining-tools)
 API as on the web: one file colocating a tool's schema, its `execute`, and its

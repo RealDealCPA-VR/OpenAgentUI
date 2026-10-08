@@ -1,6 +1,6 @@
 # Reporting Security Issues
 
-We take security bugs in openagentui seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
+We take security bugs in OpenAgentUI seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
 
 To report a security issue, please use the GitHub Security Advisory ["Report a Vulnerability"](https://github.com/RealDealCPA-VR/OpenAgentUI/security/advisories/new) tab.
 

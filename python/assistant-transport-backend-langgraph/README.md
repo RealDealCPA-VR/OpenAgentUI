@@ -9,7 +9,7 @@ This is a LangGraph-based implementation of the assistant transport backend, pro
 - Support for both message streaming and state updates
 - DeltaChannel-backed LangGraph message checkpoints (`langgraph>=1.2`)
 - Optional Postgres checkpoint storage via `langgraph-checkpoint-postgres`
-- Compatible with the openagentui frontend
+- Compatible with the OpenAgentUI frontend
 
 ## Installation
 
@@ -123,7 +123,7 @@ def add_messages_delta(state, writes):
     return result
 ```
 
-This keeps the openagentui API unchanged. The frontend still uses `useAssistantTransportRuntime`; the backend still accepts normal AssistantTransport `add-message` and `add-tool-result` commands; and the response uses the canonical assistant-transport encoding. The only required API adjustment is inside the LangGraph state definition: a delta-backed channel reducer receives `(state, writes)` where `writes` is a batch, not the old pairwise `(state, update)` reducer shape.
+This keeps the OpenAgentUI API unchanged. The frontend still uses `useAssistantTransportRuntime`; the backend still accepts normal AssistantTransport `add-message` and `add-tool-result` commands; and the response uses the canonical assistant-transport encoding. The only required API adjustment is inside the LangGraph state definition: a delta-backed channel reducer receives `(state, writes)` where `writes` is a batch, not the old pairwise `(state, update)` reducer shape.
 
 Postgres works through LangGraph's async checkpointer path:
 
@@ -141,7 +141,7 @@ Because the FastAPI route streams with `graph.astream`, the backend uses `AsyncP
 
 ## Integration with Frontend
 
-This backend is designed to work with the openagentui frontend. Update your frontend configuration to point to this server:
+This backend is designed to work with the OpenAgentUI frontend. Update your frontend configuration to point to this server:
 
 ```typescript
 const runtime = useExternalStoreRuntime({

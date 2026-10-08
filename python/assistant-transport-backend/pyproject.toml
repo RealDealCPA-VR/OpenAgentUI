@@ -7,7 +7,7 @@ name = "assistant-transport-backend"
 version = "0.1.0"
 description = "A simple server implementing the assistant-transport protocol with static responses"
 authors = [
-    { name = "openagentui Team", email = "team@openagentui.dev" }
+    { name = "OpenAgentUI contributors" }
 ]
 readme = "README.md"
 license = "MIT"

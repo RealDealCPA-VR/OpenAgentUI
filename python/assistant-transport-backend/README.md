@@ -1,13 +1,13 @@
 # Assistant Transport Backend
 
-A simple Python server that demonstrates the assistant-transport protocol using FastAPI and openagentui-stream. This backend returns static responses to show how the streaming protocol works with openagentui frontend applications.
+A simple Python server that demonstrates the assistant-transport protocol using FastAPI and openagentui-stream. This backend returns static responses to show how the streaming protocol works with OpenAgentUI frontend applications.
 
 ## Features
 
 - 🚀 **FastAPI-based** - High-performance async server
 - 📡 **Streaming Responses** - Real-time responses using openagentui-stream
 - 🔄 **State Management** - Uses openagentui-stream's object-stream state utilities
-- 🔌 **Assistant-Transport Protocol** - Full compatibility with openagentui
+- 🔌 **Assistant-Transport Protocol** - Full compatibility with OpenAgentUI
 - 🌐 **CORS Enabled** - Works with any frontend origin
 - 📦 **Simple Setup** - Minimal dependencies
 - 🧪 **Static Responses** - No API keys required, perfect for testing
@@ -201,11 +201,11 @@ curl -X POST http://localhost:8000/assistant \
 
 ## License
 
-This project is part of the openagentui monorepo and follows the same MIT licensing terms.
+This project is part of the OpenAgentUI monorepo and follows the same MIT licensing terms.
 
 ## Learn More
 
-- [openagentui Documentation](https://openagentui.dev)
+- [OpenAgentUI Documentation](https://openagentui.dev)
 - [Assistant Transport Protocol](https://openagentui.dev/runtimes/assistant-transport)
 - [openagentui-stream Package](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/python/openagentui-stream)
 - [FastAPI Documentation](https://fastapi.tiangolo.com)

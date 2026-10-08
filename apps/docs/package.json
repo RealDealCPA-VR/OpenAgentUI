@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node ../../scripts/prepare-example-bundles.mjs --dev && next dev",
-    "build": "pnpm generate:source-snapshot && node ../../scripts/prepare-example-bundles.mjs && next build && pnpm verify:repo-source-traces",
+    "dev": "next dev",
+    "build": "pnpm generate:source-snapshot && next build && pnpm verify:repo-source-traces",
     "build:brand-kit": "tsx ./scripts/build-brand-kit.mts",
     "generate:type-docs": "tsx ./scripts/generate-type-docs.mts",
     "generate:api-reference": "tsx ./scripts/generate-api-reference.mts",
@@ -16,8 +16,7 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=html --coverage.reporter=json-summary",
     "typecheck": "next typegen && tsc --noEmit -p tsconfig.test.json",
-    "postinstall": "fumadocs-mdx",
-    "capture:cloud-screenshots": "tsx ./scripts/capture-cloud-screenshots.mts"
+    "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.82",
@@ -109,7 +108,6 @@
     "@openagentui/safe-content-frame": "workspace:*",
     "shiki": "^4.4.3",
     "sonner": "^2.0.8",
-    "statewire": "^0.19.4",
     "streamdown": "^2.7.0",
     "tailwind-scrollbar": "^4.0.2",
     "@openagentui/tw-shimmer": "workspace:*",

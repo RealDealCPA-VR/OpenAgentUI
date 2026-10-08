@@ -51,7 +51,7 @@ const config = AuiConfig({ threads: AISDKChat() });
 
 `AISDKChat()` posts to `/api/chat`, a route that returns `streamText(...).toUIMessageStreamResponse()`. Mount the provider client-only, as a `.client.vue` component in Nuxt: Vue's server renderer never disposes effect scopes, so a provider rendered on the server would keep one runtime per request.
 
-Styled components (thread, messages, reasoning, tool calls, thread list) install from the openagentui registry; the [quickstart](https://openagentui.dev/docs/vue/quickstart) walks through them.
+Styled components (thread, messages, reasoning, tool calls, thread list) install from the OpenAgentUI registry; the [quickstart](https://openagentui.dev/docs/vue/quickstart) walks through them.
 
 ## API
 

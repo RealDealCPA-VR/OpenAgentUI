@@ -1,6 +1,6 @@
 # `@openagentui/ai-sdk`
 
-[Vercel AI SDK](https://sdk.vercel.ai) integration for `@openagentui/react`. Wraps the AI SDK chat in an openagentui runtime and forwards system messages and frontend tools through `AssistantChatTransport`. Each release line targets the AI SDK major pinned in its dependencies.
+[Vercel AI SDK](https://sdk.vercel.ai) integration for `@openagentui/react`. Wraps the AI SDK chat in an OpenAgentUI runtime and forwards system messages and frontend tools through `AssistantChatTransport`. Each release line targets the AI SDK major pinned in its dependencies.
 
 ## Installation
 

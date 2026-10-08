@@ -1,11 +1,11 @@
 ---
 title: Installation
-description: Get openagentui running in an Expo or React Native app with your first chat screen.
+description: Get OpenAgentUI running in an Expo or React Native app with your first chat screen.
 ---
 
 ## Quick Start
 
-The scaffold is an Expo Router app with the openagentui elements installed from the registry (thread and thread list, including the composer and attachment subcomponents) and the AI SDK runtime wired up.
+The scaffold is an Expo Router app with the OpenAgentUI elements installed from the registry (thread and thread list, including the composer and attachment subcomponents) and the AI SDK runtime wired up.
 
 <Steps>
   <Step>
@@ -42,7 +42,7 @@ npx expo start
 
 ## Manual Setup
 
-If you prefer to add openagentui to an existing Expo project, follow these steps.
+If you prefer to add OpenAgentUI to an existing Expo project, follow these steps.
 
 <Steps>
   <Step>
@@ -160,7 +160,7 @@ module.exports = withUniwindConfig(getDefaultConfig(__dirname), {
 });
 ```
 
-Create the CSS entry with the openagentui color tokens. Declare the colors directly as `--color-*` custom properties under `@layer theme`; Uniwind resolves those on native, while an `@theme inline` indirection only works on web.
+Create the CSS entry with the OpenAgentUI color tokens. Declare the colors directly as `--color-*` custom properties under `@layer theme`; Uniwind resolves those on native, while an `@theme inline` indirection only works on web.
 
 ```css title="global.css"
 @import "tailwindcss";
@@ -229,7 +229,7 @@ import "../global.css";
 
 ### Add the elements
 
-The elements install like shadcn components: the openagentui CLI detects `react-native` in your `package.json` and reads the native registry tree. Create a `components.json` first so the files land under `components/` and `lib/`:
+The elements install like shadcn components: the OpenAgentUI CLI detects `react-native` in your `package.json` and reads the native registry tree. Create a `components.json` first so the files land under `components/` and `lib/`:
 
 ```json title="components.json"
 {
@@ -307,7 +307,7 @@ export default function App() {
   />
   <Card
     title="Migration from Web"
-    description="Already using openagentui? Migrate your web app to React Native."
+    description="Already using OpenAgentUI? Migrate your web app to React Native."
     href="/docs/react-native/migration"
   />
   <Card

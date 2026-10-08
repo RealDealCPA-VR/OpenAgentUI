@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SubProjectLayout } from "@/components/shared/sub-project-layout";
 
 export const metadata: Metadata = {
-  title: "Spread Test | tw-shimmer by openagentui",
+  title: "Spread Test | tw-shimmer by OpenAgentUI",
   robots: {
     index: false,
     follow: true,

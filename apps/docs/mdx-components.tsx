@@ -1,7 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import type { CSSProperties, ComponentProps, ReactNode } from "react";
 import { Callout } from "@/components/ui/callout";
-import { AgentSetup } from "@/components/shared/shop-entry";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Card, Cards } from "@/components/pages/docs/fumadocs/card";
 import { Step, Steps } from "@/components/ui/steps";
@@ -143,7 +142,6 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     Tab,
     PlatformTabs,
     Callout,
-    AgentSetup,
     Card,
     Cards,
     Step,

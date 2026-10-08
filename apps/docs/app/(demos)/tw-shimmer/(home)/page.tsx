@@ -71,7 +71,7 @@ export default function TwShimmerPage() {
         </div>
         <figcaption className="text-muted-foreground/70 mt-2 flex items-baseline justify-between font-mono text-[11px] tracking-wide">
           <span>fig. 01</span>
-          <span>what loading looks like in openagentui</span>
+          <span>what loading looks like in OpenAgentUI</span>
         </figcaption>
       </figure>
 

@@ -31,6 +31,8 @@ env:
 jobs:
   deploy-production:
     name: Deploy Production
+    # Needs Vercel secrets; see DEPLOYMENT.md.
+    if: vars.ENABLE_VERCEL_DEPLOYS == 'true'
     runs-on: ubuntu-latest
     # A literal group, because inside a workflow_call github.workflow names the
     # caller, so a release deploy and a manual one would not exclude each other.

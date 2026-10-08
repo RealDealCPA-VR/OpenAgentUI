@@ -1,10 +1,10 @@
 ---
 title: Defining Tools
-description: Define tools for your AI chat with openagentui toolkits and the "use generative" directive, covering frontend, backend, human, and provider tools with type safety and streaming.
+description: Define tools for your AI chat with OpenAgentUI toolkits and the "use generative" directive, covering frontend, backend, human, and provider tools with type safety and streaming.
 platforms: ["react"]
 ---
 
-Tools let the model take actions: fetch data, call an API, query a database, drive your UI, or run a workflow. In openagentui you declare tools in a **toolkit**, a named map where each key is the tool name the model sees and each value describes the tool's schema, where it runs, and how its call renders.
+Tools let the model take actions: fetch data, call an API, query a database, drive your UI, or run a workflow. In OpenAgentUI you declare tools in a **toolkit**, a named map where each key is the tool name the model sees and each value describes the tool's schema, where it runs, and how its call renders.
 
 This page covers how to **author** tools. To render a tool call as a custom component, see [Tool UI](/docs/tools/tool-ui). To wire tools into your server, see [Backend tools](/docs/tools/backend).
 
@@ -308,7 +308,7 @@ web_search: {
 
 Use `externalTool()` when a non-MCP tool is already defined and executed by
 another system (for example a separate backend route or LangGraph node), but you
-want openagentui to render its tool calls. Import `externalTool` from
+want OpenAgentUI to render its tool calls. Import `externalTool` from
 `@openagentui/react`:
 
 ```tsx
@@ -528,7 +528,7 @@ read_pdf: {
 
 ### Per-tool provider options
 
-Every tool accepts a `providerOptions` field. openagentui serializes it verbatim under the tool entry; the AI SDK route forwards it; the provider SDK reads the keys it cares about. This is how you opt into provider-specific behaviors (such as Anthropic's progressive tool disclosure) without provider-aware code:
+Every tool accepts a `providerOptions` field. OpenAgentUI serializes it verbatim under the tool entry; the AI SDK route forwards it; the provider SDK reads the keys it cares about. This is how you opt into provider-specific behaviors (such as Anthropic's progressive tool disclosure) without provider-aware code:
 
 ```tsx
 search_docs: {

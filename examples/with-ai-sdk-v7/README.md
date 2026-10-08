@@ -72,5 +72,5 @@ The API route at `/api/chat` uses AI SDK v7 `streamText`, forwards `system` and 
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [AI SDK Integration Guide](https://openagentui.dev/docs/runtimes/ai-sdk)

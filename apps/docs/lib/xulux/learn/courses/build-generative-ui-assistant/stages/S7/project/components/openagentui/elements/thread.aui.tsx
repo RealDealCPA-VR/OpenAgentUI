@@ -45,7 +45,7 @@ export function Thread() {
       <header className="border-b border-[var(--border)] px-5 py-4">
         <p className="font-medium">Generative UI Assistant</p>
         <p className="text-sm text-[var(--muted-foreground)]">
-          Built with openagentui
+          Built with OpenAgentUI
         </p>
       </header>
       <ThreadPrimitive.Viewport className="flex min-w-0 flex-1 flex-col overflow-y-auto">

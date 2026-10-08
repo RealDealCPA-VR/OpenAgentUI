@@ -9,7 +9,7 @@ import { parseLearnAutoStartSource } from "@/lib/xulux/learn/types";
 
 export const instant = false;
 
-const title = "Learn openagentui";
+const title = "Learn OpenAgentUI";
 const description =
   "Build assistant interfaces through a guided course in the Xulux playground.";
 

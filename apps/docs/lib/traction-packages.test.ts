@@ -4,13 +4,6 @@ import { describe, expect, it } from "vitest";
 
 const PACKAGES_DIR = path.resolve(__dirname, "../../../packages");
 
-/** Published from other openagentui org repos, not from this monorepo. */
-const EXTERNAL_PACKAGES = [
-  "@openagentui/xpm",
-  "@openagentui/gorp",
-  "@openagentui/local-pdf-adapter",
-];
-
 /**
  * traction.ts pulls in a `server-only` module, so the list is read from source
  * rather than imported.
@@ -59,7 +52,7 @@ describe("the packages directory covers what we publish", () => {
   });
 
   it("only lists packages that still exist, unless they are deprecated", () => {
-    const published = new Set([...publishedPackages(), ...EXTERNAL_PACKAGES]);
+    const published = new Set(publishedPackages());
     const stale = listedPackages()
       .filter((pkg) => !pkg.deprecated && !published.has(pkg.name))
       .map((pkg) => pkg.name);

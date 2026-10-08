@@ -82,7 +82,7 @@ export function ComposerBar() {
 }
 ```
 
-`TriggerPopoverRoot` wraps the whole bar, not only the input; `TriggerPopover` and `ComposerPrimitive.Root` sit side by side inside it. The `.Action` behavior fires `onExecute` at the moment a command is picked; `removeOnExecute` defaults to `false`, which replaces the typed `/query` with the command's directive text as an audit trail; pass `removeOnExecute: true` to the adapter to strip the trigger text instead. `TriggerPopoverItem` sets `data-highlighted` on whichever row keyboard navigation has reached, so the active tint is a plain `data-[highlighted]:` class rather than state you track. openagentui ships this whole composition pre-built: installing [Composer trigger popover](/elements/composer-trigger-popover) gives you the categories, search-empty, and loading states without assembling them by hand.
+`TriggerPopoverRoot` wraps the whole bar, not only the input; `TriggerPopover` and `ComposerPrimitive.Root` sit side by side inside it. The `.Action` behavior fires `onExecute` at the moment a command is picked; `removeOnExecute` defaults to `false`, which replaces the typed `/query` with the command's directive text as an audit trail; pass `removeOnExecute: true` to the adapter to strip the trigger text instead. `TriggerPopoverItem` sets `data-highlighted` on whichever row keyboard navigation has reached, so the active tint is a plain `data-[highlighted]:` class rather than state you track. OpenAgentUI ships this whole composition pre-built: installing [Composer trigger popover](/elements/composer-trigger-popover) gives you the categories, search-empty, and loading states without assembling them by hand.
 
   </Step>
 </Steps>

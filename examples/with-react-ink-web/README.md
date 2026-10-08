@@ -1,4 +1,4 @@
-# Welcome to the openagentui ink web demo 👋
+# Welcome to the OpenAgentUI ink web demo 👋
 
 This app runs the [`@openagentui/react-ink`](https://openagentui.dev/docs/ink) terminal chat in the browser against a real LLM. It powers the live demo embedded at [openagentui.dev/ink](https://openagentui.dev/ink) and is deployed at [openagentui-ink.vercel.app](https://openagentui-ink.vercel.app).
 
@@ -28,7 +28,7 @@ The terminal opens on [localhost:8081](http://localhost:8081), and the docs app 
 
 Ink has no official web target, so this app renders the real `@openagentui/react-ink` component tree through [ink-web](https://github.com/cjroth/ink-web)'s browser build of Ink, bridged to a [wterm](https://github.com/vercel-labs/wterm) terminal. wterm renders to the DOM, so text selection, copy, find, and screen readers work natively.
 
-Chat requests go to the openagentui docs site's `/api/chat`, the same pattern as the React Native demo at [openagentui-expo.vercel.app](https://openagentui-expo.vercel.app). The app obtains a signed anonymous session when the backend supports it and holds no API keys; custom backends without the session route continue to receive normal chat requests.
+Chat requests go to the OpenAgentUI docs site's `/api/chat`, the same pattern as the React Native demo at [openagentui-expo.vercel.app](https://openagentui-expo.vercel.app). The app obtains a signed anonymous session when the backend supports it and holds no API keys; custom backends without the session route continue to receive normal chat requests.
 
 ## Thread controls
 
@@ -40,5 +40,5 @@ Browsers can reserve shortcuts such as Ctrl+N for opening a new window. Press Ct
 
 ## Learn more
 
-- [openagentui ink documentation](https://openagentui.dev/docs/ink): primitives, hooks, and adapters for terminal UIs.
+- [OpenAgentUI ink documentation](https://openagentui.dev/docs/ink): primitives, hooks, and adapters for terminal UIs.
 - [with-react-ink](../with-react-ink): the real terminal version of this example. Start there if you are building an Ink app.

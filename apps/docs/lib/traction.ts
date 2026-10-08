@@ -1,22 +1,4 @@
-import { cacheLife } from "next/cache";
-import {
-  type GitHubContributor,
-  getCoAuthorUser,
-  getCommitActivityStats,
-  getCommitCoAuthors,
-  getCommitsSince,
-  getContributors,
-  getReleases,
-  getStarHistory,
-  getUser,
-} from "./github";
-import {
-  FLAGSHIP_PACKAGE,
-  NPM_REVALIDATE,
-  type NpmDailyDownloads,
-  getDownloadsRange,
-  getLastWeek,
-} from "./npm";
+import { FLAGSHIP_PACKAGE, getDownloadsRange, getLastWeek } from "./npm";
 
 export type PackageInfo = {
   name: string;
@@ -51,8 +33,8 @@ export const PACKAGE_CATEGORIES: Record<
     description: "Scaffolding and build tooling.",
   },
   cloud: {
-    label: "Cloud & streaming",
-    description: "Hosted persistence and stream transports.",
+    label: "Streaming & persistence",
+    description: "Stream formats and a client for thread backends.",
   },
   frameworks: {
     label: "Framework adapters",
@@ -72,7 +54,7 @@ export const PACKAGE_CATEGORIES: Record<
   },
   effects: {
     label: "Effects & primitives",
-    description: "Standalone packages we built along the way.",
+    description: "Standalone packages that work without the runtime.",
   },
   mcp: {
     label: "MCP & agents",
@@ -91,7 +73,7 @@ export const PACKAGE_CATEGORIES: Record<
 export const PACKAGES: PackageInfo[] = [
   {
     name: "@openagentui/react",
-    description: "TypeScript/React library for AI chat.",
+    description: "Primitives and runtime for AI chat in React.",
     category: "core",
   },
   {
@@ -111,37 +93,27 @@ export const PACKAGES: PackageInfo[] = [
   },
   {
     name: "openagentui",
-    description: "CLI for openagentui.",
-    category: "tooling",
-  },
-  {
-    name: "@openagentui/xpm",
-    description: "One command for npm, yarn, pnpm, bun, deno, and uv.",
+    description: "CLI to create, init, add, upgrade and diagnose projects.",
     category: "tooling",
   },
   {
     name: "create-openagentui",
-    description: "Scaffold an openagentui app in one command.",
-    category: "tooling",
-  },
-  {
-    name: "@openagentui/x-buildutils",
-    description: "Shared build utilities for the monorepo.",
+    description: "Scaffold an OpenAgentUI app in one command.",
     category: "tooling",
   },
   {
     name: "@openagentui/next",
-    description: "Next.js plugin for the generative UI compiler.",
+    description: 'Next.js config wrapper and the "use generative" compiler.',
     category: "tooling",
   },
   {
     name: "@openagentui/vite",
-    description: "Vite plugin for the generative UI compiler.",
+    description: 'Vite plugin for the "use generative" compiler.',
     category: "tooling",
   },
   {
     name: "@openagentui/metro",
-    description: "Metro plugin for the generative UI compiler.",
+    description: 'Metro and Expo plugin for the "use generative" compiler.',
     category: "tooling",
   },
   {
@@ -150,19 +122,19 @@ export const PACKAGES: PackageInfo[] = [
     category: "tooling",
   },
   {
-    name: "openagentui-cloud",
-    description: "Hosted backend for openagentui.",
-    category: "cloud",
-  },
-  {
-    name: "@openagentui/gorp",
-    description:
-      "Client/server state replicas with optimistic updates over a tiny wire protocol.",
-    category: "cloud",
+    name: "@openagentui/x-buildutils",
+    description: "Shared build utilities for the monorepo.",
+    category: "tooling",
   },
   {
     name: "openagentui-stream",
-    description: "Streaming utilities for AI assistants.",
+    description: "Streaming utilities and wire formats for assistants.",
+    category: "cloud",
+  },
+  {
+    name: "openagentui-cloud",
+    description:
+      "Client for Assistant Cloud compatible thread and run backends.",
     category: "cloud",
   },
   {
@@ -173,11 +145,6 @@ export const PACKAGES: PackageInfo[] = [
   {
     name: "@openagentui/react-ai-sdk",
     description: "Re-export of @openagentui/ai-sdk.",
-    category: "frameworks",
-  },
-  {
-    name: "@openagentui/eve",
-    description: "Eve runtime adapter.",
     category: "frameworks",
   },
   {
@@ -193,6 +160,11 @@ export const PACKAGES: PackageInfo[] = [
   {
     name: "@openagentui/react-google-adk",
     description: "Google ADK adapter.",
+    category: "frameworks",
+  },
+  {
+    name: "@openagentui/eve",
+    description: "Eve runtime adapter.",
     category: "frameworks",
   },
   {
@@ -241,18 +213,13 @@ export const PACKAGES: PackageInfo[] = [
     category: "ui",
   },
   {
-    name: "@openagentui/local-pdf-adapter",
-    description: "Local PDF attachment adapter for @openagentui/react.",
-    category: "ui",
-  },
-  {
     name: "@openagentui/react-streamdown",
     description: "Streamdown-based markdown rendering.",
     category: "ui",
   },
   {
     name: "@openagentui/react-syntax-highlighter",
-    description: "Syntax highlighting for openagentui.",
+    description: "Syntax highlighting for code blocks.",
     category: "ui",
   },
   {
@@ -297,12 +264,12 @@ export const PACKAGES: PackageInfo[] = [
   },
   {
     name: "@openagentui/mcp-docs-server",
-    description: "MCP server exposing openagentui docs.",
+    description: "Stdio proxy for the documentation MCP server.",
     category: "mcp",
   },
   {
     name: "@openagentui/agent-launcher",
-    description: "Launch Claude Code with bundled plugins.",
+    description: "Launch Claude Code with bundled plugins and skills.",
     category: "mcp",
   },
   {
@@ -314,43 +281,6 @@ export const PACKAGES: PackageInfo[] = [
     name: "@openagentui/react-o11y",
     description: "Observability primitives for assistants.",
     category: "observability",
-  },
-  {
-    name: "@openagentui/react-edge",
-    description: "Legacy edge runtime, superseded by the AI SDK adapter.",
-    category: "deprecated",
-    deprecated: true,
-  },
-  {
-    name: "@openagentui/styles",
-    description: "Prebuilt styles for non-Tailwind users.",
-    category: "deprecated",
-    deprecated: true,
-  },
-  {
-    name: "@openagentui/cloud-ai-sdk",
-    description:
-      "AI SDK hooks with openagentui-cloud persistence; replaced by the cloud option of useChatRuntime.",
-    category: "deprecated",
-    deprecated: true,
-  },
-  {
-    name: "@openagentui/react-trieve",
-    description: "Trieve search integration.",
-    category: "deprecated",
-    deprecated: true,
-  },
-  {
-    name: "@openagentui/react-ui",
-    description: "Pre-styled React components, superseded by the registry.",
-    category: "deprecated",
-    deprecated: true,
-  },
-  {
-    name: "@openagentui/react-playground",
-    description: "Standalone playground runtime.",
-    category: "deprecated",
-    deprecated: true,
   },
 ];
 
@@ -366,183 +296,6 @@ export type NpmDownloads = {
   totalWeekly: number | null;
   perPackage: Record<string, PackageDownloads>;
 };
-
-export type TimelinePoint = {
-  date: string;
-  value: number;
-};
-
-export type Contributor = {
-  login: string;
-  avatarUrl: string;
-  htmlUrl: string;
-  contributions: number;
-};
-
-export type ActivityPoint = {
-  date: string;
-  count: number;
-};
-
-export async function fetchCommitActivity(
-  revalidate?: number,
-): Promise<ActivityPoint[]> {
-  const stats = await getCommitActivityStats(revalidate);
-  if (stats && stats.length > 0) {
-    const points: ActivityPoint[] = [];
-    for (const week of stats) {
-      for (let i = 0; i < 7; i++) {
-        const ms = (week.week + i * 86_400) * 1000;
-        const d = new Date(ms);
-        const y = d.getUTCFullYear();
-        const m = String(d.getUTCMonth() + 1).padStart(2, "0");
-        const day = String(d.getUTCDate()).padStart(2, "0");
-        points.push({ date: `${y}-${m}-${day}`, count: week.days[i] ?? 0 });
-      }
-    }
-    return points;
-  }
-
-  // The instant is part of the request url and so of its data cache key, so
-  // the window starts on a day boundary to keep its pages shared across renders.
-  const since = new Date();
-  since.setUTCDate(since.getUTCDate() - 365);
-  since.setUTCHours(0, 0, 0, 0);
-  const items = await getCommitsSince(
-    since.toISOString(),
-    undefined,
-    revalidate,
-  );
-
-  const counts = new Map<string, number>();
-  for (const c of items) {
-    const iso = c.commit?.author?.date ?? c.commit?.committer?.date;
-    if (!iso) continue;
-    const day = iso.slice(0, 10);
-    counts.set(day, (counts.get(day) ?? 0) + 1);
-  }
-  return Array.from(counts.entries()).map(([date, count]) => ({ date, count }));
-}
-
-export async function fetchReleaseActivity(
-  revalidate?: number,
-): Promise<ActivityPoint[]> {
-  const cutoff = Date.now() - 365 * 86_400_000;
-  const releases = await getReleases(undefined, revalidate);
-
-  const counts = new Map<string, number>();
-  for (const r of releases) {
-    const iso = r.published_at ?? r.created_at;
-    if (new Date(iso).getTime() < cutoff) continue;
-    const day = iso.slice(0, 10);
-    counts.set(day, (counts.get(day) ?? 0) + 1);
-  }
-  return Array.from(counts.entries()).map(([date, count]) => ({ date, count }));
-}
-
-const isBot = (login: string, type?: string) =>
-  type === "Bot" || /\[bot\]$/i.test(login);
-
-const toContributor = (c: GitHubContributor): Contributor => ({
-  login: c.login,
-  avatarUrl: c.avatar_url,
-  htmlUrl: c.html_url,
-  contributions: c.contributions,
-});
-
-export async function fetchContributors(): Promise<Contributor[] | null> {
-  try {
-    return await getCachedContributors();
-  } catch {
-    return null;
-  }
-}
-
-async function getCachedContributors(): Promise<Contributor[]> {
-  "use cache";
-  cacheLife("hours");
-  const raw = await getContributors();
-  if (raw === null) throw new Error("Contributors read incomplete");
-  return raw.filter((c) => !isBot(c.login, c.type)).map(toContributor);
-}
-
-/* Claude has no GitHub account, so it never resolves as a "Bot"; it is matched by the co-author email every model variant shares. */
-const CLAUDE_CO_AUTHOR_EMAIL = "noreply@anthropic.com";
-
-export async function fetchBotCoAuthors(): Promise<Contributor[]> {
-  try {
-    return await getCachedBotCoAuthors();
-  } catch {
-    return [];
-  }
-}
-
-async function getCachedBotCoAuthors(): Promise<Contributor[]> {
-  "use cache";
-  cacheLife("hours");
-  const coAuthors = await getCommitCoAuthors();
-  if (coAuthors === null) throw new Error("Co-author scan incomplete");
-
-  let claudeCount = 0;
-  const accounts = new Map<
-    string,
-    { id: number | null; login: string | null; count: number }
-  >();
-  for (const author of coAuthors) {
-    if (author.email === CLAUDE_CO_AUTHOR_EMAIL) {
-      claudeCount += author.count;
-      continue;
-    }
-    if (author.id == null && author.login == null) continue;
-    const key =
-      author.id != null
-        ? `id:${author.id}`
-        : `login:${author.login!.toLowerCase()}`;
-    const entry = accounts.get(key);
-    if (entry) entry.count += author.count;
-    else
-      accounts.set(key, {
-        id: author.id,
-        login: author.login,
-        count: author.count,
-      });
-  }
-
-  const resolved = await Promise.all(
-    Array.from(accounts.values()).map(async ({ id, login, count }) => {
-      const user = await getCoAuthorUser(id ?? login!);
-      if (!user || user.type !== "Bot") return null;
-      return {
-        login: user.login,
-        avatarUrl: user.avatarUrl,
-        htmlUrl: user.htmlUrl,
-        contributions: count,
-      } satisfies Contributor;
-    }),
-  );
-
-  // distinct app accounts can resolve to the same login (e.g. Copilot reviewer + swe-agent), so merge by login.
-  const byLogin = new Map<string, Contributor>();
-  for (const bot of resolved) {
-    if (!bot) continue;
-    const entry = byLogin.get(bot.login);
-    if (entry) entry.contributions += bot.contributions;
-    else byLogin.set(bot.login, { ...bot });
-  }
-  const result = Array.from(byLogin.values());
-
-  if (claudeCount > 0) {
-    const anthropic = await getUser("anthropics");
-    result.push({
-      login: "Claude",
-      avatarUrl: anthropic?.avatarUrl ?? "/icons/anthropic.svg",
-      htmlUrl: "https://claude.com",
-      contributions: claudeCount,
-    });
-  }
-
-  return result.sort((a, b) => b.contributions - a.contributions);
-}
 
 const EMPTY_DOWNLOADS: PackageDownloads = {
   weekly: 0,
@@ -607,112 +360,6 @@ export async function fetchNpmDownloads(
   return { flagshipWeekly, totalWeekly, perPackage };
 }
 
-export const TIMELINE_PACKAGES = [
-  "@openagentui/react",
-  "@openagentui/react-ai-sdk",
-  "@openagentui/react-markdown",
-  "@openagentui/react-langgraph",
-  "openagentui-stream",
-] as const;
-
-export type TimelineSeries = {
-  series: {
-    key: string;
-    pkg: string;
-    label: string;
-    chartIndex: number;
-  }[];
-  data: { date: string; [key: string]: number | string }[];
-  projectedMonth?: string;
-};
-
-export async function fetchTimelineSeries(
-  packages: readonly string[],
-  revalidate?: number,
-): Promise<TimelineSeries> {
-  const npmEnd = await getNpmEnd(revalidate);
-  const series = packages.map((pkg, idx) => ({
-    key: `s${idx}`,
-    pkg,
-    label: pkg.replace(/^@openagentui\//, "").replace(/^assistant-/, ""),
-    chartIndex: (idx % 5) + 1,
-  }));
-  if (!npmEnd) return { series, data: [] };
-
-  const fetched = await Promise.all(
-    series.map(async (item) => ({
-      ...item,
-      points: (await fetchDownloadsTimelineForEnd(item.pkg, npmEnd, revalidate))
-        .points,
-    })),
-  );
-
-  const monthsSet = new Set<string>();
-  for (const { points } of fetched) {
-    for (const p of points) monthsSet.add(p.date);
-  }
-  const months = Array.from(monthsSet).sort();
-
-  const cutoff = inflightMonth(npmEnd);
-  const data = months.map((date) => {
-    const isProjected = date === cutoff;
-    const row: { date: string; [key: string]: number | string } = { date };
-    for (const { key, points } of fetched) {
-      const point = points.find((p) => p.date === date);
-      if (!isProjected && point) row[key] = point.value;
-    }
-    return row;
-  });
-
-  const projectedIndex = data.findIndex((r) => r.date === cutoff);
-  if (projectedIndex >= 1) {
-    for (let idx = projectedIndex - 1; idx <= projectedIndex; idx++) {
-      const row = data[idx]!;
-      const rowDate = row.date as string;
-      for (const { key, points } of fetched) {
-        const point = points.find((p) => p.date === rowDate);
-        if (point) row[`${key}_proj`] = point.value;
-      }
-    }
-  }
-
-  return {
-    series,
-    data,
-    ...(cutoff && projectedIndex >= 0 ? { projectedMonth: cutoff } : {}),
-  };
-}
-
-const TIMELINE_MONTHS_BACK = 12;
-type MonthBucket = {
-  month: string;
-  sum: number;
-  dailies: NpmDailyDownloads[];
-};
-
-function monthKeysBack(day: string, count: number): string[] {
-  const [year, month] = day.split("-").map(Number);
-  return Array.from({ length: count + 1 }, (_, i) =>
-    new Date(Date.UTC(year!, month! - 1 - (count - i), 1))
-      .toISOString()
-      .slice(0, 7),
-  );
-}
-
-function monthOf(day: string): string {
-  return day.slice(0, 7);
-}
-
-function monthEnd(month: string): string {
-  const [year, monthOfYear] = month.split("-").map(Number);
-  return new Date(Date.UTC(year!, monthOfYear!, 0)).toISOString().slice(0, 10);
-}
-
-function inflightMonth(npmEnd: string): string | undefined {
-  const month = monthOf(npmEnd);
-  return monthEnd(month) === npmEnd ? undefined : month;
-}
-
 function shiftDays(day: string, by: number): string {
   const date = new Date(`${day}T00:00:00Z`);
   date.setUTCDate(date.getUTCDate() + by);
@@ -723,160 +370,4 @@ function shiftDays(day: string, by: number): string {
 // aggregated yet as 0, so there is no end to read to without npm's window.
 async function getNpmEnd(revalidate?: number): Promise<string | null> {
   return (await getLastWeek(FLAGSHIP_PACKAGE, revalidate))?.end ?? null;
-}
-
-// Returns nothing unless every window was read, so a render cached as complete
-// never draws a year that is missing its in-flight month.
-export async function fetchDownloadsTimeline(
-  name: string,
-  revalidate?: number,
-): Promise<TimelinePoint[]> {
-  const npmEnd = await getNpmEnd(revalidate);
-  if (!npmEnd) return [];
-
-  const { points, complete } = await fetchDownloadsTimelineForEnd(
-    name,
-    npmEnd,
-    revalidate,
-  );
-  return complete ? points : [];
-}
-
-async function fetchDownloadsTimelineForEnd(
-  name: string,
-  npmEnd: string,
-  revalidate?: number,
-): Promise<{ points: TimelinePoint[]; complete: boolean }> {
-  const cutoff = inflightMonth(npmEnd);
-  const months = monthKeysBack(npmEnd, TIMELINE_MONTHS_BACK);
-  const start = `${months[0]}-01`;
-
-  // Everything up to the last month npm has finished backfilling is final, so it
-  // is read as one window on a long revalidation and only the unsettled tail is
-  // read every render. Asking per month instead would multiply a deploy's
-  // requests by thirteen, and the burst is what npm refuses; asking for the
-  // whole year at once cost the entire series whenever the one request was.
-  const settled = months.filter((month) => monthEnd(month) <= npmEnd).at(-1);
-
-  const dailies: NpmDailyDownloads[] = [];
-  if (settled) {
-    const settledDailies = await getDownloadsRange(
-      name,
-      start,
-      monthEnd(settled),
-      revalidate ?? NPM_REVALIDATE.COLD,
-    );
-    if (!settledDailies?.length) return { points: [], complete: false };
-    dailies.push(...settledDailies);
-  }
-  let complete = true;
-  const tail = settled ? shiftDays(monthEnd(settled), 1) : start;
-  if (tail <= npmEnd) {
-    const tailDailies = await getDownloadsRange(
-      name,
-      tail,
-      npmEnd,
-      revalidate ?? NPM_REVALIDATE.WARM,
-    );
-    if (tailDailies?.length) dailies.push(...tailDailies);
-    else complete = false;
-  }
-  if (!dailies.length) return { points: [], complete: false };
-
-  const byMonth = new Map<string, MonthBucket>();
-  for (const point of dailies) {
-    const month = monthOf(point.day);
-    const bucket = byMonth.get(month) ?? { month, sum: 0, dailies: [] };
-    bucket.sum += point.downloads;
-    bucket.dailies.push(point);
-    byMonth.set(month, bucket);
-  }
-  const buckets = Array.from(byMonth.values()).sort((a, b) =>
-    a.month.localeCompare(b.month),
-  );
-
-  const fullMonths = buckets.filter((bucket) => bucket.month !== cutoff);
-  const lastFullMonth = fullMonths.at(-1);
-  const priorFullMonth = fullMonths.at(-2);
-
-  return {
-    points: buckets.map((bucket) => ({
-      date: bucket.month,
-      value:
-        bucket.month === cutoff
-          ? projectInflightMonth(
-              bucket,
-              lastFullMonth?.sum,
-              priorFullMonth?.sum,
-            )
-          : bucket.sum,
-    })),
-    complete,
-  };
-}
-
-function projectInflightMonth(
-  bucket: MonthBucket,
-  lastFullMonthSum: number | undefined,
-  priorFullMonthSum: number | undefined,
-): number {
-  const observedDays = bucket.dailies.length;
-  const totalDays = new Date(
-    Number(bucket.month.slice(0, 4)),
-    Number(bucket.month.slice(5, 7)),
-    0,
-  ).getDate();
-
-  const linear = (bucket.sum / observedDays) * totalDays;
-
-  if (!lastFullMonthSum || !priorFullMonthSum || priorFullMonthSum === 0) {
-    return Math.round(linear);
-  }
-
-  // cap growth so an outlier month doesn't produce a runaway projection.
-  const growth = Math.max(
-    -0.3,
-    Math.min(1.0, lastFullMonthSum / priorFullMonthSum - 1),
-  );
-  const trend = lastFullMonthSum * (1 + growth);
-  // early in the month trust the trend (little data); late, trust observed.
-  const elapsedFraction = observedDays / totalDays;
-  const blended = elapsedFraction * linear + (1 - elapsedFraction) * trend;
-
-  return Math.round(blended);
-}
-
-export async function fetchStarHistory(): Promise<TimelinePoint[]> {
-  try {
-    return await getCachedStarHistory();
-  } catch {
-    return [];
-  }
-}
-
-async function getCachedStarHistory(): Promise<TimelinePoint[]> {
-  "use cache";
-  cacheLife("hours");
-  const weeks = await getStarHistory();
-  if (!weeks || weeks.length < 2) throw new Error("Star history incomplete");
-
-  const ordered = [...weeks].sort((a, b) => a.week - b.week);
-  const now = Date.now();
-  let cumulative = 0;
-
-  return ordered.map((week) => {
-    cumulative += week.total;
-    // Each point closes its own bucket, and the bucket in progress closes now.
-    const end = (week.week + 7 * 86_400) * 1000;
-    return {
-      date: new Date(Math.min(end, now)).toISOString(),
-      value: cumulative,
-    };
-  });
-}
-
-export function daysSince(isoDate: string): number {
-  const start = new Date(isoDate).getTime();
-  const now = Date.now();
-  return Math.max(0, Math.floor((now - start) / 86_400_000));
 }

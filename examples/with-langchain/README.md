@@ -1,8 +1,8 @@
 # LangChain `useStream` Example
 
-Demonstrates `@openagentui/react-langchain`, which wraps `useStream` from `@langchain/react` and exposes it as an openagentui runtime.
+Demonstrates `@openagentui/react-langchain`, which wraps `useStream` from `@langchain/react` and exposes it as an OpenAgentUI runtime.
 
-> openagentui also ships `@openagentui/react-langgraph`, which integrates with `@langchain/langgraph-sdk` directly and currently has a broader feature set. Pick the adapter that matches your upstream choice. See [the comparison](https://openagentui.dev/docs/runtimes/langchain#comparison-with-react-langgraph).
+> OpenAgentUI also ships `@openagentui/react-langgraph`, which integrates with `@langchain/langgraph-sdk` directly and currently has a broader feature set. Pick the adapter that matches your upstream choice. See [the comparison](https://openagentui.dev/docs/runtimes/langchain#comparison-with-react-langgraph).
 
 ## Quick Start
 
@@ -42,6 +42,6 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [LangChain useStream Integration](https://openagentui.dev/docs/runtimes/langchain)
 - [react-langgraph vs react-langchain](https://openagentui.dev/docs/runtimes/langchain#comparison-with-react-langgraph)

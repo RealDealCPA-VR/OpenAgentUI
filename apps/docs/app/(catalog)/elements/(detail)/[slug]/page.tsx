@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 import { CodeBlock } from "@/components/ui/code-block";
-import { checkoutEnabled } from "@/lib/checkout/config";
 import { createOgMetadata } from "@/lib/og";
 import {
   highlightElementSource,
@@ -23,9 +21,7 @@ import { ParametersTable } from "@/components/pages/docs/parameters-table";
 import { AUI_ELEMENT_DOCS } from "@/components/pages/elements/aui-element-docs";
 import { ElementPager } from "@/components/pages/elements/element-pager";
 import { ELEMENTS, getElement } from "@/components/pages/elements/registry";
-import { AgentSetup } from "@/components/shared/shop-entry";
 import { typeDeck, typePage } from "@/components/shared/type";
-import { elementProductSlug } from "@/lib/catalog/products/elements";
 import { getGenerativeElement } from "@/lib/generative-elements";
 import { elementsDocs } from "@/lib/source";
 import {
@@ -307,33 +303,7 @@ export default async function ElementPage({
                     </p>
                   </NativeLane>
                 )}
-                <ReactLane>
-                  {checkoutEnabled ? (
-                    <>
-                      <AgentSetup
-                        product={elementProductSlug(element.slug)}
-                        prominent
-                      />
-                      <details className="group/manual">
-                        <summary
-                          className={cn(
-                            buttonVariants({ variant: "outline", size: "sm" }),
-                            "not-prose cursor-pointer list-none [&::-webkit-details-marker]:hidden",
-                          )}
-                        >
-                          Install manually
-                          <ChevronDownIcon
-                            aria-hidden
-                            className="transition-[rotate] group-open/manual:rotate-180 motion-reduce:transition-none"
-                          />
-                        </summary>
-                        <div className="mt-6">{manualInstall}</div>
-                      </details>
-                    </>
-                  ) : (
-                    manualInstall
-                  )}
-                </ReactLane>
+                <ReactLane>{manualInstall}</ReactLane>
               </div>
             </section>
 

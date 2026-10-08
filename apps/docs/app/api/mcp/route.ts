@@ -39,17 +39,17 @@ const templateToolDefinitions = [
   {
     name: "list_templates",
     description:
-      "List the hosted openagentui app templates and fixed demos with their features, customizable surfaces, and versions. Call this first for any openagentui app-building request. If customizable is empty, the entry is a fixed demo that should be used as-is rather than configured. Call read_template on the chosen template before requesting a preview.",
+      "List the hosted OpenAgentUI app templates and fixed demos with their features, customizable surfaces, and versions. Call this first for any OpenAgentUI app-building request. If customizable is empty, the entry is a fixed demo that should be used as-is rather than configured. Call read_template on the chosen template before requesting a preview.",
   },
   {
     name: "read_template",
     description:
-      "Get the full authoring surface for one hosted openagentui template: configRoots schemas (types, defaults, enums), rules, built-in tool contracts, and an exampleConfig. Fixed demos return no configRoots; use those as-is. Use this before preview_template to understand exactly what config to write. If preview_template returns validationWarnings, cross-reference configRoots here to correct the config.",
+      "Get the full authoring surface for one hosted OpenAgentUI template: configRoots schemas (types, defaults, enums), rules, built-in tool contracts, and an exampleConfig. Fixed demos return no configRoots; use those as-is. Use this before preview_template to understand exactly what config to write. If preview_template returns validationWarnings, cross-reference configRoots here to correct the config.",
   },
   {
     name: "preview_template",
     description:
-      "Return preview and download URLs for a hosted openagentui template. Passing config creates a preview session on the template sandbox and the returned URLs reflect that configuration. Do not pass config for fixed demos that have no configRoots in read_template. Show the previewUrl to the user or open it with an available browser tool if your client provides one.",
+      "Return preview and download URLs for a hosted OpenAgentUI template. Passing config creates a preview session on the template sandbox and the returned URLs reflect that configuration. Do not pass config for fixed demos that have no configRoots in read_template. Show the previewUrl to the user or open it with an available browser tool if your client provides one.",
   },
 ] as const;
 
@@ -64,11 +64,11 @@ const toolDefinitions = [
 const templateWorkflowPrompt = {
   name: "openagentui-template-workflow",
   description:
-    "How to use the openagentui template tools to discover hosted templates, inspect their customization contracts, and retrieve preview/download URLs.",
-  text: `You have access to openagentui template tools for hosted app templates.
+    "How to use the OpenAgentUI template tools to discover hosted templates, inspect their customization contracts, and retrieve preview/download URLs.",
+  text: `You have access to OpenAgentUI template tools for hosted app templates.
 
 <workflow>
-Follow this template-first workflow for any openagentui app-building request:
+Follow this template-first workflow for any OpenAgentUI app-building request:
 
 1. Call **list_templates** FIRST. Never decide on a template or claim one exists without listing.
 2. Call **read_template** on any candidate template before deciding whether it fits.
@@ -77,7 +77,7 @@ Follow this template-first workflow for any openagentui app-building request:
 3. Decide one of three paths:
    - The template fits as-is: call **preview_template** with templateId and optional versionId.
    - The template fits with supported customization: author a config using the configRoots schemas and rules from read_template, then call **preview_template** with that config.
-   - No template fits: do NOT call preview_template. Do not force the request into a template or fake domain content with mock config. Instead, ground yourself in the openagentui docs (list_pages, search_docs, read_page) and produce an honest, docs-grounded build guide or prompt for the user.
+   - No template fits: do NOT call preview_template. Do not force the request into a template or fake domain content with mock config. Instead, ground yourself in the OpenAgentUI docs (list_pages, search_docs, read_page) and produce an honest, docs-grounded build guide or prompt for the user.
 </workflow>
 
 <important_constraints>
@@ -397,7 +397,7 @@ function registerResources(server: McpServer, request: NextRequest) {
   const requestUrl = request.url;
 
   server.registerResource(
-    "openagentui docs navigation",
+    "OpenAgentUI docs navigation",
     "openagentui://navigation",
     { mimeType: "application/json" },
     async (uri) => {
@@ -415,7 +415,7 @@ function registerResources(server: McpServer, request: NextRequest) {
   );
 
   server.registerResource(
-    "openagentui docs pages",
+    "OpenAgentUI docs pages",
     new ResourceTemplate("openagentui://{+path}", {
       list: async () => {
         await requireDocsToolBudget(request);
@@ -459,7 +459,7 @@ async function requireTemplateToolBudget(request: NextRequest) {
   const denial = await checkMcpTemplateToolRateLimit(request);
   if (!denial) return;
 
-  const suffix = " The openagentui docs tools remain available.";
+  const suffix = " The OpenAgentUI docs tools remain available.";
   if (denial.status !== 429) {
     throw new Error(`Template tools are temporarily unavailable.${suffix}`);
   }

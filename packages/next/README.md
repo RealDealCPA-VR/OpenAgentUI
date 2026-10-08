@@ -1,6 +1,6 @@
 # @openagentui/next
 
-Next.js integration for openagentui: the `withAui()` config wrapper and the
+Next.js integration for OpenAgentUI: the `withAui()` config wrapper and the
 compiler for the `"use generative"` directive. Colocate a tool's **schema**,
 **server-only `execute`**, and **client-only `render`** in one file; the compiler
 emits a different module per build target so each side only loads what it needs.

@@ -39,5 +39,5 @@ A request-context check is not authentication. Before deploying, require your ap
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [ElevenLabs Scribe](https://elevenlabs.io/docs/overview/capabilities/speech-to-text)

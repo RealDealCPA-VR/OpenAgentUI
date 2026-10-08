@@ -47,7 +47,7 @@ Other activity snapshot types become data parts named `agui-activity/<type>`. Re
 
 If your backend exposes the persisted AG-UI messages of a conversation (for
 example a `GET /agents/state` endpoint), use `fromAgUiMessages` to convert them
-to openagentui messages and return them from the history adapter so the thread
+to OpenAgentUI messages and return them from the history adapter so the thread
 is restored on page load:
 
 ```tsx
@@ -276,7 +276,7 @@ Two limitations apply:
 
 ## Supported events
 
-The runtime parses the AG-UI event stream and maps each event type to openagentui state.
+The runtime parses the AG-UI event stream and maps each event type to OpenAgentUI state.
 
 | Event | Effect |
 | --- | --- |
@@ -318,7 +318,7 @@ useAssistantDataUI({
 });
 ```
 
-Data parts stay in the openagentui message but are not sent back to the agent, since the AG-UI assistant record has no field for them. History adapters, including the openagentui-cloud one, persist them as part of the message JSON. Framework integrations emit their own plumbing over this channel (`on_interrupt`, `PredictState`, `Exit`, `hook_error`, `state_update_error`, `system:*`, `MultiAgentHandoff`), and those names surface as data parts like any other, so only register renderers for names your backend owns.
+Data parts stay in the OpenAgentUI message but are not sent back to the agent, since the AG-UI assistant record has no field for them. History adapters, including the openagentui-cloud one, persist them as part of the message JSON. Framework integrations emit their own plumbing over this channel (`on_interrupt`, `PredictState`, `Exit`, `hook_error`, `state_update_error`, `system:*`, `MultiAgentHandoff`), and those names surface as data parts like any other, so only register renderers for names your backend owns.
 
 ## Feature support
 

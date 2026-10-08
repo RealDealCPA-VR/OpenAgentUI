@@ -1,10 +1,10 @@
 ---
 title: ChatGPT Subscription
-description: Run your openagentui app on your ChatGPT Plus or Pro subscription via Codex OAuth. Local development without an OpenAI API key.
+description: Run your OpenAgentUI app on your ChatGPT Plus or Pro subscription via Codex OAuth. Local development without an OpenAI API key.
 platforms: ["react"]
 ---
 
-If you have a ChatGPT Plus or Pro subscription, you can run your openagentui app against it locally instead of paying per token with an API key. OpenAI's Codex CLI authenticates via OAuth and caches tokens on your machine; requests made with those tokens hit the Responses API endpoint at `chatgpt.com` and bill to your plan. The same mechanism powers Codex itself and a growing set of local agents.
+If you have a ChatGPT Plus or Pro subscription, you can run your OpenAgentUI app against it locally instead of paying per token with an API key. OpenAI's Codex CLI authenticates via OAuth and caches tokens on your machine; requests made with those tokens hit the Responses API endpoint at `chatgpt.com` and bill to your plan. The same mechanism powers Codex itself and a growing set of local agents.
 
 This is a personal-use setup for apps running on your own machine. For anything deployed or shared, use an API key.
 
@@ -26,7 +26,7 @@ The community AI SDK provider [`openai-oauth-provider`](https://github.com/EvanZ
 npm install openai-oauth-provider
 ```
 
-In your chat route, swap `@ai-sdk/openai` for the OAuth provider. Starting from the default openagentui template route, only the model changes; `frontendTools` and the UI message stream response work as before:
+In your chat route, swap `@ai-sdk/openai` for the OAuth provider. Starting from the default OpenAgentUI template route, only the model changes; `frontendTools` and the UI message stream response work as before:
 
 ```ts title="/app/api/chat/route.ts" {10}
 import { createOpenAIOAuth } from "openai-oauth-provider";

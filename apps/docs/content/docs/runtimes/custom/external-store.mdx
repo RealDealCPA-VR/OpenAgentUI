@@ -21,7 +21,7 @@ If you do not have an existing store, use [`LocalRuntime`](/docs/runtimes/custom
   llm={`graph TD
     A[Your state] -->|messages| B[ExternalStoreAdapter]
     B --> C[ExternalStoreRuntime]
-    C --> D[openagentui components]
+    C --> D[OpenAgentUI components]
     D -->|user actions| B
     B -->|state updates| A`}
 >
@@ -51,7 +51,7 @@ If you do not have an existing store, use [`LocalRuntime`](/docs/runtimes/custom
       <Flow.Arrow direction="down" length={36} />
       <Flow.Node>ExternalStoreRuntime</Flow.Node>
       <Flow.Arrow direction="down" length={36} />
-      <Flow.Node flowId="components">openagentui components</Flow.Node>
+      <Flow.Node flowId="components">OpenAgentUI components</Flow.Node>
     </Flow.Column>
   </Flow.Canvas>
 </Flow.Root>
@@ -377,7 +377,7 @@ The exported shape round-trips through `thread.import()` directly, so the same v
 
 ### Persisting branch selection
 
-If you store the full branch tree outside openagentui, persist the selected branch head too and pass it back as `messageRepository.headId`. `setMessages` still performs the branch switch; `unstable_onBranchChange` is an additional signal that fires after an explicit `switchToBranch` action, such as a BranchPicker click.
+If you store the full branch tree outside OpenAgentUI, persist the selected branch head too and pass it back as `messageRepository.headId`. `setMessages` still performs the branch switch; `unstable_onBranchChange` is an additional signal that fires after an explicit `switchToBranch` action, such as a BranchPicker click.
 
 ```tsx
 const runtime = useExternalStoreRuntime({
@@ -752,7 +752,7 @@ export function TanStackQueryRuntimeProvider({ children }) {
 
 ### `getExternalStoreMessages`
 
-Retrieve your original message format from any openagentui state:
+Retrieve your original message format from any OpenAgentUI state:
 
 ```tsx
 import { getExternalStoreMessages, useAuiState } from "@openagentui/react";
@@ -764,7 +764,7 @@ function MyComponent() {
 ```
 
 <Callout type="warn">
-`getExternalStoreMessages` may return multiple messages for a single UI message; openagentui merges adjacent assistant and tool messages for display.
+`getExternalStoreMessages` may return multiple messages for a single UI message; OpenAgentUI merges adjacent assistant and tool messages for display.
 </Callout>
 
 ### `bindExternalStoreMessage`
@@ -974,7 +974,7 @@ useExternalStoreRuntime({
       name: "convertMessage",
       type: "(message: T, index: number) => ThreadMessageLike",
       description:
-        "Convert your message format to openagentui format. Not needed if using ThreadMessage type.",
+        "Convert your message format to OpenAgentUI format. Not needed if using ThreadMessage type.",
     },
     {
       name: "adapters",

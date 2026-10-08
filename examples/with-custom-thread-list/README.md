@@ -34,5 +34,5 @@ npm run dev
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [Thread List Guide](https://openagentui.dev/docs/ui/thread-list)

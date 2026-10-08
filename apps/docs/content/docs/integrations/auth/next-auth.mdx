@@ -3,9 +3,9 @@ title: Auth.js (next-auth)
 description: Gate the chat route and scope thread persistence to the signed-in user with Auth.js v5.
 ---
 
-[Auth.js](https://authjs.dev/) (formerly NextAuth) is a widely used open-source auth library for Next.js. This page covers using it with openagentui *without* AssistantCloud: session-cookie auth, server-side `auth()` checks on the API route, and per-user scoping on a custom thread list.
+[Auth.js](https://authjs.dev/) (formerly NextAuth) is a widely used open-source auth library for Next.js. This page covers using it with OpenAgentUI *without* AssistantCloud: session-cookie auth, server-side `auth()` checks on the API route, and per-user scoping on a custom thread list.
 
-If you use AssistantCloud, see [cloud authorization](/docs/cloud/authorization) instead; cloud handles JWT exchange for you.
+If you use the `AssistantCloud` client against an Assistant-Cloud-compatible backend, pass an `authToken` callback instead; see the [`AssistantCloud` authentication modes](/docs/api-reference/integrations/openagentui-cloud#the-client).
 
 ## How it works
 
@@ -179,9 +179,9 @@ Sign in. Check:
     href="/docs/integrations/persistence/custom-adapter"
   />
   <Card
-    title="AssistantCloud"
-    description="The managed alternative; cloud handles JWT exchange with Clerk, Auth0, Supabase, Firebase."
-    href="/docs/cloud"
+    title="openagentui-cloud client"
+    description="The AssistantCloud client for an Assistant-Cloud-compatible backend you host or choose."
+    href="/docs/api-reference/integrations/openagentui-cloud"
   />
   <Card
     title="Threads (concepts)"

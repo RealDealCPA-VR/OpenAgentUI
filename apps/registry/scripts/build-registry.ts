@@ -25,7 +25,7 @@ const NATIVE_REGISTRY_INDEX_PATH = path.join(
 const REGISTRY_ITEM_SCHEMA_URL =
   "https://ui.shadcn.com/schema/registry-item.json";
 const ASSISTANT_REGISTRY_DEPENDENCY_RE =
-  /^https:\/\/r\.openagentui\.com\/(?:(?:base|native)\/)?(.+)\.json$/;
+  /^https:\/\/r\.openagentui.dev\/(?:(?:base|native)\/)?(.+)\.json$/;
 const RADIX_IMPORT_RE =
   /(?:from|import)\s*\(?\s*["'](?:radix-ui["']|@radix-ui\/)/;
 const BASE_VARIANT_FORBIDDEN_PATTERNS = [

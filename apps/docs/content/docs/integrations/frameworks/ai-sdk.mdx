@@ -1,6 +1,6 @@
 ---
 title: Vercel AI SDK
-description: Wire the Vercel AI SDK into a React chat UI with openagentui, covering useChat, streaming, tools, attachments, multi-step agents, and persistence.
+description: Wire the Vercel AI SDK into a React chat UI with OpenAgentUI, covering useChat, streaming, tools, attachments, multi-step agents, and persistence.
 ---
 
 import { VercelIcon } from "@/components/icons/vercel";
@@ -23,7 +23,7 @@ flowchart LR
     client --> runtime --> api --> provider
 ```
 
-`@openagentui/ai-sdk` wraps the AI SDK's `useChat` hook and exposes it as an openagentui runtime. The runtime owns conversation state on the client; your `/api/chat` route returns a UI message stream from `streamText`. Everything else (tools, attachments, observability, gateways, custom persistence) layers on top of this base.
+`@openagentui/ai-sdk` wraps the AI SDK's `useChat` hook and exposes it as an OpenAgentUI runtime. The runtime owns conversation state on the client; your `/api/chat` route returns a UI message stream from `streamText`. Everything else (tools, attachments, observability, gateways, custom persistence) layers on top of this base.
 
 ## Pick a version
 

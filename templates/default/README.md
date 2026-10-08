@@ -1,4 +1,4 @@
-This is the [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project.
+This is the [OpenAgentUI](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project.
 
 ## Getting Started
 

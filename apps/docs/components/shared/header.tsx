@@ -6,14 +6,12 @@ import { Menu, X, ArrowUpRight, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SearchDialog } from "./search-dialog";
 import { GitHubIcon } from "@/components/icons/github";
-import { DiscordIcon } from "@/components/icons/discord";
-import { NAV_ITEMS, CLOUD_URL } from "@/lib/constants";
+import { DISCUSSIONS_URL, NAV_ITEMS, REPO_URL } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { useAssistantPanel } from "@/components/pages/docs/assistant/context";
 import { NavItems, NavItemsRoot } from "@/components/shared/nav-items";
 import { HeaderBrandLink } from "@/components/shared/header-brand-link";
-import { CartButton } from "@/components/shared/shop-entry";
 import { headerBarClassName } from "@/components/shared/header-chrome";
 import { useScrolled } from "@/hooks/use-scrolled";
 
@@ -80,8 +78,7 @@ export function Header() {
             contentClassName="mx-auto max-w-7xl"
           />
 
-          <div className="flex items-center justify-end gap-2 max-sm:[&:has([data-cart-button]:not([data-empty]))_[data-header-cloud]]:hidden">
-            <CartButton />
+          <div className="flex items-center justify-end gap-2">
             <SearchButton onToggle={() => setSearchOpen((prev) => !prev)} />
             <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
 
@@ -100,13 +97,13 @@ export function Header() {
             <Button
               size="sm"
               nativeButton={false}
-              data-header-cloud=""
               className="max-[340px]:hidden"
               render={
-                <a href={CLOUD_URL} target="_blank" rel="noopener noreferrer" />
+                <a href={REPO_URL} target="_blank" rel="noopener noreferrer" />
               }
             >
-              Cloud
+              <GitHubIcon className="size-3.5" />
+              GitHub
             </Button>
 
             <button
@@ -204,30 +201,32 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 render={
                   <a
-                    href={CLOUD_URL}
+                    href={REPO_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                   />
                 }
               >
-                Cloud
+                <GitHubIcon className="size-3.5" />
+                Star on GitHub
               </Button>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/RealDealCPA-VR/OpenAgentUI"
+                  href={REPO_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors"
                 >
                   <GitHubIcon className="size-5" />
+                  Source
                 </a>
                 <a
-                  href="https://discord.gg/S9dwgCNEFs"
+                  href={DISCUSSIONS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors"
                 >
-                  <DiscordIcon className="size-5" />
+                  Discussions
                 </a>
               </div>
             </div>

@@ -1,8 +1,8 @@
 # @openagentui/react-pi
 
-Pi coding-agent runtime adapter for [openagentui](https://openagentui.dev/).
+Pi coding-agent runtime adapter for [OpenAgentUI](https://openagentui.dev/).
 
-This package lets openagentui render and drive [Pi](https://www.npmjs.com/package/@earendil-works/pi-coding-agent)-backed
+This package lets OpenAgentUI render and drive [Pi](https://www.npmjs.com/package/@earendil-works/pi-coding-agent)-backed
 threads: streaming assistant/reasoning output, tool calls with live streaming
 results, mid-run steering and follow-up, per-thread model/thinking controls,
 the blocking extension UI (Pi's entire human-in-the-loop/approval surface), and
@@ -109,7 +109,7 @@ export function PiRuntimeProvider({ children }: { children: React.ReactNode }) {
 ```
 
 `usePiRuntime` requires `options.client` — there is no implicit transport. Drop
-the provider above any openagentui thread UI (`Thread`, `ThreadList`, …).
+the provider above any OpenAgentUI thread UI (`Thread`, `ThreadList`, …).
 
 ## Assistant Cloud
 
@@ -167,7 +167,7 @@ when it is not `"ready"`.
 ## Composer run semantics
 
 Pi's defining interaction is mid-run steering, and a plain `prompt()` while
-streaming **throws**. The runtime exposes Pi's native queue to openagentui
+streaming **throws**. The runtime exposes Pi's native queue to OpenAgentUI
 (`capabilities.queue`), so the standard composer keeps accepting input during a
 run and derives the right behavior:
 

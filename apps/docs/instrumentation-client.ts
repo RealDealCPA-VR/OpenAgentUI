@@ -10,7 +10,6 @@ import {
   subscribeToConsent,
 } from "./lib/consent";
 import { RENDERER_PATH } from "./lib/renderer";
-import { setUmamiTrackingEnabled } from "./lib/umami-sampling";
 
 const apiKey = process.env.NEXT_PUBLIC_POSTHOG_API_KEY;
 
@@ -45,10 +44,7 @@ if (
       posthog.opt_in_capturing();
   };
 
-  // The head script has already loaded umami by the time the banner is answered,
-  // so a decline has to reach the running tracker rather than only the next load.
   subscribeToConsent((choice) => {
-    setUmamiTrackingEnabled(choice === "granted");
     if (choice === "granted") allow();
     else if (started) posthog.opt_out_capturing();
   });

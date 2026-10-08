@@ -8,7 +8,7 @@ Use the `openagentui` CLI to set up new projects and add components to existing 
 
 ## init
 
-Use the `init` command to add openagentui to an existing project.
+Use the `init` command to add OpenAgentUI to an existing project.
 
 ```bash
 npx openagentui@latest init
@@ -18,13 +18,13 @@ This will:
 - Exit with a notice if the project already has a `components.json`
 - Run `create` instead if the directory has no `package.json`
 - Run `shadcn init` to configure the project
-- Use `shadcn add` to install the openagentui quick-start component
-- Add the default openagentui components (thread, composer, etc.) to your project
+- Use `shadcn add` to install the OpenAgentUI quick-start component
+- Add the default OpenAgentUI components (thread, composer, etc.) to your project
 
 When `init` sets up an existing project in a non-interactive shell such as CI, pass `--yes`. Without it, `init` exits with an error because it cannot prompt.
 
 **When to use:**
-- Adding openagentui to an **existing** Next.js project
+- Adding OpenAgentUI to an **existing** Next.js project
 - First-time setup in a project with `package.json`
 
 **Options**
@@ -51,13 +51,13 @@ Options:
 
 ## create
 
-Use the `create` command to scaffold a new Next.js project with openagentui pre-configured.
+Use the `create` command to scaffold a new Next.js project with OpenAgentUI pre-configured.
 
 ```bash
 npx openagentui@latest create [project-directory]
 ```
 
-This command scaffolds a project from openagentui starter templates or examples.
+This command scaffolds a project from OpenAgentUI starter templates or examples.
 
 **Available Templates**
 
@@ -65,9 +65,6 @@ This command scaffolds a project from openagentui starter templates or examples.
 |----------|-------------|---------|
 | `default` | Default template with Vercel AI SDK | `npx openagentui create` |
 | `minimal` | Bare-bones starting point | `npx openagentui create -t minimal` |
-| `cloud` | Cloud-backed persistence starter | `npx openagentui create -t cloud` |
-| `cloud-clerk` | Cloud-backed starter with Clerk auth | `npx openagentui create -t cloud-clerk` |
-| `cloud-harness` | A hosted harness with a shared conversation across browsers | `npx openagentui@latest cloud setup my-app` |
 | `langchain` | LangGraph starter with the react-langchain adapter | `npx openagentui create -t langchain` |
 | `mcp` | MCP tools + MCP Apps renderer starter | `npx openagentui create -t mcp` |
 | `eve` | Eve agent + Next.js starter | `npx openagentui create -t eve` |
@@ -83,7 +80,6 @@ Use `--example` to create a project from one of the monorepo examples with full 
 | `with-artifacts` | HTML artifact rendering with live preview | `npx openagentui create my-app -e with-artifacts` |
 | `with-langgraph` | LangGraph agent with custom tools | `npx openagentui create my-app -e with-langgraph` |
 | `with-google-adk` | Google ADK agent integration | `npx openagentui create my-app -e with-google-adk` |
-| `with-cloud` | Assistant Cloud persistence | `npx openagentui create my-app -e with-cloud` |
 | `with-ag-ui` | [AG-UI protocol](/docs/runtimes/ag-ui/overview) integration | `npx openagentui create my-app -e with-ag-ui` |
 | `with-assistant-transport` | Custom backend via Assistant Transport | `npx openagentui create my-app -e with-assistant-transport` |
 | `with-resumable-stream` | Resumable LLM stream that survives reload mid-response | `npx openagentui create my-app -e with-resumable-stream` |
@@ -108,12 +104,6 @@ Use `--example` to create a project from one of the monorepo examples with full 
 # Create with default template
 npx openagentui@latest create my-app
 
-# Create with cloud template
-npx openagentui@latest create my-app -t cloud
-
-# Create with cloud + clerk template
-npx openagentui@latest create my-app -t cloud-clerk
-
 # Create from an example
 npx openagentui@latest create my-app --example with-langgraph
 
@@ -135,7 +125,7 @@ Arguments:
   project-directory         name of the project directory
 
 Options:
-  -t, --template <template>      template to use (default, minimal, cloud, cloud-clerk, cloud-harness, langchain, mcp, eve)
+  -t, --template <template>      template to use (default, minimal, langchain, mcp, eve)
   -e, --example <example>        create from an example (e.g., with-langgraph)
   -p, --preset <name-or-url>     preset name or URL (e.g., chatgpt)
   --native                       create an Expo / React Native project
@@ -150,86 +140,6 @@ Options:
   -h, --help                     display help for command
 ```
 
-## cloud
-
-Use `cloud setup` to create a multiplayer chat backed by a hosted
-[harness](/docs/cloud/harnesses):
-
-```bash
-npx openagentui@latest cloud setup multiplayer-chat
-```
-
-The command signs you in with browser device OAuth, selects or creates an
-organization and project, provisions the harness, and installs a Next.js app.
-Add your `OPENAI_API_KEY` to its `.env.local`, then run the app's `dev` script.
-Open `http://localhost:3000/#main` in two browsers to join the same conversation.
-Both clients receive the shared messages and streaming replies. **Share this
-chat** copies the current thread's URL.
-
-For a script or coding agent, select cloud resources with flags:
-
-```bash
-npx openagentui@latest cloud setup multiplayer-chat --org team --new-project hackathon-chat --backend-url http://localhost:3000/api/chat --yes
-```
-
-| Option | Effect |
-| --- | --- |
-| `--org <id-or-slug>` | Select an existing organization. |
-| `--new-org <slug>` | Create an organization. |
-| `--project <id-or-slug>` | Select an existing project. |
-| `--new-project <slug>` | Create a project. |
-| `--name <name>` | Set the display name of a new organization or project. |
-| `--harness-name <name>` | Name the shared chat harness. |
-| `--backend-url <url>` | Set the absolute chat endpoint; defaults to `http://localhost:3000/api/chat`. |
-| `--access-code <code>` | Redeem a hackathon harness access code; also reads `OPENAGENTUI_ACCESS_CODE`. |
-| `--api-url <url>` | Select the cloud management server; also reads `OPENAGENTUI_CLOUD_URL`. |
-| `--no-open` | Print the device sign-in URL without opening a browser. |
-| `--setup-url <url>` | Show device approval in the active setup wizard while the CLI completes sign-in. |
-| `--yes` | Skip prompts; choose resources with flags. |
-| `--skip-install` | Leave dependency installation to you. |
-| `--use-npm`, `--use-pnpm`, `--use-yarn`, `--use-bun` | Choose a package manager. |
-
-The server's project API key is written to `.env.local` with owner-only
-permissions and a Git ignore entry. Public environment values identify the
-cloud API, harness origin, and workspace. `.openagentui/cloud.json` records
-the selected cloud resources. Existing environment values are preserved, and
-conflicting settings stop setup.
-
-The starter's `/api/credential` route issues short-lived credentials for the
-shared `hackathon` user. The browser uses `HarnessCloudThreadList` to connect
-to the hosted conversation, and the AI SDK chat route holds the model API key.
-Add application authentication to `/api/credential` for private access or
-individual users. Local development uses the runtime's browser tunnel; a
-deployed app supplies its public HTTPS chat endpoint to `--backend-url` during
-initial setup. To deploy a chat already configured locally, update the harness
-backend allowlist in the Cloud dashboard and `backendUrl` in
-`.openagentui/cloud.json`, then rerun with the same HTTPS `--backend-url`.
-Existing conversations keep their original backend, so open the deployed app
-with a fresh thread fragment such as `#deployed-chat`, then use **Share this
-chat**. Setup rejects a changed backend URL instead of silently ignoring it.
-
-Run `npx openagentui@latest cloud setup .` inside a generated cloud-harness app to resume
-setup. `npx openagentui@latest cloud login` signs in separately; `npx openagentui@latest cloud login --no-open`
-prints the sign-in URL. `npx openagentui@latest cloud logout` revokes and removes the
-saved CLI credentials.
-
-In an active setup wizard, an agent can pass its setup-agent URL to `cloud login`
-or `cloud setup` with `--setup-url <url>`. The wizard displays the public code,
-then opens Accounts for explicit approval and returns to the same setup. It
-waits for the CLI to poll Accounts and save owner-only credentials locally;
-returning alone never completes login. Tokens never pass through the wizard or
-its secret inputs. Cancelling the question or setup ends a pending login.
-
-Before the npm patch is released, wizard sign-in is available in the
-[verified CLI prerelease](/downloads/openagentui-wizard-login-ea9aae48e.tgz).
-Use the active setup-agent connection URL supplied by your agent:
-
-```bash
-npx --yes --package=https://openagentui.dev/downloads/openagentui-wizard-login-ea9aae48e.tgz openagentui cloud login --setup-url "<active-setup-agent-url>"
-```
-
-This prerelease is separate from the existing hackathon setup download.
-
 ## add
 
 Use the `add` command to add individual components to your project.
@@ -238,7 +148,7 @@ Use the `add` command to add individual components to your project.
 npx openagentui@latest add [component]
 ```
 
-The `add` command runs `shadcn add` against the openagentui registry. It copies each component's source into your project and installs the dependencies the component needs.
+The `add` command runs `shadcn add` against the OpenAgentUI registry. It copies each component's source into your project and installs the dependencies the component needs.
 
 **Popular Components**
 
@@ -287,7 +197,7 @@ npx openagentui@latest update
 ```
 
 This command:
-- Scans your `package.json` for openagentui packages
+- Scans your `package.json` for OpenAgentUI packages
 - Updates them to the latest versions using your package manager
 - Preserves other dependencies
 
@@ -404,7 +314,7 @@ Options:
 
 ## mcp
 
-Use the `mcp` command to connect your IDE to the openagentui MCP server.
+Use the `mcp` command to connect your IDE to the OpenAgentUI MCP server.
 
 ```bash
 npx openagentui@latest mcp
@@ -446,13 +356,13 @@ Options:
 
 ## agent
 
-Use the `agent` command to open Claude Code with the openagentui skills loaded and a prompt already sent.
+Use the `agent` command to open Claude Code with the OpenAgentUI skills loaded and a prompt already sent.
 
 ```bash
 npx openagentui@latest agent "add a chat sidebar to this app"
 ```
 
-The command fetches the [openagentui skills](/docs/llm#skills) plugin pinned to this CLI release into `~/.cache/openagentui/skills/<commit>` (under `$XDG_CACHE_HOME` when set), then runs `claude` with `--plugin-dir` for that session only. Nothing is written into your project; run `npx skills add openagentui/skills` to install the skills permanently. The `claude` CLI must be on your `PATH`, and a `GITHUB_TOKEN` avoids GitHub's unauthenticated rate limit on the first fetch.
+The command fetches the [OpenAgentUI skills](/docs/llm#skills) plugin pinned to this CLI release into `~/.cache/openagentui/skills/<commit>` (under `$XDG_CACHE_HOME` when set), then runs `claude` with `--plugin-dir` for that session only. Nothing is written into your project; run `npx skills add openagentui/skills` to install the skills permanently. The `claude` CLI must be on your `PATH`, and a `GITHUB_TOKEN` avoids GitHub's unauthenticated rate limit on the first fetch.
 
 **Options**
 
@@ -523,7 +433,7 @@ Options:
 
 ## doctor
 
-Use the `doctor` command to find duplicate or outdated openagentui packages in `node_modules`, including transitive ones.
+Use the `doctor` command to find duplicate or outdated OpenAgentUI packages in `node_modules`, including transitive ones.
 
 ```bash
 npx openagentui@latest doctor

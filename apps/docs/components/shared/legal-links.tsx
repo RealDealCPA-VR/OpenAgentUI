@@ -1,28 +1,29 @@
-import Link from "next/link";
-import { CookieSettingsLink } from "@/components/cookie-settings-link";
+import { REPO_URL } from "@/lib/constants";
 
 const linkClassName = "hover:text-foreground transition-colors";
 
 export function LegalLinks() {
   return (
     <div className="text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-      <a
-        href="https://www.agentbase.dev"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkClassName}
-      >
-        &copy; {process.env.COPYRIGHT_YEAR} AgentbaseAI Inc.
-      </a>
+      <span>OpenAgentUI is free and open source.</span>
       <div className="flex items-center gap-2">
-        <Link href="/privacy-policy" className={linkClassName}>
-          Privacy
-        </Link>
+        <a
+          href={`${REPO_URL}/blob/main/LICENSE`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClassName}
+        >
+          MIT License
+        </a>
         <span aria-hidden>·</span>
-        <Link href="/terms-of-service" className={linkClassName}>
-          Terms
-        </Link>
-        <CookieSettingsLink separator className={linkClassName} />
+        <a
+          href={`${REPO_URL}/blob/main/NOTICE.md`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClassName}
+        >
+          Credits
+        </a>
       </div>
     </div>
   );

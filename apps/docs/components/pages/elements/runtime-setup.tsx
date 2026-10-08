@@ -27,7 +27,7 @@ export async function RuntimeSetup() {
       </summary>
       <div className="border-foreground/10 space-y-4 border-t px-4 py-4 text-sm">
         <p className="text-muted-foreground">
-          Runtime components read their state from an openagentui runtime. Add
+          Runtime components read their state from an OpenAgentUI runtime. Add
           one to an existing project:
         </p>
         <CodeBlock copyText="npx openagentui@latest init">

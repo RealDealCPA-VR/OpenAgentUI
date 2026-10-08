@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "openagentui",
-    short_name: "openagentui",
+    name: "OpenAgentUI",
+    short_name: "OpenAgentUI",
     icons: [
       {
         src: "/web-app-manifest-192x192.png",

@@ -1,6 +1,6 @@
 # `@openagentui/react-data-stream`
 
-Data Stream protocol integration for `@openagentui/react`. Connects an openagentui runtime to any backend that speaks the AI SDK data-stream or UI-message-stream wire format.
+Data Stream protocol integration for `@openagentui/react`. Connects an OpenAgentUI runtime to any backend that speaks the AI SDK data-stream or UI-message-stream wire format.
 
 ## Installation
 

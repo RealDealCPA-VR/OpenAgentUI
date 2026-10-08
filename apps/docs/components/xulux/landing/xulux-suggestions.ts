@@ -87,7 +87,7 @@ export const XULUX_SUGGESTION_GROUPS = [
         id: "new-app-chatgpt-style",
         label: "ChatGPT style",
         prompt:
-          "Build me a ChatGPT-style chat app with openagentui — empty state, composer, and message layout.",
+          "Build me a ChatGPT-style chat app with OpenAgentUI — empty state, composer, and message layout.",
         replay: {
           preview: chatGptPreview,
           text:
@@ -96,7 +96,7 @@ export const XULUX_SUGGESTION_GROUPS = [
               title: chatGptPreview.title,
               downloadUrl: chatGptPreview.downloadUrl,
               prompt:
-                "Use the ChatGPT Style Assistant as the starting point for an openagentui app. Preserve its empty state, composer, tool menu, message layouts, attachments, branch controls, voice input, and tool fallback UI while adapting the branding and assistant behavior to my product.",
+                "Use the ChatGPT Style Assistant as the starting point for an OpenAgentUI app. Preserve its empty state, composer, tool menu, message layouts, attachments, branch controls, voice input, and tool fallback UI while adapting the branding and assistant behavior to my product.",
             }),
         },
       },
@@ -152,7 +152,7 @@ export const XULUX_SUGGESTION_GROUPS = [
               title: chatGptPreview.title,
               downloadUrl: chatGptPreview.downloadUrl,
               prompt:
-                "Open the ChatGPT Style Assistant demo and use it as the starting point for a React openagentui app. Preserve the ChatGPT-inspired empty state, composer, tool menu, message layouts, attachments, branch controls, voice input, and tool fallback UI while adapting the copy and branding.",
+                "Open the ChatGPT Style Assistant demo and use it as the starting point for a React OpenAgentUI app. Preserve the ChatGPT-inspired empty state, composer, tool menu, message layouts, attachments, branch controls, voice input, and tool fallback UI while adapting the copy and branding.",
             }),
         },
       },
@@ -169,7 +169,7 @@ export const XULUX_SUGGESTION_GROUPS = [
               title: claudePreview.title,
               downloadUrl: claudePreview.downloadUrl,
               prompt:
-                "Open the Claude Style Assistant demo and use it as the starting point for a React openagentui app. Preserve its serif typography, warm styling, compact composer, file controls, message actions, and branch controls while adapting the copy and branding.",
+                "Open the Claude Style Assistant demo and use it as the starting point for a React OpenAgentUI app. Preserve its serif typography, warm styling, compact composer, file controls, message actions, and branch controls while adapting the copy and branding.",
             }),
         },
       },
@@ -186,7 +186,7 @@ export const XULUX_SUGGESTION_GROUPS = [
               title: grokPreview.title,
               downloadUrl: grokPreview.downloadUrl,
               prompt:
-                "Open the Grok Style Assistant demo and use it as the starting point for a React openagentui app. Preserve its minimal dark styling, centered empty state, compact controls, message actions, and branch controls while adapting the copy and branding.",
+                "Open the Grok Style Assistant demo and use it as the starting point for a React OpenAgentUI app. Preserve its minimal dark styling, centered empty state, compact controls, message actions, and branch controls while adapting the copy and branding.",
             }),
         },
       },
@@ -198,9 +198,9 @@ export const XULUX_SUGGESTION_GROUPS = [
       {
         id: "learn-thread-component",
         label: "Thread component",
-        prompt: "How do I set up the openagentui Thread component?",
+        prompt: "How do I set up the OpenAgentUI Thread component?",
         replay: {
-          text: `Here’s the quickest way to set up the openagentui \`Thread\` component.
+          text: `Here’s the quickest way to set up the OpenAgentUI \`Thread\` component.
 
 ## 1. Install the component
 
@@ -232,7 +232,7 @@ You can customize tool rendering through the component’s \`components\` prop i
       {
         id: "learn-ai-sdk-runtime",
         label: "AI SDK runtime",
-        prompt: "How do I connect openagentui to the Vercel AI SDK?",
+        prompt: "How do I connect OpenAgentUI to the Vercel AI SDK?",
         replay: {
           text: `Use \`useChatRuntime\` from \`@openagentui/ai-sdk\` on the client and return a UI message stream from your chat route.
 
@@ -274,15 +274,15 @@ export default function Chat() {
 }
 \`\`\`
 
-The runtime connects openagentui’s thread primitives to the AI SDK transport, streaming state, tool calls, and message lifecycle.`,
+The runtime connects OpenAgentUI’s thread primitives to the AI SDK transport, streaming state, tool calls, and message lifecycle.`,
         },
       },
       {
         id: "learn-tool-ui",
         label: "tool UI",
-        prompt: "How do I render custom tool UIs in openagentui?",
+        prompt: "How do I render custom tool UIs in OpenAgentUI?",
         replay: {
-          text: `Register a tool renderer and let openagentui render it inside the message parts.
+          text: `Register a tool renderer and let OpenAgentUI render it inside the message parts.
 
 \`\`\`tsx
 "use generative";

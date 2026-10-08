@@ -4,13 +4,13 @@ description: Let the model compose an interface at runtime from a component voca
 platforms: ["react"]
 ---
 
-With generative UI, you ship a **vocabulary** of components and let the model assemble them, instead of writing one component per tool. The model calls a single `present` tool whose arguments are a JSON tree of component names and props, and openagentui renders that tree.
+With generative UI, you ship a **vocabulary** of components and let the model assemble them, instead of writing one component per tool. The model calls a single `present` tool whose arguments are a JSON tree of component names and props, and OpenAgentUI renders that tree.
 
 The package ships a default vocabulary of 29 components (cards, facts, tables, charts, forms, controls), so the shortest useful setup registers one tool and writes no components at all.
 
 ## Which generative UI pattern?
 
-openagentui uses "generative UI" for more than one thing. Two questions separate them: does the **model** compose the layout or do you bind it ahead of time, and does the UI originate from a **tool call** or from a part your backend emits. Pick the row that matches what you are building:
+OpenAgentUI uses "generative UI" for more than one thing. Two questions separate them: does the **model** compose the layout or do you bind it ahead of time, and does the UI originate from a **tool call** or from a part your backend emits. Pick the row that matches what you are building:
 
 | Pattern | API | Best for |
 |---------|-----|----------|

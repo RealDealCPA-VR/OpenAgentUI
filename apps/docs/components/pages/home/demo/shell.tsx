@@ -166,7 +166,7 @@ export function DemoShell({
           aria-hidden
           className="bg-foreground/80 block size-4 [mask-image:url(/favicon/icon.svg)] [mask-size:contain] [mask-position:center] [mask-repeat:no-repeat]"
         />
-        <span className="text-[13px] font-medium">openagentui</span>
+        <span className="text-[13px] font-medium">OpenAgentUI</span>
         <button
           type="button"
           onClick={() => setSidebarCollapsed(true)}

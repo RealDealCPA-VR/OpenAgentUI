@@ -1,6 +1,6 @@
-# openagentui + Eve
+# OpenAgentUI + Eve
 
-This example mounts an Eve agent into a Next.js app with `withEve()` from `eve/next`, then adapts Eve's React hook into openagentui with `useEveAgentRuntime()`.
+This example mounts an Eve agent into a Next.js app with `withEve()` from `eve/next`, then adapts Eve's React hook into OpenAgentUI with `useEveAgentRuntime()`.
 
 ```bash
 pnpm --filter with-eve dev

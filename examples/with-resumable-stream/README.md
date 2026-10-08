@@ -77,5 +77,5 @@ docker run -d --name redis -p 6379:6379 redis:7-alpine
 
 ## Related documentation
 
-- [openagentui documentation](https://openagentui.dev/docs)
+- [OpenAgentUI documentation](https://openagentui.dev/docs)
 - [AI SDK reconnect API](https://sdk.vercel.ai/docs)

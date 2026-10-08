@@ -1,4 +1,4 @@
-# openagentui × Pi
+# OpenAgentUI × Pi
 
 A minimal local harness for the [`@openagentui/react-pi`](../../packages/react-pi)
 adapter, driving the [Pi coding agent](https://www.npmjs.com/package/@earendil-works/pi-coding-agent)

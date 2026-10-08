@@ -1,6 +1,6 @@
 # TanStack Start Integration
 
-This example demonstrates how to use openagentui with TanStack Start (TanStack Router + Vite).
+This example demonstrates how to use OpenAgentUI with TanStack Start (TanStack Router + Vite).
 
 ## Quick Start
 
@@ -35,5 +35,5 @@ npm run dev
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [TanStack Start Documentation](https://tanstack.com/start)

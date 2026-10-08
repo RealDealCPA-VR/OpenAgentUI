@@ -132,7 +132,7 @@ Levels render in the order given; there is no reordering or grouping. If `select
 
 ### Reading the model's own effort field
 
-The composer's model picker (`/elements/model-selector`) writes to the same `config.reasoningEffort` field through its own effort control. Mounting both at once registers two providers for the same field, so keep only one of them wired to the model context in a given app; openagentui merges registered model contexts by priority, not by which component happens to render.
+The composer's model picker (`/elements/model-selector`) writes to the same `config.reasoningEffort` field through its own effort control. Mounting both at once registers two providers for the same field, so keep only one of them wired to the model context in a given app; OpenAgentUI merges registered model contexts by priority, not by which component happens to render.
 
 ### Restyle the control
 

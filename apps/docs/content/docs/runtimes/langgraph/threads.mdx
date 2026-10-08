@@ -35,7 +35,7 @@ const runtime = useLangGraphRuntime({
 
 ## Cloud persistence
 
-For managed multi-thread support, persistence, sync, and titles, pass an `AssistantCloud` instance:
+To keep threads in an Assistant-Cloud-compatible backend you host or choose, with persistence, sync, and titles, pass an `AssistantCloud` instance:
 
 ```ts
 const runtime = useLangGraphRuntime({
@@ -44,7 +44,7 @@ const runtime = useLangGraphRuntime({
 });
 ```
 
-See the [cloud persistence guide](/docs/cloud/langgraph) for setup details.
+See [threads](/docs/runtimes/concepts/threads) for setup details, or the [custom thread list](#custom-thread-list) below to keep threads in your own store.
 
 ## Custom thread list
 
@@ -91,7 +91,7 @@ const runtime = useLangGraphRuntime({
 });
 ```
 
-Setting `remoteId === externalId` keeps the ids openagentui stores aligned with the LangGraph thread ids your `load` and `stream` callbacks receive. See [threads](/docs/runtimes/concepts/threads) for the full adapter contract.
+Setting `remoteId === externalId` keeps the ids OpenAgentUI stores aligned with the LangGraph thread ids your `load` and `stream` callbacks receive. See [threads](/docs/runtimes/concepts/threads) for the full adapter contract.
 
 <Callout type="info">
 When `unstable_threadListAdapter` is provided, the `cloud`, `create`, and `delete` options are ignored; the adapter owns the full thread-list lifecycle.

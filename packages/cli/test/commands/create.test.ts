@@ -271,12 +271,12 @@ describe("create failure cleanup", () => {
 describe("resolveProject", () => {
   it("returns template metadata when --template is provided", async () => {
     const result = await resolveProject({
-      template: "cloud",
+      template: "langchain",
       stdinIsTTY: true,
     });
     expect(result).toEqual(
       expect.objectContaining({
-        name: "cloud",
+        name: "langchain",
         category: "template",
         hasLocalComponents: false,
       }),
@@ -297,14 +297,14 @@ describe("resolveProject", () => {
     );
   });
 
-  it("supports the cloud-clerk template", async () => {
+  it("supports the mcp template", async () => {
     const result = await resolveProject({
-      template: "cloud-clerk",
+      template: "mcp",
       stdinIsTTY: true,
     });
     expect(result).toEqual(
       expect.objectContaining({
-        name: "cloud-clerk",
+        name: "mcp",
         category: "template",
       }),
     );
@@ -489,7 +489,7 @@ describe("resolveProject error handling", () => {
 
   it("--example rejects a template name", async () => {
     await expect(
-      resolveProject({ example: "cloud", stdinIsTTY: true }),
+      resolveProject({ example: "langchain", stdinIsTTY: true }),
     ).rejects.toThrow("process.exit");
     expect(exitSpy).toHaveBeenCalledWith(1);
   });
@@ -517,26 +517,23 @@ describe("resolveProject error handling", () => {
 });
 
 describe("PROJECT_METADATA", () => {
-  it("contains all 8 templates", () => {
+  it("contains all 5 templates", () => {
     const templates = PROJECT_METADATA.filter((m) => m.category === "template");
-    expect(templates).toHaveLength(8);
+    expect(templates).toHaveLength(5);
     expect(templates.map((t) => t.name)).toEqual([
       "default",
       "minimal",
-      "cloud",
-      "cloud-clerk",
-      "cloud-harness",
       "langchain",
       "mcp",
       "eve",
     ]);
   });
 
-  it("minimal and cloud harness templates ship local components", () => {
+  it("only the minimal template ships local components", () => {
     const templates = PROJECT_METADATA.filter((m) => m.category === "template");
     expect(
       templates.filter((t) => t.hasLocalComponents).map((t) => t.name),
-    ).toEqual(["minimal", "cloud-harness"]);
+    ).toEqual(["minimal"]);
   });
 
   it("examples have correct hasLocalComponents values", () => {

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SubProjectLayout } from "@/components/shared/sub-project-layout";
 import { createOgMetadata } from "@/lib/og";
 
-const title = "openagentui for React Native";
+const title = "OpenAgentUI for React Native";
 const description =
   "Native Thread, Composer, and Message primitives for Expo. Same runtime as the web SDK.";
 

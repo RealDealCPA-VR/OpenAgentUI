@@ -4,6 +4,9 @@ import { useEffect, useMemo, type ReactNode } from "react";
 import {
   AssistantRuntimeProvider,
   CloudFileAttachmentAdapter,
+  CompositeAttachmentAdapter,
+  SimpleImageAttachmentAdapter,
+  SimpleTextAttachmentAdapter,
   Suggestions,
   Tools,
   unstable_Interactables,
@@ -59,7 +62,12 @@ export function DocsRuntimeProvider({
     () => ({
       ...speech,
       feedback: feedbackAdapter,
-      attachments: new CloudFileAttachmentAdapter(cloud),
+      attachments: cloud
+        ? new CloudFileAttachmentAdapter(cloud)
+        : new CompositeAttachmentAdapter([
+            new SimpleImageAttachmentAdapter(),
+            new SimpleTextAttachmentAdapter(),
+          ]),
       ...(followUps ? { suggestion: followUpSuggestionAdapter } : {}),
     }),
     [cloud, followUps, speech],

@@ -3,7 +3,7 @@ import { SubProjectLayout } from "@/components/shared/sub-project-layout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "@openagentui/tw-shimmer by openagentui",
+  title: "@openagentui/tw-shimmer by OpenAgentUI",
   description:
     "Zero-dependency Tailwind v4 shimmer for text and skeleton loaders. Pure CSS.",
 };

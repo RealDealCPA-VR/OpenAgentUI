@@ -64,7 +64,7 @@ const runtime = useAdkRuntime({
 });
 ```
 
-The session adapter maps ADK sessions to openagentui threads:
+The session adapter maps ADK sessions to OpenAgentUI threads:
 
 - **`adapter`** is a `RemoteThreadListAdapter` that uses ADK's session REST API for thread CRUD.
 - **`load`** reconstructs messages from session events via `AdkEventAccumulator`.
@@ -109,7 +109,7 @@ export const POST = createAdkApiRoute({
 
 `userId` accepts a static string or a request resolver. `sessionId` accepts a
 static string or `(req, clientSessionId) => string | Promise<string>`; proxy
-mode supplies the initialized openagentui thread ID as `clientSessionId`.
+mode supplies the initialized OpenAgentUI thread ID as `clientSessionId`.
 For ADK runners that expose `appName` and `sessionService`, the route creates a
 missing resolved session before the first run and coalesces concurrent creation
 within the server process.
@@ -194,7 +194,7 @@ const runtime = useAdkRuntime({
 
 ### Cloud persistence
 
-Pass a `cloud` instance to use Assistant Cloud for the thread list and a dashboard copy of settled messages. Thread history loads through the `load` function from the ADK session, not from Assistant Cloud:
+Pass a `cloud` instance to use an Assistant-Cloud-compatible backend for the thread list and a copy of settled messages. Thread history loads through the `load` function from the ADK session, not from Assistant Cloud:
 
 ```ts
 const runtime = useAdkRuntime({

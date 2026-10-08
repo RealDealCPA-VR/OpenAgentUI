@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/openagentui)](https://www.npmjs.com/package/openagentui)
 [![GitHub stars](https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI)](https://github.com/RealDealCPA-VR/OpenAgentUI)
 
-Command-line tool for adding shadcn-style components to your project, scaffolding a new app, and keeping your openagentui packages up to date.
+Command-line tool for adding shadcn-style components to your project, scaffolding a new app, and keeping your OpenAgentUI packages up to date.
 
 ## Installation
 

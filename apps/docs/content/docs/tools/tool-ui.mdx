@@ -504,7 +504,7 @@ export default defineToolkit({
 
 ### Server-side approval gates
 
-Some runtimes (notably AI SDK v7's `toolApproval`-gated tools) pause on the server and emit an approval request that the client must acknowledge before the tool runs. openagentui surfaces this on the tool part as `approval` and exposes `respondToApproval({ approved, reason? })` on the renderer:
+Some runtimes (notably AI SDK v7's `toolApproval`-gated tools) pause on the server and emit an approval request that the client must acknowledge before the tool runs. OpenAgentUI surfaces this on the tool part as `approval` and exposes `respondToApproval({ approved, reason? })` on the renderer:
 
 ```tsx
 import { useState } from "react";
@@ -594,7 +594,7 @@ Renderers respond with the chosen option instead of a boolean; the option's kind
 respondToApproval({ optionId: "session" });
 ```
 
-The runtime receives `{ approvalId, approved, optionId, text?, reason? }`, so a host that persists "always allow" decisions can key its store off `optionId`. Persistence is entirely host-owned: openagentui never stores a decision and never auto-answers future approvals. `grants` lists the patterns an option would persist (shown to the user before they commit), and `confirm` opts the option into a confirmation step. Options with custom `_`-prefixed kinds must be answered with an explicit `approved` value, optionally alongside the `optionId` so the chosen option is still recorded. The default `ToolFallback` bar renders them next to the known kinds and sends `{ optionId, approved: true }` when one is chosen, since picking a declared option is an answer rather than a refusal; it also keeps a Deny control available whenever a decision request declares no reject-kind option.
+The runtime receives `{ approvalId, approved, optionId, text?, reason? }`, so a host that persists "always allow" decisions can key its store off `optionId`. Persistence is entirely host-owned: OpenAgentUI never stores a decision and never auto-answers future approvals. `grants` lists the patterns an option would persist (shown to the user before they commit), and `confirm` opts the option into a confirmation step. Options with custom `_`-prefixed kinds must be answered with an explicit `approved` value, optionally alongside the `optionId` so the chosen option is still recorded. The default `ToolFallback` bar renders them next to the known kinds and sends `{ optionId, approved: true }` when one is chosen, since picking a declared option is an answer rather than a refusal; it also keeps a Deny control available whenever a decision request declares no reject-kind option.
 
 ### Approval questions
 
@@ -1055,7 +1055,7 @@ The assistant's text introduces the tool UI and the tool UI carries the structur
 
 ## Data-Part Generative UI
 
-Alongside tool-call rendering, openagentui supports a second generative UI mechanism based on `DataMessagePart`. Instead of attaching UI to a tool invocation, the backend (or the LangGraph graph) emits named data events that are appended as `{ type: "data", name, data }` parts on the parent assistant message.
+Alongside tool-call rendering, OpenAgentUI supports a second generative UI mechanism based on `DataMessagePart`. Instead of attaching UI to a tool invocation, the backend (or the LangGraph graph) emits named data events that are appended as `{ type: "data", name, data }` parts on the parent assistant message.
 
 **When to choose which:**
 

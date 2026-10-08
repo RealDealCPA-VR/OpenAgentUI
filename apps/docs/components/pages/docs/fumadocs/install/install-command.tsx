@@ -81,7 +81,7 @@ export async function InstallCommand(props: InstallCommandProps) {
     <>
       {props.manualSetupInstructions && <SetupInstructions />}
       <FileGroup title="Main Component" group={resolved.main} />
-      <FileGroup title="openagentui dependencies" group={resolved.auiDeps} />
+      <FileGroup title="OpenAgentUI dependencies" group={resolved.auiDeps} />
       <FileGroup title="shadcn/ui dependencies" group={resolved.shadcn} />
     </>
   );
@@ -116,7 +116,7 @@ export async function InstallCommand(props: InstallCommandProps) {
   );
 }
 
-const REPO = "openagentui/openagentui";
+const REPO = "RealDealCPA-VR/OpenAgentUI";
 const GITHUB_BLOB = `https://github.com/${REPO}/blob/main`;
 
 const CommandBlock = ({ command }: { command: string }) => (

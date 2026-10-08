@@ -2,7 +2,7 @@ export const DEMO_DOWNLOAD_CATEGORY = {
   id: "openagentui-demos",
   name: "OpenAgentUI Demos",
   description:
-    "Fixed openagentui demo surfaces shown as-is with downloadable starter apps.",
+    "Fixed OpenAgentUI demo surfaces shown as-is with downloadable starter apps.",
 };
 
 export type DemoDownloadSlug =
@@ -101,11 +101,11 @@ export const DEMO_DOWNLOAD_MANIFESTS: Record<
   base: {
     slug: "base",
     name: "Base OpenAgentUI",
-    tagline: "The full openagentui experience, unthemed.",
+    tagline: "The full OpenAgentUI experience, unthemed.",
     description:
-      "A complete chat application built from openagentui primitives: thread management, attachments, mentions, slash commands, model picker, and voice input.",
+      "A complete chat application built from OpenAgentUI primitives: thread management, attachments, mentions, slash commands, model picker, and voice input.",
     features: [
-      "Full openagentui thread layout with sidebar thread list",
+      "Full OpenAgentUI thread layout with sidebar thread list",
       "Composer attachments, mentions, slash commands, voice, and model picker controls",
       "Message actions, branching controls, reasoning, quote selection, and tool fallback UI",
     ],
@@ -124,11 +124,11 @@ export const DEMO_DOWNLOAD_MANIFESTS: Record<
     name: "ChatGPT Style Assistant",
     tagline: "A ChatGPT look and feel, rebuilt on openagentui.",
     description:
-      "Customized colors, typography, tools menu, composer, and message layout that recreate the ChatGPT interface on top of openagentui primitives.",
+      "Customized colors, typography, tools menu, composer, and message layout that recreate the ChatGPT interface on top of OpenAgentUI primitives.",
     features: [
       "ChatGPT-style empty state, composer, tool menu, and dark mode treatment",
       "Assistant and user message layouts with actions, attachments, and branch controls",
-      "Voice, dictation, and tool fallback UI wired through openagentui primitives",
+      "Voice, dictation, and tool fallback UI wired through OpenAgentUI primitives",
     ],
     entry: "apps/docs/components/pages/examples/chatgpt.tsx",
     componentName: "ChatGPT",
@@ -149,7 +149,7 @@ export const DEMO_DOWNLOAD_MANIFESTS: Record<
     features: [
       "Claude-style empty state, composer, and warm document-like message surface",
       "Attachment, action, branch, and regeneration controls",
-      "Dropdown controls and markdown rendering wired to openagentui primitives",
+      "Dropdown controls and markdown rendering wired to OpenAgentUI primitives",
     ],
     entry: "apps/docs/components/pages/examples/claude.tsx",
     componentName: "Claude",
@@ -169,7 +169,7 @@ export const DEMO_DOWNLOAD_MANIFESTS: Record<
     features: [
       "Grok-style centered empty state and branded icon",
       "Minimal message viewport with action and branch controls",
-      "Dropdown controls and markdown rendering wired to openagentui primitives",
+      "Dropdown controls and markdown rendering wired to OpenAgentUI primitives",
     ],
     entry: "apps/docs/components/pages/examples/grok.tsx",
     componentName: "Grok",
@@ -190,7 +190,7 @@ export const DEMO_DOWNLOAD_MANIFESTS: Record<
     features: [
       "Gemini-style empty state and composer",
       "Suggested prompt cards and message action controls",
-      "Dropdown controls and markdown rendering wired to openagentui primitives",
+      "Dropdown controls and markdown rendering wired to OpenAgentUI primitives",
     ],
     entry: "apps/docs/components/pages/examples/gemini.tsx",
     componentName: "Gemini",
@@ -210,7 +210,7 @@ export const DEMO_DOWNLOAD_MANIFESTS: Record<
     features: [
       "Perplexity-style search prompt and follow-up composer",
       "Source/search flavored controls and message actions",
-      "Dropdown controls and markdown rendering wired to openagentui primitives",
+      "Dropdown controls and markdown rendering wired to OpenAgentUI primitives",
     ],
     entry: "apps/docs/components/pages/examples/perplexity.tsx",
     componentName: "Perplexity",
@@ -225,9 +225,9 @@ export const DEMO_DOWNLOAD_MANIFESTS: Record<
   "react-ink": {
     slug: "react-ink",
     name: "React Ink Terminal Assistant",
-    tagline: "A terminal AI assistant built with openagentui and Ink.",
+    tagline: "A terminal AI assistant built with OpenAgentUI and Ink.",
     description:
-      "A Claude Code or Codex CLI-style terminal assistant built with openagentui React Ink primitives, including streaming chat, tool calls, status output, and terminal-native diff rendering.",
+      "A Claude Code or Codex CLI-style terminal assistant built with OpenAgentUI React Ink primitives, including streaming chat, tool calls, status output, and terminal-native diff rendering.",
     features: [
       "Terminal chat UI built with @openagentui/react-ink",
       "Scripted coding-agent flow with reasoning, tool calls, tests, and summary",
@@ -241,7 +241,7 @@ export const DEMO_DOWNLOAD_MANIFESTS: Record<
     previewUrl: "https://openagentui-ink.vercel.app",
     previewFrame: {
       kind: "terminal",
-      title: "openagentui ink",
+      title: "OpenAgentUI ink",
       width: 800,
       height: 480,
     },

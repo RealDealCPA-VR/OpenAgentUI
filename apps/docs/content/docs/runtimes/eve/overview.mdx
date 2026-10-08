@@ -1,11 +1,11 @@
 ---
 title: Eve Runtime
-description: Connect an Eve agent to openagentui with useEveAgentRuntime, eve/next, durable sessions, streaming messages, and human-in-the-loop approvals.
+description: Connect an Eve agent to OpenAgentUI with useEveAgentRuntime, eve/next, durable sessions, streaming messages, and human-in-the-loop approvals.
 ---
 
 import { VercelIcon } from "@/components/icons/vercel";
 
-`@openagentui/eve` integrates openagentui with [Eve](https://eve.dev/), Vercel's filesystem-first framework for durable agents. It wraps Eve's `useEveAgent` hook and exposes it as an openagentui `ExternalStoreRuntime`, so Eve owns the session stream while openagentui renders messages, reasoning, dynamic tool calls, and approval requests.
+`@openagentui/eve` integrates OpenAgentUI with [Eve](https://eve.dev/), Vercel's filesystem-first framework for durable agents. It wraps Eve's `useEveAgent` hook and exposes it as an OpenAgentUI `ExternalStoreRuntime`, so Eve owns the session stream while OpenAgentUI renders messages, reasoning, dynamic tool calls, and approval requests.
 
 ## When to use it
 
@@ -13,7 +13,7 @@ Pick the Eve runtime when:
 
 - You want your agent implementation to live under `agent/` and be served by `eve/next`.
 - You want Eve sessions, continuation tokens, NDJSON streaming, and local development tooling.
-- You want openagentui to render Eve messages and human-in-the-loop tool approvals without writing a custom runtime adapter.
+- You want OpenAgentUI to render Eve messages and human-in-the-loop tool approvals without writing a custom runtime adapter.
 
 ## Architecture
 
@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {};
 export default withEve(withAui(nextConfig));
 ```
 
-On the client, `useEveAgentRuntime()` calls Eve's React hook and converts Eve message parts into openagentui thread messages:
+On the client, `useEveAgentRuntime()` calls Eve's React hook and converts Eve message parts into OpenAgentUI thread messages:
 
 ```tsx title="app/page.tsx"
 "use client";
@@ -55,7 +55,7 @@ The `custom` bag of a per-turn `runConfig` is forwarded to Eve as
 every value must be JSON-serializable.
 
 Eve turns that object into a model context message, which is why the
-openagentui `custom` envelope is unwrapped: the envelope would put a literal
+OpenAgentUI `custom` envelope is unwrapped: the envelope would put a literal
 `custom` key in the prompt. It is page or client context rather than run
 configuration, and it cannot select a model or change how the turn executes.
 Keep secrets, credentials, and personal data out of it, since the model reads
@@ -100,11 +100,11 @@ export const AuthorizationUI = makeAssistantDataUI<EveAuthorizationData>({
 Mount `<AuthorizationUI />` inside the `AssistantRuntimeProvider` tree. The
 standard thread leaves unmatched data parts unrendered.
 
-## Store threads in Assistant Cloud
+## Store threads in an Assistant-Cloud-compatible backend
 
 Without `cloud`, the runtime runs a single Eve session. Persist `useEveSession()` and pass it back as `initialSession` with `resume: true` to pick the conversation up after a reload.
 
-Pass `cloud` to back a thread list with [Assistant Cloud](/docs/cloud) instead. `cloud` is the only switch: `NEXT_PUBLIC_ASSISTANT_BASE_URL` alone keeps the single session. Pass it from the first render, since adding or removing it later throws (remount the runtime, for example with a `key`, to switch), and use eve 0.44.1 or later, which can resume a session.
+Pass an `AssistantCloud` client as `cloud` to back a thread list with an Assistant-Cloud-compatible backend you host or choose ([client reference](/docs/api-reference/integrations/openagentui-cloud)) instead. `cloud` is the only switch: `NEXT_PUBLIC_ASSISTANT_BASE_URL` alone keeps the single session. Pass it from the first render, since adding or removing it later throws (remount the runtime, for example with a `key`, to switch), and use eve 0.44.1 or later, which can resume a session.
 
 ```tsx
 const runtime = useEveAgentRuntime({ cloud });
@@ -114,7 +114,7 @@ Each cloud thread keeps one Eve session, stored as its external id. Eve assigns 
 
 Opening a thread resumes its session: the thread reports loading while the replay runs, and a message sent meanwhile waits for it. A cloud thread that no Eve runtime created has no session: it opens empty, and sending in it keeps the draft in the composer.
 
-`session`, `initialSession`, `initialEvents` and `resume` are not used with `cloud`, and `useEveReset()` starts a new thread, leaving the current thread and its session in the list. Renaming, archiving and deleting change the cloud thread only, since Eve has no call to delete a session. The runtime copies each settled turn to the cloud, so the dashboard shows the conversation.
+`session`, `initialSession`, `initialEvents` and `resume` are not used with `cloud`, and `useEveReset()` starts a new thread, leaving the current thread and its session in the list. Renaming, archiving and deleting change the cloud thread only, since Eve has no call to delete a session. The runtime copies each settled turn to the cloud backend.
 
 ## Requirements
 
@@ -155,7 +155,7 @@ Eve's built-in `eve` channel accepts localhost during development and trusted Ve
   <Card
     icon={<VercelIcon width={20} height={20} />}
     title="Quickstart"
-    description="Scaffold the Eve template or add Eve to an existing openagentui app."
+    description="Scaffold the Eve template or add Eve to an existing OpenAgentUI app."
     href="/docs/runtimes/eve/quickstart"
   />
   <Card

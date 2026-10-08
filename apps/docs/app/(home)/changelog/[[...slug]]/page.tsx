@@ -12,7 +12,7 @@ import { PackageFilter } from "../package-filter";
 import { ChangelogList } from "../changelog-list";
 
 const title = "Changelog";
-const description = "Release notes for all openagentui packages.";
+const description = "Release notes for all OpenAgentUI packages.";
 const PER_PAGE = 8;
 
 export const metadata: Metadata = {
@@ -104,7 +104,7 @@ export default async function ChangelogPage({
         <header className="max-w-2xl">
           <h1 className={typePage}>Release history.</h1>
           <p className={cn(typeDeck, "mt-4 max-w-[52ch]")}>
-            Every package release from the openagentui monorepo, grouped by day.
+            Every package release from the OpenAgentUI monorepo, grouped by day.
           </p>
         </header>
         {allPackages.length > 0 && (

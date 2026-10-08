@@ -96,12 +96,14 @@ export function useDocsCloud() {
   const session = useSession();
   const accountOwned = session.status === "signed-in" && session.cloudHistory;
   const userKey = accountOwned ? session.user.email : null;
-  const baseUrl = process.env.NEXT_PUBLIC_ASSISTANT_BASE_URL!;
+  // Without a configured Assistant-Cloud-compatible backend, threads stay in
+  // the browser and the demos run on the local thread list.
+  const baseUrl = process.env.NEXT_PUBLIC_ASSISTANT_BASE_URL ?? "";
   const [claimedFor, setClaimedFor] = useState<string | null>(null);
   const [claims, setClaims] = useState(0);
 
   useEffect(() => {
-    if (userKey === null || claimedFor === userKey) return;
+    if (!baseUrl || userKey === null || claimedFor === userKey) return;
     const request = claimAnonymousThreads(baseUrl, userKey);
     if (!request) return;
 
@@ -119,29 +121,35 @@ export function useDocsCloud() {
 
   const cloud = useMemo(
     () =>
-      userKey !== null
-        ? new AssistantCloud({
-            baseUrl,
-            telemetry: cloudTelemetry,
-            authToken: async () => {
-              try {
-                const response = await fetch("/api/assistant-token", {
-                  cache: "no-store",
-                  credentials: "same-origin",
-                });
-                if (!response.ok) return null;
-                const payload = (await response.json()) as { token?: unknown };
-                return typeof payload.token === "string" ? payload.token : null;
-              } catch {
-                return null;
-              }
-            },
-          })
-        : new AssistantCloud({
-            baseUrl,
-            anonymous: true,
-            telemetry: cloudTelemetry,
-          }),
+      !baseUrl
+        ? undefined
+        : userKey !== null
+          ? new AssistantCloud({
+              baseUrl,
+              telemetry: cloudTelemetry,
+              authToken: async () => {
+                try {
+                  const response = await fetch("/api/assistant-token", {
+                    cache: "no-store",
+                    credentials: "same-origin",
+                  });
+                  if (!response.ok) return null;
+                  const payload = (await response.json()) as {
+                    token?: unknown;
+                  };
+                  return typeof payload.token === "string"
+                    ? payload.token
+                    : null;
+                } catch {
+                  return null;
+                }
+              },
+            })
+          : new AssistantCloud({
+              baseUrl,
+              anonymous: true,
+              telemetry: cloudTelemetry,
+            }),
     [baseUrl, userKey],
   );
 
@@ -189,7 +197,7 @@ export function useDocsChatRuntime({
   countConversations = false,
 }: {
   api?: string;
-  cloud?: AssistantCloud;
+  cloud?: AssistantCloud | undefined;
   adapters?: Adapters;
   sendAutomatically?: boolean;
   searchDocs?: boolean;

@@ -1,10 +1,10 @@
 ---
 title: Electron
-description: Run openagentui in an Electron renderer with a hosted backend or a secure, streaming preload and IPC bridge.
+description: Run OpenAgentUI in an Electron renderer with a hosted backend or a secure, streaming preload and IPC bridge.
 platforms: ["react"]
 ---
 
-openagentui works in Electron through `@openagentui/react`. The renderer is a React DOM environment, so there is no separate `@openagentui/electron` package to install. The Electron-specific decision is where model requests run and how the renderer reaches them.
+OpenAgentUI works in Electron through `@openagentui/react`. The renderer is a React DOM environment, so there is no separate `@openagentui/electron` package to install. The Electron-specific decision is where model requests run and how the renderer reaches them.
 
 <Callout type="warn">
   Never put a provider API key in renderer code, a `VITE_*` variable, or a preload script. Bundled values are readable by anyone with the app. Keep remote credentials on your backend, or keep local credentials in the main process and provision them with an OS-backed secret store.
@@ -26,7 +26,7 @@ flowchart LR
   Main --> Provider
 ```
 
-Do not send an SDK client, openagentui runtime, callback, `AbortSignal`, or `File` through IPC. Electron IPC uses structured clone semantics; define a small data-only protocol instead.
+Do not send an SDK client, OpenAgentUI runtime, callback, `AbortSignal`, or `File` through IPC. Electron IPC uses structured clone semantics; define a small data-only protocol instead.
 
 ## Pattern 1: hosted backend
 
@@ -241,7 +241,7 @@ export function registerAssistantIpc(mainWindow: BrowserWindow) {
 
 If your app can open more than one trusted assistant window, register a unique channel per window or route requests through one application-level registry. A global `ipcMain.on` listener should not be re-registered under the same channel for every window.
 
-### 4. Adapt IPC to openagentui
+### 4. Adapt IPC to OpenAgentUI
 
 `ChatModelAdapter` yields complete snapshots, so the renderer accumulates each IPC delta before yielding it. Its cleanup function closes the port on Stop, unmount, or completion.
 
@@ -346,7 +346,7 @@ export function ElectronRuntimeProvider({ children }: { children: ReactNode }) {
 }
 ```
 
-Wrap your existing openagentui thread with `ElectronRuntimeProvider`. Primitives and installed UI components work exactly as they do in a browser React app.
+Wrap your existing OpenAgentUI thread with `ElectronRuntimeProvider`. Primitives and installed UI components work exactly as they do in a browser React app.
 
 ## Extend the protocol deliberately
 
@@ -354,7 +354,7 @@ The local example drops every non-text content part. Add explicit structured-clo
 
 - Attachments: pass bounded `ArrayBuffer` data or an app-owned file reference after validating type, size, and path in the main process. Do not pass browser `File` objects.
 - Tools: define serializable tool-call and tool-result events, and validate every tool invocation in the privileged process. Never expose a generic shell or filesystem IPC method.
-- Reasoning and metadata: add distinct event variants and map them to the corresponding openagentui content parts.
+- Reasoning and metadata: add distinct event variants and map them to the corresponding OpenAgentUI content parts.
 - Thread persistence: store serializable thread data in the main process or use a remote thread-list adapter; do not try to transfer a runtime object.
 
 ## Packaged-app checklist

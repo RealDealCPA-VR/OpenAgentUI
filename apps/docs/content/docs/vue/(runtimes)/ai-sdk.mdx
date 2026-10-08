@@ -36,7 +36,7 @@ Tools the server owns go in the same `tools` map with their own `execute`; see [
 
 ## AISDKChat
 
-`AISDKChat()` creates a single thread backed by an AI SDK `Chat`. Pass it as `threads: AISDKChat(options)` in `AuiConfig`. These options come from AI SDK `ChatInit` and the openagentui thread adapter:
+`AISDKChat()` creates a single thread backed by an AI SDK `Chat`. Pass it as `threads: AISDKChat(options)` in `AuiConfig`. These options come from AI SDK `ChatInit` and the OpenAgentUI thread adapter:
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
@@ -57,7 +57,7 @@ Tools the server owns go in the same `tools` map with their own `execute`; see [
 | `isDisabled` | `boolean` | `false` | Disables the thread and its composer input. |
 | `isSendDisabled` | `boolean` | `false` | Blocks sends while leaving the input usable. |
 | `unstable_capabilities` | `{ copy?: boolean }` | None | Overrides the copy capability. |
-| `toCreateMessage` | Callback | Runtime conversion | Converts a new openagentui message to an AI SDK UI message. |
+| `toCreateMessage` | Callback | Runtime conversion | Converts a new OpenAgentUI message to an AI SDK UI message. |
 | `onResume` | Callback | None | Handles `resumeRun` through a custom replay channel. |
 | `onResumeToolCall` | Callback | None | Handles resume for a tool call outside the in-process tracker. |
 | `onRespondToToolApproval` | Callback | AI SDK response | Routes tool approval answers through a host. |

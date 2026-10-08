@@ -1,11 +1,11 @@
 ---
 title: LangChain React Runtime
-description: Use LangChain's useStream hook with a React chat UI through openagentui — a lighter LangGraph adapter that delegates streaming to @langchain/react.
+description: Use LangChain's useStream hook with a React chat UI through OpenAgentUI — a lighter LangGraph adapter that delegates streaming to @langchain/react.
 ---
 
 import { LangGraphIcon } from "@/components/icons/langgraph";
 
-`@openagentui/react-langchain` wraps [`useStream`](https://reference.langchain.com/javascript/langchain-react/use-stream) from `@langchain/react` and exposes it as an openagentui runtime. It targets the same backend as [`@openagentui/react-langgraph`](/docs/runtimes/langgraph/overview) (LangGraph Cloud) but at a higher level, delegating stream plumbing to the upstream hook.
+`@openagentui/react-langchain` wraps [`useStream`](https://reference.langchain.com/javascript/langchain-react/use-stream) from `@langchain/react` and exposes it as an OpenAgentUI runtime. It targets the same backend as [`@openagentui/react-langgraph`](/docs/runtimes/langgraph/overview) (LangGraph Cloud) but at a higher level, delegating stream plumbing to the upstream hook.
 
 ## When to use it
 
@@ -255,9 +255,9 @@ Follow the [Ink setup](/docs/ink).
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `cloud` | `AssistantCloud` | Optional. Uses Assistant Cloud for the thread list and a copy of settled messages for the dashboard. |
+| `cloud` | `AssistantCloud` | Optional. Uses an Assistant-Cloud-compatible backend for the thread list and a copy of settled messages. |
 | `create` | `() => Promise<{ externalId: string \| undefined }>` | Optional. Creates a thread in your backend. |
-| `delete` | `(threadId: string) => Promise<void>` | Optional. When Cloud owns the thread list, called before a thread is deleted and given its Cloud thread id; read that thread's `external_id` to delete the backend thread, as [LangGraph](/docs/cloud/langgraph) shows. |
+| `delete` | `(threadId: string) => Promise<void>` | Optional. When Cloud owns the thread list, called before a thread is deleted and given its Cloud thread id; read that thread's `external_id` to delete the backend thread. |
 | `onThreadIdChange` | `(threadId: string \| undefined) => void` | Optional. Called when the active thread's canonical ID changes. |
 | `unstable_threadListAdapter` | `RemoteThreadListAdapter` | Optional. Replaces the Cloud thread list adapter. |
 | `adapters` | `{ attachments?, speech?, dictation?, voice?, feedback? }` | Optional. Attachment, speech, dictation, voice, and feedback adapters. |
@@ -789,7 +789,7 @@ function ErrorBanner() {
 
 ## Message conversion
 
-`convertLangChainBaseMessage` transforms a LangChain `BaseMessage` into an openagentui message. Use it when building a custom `ExternalStoreAdapter` that consumes LangChain messages outside `useStreamRuntime`.
+`convertLangChainBaseMessage` transforms a LangChain `BaseMessage` into an OpenAgentUI message. Use it when building a custom `ExternalStoreAdapter` that consumes LangChain messages outside `useStreamRuntime`.
 
 ```ts
 import { convertLangChainBaseMessage } from "@openagentui/react-langchain";
@@ -797,7 +797,7 @@ import { convertLangChainBaseMessage } from "@openagentui/react-langchain";
 
 ## Cloud persistence
 
-Pass an `AssistantCloud` instance to persist the thread list across sessions. `useStream({ threadId: externalId })` loads state from the LangGraph server, not from Assistant Cloud. The runtime copies settled messages to Assistant Cloud for the dashboard; set `telemetry: { messages: false }` on the cloud client to disable that copy.
+Pass an `AssistantCloud` instance to persist the thread list across sessions. `useStream({ threadId: externalId })` loads state from the LangGraph server, not from Assistant Cloud. The runtime copies settled messages to the cloud backend; set `telemetry: { messages: false }` on the cloud client to disable that copy.
 
 ```tsx
 // see "AssistantCloud" in /docs/runtimes/concepts/threads for cloud setup
@@ -822,7 +822,7 @@ const runtime = useStreamRuntime({
 
 ## Comparison with `react-langgraph`
 
-Both packages connect openagentui to LangGraph backends. They are independent adapters for different upstream libraries; one is not a successor to the other. The official `create-openagentui` template (`-t langchain`) ships `react-langchain`. `react-langgraph` remains the choice for a custom backend stream or an existing `react-langgraph` app.
+Both packages connect OpenAgentUI to LangGraph backends. They are independent adapters for different upstream libraries; one is not a successor to the other. The official `create-openagentui` template (`-t langchain`) ships `react-langchain`. `react-langgraph` remains the choice for a custom backend stream or an existing `react-langgraph` app.
 
 | Aspect | `react-langgraph` | `react-langchain` |
 | --- | --- | --- |

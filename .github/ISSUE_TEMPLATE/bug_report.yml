@@ -10,7 +10,7 @@ body:
       options:
         - label: I have searched existing issues and this is not a duplicate
           required: true
-        - label: This is a reproducible bug, not a usage question (use [Discord](https://discord.gg/S9dwgCNEFs) for questions)
+        - label: This is a reproducible bug, not a usage question (use [Discussions](https://github.com/RealDealCPA-VR/OpenAgentUI/discussions) for questions)
           required: true
 
   - type: textarea

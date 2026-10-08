@@ -159,7 +159,7 @@ Both lanes take `className` on the root. The basis pill reads the shared `floati
 
 | Selector / field | Type | Description |
 |--------------------|------|-------------|
-| `s.message.content` | `readonly ThreadAssistantMessagePart[]` | Search this for a `tool-call` part whose `result` you shape as a claims list; openagentui has no built-in confidence field. |
+| `s.message.content` | `readonly ThreadAssistantMessagePart[]` | Search this for a `tool-call` part whose `result` you shape as a claims list; OpenAgentUI has no built-in confidence field. |
 | `ToolCallMessagePart.result` | `TResult \| undefined` | The tool's return value once it has run, typed by the generic you give `ToolCallMessagePart<TArgs, TResult>`. |
 | `SourceMessagePart` | `{ type: "source"; sourceType: "url" \| "document"; id: string; url?: string; title?: string; filename?: string }` | A real citation part, useful when "grounded" is the only tier you need. |
 

@@ -1,6 +1,6 @@
 # Nuxt Example
 
-openagentui in a Nuxt 4 app: `@openagentui/vue` primitives on the client, streaming from a Nitro server route via the AI SDK.
+OpenAgentUI in a Nuxt 4 app: `@openagentui/vue` primitives on the client, streaming from a Nitro server route via the AI SDK.
 
 ## How it works
 

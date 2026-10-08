@@ -12,7 +12,7 @@ export function Chat() {
           content: [
             {
               type: "text",
-              text: "openagentui ships primitives, runtimes, and a component registry for chat interfaces.",
+              text: "OpenAgentUI ships primitives, runtimes, and a component registry for chat interfaces.",
             },
           ],
         };
@@ -20,11 +20,11 @@ export function Chat() {
     },
     {
       initialMessages: [
-        { role: "user", content: "What is openagentui?" },
+        { role: "user", content: "What is OpenAgentUI?" },
         {
           role: "assistant",
           content:
-            "openagentui provides composable primitives for AI chat interfaces.",
+            "OpenAgentUI provides composable primitives for AI chat interfaces.",
         },
       ],
     },

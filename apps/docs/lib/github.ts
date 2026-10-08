@@ -1,7 +1,7 @@
 import "server-only";
 import { withTimeout } from "./with-timeout";
 
-const REPO = "openagentui/openagentui";
+const REPO = "RealDealCPA-VR/OpenAgentUI";
 const API_BASE = `https://api.github.com/repos/${REPO}`;
 const HTML_BASE = `https://github.com/${REPO}`;
 

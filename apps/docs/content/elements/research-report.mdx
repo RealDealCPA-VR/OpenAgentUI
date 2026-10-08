@@ -9,7 +9,7 @@ ResearchReport is a live outline: a heading list that tracks pending, writing, a
 
 <RuntimeMode>
 
-openagentui streams a tool call's arguments as partial JSON while the model writes them, so the report can be the argument itself and render before the call finishes. Ask the model for the report as structured `args` and read them live.
+OpenAgentUI streams a tool call's arguments as partial JSON while the model writes them, so the report can be the argument itself and render before the call finishes. Ask the model for the report as structured `args` and read them live.
 
 <Steps>
   <Step>
@@ -172,11 +172,11 @@ The header's `done` count is computed by filtering `sections` for `state === "do
 
 ## Examples
 
-### Section state comes from the model, not from openagentui
+### Section state comes from the model, not from OpenAgentUI
 
 <RuntimeMode>
 
-`state` is plain data the model writes as part of `sections`; openagentui does not infer pending, writing, or done from streaming progress on its own. If you do not want to rely on the model's own report, `useToolArgsStatus` returns the call's `status`, which you can use to force every section to `"done"` once the call completes, whatever the model wrote for individual entries.
+`state` is plain data the model writes as part of `sections`; OpenAgentUI does not infer pending, writing, or done from streaming progress on its own. If you do not want to rely on the model's own report, `useToolArgsStatus` returns the call's `status`, which you can use to force every section to `"done"` once the call completes, whatever the model wrote for individual entries.
 
 ```tsx
 import { useToolArgsStatus } from "@openagentui/react";

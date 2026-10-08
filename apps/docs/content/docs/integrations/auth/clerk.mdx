@@ -3,9 +3,9 @@ title: Clerk
 description: Gate the chat route and scope thread persistence to the signed-in user with Clerk.
 ---
 
-[Clerk](https://clerk.com/) is a hosted auth platform that integrates with Next.js through `@clerk/nextjs`. This page covers using it with openagentui *without* AssistantCloud: middleware-based route gating, server-side `auth()` checks, and per-user scoping on a custom thread list.
+[Clerk](https://clerk.com/) is a hosted auth platform that integrates with Next.js through `@clerk/nextjs`. This page covers using it with OpenAgentUI *without* AssistantCloud: middleware-based route gating, server-side `auth()` checks, and per-user scoping on a custom thread list.
 
-If you use AssistantCloud, see [cloud authorization](/docs/cloud/authorization) instead. Cloud handles the Clerk JWT exchange for you and gives you workspace-scoped threads with no DB code.
+If you use the `AssistantCloud` client against an Assistant-Cloud-compatible backend, return a token that backend accepts from the client's `authToken` callback instead; see the [`AssistantCloud` authentication modes](/docs/api-reference/integrations/openagentui-cloud#the-client).
 
 ## How it works
 
@@ -142,7 +142,7 @@ Sign in. Check:
 
 - **Cookies are automatic.** Clerk's session cookie travels with same-origin fetches; no `credentials: "include"` is needed for browser requests to your own API routes.
 - **Server contexts.** `auth()` from `@clerk/nextjs/server` runs in any Next.js server context: server components, route handlers, and server actions. See Clerk's [`auth()` reference](https://clerk.com/docs/references/nextjs/auth) for the supported surfaces.
-- **Cloud users.** If you use AssistantCloud, prefer the [Clerk JWT template integration](/docs/cloud/auth-providers) over the pattern on this page. Cloud handles workspace assignment and you don't need to build the thread persistence yourself.
+- **`AssistantCloud` users.** If threads live in an Assistant-Cloud-compatible backend, the backend owns thread scoping; the client only needs a Clerk-derived token from its `authToken` callback. See the [`AssistantCloud` authentication modes](/docs/api-reference/integrations/openagentui-cloud#the-client).
 - **B2B with organizations.** Clerk Orgs map cleanly to multi-tenant chat: scope by `orgId` in addition to `userId`, surface Clerk's `<OrganizationSwitcher>` (from `@clerk/nextjs`), and re-fetch threads on org change.
 
 ## Related
@@ -154,9 +154,9 @@ Sign in. Check:
     href="/docs/integrations/persistence/custom-adapter"
   />
   <Card
-    title="AssistantCloud authorization"
-    description="The cloud-managed alternative: Clerk JWT template plus workspace scoping, no DB code."
-    href="/docs/cloud/authorization"
+    title="openagentui-cloud client"
+    description="The AssistantCloud client and its authentication modes, for an Assistant-Cloud-compatible backend you host or choose."
+    href="/docs/api-reference/integrations/openagentui-cloud"
   />
   <Card
     title="Threads (concepts)"

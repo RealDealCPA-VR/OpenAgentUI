@@ -261,24 +261,6 @@ function GlyphVue() {
   );
 }
 
-function GlyphCloud() {
-  return (
-    <GlyphSvg>
-      <path
-        {...motion("draw")}
-        pathLength={100}
-        d="M9.5 19.5h13.2a4.6 4.6 0 0 0 .6-9.16A6.6 6.6 0 0 0 10.6 9.6a5 5 0 0 0-1.1 9.9z"
-      />
-      <g {...motion("rise", 300)}>
-        <path
-          d="M16 17V11.5M13.6 13.9L16 11.5L18.4 13.9"
-          className={ACCENT_STROKE}
-        />
-      </g>
-    </GlyphSvg>
-  );
-}
-
 function GlyphPlayground() {
   return (
     <GlyphSvg>
@@ -480,72 +462,6 @@ function GlyphChangelog() {
   );
 }
 
-function ShowcaseWindow({
-  x,
-  y,
-  lines,
-}: {
-  x: number;
-  y: number;
-  lines?: boolean;
-}) {
-  return (
-    <>
-      <rect
-        x={x}
-        y={y}
-        width="17.5"
-        height="12"
-        rx="1.5"
-        className="fill-background"
-      />
-      <path d={`M${x} ${y + 3.4}H${x + 17.5}`} className={FAINT} />
-      {lines ? (
-        <path d={`M${x + 2.5} ${y + 6.9}H${x + 11.5}`} className={DIM} />
-      ) : null}
-    </>
-  );
-}
-
-function GlyphShowcase() {
-  const toFront = { "--glyph-dx": "-7.5px", "--glyph-dy": "6px" } as const;
-  return (
-    <GlyphSvg>
-      <g
-        {...motion("trade", 0, {
-          ...toFront,
-          "--glyph-from": "0.55",
-          "--glyph-to": "1",
-        })}
-        className="opacity-55"
-      >
-        <ShowcaseWindow x={11} y={3} />
-      </g>
-      <g
-        {...motion("trade", 0, {
-          "--glyph-dx": "7.5px",
-          "--glyph-dy": "-6px",
-          "--glyph-from": "1",
-          "--glyph-to": "0.55",
-        })}
-      >
-        <ShowcaseWindow x={3.5} y={9} lines />
-      </g>
-      <g
-        {...motion("trade-top", 0, { ...toFront, "--glyph-to": "1" })}
-        className="opacity-0"
-      >
-        <ShowcaseWindow x={11} y={3} />
-      </g>
-      <path
-        {...motion("spin", 250)}
-        d="M26 15.5L26.9 17.6L29 18.5L26.9 19.4L26 21.5L25.1 19.4L23 18.5L25.1 17.6Z"
-        className={cn("fill-foreground/40 stroke-none", ACCENT_FILL)}
-      />
-    </GlyphSvg>
-  );
-}
-
 function GlyphOss() {
   return (
     <GlyphSvg>
@@ -643,97 +559,6 @@ function GlyphBlog() {
   );
 }
 
-function GlyphCareers() {
-  return (
-    <GlyphSvg>
-      <circle
-        {...motion("bob")}
-        cx="11"
-        cy="8.5"
-        r="2.6"
-        className={cn("fill-foreground/30 stroke-none", ACCENT_FILL)}
-      />
-      <path d="M6.5 18.5a4.5 4.5 0 0 1 9 0" />
-      <circle
-        {...motion("bob", 140)}
-        cx="19.5"
-        cy="9.5"
-        r="2.2"
-        className="fill-foreground/20 stroke-none"
-      />
-      <path d="M15.6 18.5a3.9 3.9 0 0 1 7.8 0" className={DIM} />
-      <path
-        {...motion("spin", 280)}
-        d="M27 5.5V9.5M25 7.5H29"
-        className={ACCENT_STROKE}
-      />
-    </GlyphSvg>
-  );
-}
-
-function GlyphBrand() {
-  return (
-    <GlyphSvg>
-      <circle
-        {...motion("shift", 0, { "--glyph-dx": "-12px", "--glyph-dy": "3px" })}
-        cx="21.5"
-        cy="10.5"
-        r="6"
-      />
-      <rect
-        {...motion("shift", 0, { "--glyph-dx": "12px", "--glyph-dy": "-3px" })}
-        x="4"
-        y="8"
-        width="11"
-        height="11"
-        rx="2"
-        className={cn("fill-foreground/25 stroke-none", ACCENT_FILL)}
-      />
-    </GlyphSvg>
-  );
-}
-
-function GlyphTraction() {
-  return (
-    <GlyphSvg>
-      <path
-        {...motion("fade", 200)}
-        d="M2 20L9 15.5L15 17L22 9.5L29.5 4V21H2Z"
-        className="fill-foreground/[0.07] stroke-none"
-      />
-      <path d="M2 21H30" className={FAINT} />
-      <path
-        {...motion("draw")}
-        pathLength={100}
-        d="M2 20L9 15.5L15 17L22 9.5L29.5 4"
-      />
-      <circle
-        {...motion("pop", 600)}
-        cx="29.5"
-        cy="4"
-        r="1.7"
-        className={cn("fill-foreground/45 stroke-none", ACCENT_FILL)}
-      />
-    </GlyphSvg>
-  );
-}
-
-function GlyphStatus() {
-  const beat = "M1 13H9.5L11.5 13L13.5 6L16 19.5L18.5 9.5L20 13H31";
-  return (
-    <GlyphSvg>
-      <path d="M1 13H31" className={FAINT} />
-      <path {...motion("draw")} pathLength={100} d={beat} />
-      <path
-        {...motion("blip", 300)}
-        pathLength={100}
-        d={beat}
-        className="stroke-blue-500 [stroke-width:1.6]"
-      />
-    </GlyphSvg>
-  );
-}
-
 const GLYPHS: Record<NavGlyphKind, () => ReactNode> = {
   elements: GlyphElements,
   design: GlyphDesign,
@@ -741,7 +566,6 @@ const GLYPHS: Record<NavGlyphKind, () => ReactNode> = {
   native: GlyphNative,
   ink: GlyphInk,
   vue: GlyphVue,
-  cloud: GlyphCloud,
   playground: GlyphPlayground,
   shimmer: GlyphShimmer,
   heat: GlyphHeat,
@@ -749,14 +573,9 @@ const GLYPHS: Record<NavGlyphKind, () => ReactNode> = {
   o11y: GlyphO11y,
   examples: GlyphExamples,
   changelog: GlyphChangelog,
-  showcase: GlyphShowcase,
   oss: GlyphOss,
   packages: GlyphPackages,
-  traction: GlyphTraction,
   blog: GlyphBlog,
-  careers: GlyphCareers,
-  brand: GlyphBrand,
-  status: GlyphStatus,
 };
 
 export function NavGlyph({

@@ -1,14 +1,16 @@
-import { checkoutEnabled } from "./checkout/config";
 import { isAiPlaygroundEnabled } from "./feature-flags";
 
-export const BASE_URL = "https://openagentui.dev";
-export const CLOUD_URL = "https://cloud.assistant-ui.com";
-export const STATUS_URL = "https://status.assistant-ui.com";
+export const BASE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://openagentui.dev"
+).replace(/\/+$/, "");
+export const REPO_URL = "https://github.com/RealDealCPA-VR/OpenAgentUI";
+export const DISCUSSIONS_URL = `${REPO_URL}/discussions`;
+export const ISSUES_URL = `${REPO_URL}/issues`;
 
 export const SURFACES = ["react", "rn", "ink"] as const;
 export type Surface = (typeof SURFACES)[number];
 
-export const PLATFORMS = [...SURFACES, "vue", "tap", "cloud"] as const;
+export const PLATFORMS = [...SURFACES, "vue", "tap"] as const;
 export type Platform = (typeof PLATFORMS)[number];
 
 export const DEFAULT_PLATFORM: Surface = "react";
@@ -19,7 +21,6 @@ export const PLATFORM_LABELS: Record<Platform, string> = {
   ink: "React Ink",
   vue: "Vue",
   tap: "Tap",
-  cloud: "openagentui-cloud",
 };
 
 export type Product = {
@@ -106,7 +107,6 @@ export type NavGlyphKind =
   | "native"
   | "ink"
   | "vue"
-  | "cloud"
   | "playground"
   | "shimmer"
   | "heat"
@@ -114,14 +114,9 @@ export type NavGlyphKind =
   | "o11y"
   | "examples"
   | "changelog"
-  | "showcase"
   | "oss"
   | "packages"
-  | "traction"
-  | "blog"
-  | "careers"
-  | "brand"
-  | "status";
+  | "blog";
 
 export type DropdownItem = {
   label: string;
@@ -150,9 +145,6 @@ export type NavItem =
     };
 
 export const NAV_ITEMS: NavItem[] = [
-  ...(checkoutEnabled
-    ? [{ type: "link" as const, label: "Components", href: "/components" }]
-    : []),
   { type: "link", label: "Docs", href: "/docs" },
   {
     type: "mega",
@@ -211,15 +203,8 @@ export const NAV_ITEMS: NavItem[] = [
         ],
       },
       {
-        label: "Hosted",
+        label: "Try",
         items: [
-          {
-            label: "Cloud",
-            href: CLOUD_URL,
-            description: "Hosted threads and persistence",
-            external: true,
-            glyph: "cloud",
-          },
           {
             label: "Playground",
             href: "/playground",
@@ -300,13 +285,6 @@ export const NAV_ITEMS: NavItem[] = [
             glyph: "changelog",
           },
           {
-            label: "Showcase",
-            href: "/showcase",
-            description: "Apps built with openagentui",
-            external: false,
-            glyph: "showcase",
-          },
-          {
             label: "Open source",
             href: "/oss",
             description: "Projects and repos in the open",
@@ -323,46 +301,32 @@ export const NAV_ITEMS: NavItem[] = [
         ],
       },
       {
-        label: "Company",
+        label: "Community",
         items: [
           {
-            label: "Blog",
-            href: "/blog",
-            description: "Latest news and updates",
-            external: false,
+            label: "GitHub",
+            href: REPO_URL,
+            description: "Source, issues and pull requests",
+            external: true,
+            glyph: "oss",
+          },
+          {
+            label: "Discussions",
+            href: DISCUSSIONS_URL,
+            description: "Questions, ideas and show-and-tell",
+            external: true,
             glyph: "blog",
           },
           {
-            label: "Careers",
-            href: "/careers",
-            description: "Join our team",
-            external: false,
-            glyph: "careers",
-          },
-          {
-            label: "Brand",
-            href: "/brand",
-            description: "Logos and brand assets",
-            external: false,
-            glyph: "brand",
-          },
-          {
-            label: "Traction",
-            href: "/traction",
-            description: "Stars and downloads, live",
-            external: false,
-            glyph: "traction",
-          },
-          {
-            label: "Status",
-            href: STATUS_URL,
-            description: "Uptime and incident history",
+            label: "Contributing",
+            href: `${REPO_URL}/blob/main/CONTRIBUTING.md`,
+            description: "How to build, test and send a change",
             external: true,
-            glyph: "status",
+            glyph: "packages",
           },
         ],
       },
     ],
   },
-  { type: "link", label: "Pricing", href: "/pricing" },
+  { type: "link", label: "Components", href: "/elements" },
 ];

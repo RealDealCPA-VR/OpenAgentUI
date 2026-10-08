@@ -315,7 +315,7 @@ npx shadcn@latest add "@openagentui/elements-model-picker"
 
 <RuntimeMode>
 
-With a runtime there is no catalog of available models to read: openagentui tracks the model configuration for the next call, not a directory of every model you could switch to. Unlike the popover, `ModelPicker` does no registration on its own, so register a provider that reports the selected id and seed the initial selection from whatever the model context already reports, for example a default set on the server.
+With a runtime there is no catalog of available models to read: OpenAgentUI tracks the model configuration for the next call, not a directory of every model you could switch to. Unlike the popover, `ModelPicker` does no registration on its own, so register a provider that reports the selected id and seed the initial selection from whatever the model context already reports, for example a default set on the server.
 
 ```tsx title="components/openagentui/elements/model-picker.tsx"
 "use client";

@@ -223,7 +223,7 @@ async function nodeCliPackageJson(
 }
 
 function nodeCliReadme(manifest: DemoDownloadManifest) {
-  return `# Xulux ${manifest.name}\n\n${manifest.description}\n\nThis is a Node.js terminal app. It renders a Claude Code or Codex CLI-style assistant UI with React Ink and openagentui terminal primitives.\n\n## Run\n\n\`\`\`bash\nnpm install\nnpm run dev\n\`\`\`\n\n## Build\n\n\`\`\`bash\nnpm run build\nnpm start\n\`\`\`\n\nSource demo: \`${manifest.sourcePath ?? "examples/with-react-ink"}\`\n`;
+  return `# Xulux ${manifest.name}\n\n${manifest.description}\n\nThis is a Node.js terminal app. It renders a Claude Code or Codex CLI-style assistant UI with React Ink and OpenAgentUI terminal primitives.\n\n## Run\n\n\`\`\`bash\nnpm install\nnpm run dev\n\`\`\`\n\n## Build\n\n\`\`\`bash\nnpm run build\nnpm start\n\`\`\`\n\nSource demo: \`${manifest.sourcePath ?? "examples/with-react-ink"}\`\n`;
 }
 
 async function packageJson(

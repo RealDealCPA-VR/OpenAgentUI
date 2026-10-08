@@ -1,4 +1,4 @@
-import { NAV_ITEMS, STATUS_URL } from "./constants";
+import { DISCUSSIONS_URL, NAV_ITEMS, REPO_URL } from "./constants";
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -6,41 +6,48 @@ afterEach(() => {
 });
 
 describe("NAV_ITEMS", () => {
-  it("opens with Components, then Docs, and keeps Pricing last as links", () => {
-    expect(NAV_ITEMS.slice(0, 2)).toEqual([
-      { type: "link", label: "Components", href: "/components" },
-      { type: "link", label: "Docs", href: "/docs" },
-    ]);
-    expect(NAV_ITEMS.at(-1)).toEqual({
-      type: "link",
-      label: "Pricing",
-      href: "/pricing",
-    });
-  });
-
-  it("opens with Docs when the shop is closed", async () => {
-    vi.stubEnv("NEXT_PUBLIC_CHECKOUT_URL", "");
-    vi.resetModules();
-    const closed = await import("./constants");
-    expect(closed.NAV_ITEMS[0]).toEqual({
+  it("opens with Docs and ends with the Components gallery", () => {
+    expect(NAV_ITEMS[0]).toEqual({
       type: "link",
       label: "Docs",
       href: "/docs",
     });
+    expect(NAV_ITEMS.at(-1)).toEqual({
+      type: "link",
+      label: "Components",
+      href: "/elements",
+    });
   });
 
-  it("ships only existing products and does not lift Elements or Playground", () => {
-    expect(
-      NAV_ITEMS.some(
-        (item) => item.type === "link" && item.label === "Elements",
-      ),
-    ).toBe(false);
-    expect(
-      NAV_ITEMS.some(
-        (item) => item.type === "link" && item.label === "Playground",
-      ),
-    ).toBe(false);
+  it("never links a removed commercial page", () => {
+    const hrefs = NAV_ITEMS.flatMap((item) =>
+      item.type === "link"
+        ? [item.href]
+        : [
+            ...(item.featured
+              ? [
+                  item.featured.item.href,
+                  ...(item.featured.extraItems ?? []).map((i) => i.href),
+                ]
+              : []),
+            ...item.groups.flatMap((group) => group.items.map((i) => i.href)),
+          ],
+    );
+    for (const removed of [
+      "/pricing",
+      "/blog",
+      "/careers",
+      "/brand",
+      "/traction",
+      "/showcase",
+      "/components",
+    ]) {
+      expect(hrefs).not.toContain(removed);
+    }
+    expect(hrefs.some((href) => href.includes("assistant-ui.com"))).toBe(false);
+  });
 
+  it("ships only existing products", () => {
     const products = NAV_ITEMS.find(
       (item) => item.type === "mega" && item.label === "Products",
     );
@@ -55,7 +62,7 @@ describe("NAV_ITEMS", () => {
 
     expect(products.groups.map((group) => group.label)).toEqual([
       "Platforms",
-      "Hosted",
+      "Try",
       "Primitives",
     ]);
     expect(
@@ -65,7 +72,6 @@ describe("NAV_ITEMS", () => {
       "React Native",
       "Ink",
       "Vue",
-      "Cloud",
       "Playground",
       "tw-shimmer",
       "Heat Graph",
@@ -74,35 +80,25 @@ describe("NAV_ITEMS", () => {
     ]);
   });
 
-  it("keeps Resources to Learn and Company", () => {
-    const resources = NAV_ITEMS.find(
-      (item) => item.type === "mega" && item.label === "Resources",
-    );
-    expect(resources?.type).toBe("mega");
-    if (resources?.type !== "mega") return;
-
-    expect(resources.groups.map((group) => group.label)).toEqual([
-      "Learn",
-      "Company",
-    ]);
-    expect(
-      resources.groups
-        .find((group) => group.label === "Company")
-        ?.items.map((item) => item.label),
-    ).toEqual(["Blog", "Careers", "Brand", "Traction", "Status"]);
-  });
-
-  it("links Status out to the hosted status page", () => {
+  it("points Resources at learning material and the community", () => {
     const resources = NAV_ITEMS.find(
       (item) => item.type === "mega" && item.label === "Resources",
     );
     if (resources?.type !== "mega")
       throw new Error("Resources is not a mega item");
 
-    const status = resources.groups
-      .flatMap((group) => group.items)
-      .find((item) => item.label === "Status");
-
-    expect(status).toMatchObject({ href: STATUS_URL, external: true });
+    expect(resources.groups.map((group) => group.label)).toEqual([
+      "Learn",
+      "Community",
+    ]);
+    const community = resources.groups.find(
+      (group) => group.label === "Community",
+    );
+    expect(community?.items.map((item) => item.href)).toEqual([
+      REPO_URL,
+      DISCUSSIONS_URL,
+      `${REPO_URL}/blob/main/CONTRIBUTING.md`,
+    ]);
+    expect(community?.items.every((item) => item.external)).toBe(true);
   });
 });

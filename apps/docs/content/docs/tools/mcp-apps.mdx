@@ -4,7 +4,7 @@ description: Render MCP App UI resources inline in chat. Native renderer for the
 platforms: ["react"]
 ---
 
-[MCP Apps](https://apps.extensions.modelcontextprotocol.io/) lets a Model Context Protocol server ship a UI resource alongside a tool: a self-contained HTML widget that the chat host renders inline when the tool is called. openagentui ships a native renderer that mounts the widget in a sandboxed iframe via [`SafeContentFrame`](/safe-content-frame) and runs a JSON-RPC postMessage bridge so the widget can call tools, send messages, request a display mode, and read host context.
+[MCP Apps](https://apps.extensions.modelcontextprotocol.io/) lets a Model Context Protocol server ship a UI resource alongside a tool: a self-contained HTML widget that the chat host renders inline when the tool is called. OpenAgentUI ships a native renderer that mounts the widget in a sandboxed iframe via [`SafeContentFrame`](/safe-content-frame) and runs a JSON-RPC postMessage bridge so the widget can call tools, send messages, request a display mode, and read host context.
 
 ## Overview
 
@@ -244,7 +244,7 @@ Forward the resource's `_meta.ui` object as `meta`. Metadata on the `resources/r
 
 ### Multiple MCP servers
 
-When a tool part carries `mcp.app.serverId`, the renderer forwards it to the host operations as `params.serverId` so the route can select the MCP client that owns the resource or tool. The agent stack emits this routable identity in part metadata. For `@ag-ui/mcp-apps-middleware`, openagentui uses its configured `serverId`, falling back to `serverHash` when `serverId` is absent or empty. Match the route's map keys to whichever identity your setup emits: configure an explicit `serverId` on each middleware server, or key the map by the emitted hashes. Omitting `serverId` preserves the single-server behavior, as shown by the fallback client in the route example.
+When a tool part carries `mcp.app.serverId`, the renderer forwards it to the host operations as `params.serverId` so the route can select the MCP client that owns the resource or tool. The agent stack emits this routable identity in part metadata. For `@ag-ui/mcp-apps-middleware`, OpenAgentUI uses its configured `serverId`, falling back to `serverHash` when `serverId` is absent or empty. Match the route's map keys to whichever identity your setup emits: configure an explicit `serverId` on each middleware server, or key the map by the emitted hashes. Omitting `serverId` preserves the single-server behavior, as shown by the fallback client in the route example.
 
 Per-name `setToolUI` registrations always win over the MCP fallback, so you can still customize specific tools.
 
@@ -275,7 +275,7 @@ const result = streamText({
 
 [OpenAI Apps SDK](https://developers.openai.com/apps-sdk) servers carry the same `ui://` template under a different convention: the pointer is `_meta["openai/outputTemplate"]` on the tool definition (not `_meta.ui.resourceUri`), and the resource is served as `text/html+skybridge` rather than `text/html;profile=mcp-app`. `@ai-sdk/mcp` does not recognize `openai/outputTemplate`, so it never populates `toolMetadata.app` and the renderer stays idle.
 
-The renderer needs no change; you only have to surface the pointer. openagentui reads the canonical `result._meta.ui.resourceUri` off tool results (and still accepts the deprecated flat `result._meta["ui/resourceUri"]`), so the smallest bridge is to copy the template onto the result by tool name. Build the map once from the tool listing, then stamp it inside each tool's `execute`:
+The renderer needs no change; you only have to surface the pointer. OpenAgentUI reads the canonical `result._meta.ui.resourceUri` off tool results (and still accepts the deprecated flat `result._meta["ui/resourceUri"]`), so the smallest bridge is to copy the template onto the result by tool name. Build the map once from the tool listing, then stamp it inside each tool's `execute`:
 
 ```ts
 import type { Tool } from "ai";
@@ -372,7 +372,7 @@ Alternatively, AG-UI servers can place MCP host fields directly on `TOOL_CALL_RE
 
 In this form, the runtime assembles a `CallToolResult`-shaped `part.result` from `content`, `structuredContent`, `_meta`, and `isError`. At least one of `structuredContent` or `_meta` must be present; when both are absent the enriched path does not activate and the result falls back to the plain `content` string. The `_meta` can also carry the app pointer itself (canonical `ui.resourceUri`, or the deprecated flat `"ui/resourceUri"`), in which case no `ACTIVITY_SNAPSHOT` is needed to activate the widget. A snapshot remains the only carrier for server identity (`serverId`), and when both provide a `resourceUri` the snapshot wins.
 
-The visibility split follows the MCP Apps contract: `content` is model-visible; `structuredContent` and `_meta` are available only to the host and widget. When openagentui serializes history into a later AG-UI request, it sends the saved model-visible text and never includes `structuredContent` or `_meta`.
+The visibility split follows the MCP Apps contract: `content` is model-visible; `structuredContent` and `_meta` are available only to the host and widget. When OpenAgentUI serializes history into a later AG-UI request, it sends the saved model-visible text and never includes `structuredContent` or `_meta`.
 
 ## Bridge protocol
 

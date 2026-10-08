@@ -1,6 +1,6 @@
 ---
 title: AI SDK v7
-description: Integrate Vercel AI SDK v7 with openagentui for streaming chat.
+description: Integrate Vercel AI SDK v7 with OpenAgentUI for streaming chat.
 ---
 
 This page covers the current integration, which requires `ai@^7` and `@ai-sdk/react@^4`. For older versions see the [overview](/docs/runtimes/ai-sdk/overview).
@@ -298,7 +298,7 @@ Without a `stopWhen`, AI SDK runs a single inference step. Set `stepCountIs` (or
 
 ## Server-side tool approval
 
-AI SDK v7 gates tool execution with the call-level `toolApproval` option. The server pauses, emits an `approval-requested` part, and resumes once the client posts an approval response. openagentui surfaces the gate as `approval` on the tool part and adds a `respondToApproval` prop on the renderer, so tool components stay decoupled from `chatHelpers`.
+AI SDK v7 gates tool execution with the call-level `toolApproval` option. The server pauses, emits an `approval-requested` part, and resumes once the client posts an approval response. OpenAgentUI surfaces the gate as `approval` on the tool part and adds a `respondToApproval` prop on the renderer, so tool components stay decoupled from `chatHelpers`.
 
 On the backend, configure the gate with the call-level `toolApproval` option (per-tool status or function):
 
@@ -551,7 +551,7 @@ The adapter **must** implement `withFormat`. `useChatRuntime` persists history t
 </Callout>
 
 <Callout type="info">
-For server-side cloud persistence without writing an adapter, see the [AssistantCloud integration](/docs/cloud/ai-sdk).
+If you run or choose an Assistant-Cloud-compatible backend, pass an [`AssistantCloud` client](/docs/api-reference/integrations/openagentui-cloud) as `cloud` instead of writing an adapter.
 </Callout>
 
 ```tsx
@@ -611,7 +611,7 @@ const runtime = useChatRuntime({
 ```
 
 `useChatRuntime`, `AISDKChat`, and `AISDKThreads` clone
-`AssistantChatTransport` instances per thread so their openagentui runtime
+`AssistantChatTransport` instances per thread so their OpenAgentUI runtime
 wiring stays isolated. Subclasses that keep additional constructor arguments or
 instance fields should override `__internal_clone()` to preserve that state.
 Other AI SDK `ChatTransport` instances passed directly are shared as-is;
@@ -641,7 +641,7 @@ const runtime = useChatRuntime({
 });
 ```
 
-Only the settled ID is emitted: while a freshly created thread has not been initialized yet, the value is `undefined`, and the real ID is emitted once the thread initializes (with [AssistantCloud](/docs/cloud/ai-sdk), this is the cloud thread ID). The transient local ID is never surfaced.
+Only the settled ID is emitted: while a freshly created thread has not been initialized yet, the value is `undefined`, and the real ID is emitted once the thread initializes (with [`AssistantCloud`](/docs/api-reference/integrations/openagentui-cloud), this is the cloud thread ID). The transient local ID is never surfaced.
 
 ### joinStrategy
 
@@ -751,7 +751,7 @@ const chat = useChat();
 const runtime = useAISDKRuntime(chat);
 ```
 
-`useAISDKRuntime` does not provide `cloud` or the higher-level adapter slots; those are part of `useChatRuntime`. If you need both access to the `useChat` state and cloud thread support, use `useChatRuntime` and read the chat state through openagentui hooks.
+`useAISDKRuntime` does not provide `cloud` or the higher-level adapter slots; those are part of `useChatRuntime`. If you need both access to the `useChat` state and cloud thread support, use `useChatRuntime` and read the chat state through OpenAgentUI hooks.
 
 `useAISDKRuntime` accepts `joinStrategy`, `onResume`, `onRespondToToolApproval`, `messageRepository`, and `unstable_onBranchChange` (see [Runtime options](#runtime-options)) plus one option of its own, `cancelPendingToolCallsOnSend`:
 

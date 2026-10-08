@@ -1,6 +1,6 @@
 ---
 title: Tool Rendering
-description: Register React renderers for openagentui tool calls, tool results, and model data parts.
+description: Register React renderers for OpenAgentUI tool calls, tool results, and model data parts.
 ---
 
 import { DataRenderers, McpAppRenderer, McpAppsRemoteHost, getMcpAppFromToolPart, useAssistantDataUI, useAssistantToolUI } from "@/generated/typeDocs";
@@ -24,7 +24,7 @@ Returns MCP app metadata for a tool-call part that points at a `ui://`
 resource.
 
 Returns `undefined` when the part has no MCP app metadata or the metadata
-does not reference an openagentui MCP app resource.
+does not reference an OpenAgentUI MCP app resource.
 
 <ParametersTable {...getMcpAppFromToolPart} />
 

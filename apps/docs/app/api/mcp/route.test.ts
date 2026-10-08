@@ -591,7 +591,7 @@ describe("POST /api/mcp", () => {
 
     expect(result.isError).toBe(true);
     expect(text).toBe(
-      "Template tool rate limit exceeded. Retry in 30s. The openagentui docs tools remain available.",
+      "Template tool rate limit exceeded. Retry in 30s. The OpenAgentUI docs tools remain available.",
     );
     expect(mocks.fetchPreviewSession).not.toHaveBeenCalled();
   });
@@ -610,7 +610,7 @@ describe("POST /api/mcp", () => {
 
     expect(result.isError).toBe(true);
     expect(text).toBe(
-      "Template tools are temporarily unavailable. The openagentui docs tools remain available.",
+      "Template tools are temporarily unavailable. The OpenAgentUI docs tools remain available.",
     );
     expect(mocks.fetchTemplateContract).not.toHaveBeenCalled();
   });

@@ -11,7 +11,7 @@ State lives inside the runtime by default. Multi-thread persistence and shared a
 
 Pick `LocalRuntime` when:
 
-- You want openagentui to manage chat state for you.
+- You want OpenAgentUI to manage chat state for you.
 - Your backend exposes a function-call shaped API (REST, OpenAI SDK, your own model client).
 - Branching, editing, and regeneration should work without you writing extra code.
 - You want to compose adapters (attachments, speech, feedback, history, suggestions).
@@ -688,7 +688,7 @@ const runtime = useLocalRuntime(MyModelAdapter, {
 
 ## Multi-thread
 
-`LocalRuntime` supports multi-thread either via [AssistantCloud](/docs/cloud) or via a custom `RemoteThreadListAdapter`. See [threads](/docs/runtimes/concepts/threads) for the contract and full examples.
+`LocalRuntime` supports multi-thread either via a custom `RemoteThreadListAdapter` or via the [`AssistantCloud` client](/docs/api-reference/integrations/openagentui-cloud) for an Assistant-Cloud-compatible backend. See [threads](/docs/runtimes/concepts/threads) for the contract and full examples.
 
 ```tsx
 // managed (see "AssistantCloud" in /docs/runtimes/concepts/threads for cloud setup)
@@ -870,7 +870,7 @@ const CustomAPIAdapter: ChatModelAdapter = {
       name: "cloud",
       type: "AssistantCloud",
       description:
-        "Enable Assistant Cloud integration for multi-thread support and persistence.",
+        "Connect an Assistant-Cloud-compatible backend for multi-thread support and persistence.",
     },
     {
       name: "adapters",

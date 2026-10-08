@@ -87,7 +87,7 @@ export const AUI_ELEMENT_DOCS: Record<string, ElementDoc> = {
 
 <Source href="https://openagentui.dev">
   <SourceIcon url="https://openagentui.dev" />
-  <SourceTitle>openagentui</SourceTitle>
+  <SourceTitle>OpenAgentUI</SourceTitle>
 </Source>`,
   ),
   image: usageOnly(

@@ -13,6 +13,8 @@ permissions:
 
 jobs:
   autofix:
+    # Needs the autofix.ci GitHub App; set the ENABLE_AUTOFIX repository variable once it is installed.
+    if: vars.ENABLE_AUTOFIX == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code repository

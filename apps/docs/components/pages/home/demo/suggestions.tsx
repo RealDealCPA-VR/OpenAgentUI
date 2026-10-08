@@ -26,7 +26,7 @@ const SUGGESTIONS = [
   },
   {
     label: "Add a thread list",
-    prompt: "How do I add a thread list to an openagentui app?",
+    prompt: "How do I add a thread list to an OpenAgentUI app?",
   },
   {
     label: "Remember my stack",

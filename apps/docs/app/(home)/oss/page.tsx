@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 
 const title = "Open source";
 const description =
-  "Every open source project from the openagentui organization, with links to its docs, source, and packages.";
+  "Every package in the OpenAgentUI repository, grouped by surface, with links to its docs and source.";
 
 export const metadata: Metadata = {
   title,
@@ -45,16 +45,16 @@ export default async function OssPage() {
     Object.keys(OSS_CATEGORIES) as OssCategory[]
   ).filter((category) => (grouped[category]?.length ?? 0) > 0);
 
-  const stars = flagship ? stats.stars[flagship.repo] : undefined;
-  const weekly = flagship?.npm ? stats.weekly[flagship.npm] : undefined;
+  const stars = stats.stars;
+  const weekly = flagship ? stats.weekly[flagship.npm] : undefined;
 
   return (
     <PageFrame pad="sub">
       <header className="max-w-2xl">
         <h1 className={typePage}>Built in the open.</h1>
         <p className={cn(typeDeck, "mt-4 max-w-[52ch]")}>
-          {OSS_PROJECTS.length} projects across the openagentui organization,
-          from the chat runtime to the primitives we extracted along the way.
+          {OSS_PROJECTS.length} MIT-licensed packages in one repository, from
+          the chat runtime to the standalone primitives.
         </p>
       </header>
 
@@ -87,7 +87,7 @@ export default async function OssPage() {
                   >
                     github
                   </a>
-                  {flagship.npm ? (
+                  {weekly ? (
                     <a
                       href={ossNpmUrl(flagship.npm)}
                       target="_blank"
@@ -140,7 +140,7 @@ export default async function OssPage() {
           href="/packages"
           className="text-muted-foreground hover:text-foreground group inline-flex items-center gap-1.5 text-sm transition-colors"
         >
-          Every package we publish on npm
+          Every package, grouped by surface
           <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       </footer>
@@ -162,15 +162,8 @@ function Figure({ value, label }: { value: number; label: string }) {
 }
 
 function projectStat(project: OssProject, stats: OssStats): string | null {
-  if (!project.path) {
-    const stars = stats.stars[project.repo];
-    if (stars) return `${formatCompact(stars)} stars`;
-  }
-  if (project.npm) {
-    const weekly = stats.weekly[project.npm];
-    if (weekly) return `${formatCompact(weekly)} /wk`;
-  }
-  return null;
+  const weekly = stats.weekly[project.npm];
+  return weekly ? `${formatCompact(weekly)} /wk` : null;
 }
 
 function ProjectRow({

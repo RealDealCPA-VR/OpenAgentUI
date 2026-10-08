@@ -1,40 +1,29 @@
 "use client";
 
 import { Fragment } from "react";
+import Link from "next/link";
 import { analytics } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
-import { StartSetupDialog } from "@/components/shared/start-setup-dialog";
-import { GitHubStars } from "@/components/pages/home/github-stars";
-import { NpmDownloads } from "@/components/pages/home/npm-downloads";
+import { GitHubIcon } from "@/components/icons/github";
+import { InstallBar } from "@/components/pages/home/install-bar";
 import { typeDeck, typeHero } from "@/components/shared/type";
-import { checkoutEnabled } from "@/lib/checkout/config";
+import { REPO_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
 
-const HEADLINE_WORDS = ["The", "frontend", "library", "for", "AI", "agents."];
+const HEADLINE_WORDS = ["Open", "source", "UI", "for", "AI", "agents."];
 
-export function Hero({
-  stars,
-  downloads,
-}: {
-  stars: number | null;
-  downloads: number | null;
-}) {
+const FACTS = [
+  { label: "License", value: "MIT" },
+  { label: "Platforms", value: "React · React Native · Ink · Vue" },
+  { label: "Language", value: "TypeScript" },
+] as const;
+
+export function Hero({ version }: { version: string | null }) {
   return (
-    <section className="relative flex flex-col pb-4 md:pb-8">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 right-0 hidden -translate-y-1/2 md:block"
-      >
-        <div className="animate-in fade-in-0 bg-foreground/[0.05] relative h-[20rem] w-[20rem] overflow-hidden [mask-image:url(/favicon/icon.svg),radial-gradient(circle,#000_40%,transparent_44%)] [mask-composite:intersect] [mask-size:contain,5px_5px] [mask-position:center,0_0] [mask-repeat:no-repeat,repeat] duration-1000">
-          <span aria-hidden className="hero-glint absolute inset-0 block" />
-        </div>
-      </div>
-
+    <section className="relative grid gap-10 pb-4 md:pb-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-end lg:gap-16">
       <div className="relative flex flex-col gap-4">
         <div className="flex flex-col gap-3 pb-1">
-          <h1 className={cn(typeHero, "max-w-[20ch]")}>
+          <h1 className={cn(typeHero, "max-w-[16ch]")}>
             {HEADLINE_WORDS.map((word, index) => (
               <Fragment key={index}>
                 <span
@@ -56,11 +45,12 @@ export function Hero({
             />
           </h1>
           <p
-            className={cn(typeDeck, "hero-rise")}
+            className={cn(typeDeck, "hero-rise max-w-[46ch]")}
             style={{ animationDelay: "550ms" }}
           >
-            Primitives and a runtime for production chat. Any backend, through
-            adapters.
+            Composable React primitives, a streaming runtime, and adapters for
+            AI SDK, LangGraph, AG-UI, A2A and more. Every component is source
+            you own, and nothing on this page needs an account.
           </p>
         </div>
 
@@ -68,61 +58,52 @@ export function Hero({
           className="hero-rise flex flex-wrap items-center gap-3"
           style={{ animationDelay: "700ms" }}
         >
-          {checkoutEnabled ? (
-            <StartSetupDialog location="hero">Quick Start</StartSetupDialog>
-          ) : (
-            <Button
-              nativeButton={false}
-              render={
-                <Link
-                  href="/docs/installation"
-                  onClick={() => analytics.cta.clicked("get_started", "hero")}
-                />
-              }
-            >
-              Quick Start
-            </Button>
-          )}
+          <Button
+            nativeButton={false}
+            render={
+              <Link
+                href="/docs/installation"
+                onClick={() => analytics.cta.clicked("get_started", "hero")}
+              />
+            }
+          >
+            Read the quick start
+          </Button>
+          <Button
+            variant="outline"
+            nativeButton={false}
+            render={
+              <a href={REPO_URL} target="_blank" rel="noopener noreferrer" />
+            }
+          >
+            <GitHubIcon className="size-3.5" />
+            View source
+          </Button>
         </div>
 
-        <div
-          className="hero-rise text-muted-foreground flex flex-wrap items-center gap-x-3 gap-y-3 text-[13px]"
+        <dl
+          className="hero-rise text-muted-foreground mt-2 flex flex-wrap gap-x-6 gap-y-2 text-[13px]"
           style={{ animationDelay: "850ms" }}
         >
-          <a
-            href="https://github.com/RealDealCPA-VR/OpenAgentUI"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-          >
-            <GitHubStars stars={stars} />
-          </a>
-          <span className="bg-muted-foreground/20 rounded-capsule hidden size-1 sm:block" />
-          <a
-            href="https://www.npmjs.com/package/@openagentui/react"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-          >
-            <NpmDownloads downloads={downloads} />
-          </a>
-          <span className="bg-muted-foreground/20 rounded-capsule hidden size-1 sm:block" />
-          <a
-            href="https://www.ycombinator.com/companies/openagentui"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground inline-flex w-full items-center gap-1.5 transition-colors sm:w-auto"
-          >
-            Backed by
-            <Image
-              src="/icons/yc_logo.png"
-              alt="Y Combinator"
-              height={18}
-              width={18}
-            />
-            Combinator
-          </a>
-        </div>
+          {FACTS.map((fact) => (
+            <div key={fact.label} className="flex items-baseline gap-2">
+              <dt className="text-foreground/45">{fact.label}</dt>
+              <dd className="text-foreground/80">{fact.value}</dd>
+            </div>
+          ))}
+          {version ? (
+            <div className="flex items-baseline gap-2">
+              <dt className="text-foreground/45">Latest</dt>
+              <dd className="text-foreground/80 font-mono text-[12px] [font-variant-ligatures:none]">
+                @openagentui/react@{version}
+              </dd>
+            </div>
+          ) : null}
+        </dl>
+      </div>
+
+      <div className="hero-rise" style={{ animationDelay: "650ms" }}>
+        <InstallBar />
       </div>
     </section>
   );

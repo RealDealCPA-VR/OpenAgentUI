@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="black" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-messages-square">
-	<path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z">
-	</path>
-	<path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1">
-	</path>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><style>svg{color:black}@media(prefers-color-scheme:dark){svg{color:white}}</style><path fill-rule="evenodd" fill="currentColor" d="M12 2.5A9.5 9.5 0 0 1 21.5 12A9.5 9.5 0 0 1 12 21.5H2.5V12A9.5 9.5 0 0 1 12 2.5ZM12 6.25A5.75 5.75 0 1 0 12 17.75A5.75 5.75 0 1 0 12 6.25Z"/><g fill="currentColor"><rect x="11.1" y="8.6" width="1.8" height="6.8" rx="0.4"/></g></svg>

@@ -34,7 +34,7 @@ export const maxDuration = 300;
 const aiToolkit = new AISDKToolkit({ toolkit: docsToolkit });
 
 const SEARCH_DOCS_SYSTEM_INSTRUCTION =
-  "When the user asks about openagentui (its APIs, components, runtimes, setup, or documentation), call search_docs before answering and answer from its results. Cite the pages you used inline as markdown links with their titles. Never cite a page search_docs did not return.";
+  "When the user asks about OpenAgentUI (its APIs, components, runtimes, setup, or documentation), call search_docs before answering and answer from its results. Cite the pages you used inline as markdown links with their titles. Never cite a page search_docs did not return.";
 
 function corsHeaders(req: Request) {
   const origin = req.headers.get("origin") ?? "";

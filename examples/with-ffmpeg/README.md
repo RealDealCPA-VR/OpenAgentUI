@@ -35,5 +35,5 @@ npm run dev
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [Tool UI Guide](https://openagentui.dev/docs/tools)

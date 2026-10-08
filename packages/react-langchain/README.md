@@ -1,10 +1,10 @@
 # `@openagentui/react-langchain`
 
-Adapter that wraps [`useStream`](https://docs.langchain.com/oss/javascript/langgraph-sdk/react-stream) from `@langchain/react` and exposes it as an openagentui runtime. Bridges LangChain's `useStream` to an `AssistantRuntime` with hooks for interrupts, raw state submission, and reading custom LangGraph state keys.
+Adapter that wraps [`useStream`](https://docs.langchain.com/oss/javascript/langgraph-sdk/react-stream) from `@langchain/react` and exposes it as an OpenAgentUI runtime. Bridges LangChain's `useStream` to an `AssistantRuntime` with hooks for interrupts, raw state submission, and reading custom LangGraph state keys.
 
 ## When to use this
 
-openagentui also ships `@openagentui/react-langgraph`, which integrates with `@langchain/langgraph-sdk` directly and has a broader feature set (subgraph events, UI messages, message metadata, cancellation). The two packages are independent adapters targeting different upstream libraries; pick whichever matches the SDK you already use.
+OpenAgentUI also ships `@openagentui/react-langgraph`, which integrates with `@langchain/langgraph-sdk` directly and has a broader feature set (subgraph events, UI messages, message metadata, cancellation). The two packages are independent adapters targeting different upstream libraries; pick whichever matches the SDK you already use.
 
 ## Installation
 

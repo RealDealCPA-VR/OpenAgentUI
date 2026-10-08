@@ -135,17 +135,6 @@ describe("client analytics bootstrap", () => {
     expect(mocks.init).toHaveBeenCalledOnce();
   });
 
-  it("turns umami off on a decline and back on with an accept", async () => {
-    const { target, store } = stubBrowser({ consent: "granted" });
-
-    await boot();
-    choose(target, "denied");
-    expect(store.get("umami.disabled")).toBe("1");
-
-    choose(target, "granted");
-    expect(store.has("umami.disabled")).toBe(false);
-  });
-
   it("follows a choice made in another tab", async () => {
     const { target } = stubBrowser({ required: true });
 

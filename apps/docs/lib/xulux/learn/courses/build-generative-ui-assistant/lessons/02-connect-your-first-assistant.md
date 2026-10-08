@@ -1,6 +1,6 @@
 # Connect your first assistant
 
-This stage connects an openagentui conversation surface to a streaming AI SDK route.
+This stage connects an OpenAgentUI conversation surface to a streaming AI SDK route.
 
 Explain the responsibility of each part:
 

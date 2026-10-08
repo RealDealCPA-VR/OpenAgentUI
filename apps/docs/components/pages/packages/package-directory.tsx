@@ -1,5 +1,6 @@
 "use client";
 
+import { packageSourceUrl } from "@/lib/package-source";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Sparkline } from "@/components/pages/packages/sparkline";
@@ -201,7 +202,7 @@ function PackageRow({
 }) {
   return (
     <a
-      href={`https://www.npmjs.com/package/${row.name}`}
+      href={packageSourceUrl(row.name)}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

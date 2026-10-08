@@ -18,7 +18,7 @@ export function createSearchDocsTool({
 }) {
   return tool({
     description:
-      "Search the openagentui documentation for APIs, components, runtimes, setup, and usage guidance.",
+      "Search the OpenAgentUI documentation for APIs, components, runtimes, setup, and usage guidance.",
     inputSchema: zodSchema(
       z.object({
         query: z

@@ -162,53 +162,13 @@ const config: NextConfig = {
   redirects: async () => [
     ...LEGACY_TAP_DOCS_REDIRECTS,
     {
-      source: "/hack",
-      destination: "/hackathon",
-      permanent: false,
-    },
-    {
       source: "/tap",
       destination: "/docs/tap",
       permanent: true,
     },
     {
-      source: "/shop/cart.md",
-      destination: "/install.md",
-      permanent: true,
-    },
-    {
-      source: "/cloud-ai-sdk",
-      destination: "/docs/cloud/migrate-cloud-ai-sdk",
-      permanent: true,
-    },
-    {
-      source: "/docs/api-reference/integrations/cloud-ai-sdk",
-      destination: "/docs/cloud/migrate-cloud-ai-sdk",
-      permanent: true,
-    },
-    {
-      source: "/docs/cloud/ai-sdk-openagentui",
-      destination: "/docs/cloud/ai-sdk",
-      permanent: true,
-    },
-    {
       source: "/docs/integrations/observability/helicone",
       destination: "/docs/integrations",
-      permanent: true,
-    },
-    {
-      source: "/docs/cloud/telemetry",
-      destination: "/docs/cloud/run-reports",
-      permanent: true,
-    },
-    {
-      source: "/docs/cloud/overview",
-      destination: "/docs/cloud/dashboard/overview",
-      permanent: true,
-    },
-    {
-      source: "/docs/cloud/alerts",
-      destination: "/docs/cloud/settings/alerts",
       permanent: true,
     },
     {
@@ -523,17 +483,6 @@ const config: NextConfig = {
         ],
         destination: "/llms.txt",
       },
-      {
-        source: "/pricing",
-        has: [
-          { type: "header", key: "accept", value: "(?:.*text/markdown.*)" },
-        ],
-        destination: "/pricing.md",
-      },
-      {
-        source: "/pricing.mdx",
-        destination: "/pricing.md",
-      },
       ...docsMarkdownAcceptRewrites(),
       {
         source: "/examples/:path*",
@@ -563,18 +512,6 @@ const config: NextConfig = {
           { type: "header", key: "accept", value: "(?:.*text/markdown.*)" },
         ],
         destination: "/llms.mdx/elements/:path*",
-      },
-      {
-        source: "/umami/:path*",
-        destination: "https://openagentui-umami.vercel.app/:path*",
-      },
-      {
-        source: "/blog/:path.md",
-        destination: "/blog/llms.md/:path",
-      },
-      {
-        source: "/blog/:path.mdx",
-        destination: "/blog/llms.md/:path",
       },
       {
         source: "/ph/static/:path*",

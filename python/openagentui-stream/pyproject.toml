@@ -7,7 +7,7 @@ name = "openagentui-stream"
 version = "0.0.36"
 description = ""
 authors = [
-  { name="Simon Farshid", email="simon@openagentui.dev" },
+  { name = "OpenAgentUI contributors" },
 ]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"

@@ -3,7 +3,7 @@ title: Threads
 description: Single-thread, cloud, and custom-database thread management.
 ---
 
-Every openagentui runtime starts with a single in-memory thread. Multi-thread support is added through one of three mechanisms depending on which runtime you are using and where you want threads to live.
+Every OpenAgentUI runtime starts with a single in-memory thread. Multi-thread support is added through one of three mechanisms depending on which runtime you are using and where you want threads to live.
 
 ## Single thread (default)
 
@@ -17,13 +17,13 @@ Choose based on what you want to own.
 
 | Path | Runtime | Who owns thread metadata | Best for |
 | --- | --- | --- | --- |
-| AssistantCloud | LocalRuntime and runtime adapters that accept `cloud` | openagentui-cloud | You want the thread list managed; auth and sync handled |
-| RemoteThreadListRuntime | Any runtime hook passed as `runtimeHook` | Your database | You have your own backend and want full control |
+| RemoteThreadListRuntime | Any runtime hook passed as `runtimeHook` | Your database | You have your own backend and want full control (recommended default) |
+| AssistantCloud | LocalRuntime and runtime adapters that accept `cloud` | An Assistant-Cloud-compatible backend | You run or choose a backend that implements the Assistant Cloud HTTP API |
 | ExternalStoreThreadListAdapter | ExternalStoreRuntime only | Your store | You keep state in redux, zustand, etc. |
 
 ## AssistantCloud
 
-`AssistantCloud` is the managed multi-thread service. Pass an instance to `useLocalRuntime` or a runtime adapter that accepts `cloud`, and the thread list, sync and titles are handled for you. Where messages are stored depends on the runtime: `useLocalRuntime` and the AI SDK runtime, plus AG-UI and A2A through `useCloudThreadListRuntime`, store and load them in the cloud, while LangGraph, LangChain, ADK and other runtimes whose backend keeps the transcript load it from that backend and store a copy in the cloud for the dashboard, as [Runtimes](/docs/cloud/runtimes) lists.
+`AssistantCloud` (from `openagentui-cloud`) is a client for an Assistant-Cloud-compatible backend that you host or choose; OpenAgentUI does not operate one. Pass an instance to `useLocalRuntime` or a runtime adapter that accepts `cloud`, and the thread list, sync and titles are handled by that backend. Where messages are stored depends on the runtime: `useLocalRuntime` and the AI SDK runtime, plus AG-UI and A2A through `useCloudThreadListRuntime`, store and load them in the cloud, while LangGraph, LangChain, ADK and other runtimes whose backend keeps the transcript load it from that backend and store a copy in the cloud backend.
 
 ```tsx
 import { useLocalRuntime } from "@openagentui/react";
@@ -50,7 +50,7 @@ const runtime = useAssistantTransportRuntime({ cloud /* transport options */ });
 const runtime = useAdkRuntime({ cloud, stream });
 ```
 
-See the [cloud documentation](/docs/cloud) for setup, auth, and self-host options.
+See the [`openagentui-cloud` reference](/docs/api-reference/integrations/openagentui-cloud) for the client's options and authentication modes. To keep threads in your own database without such a backend, use `RemoteThreadListRuntime` below.
 
 ## RemoteThreadListRuntime (custom database)
 
@@ -307,7 +307,7 @@ async list({ after } = {}) {
 },
 ```
 
-For a button-driven UI, drop `<ThreadListPrimitive.LoadMore>` at the bottom of your list. It ships disabled while the runtime is loading or when no `nextCursor` is available. To trigger it on scroll instead, wrap the same primitive in an `IntersectionObserver` at the application layer; openagentui leaves visibility-driven loading to userland by design.
+For a button-driven UI, drop `<ThreadListPrimitive.LoadMore>` at the bottom of your list. It ships disabled while the runtime is loading or when no `nextCursor` is available. To trigger it on scroll instead, wrap the same primitive in an `IntersectionObserver` at the application layer; OpenAgentUI leaves visibility-driven loading to userland by design.
 
 ```tsx title="ThreadList.tsx"
 import {
@@ -510,8 +510,8 @@ Ask three questions in order:
     href="/docs/runtimes/concepts/architecture"
   />
   <Card
-    title="AssistantCloud"
-    description="The managed multi-thread service."
-    href="/docs/cloud"
+    title="Custom thread persistence"
+    description="Worked example: back the thread list and history with your own database."
+    href="/docs/integrations/persistence/custom-adapter"
   />
 </Cards>

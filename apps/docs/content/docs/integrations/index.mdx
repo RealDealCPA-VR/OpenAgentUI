@@ -10,7 +10,7 @@ import { LangChainIcon } from "@/components/icons/langchain";
 import { McpIcon } from "@/components/icons/mcp";
 import { VercelIcon } from "@/components/icons/vercel";
 
-Integrations are wiring guides for using third-party services with openagentui, plus canonical recipes for the adapter slots (persistence, attachments). They are distinct from [runtimes](/docs/runtimes/pick-a-runtime), which are the React adapter packages (`@openagentui/ai-sdk`, `@openagentui/react-langgraph`, etc.) that connect the UI to a backend. An integration assumes you already have a working runtime and adds something on top.
+Integrations are wiring guides for using third-party services with OpenAgentUI, plus canonical recipes for the adapter slots (persistence, attachments). They are distinct from [runtimes](/docs/runtimes/pick-a-runtime), which are the React adapter packages (`@openagentui/ai-sdk`, `@openagentui/react-langgraph`, etc.) that connect the UI to a backend. An integration assumes you already have a working runtime and adds something on top.
 
 ## Where integrations slot in
 
@@ -25,7 +25,7 @@ Integrations live on the server. **Agent frameworks** like Mastra take over the 
 
 ## Frameworks
 
-Framework integrations that pair with openagentui at the API-route layer.
+Framework integrations that pair with OpenAgentUI at the API-route layer.
 
 <Cards>
   <Card
@@ -118,13 +118,13 @@ Gate the chat route and scope thread data to the signed-in user. These pages are
   />
 </Cards>
 
-For AssistantCloud users, [cloud authorization](/docs/cloud/authorization) handles the JWT exchange for Clerk, Auth0, Supabase, and Firebase without DB code.
+If you use the `AssistantCloud` client against an Assistant-Cloud-compatible backend, pass your auth provider's token through its `authToken` callback; see the [client reference](/docs/api-reference/integrations/openagentui-cloud#the-client).
 
 </PlatformOnly>
 
 ## Persistence
 
-Store threads and messages outside AssistantCloud.
+Store threads and messages in your own database.
 
 <Cards>
   <Card
@@ -148,12 +148,12 @@ Upload chat attachments to object storage instead of inlining as data URLs.
 
 ## Don't see your service?
 
-openagentui doesn't ship a guide for every tool, but most fit one of two patterns:
+OpenAgentUI doesn't ship a guide for every tool, but most fit one of two patterns:
 
 - **Routes through your AI SDK handler** (agent frameworks, observability tools, gateways): adapt the [Mastra full-stack](/docs/integrations/frameworks/mastra/full-stack) or [LLM gateway](/docs/integrations/gateways) pattern using the service's own SDK.
 - **Replaces the runtime entirely** (custom backends): see [custom backend](/docs/runtimes/custom/overview).
 
-If you build something useful, [open an issue](https://github.com/RealDealCPA-VR/OpenAgentUI/issues) or post in [Discord](https://discord.gg/S9dwgCNEFs); the docs are open to contributions.
+If you build something useful, [open an issue](https://github.com/RealDealCPA-VR/OpenAgentUI/issues) or start a thread in [GitHub Discussions](https://github.com/RealDealCPA-VR/OpenAgentUI/discussions); the docs are open to contributions.
 
 ## Related
 

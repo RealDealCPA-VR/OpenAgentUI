@@ -4,7 +4,7 @@ External API spec for the MCP integration package. Mirrors `@openagentui/react-o
 
 ## Scope (v1)
 
-`react-mcp` is the **user-facing** configuration surface for MCP servers in an openagentui app. Two ways a server reaches the user:
+`react-mcp` is the **user-facing** configuration surface for MCP servers in an OpenAgentUI app. Two ways a server reaches the user:
 
 - **Connector** — A preset declared by the app developer (`defineConnector(...)`). User just connects (and authenticates).
 - **Custom server** — User supplies URL, name, auth, via `<McpAddFormPrimitive.*>`. Hide the add UI to disable.

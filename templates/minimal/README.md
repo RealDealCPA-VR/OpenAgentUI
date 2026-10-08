@@ -1,4 +1,4 @@
-This is the [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) minimal starter project.
+This is the [OpenAgentUI](https://github.com/RealDealCPA-VR/OpenAgentUI) minimal starter project.
 
 ## Getting Started
 
@@ -36,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start customizing the UI by modifying components in the `components/openagentui/elements/` directory.
 
-To add more openagentui components:
+To add more OpenAgentUI components:
 
 ```bash
 npx openagentui add

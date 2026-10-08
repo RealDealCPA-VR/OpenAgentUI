@@ -68,7 +68,7 @@ const signedInSession = (cloudHistory = true): SessionState => ({
 
 const cloudStrategy = (cloud: ReturnType<typeof useDocsCloud>["cloud"]) =>
   (
-    cloud.threads as unknown as {
+    cloud!.threads as unknown as {
       cloud: { _auth: { strategy: string } };
     }
   ).cloud._auth.strategy;
@@ -93,7 +93,7 @@ it("switches cloud ownership when account history or identity changes", async ()
   const anonymousCloud = result.current.cloud;
   expect(
     (
-      anonymousCloud.threads as unknown as {
+      anonymousCloud!.threads as unknown as {
         cloud: { _auth: { strategy: string } };
       }
     ).cloud._auth.strategy,
@@ -124,7 +124,7 @@ it("switches cloud ownership when account history or identity changes", async ()
 
   const accountCloud = result.current.cloud;
   const strategy = (
-    accountCloud.threads as unknown as {
+    accountCloud!.threads as unknown as {
       cloud: {
         _auth: {
           strategy: string;
@@ -348,4 +348,17 @@ it("asks for the conversation budget only when the surface opts in", async () =>
     searchDocs: true,
     countConversations: true,
   });
+});
+
+it("keeps threads in the browser when no cloud backend is configured", () => {
+  vi.stubEnv("NEXT_PUBLIC_ASSISTANT_BASE_URL", "");
+  mocks.session = signedInSession();
+  const fetchMock = vi.fn();
+  vi.stubGlobal("fetch", fetchMock);
+
+  const { result } = renderHook(() => useDocsCloud());
+
+  expect(result.current.cloud).toBeUndefined();
+  expect(result.current.claims).toBe(0);
+  expect(fetchMock).not.toHaveBeenCalled();
 });

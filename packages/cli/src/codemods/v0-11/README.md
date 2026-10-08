@@ -236,7 +236,7 @@ This migration will process all `.js`, `.jsx`, `.ts`, and `.tsx` files that cont
 - Files in `node_modules/`
 - Built files in `dist/`, `build/` directories
 - Minified files (`*.min.js`, `*.bundle.js`)
-- Files that don't import from openagentui packages
+- Files that don't import from OpenAgentUI packages
 
 ## Notes
 

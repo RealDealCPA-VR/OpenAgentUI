@@ -1,4 +1,4 @@
-This is the [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project for LangGraph. It ships a minimal Claude-backed agent (`backend/agent.ts`) plus a Next.js chat UI that streams from it.
+This is the [OpenAgentUI](https://github.com/RealDealCPA-VR/OpenAgentUI) starter project for LangGraph. It ships a minimal Claude-backed agent (`backend/agent.ts`) plus a Next.js chat UI that streams from it.
 
 ## Getting Started
 

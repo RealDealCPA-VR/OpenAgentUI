@@ -1,6 +1,6 @@
 # Tap-Native Runtime Example
 
-This example demonstrates the first tap-native runtime implementation for openagentui using `@openagentui/tap` and `@openagentui/store`.
+This example demonstrates the first tap-native runtime implementation for OpenAgentUI using `@openagentui/tap` and `@openagentui/store`.
 
 ## Features
 

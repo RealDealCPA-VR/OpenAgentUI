@@ -83,14 +83,14 @@ const tree: PageTree.Root = {
       platforms: ["tap"],
     }),
     folder(
-      "Cloud",
+      "Vue",
       [
-        page("/docs/cloud/quickstart"),
-        folder("Integrations", [page("/docs/cloud/ai-sdk")], { root: true }),
-        folder("Reference", [page("/docs/cloud/api")], { root: true }),
-        folder("Runtimes", [page("/docs/cloud/langgraph")]),
+        page("/docs/vue/quickstart"),
+        folder("Integrations", [page("/docs/vue/ai-sdk")], { root: true }),
+        folder("Reference", [page("/docs/vue/api")], { root: true }),
+        folder("Runtimes", [page("/docs/vue/langgraph")]),
       ],
-      { index: page("/docs/cloud"), platforms: ["cloud"] },
+      { index: page("/docs/vue"), platforms: ["vue"] },
     ),
   ],
 };
@@ -141,46 +141,46 @@ describe("buildPlatformSections", () => {
 describe("root folders inside a section", () => {
   it("become sections of their own after the parent, keeping the parent's tag", () => {
     const folders = tree.children as PageTree.Folder[];
-    const sections = buildPlatformSections(folders, "cloud");
-    expect(names(sections)).toEqual(["Cloud", "Integrations", "Reference"]);
+    const sections = buildPlatformSections(folders, "vue");
+    expect(names(sections)).toEqual(["Vue", "Integrations", "Reference"]);
     expect(childNames(sections[0]!)).toEqual([
-      "/docs/cloud/quickstart",
+      "/docs/vue/quickstart",
       "Runtimes",
     ]);
     expect(names(buildPlatformSections(folders, "react"))).not.toContain(
       "Integrations",
     );
-    expect(getPagePlatforms(tree, "/docs/cloud/ai-sdk")).toEqual(["cloud"]);
-    expect(getPlatformHomeUrl(tree, "cloud")).toBe("/docs/cloud");
+    expect(getPagePlatforms(tree, "/docs/vue/ai-sdk")).toEqual(["vue"]);
+    expect(getPlatformHomeUrl(tree, "vue")).toBe("/docs/vue");
     const urls = getVisibleUrlsByPlatform(tree);
-    expect(urls.cloud.has("/docs/cloud/ai-sdk")).toBe(true);
-    expect(urls.cloud.has("/docs/cloud/langgraph")).toBe(true);
-    expect(urls.react.has("/docs/cloud/ai-sdk")).toBe(false);
+    expect(urls.vue.has("/docs/vue/ai-sdk")).toBe(true);
+    expect(urls.vue.has("/docs/vue/langgraph")).toBe(true);
+    expect(urls.react.has("/docs/vue/ai-sdk")).toBe(false);
   });
 
   it("open the hoisted section for a page under it and the parent for its own pages", () => {
-    const cloud = tree.children.find(
-      (node): node is PageTree.Folder => node.name === "Cloud",
+    const vue = tree.children.find(
+      (node): node is PageTree.Folder => node.name === "Vue",
     )!;
     const sections = buildPlatformSections(
       tree.children as PageTree.Folder[],
-      "cloud",
+      "vue",
     );
-    const pathTo = (url: string) => findPathToNode(cloud, url);
+    const pathTo = (url: string) => findPathToNode(vue, url);
 
-    expect(findActiveSectionId(sections, pathTo("/docs/cloud/ai-sdk"))).toBe(
+    expect(findActiveSectionId(sections, pathTo("/docs/vue/ai-sdk"))).toBe(
       "Integrations",
     );
-    expect(findActiveSectionId(sections, pathTo("/docs/cloud/api"))).toBe(
+    expect(findActiveSectionId(sections, pathTo("/docs/vue/api"))).toBe(
       "Reference",
     );
-    expect(
-      findActiveSectionId(sections, pathTo("/docs/cloud/quickstart")),
-    ).toBe("Cloud");
-    expect(findActiveSectionId(sections, pathTo("/docs/cloud/langgraph"))).toBe(
-      "Cloud",
+    expect(findActiveSectionId(sections, pathTo("/docs/vue/quickstart"))).toBe(
+      "Vue",
     );
-    expect(findActiveSectionId(sections, null)).toBe("Cloud");
+    expect(findActiveSectionId(sections, pathTo("/docs/vue/langgraph"))).toBe(
+      "Vue",
+    );
+    expect(findActiveSectionId(sections, null)).toBe("Vue");
   });
 });
 

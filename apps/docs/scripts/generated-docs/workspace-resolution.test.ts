@@ -58,18 +58,23 @@ const offenders = workspaceOffenders();
 describe("workspace package resolution", () => {
   it("maps safe-content-frame to its source entry points", () => {
     const options = project.getCompilerOptions();
-    const resolve = (specifier: string) =>
-      ts.resolveModuleName(specifier, PROBE_FILE, options, ts.sys)
-        .resolvedModule?.resolvedFileName;
+    // TypeScript reports forward slashes on every OS; normalize so the
+    // comparison holds on Windows too.
+    const resolve = (specifier: string) => {
+      const resolved = ts.resolveModuleName(
+        specifier,
+        PROBE_FILE,
+        options,
+        ts.sys,
+      ).resolvedModule?.resolvedFileName;
+      return resolved && path.normalize(resolved);
+    };
 
     expect(resolve("@openagentui/safe-content-frame")).toBe(
-      path.join(PACKAGES_DIR, "@openagentui/safe-content-frame/src/index.ts"),
+      path.join(PACKAGES_DIR, "safe-content-frame/src/index.ts"),
     );
     expect(resolve("@openagentui/safe-content-frame/shadow_dom")).toBe(
-      path.join(
-        PACKAGES_DIR,
-        "@openagentui/safe-content-frame/src/shadow_dom.ts",
-      ),
+      path.join(PACKAGES_DIR, "safe-content-frame/src/shadow_dom.ts"),
     );
   });
 

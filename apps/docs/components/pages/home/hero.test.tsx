@@ -1,46 +1,44 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
-
-vi.mock("next/navigation", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("next/navigation")>()),
-  useRouter: () => ({ push: vi.fn() }),
-}));
-
-const load = async () => {
-  vi.resetModules();
-  return import("./hero");
-};
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it } from "vitest";
+import { REPO_URL } from "@/lib/constants";
+import { Hero } from "./hero";
 
 afterEach(() => {
   cleanup();
-  vi.unstubAllEnvs();
-  vi.resetModules();
 });
 
-const ctaRow = () =>
-  screen.getByRole("button", { name: "Quick Start" }).parentElement!;
-
 describe("hero", () => {
-  it("opens the setup dialog from the one call to action when checkout is configured", async () => {
-    const { Hero } = await load();
-    render(<Hero stars={null} downloads={null} />);
-    const trigger = screen.getByRole("button", { name: "Quick Start" });
-    expect(trigger.tagName).toBe("BUTTON");
-    expect(ctaRow().children).toHaveLength(1);
-    expect(screen.queryByRole("link", { name: "Read the docs" })).toBeNull();
-    expect(screen.queryByText("npx openagentui init")).toBeNull();
+  it("links the quick start and the source", () => {
+    render(<Hero version={null} />);
+
+    expect(
+      screen
+        .getByRole("button", { name: "Read the quick start" })
+        .getAttribute("href"),
+    ).toBe("/docs/installation");
+    expect(
+      screen.getByRole("button", { name: "View source" }).getAttribute("href"),
+    ).toBe(REPO_URL);
   });
 
-  it("links the call to action to the installation guide without a checkout worker", async () => {
-    vi.stubEnv("NEXT_PUBLIC_CHECKOUT_URL", "");
-    vi.stubEnv("NODE_ENV", "production");
-    const { Hero } = await load();
-    render(<Hero stars={null} downloads={null} />);
-    const link = screen.getByRole("button", { name: "Quick Start" });
-    expect(link.tagName).toBe("A");
-    expect(link.getAttribute("href")).toBe("/docs/installation");
-    expect(ctaRow().children).toHaveLength(1);
+  it("builds the install command from the selected project type and runner", () => {
+    render(<Hero version={null} />);
+
+    expect(screen.getByText("npx openagentui@latest create")).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("tab", { name: "Existing app" }));
+    fireEvent.click(screen.getByRole("tab", { name: "pnpm" }));
+
+    expect(screen.getByText("pnpm dlx openagentui@latest init")).toBeTruthy();
+  });
+
+  it("shows the published version only when it is known", () => {
+    const { rerender } = render(<Hero version={null} />);
+    expect(screen.queryByText(/@openagentui\/react@/)).toBeNull();
+
+    rerender(<Hero version="0.15.22" />);
+    expect(screen.getByText("@openagentui/react@0.15.22")).toBeTruthy();
   });
 });

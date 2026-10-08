@@ -9,7 +9,7 @@ MemoryChips lists what the assistant now remembers about you: one pill per fact,
 
 <RuntimeMode>
 
-openagentui has no built-in memory concept: nothing on a message tracks facts learned about the user. The closest real building block is a tool call, the same way a graded claim or a comparison table would be. Give the model a `remember` tool and collect every call it makes in the current message into the chip list.
+OpenAgentUI has no built-in memory concept: nothing on a message tracks facts learned about the user. The closest real building block is a tool call, the same way a graded claim or a comparison table would be. Give the model a `remember` tool and collect every call it makes in the current message into the chip list.
 
 <Steps>
   <Step>
@@ -198,7 +198,7 @@ Both lanes take `className` on the root. The header label reads from the shared 
 
 | Selector / field | Type | Description |
 |--------------------|------|-------------|
-| `s.message.content` | `readonly ThreadAssistantMessagePart[]` | Search this for `tool-call` parts whose `toolName` matches your remember tool; openagentui has no built-in memory field. |
+| `s.message.content` | `readonly ThreadAssistantMessagePart[]` | Search this for `tool-call` parts whose `toolName` matches your remember tool; OpenAgentUI has no built-in memory field. |
 | `ToolCallMessagePart.args` | `TArgs` | The model's arguments for that call, typed by the generic you give `ToolCallMessagePart<TArgs, TResult>`. Partial while the call is still streaming. |
 | `ToolCallMessagePart.toolCallId` | `string` | Stable id for the call; a natural `MemoryChip.id`. |
 

@@ -21,7 +21,7 @@ export function LauncherBubbleDemo() {
     <LauncherBubble
       open={open}
       unread={2}
-      greeting="Need a hand with openagentui?"
+      greeting="Need a hand with OpenAgentUI?"
       prompts={PROMPTS}
       onPick={() => undefined}
       onStart={() => undefined}

@@ -141,7 +141,7 @@ function PanelHeader(): React.ReactNode {
   return (
     <div className="border-foreground/10 flex h-11 shrink-0 items-center justify-between border-b px-3.5">
       <span className="text-muted-foreground font-mono text-[11px] font-medium">
-        openagentui · Ask AI
+        OpenAgentUI · Ask AI
       </span>
       <div className="flex items-center gap-1">
         {contextTokens > 0 ? (
@@ -193,7 +193,7 @@ function PanelHeader(): React.ReactNode {
 const GREETING_WORDS = ["Ask", "the", "library."];
 
 const SUGGESTIONS = [
-  "What is openagentui?",
+  "What is OpenAgentUI?",
   "How do I get started?",
   "How do I customize the styling?",
   "How do I connect my own backend?",

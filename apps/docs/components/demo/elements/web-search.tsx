@@ -6,7 +6,7 @@ import {
 } from "@/components/openagentui/elements/web-search";
 import { useStoryPhases } from "@/components/demo/hooks/use-demo";
 
-const QUERY = "openagentui draft persistence";
+const QUERY = "OpenAgentUI draft persistence";
 const RESULTS: readonly WebSearchResult[] = [
   {
     title: "Persisting composer state across threads",

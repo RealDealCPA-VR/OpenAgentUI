@@ -3,7 +3,7 @@
 import type { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { DownloadIcon, SquareDashedIcon, TypeIcon } from "lucide-react";
+import { DownloadIcon, TypeIcon } from "lucide-react";
 import { toast } from "sonner";
 import {
   ContextMenu,
@@ -35,13 +35,13 @@ export function HeaderBrandLink({
       >
         <Image
           src="/favicon/icon.svg"
-          alt="openagentui logo"
+          alt="OpenAgentUI logo"
           width={18}
           height={18}
           className="dark:hue-rotate-180 dark:invert"
         />
         <span className={cn("font-medium tracking-tight", labelClassName)}>
-          openagentui
+          OpenAgentUI
         </span>
       </Link>
     </BrandAssetsMenu>
@@ -77,13 +77,6 @@ function BrandAssetsMenu({ children }: BrandAssetsMenuProps) {
         </ContextMenuItem>
 
         <ContextMenuSeparator />
-
-        <ContextMenuItem asChild>
-          <Link href="/brand">
-            <SquareDashedIcon className="size-4" />
-            Brand Guidelines
-          </Link>
-        </ContextMenuItem>
 
         <ContextMenuItem asChild>
           <a href="/openagentui-brand.zip" download>

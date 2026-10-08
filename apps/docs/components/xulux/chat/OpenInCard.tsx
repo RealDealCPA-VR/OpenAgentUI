@@ -46,8 +46,8 @@ function getDocsAppendix(): string {
 
   return (
     `Before implementing, read ${docsIndexUrl} to discover relevant documentation pages. ` +
-    "Traverse the index and read the specific pages you need (installation, architecture, runtimes, components) so your setup matches current openagentui APIs. " +
-    "Use the openagentui CLI for scaffolding — do not manually create projects with create-next-app."
+    "Traverse the index and read the specific pages you need (installation, architecture, runtimes, components) so your setup matches current OpenAgentUI APIs. " +
+    "Use the OpenAgentUI CLI for scaffolding — do not manually create projects with create-next-app."
   );
 }
 

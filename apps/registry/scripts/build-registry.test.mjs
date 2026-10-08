@@ -1141,7 +1141,7 @@ test("bundling leaves an item without bundled dependencies untouched and rejects
         new Map(),
         "radix",
       ),
-    /eve-chat: bundled registry dependency "https:\/\/r\.openagentui\.com\/missing\.json" does not match a local registry item/,
+    /eve-chat: bundled registry dependency "https:\/\/r\.openagentui.dev\/missing\.json" does not match a local registry item/,
   );
 });
 
@@ -2345,7 +2345,7 @@ test("install validation does not count a transitive install as direct dependenc
 
   assert.match(
     findings,
-    /demo: registry dependency "https:\/\/r\.openagentui\.com\/thread\.json" is not imported directly by this item/,
+    /demo: registry dependency "https:\/\/r\.openagentui.dev\/thread\.json" is not imported directly by this item/,
   );
 });
 
@@ -2384,7 +2384,7 @@ test("install validation accepts an explicitly documented non-imported style dep
       }),
       style,
     ]),
-    /demo: registry dependency "https:\/\/r\.openagentui\.com\/generative-ui-style\.json" is not imported directly by this item/,
+    /demo: registry dependency "https:\/\/r\.openagentui.dev\/generative-ui-style\.json" is not imported directly by this item/,
   );
 });
 
@@ -2425,7 +2425,7 @@ test("install validation accepts an explicitly documented page sidecar", () => {
       }),
       backend,
     ]),
-    /demo: registry dependency "https:\/\/r\.openagentui\.com\/backend\.json" is not imported directly by this item/,
+    /demo: registry dependency "https:\/\/r\.openagentui.dev\/backend\.json" is not imported directly by this item/,
   );
 
   assert.match(
@@ -2446,7 +2446,7 @@ test("install validation accepts an explicitly documented page sidecar", () => {
         ],
       },
     ]),
-    /quick-start: registry dependency "https:\/\/r\.openagentui\.com\/thread\.json" is not imported directly by this item/,
+    /quick-start: registry dependency "https:\/\/r\.openagentui.dev\/thread\.json" is not imported directly by this item/,
   );
 });
 

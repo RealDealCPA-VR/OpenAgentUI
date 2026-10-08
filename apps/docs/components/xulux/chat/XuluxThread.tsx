@@ -175,7 +175,7 @@ function XuluxLearnWelcome({
       <p className="text-muted-foreground mt-1 max-w-sm text-sm">
         {started
           ? "Continue in this thread and your course progress will stay connected."
-          : "Follow a guided openagentui course while keeping the normal chat available for questions."}
+          : "Follow a guided OpenAgentUI course while keeping the normal chat available for questions."}
       </p>
       {!started ? (
         <Button

@@ -70,7 +70,7 @@ const FEATURES = [
   {
     title: "Reactive",
     description:
-      "Built on the openagentui store. Push new spans and the UI updates live; running spans animate as they stream.",
+      "Built on the OpenAgentUI store. Push new spans and the UI updates live; running spans animate as they stream.",
   },
   {
     title: "Style by status and type",
@@ -91,7 +91,7 @@ export default function ReactO11yPage() {
         <h1 className={typePage}>The anatomy of a run.</h1>
         <p className={cn(typeDeck, "mt-4 max-w-[52ch]")}>
           Headless, Radix-style primitives for agent traces, sub-agent trees,
-          and run timelines: collapsible waterfalls on the openagentui store.
+          and run timelines: collapsible waterfalls on the OpenAgentUI store.
           Unstyled and fully reactive.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">

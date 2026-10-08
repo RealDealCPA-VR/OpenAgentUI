@@ -1,6 +1,6 @@
 # `@openagentui/x-buildutils`
 
-This package is an internal dependency of openagentui and does not follow semantic versioning. If you are not working inside this monorepo, you should use your own build pipeline instead.
+This package is an internal dependency of OpenAgentUI and does not follow semantic versioning. If you are not working inside this monorepo, you should use your own build pipeline instead.
 
 ## What it provides
 

@@ -1,8 +1,8 @@
 # `@openagentui/react-ai-sdk`
 
-This package re-exports [`@openagentui/ai-sdk`](https://www.npmjs.com/package/@openagentui/ai-sdk), the framework-neutral home of the openagentui integration for the Vercel AI SDK. Existing imports keep working unchanged; new code should depend on `@openagentui/ai-sdk` directly.
+This package re-exports [`@openagentui/ai-sdk`](https://www.npmjs.com/package/@openagentui/ai-sdk), the framework-neutral home of the OpenAgentUI integration for the Vercel AI SDK. Existing imports keep working unchanged; new code should depend on `@openagentui/ai-sdk` directly.
 
-[Vercel AI SDK](https://sdk.vercel.ai) integration for `@openagentui/react`. Wraps the AI SDK chat in an openagentui runtime and forwards system messages and frontend tools through `AssistantChatTransport`. Each release line targets the AI SDK major pinned in its dependencies.
+[Vercel AI SDK](https://sdk.vercel.ai) integration for `@openagentui/react`. Wraps the AI SDK chat in an OpenAgentUI runtime and forwards system messages and frontend tools through `AssistantChatTransport`. Each release line targets the AI SDK major pinned in its dependencies.
 
 ## Installation
 

@@ -16,7 +16,7 @@ Dictation is opt-in, the same way attachments are: without a `DictationAdapter` 
 
 ### Configure a dictation adapter
 
-openagentui ships a `WebSpeechDictationAdapter` over the browser's `SpeechRecognition` API; check `.isSupported()` before relying on it, since it is not available in every browser:
+OpenAgentUI ships a `WebSpeechDictationAdapter` over the browser's `SpeechRecognition` API; check `.isSupported()` before relying on it, since it is not available in every browser:
 
 ```tsx title="app/chat-provider.tsx"
 import { useLocalRuntime, WebSpeechDictationAdapter } from "@openagentui/react";

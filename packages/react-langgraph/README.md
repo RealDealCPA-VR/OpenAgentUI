@@ -1,6 +1,6 @@
 # `@openagentui/react-langgraph`
 
-[LangGraph](https://langchain-ai.github.io/langgraph/) integration for `@openagentui/react`. Wraps a LangGraph stream in an openagentui runtime with thread persistence, interrupts, and message-tuple events.
+[LangGraph](https://langchain-ai.github.io/langgraph/) integration for `@openagentui/react`. Wraps a LangGraph stream in an OpenAgentUI runtime with thread persistence, interrupts, and message-tuple events.
 
 ## Installation
 

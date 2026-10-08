@@ -17,7 +17,7 @@ const firstPage = () =>
     {
       status: 200,
       headers: {
-        Link: '<https://api.github.com/repos/openagentui/openagentui/commits?per_page=100&page=2>; rel="last"',
+        Link: '<https://api.github.com/repos/RealDealCPA-VR/OpenAgentUI/commits?per_page=100&page=2>; rel="last"',
       },
     },
   );

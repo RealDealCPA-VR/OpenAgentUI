@@ -9,7 +9,7 @@ CostMeter shows what a run cost as a big number, a segmented bar split by model,
 
 <RuntimeMode>
 
-openagentui tracks token usage per step of a run, but not dollars and not which model produced a given step. Both are your own bookkeeping. The closest data is `message.metadata.steps`, an array of `{ usage: { inputTokens, outputTokens } }` entries.
+OpenAgentUI tracks token usage per step of a run, but not dollars and not which model produced a given step. Both are your own bookkeeping. The closest data is `message.metadata.steps`, an array of `{ usage: { inputTokens, outputTokens } }` entries.
 
 <Steps>
   <Step>
@@ -56,7 +56,7 @@ export function RunCost({ model }: { model: string }) {
 }
 ```
 
-`PRICE_PER_MILLION` and the `model` label are yours; openagentui never names a price or a provider.
+`PRICE_PER_MILLION` and the `model` label are yours; OpenAgentUI never names a price or a provider.
 
   </Step>
   <Step>
@@ -177,7 +177,7 @@ const lines: CostLine[] = raw.map((r) => ({
 | `s.message.metadata.steps` | `readonly ThreadStep[]` | Present on assistant messages. Each step's `usage` gives `inputTokens` / `outputTokens` for that step; sum across steps for one message's run cost. |
 | `s.thread.messages` | `readonly MessageState[]` | Every message on the active branch. Sum `.metadata.steps` across its assistant messages for a session total. |
 
-openagentui tracks token counts, not dollars, and `ThreadStep` carries no model name. `cost`, `share`, and any per-model split are computed by your own price table and your own record of which model ran which message.
+OpenAgentUI tracks token counts, not dollars, and `ThreadStep` carries no model name. `cost`, `share`, and any per-model split are computed by your own price table and your own record of which model ran which message.
 
 </RuntimeMode>
 

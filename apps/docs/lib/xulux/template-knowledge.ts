@@ -19,10 +19,10 @@ export const TEMPLATE_LIST_META: Record<string, TemplateListMeta> = {
   "base-openagentui": {
     name: "Configurable Base OpenAgentUI",
     summary:
-      "A hosted configurable version of the openagentui Base demo with the same full-page chat shell, thread list, composer, model picker, mic input, suggestions, slash commands, and no-key demo flows.",
+      "A hosted configurable version of the OpenAgentUI Base demo with the same full-page chat shell, thread list, composer, model picker, mic input, suggestions, slash commands, and no-key demo flows.",
     assistantPlacement: "full-page chat shell",
     features: [
-      "openagentui Base demo layout with sidebar thread list and centered composer",
+      "OpenAgentUI Base demo layout with sidebar thread list and centered composer",
       "Composer actions including attachments, model picker, send, and mic input",
       "LocalStorage thread persistence with Assistant Cloud fallback when configured in source",
       "Controlled suggestion groups and slash commands",
@@ -44,7 +44,7 @@ export const TEMPLATE_LIST_META: Record<string, TemplateListMeta> = {
     assistantPlacement: "sidebar (desktop) / modal (mobile)",
     features: [
       "ContentShell layout: header, left nav, article area, right assistant sidebar",
-      "openagentui Thread in sidebar on desktop, AssistantModal on mobile",
+      "OpenAgentUI Thread in sidebar on desktop, AssistantModal on mobile",
       "Three built-in tools: searchDocs (sourceResults card), openPage (pagePreview card), generateCodeSnippet (codeSnippet card)",
       "Deterministic demo flows: scripted tool sequences run without an API key",
       "Suggested prompt chips wired to demo flows",
@@ -63,7 +63,7 @@ export const TEMPLATE_LIST_META: Record<string, TemplateListMeta> = {
     features: [
       "DashboardShell layout: nav, alert banner, configurable panel tree",
       "Panel components: Overview, MetricGrid + MetricCard, TwoColumnRow, StatusList, ActivityFeed",
-      "openagentui AssistantModal as a floating trigger button",
+      "OpenAgentUI AssistantModal as a floating trigger button",
       "Two built-in tools: analyzeIssue (analysis card), createSupportSummary (summary card)",
       "Deterministic demo flows keyed by scenarioId (sync_failure, auth_error)",
       "File attachment support (mock) in demo flows",
@@ -90,7 +90,7 @@ export function fixedDemoListMeta(
         features: [
           "Expo / React Native mobile chat UI",
           "Drawer navigation and thread management",
-          "Streaming assistant responses through openagentui runtime",
+          "Streaming assistant responses through OpenAgentUI runtime",
           "Native mobile UI primitives, with hosted web preview for inspection",
         ],
         customizable: [],
@@ -895,7 +895,7 @@ export const TOOLS_META: Record<string, TemplateToolsMeta> = {
       {
         type: "generic",
         description:
-          "Fallback openagentui tool card rendering configured tool input and output as structured data.",
+          "Fallback OpenAgentUI tool card rendering configured tool input and output as structured data.",
         requiredOutputShape: "any JSON-serializable value",
       },
     ],

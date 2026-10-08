@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import type * as PageTree from "fumadocs-core/page-tree";
 import { ArrowUpRight, LayoutGrid, Menu, Search, X } from "lucide-react";
 import { useSearchContext } from "@/components/shared/search-provider";
-import { NAV_ITEMS, CLOUD_URL, type NavItem } from "@/lib/constants";
+import { NAV_ITEMS, REPO_URL, type NavItem } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { MoreDropdown } from "@/components/shared/more-dropdown";
@@ -15,7 +15,7 @@ import { useDocsSidebar } from "@/components/pages/docs/contexts/sidebar";
 import { useAssistantPanel } from "@/components/pages/docs/assistant/context";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { HeaderBrandLink } from "@/components/shared/header-brand-link";
-import { CartButton } from "@/components/shared/shop-entry";
+import { GitHubIcon } from "@/components/icons/github";
 import { headerBarClassName } from "@/components/shared/header-chrome";
 import { useScrolled } from "@/hooks/use-scrolled";
 import { analytics } from "@/lib/analytics";
@@ -213,7 +213,6 @@ export function DocsHeader({ section, sectionHref, tree }: DocsHeaderProps) {
 
           {/* Mobile controls */}
           <div className="ml-auto flex shrink-0 items-center gap-1 md:hidden">
-            <CartButton />
             <AskAIButton />
             <SearchIconButton className="size-8" />
             <button
@@ -245,7 +244,6 @@ export function DocsHeader({ section, sectionHref, tree }: DocsHeaderProps) {
           {/* Condensed nav: md to lg */}
           <div className="ml-auto hidden items-center gap-4 md:flex lg:hidden">
             <div className="flex items-center gap-2">
-              <CartButton />
               <AskAIButton />
               <SearchIconButton className="size-7" />
             </div>
@@ -262,7 +260,6 @@ export function DocsHeader({ section, sectionHref, tree }: DocsHeaderProps) {
           {/* Full nav: lg+ */}
           <div className="ml-auto hidden items-center gap-4 lg:flex">
             <div className="flex min-w-0 items-center gap-2">
-              <CartButton />
               <AskAIButton />
               <SearchIconButton className="size-7 xl:hidden" />
               <HeaderSearch />
@@ -277,13 +274,14 @@ export function DocsHeader({ section, sectionHref, tree }: DocsHeaderProps) {
                 nativeButton={false}
                 render={
                   <a
-                    href={CLOUD_URL}
+                    href={REPO_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                   />
                 }
               >
-                Cloud
+                <GitHubIcon className="size-3.5" />
+                GitHub
               </Button>
               <ThemeToggle />
             </div>
@@ -370,13 +368,14 @@ export function DocsHeader({ section, sectionHref, tree }: DocsHeaderProps) {
                 onClick={() => setNavMenuOpen(false)}
                 render={
                   <a
-                    href={CLOUD_URL}
+                    href={REPO_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                   />
                 }
               >
-                Cloud
+                <GitHubIcon className="size-3.5" />
+                GitHub
               </Button>
               <ThemeToggle />
             </div>

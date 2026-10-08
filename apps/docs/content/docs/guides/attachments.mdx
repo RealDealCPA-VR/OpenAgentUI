@@ -10,7 +10,6 @@ Let users attach images, documents, and other files to their messages.
 
 <AttachmentSample />
 
-<AgentSetup product="guides/attachments" />
 
 ## Overview
 
@@ -18,7 +17,7 @@ The attachment system consists of:
 
 - **Attachment Adapters**: Backend logic for processing attachment files
 - **UI Components**: Pre-built components for attachment display and interaction
-- **Runtime Integration**: Attachment support in the openagentui runtimes
+- **Runtime Integration**: Attachment support in the OpenAgentUI runtimes
 
 ## Getting Started
 
@@ -596,7 +595,7 @@ Attachments are sent to the backend as file content parts.
 
 ## Runtime Support
 
-Attachments work with all openagentui runtimes:
+Attachments work with all OpenAgentUI runtimes:
 
 - **AI SDK Runtime**: `useChatRuntime`
 - **External Store**: `useExternalStoreRuntime`
@@ -646,7 +645,7 @@ class ServerUploadAdapter implements AttachmentAdapter {
 ```
 
 <Callout type="tip">
-  [openagentui Cloud](/docs/cloud/ai-sdk) includes `CloudFileAttachmentAdapter`, which uploads through `cloud.files.generatePresignedUploadUrl` and persists the returned `publicUrl` with the message. For a private bucket, `cloud.files.generatePresignedDownloadUrl({ key })` or `cloud.files.generatePresignedDownloadUrl({ url })` returns a signed read URL together with its expiry.
+  When threads are stored in an Assistant-Cloud-compatible backend, the [`openagentui-cloud` client](/docs/api-reference/integrations/openagentui-cloud) pairs with `CloudFileAttachmentAdapter`, which uploads through `cloud.files.generatePresignedUploadUrl` and persists the returned `publicUrl` with the message. For a private bucket, `cloud.files.generatePresignedDownloadUrl({ key })` or `cloud.files.generatePresignedDownloadUrl({ url })` returns a signed read URL together with its expiry.
 </Callout>
 
 ## Best Practices

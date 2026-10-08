@@ -1,6 +1,6 @@
 # React Router Integration
 
-This example demonstrates how to use openagentui with React Router (v8) and Vite.
+This example demonstrates how to use OpenAgentUI with React Router (v8) and Vite.
 
 ## Quick Start
 
@@ -36,5 +36,5 @@ npm run dev
 
 ## Related Documentation
 
-- [openagentui Documentation](https://openagentui.dev/docs)
+- [OpenAgentUI Documentation](https://openagentui.dev/docs)
 - [React Router Documentation](https://reactrouter.com/)

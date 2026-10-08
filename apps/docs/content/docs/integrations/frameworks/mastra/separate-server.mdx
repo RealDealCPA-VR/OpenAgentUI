@@ -1,18 +1,18 @@
 ---
 title: Separate server integration
-description: Run Mastra as a standalone server with openagentui as a separate frontend.
+description: Run Mastra as a standalone server with OpenAgentUI as a separate frontend.
 ---
 
 import { MastraIcon } from "@/components/icons/mastra";
 import { VercelIcon } from "@/components/icons/vercel";
 
-Run Mastra as its own service and have the openagentui frontend hit it over HTTP. The two halves can deploy, scale, and version independently. The tradeoff is one extra hop and CORS to configure.
+Run Mastra as its own service and have the OpenAgentUI frontend hit it over HTTP. The two halves can deploy, scale, and version independently. The tradeoff is one extra hop and CORS to configure.
 
 For the simpler in-process variant, see [full-stack](/docs/integrations/frameworks/mastra/full-stack) instead.
 
 ## Setup
 
-The setup has two halves. Steps 1 to 4 happen in the **Mastra server** project; steps 5 to 7 happen in a **separate openagentui frontend** project. You'll have two terminals open by the end: one for each dev server.
+The setup has two halves. Steps 1 to 4 happen in the **Mastra server** project; steps 5 to 7 happen in a **separate OpenAgentUI frontend** project. You'll have two terminals open by the end: one for each dev server.
 
 <Steps>
 
@@ -103,7 +103,7 @@ The server starts on `http://localhost:4111` by default. Leave it running for th
 
 <Step>
 
-### Initialize the openagentui frontend
+### Initialize the OpenAgentUI frontend
 
 In a **different directory** from the Mastra server, scaffold the frontend:
 

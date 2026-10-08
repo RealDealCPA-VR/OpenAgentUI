@@ -1,11 +1,11 @@
 ---
 title: "Agent Skills"
-description: Use AI tools to build with openagentui faster. AI-accessible documentation, Claude Code skills, and MCP integration.
+description: Use AI tools to build with OpenAgentUI faster. AI-accessible documentation, Claude Code skills, and MCP integration.
 ---
 
 import { FileText } from "lucide-react";
 
-This page covers the ways to give your AI tools access to openagentui documentation and context.
+This page covers the ways to give your AI tools access to OpenAgentUI documentation and context.
 
 ## AI Accessible Documentation
 
@@ -27,7 +27,7 @@ The docs are available in formats that AI assistants can read:
 
 ### Context Files
 
-Add openagentui context to your project's `CLAUDE.md` or `.cursorrules`:
+Add OpenAgentUI context to your project's `CLAUDE.md` or `.cursorrules`:
 
 ```md
 ## openagentui
@@ -45,7 +45,7 @@ Key patterns:
 
 ## Skills
 
-Install openagentui skills for AI Tools:
+Install OpenAgentUI skills for AI Tools:
 
 ```sh
 npx skills add openagentui/skills
@@ -61,18 +61,18 @@ npx skills add openagentui/skills
 | `/streaming` | Streaming protocol with openagentui-stream |
 | `/cloud` | Cloud persistence and authorization |
 | `/thread-list` | Multi-thread management |
-| `/update` | Update openagentui and AI SDK to latest versions |
+| `/update` | Update OpenAgentUI and AI SDK to latest versions |
 
 Use by typing the command in Claude Code, e.g., `/openagentui` for the main guide or `/setup` when setting up a project.
 
 ## MCP
 
-openagentui hosts an MCP server at `https://openagentui.dev/mcp` (Streamable HTTP). It serves the live documentation, examples, design components, and Tap docs, and exposes the hosted app templates. There is nothing to install and it is always current.
+OpenAgentUI hosts an MCP server at `https://openagentui.dev/mcp` (Streamable HTTP). It serves the live documentation, examples, design components, and Tap docs, and exposes the hosted app templates. There is nothing to install and it is always current.
 
-Once connected, your AI assistant can look up the openagentui documentation while it works. For example, ask:
+Once connected, your AI assistant can look up the OpenAgentUI documentation while it works. For example, ask:
 
 - "Add a chat interface with streaming support to my app"
-- "How do I integrate openagentui with the Vercel AI SDK?"
+- "How do I integrate OpenAgentUI with the Vercel AI SDK?"
 - "My Thread component isn't updating, what could be wrong?"
 
 ### Quick Install
@@ -83,7 +83,7 @@ For Claude Code:
 claude mcp add --transport http openagentui https://openagentui.dev/mcp
 ```
 
-For other IDEs, the openagentui CLI configures the right client for you:
+For other IDEs, the OpenAgentUI CLI configures the right client for you:
 
 ```bash
 npx openagentui@latest mcp

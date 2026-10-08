@@ -1,8 +1,8 @@
 # OpenUI Example
 
-This example renders streaming [OpenUI Lang](https://www.openui.com) interfaces inside an openagentui conversation using [`@openuidev/assistant-ui`](https://www.npmjs.com/package/@openuidev/assistant-ui), the integration package published and maintained by OpenUI.
+This example renders streaming [OpenUI Lang](https://www.openui.com) interfaces inside an OpenAgentUI conversation using [`@openuidev/assistant-ui`](https://www.npmjs.com/package/@openuidev/assistant-ui), the integration package published and maintained by OpenUI.
 
-openagentui owns the chat shell, runtime, messages, streaming, and tool lifecycle. OpenUI renders the `ui` argument of two tool calls: `present_openui` for display-only interfaces and `prompt_openui` for forms and choices that wait for the user to submit.
+OpenAgentUI owns the chat shell, runtime, messages, streaming, and tool lifecycle. OpenUI renders the `ui` argument of two tool calls: `present_openui` for display-only interfaces and `prompt_openui` for forms and choices that wait for the user to submit.
 
 ## Quick Start
 
@@ -58,5 +58,5 @@ pnpm -C examples/with-openui dev
 
 ## Related Documentation
 
-- [openagentui OpenUI guide](https://openagentui.dev/docs/tools/openui)
-- [OpenUI openagentui integration reference](https://www.openui.com/docs/api-reference/openagentui)
+- [OpenAgentUI OpenUI guide](https://openagentui.dev/docs/tools/openui)
+- [OpenUI OpenAgentUI integration reference](https://www.openui.com/docs/api-reference/openagentui)

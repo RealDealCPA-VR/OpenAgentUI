@@ -1,6 +1,6 @@
 # `@openagentui/react-google-adk`
 
-[Google ADK](https://github.com/google/adk-js) (Agent Development Kit) integration for `@openagentui/react`. Connects ADK JS agents to the openagentui runtime with streaming, tool calls, multi-agent support, tool confirmations, auth flows, and session-state management.
+[Google ADK](https://github.com/google/adk-js) (Agent Development Kit) integration for `@openagentui/react`. Connects ADK JS agents to the OpenAgentUI runtime with streaming, tool calls, multi-agent support, tool confirmations, auth flows, and session-state management.
 
 ## Installation
 

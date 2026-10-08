@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { createOgMetadata } from "@/lib/og";
 import { ExampleCard } from "@/components/pages/examples/example-card";
 import { PageFrame } from "@/components/shared/page-frame";
@@ -70,19 +68,6 @@ export default function ExamplesPage() {
           items={COMMUNITY_EXAMPLES}
         />
       </div>
-
-      <footer className="border-foreground/10 border-t pt-10">
-        <p className="text-muted-foreground text-sm">
-          Building something of your own?{" "}
-          <Link
-            href="/showcase"
-            className="text-foreground group inline-flex items-center gap-1.5 font-medium transition-colors"
-          >
-            See the showcase
-            <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </p>
-      </footer>
     </PageFrame>
   );
 }

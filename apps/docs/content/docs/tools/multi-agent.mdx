@@ -4,7 +4,7 @@ description: Render sub-agent conversations and handoffs inside tool calls. Buil
 platforms: ["react"]
 ---
 
-In a multi-agent (orchestrator) architecture, a main agent invokes sub-agents via tool calls. Each sub-agent may produce its own conversation (user/assistant messages, tool calls, etc.). openagentui supports rendering these nested conversations using the `MessagePartPrimitive.Messages` primitive.
+In a multi-agent (orchestrator) architecture, a main agent invokes sub-agents via tool calls. Each sub-agent may produce its own conversation (user/assistant messages, tool calls, etc.). OpenAgentUI supports rendering these nested conversations using the `MessagePartPrimitive.Messages` primitive.
 
 ## Overview
 
@@ -295,7 +295,6 @@ function SubConversation({
 - [Tool UI](/docs/tools/tool-ui): Creating tool call UIs
 - [react-o11y](/docs/utilities/react-o11y): Visualize sub-agent execution as collapsible span trees, waterfalls, and call timelines
 - [MessagePartPrimitive](/docs/api-reference/primitives/message-part): API reference for message part primitives
-- [Sub-Agent Model Tracking](/docs/cloud/traces#track-sub-agent-model-work): Track delegated model usage and costs in the Cloud dashboard
 - [AG-UI Subagents](/docs/runtimes/ag-ui/runtime-options#subagents): Nested subagent messages attributed from the AG-UI event stream
 - [LangGraph Streaming](/docs/runtimes/langgraph/streaming): Event handlers, subgraph events, and message metadata
 - [LangGraph Generative UI](/docs/runtimes/langgraph/generative-ui): Structured UI components emitted by your graph

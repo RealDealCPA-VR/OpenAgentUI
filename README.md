@@ -1,73 +1,57 @@
-<a href="https://openagentui.dev">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset=".github/assets/header-light.png" />
-    <img src=".github/assets/header-light.png" alt="openagentui: the frontend library for AI agents" width="100%" />
-  </picture>
-</a>
+<p align="center">
+  <img src="apps/docs/public/favicon/icon.svg" width="56" height="56" alt="OpenAgentUI logo" />
+</p>
+
+<h1 align="center">OpenAgentUI</h1>
 
 <p align="center">
-  <a href="https://openagentui.dev">Product</a> ·
-  <a href="https://openagentui.dev/docs">Documentation</a> ·
+  Open-source UI for AI agents. Composable React primitives, a streaming runtime,
+  and adapters for AI SDK, LangGraph, LangChain, AG-UI, A2A, Google ADK and more.
+</p>
+
+<p align="center">
+  <a href="https://openagentui.dev/docs">Docs</a> ·
+  <a href="https://openagentui.dev/elements">Components</a> ·
   <a href="https://openagentui.dev/examples">Examples</a> ·
-  <a href="https://discord.gg/S9dwgCNEFs">Discord</a> ·
-  <a href="https://cal.com/simon-farshid/openagentui">Contact Sales</a>
+  <a href="https://github.com/RealDealCPA-VR/OpenAgentUI/discussions">Discussions</a> ·
+  <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@openagentui/react"><img src="https://img.shields.io/npm/v/@openagentui/react" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/@openagentui/react"><img src="https://img.shields.io/npm/dm/@openagentui/react" alt="npm downloads"></a>
-  <a href="https://deepwiki.com/openagentui/openagentui"><img src="https://img.shields.io/badge/Ask-DeepWiki-1f6feb" alt="Ask DeepWiki"></a>
-  <a href="https://app.workweave.ai/reports/repository/org_GhSIrtWo37b5B3Mv0At3wQ1Q/722184017"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapp.workweave.ai%2Fapi%2Frepository%2Fbadge%2Forg_GhSIrtWo37b5B3Mv0At3wQ1Q%2F722184017&amp;cacheSeconds=3600" alt="Weave Badge"></a>
-  <img src="https://img.shields.io/github/license/openagentui/openagentui" alt="GitHub License">
-  <a href="https://github.com/RealDealCPA-VR/OpenAgentUI"><img src="https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI" alt="GitHub stars"></a>
-  <img src="https://img.shields.io/badge/Backed_by-Y_Combinator-orange" alt="Backed by Y Combinator">
+  <img src="https://img.shields.io/badge/license-MIT-black" alt="MIT License" />
+  <a href="https://github.com/RealDealCPA-VR/OpenAgentUI"><img src="https://img.shields.io/github/stars/RealDealCPA-VR/OpenAgentUI" alt="GitHub stars" /></a>
 </p>
 
-## The UX of ChatGPT in your React app 💬🚀
+OpenAgentUI is free and MIT licensed. There is no paid tier, hosted service or
+account: every package, component and doc page lives in this repository.
 
-**openagentui** is an open-source TypeScript/React library to build production-grade AI chat experiences fast.
-
-<a href="https://openagentui.dev">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/demo.webp" />
-    <source media="(prefers-color-scheme: light)" srcset=".github/assets/demo-light.webp" />
-    <img src=".github/assets/demo-light.webp" alt="An openagentui chat: a hotel search tool call, a streamed reply, an approval card that the user allows, and follow-up suggestions" width="100%" />
-  </picture>
-</a>
-
-## Installation
-
-The fastest path is the CLI, which scaffolds a Next.js app or adds the styled components to an existing project:
+## Quick start
 
 ```bash
-npx openagentui@latest create   # new project
-npx openagentui@latest init     # add to existing project
+npx openagentui@latest create          # new Next.js app with a working thread
+npx openagentui@latest init            # add to an existing project
+npx openagentui@latest create --ink    # chat in the terminal (React Ink)
+npx openagentui@latest create --example with-expo   # React Native / Expo
 ```
 
-Or install the packages directly:
+Or install the packages yourself:
 
 ```bash
-npm install @openagentui/react @openagentui/ai-sdk ai
+npm install @openagentui/react @openagentui/ai-sdk ai @ai-sdk/react @ai-sdk/openai
 ```
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cli-init.webp" />
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/cli-init-light.webp" />
-  <img src=".github/assets/cli-init-light.webp" alt="Running npx openagentui@latest init in a terminal" width="100%" />
-</picture>
-
-## Usage
 
 ```tsx
 "use client";
 
 import { AssistantRuntimeProvider } from "@openagentui/react";
-import { useChatRuntime } from "@openagentui/ai-sdk";
+import { useChatRuntime, AssistantChatTransport } from "@openagentui/ai-sdk";
 import { Thread } from "@/components/openagentui/elements/thread.aui";
 
 export function Chat() {
-  const runtime = useChatRuntime();
+  const runtime = useChatRuntime({
+    transport: new AssistantChatTransport({ api: "/api/chat" }),
+  });
+
   return (
     <AssistantRuntimeProvider runtime={runtime}>
       <Thread />
@@ -76,88 +60,64 @@ export function Chat() {
 }
 ```
 
-`useChatRuntime` connects to the Vercel AI SDK out of the box. Swap it for `useLangGraphRuntime`, `useDataStreamRuntime`, or any custom runtime to integrate with your own backend.
+Swap `useChatRuntime` for any other runtime below; the UI does not change.
 
-## What you get
+## What is in the box
 
-- **Composable primitives**: build any chat UX from `Thread`, `Message`, `Composer`, `ThreadList`, `ActionBar`, and friends. Style every pixel yourself, or start from a polished shadcn/ui theme that the CLI copies into your project.
-- **Production UX out of the box**: streaming, auto-scroll, retries, attachments, markdown, code highlighting, voice dictation, keyboard shortcuts, and accessibility.
-- **Generative UI**: render tool calls and JSON as React components, collect inline human approvals, and expose safe frontend actions to the model.
-- **Strong TypeScript**: typed runtime APIs, tool schemas, message parts, and adapters end to end.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/generative-ui.png" />
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/generative-ui-light.png" />
-  <img src=".github/assets/generative-ui-light.png" alt="A get_weather tool call rendered as a weather card inside an openagentui chat" width="100%" />
-</picture>
+- **Primitives**: `Thread`, `Message`, `Composer`, `ThreadList`, `ActionBar`,
+  `BranchPicker`, `Attachment` and more, unstyled and composable.
+- **Components**: a shadcn/ui registry of styled components (Base UI or Radix)
+  that the CLI copies into your repo, so you own the source.
+- **Runtime**: streaming, tool calls, human approvals, branching, editing,
+  attachments, voice, suggestions, thread lists and persistence adapters.
+- **Generative UI**: render tool calls as components, and colocate a tool's
+  schema, server execute and client render with the `"use generative"` compiler.
+- **Platforms**: React, React Native, React Ink (terminal) and Vue.
+- **For coding agents**: `llms.txt`, a Markdown twin of every docs page, a docs
+  MCP server and agent skills.
 
 ## Backends
 
-| Integration                            | Package                                                          |
-| -------------------------------------- | ---------------------------------------------------------------- |
-| Vercel AI SDK                          | `@openagentui/ai-sdk`                                           |
-| LangGraph / LangChain                  | `@openagentui/react-langgraph`, `@openagentui/react-langchain` |
-| AG-UI / A2A protocols                  | `@openagentui/react-ag-ui`, `@openagentui/react-a2a`           |
-| Google ADK / OpenCode                  | `@openagentui/react-google-adk`, `@openagentui/react-opencode` |
-| Custom data-stream backend             | `@openagentui/react-data-stream`                                |
-| Managed thread history, telemetry, and file storage | `openagentui-cloud`                                       |
+| Backend                    | Package                                                        |
+| -------------------------- | -------------------------------------------------------------- |
+| Vercel AI SDK              | `@openagentui/ai-sdk`                                          |
+| LangGraph / LangChain      | `@openagentui/react-langgraph`, `@openagentui/react-langchain` |
+| AG-UI / A2A protocols      | `@openagentui/react-ag-ui`, `@openagentui/react-a2a`           |
+| Google ADK / OpenCode / Pi | `@openagentui/react-google-adk`, `@openagentui/react-opencode`, `@openagentui/react-pi` |
+| Eve                        | `@openagentui/eve`                                             |
+| Any data-stream endpoint   | `@openagentui/react-data-stream`                               |
+| Your own store or adapter  | `useExternalStoreRuntime`, `useLocalRuntime` in `@openagentui/react` |
 
-Broad model support out of the box (OpenAI, Anthropic, Google Gemini, Mistral, Perplexity, AWS Bedrock, Azure, Fireworks, Ollama) plus community providers via the AI SDK, and easy extension to any custom HTTP backend.
+## Repository layout
 
-## Customization
+| Path         | What it holds                                              |
+| ------------ | ---------------------------------------------------------- |
+| `packages/`  | Every published package (runtime, adapters, UI, CLI)       |
+| `apps/docs`  | The website: landing page, docs, elements, playground      |
+| `apps/registry` | The shadcn registry the CLI installs components from    |
+| `examples/`  | Runnable integrations (`npx openagentui create --example`) |
+| `templates/` | Starter apps (`npx openagentui create -t <template>`)      |
+| `python/`    | Python streaming and transport backends                    |
 
-Instead of a single monolithic chat component, you compose primitives and bring your own styles. The CLI ships a great starter in your choice of Base UI (the default) or Radix UI flavor; you control everything else.
+## Develop
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/anatomy.webp" />
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/anatomy-light.webp" />
-  <img src=".github/assets/anatomy-light.webp" alt="A chat UI annotated with the primitives that build it: ThreadPrimitive.Viewport, MessagePrimitive.Root and Parts, makeAssistantToolUI, ActionBarPrimitive, BranchPickerPrimitive, and ComposerPrimitive.Input, Send and AddAttachment" width="100%" />
-</picture>
+Requires Node.js 24.11+ and pnpm 12 (`corepack enable`).
 
-## Used in production by
+```bash
+pnpm install
+pnpm build                       # build every package
+pnpm docs:dev                    # run the website on http://localhost:3000
+pnpm test                        # unit tests and typecheck
+```
 
-<p align="center">
-  <a href="https://mastra.ai/?ref=openagentui"><img src=".github/assets/logos/Mastra.svg" height="24" alt="Mastra"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://langchain.com/?ref=openagentui"><img src=".github/assets/logos/LangChain.svg" height="24" alt="LangChain"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://athenaintelligence.ai/?ref=openagentui"><img src=".github/assets/logos/Athena-Intelligence.svg" height="24" alt="Athena Intelligence"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://browser-use.com/?ref=openagentui"><img src=".github/assets/logos/Browser-Use.svg" height="24" alt="Browser Use"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://stack-ai.com/?ref=openagentui"><img src=".github/assets/logos/Stack.svg" height="24" alt="Stack"></a>
-  <br /><br />
-  <a href="https://inconvo.com/?ref=openagentui"><img src=".github/assets/logos/Inconvo.svg" height="24" alt="Inconvo"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://iterable.com/?ref=openagentui"><img src=".github/assets/logos/Iterable.svg" height="24" alt="Iterable"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://helicone.ai/?ref=openagentui"><img src=".github/assets/logos/helicone.svg" height="24" alt="Helicone"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://getgram.ai/?ref=openagentui"><img src=".github/assets/logos/gram.svg" height="24" alt="Gram"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://coreviz.io/?ref=openagentui"><img src=".github/assets/logos/Coreviz.svg" height="24" alt="Coreviz"></a>
-</p>
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow and
+[DEPLOYMENT.md](DEPLOYMENT.md) for hosting the website and registry.
 
-<p align="center"><sub>…and many more.</sub></p>
+## Credits
 
-<a href="https://openagentui.dev/traction">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://openagentui.dev/traction-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="https://openagentui.dev/traction.png" />
-    <img src="https://openagentui.dev/traction.png" alt="Chart of openagentui's traction" width="100%" />
-  </picture>
-</a>
-
-## Demos
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://youtu.be/ZW56UHlqTCQ">
-        <img src="https://img.youtube.com/vi/ZW56UHlqTCQ/hqdefault.jpg" alt="Short Demo" />
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://youtu.be/9eLKs9AM4tU">
-        <img src="https://img.youtube.com/vi/9eLKs9AM4tU/hqdefault.jpg" alt="Long Demo" />
-      </a>
-    </td>
-  </tr>
-</table>
-
-## Community & Support
-
-- [Examples](https://openagentui.dev/examples)
-- [Documentation](https://openagentui.dev/docs/)
-- [Discord](https://discord.com/invite/S9dwgCNEFs)
-- [Book a sales call](https://cal.com/simon-farshid/openagentui)
+OpenAgentUI is derived from [assistant-ui](https://github.com/assistant-ui/assistant-ui)
+(MIT). See [NOTICE.md](NOTICE.md).
 
 ## License
 
-MIT, with optional Assistant Cloud for managed thread persistence and analytics.
-
-Backed by Y Combinator.
+[MIT](LICENSE)

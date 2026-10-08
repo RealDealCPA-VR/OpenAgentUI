@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SubProjectLayout } from "@/components/shared/sub-project-layout";
 import { createOgMetadata } from "@/lib/og";
 
-const title = "openagentui for the Terminal";
+const title = "OpenAgentUI for the Terminal";
 const description =
   "Terminal Thread, Composer, and Message primitives for Ink. Same runtime as the web SDK. ANSI markdown.";
 

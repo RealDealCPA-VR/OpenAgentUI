@@ -1,4 +1,3 @@
-import type { WizardPageId } from "@/components/pages/shop/setup-wizard-page";
 import type { LearnCourseStartSource } from "@/lib/xulux/learn/types";
 import type { WebMcpToolName } from "@/lib/webmcp-tools";
 
@@ -46,12 +45,7 @@ const trackEvent = (event: string, properties?: AnalyticsProperties) => {
 export const analytics = {
   cta: {
     clicked: (
-      cta:
-        | "get_started"
-        | "contact_sales"
-        | "why_us"
-        | "start_setup_agent"
-        | "start_setup_manual",
+      cta: "get_started" | "contact_sales" | "why_us",
       location: string,
     ) => trackEvent("cta_clicked", { cta, location }),
 
@@ -62,22 +56,6 @@ export const analytics = {
 
     promptCopied: (properties?: AnalyticsProperties) =>
       trackEvent("prompt_copied", properties),
-  },
-
-  shop: {
-    cartToggled: (product: string, added: boolean) =>
-      trackEvent("shop_cart_toggled", { product, added }),
-  },
-
-  setup: {
-    stepViewed: (step: WizardPageId) =>
-      trackEvent("setup_step_viewed", { step }),
-
-    agentConnected: () => trackEvent("setup_agent_connected"),
-
-    installFinished: () => trackEvent("setup_install_finished"),
-
-    cancelled: () => trackEvent("setup_cancelled"),
   },
 
   search: {

@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Question or help
-    url: https://discord.gg/S9dwgCNEFs
-    about: Ask questions and get help from the community on Discord.
+    url: https://github.com/RealDealCPA-VR/OpenAgentUI/discussions
+    about: Ask questions and get help from the community in GitHub Discussions.
   - name: Documentation
     url: https://openagentui.dev/docs
     about: Check the docs — your question might already be answered.

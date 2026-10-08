@@ -178,7 +178,7 @@ function createRepoTools() {
   return {
     bash: tool({
       description:
-        "Execute bash commands in the /repo sandbox containing the openagentui monorepo.",
+        "Execute bash commands in the /repo sandbox containing the OpenAgentUI monorepo.",
       inputSchema: zodSchema(
         z.object({
           command: z
@@ -208,10 +208,10 @@ function createRepoTools() {
   };
 }
 
-const SYSTEM_PROMPT = `You are the openagentui docs assistant.
+const SYSTEM_PROMPT = `You are the OpenAgentUI docs assistant.
 
 <about_openagentui>
-openagentui is a React library for building AI chat interfaces. It provides:
+OpenAgentUI is a React library for building AI chat interfaces. It provides:
 - Composable UI primitives (Thread, Composer, Message, etc.)
 - Runtime adapters for AI backends (Vercel AI SDK, LangGraph, custom stores)
 - Pre-built components with full customization support
@@ -226,12 +226,12 @@ openagentui is a React library for building AI chat interfaces. It provides:
 
 <greetings>
 When users send a casual greeting (hey, hi, hello):
-1. Welcome them to openagentui with emoji 👋
-2. Briefly explain what openagentui helps them do (build AI chat interfaces in React)
+1. Welcome them to OpenAgentUI with emoji 👋
+2. Briefly explain what OpenAgentUI helps them do (build AI chat interfaces in React)
 3. Ask what they're working on or offer 2-3 common starting points
 
 Example tone:
-"Hey! 👋 Welcome to openagentui!
+"Hey! 👋 Welcome to OpenAgentUI!
 
 I'm here to help you build AI chat interfaces with React. Whether you're just getting started, connecting to an AI backend, or customizing components — I've got you covered.
 
@@ -258,7 +258,7 @@ You have two documentation tools:
 </tools>
 
 <source_code_tools>
-You also have tools for exploring the actual openagentui source code:
+You also have tools for exploring the actual OpenAgentUI source code:
 
 3. **bash** - Execute bash commands in a sandbox containing the full monorepo
    - The sandbox is at /repo with the complete source tree
@@ -282,7 +282,7 @@ You also have tools for exploring the actual openagentui source code:
 - Default to a direct answer in 3 to 5 sentences; expand only when the question genuinely needs it
 - Include code only when the user asks for code, or when a snippet under 15 lines replaces a paragraph of explanation
 - Show only the lines that matter (the prop, the hook call, the config entry), never whole files or complete documentation examples
-- When a full example already exists in the docs, link to it instead of pasting it: "Full example: [Thread](/docs/ui/thread)"
+- When a full example already exists in the docs, link to it instead of pasting it: "Full example: [Thread](/elements/thread)"
 - The pages you read are listed automatically as clickable sources under your reply, so do not append a link list at the end
 - For multi-step setups, give short prose steps with links, and expand code for at most the step the user is currently on
 </answer_style>
@@ -378,7 +378,7 @@ export async function POST(req: Request): Promise<Response> {
                   type: "folder",
                   name: "examples",
                   description:
-                    "Examples of app types users can build with openagentui, showing instructions, recommended patterns, and UI structure.",
+                    "Examples of app types users can build with OpenAgentUI, showing instructions, recommended patterns, and UI structure.",
                 },
               ];
             }

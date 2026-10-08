@@ -1,16 +1,16 @@
 ---
 title: OpenUI
-description: Render streaming OpenUI Lang interfaces in an openagentui conversation with @openuidev/assistant-ui, the integration package published by OpenUI.
+description: Render streaming OpenUI Lang interfaces in an OpenAgentUI conversation with @openuidev/assistant-ui, the integration package published by OpenUI.
 platforms: ["react"]
 ---
 
-[OpenUI](https://www.openui.com) is a generative UI system in which the model writes **OpenUI Lang**, a streaming markup language, and an OpenUI renderer turns it into interactive React components. [`@openuidev/assistant-ui`](https://www.npmjs.com/package/@openuidev/assistant-ui) connects that renderer to openagentui: it ships a ready-made toolkit, model instructions generated from the OpenUI component library, and Tool UI renderers that stream, handle interactions, and replay.
+[OpenUI](https://www.openui.com) is a generative UI system in which the model writes **OpenUI Lang**, a streaming markup language, and an OpenUI renderer turns it into interactive React components. [`@openuidev/assistant-ui`](https://www.npmjs.com/package/@openuidev/assistant-ui) connects that renderer to OpenAgentUI: it ships a ready-made toolkit, model instructions generated from the OpenUI component library, and Tool UI renderers that stream, handle interactions, and replay.
 
 <Callout type="info">
-  `@openuidev/assistant-ui` is a third-party package. OpenUI owns the package, its [documentation](https://www.openui.com/docs/api-reference/openagentui), and its releases; openagentui does not ship or version any OpenUI code. Use OpenUI's reference for the package API and OpenUI Lang itself; this page covers the openagentui side of the wiring.
+  `@openuidev/assistant-ui` is a third-party package. OpenUI owns the package, its [documentation](https://www.openui.com/docs/api-reference/openagentui), and its releases; OpenAgentUI does not ship or version any OpenUI code. Use OpenUI's reference for the package API and OpenUI Lang itself; this page covers the OpenAgentUI side of the wiring.
 </Callout>
 
-The integration rides entirely on the [Tool UI](/docs/tools/tool-ui) lifecycle, so openagentui stays in charge of the conversation, streaming, and tool calls. The toolkit registers two standalone tools:
+The integration rides entirely on the [Tool UI](/docs/tools/tool-ui) lifecycle, so OpenAgentUI stays in charge of the conversation, streaming, and tool calls. The toolkit registers two standalone tools:
 
 - `present_openui` is a **frontend tool** for display-only interfaces (cards, tables, charts). It completes as soon as the streamed `ui` argument is available, and the turn ends there.
 - `prompt_openui` is a **human tool** for forms and choices. It completes only when the user submits an OpenUI `@ToAssistant(...)` action, and the submitted values continue the conversation.
@@ -33,7 +33,7 @@ Alongside an existing `@openagentui/react` setup, add the integration and its Op
 
 <InstallCommand npm={["@openuidev/assistant-ui", "@openuidev/react-ui", "@openuidev/react-lang", "@openuidev/react-headless", "zustand@^4.5.5"]} />
 
-The package also expects `zod` and React 18 or 19, which an openagentui app already has. The current OpenUI peers support AI SDK 6 and 7 and require Zustand 4.
+The package also expects `zod` and React 18 or 19, which an OpenAgentUI app already has. The current OpenUI peers support AI SDK 6 and 7 and require Zustand 4.
 
 </Step>
 
@@ -147,7 +147,7 @@ export async function POST(req: Request) {
 When the user submits a `prompt_openui` form or choice, the integration reports the action, message, parameters, and form state through the standard human-tool `addResult`, and `sendAutomaticallyWhen` resumes the run with that result. On replay of a persisted thread, the stored result hydrates the submitted form state back into the renderer, so completed forms render as submitted instead of resetting.
 
 <Callout type="tip">
-  The core integration is runtime-agnostic: the toolkit, renderers, and instructions work with any openagentui runtime that forwards tool schemas and results. Only the `shouldContinueAfterOpenUIPrompt` helper on the `/ai-sdk` subpath is AI SDK-specific.
+  The core integration is runtime-agnostic: the toolkit, renderers, and instructions work with any OpenAgentUI runtime that forwards tool schemas and results. Only the `shouldContinueAfterOpenUIPrompt` helper on the `/ai-sdk` subpath is AI SDK-specific.
 </Callout>
 
 ## Customization
@@ -170,6 +170,6 @@ The result exposes `toolkit`, `instructions`, and the resolved `toolNames`. See 
 ## Related
 
 - [`examples/with-openui`](https://github.com/RealDealCPA-VR/OpenAgentUI/tree/main/examples/with-openui): the runnable setup from this page
-- [OpenUI openagentui integration reference](https://www.openui.com/docs/api-reference/openagentui): the canonical package documentation
+- [OpenUI OpenAgentUI integration reference](https://www.openui.com/docs/api-reference/openagentui): the canonical package documentation
 - [Generative UI](/docs/tools/generative-ui): the first-party `present` tool this integration sits alongside
 - [Tool UI](/docs/tools/tool-ui): the lifecycle both OpenUI tools build on

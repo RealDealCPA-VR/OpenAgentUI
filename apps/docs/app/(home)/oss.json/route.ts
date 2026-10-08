@@ -2,8 +2,8 @@ import { cacheLife } from "next/cache";
 import { BASE_URL } from "@/lib/constants";
 import {
   OSS_CATEGORIES,
+  OSS_MONOREPO,
   OSS_PROJECTS,
-  ossNpmUrl,
   ossPrimaryUrl,
   ossRepoUrl,
 } from "@/lib/oss";
@@ -15,7 +15,7 @@ async function getBody() {
   "use cache";
   cacheLife("max");
   const body = {
-    organization: "openagentui",
+    repository: `https://github.com/${OSS_MONOREPO}`,
     categories: OSS_CATEGORIES,
     projects: OSS_PROJECTS.map((project) => ({
       ...project,
@@ -23,10 +23,6 @@ async function getBody() {
       repoUrl: ossRepoUrl(project),
       ...(project.docs ? { docs: absolute(project.docs) } : {}),
       ...(project.site ? { site: absolute(project.site) } : {}),
-      ...(project.npm ? { npmUrl: ossNpmUrl(project.npm) } : {}),
-      ...(project.pypi
-        ? { pypiUrl: `https://pypi.org/project/${project.pypi}/` }
-        : {}),
     })),
   };
 

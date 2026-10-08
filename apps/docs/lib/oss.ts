@@ -2,15 +2,17 @@ import { REVALIDATE, getRepo } from "./github";
 import { NPM_REVALIDATE, getWeeklyDownloads } from "./npm";
 import { PACKAGES } from "./traction";
 
-export const OSS_MONOREPO = "openagentui/openagentui";
+export const OSS_MONOREPO = "RealDealCPA-VR/OpenAgentUI";
 
 export type OssCategory =
   | "sdk"
-  | "libraries"
-  | "apps"
+  | "runtime"
+  | "adapters"
+  | "platforms"
+  | "ui"
   | "primitives"
   | "agents"
-  | "infrastructure";
+  | "tooling";
 
 export type OssProject = {
   id: string;
@@ -18,11 +20,11 @@ export type OssProject = {
   description: string;
   category: OssCategory;
   repo: string;
-  path?: string;
+  /** Directory of the project inside the monorepo. */
+  path: string;
   docs?: string;
   site?: string;
-  npm?: string;
-  pypi?: string;
+  npm: string;
   license: string | null;
 };
 
@@ -34,185 +36,227 @@ export const OSS_CATEGORIES: Record<
     label: "Core SDK",
     description: "The chat runtime and everything that ships with it.",
   },
-  libraries: {
-    label: "Libraries",
-    description: "Standalone libraries with their own release cycle.",
+  runtime: {
+    label: "Runtime",
+    description: "State, streaming, and persistence under the React bindings.",
   },
-  apps: {
-    label: "Applications",
-    description: "Complete products, open sourced end to end.",
+  adapters: {
+    label: "Adapters",
+    description: "Bindings for AI SDKs and open agent protocols.",
+  },
+  platforms: {
+    label: "Platforms",
+    description: "Native, terminal, and Vue bindings.",
+  },
+  ui: {
+    label: "UI and rendering",
+    description: "Markdown, rich composers, generative UI, and devtools.",
   },
   primitives: {
     label: "Primitives",
-    description: "Small packages we extracted along the way.",
+    description: "Standalone packages that work without the runtime.",
   },
   agents: {
     label: "Agent tooling",
-    description: "What coding agents use to build with openagentui.",
+    description: "What coding agents and MCP hosts use with OpenAgentUI.",
   },
-  infrastructure: {
-    label: "Infrastructure",
-    description: "Services that run behind an assistant.",
+  tooling: {
+    label: "Tooling",
+    description: "Scaffolding, the CLI, and build plugins.",
   },
 };
 
-type OssProjectInput = Omit<OssProject, "description"> & {
-  description?: string;
+type OssProjectInput = {
+  /** Directory under `packages/`. */
+  dir: string;
+  npm: string;
+  category: OssCategory;
+  docs?: string;
+  site?: string;
 };
 
 const OSS_PROJECT_INPUTS: OssProjectInput[] = [
+  { dir: "react", npm: "@openagentui/react", category: "sdk", docs: "/docs" },
+
+  { dir: "core", npm: "@openagentui/core", category: "runtime" },
   {
-    id: "openagentui",
-    name: "openagentui",
-    category: "sdk",
-    repo: OSS_MONOREPO,
-    docs: "/docs",
-    npm: "@openagentui/react",
-    license: "MIT",
-  },
-  {
-    id: "tap",
-    name: "@openagentui/tap",
-    category: "libraries",
-    repo: OSS_MONOREPO,
-    path: "packages/tap",
-    docs: "/docs/tap",
-    npm: "@openagentui/tap",
-    license: "MIT",
-  },
-  {
-    id: "store",
-    name: "@openagentui/store",
-    category: "libraries",
-    repo: OSS_MONOREPO,
-    path: "packages/store",
-    docs: "/docs/store/why-store",
+    dir: "store",
     npm: "@openagentui/store",
-    license: "MIT",
+    category: "runtime",
+    docs: "/docs/store/why-store",
   },
   {
-    id: "openagentui-stream",
-    name: "openagentui-stream",
-    category: "libraries",
-    repo: OSS_MONOREPO,
-    path: "packages/openagentui-stream",
-    npm: "openagentui-stream",
-    pypi: "openagentui-stream",
-    license: "MIT",
+    dir: "tap",
+    npm: "@openagentui/tap",
+    category: "runtime",
+    docs: "/docs/tap",
+  },
+  { dir: "openagentui-stream", npm: "openagentui-stream", category: "runtime" },
+  { dir: "cloud", npm: "openagentui-cloud", category: "runtime" },
+
+  { dir: "ai-sdk", npm: "@openagentui/ai-sdk", category: "adapters" },
+  {
+    dir: "react-ai-sdk",
+    npm: "@openagentui/react-ai-sdk",
+    category: "adapters",
   },
   {
-    id: "tool-ui",
-    name: "tool-ui",
-    description: "UI components for AI interfaces.",
-    category: "libraries",
-    repo: "openagentui/tool-ui",
-    site: "https://tool-ui.com",
-    license: "MIT",
+    dir: "react-langgraph",
+    npm: "@openagentui/react-langgraph",
+    category: "adapters",
   },
   {
-    id: "xpm",
-    name: "@openagentui/xpm",
-    description: "One command for npm, yarn, pnpm, bun, deno, and uv.",
-    category: "libraries",
-    repo: "openagentui/xpm",
-    npm: "@openagentui/xpm",
-    license: "MIT",
+    dir: "react-langchain",
+    npm: "@openagentui/react-langchain",
+    category: "adapters",
   },
   {
-    id: "modelpedia",
-    name: "modelpedia",
-    description: "Open catalog of AI models across providers.",
-    category: "apps",
-    repo: "openagentui/modelpedia",
-    site: "https://modelpedia.dev",
-    license: "MIT",
+    dir: "react-google-adk",
+    npm: "@openagentui/react-google-adk",
+    category: "adapters",
+  },
+  { dir: "eve", npm: "@openagentui/eve", category: "adapters" },
+  {
+    dir: "react-opencode",
+    npm: "@openagentui/react-opencode",
+    category: "adapters",
+  },
+  { dir: "react-pi", npm: "@openagentui/react-pi", category: "adapters" },
+  { dir: "react-a2a", npm: "@openagentui/react-a2a", category: "adapters" },
+  { dir: "react-ag-ui", npm: "@openagentui/react-ag-ui", category: "adapters" },
+  {
+    dir: "react-data-stream",
+    npm: "@openagentui/react-data-stream",
+    category: "adapters",
+  },
+
+  {
+    dir: "react-native",
+    npm: "@openagentui/react-native",
+    category: "platforms",
+    site: "/native",
   },
   {
-    id: "open-prism",
-    name: "open-prism",
-    description: "AI LaTeX writing workspace with live preview.",
-    category: "apps",
-    repo: "openagentui/open-prism",
-    site: "https://openprism.vercel.app",
-    license: "MIT",
+    dir: "react-ink",
+    npm: "@openagentui/react-ink",
+    category: "platforms",
+    site: "/ink",
   },
   {
-    id: "tw-shimmer",
-    name: "@openagentui/tw-shimmer",
-    category: "primitives",
-    repo: OSS_MONOREPO,
-    path: "packages/tw-shimmer",
-    site: "/tw-shimmer",
+    dir: "vue",
+    npm: "@openagentui/vue",
+    category: "platforms",
+    docs: "/docs/vue",
+  },
+
+  { dir: "react-markdown", npm: "@openagentui/react-markdown", category: "ui" },
+  {
+    dir: "react-streamdown",
+    npm: "@openagentui/react-streamdown",
+    category: "ui",
+  },
+  {
+    dir: "react-syntax-highlighter",
+    npm: "@openagentui/react-syntax-highlighter",
+    category: "ui",
+  },
+  {
+    dir: "react-ink-markdown",
+    npm: "@openagentui/react-ink-markdown",
+    category: "ui",
+  },
+  { dir: "react-lexical", npm: "@openagentui/react-lexical", category: "ui" },
+  {
+    dir: "react-hook-form",
+    npm: "@openagentui/react-hook-form",
+    category: "ui",
+  },
+  {
+    dir: "react-generative-ui",
+    npm: "@openagentui/react-generative-ui",
+    category: "ui",
+  },
+  { dir: "react-devtools", npm: "@openagentui/react-devtools", category: "ui" },
+  {
+    dir: "react-o11y",
+    npm: "@openagentui/react-o11y",
+    category: "ui",
+    site: "/react-o11y",
+  },
+
+  {
+    dir: "tw-shimmer",
     npm: "@openagentui/tw-shimmer",
-    license: "MIT",
+    category: "primitives",
+    site: "/tw-shimmer",
   },
   {
-    id: "heat-graph",
-    name: "@openagentui/heat-graph",
-    category: "primitives",
-    repo: OSS_MONOREPO,
-    path: "packages/heat-graph",
-    site: "/heat-graph",
+    dir: "heat-graph",
     npm: "@openagentui/heat-graph",
-    license: "MIT",
-  },
-  {
-    id: "safe-content-frame",
-    name: "@openagentui/safe-content-frame",
     category: "primitives",
-    repo: OSS_MONOREPO,
-    path: "packages/safe-content-frame",
-    site: "/safe-content-frame",
+    site: "/heat-graph",
+  },
+  {
+    dir: "safe-content-frame",
     npm: "@openagentui/safe-content-frame",
-    license: "MIT",
+    category: "primitives",
+    site: "/safe-content-frame",
   },
+
   {
-    id: "skills",
-    name: "skills",
-    description: "Agent skills for building AI chat interfaces.",
-    category: "agents",
-    repo: "openagentui/skills",
-    license: null,
-  },
-  {
-    id: "mcp-docs-server",
-    name: "@openagentui/mcp-docs-server",
-    category: "agents",
-    repo: OSS_MONOREPO,
-    path: "packages/mcp-docs-server",
+    dir: "mcp-docs-server",
     npm: "@openagentui/mcp-docs-server",
-    license: "MIT",
+    category: "agents",
   },
   {
-    id: "sync-server",
-    name: "openagentui-sync-server",
-    description: "Resumable streaming proxy for long-running AI tasks.",
-    category: "infrastructure",
-    repo: "openagentui/openagentui-sync-server",
-    license: null,
+    dir: "agent-launcher",
+    npm: "@openagentui/agent-launcher",
+    category: "agents",
+  },
+  { dir: "react-mcp", npm: "@openagentui/react-mcp", category: "agents" },
+
+  { dir: "cli", npm: "openagentui", category: "tooling" },
+  { dir: "create-openagentui", npm: "create-openagentui", category: "tooling" },
+  { dir: "next", npm: "@openagentui/next", category: "tooling" },
+  { dir: "vite", npm: "@openagentui/vite", category: "tooling" },
+  { dir: "metro", npm: "@openagentui/metro", category: "tooling" },
+  {
+    dir: "x-generative-compiler",
+    npm: "@openagentui/x-generative-compiler",
+    category: "tooling",
+  },
+  {
+    dir: "x-buildutils",
+    npm: "@openagentui/x-buildutils",
+    category: "tooling",
   },
 ];
 
-function describe(project: OssProjectInput): string {
-  if (project.description) return project.description;
-  const pkg = PACKAGES.find((entry) => entry.name === project.npm);
+function toProject(input: OssProjectInput): OssProject {
+  const pkg = PACKAGES.find((entry) => entry.name === input.npm);
   if (!pkg) {
     throw new Error(
-      `OSS project "${project.id}" has no description and no matching package in PACKAGES.`,
+      `OSS project "${input.npm}" has no matching package in PACKAGES.`,
     );
   }
-  return pkg.description;
+  return {
+    id: input.dir,
+    name: input.npm,
+    description: pkg.description,
+    category: input.category,
+    repo: OSS_MONOREPO,
+    path: `packages/${input.dir}`,
+    ...(input.docs ? { docs: input.docs } : {}),
+    ...(input.site ? { site: input.site } : {}),
+    npm: input.npm,
+    license: "MIT",
+  };
 }
 
-export const OSS_PROJECTS: OssProject[] = OSS_PROJECT_INPUTS.map((project) => ({
-  ...project,
-  description: describe(project),
-}));
+export const OSS_PROJECTS: OssProject[] = OSS_PROJECT_INPUTS.map(toProject);
 
 export function ossRepoUrl(project: OssProject): string {
-  return project.path
-    ? `https://github.com/${project.repo}/tree/main/${project.path}`
-    : `https://github.com/${project.repo}`;
+  return `https://github.com/${project.repo}/tree/main/${project.path}`;
 }
 
 export function ossPrimaryUrl(project: OssProject): string {
@@ -224,55 +268,31 @@ export function ossNpmUrl(pkg: string): string {
 }
 
 export type OssStats = {
-  stars: Record<string, number>;
+  /** Stars of the repository every project lives in, when GitHub answers. */
+  stars: number | null;
+  /** Weekly npm downloads per package, only for packages npm reports. */
   weekly: Record<string, number>;
 };
 
 export async function fetchOssStats(): Promise<OssStats> {
-  const repos = [
-    ...new Set(
-      OSS_PROJECTS.filter((project) => !project.path).map(
-        (project) => project.repo,
-      ),
-    ),
-  ];
-  const packages = [
-    ...new Set(
-      OSS_PROJECTS.map((project) => project.npm).filter(
-        (name): name is string => name !== undefined,
-      ),
-    ),
-  ];
-
-  const [repoEntries, packageEntries] = await Promise.all([
+  const [repo, packageEntries] = await Promise.all([
+    getRepo(REVALIDATE.WARM, OSS_MONOREPO),
     Promise.all(
-      repos.map(
-        async (repo) =>
+      OSS_PROJECTS.map(
+        async (project) =>
           [
-            repo,
-            (await getRepo(REVALIDATE.WARM, repo))?.stars ?? null,
+            project.npm,
+            await getWeeklyDownloads(project.npm, NPM_REVALIDATE.WARM),
           ] as const,
-      ),
-    ),
-    Promise.all(
-      packages.map(
-        async (name) =>
-          [name, await getWeeklyDownloads(name, NPM_REVALIDATE.WARM)] as const,
       ),
     ),
   ]);
 
-  const stars: Record<string, number> = {};
-  for (const [repo, count] of repoEntries) {
-    if (count === null) continue;
-    stars[repo] = count;
-  }
-
   const weekly: Record<string, number> = {};
   for (const [name, count] of packageEntries) {
-    if (count === null) continue;
+    if (!count) continue;
     weekly[name] = count;
   }
 
-  return { stars, weekly };
+  return { stars: repo?.stars || null, weekly };
 }

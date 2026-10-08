@@ -292,7 +292,7 @@ Without a `stopWhen`, AI SDK runs a single inference step. Set `stepCountIs` (or
 
 ## Server-side tool approval
 
-AI SDK v6 lets a tool gate its own execution with `needsApproval`. The server pauses, emits an `approval-requested` part, and resumes once the client posts an approval response. openagentui surfaces the gate as `approval` on the tool part and adds a `respondToApproval` prop on the renderer, so tool components stay decoupled from `chatHelpers`.
+AI SDK v6 lets a tool gate its own execution with `needsApproval`. The server pauses, emits an `approval-requested` part, and resumes once the client posts an approval response. OpenAgentUI surfaces the gate as `approval` on the tool part and adds a `respondToApproval` prop on the renderer, so tool components stay decoupled from `chatHelpers`.
 
 On the backend, mark the tool with `needsApproval` (boolean or function):
 
@@ -531,7 +531,7 @@ The adapter **must** implement `withFormat`. `useChatRuntime` persists history t
 </Callout>
 
 <Callout type="info">
-For server-side cloud persistence with zero adapter code, see the [AssistantCloud integration](/docs/cloud/ai-sdk).
+If you run or choose an Assistant-Cloud-compatible backend, pass an [`AssistantCloud` client](/docs/api-reference/integrations/openagentui-cloud) as `cloud` instead of writing an adapter.
 </Callout>
 
 ```tsx
@@ -604,7 +604,7 @@ const chat = useChat();
 const runtime = useAISDKRuntime(chat);
 ```
 
-`useAISDKRuntime` does not provide `cloud` or the higher-level adapter slots; those are part of `useChatRuntime`. If you need both your own `useChat` access AND cloud thread support, you generally want `useChatRuntime` and to read the chat state through openagentui hooks instead.
+`useAISDKRuntime` does not provide `cloud` or the higher-level adapter slots; those are part of `useChatRuntime`. If you need both your own `useChat` access AND cloud thread support, you generally want `useChatRuntime` and to read the chat state through OpenAgentUI hooks instead.
 
 ## Adapter support
 

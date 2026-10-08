@@ -1,6 +1,6 @@
 {
   "title": "Runtimes",
-  "description": "Connect the Vue primitives to the AI SDK, openagentui-cloud, or your own message store",
+  "description": "Connect the Vue primitives to the AI SDK, an Assistant-Cloud-compatible backend, or your own message store",
   "icon": "Server",
   "root": true,
   "pages": ["runtimes", "ai-sdk", "cloud", "external-store"]

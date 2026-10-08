@@ -40,7 +40,6 @@ export const PLATFORM_ENTRY_PATHS: Record<Platform, string> = {
   ink: "/docs/ink",
   vue: "/docs/vue",
   tap: "/docs/tap",
-  cloud: "/docs/cloud",
 };
 
 export const PLATFORM_QUICKSTART_COMMANDS: Record<Surface, string> = {

@@ -1,4 +1,4 @@
-This is the [openagentui](https://github.com/RealDealCPA-VR/OpenAgentUI) MCP starter project. It connects the chat to a Model Context Protocol server for tools and renders [MCP Apps](https://apps.extensions.modelcontextprotocol.io/) (sandboxed UI widgets attached to tool calls) inline.
+This is the [OpenAgentUI](https://github.com/RealDealCPA-VR/OpenAgentUI) MCP starter project. It connects the chat to a Model Context Protocol server for tools and renders [MCP Apps](https://apps.extensions.modelcontextprotocol.io/) (sandboxed UI widgets attached to tool calls) inline.
 
 ## Getting Started
 

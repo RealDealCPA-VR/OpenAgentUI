@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 
 const title = "Design";
 const description =
-  "How openagentui is drawn: the printed page it is built on, the radius, ink, type, and line registers every surface shares, and the component kit they produce.";
+  "How OpenAgentUI is drawn: the printed page it is built on, the radius, ink, type, and line registers every surface shares, and the component kit they produce.";
 
 export const metadata: Metadata = {
   title,
@@ -42,7 +42,7 @@ export default function DesignPage() {
       <header className="max-w-xl">
         <h1 className={typePage}>Every surface is a printed page.</h1>
         <p className={cn("mt-4", typeDeck)}>
-          openagentui is drawn as a printed document, not as an application
+          OpenAgentUI is drawn as a printed document, not as an application
           skin. Four registers follow from that one sentence, and every
           component in the kit is what they produce.
         </p>

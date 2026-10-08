@@ -1,18 +1,16 @@
 ---
 title: Installation
-description: Get openagentui running in 5 minutes with npm and your first chat component.
+description: Get OpenAgentUI running in 5 minutes with npm and your first chat component.
 platforms: ["react"]
 ---
 
 
 ## Quick Start
 
-![animated gif showing the steps to create a new project](../../../../../.github/assets/openagentui-starter.gif)
-
 <Steps>
   <Step>
 
-### Initialize openagentui
+### Initialize OpenAgentUI
 
 **Create a new project:**
 
@@ -23,7 +21,7 @@ npx openagentui@latest create
 Or start from a template:
 
 ```sh
-npx openagentui@latest create -t cloud
+npx openagentui@latest create -t langchain
 ```
 
 The [CLI reference](/docs/cli#create) lists every template and example, and what each one includes.
@@ -63,7 +61,7 @@ npm run dev
 
 If you prefer not to use the CLI, you can install components manually.
 
-Add the openagentui registry to your `components.json` so the shadcn CLI resolves components for your style. Styles whose name starts with `base-` receive Base UI flavored components; all other styles receive the Radix flavored ones. `npx shadcn init` defaults to Base UI styles (for example `base-nova`), so new projects need this style-aware URL for components that compile against that stack.
+Add the OpenAgentUI registry to your `components.json` so the shadcn CLI resolves components for your style. Styles whose name starts with `base-` receive Base UI flavored components; all other styles receive the Radix flavored ones. `npx shadcn init` defaults to Base UI styles (for example `base-nova`), so new projects need this style-aware URL for components that compile against that stack.
 
 ```json title="components.json"
 {
@@ -78,7 +76,7 @@ Existing Radix projects can keep the plain form `https://r.openagentui.dev/{name
 <Steps>
   <Step>
 
-### Add openagentui
+### Add OpenAgentUI
 
 <InstallCommand shadcn={["thread", "thread-list"]} manualSetupInstructions />
 
@@ -475,7 +473,7 @@ export default function MyApp() {
   <Card
     title="Add Persistence"
     description="Save and restore chat conversations"
-    href="/docs/cloud"
+    href="/docs/integrations/persistence/custom-adapter"
   />
   <Card
     title="Examples"

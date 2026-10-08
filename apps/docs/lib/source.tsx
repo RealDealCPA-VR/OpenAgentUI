@@ -7,8 +7,6 @@ import {
   examples as examplePages,
   design as designPages,
   elements as elementsMdx,
-  blog as blogPosts,
-  careers as careersCollection,
 } from "fumadocs-mdx:collections/server";
 
 /**
@@ -67,33 +65,3 @@ export const design = loader({
 });
 
 export type DesignPage = InferPageType<typeof design>;
-
-export const blog = loader({
-  baseUrl: "/blog",
-  source: toFumadocsSource(blogPosts, []),
-});
-
-type BaseBlogPage = InferPageType<typeof blog>;
-export type BlogPage = Omit<BaseBlogPage, "data"> & {
-  data: BaseBlogPage["data"] & {
-    date: Date | undefined;
-    author: string;
-    externalUrl: string | undefined;
-  };
-};
-
-export const careers = loader({
-  baseUrl: "/careers",
-  source: toFumadocsSource(careersCollection, []),
-});
-
-type BaseCareerPage = InferPageType<typeof careers>;
-export type CareerPage = Omit<BaseCareerPage, "data"> & {
-  data: BaseCareerPage["data"] & {
-    location: string;
-    type: string;
-    salary: string;
-    summary: string;
-    order?: number | undefined;
-  };
-};

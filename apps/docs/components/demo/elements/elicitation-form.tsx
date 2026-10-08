@@ -11,7 +11,7 @@ const INITIAL_FIELDS: readonly ElicitationField[] = [
   {
     name: "repo",
     label: "Repository",
-    value: "openagentui/openagentui",
+    value: "RealDealCPA-VR/OpenAgentUI",
     kind: "text",
     required: true,
   },

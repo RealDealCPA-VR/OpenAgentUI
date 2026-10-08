@@ -142,7 +142,7 @@ describe("MessageQueue", () => {
 
 ## Test a runtime binding
 
-An `.aui.tsx` element reads state from the openagentui store. The kit's `thread.aui.test.tsx` mocks that store because it checks many layout and interaction states without constructing a complete thread runtime.
+An `.aui.tsx` element reads state from the OpenAgentUI store. The kit's `thread.aui.test.tsx` mocks that store because it checks many layout and interaction states without constructing a complete thread runtime.
 
 Mount a real runtime when the binding only needs a focused message state. The native primitive tests use `useExternalStoreRuntime`, `AssistantRuntimeProvider`, and the index providers together.
 

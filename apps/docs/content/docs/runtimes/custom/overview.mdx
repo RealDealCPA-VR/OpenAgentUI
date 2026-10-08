@@ -1,6 +1,6 @@
 ---
 title: Custom Runtime
-description: Build a React chat UI for any AI backend with openagentui — four runtime patterns covering local state, REST, custom protocols, and external runtimes.
+description: Build a React chat UI for any AI backend with OpenAgentUI — four runtime patterns covering local state, REST, custom protocols, and external runtimes.
 ---
 
 If no [framework adapter](/docs/runtimes/pick-a-runtime) fits your backend, this section gives you four building blocks. All four are built on one of the two core runtimes (see [architecture](/docs/runtimes/concepts/architecture)).
@@ -9,7 +9,7 @@ If no [framework adapter](/docs/runtimes/pick-a-runtime) fits your backend, this
 
 | Path | Layered on | Wire shape | Choose when |
 | --- | --- | --- | --- |
-| [`LocalRuntime`](/docs/runtimes/custom/local-runtime) | Core | You write a `ChatModelAdapter.run` function | The simplest case: you have a `fetch` call to make, want openagentui to handle state |
+| [`LocalRuntime`](/docs/runtimes/custom/local-runtime) | Core | You write a `ChatModelAdapter.run` function | The simplest case: you have a `fetch` call to make, want OpenAgentUI to handle state |
 | [`ExternalStoreRuntime`](/docs/runtimes/custom/external-store) | Core | You provide messages + callbacks | You already have state in redux, zustand, tanstack-query, or anywhere |
 | [`DataStream`](/docs/runtimes/custom/data-stream) | LocalRuntime + protocol | Your backend emits the data stream protocol | You want a thin message-stream contract, or you are migrating from AI SDK v4 |
 | [`AssistantTransport`](/docs/runtimes/custom/assistant-transport) | ExternalStoreRuntime + protocol | Your backend streams agent state snapshots | Your agent has rich internal state and you want it surfaced in the UI; or you need bidirectional commands |

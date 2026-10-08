@@ -1,6 +1,6 @@
 # SvelteKit Example
 
-openagentui in a SvelteKit app: `@openagentui/svelte` builders on the client, streaming from a SvelteKit server route via the AI SDK.
+OpenAgentUI in a SvelteKit app: `@openagentui/svelte` builders on the client, streaming from a SvelteKit server route via the AI SDK.
 
 ## How it works
 

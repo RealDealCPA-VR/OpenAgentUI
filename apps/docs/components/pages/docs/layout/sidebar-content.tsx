@@ -13,7 +13,6 @@ import {
   type Platform,
 } from "@/components/pages/docs/platform/context";
 import { GitHubIcon } from "@/components/icons/github";
-import { DiscordIcon } from "@/components/icons/discord";
 import { PlatformSwitcher } from "@/components/pages/docs/platform/switcher";
 import {
   buildPlatformSections,
@@ -280,15 +279,6 @@ export function SidebarContent({ tree }: { tree?: PageTree.Root }) {
           aria-label="GitHub"
         >
           <GitHubIcon className="size-4" />
-        </a>
-        <a
-          href="https://discord.gg/S9dwgCNEFs"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-muted-foreground hover:bg-accent/30 hover:text-foreground dark:hover:bg-accent/40 flex size-8 items-center justify-center rounded-md transition-colors"
-          aria-label="Discord"
-        >
-          <DiscordIcon className="size-4" />
         </a>
       </div>
     </div>

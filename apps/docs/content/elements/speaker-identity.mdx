@@ -9,7 +9,7 @@ SpeakerIdentity rows each turn with an icon and tone keyed to who or what produc
 
 <RuntimeMode>
 
-`s.message.role` gives you the user/assistant split directly. Tool calls live as parts inside an assistant message's `content`, each with a `toolName` and, when the runtime tracks it, a `timing`. A nested subagent run shows up as a tool call's own `messages` field, a real part of `ToolCallMessagePart` for exactly this case. openagentui has no fixed "agent name" concept beyond that: a display name for a particular agent or model is something you attach yourself through the message's open `metadata.custom` bag.
+`s.message.role` gives you the user/assistant split directly. Tool calls live as parts inside an assistant message's `content`, each with a `toolName` and, when the runtime tracks it, a `timing`. A nested subagent run shows up as a tool call's own `messages` field, a real part of `ToolCallMessagePart` for exactly this case. OpenAgentUI has no fixed "agent name" concept beyond that: a display name for a particular agent or model is something you attach yourself through the message's open `metadata.custom` bag.
 
 <Steps>
   <Step>

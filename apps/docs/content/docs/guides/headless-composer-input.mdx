@@ -1,6 +1,6 @@
 ---
 title: Headless Composer Input
-description: Build a custom composer input while keeping openagentui composer state and send gating.
+description: Build a custom composer input while keeping OpenAgentUI composer state and send gating.
 platforms: ["react"]
 ---
 
@@ -14,7 +14,7 @@ Use `unstable_useComposerInput` when you already own the input surface, such as 
 
 ## Usage
 
-Render the custom input inside a composer and mirror text changes into the openagentui composer state:
+Render the custom input inside a composer and mirror text changes into the OpenAgentUI composer state:
 
 ```tsx
 "use client";
@@ -66,7 +66,7 @@ function HeadlessComposer() {
 | `value` | Current composer text. Returns `""` when the composer is not editing. |
 | `setText(text)` | Writes text into the composer while it is editing. |
 | `send(options?)` | Sends the current composer message when `canSend` is `true`; otherwise a no-op. |
-| `isDisabled` | Combines the hook's `disabled` option with openagentui disabled sources, such as thread disabled state and active dictation input lock. |
+| `isDisabled` | Combines the hook's `disabled` option with OpenAgentUI disabled sources, such as thread disabled state and active dictation input lock. |
 | `canSend` | Matches `ComposerPrimitive.Send` gating, then also respects `isDisabled`. |
 
 Pass `disabled` when your editor has an additional read-only state:
@@ -88,7 +88,7 @@ The hook does not recreate the behavior of `ComposerPrimitive.Input`. Your input
 - Paste/drop attachment behavior.
 - Rich text state, serialization, and DOM synchronization for `contentEditable` or editor-library integrations.
 
-For styled textareas, prefer `ComposerPrimitive.Input`. Reach for the headless hook when the editor has its own model or DOM lifecycle and openagentui should only supply composer state and send gating.
+For styled textareas, prefer `ComposerPrimitive.Input`. Reach for the headless hook when the editor has its own model or DOM lifecycle and OpenAgentUI should only supply composer state and send gating.
 
 ## Trigger Popovers
 

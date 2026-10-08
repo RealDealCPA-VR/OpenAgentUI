@@ -25,7 +25,7 @@ const CATEGORIES: XuluxTemplateCategory[] = [
   {
     id: "mobile",
     name: "Mobile",
-    description: "React Native and mobile-first openagentui examples.",
+    description: "React Native and mobile-first OpenAgentUI examples.",
   },
 ];
 
@@ -153,7 +153,7 @@ function sourcePathFromGithubLink(
   githubLink: string | undefined,
 ): string | undefined {
   if (!githubLink) return undefined;
-  const marker = "/openagentui/openagentui/";
+  const marker = "/RealDealCPA-VR/OpenAgentUI/";
   const index = githubLink.indexOf(marker);
   if (index === -1) return githubLink;
   const repoPath = githubLink.slice(index + marker.length);

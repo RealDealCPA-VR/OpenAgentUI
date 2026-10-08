@@ -156,7 +156,7 @@ The built-in path that uses the package helpers performs this merge for you. Cus
 
 Keep the three state layers distinct:
 
-- **Your app state** stays yours (React state, URL, a store). openagentui does not own it.
+- **Your app state** stays yours (React state, URL, a store). OpenAgentUI does not own it.
 - **`useAuiState`** reads openagentui's client state (messages, composer, thread status).
 - **`useLangGraphState` / `useLangGraphSetState`** mirror state the **agent** (your LangGraph graph) owns, synced over the wire via `values` events.
 

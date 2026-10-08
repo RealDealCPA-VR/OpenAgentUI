@@ -27,7 +27,7 @@ export const QuickstartLLM = (
       <p>
         Already have an app? See{" "}
         <a href={PLATFORM_ENTRY_PATHS[platform]}>
-          adding openagentui to an existing project
+          adding OpenAgentUI to an existing project
         </a>
         .
       </p>

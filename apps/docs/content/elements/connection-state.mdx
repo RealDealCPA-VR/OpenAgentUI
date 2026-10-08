@@ -9,7 +9,7 @@ A connection state banner tells the reader when the transport under a run has hi
 
 <RuntimeMode>
 
-openagentui doesn't expose a single connection field on thread state, because a dropped socket is something an adapter observes, not a concept the runtime itself models. What it exposes instead is a resumable run: catch the failure where your adapter reports it, show the banner, then call `resumeRun` to pick the same run back up.
+OpenAgentUI doesn't expose a single connection field on thread state, because a dropped socket is something an adapter observes, not a concept the runtime itself models. What it exposes instead is a resumable run: catch the failure where your adapter reports it, show the banner, then call `resumeRun` to pick the same run back up.
 
 <Steps>
   <Step>

@@ -55,7 +55,7 @@ describe("SidebarAccount", () => {
     mocks.session = {
       status: "signed-in",
       cloudHistory: false,
-      user: { name: "Harry Yep", email: "harry@openagentui.dev", image: null },
+      user: { name: "Harry Yep", email: "harry@example.com", image: null },
     };
     render(<SidebarAccount />);
 

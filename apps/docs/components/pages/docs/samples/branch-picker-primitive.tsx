@@ -14,8 +14,8 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 const responses = [
-  "openagentui is a set of React components for building AI chat interfaces. It provides unstyled primitives that handle state management, streaming, and accessibility; you bring the design.",
-  "openagentui is an open-source library of headless, composable React primitives for AI chat UIs. Style them with any CSS framework: Tailwind, CSS modules, or plain CSS.",
+  "OpenAgentUI is a set of React components for building AI chat interfaces. It provides unstyled primitives that handle state management, streaming, and accessibility; you bring the design.",
+  "OpenAgentUI is an open-source library of headless, composable React primitives for AI chat UIs. Style them with any CSS framework: Tailwind, CSS modules, or plain CSS.",
 ];
 
 const adapter: ChatModelAdapter = {
@@ -27,7 +27,7 @@ const adapter: ChatModelAdapter = {
 const CREATED_AT = new Date("2026-09-26T12:00:00Z");
 
 const initialMessages: ThreadMessageLike[] = [
-  { role: "user", content: "What is openagentui?", createdAt: CREATED_AT },
+  { role: "user", content: "What is OpenAgentUI?", createdAt: CREATED_AT },
   { role: "assistant", content: responses[0]!, createdAt: CREATED_AT },
 ];
 

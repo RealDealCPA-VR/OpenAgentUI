@@ -8,7 +8,7 @@ export function createSourceMapTools() {
   return {
     inspectSourceMap: tool({
       description:
-        "Execute bash commands in the /repo inside the sourcemap containing the openagentui monorepo.\n",
+        "Execute bash commands in the /repo inside the sourcemap containing the OpenAgentUI monorepo.\n",
       inputSchema: zodSchema(
         z.object({
           command: z

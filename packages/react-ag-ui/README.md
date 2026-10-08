@@ -1,6 +1,6 @@
 # `@openagentui/react-ag-ui`
 
-[AG-UI protocol](https://github.com/ag-ui-protocol/ag-ui) integration for `@openagentui/react`. Wraps an `@ag-ui/client` agent in an openagentui runtime so any AG-UI-compatible backend (CopilotKit, custom Python/Go/TS agents) can drive the standard openagentui components.
+[AG-UI protocol](https://github.com/ag-ui-protocol/ag-ui) integration for `@openagentui/react`. Wraps an `@ag-ui/client` agent in an OpenAgentUI runtime so any AG-UI-compatible backend (CopilotKit, custom Python/Go/TS agents) can drive the standard OpenAgentUI components.
 
 ## Installation
 

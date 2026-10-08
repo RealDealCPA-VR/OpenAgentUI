@@ -9,7 +9,7 @@ TraceWaterfall lays a run's spans on one shared time axis: a header with the tot
 
 <RuntimeMode>
 
-openagentui doesn't model nested spans itself. A message carries its own stream timing, and each tool call and reasoning part can carry its own start and completion time, but nothing ties them into a tree deeper than "the message" and "the parts inside it." That's enough for a flat, two-level waterfall.
+OpenAgentUI doesn't model nested spans itself. A message carries its own stream timing, and each tool call and reasoning part can carry its own start and completion time, but nothing ties them into a tree deeper than "the message" and "the parts inside it." That's enough for a flat, two-level waterfall.
 
 <Steps>
   <Step>
@@ -169,7 +169,7 @@ Both lanes take `className` on the root. Rows and the header's total use the sha
 
 <RuntimeMode>
 
-A tool call whose status settles as anything other than `"running"` or `"complete"` (`"incomplete"`, `"requires-action"`) reads as `"failed"` in the mapping above. Treat that as a simplification for the waterfall's three-color palette, not a claim that openagentui itself considers the call an error; check `part.status` yourself if you need the real reason.
+A tool call whose status settles as anything other than `"running"` or `"complete"` (`"incomplete"`, `"requires-action"`) reads as `"failed"` in the mapping above. Treat that as a simplification for the waterfall's three-color palette, not a claim that OpenAgentUI itself considers the call an error; check `part.status` yourself if you need the real reason.
 
 </RuntimeMode>
 
