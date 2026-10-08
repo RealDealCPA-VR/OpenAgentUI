@@ -1,0 +1,751 @@
+import type {
+  Message,
+  MessageWithParts,
+  OpenCodeServerMessage,
+  OpenCodePermissionRequest,
+  OpenCodeQuestionRequest,
+  OpenCodeStateEvent,
+  OpenCodeThreadState,
+  Part,
+  PendingUserMessage,
+  ThreadUserMessagePart,
+} from "./types";
+import { nullProtoRecord } from "@assistant-ui/core/internal";
+import { serializeOpenCodeParts } from "./serializeUserParts";
+
+const PENDING_MATCH_WINDOW_MS = 2 * 60 * 1000;
+const MAX_UNHANDLED_EVENTS = 25;
+
+type OpenCodeReconciliationEvent =
+  | {
+      type: "permissions.reconciled";
+      pending: Readonly<Record<string, OpenCodePermissionRequest>>;
+    }
+  | {
+      type: "questions.reconciled";
+      pending: Readonly<Record<string, OpenCodeQuestionRequest>>;
+    };
+
+type OpenCodeThreadStateEvent =
+  | OpenCodeStateEvent
+  | OpenCodeReconciliationEvent;
+
+const isSameRecord = <T>(
+  left: Readonly<Record<string, T>>,
+  right: Readonly<Record<string, T>>,
+) => {
+  const keys = Object.keys(left);
+  return (
+    keys.length === Object.keys(right).length &&
+    keys.every((key) => left[key] === right[key])
+  );
+};
+
+export const copyMessagesById = (
+  messagesById?: Readonly<Record<string, OpenCodeServerMessage>>,
+): Record<string, OpenCodeServerMessage> => nullProtoRecord(messagesById);
+
+const extractCreatedAt = (message: Message | undefined): number | undefined => {
+  const created = message?.time?.created;
+  return typeof created === "number" ? created : undefined;
+};
+
+const normalizeText = (value: string) =>
+  value.trim().replace(/\s+/g, " ").toLowerCase();
+
+const pendingFingerprint = (pending: PendingUserMessage) =>
+  normalizeText(pending.contentText);
+
+const partTextFingerprint = (parts: readonly ThreadUserMessagePart[]) =>
+  normalizeText(serializeOpenCodeParts(parts));
+
+const serverFingerprint = (message: MessageWithParts) =>
+  normalizeText(serializeOpenCodeParts(message.parts));
+
+const sortMessageIds = (
+  messagesById: Readonly<Record<string, OpenCodeServerMessage>>,
+  ids: Iterable<string>,
+) => {
+  return [...ids].sort((leftId, rightId) => {
+    const left = messagesById[leftId];
+    const right = messagesById[rightId];
+    const leftCreated = extractCreatedAt(left?.info) ?? Number.MAX_SAFE_INTEGER;
+    const rightCreated =
+      extractCreatedAt(right?.info) ?? Number.MAX_SAFE_INTEGER;
+    if (leftCreated !== rightCreated) return leftCreated - rightCreated;
+    return leftId.localeCompare(rightId);
+  });
+};
+
+const upsertMessage = (
+  state: OpenCodeThreadState,
+  messageId: string,
+  updater: (
+    current: OpenCodeServerMessage | undefined,
+  ) => OpenCodeServerMessage,
+): OpenCodeThreadState => {
+  const current = state.messagesById[messageId];
+  const nextMessage = updater(current);
+  const messagesById = copyMessagesById(state.messagesById);
+  messagesById[messageId] = nextMessage;
+  const messageOrder = current
+    ? state.messageOrder
+    : sortMessageIds(messagesById, [...state.messageOrder, messageId]);
+
+  return {
+    ...state,
+    messagesById,
+    messageOrder,
+  };
+};
+
+const updateExistingMessage = (
+  state: OpenCodeThreadState,
+  messageId: string,
+  updater: (current: OpenCodeServerMessage) => OpenCodeServerMessage,
+): OpenCodeThreadState => {
+  const current = state.messagesById[messageId];
+  if (!current) return state;
+
+  const messagesById = copyMessagesById(state.messagesById);
+  messagesById[messageId] = updater(current);
+
+  return {
+    ...state,
+    messagesById,
+  };
+};
+
+const removePending = (
+  state: OpenCodeThreadState,
+  clientId: string,
+): OpenCodeThreadState => {
+  if (!Object.hasOwn(state.pendingUserMessages, clientId)) return state;
+  const pendingUserMessages = nullProtoRecord(state.pendingUserMessages);
+  delete pendingUserMessages[clientId];
+  return {
+    ...state,
+    pendingUserMessages,
+  };
+};
+
+const findPendingMatchByHistory = (
+  state: OpenCodeThreadState,
+  message: MessageWithParts,
+) => {
+  const createdAt = extractCreatedAt(message.info);
+  const fingerprint = serverFingerprint(message);
+  const candidates = (
+    Object.values(state.pendingUserMessages) as PendingUserMessage[]
+  ).filter(
+    (pending) =>
+      pending.status === "pending" &&
+      (createdAt === undefined ||
+        Math.abs(pending.createdAt - createdAt) <= PENDING_MATCH_WINDOW_MS) &&
+      (fingerprint.length === 0 ||
+        pendingFingerprint(pending) === fingerprint ||
+        partTextFingerprint(pending.parts) === fingerprint),
+  );
+
+  if (candidates.length === 1) return candidates[0];
+  if (candidates.length > 1) {
+    return candidates.sort(
+      (left, right) => left.createdAt - right.createdAt,
+    )[0];
+  }
+  return undefined;
+};
+
+const findPendingMatchByMessageInfo = (
+  state: OpenCodeThreadState,
+  message: Message,
+) => {
+  const createdAt = extractCreatedAt(message);
+  const candidates = (
+    Object.values(state.pendingUserMessages) as PendingUserMessage[]
+  ).filter(
+    (pending) =>
+      pending.status === "pending" &&
+      (createdAt === undefined ||
+        Math.abs(pending.createdAt - createdAt) <= PENDING_MATCH_WINDOW_MS),
+  );
+
+  if (candidates.length === 1) return candidates[0];
+  return undefined;
+};
+
+const historyLoaded = (
+  state: OpenCodeThreadState,
+  session: OpenCodeThreadState["session"],
+  messages: readonly MessageWithParts[],
+): OpenCodeThreadState => {
+  let nextState: OpenCodeThreadState = {
+    ...state,
+    session,
+    loadState: { type: "ready" },
+    messagesById: copyMessagesById(),
+    messageOrder: [],
+    sync: {
+      ...state.sync,
+      lastHistoryLoadAt: Date.now(),
+    },
+  };
+
+  const nextMessagesById = copyMessagesById();
+  for (const message of messages) {
+    const pendingMatch =
+      message.info.role === "user"
+        ? findPendingMatchByHistory(nextState, message)
+        : undefined;
+
+    nextMessagesById[message.info.id] = {
+      id: message.info.id,
+      info: message.info,
+      parts: message.parts,
+      // The server acknowledges a user message before it returns that
+      // message's parts.
+      shadowParts:
+        message.info.role === "user" && message.parts.length === 0
+          ? (pendingMatch?.parts ??
+            state.messagesById[message.info.id]?.shadowParts)
+          : undefined,
+    };
+
+    if (pendingMatch) {
+      nextState = removePending(nextState, pendingMatch.clientId);
+    }
+  }
+
+  nextState = {
+    ...nextState,
+    messagesById: nextMessagesById,
+    messageOrder: sortMessageIds(
+      nextMessagesById,
+      Object.keys(nextMessagesById),
+    ),
+  };
+
+  return nextState;
+};
+
+const removeMessagePart = (parts: readonly Part[], partId: string) =>
+  parts.filter((part) => part.id !== partId);
+
+const upsertMessagePart = (parts: readonly Part[], part: Part) => {
+  if (!part.id) return [...parts, part];
+  const index = parts.findIndex((candidate) => candidate.id === part.id);
+  if (index === -1) return [...parts, part];
+  const nextParts = [...parts];
+  nextParts[index] = part;
+  return nextParts;
+};
+
+const applyMessagePartDelta = (
+  parts: readonly Part[],
+  partId: string,
+  field: string,
+  delta: string,
+) => {
+  const index = parts.findIndex((candidate) => candidate.id === partId);
+  if (index === -1) return null;
+
+  const current = parts[index];
+  if (!current) return null;
+  if (
+    field === "text" &&
+    (current.type === "text" || current.type === "reasoning")
+  ) {
+    const nextParts = [...parts];
+    nextParts[index] = {
+      ...current,
+      text: (current.text ?? "") + delta,
+    };
+    return nextParts;
+  }
+
+  return null;
+};
+
+/**
+ * Whether the thread is mid-run. The transient `cancelling` and `reverting`
+ * states leave it only on a server busy-to-idle transition, so an action that
+ * enters one while the session is already idle would never settle.
+ */
+export const isOpenCodeStateRunning = (state: OpenCodeThreadState): boolean =>
+  state.runState.type === "streaming" ||
+  state.runState.type === "cancelling" ||
+  state.runState.type === "reverting" ||
+  state.sessionStatus?.type === "busy" ||
+  state.sessionStatus?.type === "retry";
+
+export const createOpenCodeThreadState = (
+  sessionId: string,
+): OpenCodeThreadState => ({
+  sessionId,
+  session: null,
+  sessionStatus: null,
+  loadState: { type: "idle" },
+  runState: { type: "idle" },
+  messageOrder: [],
+  messagesById: copyMessagesById(),
+  childSessionsById: nullProtoRecord<OpenCodeThreadState>(),
+  pendingUserMessages: nullProtoRecord<PendingUserMessage>(),
+  interactions: {
+    permissions: {
+      pending: nullProtoRecord<import("./types").OpenCodePermissionRequest>(),
+      resolved: nullProtoRecord<{
+        request: import("./types").OpenCodePermissionRequest;
+        reply: import("./types").OpenCodePermissionResponse;
+        respondedAt: number;
+      }>(),
+    },
+    questions: {
+      pending: nullProtoRecord<import("./types").OpenCodeQuestionRequest>(),
+      answered: nullProtoRecord<{
+        request: import("./types").OpenCodeQuestionRequest;
+        answers: readonly import("./types").QuestionAnswer[];
+        respondedAt: number;
+      }>(),
+      rejected: nullProtoRecord<{
+        request: import("./types").OpenCodeQuestionRequest;
+        rejectedAt: number;
+      }>(),
+    },
+  },
+  unhandledEvents: [],
+  sync: {},
+});
+
+export const reduceOpenCodeThreadStateInternal = (
+  state: OpenCodeThreadState,
+  event: OpenCodeThreadStateEvent,
+): OpenCodeThreadState => {
+  switch (event.type) {
+    case "history.loading":
+      return {
+        ...state,
+        loadState: { type: "loading" },
+      };
+
+    case "history.loaded":
+      return historyLoaded(state, event.session, event.messages);
+
+    case "history.failed":
+      return {
+        ...state,
+        loadState: { type: "error", error: event.error },
+      };
+
+    case "run.started":
+      // sessionStatus stays pure server truth: runState covers the window
+      // before the first server event, and a send failure then needs no
+      // status rollback.
+      return {
+        ...state,
+        runState: { type: "streaming" },
+      };
+
+    case "run.cancelling":
+      return {
+        ...state,
+        runState: { type: "cancelling" },
+      };
+
+    case "run.reverting":
+      return {
+        ...state,
+        runState: { type: "reverting" },
+      };
+
+    case "run.failed":
+      return {
+        ...state,
+        runState: { type: "error", error: event.error },
+      };
+
+    case "session.updated":
+      return {
+        ...state,
+        session: event.session,
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+
+    case "session.status":
+      return {
+        ...state,
+        sessionStatus: event.status,
+        runState:
+          event.status.type === "idle"
+            ? { type: "idle" }
+            : state.runState.type === "cancelling" ||
+                state.runState.type === "reverting"
+              ? state.runState
+              : { type: "streaming" },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+
+    case "session.idle":
+      return {
+        ...state,
+        sessionStatus: { type: "idle" },
+        runState: { type: "idle" },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+
+    case "session.compacted":
+      return {
+        ...state,
+        sync: {
+          ...state.sync,
+          lastCompactionAt: Date.now(),
+          lastEventAt: Date.now(),
+        },
+      };
+
+    case "message.updated": {
+      const pendingMatch =
+        event.info.role === "user"
+          ? findPendingMatchByMessageInfo(state, event.info)
+          : undefined;
+
+      let nextState = upsertMessage(state, event.info.id, (current) => ({
+        id: event.info.id,
+        info: event.info,
+        parts: current?.parts ?? [],
+        shadowParts:
+          current?.shadowParts ??
+          (pendingMatch && (current?.parts?.length ?? 0) === 0
+            ? pendingMatch.parts
+            : undefined),
+      }));
+
+      if (pendingMatch) {
+        nextState = removePending(nextState, pendingMatch.clientId);
+      }
+
+      return {
+        ...nextState,
+        sync: {
+          ...nextState.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "message.removed": {
+      if (!Object.hasOwn(state.messagesById, event.messageId)) return state;
+      const messagesById = copyMessagesById(state.messagesById);
+      delete messagesById[event.messageId];
+      return {
+        ...state,
+        messagesById,
+        messageOrder: state.messageOrder.filter((id) => id !== event.messageId),
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "part.updated": {
+      const nextState = updateExistingMessage(
+        state,
+        event.messageId,
+        (current) => ({
+          id: event.messageId,
+          info: current.info,
+          parts: upsertMessagePart(current.parts, event.part),
+          shadowParts: current.shadowParts,
+        }),
+      );
+
+      if (nextState === state) return state;
+
+      return {
+        ...nextState,
+        runState: { type: "streaming" },
+        sessionStatus:
+          state.sessionStatus?.type === "retry"
+            ? state.sessionStatus
+            : { type: "busy" },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "part.delta": {
+      const current = state.messagesById[event.messageId];
+      const nextParts = current
+        ? applyMessagePartDelta(
+            current.parts,
+            event.partId,
+            event.field,
+            event.delta,
+          )
+        : null;
+
+      if (!current || !nextParts) return state;
+
+      return {
+        ...updateExistingMessage(state, event.messageId, () => ({
+          ...current,
+          parts: nextParts,
+        })),
+        runState: { type: "streaming" },
+        sessionStatus:
+          state.sessionStatus?.type === "retry"
+            ? state.sessionStatus
+            : { type: "busy" },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "part.removed": {
+      const nextState = updateExistingMessage(
+        state,
+        event.messageId,
+        (current) => ({
+          id: event.messageId,
+          info: current.info,
+          parts: removeMessagePart(current.parts, event.partId),
+          shadowParts: current.shadowParts,
+        }),
+      );
+
+      if (nextState === state) return state;
+
+      return {
+        ...nextState,
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "permission.asked": {
+      const pending = nullProtoRecord(state.interactions.permissions.pending);
+      pending[event.request.id] = event.request;
+      return {
+        ...state,
+        interactions: {
+          ...state.interactions,
+          permissions: {
+            ...state.interactions.permissions,
+            pending,
+          },
+        },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "permissions.reconciled":
+      if (isSameRecord(state.interactions.permissions.pending, event.pending)) {
+        return state;
+      }
+      return {
+        ...state,
+        interactions: {
+          ...state.interactions,
+          permissions: {
+            ...state.interactions.permissions,
+            pending: event.pending,
+          },
+        },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+
+    case "permission.replied": {
+      const pending = nullProtoRecord(state.interactions.permissions.pending);
+      const request = pending[event.permissionId];
+      delete pending[event.permissionId];
+      if (!request) return state;
+      const resolved = nullProtoRecord(state.interactions.permissions.resolved);
+      resolved[event.permissionId] = {
+        request,
+        reply: event.reply,
+        respondedAt: Date.now(),
+      };
+
+      return {
+        ...state,
+        interactions: {
+          ...state.interactions,
+          permissions: {
+            pending,
+            resolved,
+          },
+        },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "question.asked": {
+      const pending = nullProtoRecord(state.interactions.questions.pending);
+      pending[event.request.id] = event.request;
+      return {
+        ...state,
+        interactions: {
+          ...state.interactions,
+          questions: {
+            ...state.interactions.questions,
+            pending,
+          },
+        },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "questions.reconciled":
+      if (isSameRecord(state.interactions.questions.pending, event.pending)) {
+        return state;
+      }
+      return {
+        ...state,
+        interactions: {
+          ...state.interactions,
+          questions: {
+            ...state.interactions.questions,
+            pending: event.pending,
+          },
+        },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+
+    case "question.replied": {
+      const pending = nullProtoRecord(state.interactions.questions.pending);
+      const request = pending[event.questionId];
+      delete pending[event.questionId];
+      if (!request) return state;
+      const answered = nullProtoRecord(state.interactions.questions.answered);
+      answered[event.questionId] = {
+        request,
+        answers: event.answers,
+        respondedAt: Date.now(),
+      };
+
+      return {
+        ...state,
+        interactions: {
+          ...state.interactions,
+          questions: {
+            ...state.interactions.questions,
+            pending,
+            answered,
+          },
+        },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "question.rejected": {
+      const pending = nullProtoRecord(state.interactions.questions.pending);
+      const request = pending[event.questionId];
+      delete pending[event.questionId];
+      if (!request) return state;
+      const rejected = nullProtoRecord(state.interactions.questions.rejected);
+      rejected[event.questionId] = {
+        request,
+        rejectedAt: Date.now(),
+      };
+
+      return {
+        ...state,
+        interactions: {
+          ...state.interactions,
+          questions: {
+            ...state.interactions.questions,
+            pending,
+            rejected,
+          },
+        },
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+    }
+
+    case "unhandled.event":
+      return {
+        ...state,
+        unhandledEvents: [
+          ...state.unhandledEvents.slice(-(MAX_UNHANDLED_EVENTS - 1)),
+          event.event,
+        ],
+        sync: {
+          ...state.sync,
+          lastEventAt: Date.now(),
+        },
+      };
+
+    case "local.message.queued": {
+      const pendingUserMessages = nullProtoRecord(state.pendingUserMessages);
+      pendingUserMessages[event.pending.clientId] = event.pending;
+      return {
+        ...state,
+        pendingUserMessages,
+      };
+    }
+
+    case "local.message.reconciled":
+      return removePending(state, event.clientId);
+
+    case "local.message.failed": {
+      const current = state.pendingUserMessages[event.clientId];
+      if (!current) return state;
+      const pendingUserMessages = nullProtoRecord(state.pendingUserMessages);
+      pendingUserMessages[event.clientId] = {
+        ...current,
+        status: "failed",
+        error: event.error,
+      };
+      return {
+        ...state,
+        pendingUserMessages,
+        runState: { type: "error", error: event.error },
+      };
+    }
+  }
+};
+
+export const reduceOpenCodeThreadState = (
+  state: OpenCodeThreadState,
+  event: OpenCodeStateEvent,
+): OpenCodeThreadState => reduceOpenCodeThreadStateInternal(state, event);
+
+/** Stable placeholder state used before a session controller is attached. */
+export const EMPTY_OPENCODE_THREAD_STATE =
+  createOpenCodeThreadState("__pending__");

@@ -1,0 +1,1153 @@
+/**
+ * Per-thread controller: bridges Pi client events into a snapshot-authoritative
+ * `PiThreadState` and exposes the imperative actions the runtime hook wires into
+ * a `useExternalStoreRuntime`.
+ *
+ * The `PiClient` is the transport boundary (HTTP/SSE, RPC subprocess, IPC), so
+ * there is no separate event-source class here. React store subscriptions stay
+ * local; the controller opens live Pi events only for an explicit `connect()`
+ * or operations that need a live runtime. `load()` is the cold read path and
+ * seeds from `getThread`.
+ *
+ * Browser-safe; imports no `@earendil-works/pi-*` packages.
+ */
+
+import {
+  ExportedMessageRepository,
+  MessageNotSentError,
+} from "@assistant-ui/react";
+import type { AppendMessage, ThreadMessageLike } from "@assistant-ui/react";
+import {
+  bytesToBase64,
+  detectImageMediaType,
+  parseDataUrl,
+  resolveImageMediaType,
+} from "@assistant-ui/core/internal";
+import {
+  createPiThreadState,
+  reducePiThreadState,
+  removeHostUiRequest,
+  type PiThreadState,
+} from "./threadState";
+import { errorText } from "../utils";
+import { isKnownPiClientEventType } from "../eventTypes";
+import { PiThreadMessageProjector } from "./messageProjection";
+import {
+  responseForApproval,
+  responseForInterrupt,
+  responseForToolApproval,
+  type PiInterruptAnswer,
+} from "./hostUi";
+import type {
+  PiClient,
+  PiClientEvent,
+  PiAgentMessage,
+  PiHostUiResponse,
+  PiImageContent,
+  PiSendMessageInput,
+  PiThinkingLevel,
+  PiThreadSnapshot,
+} from "../types";
+
+export type PiSendOptions = {
+  /** Overrides the derived behavior. While the thread is running this is
+   * REQUIRED by Pi (`prompt()` throws otherwise); the controller derives a
+   * `"followUp"` default from run status when omitted. */
+  streamingBehavior?: "followUp" | "steer";
+};
+
+export type PiNotificationScheduler = (flush: () => void) => void;
+
+/** `getStateSnapshot` (or `getState` where it is absent) and
+ * `getMessageRepository` are read as `useSyncExternalStore` snapshots, so an
+ * implementation must return a reference that changes only when a subscribed
+ * channel notifies; a freshly built value per call loops React. */
+export interface PiThreadControllerLike {
+  getState(): PiThreadState;
+  /** The state as of the last listener notification. `getState()` can run
+   * ahead of it while a coalesced message frame is pending, so only this is a
+   * valid `useSyncExternalStore` snapshot. Optional for backwards
+   * compatibility; callers fall back to `getState()`. */
+  getStateSnapshot?(): PiThreadState;
+  getProjectedMessages(): readonly ThreadMessageLike[];
+  getMessageRepository(): ExportedMessageRepository;
+  getVersion(): number;
+  connect(): () => void;
+  subscribe(listener: () => void): () => void;
+  subscribeMetadata(listener: () => void): () => void;
+  subscribeMessages(listener: () => void): () => void;
+  load(force?: boolean): Promise<void>;
+  refresh(): Promise<void>;
+  sendMessage(message: AppendMessage, options?: PiSendOptions): Promise<void>;
+  cancel(): Promise<void>;
+  /** Clear Pi's server-side queue; resolves with the cleared text so the UI
+   * can restore it to the composer. */
+  clearQueue(): Promise<{ steering: string[]; followUp: string[] }>;
+  setModel(input: { provider: string; modelId: string }): Promise<void>;
+  setThinkingLevel(level: PiThinkingLevel): Promise<void>;
+  /** Answer a request by its id with a decision alone: a `confirm` takes it as
+   * is, a refusal dismisses any other kind, and accepting one without its
+   * option or text rejects. */
+  respondToToolApproval(approvalId: string, approved: boolean): Promise<void>;
+  /** Answer the host-UI request raised during a tool call, by `toolCallId`. */
+  resumeToolCall(toolCallId: string, payload: unknown): Promise<void>;
+  /** Answer a side-channel (free-standing) host-UI request directly. */
+  respondToHostUiRequest(response: PiHostUiResponse): Promise<void>;
+  dispose(): void;
+}
+
+const defaultScheduleNotify: PiNotificationScheduler = (flush) => {
+  if (typeof globalThis.requestAnimationFrame === "function") {
+    globalThis.requestAnimationFrame(() => flush());
+    return;
+  }
+  setTimeout(flush, 16);
+};
+
+const notifyListeners = (listeners: Iterable<() => void>) => {
+  for (const listener of listeners) {
+    try {
+      listener();
+    } catch (error) {
+      console.error("[react-pi] Listener threw an error", error);
+    }
+  }
+};
+
+const updateMessageRepository = (
+  previous: ReturnType<typeof ExportedMessageRepository.fromArray>,
+  messages: readonly ThreadMessageLike[],
+  changedIndex: number,
+) => {
+  const prefix = previous.messages.slice(0, changedIndex);
+  const suffix = ExportedMessageRepository.fromArray(
+    messages.slice(changedIndex),
+  ).messages;
+  const first = suffix[0];
+  if (first) {
+    first.parentId = prefix.at(-1)?.message.id ?? null;
+  }
+  return { messages: [...prefix, ...suffix] };
+};
+
+/** Event types the reducer acts on. Anything else triggers a snapshot refresh
+ * (forward-compat for Pi's open, module-augmented event union). */
+const MESSAGE_DIRTY_EVENT_TYPES: ReadonlySet<string> = new Set([
+  "snapshot",
+  "agent_start",
+  "agent_end",
+  "message_start",
+  "message_update",
+  "message_end",
+  "tool_execution_update",
+  "tool_execution_end",
+  "extension_ui_request",
+  "extension_ui_resolved",
+]);
+
+const MESSAGE_FRAME_COALESCED_EVENT_TYPES: ReadonlySet<string> = new Set([
+  "message_update",
+  "tool_execution_update",
+]);
+
+const METADATA_DIRTY_EVENT_TYPES: ReadonlySet<string> = new Set([
+  "snapshot",
+  "agent_start",
+  "agent_end",
+  "queue_update",
+  "compaction_start",
+  "compaction_end",
+  "auto_retry_start",
+  "auto_retry_end",
+  "session_info_changed",
+  "thinking_level_changed",
+  "context_usage",
+  "extension_ui_request",
+  "extension_ui_resolved",
+  "error",
+]);
+
+const RUN_STATE_EVENT_TYPES: ReadonlySet<string> = new Set([
+  "snapshot",
+  "agent_start",
+  "agent_end",
+  "error",
+]);
+
+const loadImageContent = async (
+  image: string,
+  signal?: AbortSignal,
+): Promise<PiImageContent> => {
+  const response = await fetch(image, signal ? { signal } : undefined);
+  if (!response.ok) {
+    throw new Error(
+      `Failed to load Pi image attachment: ${response.status} ${response.statusText}`,
+    );
+  }
+
+  const contentType = response.headers
+    .get("content-type")
+    ?.split(";", 1)[0]
+    ?.trim()
+    .toLowerCase();
+  if (
+    contentType &&
+    !contentType.startsWith("image/") &&
+    contentType !== "application/octet-stream" &&
+    contentType !== "binary/octet-stream"
+  ) {
+    throw new Error(
+      `Pi image attachment returned unsupported content type: ${contentType}`,
+    );
+  }
+
+  const data = bytesToBase64(new Uint8Array(await response.arrayBuffer()));
+  if (
+    (!contentType ||
+      contentType === "application/octet-stream" ||
+      contentType === "binary/octet-stream") &&
+    !detectImageMediaType(data)
+  ) {
+    throw new Error(
+      "Pi image attachment response does not contain image bytes",
+    );
+  }
+  return {
+    type: "image",
+    mimeType: resolveImageMediaType(data, contentType),
+    data,
+  };
+};
+
+const isBase64Payload = (value: string) => {
+  const compact = value.replaceAll(/\s/g, "");
+  const match = /^([a-z\d+/]*)(={0,2})$/i.exec(compact);
+  if (!match) return false;
+
+  const paddingLength = match[2]!.length;
+  return (
+    compact.length > 0 &&
+    match[1]!.length % 4 !== 1 &&
+    (paddingLength === 0 || compact.length % 4 === 0)
+  );
+};
+
+const sendCancelledError = new MessageNotSentError(
+  "Pi send was dropped because the run was cancelled.",
+);
+const sendAbandonedError = new Error(
+  "Pi send was dropped because the runtime was disposed.",
+);
+const sendQueueClearedError = new Error(
+  "Pi send was removed before reaching the queue.",
+);
+
+const isSendInterruption = (error: unknown) =>
+  error === sendCancelledError ||
+  error === sendAbandonedError ||
+  error === sendQueueClearedError;
+
+const toImageContent = (
+  image: string,
+  signal?: AbortSignal,
+): PiImageContent | Promise<PiImageContent> => {
+  const parsed = parseDataUrl(image);
+  if (parsed) {
+    if (!parsed.mimeType.startsWith("image/")) {
+      throw new Error(
+        `Pi image attachment returned unsupported content type: ${parsed.mimeType}`,
+      );
+    }
+    if (!isBase64Payload(parsed.data)) {
+      throw new Error("Invalid Pi image attachment source");
+    }
+    return {
+      type: "image",
+      mimeType: parsed.mimeType,
+      data: parsed.data,
+    };
+  }
+
+  const scheme = /^([a-z][a-z\d+.-]*):/i.exec(image)?.[1]?.toLowerCase();
+  if (
+    scheme === "data" ||
+    scheme === "http" ||
+    scheme === "https" ||
+    scheme === "blob"
+  ) {
+    return loadImageContent(image, signal);
+  }
+
+  if (scheme) {
+    throw new Error(`Unsupported Pi image attachment URL scheme: ${scheme}`);
+  }
+
+  if (!isBase64Payload(image)) {
+    throw new Error("Invalid Pi image attachment source");
+  }
+
+  return {
+    type: "image",
+    mimeType: resolveImageMediaType(image),
+    data: image,
+  };
+};
+
+/** All content parts of an append message, with attachment parts flattened in. */
+export const appendMessageParts = (message: AppendMessage) => [
+  ...message.content,
+  ...(message.attachments?.flatMap((a) => a.content ?? []) ?? []),
+];
+
+const readPiSendParts = (message: AppendMessage) => {
+  const textChunks: string[] = [];
+  const images: string[] = [];
+  for (const part of appendMessageParts(message)) {
+    if (part.type === "text") textChunks.push(part.text);
+    else if (part.type === "image") images.push(part.image);
+  }
+  return { content: textChunks.join("\n\n"), images };
+};
+
+export const buildPiSendInput = (
+  message: AppendMessage,
+  streamingBehavior: "followUp" | "steer" | undefined,
+  signal?: AbortSignal,
+): PiSendMessageInput | Promise<PiSendMessageInput> => {
+  const { content, images } = readPiSendParts(message);
+
+  const createInput = (resolvedAttachments: PiImageContent[]) => ({
+    content,
+    ...(resolvedAttachments.length > 0
+      ? { attachments: resolvedAttachments }
+      : {}),
+    ...(streamingBehavior ? { streamingBehavior } : {}),
+  });
+
+  if (images.length === 0) return createInput([]);
+
+  return Promise.all(
+    images.map((image) =>
+      Promise.resolve().then(() => toImageContent(image, signal)),
+    ),
+  ).then(createInput);
+};
+
+const buildOptimisticPiSendInput = (
+  message: AppendMessage,
+  streamingBehavior: "followUp" | "steer" | undefined,
+): PiSendMessageInput => {
+  const { content, images } = readPiSendParts(message);
+  return {
+    content,
+    ...(images.length > 0
+      ? {
+          attachments: images.map((image) => {
+            const parsed = parseDataUrl(image);
+            return {
+              type: "image" as const,
+              mimeType: resolveImageMediaType(image),
+              data: parsed?.data ?? image,
+            };
+          }),
+        }
+      : {}),
+    ...(streamingBehavior ? { streamingBehavior } : {}),
+  };
+};
+
+const readSteeringIntent = (
+  message: AppendMessage,
+): "followUp" | "steer" | undefined => {
+  const intent = message.runConfig?.custom?.["streamingBehavior"];
+  return intent === "followUp" || intent === "steer" ? intent : undefined;
+};
+
+const optimisticUserMessageFromInput = (
+  input: PiSendMessageInput,
+): PiAgentMessage => ({
+  role: "user",
+  content:
+    input.attachments && input.attachments.length > 0
+      ? [{ type: "text", text: input.content }, ...input.attachments]
+      : input.content,
+  timestamp: Date.now(),
+});
+
+/** Text-only reconcile key: the echoed transcript message may carry extra
+ * fields (e.g. enriched image content), so structural equality is too strict —
+ * the prompt text is the stable part. */
+const userContentKey = (message: PiAgentMessage): string | null => {
+  if (message.role !== "user") return null;
+  const content = message.content;
+  if (typeof content === "string") return content;
+  if (!Array.isArray(content)) return null;
+  return (content as readonly { type: string; text?: string }[])
+    .filter((part) => part.type === "text" && typeof part.text === "string")
+    .map((part) => part.text)
+    .join("\n");
+};
+
+type OptimisticUserMessage = {
+  message: PiAgentMessage;
+  baseMessageCount: number;
+};
+
+type OptimisticSend = {
+  message: PiAgentMessage;
+  runStateRevision: number;
+  previousRunStatus: PiThreadState["runStatus"];
+  previousMetadataStatus: PiThreadState["metadata"]["status"];
+  previousLastError: string | undefined;
+};
+
+type PendingQueueEntry = {
+  mode: "steering" | "followUp";
+  content: string;
+};
+
+type PendingSend = {
+  controller: AbortController;
+  accepted: boolean;
+  queueEntry?: PendingQueueEntry;
+};
+
+const markStateRunning = (state: PiThreadState): PiThreadState => {
+  if (state.runStatus === "running" && state.metadata.status === "running") {
+    return state;
+  }
+  return {
+    ...state,
+    runStatus: "running",
+    lastError: undefined,
+    metadata:
+      state.metadata.status === "running"
+        ? state.metadata
+        : { ...state.metadata, status: "running" },
+  };
+};
+
+export class PiThreadController implements PiThreadControllerLike {
+  private state: PiThreadState;
+  private stateSnapshot: PiThreadState;
+  private projectedMessages: readonly ThreadMessageLike[];
+  private readonly messageProjector: PiThreadMessageProjector;
+  private messageRepository = ExportedMessageRepository.fromArray([]);
+  private version = 0;
+  private readonly allListeners = new Set<() => void>();
+  private readonly metadataListeners = new Set<() => void>();
+  private readonly messageListeners = new Set<() => void>();
+  private connectionRetainers = 0;
+  private readonly optimisticUserMessages: OptimisticUserMessage[] = [];
+  private unsubscribeFromEvents: (() => void) | null = null;
+  private eventSubscriptionGeneration = 0;
+  private disconnectTimer: ReturnType<typeof setTimeout> | null = null;
+  private loadPromise: Promise<void> | null = null;
+  private sendDispatchTail: Promise<void> = Promise.resolve();
+  private readonly pendingSends = new Set<PendingSend>();
+  private runStateRevision = 0;
+  private messageFlushScheduled = false;
+  /** Fallback sequence for snapshots without a supervisor-provided sequence. */
+  private readonly localSnapshotSeq = 0;
+
+  private readonly client: PiClient;
+  private readonly threadId: string;
+  private readonly options: {
+    scheduleNotify?: PiNotificationScheduler;
+  };
+
+  constructor(
+    client: PiClient,
+    threadId: string,
+    options: {
+      scheduleNotify?: PiNotificationScheduler;
+    } = {},
+  ) {
+    this.client = client;
+    this.threadId = threadId;
+    this.options = options;
+    this.state = createPiThreadState(threadId);
+    this.stateSnapshot = this.state;
+    this.messageProjector = new PiThreadMessageProjector();
+    this.projectedMessages = this.messageProjector.project({
+      messages: this.state.messages,
+      toolExecutions: this.state.toolExecutions,
+      runStatus: this.state.runStatus,
+      hostUiRequests: this.state.hostUiRequests,
+    });
+  }
+
+  public getState() {
+    return this.state;
+  }
+
+  public getStateSnapshot() {
+    return this.stateSnapshot;
+  }
+
+  public getProjectedMessages() {
+    return this.projectedMessages;
+  }
+
+  public getMessageRepository() {
+    return this.messageRepository;
+  }
+
+  public getVersion() {
+    return this.version;
+  }
+
+  public connect() {
+    this.connectionRetainers += 1;
+    this.ensureEventSubscription({
+      includeSnapshot: this.state.loadState !== "loaded",
+    });
+    return () => {
+      this.connectionRetainers = Math.max(0, this.connectionRetainers - 1);
+      this.maybeDisconnectFromEvents();
+    };
+  }
+
+  public subscribe(listener: () => void) {
+    this.allListeners.add(listener);
+    return () => {
+      this.allListeners.delete(listener);
+      this.maybeDisconnectFromEvents();
+    };
+  }
+
+  public subscribeMetadata(listener: () => void) {
+    this.metadataListeners.add(listener);
+    return () => {
+      this.metadataListeners.delete(listener);
+      this.maybeDisconnectFromEvents();
+    };
+  }
+
+  public subscribeMessages(listener: () => void) {
+    this.messageListeners.add(listener);
+    return () => {
+      this.messageListeners.delete(listener);
+      this.maybeDisconnectFromEvents();
+    };
+  }
+
+  public dispose() {
+    // React StrictMode can detach then resubscribe the same controller.
+    this.clearDisconnectTimer();
+    this.allListeners.clear();
+    this.metadataListeners.clear();
+    this.messageListeners.clear();
+    this.abortPendingSends();
+    this.disconnectFromEvents();
+  }
+
+  private ensureEventSubscription(options?: { includeSnapshot?: boolean }) {
+    this.clearDisconnectTimer();
+    if (this.unsubscribeFromEvents) return;
+    const generation = ++this.eventSubscriptionGeneration;
+    this.unsubscribeFromEvents = this.client.subscribe(
+      this.threadId,
+      (event: PiClientEvent) => {
+        if (generation !== this.eventSubscriptionGeneration) return;
+        if (event.threadId !== this.threadId) return;
+        this.dispatch(event);
+      },
+      options,
+    );
+  }
+
+  private disconnectFromEvents() {
+    const unsubscribe = this.unsubscribeFromEvents;
+    if (!unsubscribe) return;
+    this.unsubscribeFromEvents = null;
+    this.eventSubscriptionGeneration += 1;
+    unsubscribe();
+  }
+
+  private hasConsumers(): boolean {
+    return (
+      this.connectionRetainers > 0 ||
+      this.allListeners.size > 0 ||
+      this.metadataListeners.size > 0 ||
+      this.messageListeners.size > 0
+    );
+  }
+
+  private maybeDisconnectFromEvents() {
+    if (this.hasConsumers()) return;
+    if (this.disconnectTimer) return;
+    this.disconnectTimer = setTimeout(() => {
+      this.disconnectTimer = null;
+      if (this.hasConsumers()) return;
+      this.disconnectFromEvents();
+    }, 30_000);
+  }
+
+  private clearDisconnectTimer() {
+    if (!this.disconnectTimer) return;
+    clearTimeout(this.disconnectTimer);
+    this.disconnectTimer = null;
+  }
+
+  public async load(force = false) {
+    if (this.loadPromise && !force) return this.loadPromise;
+
+    this.setState({ ...this.state, loadState: "loading" });
+    const sequenceAtStart = this.state.lastSeq;
+
+    const request = this.client
+      .getThread(this.threadId)
+      .then((snapshot: PiThreadSnapshot) => {
+        if (this.loadPromise !== request) return;
+        this.applySnapshot(snapshot, sequenceAtStart);
+      })
+      .catch((error: unknown) => {
+        if (this.loadPromise !== request) throw error;
+        this.setState({
+          ...this.state,
+          loadState: "loaded",
+          lastError: errorText(error),
+        });
+        throw error;
+      })
+      .finally(() => {
+        if (this.loadPromise === request) this.loadPromise = null;
+      });
+
+    this.loadPromise = request;
+    return request;
+  }
+
+  public refresh() {
+    return this.load(true);
+  }
+
+  private refreshInBackground() {
+    if (this.loadPromise) return; // a load is already in flight; avoid storms
+    void this.refresh().catch(() => {
+      // load() already records the error on state.
+    });
+  }
+
+  public async sendMessage(message: AppendMessage, options?: PiSendOptions) {
+    if (message.role !== "user") {
+      throw new Error("Pi only supports sending user messages");
+    }
+
+    const isQueuedSend = this.state.runStatus === "running";
+    const behavior =
+      options?.streamingBehavior ??
+      readSteeringIntent(message) ??
+      (isQueuedSend ? "followUp" : undefined);
+
+    return this.sendPreparedMessage(
+      message,
+      buildOptimisticPiSendInput(message, behavior),
+      isQueuedSend,
+      behavior,
+    );
+  }
+
+  private beginOptimisticSend(input: PiSendMessageInput): OptimisticSend {
+    const send = {
+      message: optimisticUserMessageFromInput(input),
+      runStateRevision: this.runStateRevision,
+      previousRunStatus: this.state.runStatus,
+      previousMetadataStatus: this.state.metadata.status,
+      previousLastError: this.state.lastError,
+    };
+    this.optimisticUserMessages.push({
+      message: send.message,
+      baseMessageCount: this.state.messages.length,
+    });
+    this.setState(markStateRunning(this.state));
+    this.recomputeProjectedMessagesAndNotify();
+    return send;
+  }
+
+  private rollbackOptimisticSend(send: OptimisticSend, error: unknown) {
+    const index = this.optimisticUserMessages.findIndex(
+      (entry) => entry.message === send.message,
+    );
+    if (index !== -1) this.optimisticUserMessages.splice(index, 1);
+    this.recomputeProjectedMessagesAndNotify();
+
+    const runStateChanged = this.runStateRevision !== send.runStateRevision;
+
+    if (isSendInterruption(error)) {
+      if (runStateChanged) return;
+      this.setState({
+        ...this.state,
+        lastError: send.previousLastError,
+        runStatus: send.previousRunStatus,
+        metadata: {
+          ...this.state.metadata,
+          status: send.previousMetadataStatus,
+        },
+      });
+      return;
+    }
+
+    this.setState({
+      ...this.state,
+      lastError: errorText(error),
+      ...(runStateChanged
+        ? {}
+        : {
+            runStatus: "failed",
+            metadata: { ...this.state.metadata, status: "failed" },
+          }),
+    });
+  }
+
+  private async sendPreparedMessage(
+    message: AppendMessage,
+    optimisticInput: PiSendMessageInput,
+    isQueuedSend: boolean,
+    behavior: "followUp" | "steer" | undefined,
+  ) {
+    this.ensureEventSubscription({
+      includeSnapshot: this.state.loadState !== "loaded",
+    });
+
+    if (isQueuedSend) {
+      return this.sendQueued(
+        message,
+        optimisticInput.content,
+        behavior ?? "followUp",
+      );
+    }
+
+    const pending = this.registerPendingSend();
+    const optimisticSend = this.beginOptimisticSend(optimisticInput);
+
+    try {
+      await this.dispatchMessage(message, behavior, pending);
+    } catch (error) {
+      this.rollbackOptimisticSend(optimisticSend, error);
+      if (error === sendAbandonedError) return;
+      throw error;
+    }
+  }
+
+  /** Mid-run sends land in Pi's queue, not the transcript (Pi appends the user
+   * message only when the queue flushes), so the optimistic mirror goes into
+   * `state.queue` — the thread stays clean and the queue UI shows it instantly.
+   * The next real `queue_update` replaces the arrays wholesale and self-heals. */
+  private async sendQueued(
+    message: AppendMessage,
+    content: string,
+    behavior: "followUp" | "steer",
+  ) {
+    const mode = behavior === "steer" ? "steering" : "followUp";
+    let promoted: OptimisticSend | undefined;
+    const optimisticQueue = {
+      ...this.state.queue,
+      [mode]: [...this.state.queue[mode], content],
+    };
+    const pending = this.registerPendingSend({ mode, content });
+    this.setState({ ...this.state, queue: optimisticQueue });
+
+    try {
+      await this.dispatchMessage(message, behavior, pending, {
+        onRunStateResolved: (runIsActive) => {
+          if (runIsActive) return;
+
+          const entries = this.state.queue[mode];
+          const index = entries.lastIndexOf(content);
+          if (index !== -1) {
+            this.setState({
+              ...this.state,
+              queue: {
+                ...this.state.queue,
+                [mode]: entries.filter((_, i) => i !== index),
+              },
+            });
+          }
+          promoted = this.beginOptimisticSend(
+            buildOptimisticPiSendInput(message, undefined),
+          );
+        },
+      });
+    } catch (error) {
+      const promotedSend = promoted;
+      if (promotedSend) {
+        this.rollbackOptimisticSend(promotedSend, error);
+        if (error === sendAbandonedError || error === sendQueueClearedError) {
+          return;
+        }
+        throw error;
+      }
+
+      if (error === sendQueueClearedError) return;
+
+      // Roll back only while our optimistic mirror is still exactly what we
+      // set. Any queue write since — a `queue_update`, a snapshot on
+      // (re)connect/refresh, a clear, or a sibling send — replaces the queue
+      // object, and the entry is then no longer ours to match by content:
+      // removing by `lastIndexOf` could delete a surviving identical message.
+      // A later `queue_update` self-heals the stale entry instead.
+      const reconciled = this.state.queue !== optimisticQueue;
+      const entries = this.state.queue[mode];
+      const index = reconciled ? -1 : entries.lastIndexOf(content);
+      this.setState({
+        ...this.state,
+        ...(!isSendInterruption(error)
+          ? { lastError: errorText(error) }
+          : undefined),
+        ...(index !== -1
+          ? {
+              queue: {
+                ...this.state.queue,
+                [mode]: entries.filter((_, i) => i !== index),
+              },
+            }
+          : {}),
+      });
+      if (error === sendAbandonedError) return;
+      throw error;
+    }
+  }
+
+  private registerPendingSend(queueEntry?: PendingQueueEntry): PendingSend {
+    const pending: PendingSend = {
+      controller: new AbortController(),
+      accepted: false,
+      ...(queueEntry ? { queueEntry } : {}),
+    };
+    this.pendingSends.add(pending);
+    return pending;
+  }
+
+  private dispatchMessage(
+    message: AppendMessage,
+    behavior: "followUp" | "steer" | undefined,
+    pending: PendingSend,
+    options?: {
+      onRunStateResolved: (runIsActive: boolean) => void;
+    },
+  ) {
+    const abortController = pending.controller;
+    const previousRequest = this.sendDispatchTail;
+    const request = (async () => {
+      try {
+        await previousRequest.catch(() => {});
+        abortController.signal.throwIfAborted();
+        const input = await buildPiSendInput(
+          message,
+          behavior,
+          abortController.signal,
+        );
+        abortController.signal.throwIfAborted();
+        // pi-coding-agent >=0.80.8 reads streamingBehavior only while the
+        // session is streaming. Keeping it covers a server still streaming
+        // after the local mirror has settled; an idle session ignores it.
+        options?.onRunStateResolved(this.state.runStatus === "running");
+        abortController.signal.throwIfAborted();
+        pending.accepted = true;
+        await this.client.sendMessage(this.threadId, input);
+      } catch (error) {
+        if (abortController.signal.aborted) {
+          throw abortController.signal.reason;
+        }
+        throw error;
+      } finally {
+        this.pendingSends.delete(pending);
+      }
+    })();
+    this.sendDispatchTail = request;
+    void request.catch(() => {
+      if (this.sendDispatchTail === request) {
+        this.sendDispatchTail = Promise.resolve();
+      }
+    });
+    return request;
+  }
+
+  public async clearQueue() {
+    const locallyCleared = this.abortPendingQueuedSendsBeforeDispatch();
+    // Snapshot the queue we are clearing. Every queue write allocates a fresh
+    // object — sendQueued, the `queue_update` reducer, and a reconnect/refresh
+    // snapshot (applySnapshot, even when the contents are unchanged) — so a
+    // changed reference means some write landed while the request was in
+    // flight, which may be a refresh rather than a newer message. Bias toward
+    // skipping the local empty when it changed: leaving a stale entry is
+    // self-healed by the next `queue_update`, whereas emptying could drop a
+    // message the server still holds.
+    const queueBefore = this.state.queue;
+    const cleared = await this.client.clearQueue(this.threadId);
+    // Optimistically empty the local mirror; Pi's own `queue_update` (emitted
+    // by `session.clearQueue`) confirms it.
+    if (
+      this.state.queue === queueBefore &&
+      (queueBefore.steering.length > 0 || queueBefore.followUp.length > 0)
+    ) {
+      this.setState({
+        ...this.state,
+        queue: { steering: [], followUp: [] },
+      });
+    }
+    return {
+      steering: [...cleared.steering, ...locallyCleared.steering],
+      followUp: [...cleared.followUp, ...locallyCleared.followUp],
+    };
+  }
+
+  public async cancel() {
+    this.abortPendingSendsBeforeDispatch();
+    try {
+      await this.client.cancelRun(this.threadId);
+    } catch (error) {
+      this.setState({ ...this.state, lastError: errorText(error) });
+      throw error;
+    }
+  }
+
+  private abortPendingSendsBeforeDispatch() {
+    for (const pending of this.pendingSends) {
+      if (pending.accepted) continue;
+      pending.controller.abort(sendCancelledError);
+    }
+  }
+
+  private abortPendingQueuedSendsBeforeDispatch() {
+    const cleared: { steering: string[]; followUp: string[] } = {
+      steering: [],
+      followUp: [],
+    };
+    for (const pending of this.pendingSends) {
+      if (pending.accepted || !pending.queueEntry) continue;
+      cleared[pending.queueEntry.mode].push(pending.queueEntry.content);
+      pending.controller.abort(sendQueueClearedError);
+    }
+    return cleared;
+  }
+
+  private abortPendingSends() {
+    for (const pending of this.pendingSends) {
+      if (pending.accepted) continue;
+      pending.controller.abort(sendAbandonedError);
+    }
+  }
+
+  public async setModel(input: { provider: string; modelId: string }) {
+    try {
+      await this.client.setModel(this.threadId, input);
+    } catch (error) {
+      this.setState({ ...this.state, lastError: errorText(error) });
+      throw error;
+    }
+    await this.refresh();
+  }
+
+  public async setThinkingLevel(level: PiThinkingLevel) {
+    try {
+      await this.client.setThinkingLevel(this.threadId, level);
+    } catch (error) {
+      this.setState({ ...this.state, lastError: errorText(error) });
+      throw error;
+    }
+    await this.refresh();
+  }
+
+  public async respondToToolApproval(approvalId: string, approved: boolean) {
+    const request = this.state.hostUiRequests.find((r) => r.id === approvalId);
+    await this.respond(
+      request
+        ? responseForToolApproval(request, { approvalId, approved })
+        : responseForApproval(approvalId, approved),
+    );
+  }
+
+  public async resumeToolCall(toolCallId: string, payload: unknown) {
+    const request = this.state.hostUiRequests.find(
+      (r) => r.toolCallId === toolCallId,
+    );
+    if (!request) {
+      throw new Error(
+        `No pending host-UI request for tool call "${toolCallId}"`,
+      );
+    }
+    if (request.kind === "confirm") {
+      await this.respond(responseForApproval(request.id, payload === true));
+    } else {
+      await this.respond(
+        responseForInterrupt(request.id, payload as PiInterruptAnswer),
+      );
+    }
+  }
+
+  public async respondToHostUiRequest(response: PiHostUiResponse) {
+    await this.respond(response);
+  }
+
+  private async respond(response: PiHostUiResponse) {
+    try {
+      await this.client.respondToHostUiRequest(this.threadId, response);
+    } catch (error) {
+      this.setState({ ...this.state, lastError: errorText(error) });
+      throw error;
+    }
+    // Optimistically clear the resolved request so the gate closes immediately.
+    // Done directly (not via the reducer) because a synthetic event at the
+    // current seq would be dropped by the dedup guard; the supervisor's real
+    // `extension_ui_resolved` is idempotent over this removal.
+    const next = removeHostUiRequest(this.state, response.requestId);
+    if (next !== this.state) {
+      this.setState(next);
+      this.recomputeProjectedMessagesAndNotify();
+    }
+  }
+
+  private applySnapshot(snapshot: PiThreadSnapshot, sequenceAtStart: number) {
+    const currentSequence = this.state.lastSeq;
+    // Live records stamp snapshots at handle time, so an uncontested snapshot
+    // behind the request-start watermark belongs to a rebuilt record.
+    const sequenceResetWhileLoading = currentSequence < sequenceAtStart;
+    const responseWasOvertaken =
+      currentSequence > sequenceAtStart &&
+      (snapshot.seq === undefined || snapshot.seq < currentSequence);
+
+    if (sequenceResetWhileLoading || responseWasOvertaken) {
+      if (this.state.loadState !== "loaded") {
+        this.setState({ ...this.state, loadState: "loaded" });
+      }
+      return;
+    }
+
+    this.dispatch({
+      type: "snapshot",
+      snapshot,
+      threadId: this.threadId,
+      seq: snapshot.seq ?? this.localSnapshotSeq,
+    });
+  }
+
+  private dispatch(event: PiClientEvent) {
+    const next = reducePiThreadState(this.state, event);
+    const changed = next !== this.state;
+    if (changed) {
+      this.state = next;
+      if (RUN_STATE_EVENT_TYPES.has(event.type)) {
+        this.runStateRevision += 1;
+      }
+    }
+
+    if (event.type === "agent_end" && event.cancelledBeforeStart === true) {
+      this.optimisticUserMessages.length = 0;
+    }
+    this.reconcileOptimisticUserMessages();
+
+    if (changed && METADATA_DIRTY_EVENT_TYPES.has(event.type)) {
+      this.notifyMetadataListeners();
+    }
+
+    if (changed && MESSAGE_DIRTY_EVENT_TYPES.has(event.type)) {
+      if (MESSAGE_FRAME_COALESCED_EVENT_TYPES.has(event.type)) {
+        this.scheduleProjectedMessageFlush();
+      } else {
+        this.recomputeProjectedMessagesAndNotify();
+      }
+    }
+
+    // Pi 0.80.7 emits entry_appended only for custom extension entries. Keep
+    // snapshot reconciliation for other variants if Pi broadens that event.
+    const needsSnapshotRefresh =
+      !isKnownPiClientEventType(event.type) ||
+      (event.type === "entry_appended" && event.entry?.type !== "custom");
+    if (needsSnapshotRefresh) this.refreshInBackground();
+  }
+
+  private setState(next: PiThreadState) {
+    if (next === this.state) return;
+    this.state = next;
+    this.notifyMetadataListeners();
+  }
+
+  private projectedInputMessages() {
+    return [
+      ...this.state.messages,
+      ...this.optimisticUserMessages.map((entry) => entry.message),
+    ];
+  }
+
+  private reconcileOptimisticUserMessages() {
+    if (this.optimisticUserMessages.length === 0) return;
+
+    const remaining: OptimisticUserMessage[] = [];
+    for (const entry of this.optimisticUserMessages) {
+      const key = userContentKey(entry.message);
+      const confirmed = this.state.messages
+        .slice(entry.baseMessageCount)
+        .some((message) => userContentKey(message) === key);
+      if (!confirmed) remaining.push(entry);
+    }
+
+    if (remaining.length === this.optimisticUserMessages.length) return;
+    this.optimisticUserMessages.length = 0;
+    this.optimisticUserMessages.push(...remaining);
+  }
+
+  private projectMessages() {
+    return this.messageProjector.project({
+      messages: this.projectedInputMessages(),
+      toolExecutions: this.state.toolExecutions,
+      runStatus: this.state.runStatus,
+      hostUiRequests: this.state.hostUiRequests,
+    });
+  }
+
+  private recomputeProjectedMessagesAndNotify() {
+    const next = this.projectMessages();
+    if (next === this.projectedMessages) {
+      if (this.state !== this.stateSnapshot) this.publishState();
+      return;
+    }
+    this.projectedMessages = next;
+    this.messageRepository = updateMessageRepository(
+      this.messageRepository,
+      next,
+      this.messageProjector.getChangedProjectedIndex() ?? 0,
+    );
+    this.notifyMessageListeners();
+  }
+
+  private scheduleProjectedMessageFlush() {
+    if (this.messageFlushScheduled) return;
+    this.messageFlushScheduled = true;
+    const scheduleNotify = this.options.scheduleNotify ?? defaultScheduleNotify;
+    scheduleNotify(() => {
+      this.messageFlushScheduled = false;
+      this.recomputeProjectedMessagesAndNotify();
+    });
+  }
+
+  private bumpVersion() {
+    this.version += 1;
+  }
+
+  /** `message_end` advances state without moving the projection, so neither
+   * the metadata nor the message channel describes what changed. Publishing on
+   * `all` alone reaches every state subscriber without redefining what
+   * `subscribeMetadata` fires for. */
+  private publishState() {
+    this.stateSnapshot = this.state;
+    this.bumpVersion();
+    notifyListeners(this.allListeners);
+  }
+
+  private notifyMetadataListeners() {
+    this.stateSnapshot = this.state;
+    this.bumpVersion();
+    notifyListeners(this.metadataListeners);
+    notifyListeners(this.allListeners);
+  }
+
+  private notifyMessageListeners() {
+    this.stateSnapshot = this.state;
+    this.bumpVersion();
+    notifyListeners(this.messageListeners);
+    notifyListeners(this.allListeners);
+  }
+}

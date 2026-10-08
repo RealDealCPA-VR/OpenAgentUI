@@ -1,0 +1,122 @@
+---
+title: Claude Clone
+description: Open-source Claude clone in React. Warm cream theme, serif typography, hover-only action bars, and a flat bordered composer styled after claude.ai.
+---
+
+## Overview
+
+The Claude Clone demonstrates how to customize assistant-ui to match Anthropic's Claude interface. The design uses a warm cream background, serif typography, and minimal chrome: no shadows or avatars, a thin border on the composer, and low-contrast user bubbles.
+
+## Features
+
+- **Warm Cream Background**: `#F0ECE0` light, `#2b2a27` dark
+- **Serif Throughout**: `font-serif` on every surface for the editorial feel
+- **Sparkle Heading**: Centered "How can I help you today?" with the orange `#c96442` Sparkle icon
+- **Flat Composer**: A `border-[#E5E0D6]` border and no shadow
+- **Functional Model Picker**: Sonnet 5 / Fable 5.1 / Haiku 4.5 dropdown with "More options"
+- **Mode Tabs**: Write / Learn / Code / From Drive / From Calendar, as `rounded-lg` chips with thin borders
+- **Hover-only Action Bars**: User Edit/Copy and assistant Copy/Good response/Bad response/Reload appear on hover or keyboard focus
+- **Four-State Primary Action**: Cancel, StopDictation, Send, Dictate (orange `#c96442` accent)
+
+## Quick Start
+
+```bash
+npx assistant-ui add thread
+```
+
+## Code
+
+The empty state centers the heading + composer + mode tabs together. The chat state uses a sticky composer with a fade-out gradient over the cream background:
+
+```tsx
+import {
+  AuiIf,
+  ThreadPrimitive,
+  ComposerPrimitive,
+  MessagePrimitive,
+  ActionBarPrimitive,
+} from "@assistant-ui/react";
+
+export const Claude = () => (
+  <ThreadPrimitive.Root className="bg-[#F0ECE0] font-serif dark:bg-[#2b2a27]">
+    <AuiIf condition={(s) => s.thread.isEmpty}>
+      <EmptyState />
+    </AuiIf>
+    <AuiIf condition={(s) => !s.thread.isEmpty}>
+      <ThreadPrimitive.Viewport>
+        <ThreadPrimitive.Messages>
+          {() => <ChatMessage />}
+        </ThreadPrimitive.Messages>
+        <ThreadPrimitive.ViewportFooter className="sticky bottom-0">
+          <Composer />
+          <p>Claude can make mistakes. Please double-check responses.</p>
+        </ThreadPrimitive.ViewportFooter>
+      </ThreadPrimitive.Viewport>
+    </AuiIf>
+  </ThreadPrimitive.Root>
+);
+
+const EmptyState = () => (
+  <div className="flex grow flex-col items-center justify-center">
+    <h1 className="flex items-center gap-3 font-serif text-3xl">
+      <Sparkle className="fill-[#c96442] text-[#c96442]" />
+      How can I help you today?
+    </h1>
+    <Composer />
+    <ModeTabs />
+  </div>
+);
+
+const Composer = () => (
+  <ComposerPrimitive.Root className="rounded-2xl border border-[#E5E0D6] bg-white px-3.5 pt-3 pb-2.5 dark:border-[#3d3a35] dark:bg-[#1f1e1b]">
+    <ComposerPrimitive.Input rows={1} placeholder="How can I help you today?" />
+    <div className="flex items-center gap-2">
+      <ComposerPrimitive.AddAttachment />
+      <div className="ml-auto flex items-center gap-1">
+        <ModelPicker />
+        <PrimaryAction />
+      </div>
+    </div>
+  </ComposerPrimitive.Root>
+);
+```
+
+### Hover-only Action Bars
+
+Both user and assistant action bars use opacity with `group-hover` and `group-focus-within`, so they stay hidden until the message is hovered or focused:
+
+```tsx
+<MessagePrimitive.Root className="group/message">
+  <div className="rounded-2xl bg-[#E5E0D6] px-4 py-2.5">
+    <MessagePrimitive.Parts components={{ Text: MarkdownText }} />
+  </div>
+  <ActionBarPrimitive.Root className="opacity-0 transition-opacity group-focus-within/message:opacity-100 group-hover/message:opacity-100">
+    <ActionBarPrimitive.Edit />
+    <ActionBarPrimitive.Copy />
+  </ActionBarPrimitive.Root>
+</MessagePrimitive.Root>
+```
+
+### Color Palette
+
+| Element | Light | Dark |
+|---------|-------|------|
+| Background | `#F0ECE0` | `#2b2a27` |
+| Composer surface | `white` | `#1f1e1b` |
+| Composer border | `#E5E0D6` | `#3d3a35` |
+| User bubble | `#E5E0D6` | `#393937` |
+| Primary text | `#1a1a18` | `#eee` |
+| Muted text | `#5b5950` | `#a3a098` |
+| Primary action (orange) | `#c96442` | `#c96442` |
+
+### Styling Details
+
+- **Typography**: `font-serif` everywhere; assistant messages use `leading-[1.65rem]`
+- **No Shadows**: Composer relies on `border-[#E5E0D6]` only
+- **User Bubble**: `rounded-2xl bg-[#E5E0D6] max-w-[80%]` right-aligned
+- **Assistant Message**: full-width serif text with no bubble or avatar, set directly on the cream background
+- **Mode Tabs**: `rounded-lg border border-[#E5E0D6] bg-transparent` so they blend into the cream
+
+## Source
+
+<SourceLink href="https://github.com/assistant-ui/assistant-ui/blob/main/apps/docs/components/pages/examples/claude.tsx" />

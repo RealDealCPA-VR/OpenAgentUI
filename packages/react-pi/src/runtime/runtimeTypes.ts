@@ -1,0 +1,73 @@
+import type {
+  ExternalStoreAdapter,
+  ExternalStoreSharedOptions,
+  ThreadMessageLike,
+} from "@assistant-ui/react";
+import type { AssistantCloud } from "assistant-cloud";
+import type { PiThreadControllerLike } from "./ThreadController";
+import type { PiInterruptAnswer } from "./hostUi";
+import type { PiThreadState } from "./threadState";
+import type {
+  PiClient,
+  PiContextUsage,
+  PiHostUiRequest,
+  PiHostUiResponse,
+  PiRuntimeReadiness,
+  PiThinkingLevel,
+  PiThreadMetadata,
+  PiThreadStatus,
+} from "../types";
+
+export type PiRuntimeOptions = ExternalStoreSharedOptions & {
+  /** The transport-agnostic Pi client (HTTP/SSE, RPC, IPC). */
+  client: PiClient;
+  /** Backs the thread list with Assistant Cloud; each cloud thread maps to a Pi thread. */
+  cloud?: AssistantCloud | undefined;
+  /** Workspace scoping for the thread list. With `cloud`, the list holds every thread of the cloud project and this only places new Pi threads. */
+  workspacePath?: string;
+  /** Lists archived threads too. Not used with `cloud`, whose list keeps archived threads apart. */
+  includeArchived?: boolean;
+  /** The thread to open first: a Pi thread id, or with `cloud` a cloud thread id. */
+  initialThreadId?: string;
+  /** The thread to show: a Pi thread id, or with `cloud` a cloud thread id. */
+  threadId?: string;
+  /** Notified when the active thread's settled remote ID changes; `undefined` while still optimistic. */
+  onThreadIdChange?: ((threadId: string | undefined) => void) | undefined;
+  onError?: (error: unknown) => void;
+  adapters?: ExternalStoreAdapter<ThreadMessageLike>["adapters"];
+};
+
+export interface PiRuntimeExtras {
+  state: PiThreadState;
+  metadata: PiThreadMetadata;
+  status: PiThreadStatus;
+  readiness: PiRuntimeReadiness | undefined;
+  contextUsage: PiContextUsage | undefined;
+  /** Pending side-channel (free-standing) host-UI requests — those not attached
+   * to a tool call. Tool-associated requests render as the tool call's
+   * approval instead. */
+  hostUiRequests: readonly PiHostUiRequest[];
+  /** All pending host-UI requests, including tool-associated ones. */
+  allHostUiRequests: readonly PiHostUiRequest[];
+  queue: PiThreadState["queue"];
+  compaction: PiThreadState["compaction"];
+  retry: PiThreadState["retry"];
+  lastError: string | undefined;
+  cancel: () => Promise<void>;
+  refresh: () => Promise<void>;
+  /** Clear Pi's queued (steering + follow-up) messages; resolves with the
+   * cleared text so it can be restored into the composer. */
+  clearQueue: () => Promise<{ steering: string[]; followUp: string[] }>;
+  setModel: (input: { provider: string; modelId: string }) => Promise<void>;
+  setThinkingLevel: (level: PiThinkingLevel) => Promise<void>;
+  respondToHostUiRequest: (response: PiHostUiResponse) => Promise<void>;
+  respondToToolApproval: (id: string, approved: boolean) => Promise<void>;
+  resumeToolCall: (
+    toolCallId: string,
+    payload: PiInterruptAnswer,
+  ) => Promise<void>;
+}
+
+export type PiRuntimeExtrasInternal = PiRuntimeExtras & {
+  controller: PiThreadControllerLike;
+};

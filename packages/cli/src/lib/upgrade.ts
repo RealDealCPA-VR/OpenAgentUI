@@ -1,0 +1,89 @@
+import debug from "debug";
+import { transform, getRelevantFiles } from "./transform";
+import type { TransformOptions } from "./transform-options";
+import { SingleBar, Presets } from "cli-progress";
+import installEdgeLib from "./install-edge-lib";
+import installAiSdkLib from "./install-ai-sdk-lib";
+import { logger } from "./utils/logger";
+
+const bundle = [
+  "v0-9/edge-package-split",
+  "v0-11/content-part-to-message-part",
+  "v0-12/assistant-api-to-aui",
+  "v0-12/event-names-to-camelcase",
+  "v0-12/primitive-if-to-aui-if",
+  "v0-15/aui-accessor-calls-to-properties",
+];
+
+const log = debug("codemod:upgrade");
+
+/**
+ * Runs the upgrade cycle:
+ *   - Runs each codemod in the bundle.
+ *   - Displays progress using cli-progress.
+ *   - Outside dry mode, checks for new package imports and prompts for install.
+ */
+export async function upgrade(options: TransformOptions) {
+  const cwd = process.cwd();
+  log("Starting upgrade...");
+
+  // Find relevant files once to avoid duplicate work
+  logger.info("Analyzing codebase...");
+  const relevantFiles = getRelevantFiles(cwd);
+  const fileCount = relevantFiles.length;
+  logger.info(`Found ${fileCount} files to process.`);
+
+  // Calculate total work units (files × codemods)
+  const totalWork = fileCount * bundle.length;
+  let completedWork = 0;
+
+  const bar = new SingleBar(
+    {
+      format: "Progress |{bar}| {percentage}% | ETA: {eta}s || {status}",
+      hideCursor: true,
+      gracefulExit: true,
+    },
+    Presets.shades_classic,
+  );
+
+  bar.start(totalWork, 0, { status: "Starting..." });
+
+  try {
+    for (const codemod of bundle) {
+      bar.update(completedWork, { status: `Running ${codemod}...` });
+
+      // Use a custom progress callback to update the progress bar
+      await transform(codemod, cwd, options, {
+        logStatus: false,
+        onProgress: (processedFiles: number) => {
+          completedWork = bundle.indexOf(codemod) * fileCount + processedFiles;
+          bar.update(Math.min(completedWork, totalWork), {
+            status: `Running ${codemod} (${processedFiles}/${fileCount} files)`,
+          });
+        },
+        relevantFiles, // Pass the pre-computed relevant files
+      });
+
+      completedWork = (bundle.indexOf(codemod) + 1) * fileCount;
+      bar.update(completedWork, { status: `Completed ${codemod}` });
+    }
+
+    bar.update(totalWork, {
+      status: options.dry ? "Preview complete" : "Checking dependencies...",
+    });
+  } finally {
+    bar.stop();
+  }
+
+  if (options.dry) {
+    logger.success("Dry run complete. No files were changed.");
+    return;
+  }
+
+  logger.info("Checking for package dependencies...");
+  await installEdgeLib();
+  await installAiSdkLib();
+
+  log("Upgrade complete.");
+  logger.success("Upgrade complete!");
+}

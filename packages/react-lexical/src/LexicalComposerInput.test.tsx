@@ -1,0 +1,349 @@
+/**
+ * @vitest-environment jsdom
+ */
+import { act, useEffect } from "react";
+import { createRoot, type Root } from "react-dom/client";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import {
+  $createParagraphNode,
+  $getRoot,
+  KEY_ENTER_COMMAND,
+  type LexicalEditor,
+} from "lexical";
+import { LexicalComposerInput } from "./LexicalComposerInput";
+import {
+  $createDirectiveNode,
+  type DirectiveChipProps,
+} from "./nodes/DirectiveNode";
+
+const setText = vi.fn<(text: string) => void>();
+const sendSpy = vi.fn<(options?: { steer?: boolean }) => void>();
+const cancelSpy = vi.fn<() => void>();
+const pluginHandleKeyDown = vi.fn<(event: KeyboardEvent) => boolean>();
+const setCursorPosition = vi.fn<(position: number) => void>();
+const registerInput = vi.fn(() => () => {});
+
+const composerState = {
+  isEditing: true,
+  text: "",
+  type: "thread" as const,
+  isEmpty: true,
+  canCancel: false,
+  canSend: true,
+  dictation: undefined as undefined | { inputDisabled: boolean },
+};
+
+const threadState = {
+  isDisabled: false,
+  isRunning: false,
+  capabilities: { queue: false },
+  voice: undefined as undefined | { status: { type: "running" } },
+};
+
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
+
+vi.mock("@assistant-ui/store", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@assistant-ui/store")>();
+  const aui = {
+    composer: {
+      setText: (text: string) => setText(text),
+      getState: () => composerState,
+      cancel: () => cancelSpy(),
+      send: () => sendSpy(),
+    },
+    thread: {
+      getState: () => threadState,
+    },
+    on: () => () => {},
+  };
+  type Selector<T> = (s: {
+    composer: typeof composerState;
+    thread: typeof threadState;
+  }) => T;
+  return {
+    ...actual,
+    useAui: () => aui,
+    useAuiState: <T,>(selector: Selector<T>) =>
+      selector({ composer: composerState, thread: threadState }),
+  };
+});
+
+vi.mock("@assistant-ui/react", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@assistant-ui/react")>();
+  return {
+    ...actual,
+    INTERNAL: {
+      ...actual.INTERNAL,
+      useComposerInputPluginRegistryOptional: () => ({
+        getPlugins: () => [
+          {
+            handleKeyDown: pluginHandleKeyDown,
+            setCursorPosition,
+          },
+        ],
+        registerInput,
+      }),
+    },
+  };
+});
+
+describe("LexicalComposerInput", () => {
+  let container: HTMLDivElement;
+  let root: Root;
+
+  beforeEach(() => {
+    setText.mockReset();
+    sendSpy.mockReset();
+    cancelSpy.mockReset();
+    pluginHandleKeyDown.mockReset();
+    pluginHandleKeyDown.mockReturnValue(false);
+    setCursorPosition.mockReset();
+    registerInput.mockClear();
+    composerState.isEditing = true;
+    composerState.text = "";
+    composerState.isEmpty = true;
+    composerState.canSend = true;
+    composerState.dictation = undefined;
+    threadState.isDisabled = false;
+    threadState.isRunning = false;
+    threadState.capabilities.queue = false;
+    threadState.voice = undefined;
+
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    root = createRoot(container);
+  });
+
+  afterEach(async () => {
+    await act(async () => {
+      root.unmount();
+    });
+    container.remove();
+    vi.restoreAllMocks();
+  });
+
+  it("renders children inside the composer context with a live editor", async () => {
+    let capturedEditor: LexicalEditor | null = null;
+    let updateListenerFired = false;
+
+    function ProbePlugin() {
+      const [editor] = useLexicalComposerContext();
+
+      useEffect(() => {
+        capturedEditor = editor;
+        return editor.registerUpdateListener(() => {
+          updateListenerFired = true;
+        });
+      }, [editor]);
+
+      return null;
+    }
+
+    await act(async () => {
+      root.render(
+        <LexicalComposerInput>
+          <ProbePlugin />
+        </LexicalComposerInput>,
+      );
+    });
+
+    expect(capturedEditor).not.toBeNull();
+
+    await act(async () => {
+      capturedEditor!.update(() => {
+        $getRoot().append($createParagraphNode());
+      });
+    });
+    expect(updateListenerFired).toBe(true);
+  });
+
+  it("still renders the built-in contentEditable alongside children", async () => {
+    function ProbePlugin() {
+      useLexicalComposerContext();
+      return null;
+    }
+
+    await act(async () => {
+      root.render(
+        <LexicalComposerInput>
+          <ProbePlugin />
+        </LexicalComposerInput>,
+      );
+    });
+
+    expect(container.querySelector(".aui-lexical-input")).not.toBeNull();
+  });
+
+  it("renders directive chips through the directiveChip prop", async () => {
+    let capturedEditor: LexicalEditor | null = null;
+
+    function ProbePlugin() {
+      const [editor] = useLexicalComposerContext();
+      useEffect(() => {
+        capturedEditor = editor;
+      }, [editor]);
+      return null;
+    }
+
+    function CustomChip({ label }: DirectiveChipProps) {
+      return <b data-testid="custom-chip">{label}</b>;
+    }
+
+    await act(async () => {
+      root.render(
+        <LexicalComposerInput directiveChip={CustomChip}>
+          <ProbePlugin />
+        </LexicalComposerInput>,
+      );
+    });
+
+    await act(async () => {
+      capturedEditor!.update(() => {
+        const paragraph = $createParagraphNode();
+        paragraph.append(
+          $createDirectiveNode({
+            id: "alice",
+            type: "mention",
+            label: "Alice",
+          }),
+        );
+        $getRoot().clear().append(paragraph);
+      });
+    });
+
+    const chip = container.querySelector('[data-testid="custom-chip"]');
+    expect(chip?.textContent).toBe("Alice");
+    expect(container.querySelector(".aui-directive-chip")).toBeNull();
+  });
+
+  it("delegates Tab to composer input plugins", async () => {
+    await act(async () => {
+      root.render(<LexicalComposerInput />);
+    });
+
+    const input = container.querySelector(".aui-lexical-input");
+    expect(input).not.toBeNull();
+
+    await act(async () => {
+      input!.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "Tab",
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
+    });
+
+    expect(pluginHandleKeyDown).toHaveBeenCalledOnce();
+    expect(pluginHandleKeyDown.mock.calls[0]![0].key).toBe("Tab");
+  });
+
+  it("ignores Safari's post-compositionend Enter before plugin delegation", async () => {
+    pluginHandleKeyDown.mockReturnValue(true);
+    await act(async () => {
+      root.render(<LexicalComposerInput />);
+    });
+
+    const input = container.querySelector<HTMLElement>(".aui-lexical-input")!;
+    input.dispatchEvent(
+      new CompositionEvent("compositionstart", { bubbles: true }),
+    );
+    input.dispatchEvent(
+      new InputEvent("input", {
+        data: "日本語",
+        inputType: "insertFromComposition",
+        isComposing: true,
+        bubbles: true,
+      }),
+    );
+    input.dispatchEvent(
+      new CompositionEvent("compositionend", {
+        data: "日本語",
+        bubbles: true,
+      }),
+    );
+
+    const event = new KeyboardEvent("keydown", {
+      key: "Enter",
+      keyCode: 229,
+      isComposing: false,
+      bubbles: true,
+      cancelable: true,
+    });
+    await act(async () => {
+      input.dispatchEvent(event);
+    });
+
+    expect(pluginHandleKeyDown).not.toHaveBeenCalled();
+    expect(sendSpy).not.toHaveBeenCalled();
+    expect(event.defaultPrevented).toBe(false);
+
+    pluginHandleKeyDown.mockReturnValue(false);
+    const plainEnter = new KeyboardEvent("keydown", {
+      key: "Enter",
+      keyCode: 13,
+      bubbles: true,
+      cancelable: true,
+    });
+    await act(async () => {
+      input.dispatchEvent(plainEnter);
+    });
+
+    expect(pluginHandleKeyDown).toHaveBeenCalledOnce();
+    expect(sendSpy).toHaveBeenCalledOnce();
+  });
+
+  it.each([
+    {
+      name: "submits on Enter during a run when queueing is supported",
+      queue: true,
+      voice: false,
+      prevented: true,
+      sends: 1,
+    },
+    {
+      name: "does not submit on Enter during a run without queue support",
+      queue: false,
+      voice: false,
+      prevented: false,
+      sends: 0,
+    },
+    {
+      name: "submits on Enter during a voice run without queue support",
+      queue: false,
+      voice: true,
+      prevented: true,
+      sends: 1,
+    },
+  ])("$name", async ({ queue, voice, prevented, sends }) => {
+    let editor: LexicalEditor | null = null;
+    function ProbePlugin() {
+      [editor] = useLexicalComposerContext();
+      return null;
+    }
+
+    threadState.isRunning = true;
+    threadState.capabilities.queue = queue;
+    threadState.voice = voice ? { status: { type: "running" } } : undefined;
+    await act(async () => {
+      root.render(
+        <LexicalComposerInput>
+          <ProbePlugin />
+        </LexicalComposerInput>,
+      );
+    });
+
+    const event = new KeyboardEvent("keydown", {
+      key: "Enter",
+      bubbles: true,
+      cancelable: true,
+    });
+    await act(async () => {
+      editor!.dispatchCommand(KEY_ENTER_COMMAND, event);
+    });
+
+    expect(event.defaultPrevented).toBe(prevented);
+    expect(sendSpy).toHaveBeenCalledTimes(sends);
+  });
+});

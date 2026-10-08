@@ -1,0 +1,11 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "test": {
+      "env": ["REDIS_*"]
+    },
+    "test:coverage": {
+      "env": ["REDIS_*"]
+    }
+  }
+}

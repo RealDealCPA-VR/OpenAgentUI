@@ -1,0 +1,80 @@
+---
+title: A2A Agent Runtime
+description: Connect any A2A v1.0 protocol-compliant agent server to a React chat UI with assistant-ui — full streaming, tool calls, and message metadata supported.
+---
+
+`@assistant-ui/react-a2a` is a runtime adapter for the [A2A (Agent-to-Agent) v1.0 protocol](https://github.com/a2aproject/A2A). Use it when your backend speaks A2A; the adapter handles the wire protocol so you can focus on the UI.
+
+## When to use it
+
+Pick the A2A runtime when:
+
+- You have an A2A v1.0 compatible agent server, or you are building one and want a reference client.
+- You want streaming task state, artifacts, and the protocol's full state machine surfaced in the UI.
+- You need multi-tenant or extension-aware A2A clients.
+
+If your backend is not A2A-compliant, see [picking a runtime](/docs/runtimes/pick-a-runtime) for alternatives.
+
+## Architecture
+
+`@assistant-ui/react-a2a` is layered on `ExternalStoreRuntime` (see [architecture](/docs/runtimes/concepts/architecture)). Features that ship as runtime adapters (attachments, speech, feedback, history, threads) work the same way they do everywhere else; see [adapters](/docs/runtimes/concepts/adapters).
+
+## Requirements
+
+- An A2A v1.0 compatible agent server.
+- React 18 or 19.
+
+## A2UI surfaces and stored conversations
+
+The runtime recognizes A2UI operation DataParts by an `a2ui` media type on the part or its metadata, or by the operation shape itself. It folds operations from status updates, agent messages, task snapshots, and artifacts into one surface state for the assistant message. Each renderable surface becomes a `present` tool call with id `a2ui:<surfaceId>`, so it renders through the same setup as [A2UI over AG-UI](/docs/tools/a2ui). A deleted surface disappears, and the original DataPart is not rendered as JSON or sent back to the agent.
+
+When you use a history adapter, the assistant message keeps the task data needed to restore what the user saw. Surface parts carry replayable operations in their tool artifact, and merged task artifacts live under `metadata.custom.a2a.artifacts`, with inline file bytes (`raw`) left out so a large file cannot push the message past a store's size limit; URLs, text, data, media types and file names are kept:
+
+```ts
+{
+  metadata: {
+    custom: {
+      a2a: {
+        artifacts: [{ artifactId: "report", parts: [{ text: "..." }] }],
+      },
+    },
+  },
+}
+```
+
+The Assistant Cloud history adapter has `update`, so a task paused for `input_required` or `auth_required` writes its assistant question to history. Other history adapters record the question only when they expose `update`; an append-only adapter stores only the settled assistant message.
+
+## Install
+
+<PlatformTabs>
+<Tab value="React">
+
+<InstallCommand npm={["@assistant-ui/react", "@assistant-ui/react-a2a"]} />
+
+</Tab>
+<Tab value="React Native">
+
+<InstallCommand expo={["@assistant-ui/react-native", "@assistant-ui/react-a2a"]} />
+
+</Tab>
+<Tab value="React Ink">
+
+<InstallCommand npm={["@assistant-ui/react-ink", "@assistant-ui/react-a2a", "ink", "react"]} />
+
+</Tab>
+</PlatformTabs>
+
+## Next
+
+<Cards>
+  <Card
+    title="Quickstart"
+    description="Minimal runtime setup with a Thread component."
+    href="/docs/runtimes/a2a/quickstart"
+  />
+  <Card
+    title="Client and hooks"
+    description="A2AClient, useA2ARuntime options, hooks reference, task states, artifacts."
+    href="/docs/runtimes/a2a/client-and-hooks"
+  />
+</Cards>

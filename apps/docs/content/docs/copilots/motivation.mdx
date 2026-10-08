@@ -1,0 +1,194 @@
+---
+title: Intelligent Components
+description: Add intelligence to React components through readable interfaces and assistant tools.
+platforms: ["react"]
+---
+
+React components combine logic, structure, and style. assistant-ui adds a fourth element: intelligence. This page builds a smart component through a banking app example.
+
+## The Evolution of Components
+
+Traditional React components combine three elements:
+
+```tsx
+// Traditional React Component
+function TransactionHistory({ transactions }) {
+  // 1. Logic (JavaScript/TypeScript)
+  const handleRefund = (transactionId) => {
+    // Process refund...
+  };
+
+  // 2. Structure (JSX/TSX)
+  return (
+    // 3. Style (CSS via className)
+    <div className="transaction-list">
+      {transactions.map((transaction) => (
+        <div key={transaction.id} className="transaction-item">
+          <span>${transaction.amount}</span>
+          <span>{transaction.merchant}</span>
+          <button onClick={() => handleRefund(transaction.id)}>
+            Request Refund
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+## Adding Intelligence
+
+assistant-ui adds intelligence to this component through four APIs:
+
+### 1. Making Components Readable (makeAssistantVisible)
+
+Make the buttons readable and clickable:
+
+```tsx
+import { makeAssistantVisible } from "@assistant-ui/react";
+
+// Make the refund button intelligent
+const SmartButton = makeAssistantVisible(
+  ({ onClick, children }) => <button onClick={onClick}>{children}</button>,
+  {
+    clickable: true, // Allow the assistant to click the button
+  },
+);
+
+function TransactionHistory({ transactions }) {
+  return (
+    <div className="transaction-list">
+      {transactions.map((transaction) => (
+        <div key={transaction.id} className="transaction-item">
+          <span>${transaction.amount}</span>
+          <span>{transaction.merchant}</span>
+          <SmartButton onClick={() => handleRefund(transaction.id)}>
+            Request Refund
+          </SmartButton>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+Now the assistant can:
+
+- Read the HTML of each refund button
+- Click the refund buttons
+
+### 2. Adding System Instructions (useAssistantInstructions)
+
+Give the assistant instructions about its role:
+
+```tsx
+import { useAssistantInstructions } from "@assistant-ui/react";
+
+function SmartTransactionHistory() {
+  useAssistantInstructions(`
+    You are a helpful banking assistant that:
+    1. Helps users understand their transactions
+    2. Explains refund policies
+    3. Identifies suspicious transactions
+    4. Guides users through the refund process
+  `);
+
+  return <TransactionHistory transactions={transactions} />;
+}
+```
+
+### 3. Creating Tools
+
+Add transaction-specific tools for the assistant:
+
+```tsx title="app/transaction-toolkit.tsx"
+"use generative";
+
+import { defineToolkit } from "@assistant-ui/react";
+import { z } from "zod";
+
+export default defineToolkit({
+  analyzeTransaction: {
+    description: "Analyze a transaction's risk and refund eligibility.",
+    parameters: z.object({
+      transactionId: z.string(),
+      merchantName: z.string(),
+    }),
+    execute: async ({ transactionId, merchantName }) => {
+      "use client";
+      // Analyze transaction patterns, merchant reputation, etc.
+      return {
+        isSuspicious: false,
+        merchantRating: 4.5,
+        similarTransactions: 3,
+        refundEligible: true,
+      };
+    },
+    renderText: { running: "Analyzing transaction…", complete: "Analysis ready" },
+  },
+});
+```
+
+```tsx title="app/SmartTransactionHistory.tsx"
+import { AuiConfig, AuiProvider, Tools, useAui } from "@assistant-ui/react";
+import toolkit from "./transaction-toolkit";
+
+function SmartTransactionHistory() {
+  // Previous instructions...
+  const aui = useAui();
+  const config = AuiConfig({ tools: Tools({ toolkit }) });
+  return (
+    <AuiProvider extends={aui} config={config}>
+      <TransactionHistory transactions={transactions} />
+    </AuiProvider>
+  );
+}
+```
+
+### 4. Adding Custom Context (Model Context)
+
+Add dynamic context based on the user's transaction patterns:
+
+```tsx
+import { useAui } from "@assistant-ui/react";
+import { useEffect } from "react";
+
+function SmartTransactionHistory({ userProfile }) {
+  const aui = useAui();
+
+  useEffect(() => {
+    return aui.modelContext.register({
+      getModelContext: () => ({
+        system: `
+          User spending patterns:
+          - Average transaction: ${userProfile.avgTransaction}
+          - Common merchants: ${userProfile.frequentMerchants.join(", ")}
+          - Refund history: ${userProfile.refundCount} requests
+        `,
+      }),
+    });
+  }, [aui, userProfile]);
+
+  // Previous components...
+}
+```
+
+## The Result: An Intelligent Banking Experience
+
+The assistant can now:
+
+1. Read and click the refund buttons
+2. Follow banking-specific instructions
+3. Use tools to analyze transactions
+4. Use the user's spending patterns as context
+
+The component is still a regular React component.
+
+## Next Steps
+
+Learn more about each API:
+
+- [makeAssistantVisible](make-assistant-visible) for component understanding
+- [Tools](/docs/tools/defining-tools) for transaction analysis
+- [useAssistantInstructions](use-assistant-instructions) for behavior guidance
+- [Model Context](model-context) for dynamic context management

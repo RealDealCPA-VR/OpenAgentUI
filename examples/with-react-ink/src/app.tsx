@@ -1,0 +1,51 @@
+import { useMemo } from "react";
+import { Box, Text } from "ink";
+import {
+  AssistantRuntimeProvider,
+  AuiConfig,
+  useLocalRuntime,
+  StatusBarPrimitive,
+  Tools,
+} from "@assistant-ui/react-ink";
+import { ThreadShell } from "./components/thread-shell.js";
+import { Thread } from "./components/thread.js";
+import { createScriptedAdapter, MODEL_NAME } from "./scripted-adapter.js";
+import toolkit from "./tools.js";
+
+const StatusBar = () => (
+  <StatusBarPrimitive.Root>
+    <Text dimColor>
+      model: <StatusBarPrimitive.ModelName name={MODEL_NAME} /> ·{" "}
+      <StatusBarPrimitive.MessageCount /> · <StatusBarPrimitive.Status />
+    </Text>
+  </StatusBarPrimitive.Root>
+);
+
+export const App = () => {
+  const adapter = useMemo(() => createScriptedAdapter(), []);
+  const runtime = useLocalRuntime(adapter);
+  const config = AuiConfig({
+    tools: Tools({ toolkit }),
+  });
+
+  return (
+    <AssistantRuntimeProvider runtime={runtime} config={config}>
+      <Box flexDirection="column" padding={1}>
+        <Box>
+          <Text bold color="cyan">
+            demo-agent
+          </Text>
+          <Text dimColor>{"  ~/acme-app"}</Text>
+        </Box>
+        <StatusBar />
+        <Box marginTop={1}>
+          <ThreadShell>
+            {({ isComposing, width }) => (
+              <Thread isComposing={isComposing} width={width} />
+            )}
+          </ThreadShell>
+        </Box>
+      </Box>
+    </AssistantRuntimeProvider>
+  );
+};
