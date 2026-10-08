@@ -31,7 +31,9 @@ const turboFilters = optionValues(process.argv.slice(2), "--filter");
 const requireFromBuildUtils = createRequire(
   path.join(repoRoot, "packages/x-buildutils/package.json"),
 );
-const { build } = await import(requireFromBuildUtils.resolve("tsdown"));
+const { build } = await import(
+  pathToFileURL(requireFromBuildUtils.resolve("tsdown")).href
+);
 const ts = requireFromBuildUtils("typescript");
 
 function packageEntryName(packageName) {

@@ -14,12 +14,12 @@ export const cliSurface: CliSurfaceSnapshot = {
   "options": [
     {
       "flags": "-t, --template <template>",
-      "description": "template to use (default, minimal, cloud, cloud-clerk, cloud-harness, langchain, mcp, eve)",
+      "description": "template to use (default, minimal, langchain, mcp, eve)",
       "required": true
     },
     {
       "flags": "-e, --example <example>",
-      "description": "create from an example (with-ag-ui, with-google-adk, with-ai-sdk-v7, with-eve, with-artifacts, with-assistant-transport, with-chain-of-thought, with-cloud, with-custom-thread-list, with-elevenlabs-conversational, with-elevenlabs-scribe, with-livekit, with-expo, with-interactables, with-external-store, with-ffmpeg, with-langgraph, with-react-hook-form, with-react-ink, with-react-router, with-tanstack, with-resumable-stream, with-openui)",
+      "description": "create from an example (with-ag-ui, with-google-adk, with-ai-sdk-v7, with-eve, with-artifacts, with-assistant-transport, with-chain-of-thought, with-custom-thread-list, with-elevenlabs-conversational, with-elevenlabs-scribe, with-livekit, with-expo, with-interactables, with-external-store, with-ffmpeg, with-langgraph, with-react-hook-form, with-react-ink, with-react-router, with-tanstack, with-resumable-stream, with-openui)",
       "required": true
     },
     {

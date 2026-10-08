@@ -1,5 +1,5 @@
 {
   "title": "Utilities",
-  "description": "Utility exports for custom rendering, composition, and advanced openagentui behavior that does not fit a larger API family.",
+  "description": "Utility exports for custom rendering, composition, and advanced OpenAgentUI behavior that does not fit a larger API family.",
   "pages": ["index", "miscellaneous"]
 }

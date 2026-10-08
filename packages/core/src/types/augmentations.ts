@@ -1,5 +1,5 @@
 /**
- * Module augmentation namespace for openagentui type extensions.
+ * Module augmentation namespace for OpenAgentUI type extensions.
  *
  * @example
  * ```typescript

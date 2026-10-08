@@ -148,7 +148,7 @@ export type ToolExecutionContext = {
 };
 
 /**
- * Function called when openagentui executes a frontend tool.
+ * Function called when OpenAgentUI executes a frontend tool.
  */
 export type ToolExecuteFunction<TArgs, TResult> = (
   args: TArgs,
@@ -176,7 +176,7 @@ type OnSchemaValidationErrorFunction<TResult> = ToolExecuteFunction<
 
 /**
  * Per-provider metadata forwarded into the wire request body verbatim.
- * openagentui does not interpret these values; downstream adapters (AI SDK,
+ * OpenAgentUI does not interpret these values; downstream adapters (AI SDK,
  * custom routes) pass them to the model provider as-is.
  *
  * The outer key is the provider name (`anthropic`, `openai`, ...); the inner

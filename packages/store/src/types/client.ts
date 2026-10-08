@@ -32,7 +32,7 @@ export type ClientSchema<
 };
 
 /**
- * Module augmentation interface for openagentui store type extensions.
+ * Module augmentation interface for OpenAgentUI store type extensions.
  *
  * @example
  * ```typescript

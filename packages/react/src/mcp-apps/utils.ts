@@ -11,7 +11,7 @@ type ToolPartLike = Pick<ToolCallMessagePart, "mcp">;
  * resource.
  *
  * Returns `undefined` when the part has no MCP app metadata or the metadata
- * does not reference an openagentui MCP app resource.
+ * does not reference an OpenAgentUI MCP app resource.
  */
 export function getMcpAppFromToolPart(
   part: ToolPartLike,

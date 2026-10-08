@@ -1,7 +1,7 @@
 import type { AssistantStreamChunk } from "./AssistantStreamChunk";
 
 /**
- * Stream of openagentui protocol chunks.
+ * Stream of OpenAgentUI protocol chunks.
  *
  * `AssistantStream` is the normalized internal stream format used by
  * encoders, decoders, accumulators, and tool execution transforms. Use an

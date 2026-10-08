@@ -35,7 +35,7 @@ export type AISDKThreadsOptions<UI_MESSAGE extends UIMessage = UIMessage> =
      * The transport threads send through. A factory is invoked once per
      * thread so each thread owns its instance. A plain
      * `AssistantChatTransport` instance is cloned per thread (its
-     * openagentui wiring is per thread); any other transport instance is
+     * OpenAgentUI wiring is per thread); any other transport instance is
      * shared as-is. Defaults to one `AssistantChatTransport` per thread.
      */
     transport?:

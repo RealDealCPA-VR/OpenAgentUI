@@ -104,7 +104,7 @@ async function postToHost(
  * Creates the default HTTP host for MCP App widgets.
  *
  * The host POSTs widget requests to the configured route as `{ method,
- * params }`, using the method names expected by the openagentui MCP Apps
+ * params }`, using the method names expected by the OpenAgentUI MCP Apps
  * guide.
  */
 const useMcpAppsRemoteHost = (

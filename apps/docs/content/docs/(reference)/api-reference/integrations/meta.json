@@ -1,6 +1,6 @@
 {
   "title": "Integrations",
-  "description": "Package-level APIs for connecting openagentui React to the Vercel AI SDK, Assistant Cloud, and adjacent chat ecosystem hooks and runtimes.",
+  "description": "Package-level APIs for connecting OpenAgentUI React to the Vercel AI SDK, Assistant Cloud, and adjacent chat ecosystem hooks and runtimes.",
   "pages": [
     "index",
     "ai-sdk",

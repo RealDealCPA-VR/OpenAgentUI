@@ -34,7 +34,7 @@ export type ToolResponseLike<TResult> = {
   /**
    * Explicit model-visible content to send back after the tool call.
    *
-   * When omitted, openagentui derives model output from `result` or a tool's
+   * When omitted, OpenAgentUI derives model output from `result` or a tool's
    * {@link ToolModelOutputFunction}.
    */
   modelContent?: readonly ToolModelContentPart[] | undefined;

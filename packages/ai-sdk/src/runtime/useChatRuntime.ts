@@ -20,7 +20,7 @@ export type UseChatRuntimeOptions<UI_MESSAGE extends UIMessage = UIMessage> =
   Omit<ChatThreadOptions<UI_MESSAGE>, "transport"> & {
     /**
      * The transport threads send through. `AssistantChatTransport` instances
-     * are cloned per thread through `__internal_clone()` so their openagentui
+     * are cloned per thread through `__internal_clone()` so their OpenAgentUI
      * wiring remains isolated. Other transport instances are shared as-is.
      */
     transport?: ChatTransport<UI_MESSAGE> | undefined;

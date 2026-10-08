@@ -1,6 +1,6 @@
 {
   "title": "Adapters",
-  "description": "Adapter interfaces for connecting chat models, persistence, file attachments, feedback, and suggestions to openagentui React runtimes.",
+  "description": "Adapter interfaces for connecting chat models, persistence, file attachments, feedback, and suggestions to OpenAgentUI React runtimes.",
   "pages": [
     "index",
     "attachments",

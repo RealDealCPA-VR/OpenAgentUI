@@ -177,7 +177,7 @@ export const StreamdownTextPrimitive = forwardRef<
 >(
   (
     {
-      // openagentui compatibility props
+      // OpenAgentUI compatibility props
       components,
       componentsByLanguage,
       preprocess,

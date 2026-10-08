@@ -10,7 +10,7 @@ import {
  *
  * This is the HTTP-route convenience form of {@link createAssistantStream}; it
  * uses {@link DataStreamEncoder} so the response can be consumed by matching
- * openagentui data stream decoders.
+ * OpenAgentUI data stream decoders.
  */
 export function createAssistantStreamResponse(
   callback: (controller: AssistantStreamController) => PromiseLike<void> | void,

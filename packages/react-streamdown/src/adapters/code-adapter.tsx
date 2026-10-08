@@ -70,7 +70,7 @@ function DefaultCode({ node: _, ...props }: CodeProps): ReactNode {
 }
 
 /**
- * Bridges the openagentui SyntaxHighlighter/CodeHeader API to streamdown's
+ * Bridges the OpenAgentUI SyntaxHighlighter/CodeHeader API to streamdown's
  * code component, using streamdown's data-block marker for inline/block
  * detection.
  */

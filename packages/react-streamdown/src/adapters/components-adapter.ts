@@ -53,7 +53,7 @@ function toComponent<P extends { node?: unknown }>(
 }
 
 /**
- * Hook that adapts openagentui component API to streamdown's component API.
+ * Hook that adapts OpenAgentUI component API to streamdown's component API.
  *
  * Handles:
  * - SyntaxHighlighter -> custom code component

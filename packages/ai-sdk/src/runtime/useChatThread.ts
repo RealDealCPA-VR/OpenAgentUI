@@ -89,7 +89,7 @@ type ChatThreadTransportBinding = {
 const getNoPendingStreamId = () => null;
 
 /**
- * Splits the combined options into the openagentui side and the `ChatInit`
+ * Splits the combined options into the OpenAgentUI side and the `ChatInit`
  * remainder the AI SDK consumes, so external `Chat` construction forwards the
  * same fields `useChat` would.
  */

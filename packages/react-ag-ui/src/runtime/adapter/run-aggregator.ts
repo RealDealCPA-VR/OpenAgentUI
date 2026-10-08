@@ -183,7 +183,7 @@ export type RunAggregatorOptions = {
 };
 
 /**
- * Collects AG-UI events into openagentui run snapshots that can be yielded from a ChatModelAdapter.
+ * Collects AG-UI events into OpenAgentUI run snapshots that can be yielded from a ChatModelAdapter.
  *
  * The aggregator keeps a single assistant message worth of parts. Each incoming event updates the parts and
  * emits a fresh snapshot through the provided `emit` callback. `CUSTOM` events
