@@ -265,7 +265,10 @@ jobs:
           BASE: ${{ steps.package_build_inputs.outputs.base }}
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-        run: pnpm api-surface -- --base="$BASE" --build-only
+        run: |
+          # Surface any tracked file the install rewrote, since it changes the plan.
+          git status --short --untracked-files=no
+          pnpm api-surface -- --base="$BASE" --build-only
 
       - name: Check API surface
         if: steps.package_build_inputs.outputs.run == 'true'
@@ -344,7 +347,7 @@ jobs:
 
   build-apps:
     name: Build Changed Apps
-    runs-on: blacksmith-8vcpu-ubuntu-2404
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - name: Checkout code repository
